@@ -381,10 +381,10 @@
 1. Click derecho en `MainCanvas` > `UI` > `Panel`. Nómbralo `PieceCountSelector`.
 2. `Add Component` > `Piece Count Selector Controller`.
 3. **Creación:**
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn64`. (Hijo Text: "64").
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn144`. (Hijo Text: "144").
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn256`. (Hijo Text: "256").
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn512`. (Hijo Text: "512").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn64`. (Hijo Text: "Seleccionar").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn144`. (Hijo Text: "Seleccionar").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn256`. (Hijo Text: "Seleccionar").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn512`. (Hijo Text: "Seleccionar").
    - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnCancel`. (Hijo Text: "Cancelar").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt64`. (Texto "Fácil").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt144`. (Texto "Normal").
