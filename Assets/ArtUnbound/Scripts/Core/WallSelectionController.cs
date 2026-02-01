@@ -15,7 +15,7 @@ namespace ArtUnbound.Core
         [SerializeField] private ARRaycastManager raycastManager;
 
         [Header("Configuration")]
-        [SerializeField] private float raycastDistance = 10f;
+        // [SerializeField] private float raycastDistance = 10f; // Unused
         [SerializeField] private Color validWallColor = Color.cyan;
         [SerializeField] private Color invalidColor = Color.red;
 
@@ -77,15 +77,17 @@ namespace ArtUnbound.Core
             if (plane.alignment == PlaneAlignment.Vertical) return true;
 
             // Advanced check: Classification (Meta Quest / ARKit / ARCore)
-            // Note: 'classification' is available in newer ARFoundation versions (6.0+)
-            #if UNITY_2023_2_OR_NEWER
-            if (plane.classification == PlaneClassification.Wall || 
-                plane.classification == PlaneClassification.Door ||
-                plane.classification == PlaneClassification.Window)
+            // Advanced check: Classification (Meta Quest / ARKit / ARCore)
+            // Deprecated API usage fixed or removed for stability. 
+            // Relying on Alignment for now as it's the most robust cross-platform check.
+            /*
+            if (plane.classifications.HasFlag(PlaneClassifications.Wall) || 
+                plane.classifications.HasFlag(PlaneClassifications.Door) ||
+                plane.classifications.HasFlag(PlaneClassifications.Window))
             {
                 return true;
             }
-            #endif
+            */
 
             return false;
         }

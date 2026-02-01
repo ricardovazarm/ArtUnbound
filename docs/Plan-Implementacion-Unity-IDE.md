@@ -148,7 +148,8 @@
    - Desmarca **Use Gravity**.
    - Marca **Is Kinematic** (porque las moveremos con las manos o código).
 5. Asigna **Layer**: `PuzzlePiece`.
-6. Arrastra a `Assets/ArtUnbound/Prefabs`.
+6. `Add Component` > `Puzzle Piece` (Script). << **IMPORTANTE**
+7. Arrastra a `Assets/ArtUnbound/Prefabs`.
 7. Borra de la escena.
 
 ### 8.3. UI Prefabs (Ejemplos rápidos)
@@ -203,9 +204,13 @@
 2. En el Inspector, `Add Component` > `Wall Highlight Controller`.
 3. (Nota: Dejarás el campo de Material vacío por ahora, más tarde le asignas uno si creas un material transparente).
 
-#### C) Hand Controller
+#### C) Hand Controller & Interaction
 1. Click derecho sobre `HardwareControllers` > `Create Empty`. Nómbralo `HandController`.
 2. En el Inspector, `Add Component` > `Hand Tracking Input Controller`.
+3. En el **MISMO** objeto (`HandController`), haz click en `Add Component` > busca `Interaction Manager` (el script que recién creamos).
+   - Arrastra el componente `Hand Tracking Input Controller` (que está arriba en el mismo inspector) al campo **Input Controller**.
+   - (Opcional) Crea un `Layer` llamado "PuzzlePiece" y asígnalo al campo **Interactable Layer**.
+   - (Opcional) Crea un LineRenderer y Arrastralo al campo **Ray Visualizer** para ver el puntero.
 
 #### D) Anchor Controller
 1. Click derecho sobre `HardwareControllers` > `Create Empty`. Nómbralo `AnchorController`.
@@ -226,7 +231,22 @@
 1. Click derecho sobre `GameplayControllers` > `Create Empty`. Nómbralo `PuzzleBoard`.
 2. `Add Component` > `Puzzle Board`.
 3. Click derecho sobre el objeto `PuzzleBoard` (en la jerarquía) > `Create Empty`. Nómbralo `SlotRoot`.
-4. Selecciona de nuevo el objeto `PuzzleBoard` y arrastra el hijo `SlotRoot` al campo **Slot Root** del inspector.
+4. Selecciona de nuevo el objeto `PuzzleBoard`:
+   - Arrastra `SlotRoot` al campo **Slot Root**.
+   - Arrastra el prefab `PuzzlePiece` (que creaste en el paso 8.2) al campo **Piece Prefab**. 
+   - **Creación de Bandeja de Piezas (Child):**
+     1. Click derecho en `PuzzleBoard` > `UI` > `Canvas`. Nómbralo `PieceTray`.
+     2. En el componente Canvas, cambia **Render Mode** a `World Space`.
+     3. Ajusta su **Rect Transform**:
+        - Pos Y: `-0.4` (para que quede debajo).
+        - Width: `0.8`, Height: `0.2`.
+        - Scale: `1, 1, 1` (o ajústalo según el tamaño de tu board, quizás 0.01 si el board es pequeño).
+     4. `Add Component` > `Piece Scroll Controller` (Script).
+     5. `Add Component` > `Scroll Rect` (opcional, si usas scroll nativo).
+   - **Volviendo al PuzzleBoard (Root):**
+     - Arrastra el objeto hijo `PieceTray` al campo **Scroll Controller**.
+     - Arrastra el objeto `HardwareControllers/HandController` al campo **Input Controller**.
+   - Arrastra el Asset `PuzzleConfig` al campo **Puzzle Config**.
 
 #### B) Help Controller
 1. Click derecho sobre `GameplayControllers` > `Create Empty`. Nómbralo `HelpController`.

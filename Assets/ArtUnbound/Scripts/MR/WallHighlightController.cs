@@ -21,7 +21,6 @@ namespace ArtUnbound.MR
 
         [Header("Detection Settings")]
         [SerializeField] private float maxRayDistance = 10f;
-        [SerializeField] private float minWallArea = 0.5f;
         [SerializeField] private LayerMask wallLayerMask;
         [SerializeField] private float wallAngleThreshold = 30f;
 

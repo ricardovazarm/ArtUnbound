@@ -7,9 +7,9 @@ namespace ArtUnbound.Input
 {
     public class HandTrackingInputController : MonoBehaviour
     {
-        public event Action<Vector3> OnPinchStart;
-        public event Action<Vector3> OnPinchHold;
-        public event Action<Vector3> OnPinchEnd;
+        public event Action<Vector3, Quaternion> OnPinchStart;
+        public event Action<Vector3, Quaternion> OnPinchHold;
+        public event Action<Vector3, Quaternion> OnPinchEnd;
         public event Action<float> OnSwipeHorizontal;
 
         [SerializeField] private float pinchThreshold = 0.8f;
@@ -73,11 +73,17 @@ namespace ArtUnbound.Input
                 currentPinch = primaryPressed;
             }
 
-            // Get Hand Position
+            // Get Hand Position and Rotation
             Vector3 handPosition = Vector3.zero;
+            Quaternion handRotation = Quaternion.identity;
+            
             if (device.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 pos))
             {
                 handPosition = pos;
+            }
+            if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rot))
+            {
+                handRotation = rot;
             }
 
             // Handle State Changes
@@ -85,15 +91,15 @@ namespace ArtUnbound.Input
 
             if (currentPinch && !wasPinching)
             {
-                OnPinchStart?.Invoke(handPosition);
+                OnPinchStart?.Invoke(handPosition, handRotation);
             }
             else if (currentPinch && wasPinching)
             {
-                OnPinchHold?.Invoke(handPosition);
+                OnPinchHold?.Invoke(handPosition, handRotation);
             }
             else if (!currentPinch && wasPinching)
             {
-                OnPinchEnd?.Invoke(handPosition);
+                OnPinchEnd?.Invoke(handPosition, handRotation);
             }
 
             if (isRight) isPinchingRight = currentPinch;
@@ -117,9 +123,9 @@ namespace ArtUnbound.Input
         }
 
         // Public simulation methods for Editor testing
-        public void SimulatePinchStart(Vector3 worldPosition) => OnPinchStart?.Invoke(worldPosition);
-        public void SimulatePinchHold(Vector3 worldPosition) => OnPinchHold?.Invoke(worldPosition);
-        public void SimulatePinchEnd(Vector3 worldPosition) => OnPinchEnd?.Invoke(worldPosition);
+        public void SimulatePinchStart(Vector3 worldPosition) => OnPinchStart?.Invoke(worldPosition, Quaternion.identity);
+        public void SimulatePinchHold(Vector3 worldPosition) => OnPinchHold?.Invoke(worldPosition, Quaternion.identity);
+        public void SimulatePinchEnd(Vector3 worldPosition) => OnPinchEnd?.Invoke(worldPosition, Quaternion.identity);
         public void SimulateSwipeHorizontal(float delta) => OnSwipeHorizontal?.Invoke(delta);
     }
 }

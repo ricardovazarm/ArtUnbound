@@ -2183,6 +2183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Gameplay.PuzzleBoard
   slotRoot: {fileID: 519612271}
+  piecePrefab: {fileID: 0}
+  scrollController: {fileID: 0}
   puzzleConfig: {fileID: 0}
   helpModeEnabled: 1
   helpModeController: {fileID: 1024376885}
@@ -7397,7 +7399,6 @@ MonoBehaviour:
   invalidPlacementMaterial: {fileID: 0}
   pointerLine: {fileID: 0}
   maxRayDistance: 10
-  minWallArea: 0.5
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -11663,6 +11664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1300472322}
   - component: {fileID: 1300472323}
+  - component: {fileID: 1300472324}
   m_Layer: 0
   m_Name: HandController
   m_TagString: Untagged
@@ -11699,6 +11701,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Input.HandTrackingInputController
   pinchThreshold: 0.8
   swipeVelocityThreshold: 0.5
+--- !u!114 &1300472324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300472321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279c9785830a3d24d8c1dc3da9207eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Input.InteractionManager
+  inputController: {fileID: 1300472323}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  rayLength: 2
+  rayVisualizer: {fileID: 0}
 --- !u!1 &1311779847
 GameObject:
   m_ObjectHideFlags: 0
@@ -21097,7 +21117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Core.WallSelectionController
   planeManager: {fileID: 1138434205}
   raycastManager: {fileID: 1138434203}
-  raycastDistance: 10
   validWallColor: {r: 0, g: 1, b: 1, a: 1}
   invalidColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1660057539 &9223372036854775807

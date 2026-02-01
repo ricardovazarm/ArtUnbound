@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7440972599347385861}
   - component: {fileID: 2355785923100751715}
   - component: {fileID: 3700228194297365920}
+  - component: {fileID: 4237409401309504199}
   m_Layer: 8
   m_Name: PuzzlePiece
   m_TagString: Untagged
@@ -140,3 +141,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4237409401309504199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121321654189848246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6386d88c0af27d4f978c12b19d86acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Gameplay.PuzzlePiece
+  pieceId: 0
+  correctSlotIndex: 0
+  grabAnchor: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  highlightObject: {fileID: 0}
+  returnAnimationDuration: 0.5
+  morphology:
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0

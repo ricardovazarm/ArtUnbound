@@ -18,10 +18,39 @@ namespace ArtUnbound.Gameplay
         public event Action<PuzzlePiece> OnPlacementSuccess;
 
         [SerializeField] private Transform slotRoot;
+        [SerializeField] private PuzzlePiece piecePrefab;
+        [SerializeField] private ArtUnbound.UI.PieceScrollController scrollController;
+        [SerializeField] private ArtUnbound.Input.HandTrackingInputController inputController;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private bool helpModeEnabled = true;
         [SerializeField] private HelpModeController helpModeController;
         [SerializeField] private Color errorGlowColor = new Color(1f, 0.2f, 0.2f, 0.8f);
+
+        private readonly List<PuzzlePiece> activePieces = new List<PuzzlePiece>();
+
+        private void Start()
+        {
+            if (inputController != null)
+            {
+                inputController.OnSwipeHorizontal += OnSwipeInput;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (inputController != null)
+            {
+                inputController.OnSwipeHorizontal -= OnSwipeInput;
+            }
+        }
+
+        private void OnSwipeInput(float delta)
+        {
+            if (scrollController != null)
+            {
+                scrollController.OnSwipe(delta);
+            }
+        }
 
         private readonly List<PuzzleSlot> slots = new List<PuzzleSlot>();
         private readonly Dictionary<int, PieceMorphology> morphologyByPieceId = new Dictionary<int, PieceMorphology>();
@@ -38,6 +67,14 @@ namespace ArtUnbound.Gameplay
             snappedCount = 0;
             totalPieces = pieceCount;
             currentTexture = artworkTexture;
+            
+            // Clear existing pieces
+            foreach (var piece in activePieces)
+            {
+                if (piece != null) Destroy(piece.gameObject);
+            }
+            activePieces.Clear();
+            
             slots.Clear();
             morphologyByPieceId.Clear();
             placedBySlot.Clear();
@@ -56,6 +93,14 @@ namespace ArtUnbound.Gameplay
         public void Initialize(ArtworkDefinition definition, int pieceCount)
         {
             snappedCount = 0;
+            
+            // Clear existing pieces
+            foreach (var piece in activePieces)
+            {
+                if (piece != null) Destroy(piece.gameObject);
+            }
+            activePieces.Clear();
+            
             slots.Clear();
             morphologyByPieceId.Clear();
             placedBySlot.Clear();
@@ -206,9 +251,16 @@ namespace ArtUnbound.Gameplay
 
                     slots.Add(slot);
                     morphologyByPieceId[id] = morphology;
+
+                    // Create Piece Visual
+                    CreatePiece(id, x, y, gridSize, morphology, pieceSize, currentTexture);
+
                     id++;
                 }
             }
+            
+            // Shuffle and populate scroll
+            InitializeScroll();
         }
 
         private void CreateSlots(ArtworkDefinition definition, int pieceCount)
@@ -255,9 +307,17 @@ namespace ArtUnbound.Gameplay
 
                     slots.Add(slot);
                     morphologyByPieceId[id] = morphology;
+
+                    // Create Piece Visual
+                     var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage.texture;
+                    CreatePiece(id, x, y, gridSize, morphology, pieceSize, textureToUse);
+
                     id++;
                 }
             }
+
+            // Shuffle and populate scroll
+            InitializeScroll();
         }
 
         private PieceMorphology GenerateMorphology(int col, int row, int gridSize)
@@ -351,6 +411,59 @@ namespace ArtUnbound.Gameplay
             }
 
             return row * gridSize + col;
+        }
+
+        private void CreatePiece(int id, int col, int row, int gridSize, PieceMorphology morphology, float pieceSize, Texture2D texture)
+        {
+            if (piecePrefab == null) return;
+
+            PuzzlePiece piece = Instantiate(piecePrefab, slotRoot.position, Quaternion.identity); // Spawn at root mostly hidden, will be moved by Scroll
+            piece.Initialize(id, GetSlotIndex(row, col), morphology);
+            piece.name = $"Piece_{id}_{col}_{row}";
+
+            // Generate Mesh
+            Mesh mesh = PieceMeshGenerator.GeneratePieceMesh(morphology, pieceSize, col, row, gridSize, gridSize);
+            
+            // Assign Mesh
+            var meshFilter = piece.GetComponentInChildren<MeshFilter>();
+            if (meshFilter != null)
+            {
+                meshFilter.mesh = mesh;
+            }
+
+            var meshRenderer = piece.GetComponentInChildren<MeshRenderer>();
+            if (meshRenderer != null && texture != null)
+            {
+                meshRenderer.material.mainTexture = texture;
+                // Important: Ensure shader handles transparency if using PNGs
+            }
+            
+            // Add collider for interaction
+            var collider = piece.GetComponentInChildren<MeshCollider>();
+            if (collider != null)
+            {
+                collider.sharedMesh = mesh;
+            }
+
+            activePieces.Add(piece);
+        }
+
+        private void InitializeScroll()
+        {
+            if (scrollController == null) return;
+
+            // Shuffle active pieces for initial display
+            var shuffledPieces = PieceShuffler.GetShuffledCopy(activePieces);
+            
+            List<Transform> pieceTransforms = new List<Transform>();
+            foreach(var p in shuffledPieces)
+            {
+                pieceTransforms.Add(p.transform);
+                // Reset piece state to InPool or similar handled by scroll controller logic
+                p.ReturnToPool(Vector3.zero); // Position will be managed by scroll
+            }
+
+            scrollController.Initialize(pieceTransforms);
         }
 
         private bool EdgesComplement(PieceEdgeState a, PieceEdgeState b)
