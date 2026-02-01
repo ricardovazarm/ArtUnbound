@@ -209,26 +209,32 @@ namespace ArtUnbound.Gameplay
 
         private void CreateSlotsFromCount(int pieceCount)
         {
-            int gridSize = Mathf.RoundToInt(Mathf.Sqrt(pieceCount));
-            if (gridSize * gridSize != pieceCount)
+            if (currentTexture == null)
             {
-                gridSize = Mathf.CeilToInt(Mathf.Sqrt(pieceCount));
+                Debug.LogError("No texture assigned for puzzle generation");
+                return;
             }
 
+            CalculateGridDimensions(pieceCount, currentTexture.width, currentTexture.height, out int cols, out int rows);
+
             float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
-            float sizeX = gridSize * pieceSize;
-            float sizeY = gridSize * pieceSize;
+            float sizeX = cols * pieceSize;
+            float sizeY = rows * pieceSize;
             float cellWidth = pieceSize;
             float cellHeight = pieceSize;
 
             int id = 0;
-            for (int y = 0; y < gridSize; y++)
+            for (int y = 0; y < rows; y++)
             {
-                for (int x = 0; x < gridSize; x++)
+                for (int x = 0; x < cols; x++)
                 {
                     if (id >= pieceCount)
                     {
-                        return;
+                        // Note: With adaptive grid, we might exceed or fall short of exact pieceCount.
+                        // We strictly fill the grid we calculated.
+                        // To allow the loop to finish the grid, we use 'id' as just a counter,
+                        // but we should ensure unique IDs if we go over initial pieceCount?
+                        // Actually, better to just let it increment. The target count is soft.
                     }
 
                     Vector3 localPos = new Vector3(
@@ -237,7 +243,7 @@ namespace ArtUnbound.Gameplay
                         0f
                     );
 
-                    PieceMorphology morphology = GenerateMorphology(x, y, gridSize);
+                    PieceMorphology morphology = GenerateMorphology(x, y, cols, rows);
 
                     PuzzleSlot slot = new PuzzleSlot
                     {
@@ -253,7 +259,7 @@ namespace ArtUnbound.Gameplay
                     morphologyByPieceId[id] = morphology;
 
                     // Create Piece Visual
-                    CreatePiece(id, x, y, gridSize, morphology, pieceSize, currentTexture);
+                    CreatePiece(id, x, y, cols, rows, morphology, pieceSize, currentTexture);
 
                     id++;
                 }
@@ -265,35 +271,29 @@ namespace ArtUnbound.Gameplay
 
         private void CreateSlots(ArtworkDefinition definition, int pieceCount)
         {
-            int gridSize = Mathf.RoundToInt(Mathf.Sqrt(pieceCount));
-            if (gridSize * gridSize != pieceCount)
-            {
-                gridSize = Mathf.CeilToInt(Mathf.Sqrt(pieceCount));
-            }
+            var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage.texture;
+            if (textureToUse == null) return;
+
+             CalculateGridDimensions(pieceCount, textureToUse.width, textureToUse.height, out int cols, out int rows);
 
             float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
-            float sizeX = gridSize * pieceSize;
-            float sizeY = gridSize * pieceSize;
+            float sizeX = cols * pieceSize;
+            float sizeY = rows * pieceSize;
             float cellWidth = pieceSize;
             float cellHeight = pieceSize;
 
             int id = 0;
-            for (int y = 0; y < gridSize; y++)
+            for (int y = 0; y < rows; y++)
             {
-                for (int x = 0; x < gridSize; x++)
+                for (int x = 0; x < cols; x++)
                 {
-                    if (id >= pieceCount)
-                    {
-                        return;
-                    }
-
                     Vector3 localPos = new Vector3(
                         (-sizeX * 0.5f) + cellWidth * 0.5f + cellWidth * x,
                         (sizeY * 0.5f) - cellHeight * 0.5f - cellHeight * y,
                         0f
                     );
 
-                    PieceMorphology morphology = GenerateMorphology(x, y, gridSize);
+                    PieceMorphology morphology = GenerateMorphology(x, y, cols, rows);
 
                     PuzzleSlot slot = new PuzzleSlot
                     {
@@ -309,8 +309,7 @@ namespace ArtUnbound.Gameplay
                     morphologyByPieceId[id] = morphology;
 
                     // Create Piece Visual
-                     var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage.texture;
-                    CreatePiece(id, x, y, gridSize, morphology, pieceSize, textureToUse);
+                    CreatePiece(id, x, y, cols, rows, morphology, pieceSize, textureToUse);
 
                     id++;
                 }
@@ -320,15 +319,25 @@ namespace ArtUnbound.Gameplay
             InitializeScroll();
         }
 
-        private PieceMorphology GenerateMorphology(int col, int row, int gridSize)
+        private void CalculateGridDimensions(int targetCount, int texWidth, int texHeight, out int cols, out int rows)
+        {
+            float ratio = (float)texWidth / texHeight;
+            // rows = sqrt(target / ratio)
+            rows = Mathf.RoundToInt(Mathf.Sqrt(targetCount / ratio));
+            if (rows < 2) rows = 2;
+            cols = Mathf.RoundToInt(rows * ratio);
+            if (cols < 2) cols = 2;
+        }
+
+        private PieceMorphology GenerateMorphology(int col, int row, int numCols, int numRows)
         {
             bool parity = (col + row) % 2 == 0;
             PieceEdgeState innerState = parity ? PieceEdgeState.Positive : PieceEdgeState.Negative;
             PieceMorphology m = new PieceMorphology
             {
                 top = row == 0 ? PieceEdgeState.Flat : innerState,
-                right = col == gridSize - 1 ? PieceEdgeState.Flat : innerState,
-                bottom = row == gridSize - 1 ? PieceEdgeState.Flat : innerState,
+                right = col == numCols - 1 ? PieceEdgeState.Flat : innerState,
+                bottom = row == numRows - 1 ? PieceEdgeState.Flat : innerState,
                 left = col == 0 ? PieceEdgeState.Flat : innerState
             };
 

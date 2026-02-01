@@ -387,7 +387,7 @@
    - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn512`. (Hijo Text: "512").
    - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnCancel`. (Hijo Text: "Cancelar").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt64`. (Texto "Fácil").
-   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt144`. (Texto "Medio").
+   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt144`. (Texto "Normal").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt256`. (Texto "Difícil").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt512`. (Texto "Experto").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtTitle`. (Texto "Selecciona número de piezas").
@@ -409,7 +409,7 @@
 2. `Add Component` > `Puzzle HUD Controller`.
 3. **Creación:**
    - Click derecho en `HUD` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtTimer`. (Texto "00:00").
-   - Click derecho en `HUD` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtPieces`. (Texto "0/0").
+   - Click derecho en `HUD` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtPieces`. (Texto "0%").
    - Click derecho en `HUD` > `UI` > `Slider`. Nómbralo `SldProgress`.
    - Click derecho en `HUD` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnPause`. (Texto "||").
    - Click derecho en `HUD` > `UI` > `Toggle`. Nómbralo `TglHelp`.

@@ -162,7 +162,10 @@ namespace ArtUnbound.UI
         private void UpdateProgressDisplay()
         {
             if (piecesText != null)
-                piecesText.text = $"{placedPieces} / {totalPieces}";
+            {
+                int percentage = totalPieces > 0 ? Mathf.RoundToInt((float)placedPieces / totalPieces * 100) : 0;
+                piecesText.text = $"{percentage}%";
+            }
 
             if (progressSlider != null)
             {

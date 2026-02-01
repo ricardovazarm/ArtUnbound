@@ -81,7 +81,10 @@ namespace ArtUnbound.UI
                 timeText.text = FormatTime(sessionData.GetElapsedSeconds());
 
             if (piecesText != null)
-                piecesText.text = $"{sessionData.pieceCount} piezas";
+            {
+                string difficulty = PieceCountSelectorController.GetDifficultyLabel(sessionData.pieceCount);
+                piecesText.text = $"Dificultad: {difficulty}";
+            }
 
             if (scoreText != null)
                 scoreText.text = finalScore.ToString();
