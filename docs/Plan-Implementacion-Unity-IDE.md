@@ -390,7 +390,7 @@
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt144`. (Texto "Normal").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt256`. (Texto "Difícil").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt512`. (Texto "Experto").
-   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtTitle`. (Texto "Selecciona número de piezas").
+   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtTitle`. (Texto "Selecciona Dificultad").
 4. **Asignación:**
    - **Panel**: Arrastra `PieceCountSelector`.
    - **Title Text**: Arrastra `TxtTitle`.
