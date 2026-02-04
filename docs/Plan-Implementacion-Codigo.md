@@ -117,6 +117,7 @@
   - `bool IsInsideFrame(Vector3 worldPos)`
 
 ### 4.3.1. `ComfortModeController`
+- Es el controlador **por defecto** para el inicio.
 - Campos:
   - `float distanceFromHead = 0.8f`
   - `float tiltAngle = 15f`
@@ -434,26 +435,21 @@
 - Ubicacion: `Application.persistentDataPath/save.json`.
 
 ## 6. Flujos detallados (C#)
-### 6.1. Seleccion de modo
-1) `GameBootstrap` crea servicios.
-2) UI muestra botones: Modo Galeria / Modo Confort.
-3) Usuario selecciona modo, se guarda en `SaveData.lastGameMode`.
+### 6.1. Seleccion de obra
+1) `GameBootstrap` inicializa servicios.
+2) Usuario accede directamente a la lista de obras (sin selector de modo previo).
+3) La preferencia de "Ayuda" se lee de `SaveData`.
 
-### 6.2. Inicio Modo Galeria
-1) `WallSelectionController.StartWallScan()`.
-2) Usuario selecciona pared.
-3) `WallSelectionController.ConfirmWall()` crea `CanvasFrameController`.
-4) `WeeklyUnlockService` determina el cuadro semanal.
-5) `LocalCatalogService` devuelve lista local.
-
-### 6.3. Inicio Modo Confort
-1) `ComfortModeController.PositionCanvas()` calcula posicion ergonomica.
-2) Se muestra preview del lienzo flotante.
-3) Usuario puede ajustar posicion manualmente.
+### 6.2. Inicio de Puzzle (Flujo Unificado)
+1) `ComfortModeController` es el controlador predeterminado.
+2) `ComfortModeController.PositionCanvas()` calcula posicion ergonomica.
+3) Se muestra preview del lienzo flotante.
 4) Usuario confirma, `ComfortModeController.LockPosition()`.
-5) Se crea `CanvasFrameController` en posicion fija.
-6) `WeeklyUnlockService` determina el cuadro semanal.
-7) `LocalCatalogService` devuelve lista local.
+5) `WeeklyUnlockService` determina el cuadro semanal.
+6) `LocalCatalogService` devuelve lista local.
+
+### 6.3. (Seccion eliminada - Inicio Modo Galeria removido)
+El inicio en pared ya no existe. La pared solo se usa al finalizar.
 
 ### 6.4. Seleccion de obra
 1) UI lista obras locales + semanal.
@@ -503,11 +499,10 @@
 ### 6.8. Colocacion de cuadro completado
 1) `PostGameController.OnPlaceArtwork()` activa modo colocacion.
 2) Cuadro se vuelve movible (sigue la mano).
-3) En Modo Galeria:
-   - `WallHighlightController` muestra paredes disponibles.
-   - Usuario posiciona cuadro en pared.
-4) En Modo Confort:
-   - Usuario posiciona cuadro en espacio 3D.
+3) `PostGameController.OnPlaceArtwork()` activa modo colocacion.
+4) `WallHighlightController` muestra paredes disponibles.
+5) Usuario selecciona pared.
+6) Se guarda el anclaje.
 5) Al soltar:
    - `AnchorPersistenceController.SaveAnchor(artworkId, transform)`.
    - `PlacedArtwork` se crea y guarda en `SaveData`.

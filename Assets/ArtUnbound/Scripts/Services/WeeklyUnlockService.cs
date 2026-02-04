@@ -40,9 +40,12 @@ namespace ArtUnbound.Services
                 return string.Empty;
             }
 
-            int week = GetWeekNumber(now);
-            int index = week % catalog.artworks.Count;
-            return catalog.artworks[index].artworkId;
+            // Auto-rotation disabled per user request
+            // int week = GetWeekNumber(now);
+            // int index = week % catalog.artworks.Count;
+            // return catalog.artworks[index].artworkId;
+            
+            return string.Empty;
         }
 
         /// <summary>

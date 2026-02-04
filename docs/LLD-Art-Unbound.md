@@ -56,7 +56,7 @@ Documento de diseno detallado para implementar el juego en Unity, incluyendo cla
 
 ### 4.2. `WallSelectionController`
 - Detecta paredes y coloca el marco de lienzo.
-- Permite redimensionar jalando esquinas.
+- Se utiliza **exclusivamente en el flujo Post-Juego** para colgar obras terminadas.
 
 ### 4.3. `CanvasFrameController`
 - Controla el marco de lineas.
@@ -65,6 +65,7 @@ Documento de diseno detallado para implementar el juego en Unity, incluyendo cla
 
 ### 4.3.1. `ComfortModeController`
 - Posiciona el lienzo flotante frente al usuario.
+- Es el controlador **por defecto** para el inicio de cualquier puzzle.
 - Campos:
   - `float distanceFromHead = 0.8f` (metros)
   - `float tiltAngle = 15f` (grados hacia el usuario)
@@ -73,7 +74,6 @@ Documento de diseno detallado para implementar el juego en Unity, incluyendo cla
   - `void PositionCanvas()`: Calcula posicion inicial basada en pose de cabeza.
   - `void LockPosition()`: Fija el lienzo en su posicion actual.
   - `Vector3 GetErgonomicPosition()`: Retorna posicion optima.
-- Se activa solo cuando el usuario elige Modo Confort.
 
 ### 4.4. `PuzzleBoard`
 - Genera grilla de piezas y posiciones objetivo (grid snapping).
@@ -187,22 +187,18 @@ Documento de diseno detallado para implementar el juego en Unity, incluyendo cla
 - `RemoteConfigService`: eventos globales y ajustes de logica en tiempo real.
 
 ## 6. Flujos Detallados
-### 6.1. Seleccion de modo de juego
+### 6.1. Inicio de Puzzle (Flujo Unificado)
 1) `GameBootstrap` inicializa servicios.
-2) UI muestra opciones: Modo Galeria / Modo Confort.
-3) Usuario selecciona modo.
+2) Usuario selecciona obra (o cuadro semanal).
+3) **Posicionamiento**:
+   - `ComfortModeController` calcula posicion ergonomica frente al usuario.
+   - Se muestra preview del lienzo flotante.
+   - Usuario confirma posicion.
+   - `ComfortModeController.LockPosition()` fija el lienzo para comenzar el armado.
+4) `PuzzleBoard` se inicializa y comienza el juego.
 
-### 6.2. Inicio Modo Galeria (Pared)
-1) `WallSelectionController` muestra paredes detectadas.
-2) El usuario confirma pared y se instancia `CanvasFrameController`.
-3) `WeeklyUnlockService` resuelve el cuadro semanal disponible.
-
-### 6.3. Inicio Modo Confort (Sentado)
-1) `ComfortModeController` calcula posicion ergonomica frente al usuario.
-2) Se muestra preview del lienzo flotante.
-3) Usuario confirma posicion o ajusta manualmente.
-4) `ComfortModeController.LockPosition()` fija el lienzo.
-5) `WeeklyUnlockService` resuelve el cuadro semanal disponible.
+### 6.2. (Deprecado - Inicio Modo Galeria eliminado)
+El inicio en pared se ha eliminado para reducir friccion. La pared solo se usa al finalizar.
 
 ### 6.4. Colocacion de pieza
 1) `PuzzlePiece` es tomada por pinza (estado cambia a `Grabbed`).
@@ -220,9 +216,10 @@ Documento de diseno detallado para implementar el juego en Unity, incluyendo cla
 
 ### 6.5. Finalizacion y marco
 1) `PuzzleBoard` completa todas las piezas.
-2) `ScoringController` calcula frame tier.
-3) `GalleryController` registra obra completa.
-4) `AnchorPersistenceController` permite colgar cuadro.
+2) `ScoringController` calcula frame tier y muestra resultados.
+3) Usuario elige "Colgar Cuadro".
+4) `WallSelectionController` se activa para detectar paredes.
+5) Usuario selecciona pared y `AnchorPersistenceController` guarda la ubicacion del cuadro terminado.
 
 ## 7. Assets Principales
 - Prefabs: `CanvasFrame`, `PuzzlePiece`, `PieceScroll`, `CompletedFrame`.

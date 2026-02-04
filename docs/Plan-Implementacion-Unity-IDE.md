@@ -14,6 +14,7 @@
    - **AR Foundation** (com.unity.xr.arfoundation) - *Versión 6.0 o superior recomendada para Unity 6*.
    - **Input System** (com.unity.inputsystem) - *Suele pedir reinicio del editor, acepta si lo pide*.
    - **Universal RP** (com.unity.render-pipelines.universal) - *Solo si no creaste el proyecto con la plantilla URP*.
+   - **2D Sprite** (com.unity.2d.sprite) - *Necesario para manipular texturas 2D en runtime*.
 5. (Para integración con Meta) Necesitas el paquete de Meta OpenXR.
    - Si no aparece en el Registry, ve a `Edit` > `Project Settings` > `Package Manager`.
    - Asegúrate de tener "Enable Pre-release Packages" activado si es necesario, o agrega el Scoped Registry de Meta si usas sus herramientas específicas (aunque el plugin oficial de Unity "OpenXR Plugin" suele ser suficiente para la base).
@@ -31,6 +32,7 @@
    - `Artworks` (Aquí irán las texturas de los cuadros)
    - `Audio`
    - `UI`
+     - `Sprites` (Imágenes para botones, iconos, fondos)
    - `Scripts` (Si no existe, aunque el código generado ya debería estar aquí).
 
 ## 2. Creación y Guardado de la Escena Principal
@@ -88,20 +90,37 @@
 ## 6. Configuración de la Escena (Scene Setup)
 **Objetivo:** Crear la cámara XR y habilitar Passthrough.
 
-### 6.1. XR Rig
-1. En la ventana **Hierarchy** (izquierda), haz clic derecho en un espacio vacío.
-2. Selecciona `XR` > `XR Origin (VR)`. (Esto creará un objeto "XR Origin" con una cámara dentro).
-3. Elimina la "Main Camera" que venía por defecto en la escena (Click derecho > Delete), ya que XR Origin trae la suya.
-4. Selecciona el objeto `XR Origin` en la jerarquía.
-5. En el **Inspector**, busca el componente `XROrigin`. Asegúrate de que "Tracking Origin Mode" esté en `Floor`.
+### 6.1. XR Rig (Opción Recomendada: MR Interaction Setup)
+**¡La mejor opción!** En lugar de crear todo manualmente, usaremos el "Setup" completo que ya viene en tu proyecto (como mostraste en la imagen).
 
-### 6.2 Configuración de Passthrough (AR Camera)
-1. Despliega el objeto `XR Origin` > `Camera Offset`.
-2. Selecciona el objeto hijo `Main Camera`.
-3. En el **Inspector**, en el componente **Camera**:
-   - **Clear Flags**: Cambia a `Solid Color`.
-   - **Background**: Haz clic en el color negro. En la ventana de color, baja el canal **Alpha (A)** a 0. El color de fondo debe ser transparente.
-4. En el **Inspector**, haz clic en `Add Component`.
+1. Abre la escena de ejemplo del Template (donde viste esa estructura) o busca el prefab **MR Interaction Setup** en tus carpetas.
+2. **Copia** todo el objeto `MR Interaction Setup` (Click derecho > Copy).
+3. Vuelve a tu escena `Assets/ArtUnbound/Scenes/Main`.
+4. **Pega** el objeto (Click derecho > Paste).
+5. **Borra** los siguientes objetos viejos si los tienes, para no duplicar:
+   - `XR Origin` (el vacío que creamos antes).
+   - `XR Interaction Manager` (el viejo).
+   - `EventSystem` (el viejo).
+   - `Main Camera` (si quedó alguna suelta).
+
+**Resultado:** Ahora### 6.1.b Verificación Rápida y Limpieza
+El prefab incluye scripts de tutorial que pueden bloquear tu vista.
+
+1. **Desactivar Goal Manager (CRÍTICO):** Busca el objeto `Goal Manager` (suele estar en la raíz o dentro del setup) y **desactívalo**. Este script controla el tutorial del template y puede oscurecer la pantalla o bloquear inputs.
+2. **Main Camera:** Verifica que `Clear Flags` sea `Solid Color` y el Alpha del fondo sea 0.
+3. **AR Camera Background:** Si sigue dando problemas, prueba desactivarlo, pero usualmente el culpable principal es el Goal Manager.
+### 6.1.c Solución de UI no Interactuable
+Si la UI del template funciona pero la tuya no, es probable que tengas **dos** `EventSystem` en la escena causando conflicto.
+
+1. **Busca duplicados:** Revisa la Jerarquía.
+   - Probablemente tengas un `EventSystem` "suelto" en la raíz (creado con el Canvas).
+   - Y otro `EventSystem` dentro de `MR Interaction Setup`.
+2. **Acción:**
+   - **BORRA** el `EventSystem` "suelto" (el de la raíz).
+   - Quédate solo con el que viene dentro de `MR Interaction Setup` (este ya tiene el `XR UI Input Module` configurado correctamente).
+3. **Canvas World Space:**
+   - Asegúrate de que tu `MainCanvas` tenga el componente `Graphic Raycaster` (el normal).
+   - No necesitas `Tracked Device Graphic Raycaster` si usas el EventSystem del template.4. En el **Inspector**, haz clic en `Add Component`.
 5. Escribe `AR Camera Manager` y selecciónalo. (Necesario para Passthrough en AR Foundation 6).
 6. Haz clic en `Add Component` nuevamente.
 7. Escribe `AR Camera Background` y selecciónalo. *Nota: En Quest, el Passthrough suele sobreescribir el fondo automáticamente si el alpha es 0, pero este componente ayuda a la compatibilidad con AR Foundation estándar.*
@@ -269,16 +288,19 @@
 ## 10. Implementación de UI (Creación de Menús)
 **Objetivo:** Crear el Canvas principal y asignar **todas** las referencias a los 9 paneles.
 
-### 10.1. Canvas Principal
-1. En **Hierarchy**, click derecho > `UI` > `Canvas`. Nómbralo `MainCanvas`.
-2. En el Inspector de **Canvas**:
+### 10.1. Configuración del Canvas Principal
+1. En la Jerarquía, crea un nuevo Canvas: `UI` > `Canvas`. Nómbralo `MainCanvas`.
+2. En el Inspector de `MainCanvas` (componente **Canvas**):
    - **Render Mode**: `World Space`.
-   - **Event Camera**: Selecciona la **Main Camera** (del XR Origin).
-3. En el **Inspector** de **Canvas Scaler**:
-   - **Dynamic Pixels Per Unit**: 10.
+   - **Event Camera**: Arrastra la `Main Camera` (que está dentro de tu XR Setup).
+3. **Componente Raycaster (CRÍTICO PARA AR/VR):**
+   - El canvas tendrá por defecto un `Graphic Raycaster`.
+   - **Añade el componente:** `Tracked Device Graphic Raycaster` (necesario para que los rayos de las manos interactúen con la UI).
+   - *Opcional:* Puedes quitar el `Graphic Raycaster` normal si solo usarás VR, pero tener ambos suele funcionar bien.
+4. **Canvas Scaler:**
+   - **Dynamic Pixels Per Unit**: 1.
    - **Reference Pixels Per Unit**: 100.
-4. En **Rect Transform**:
-   - **Pos**: `0, 1.2, 1.5`.
+5. Ajusta el `Rect Transform` para que esté frente a la cámara (ej. Pos Z: 2, Scale: 0.001, 0.001, 0.001).
    - **Width**: `1280`, **Height**: `720`.
    - **Scale**: `0.001, 0.001, 0.001`.
 5. Asegúrate de que exista un `EventSystem` en la escena (Unity lo crea con el Canvas). Si usas XR Interaction Toolkit, añade el componente `XR UI Input Module` al EventSystem y **remueve** el componente `Standalone Input Module` o `Input System UI Input Module` (el que aparezca). Solo debe quedar el `XR UI Input Module` activo.
@@ -295,30 +317,19 @@
    - Click derecho en `MainMenuPanel` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnGallery`. (Texto "Galería").
    - Click derecho en `MainMenuPanel` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnSettings`. (Texto "Opciones").
    - Click derecho en `MainMenuPanel` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtStats`. (Texto "Completados: 0").
-4. **Creación de Sub-Elementos (Selección Modo):**
-   - Click derecho en `MainMenuPanel` > `UI` > `Panel` (hazlo más pequeño). Nómbralo `GameModePanel`. Desactívalo inicialmente.
-   - Click derecho en `GameModePanel` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnGalleryMode`. (Texto "Modo Pared Real").
-   - Click derecho en `GameModePanel` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnComfortMode`. (Texto "Modo Flotante").
-   - Click derecho en `GameModePanel` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnCancel`. (Texto "Cancelar").
-   - Click derecho en `GameModePanel` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtModeDesc`. (Texto "Descripción...").
-5. **Creación de Sub-Elementos (Weekly Highlight):**
+4. **Creación de Sub-Elementos (Weekly Highlight):**
    - Click derecho en `MainMenuPanel` > `UI` > `Panel`. Nómbralo `WeeklyHighlightPanel`. Desactívalo inicialmente (Uncheck "Active" en Inspector).
    - Click derecho en `WeeklyHighlightPanel` > `UI` > `Image`. Nómbralo `ImgArtwork`.
    - Click derecho en `WeeklyHighlightPanel` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtWeeklyTitle`. (Texto "Título de la Obra").
    - Click derecho en `WeeklyHighlightPanel` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtWeeklyArtist`. (Texto "Artista").
    - Click derecho en `WeeklyHighlightPanel` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnWeeklyPlay`. (Texto "Jugar Destacado").
-6. **Asignación de Referencias (Main Menu Controller Inspector):**
+5. **Asignación de Referencias (Main Menu Controller Inspector):**
    - **Menu Panel**: Arrastra `MainMenuPanel`.
    - **Title Text**: Arrastra `TxtTitle`.
    - **Play Button**: Arrastra `BtnPlay`.
    - **Gallery Button**: Arrastra `BtnGallery`.
    - **Settings Button**: Arrastra `BtnSettings`.
    - **Completed Count Text**: Arrastra `TxtStats`.
-   - **Game Mode Panel**: Arrastra `GameModePanel`.
-   - **Gallery Mode Button**: Arrastra `BtnGalleryMode`.
-   - **Comfort Mode Button**: Arrastra `BtnComfortMode`.
-   - **Cancel Mode Button**: Arrastra `BtnCancel`.
-   - **Gallery Mode Description**: Arrastra `TxtModeDesc`.
    - **Weekly Highlight Panel**: Arrastra `WeeklyHighlightPanel`.
    - **Weekly Artwork Image**: Arrastra `ImgArtwork`.
    - **Weekly Artwork Title**: Arrastra `TxtWeeklyTitle`.
@@ -381,15 +392,11 @@
 1. Click derecho en `MainCanvas` > `UI` > `Panel`. Nómbralo `PieceCountSelector`.
 2. `Add Component` > `Piece Count Selector Controller`.
 3. **Creación:**
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn64`. (Hijo Text: "Seleccionar").
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn144`. (Hijo Text: "Seleccionar").
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn256`. (Hijo Text: "Seleccionar").
-   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn512`. (Hijo Text: "Seleccionar").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn64`. (Hijo Text: "Fácil").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn144`. (Hijo Text: "Normal").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn256`. (Hijo Text: "Difícil").
+   - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `Btn512`. (Hijo Text: "Experto").
    - Click derecho en `PieceCountSelector` > `UI` > `Button - TextMeshPro`. Nómbralo `BtnCancel`. (Hijo Text: "Cancelar").
-   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt64`. (Texto "Fácil").
-   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt144`. (Texto "Normal").
-   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt256`. (Texto "Difícil").
-   - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `Txt512`. (Texto "Experto").
    - Click derecho en `PieceCountSelector` > `UI` > `Text - TextMeshPro`. Nómbralo `TxtTitle`. (Texto "Selecciona Dificultad").
 4. **Asignación:**
    - **Panel**: Arrastra `PieceCountSelector`.
@@ -399,10 +406,10 @@
    - **Btn 256**: Arrastra `Btn256`.
    - **Btn 512**: Arrastra `Btn512`.
    - **Cancel Button**: Arrastra `BtnCancel`.
-   - **Label 64**: Arrastra `Txt64`.
-   - **Label 144**: Arrastra `Txt144`.
-   - **Label 256**: Arrastra `Txt256`.
-   - **Label 512**: Arrastra `Txt512`.
+   - **Label 64**: Arrastra el objeto Texto hijo de `Btn64`.
+   - **Label 144**: Arrastra el objeto Texto hijo de `Btn144`.
+   - **Label 256**: Arrastra el objeto Texto hijo de `Btn256`.
+   - **Label 512**: Arrastra el objeto Texto hijo de `Btn512`.
 
 #### E) PuzzleHUD
 1. Click derecho en `MainCanvas` > `UI` > `Panel`. Nómbralo `HUD`.

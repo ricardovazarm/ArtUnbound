@@ -128,37 +128,12 @@ sequenceDiagram
 autonumber
 actor User
 participant Bootstrap as GameBootstrap
-participant UI as ModeSelectionUI
-participant Wall as WallSelectionController
 participant Comfort as ComfortModeController
 participant Frame as CanvasFrameController
 participant Weekly as WeeklyUnlockService
 
 User->>Bootstrap: Inicia juego
-Bootstrap->>UI: Mostrar seleccion de modo
-User->>UI: Selecciona Modo Galeria
-UI->>Wall: Activar deteccion
-Wall->>User: Mostrar paredes
-User->>Wall: Selecciona pared
-Wall->>Frame: Crear marco anclado
-Bootstrap->>Weekly: Resolver cuadro semanal
-Weekly-->>Bootstrap: ID de cuadro semanal
-```
-
-```mermaid
-sequenceDiagram
-autonumber
-actor User
-participant Bootstrap as GameBootstrap
-participant UI as ModeSelectionUI
-participant Comfort as ComfortModeController
-participant Frame as CanvasFrameController
-participant Weekly as WeeklyUnlockService
-
-User->>Bootstrap: Inicia juego
-Bootstrap->>UI: Mostrar seleccion de modo
-User->>UI: Selecciona Modo Confort
-UI->>Comfort: Activar posicionamiento
+Bootstrap->>Comfort: Iniciar posicionamiento (Default)
 Comfort->>Comfort: Calcular posicion ergonomica
 Comfort->>User: Mostrar preview flotante
 User->>Comfort: Confirmar posicion
@@ -186,18 +161,16 @@ Help-->>User: Haptic/FX/Sonido
 
 ```mermaid
 flowchart TD
-Start([Inicio]) --> ModeSelect{Seleccionar Modo}
-ModeSelect -->|Galeria| Detect[Detectar pared]
-ModeSelect -->|Confort| Position[Posicionar lienzo flotante]
-Detect --> Frame[Crear marco anclado]
-Position --> Frame2[Crear marco flotante]
-Frame --> Select[Seleccionar obra]
-Frame2 --> Select
+Start([Inicio]) --> Position[Posicionar lienzo flotante]
+Position --> Select[Seleccionar obra]
 Select --> Load[Cargar assets locales]
 Load --> Play[Resolver puzzle]
 Play --> Complete[Completar obra]
 Complete --> FrameAward[Asignar marco segun score]
-FrameAward --> Place[Colocar y guardar anclaje]
+FrameAward --> UserOption{Opcion}
+UserOption -->|Colgar| SelectWall[Seleccionar Pared]
+UserOption -->|Menu| MainMenu[Menu Principal]
+SelectWall --> Place[Guardar anclaje]
 ```
 
 ```mermaid
@@ -278,9 +251,7 @@ flowchart TD
     FirstLaunch([Primera vez]) --> Welcome[Pantalla Bienvenida]
     Welcome --> SkipChoice{Usuario elige}
     SkipChoice -->|Saltar| MarkComplete[Marcar completado]
-    SkipChoice -->|Continuar| Step1[Explicar modos]
-    Step1 --> Step2[Forzar Modo Confort]
-    Step2 --> Step3[Posicionar lienzo tutorial]
+    SkipChoice -->|Continuar| Step3[Posicionar lienzo tutorial]
     Step3 --> Step4[Ensenar gesto pinza]
     Step4 --> Step5[Tomar pieza destacada]
     Step5 --> Step6[Colocar en slot iluminado]

@@ -77,12 +77,16 @@ namespace ArtUnbound.Core
             }
 
             InitializeServices();
+            HideAllPanels(); // Ensure clean state immediately
             LoadData();
             SetupEventListeners();
         }
 
         private void Start()
         {
+            SetupCameraForPassthrough();
+            HideAllPanels();
+
             // Check for onboarding
             if (!SaveData.onboardingCompleted && onboardingController != null)
             {
@@ -91,6 +95,22 @@ namespace ArtUnbound.Core
             else
             {
                 TransitionToMainMenu();
+            }
+        }
+
+        private void SetupCameraForPassthrough()
+        {
+            if (Camera.main != null)
+            {
+                Camera.main.clearFlags = CameraClearFlags.SolidColor;
+                Camera.main.backgroundColor = new Color(0, 0, 0, 0); // Transparent black
+
+                // Enable AR Camera Manager if present (Required for Passthrough)
+                var arCameraManager = Camera.main.GetComponent<UnityEngine.XR.ARFoundation.ARCameraManager>();
+                if (arCameraManager != null)
+                {
+                    arCameraManager.enabled = true;
+                }
             }
         }
 
@@ -123,7 +143,7 @@ namespace ArtUnbound.Core
                 mainMenuController.OnPlayRequested += OnPlayRequested;
                 mainMenuController.OnGalleryRequested += ShowGallery;
                 mainMenuController.OnSettingsRequested += ShowSettings;
-                mainMenuController.OnGameModeSelected += OnGameModeSelected;
+                // mainMenuController.OnGameModeSelected += OnGameModeSelected; // Removed logic
                 mainMenuController.OnWeeklyArtworkSelected += OnWeeklyArtworkSelected;
             }
 
@@ -220,6 +240,7 @@ namespace ArtUnbound.Core
         private void ShowOnboarding()
         {
             SetState(GameState.Onboarding);
+            HideAllPanels();
 
             if (onboardingController != null)
                 onboardingController.StartOnboarding();
@@ -237,7 +258,7 @@ namespace ArtUnbound.Core
 
                 // Set weekly highlight
                 var weeklyArtwork = weeklyUnlockService?.GetCurrentWeeklyArtwork();
-                if (weeklyArtwork != null)
+                if (!string.IsNullOrEmpty(weeklyArtwork))
                 {
                     var artworkData = localCatalogService?.GetArtworkById(weeklyArtwork);
                     mainMenuController.SetWeeklyHighlight(weeklyArtwork, artworkData);
@@ -311,12 +332,12 @@ namespace ArtUnbound.Core
             ShowGallery();
         }
 
-        private void OnGameModeSelected(GameMode mode)
-        {
-            CurrentGameMode = mode;
-            SaveData.lastGameMode = mode;
-            saveDataService.Save(SaveData);
-        }
+        // private void OnGameModeSelected(GameMode mode)
+        // {
+        //     CurrentGameMode = mode;
+        //     SaveData.lastGameMode = mode;
+        //     saveDataService.Save(SaveData);
+        // }
 
         private void OnWeeklyArtworkSelected(string artworkId)
         {
@@ -366,6 +387,9 @@ namespace ArtUnbound.Core
         private void StartPuzzle()
         {
             // Create session
+            // Force Comfort Mode logic for puzzle start (Floating Board)
+            CurrentGameMode = GameMode.Comfort; 
+
             CurrentSession = new PuzzleSessionData
             {
                 artworkId = selectedArtworkId,
@@ -375,15 +399,8 @@ namespace ArtUnbound.Core
             };
             CurrentSession.StartSession();
 
-            // Start wall selection for Gallery mode, or position for Comfort mode
-            if (CurrentGameMode == GameMode.Gallery)
-            {
-                StartWallSelection();
-            }
-            else
-            {
-                StartComfortPositioning();
-            }
+            // Always start with Comfort/Floating positioning
+            StartComfortPositioning();
         }
 
         private void StartWallSelection()

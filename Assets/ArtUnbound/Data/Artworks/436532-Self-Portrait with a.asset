@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: 436532-Self-Portrait with a
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Met-436532
+  title: Self-Portrait with a Straw Hat
+  author: Vincent van Gogh
+  year: 1890
+  description: 'Self-Portrait with a Straw Hat (obverse: The Potato Peeler)'
+  museum: Met
+  artMovement: Impresionismo
+  aspectRatio: 1
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 59364cac83b481541879114bdf30fb52, type: 3}
+  fullImage: {fileID: 21300000, guid: 59364cac83b481541879114bdf30fb52, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

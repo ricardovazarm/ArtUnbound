@@ -18,8 +18,9 @@ Esta guía detalla el proceso para introducir nuevas obras de arte en **Art Unbo
     - Selecciona la imagen en Unity.
     - En el **Inspector**:
         - **Texture Type**: `Sprite (2D and UI)`. (Crucial para usarla en UI).
+        - *Nota: Si ves un botón que dice **"Install 2D Sprite Package"**, haz clic en él. Es necesario para ver opciones avanzadas como "Read/Write".*
         - **Sprite Mode**: `Single`.
-        - **Max Size**: `4096` (o `8192` si es ultra alta definición y necesaria).
+        - **Max Size**: `4096` (o `8192` si es ultra alta definición). *Se encuentra en la pestaña "Default" (el icono de PC) al fondo de la ventana*.
         - **Compression**: `High Quality` o `Normal Quality`. (Evitar `Low`).
         - **Check "Read/Write"**: ACTÍVALO. (Necesario para que el script `PuzzleBoard` lea los píxeles y corte las piezas).
     - Presiona **Apply** al final del Inspector.
@@ -43,7 +44,7 @@ Esta guía detalla el proceso para introducir nuevas obras de arte en **Art Unbo
     - **Display:**
         - **Aspect Ratio**: Calcula Ancho/Alto (ej. 0.67). *Nota: El sistema adaptativo del PuzzleBoard usará la textura real, este valor es más referencial para UI.*
     - **Textures:**
-        - **Thumbnail**: Arrastra la imagen importada (o una versión pequeña).
+        - **Thumbnail**: Arrastra la misma imagen que usaste para `Full Image` (Unity la redimensionará) o usa una versión pequeña si prefieres optimizar.
         - **Full Image**: Arrastra la imagen importada (La de alta calidad).
         - **Puzzle Texture**: (Opcional) Si quieres una versión especial para el puzzle, úsala aquí. Si no, déjalo vacío y usará `Full Image`.
     - **Unlock Settings:**

@@ -422,7 +422,7 @@ namespace ArtUnbound.Gameplay
             return row * gridSize + col;
         }
 
-        private void CreatePiece(int id, int col, int row, int gridSize, PieceMorphology morphology, float pieceSize, Texture2D texture)
+        private void CreatePiece(int id, int col, int row, int gridCols, int gridRows, PieceMorphology morphology, float pieceSize, Texture2D texture)
         {
             if (piecePrefab == null) return;
 
@@ -431,7 +431,7 @@ namespace ArtUnbound.Gameplay
             piece.name = $"Piece_{id}_{col}_{row}";
 
             // Generate Mesh
-            Mesh mesh = PieceMeshGenerator.GeneratePieceMesh(morphology, pieceSize, col, row, gridSize, gridSize);
+            Mesh mesh = PieceMeshGenerator.GeneratePieceMesh(morphology, pieceSize, col, row, gridCols, gridRows);
             
             // Assign Mesh
             var meshFilter = piece.GetComponentInChildren<MeshFilter>();

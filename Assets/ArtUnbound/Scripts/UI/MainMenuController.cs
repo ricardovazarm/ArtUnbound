@@ -14,7 +14,7 @@ namespace ArtUnbound.UI
         public event Action OnPlayRequested;
         public event Action OnGalleryRequested;
         public event Action OnSettingsRequested;
-        public event Action<GameMode> OnGameModeSelected;
+        // public event Action<GameMode> OnGameModeSelected;
         public event Action<string> OnWeeklyArtworkSelected;
 
         [Header("Panel")]
@@ -29,13 +29,13 @@ namespace ArtUnbound.UI
         [SerializeField] private Button galleryButton;
         [SerializeField] private Button settingsButton;
 
-        [Header("Game Mode Selection")]
-        [SerializeField] private GameObject gameModePanel;
-        [SerializeField] private Button galleryModeButton;
-        [SerializeField] private Button comfortModeButton;
-        [SerializeField] private Button cancelModeButton;
-        [SerializeField] private TextMeshProUGUI galleryModeDescription;
-        [SerializeField] private TextMeshProUGUI comfortModeDescription;
+        // [Header("Game Mode Selection")]
+        // [SerializeField] private GameObject gameModePanel;
+        // [SerializeField] private Button galleryModeButton;
+        // [SerializeField] private Button comfortModeButton;
+        // [SerializeField] private Button cancelModeButton;
+        // [SerializeField] private TextMeshProUGUI galleryModeDescription;
+        // [SerializeField] private TextMeshProUGUI comfortModeDescription;
 
         [Header("Weekly Highlight")]
         [SerializeField] private GameObject weeklyHighlightPanel;
@@ -63,29 +63,22 @@ namespace ArtUnbound.UI
             if (settingsButton != null)
                 settingsButton.onClick.AddListener(() => OnSettingsRequested?.Invoke());
 
-            if (galleryModeButton != null)
-                galleryModeButton.onClick.AddListener(() => SelectGameMode(GameMode.Gallery));
+            // GalleryModeListener Removed
 
-            if (comfortModeButton != null)
-                comfortModeButton.onClick.AddListener(() => SelectGameMode(GameMode.Comfort));
+            // ComfortModeListener Removed
 
-            if (cancelModeButton != null)
-                cancelModeButton.onClick.AddListener(HideGameModeSelection);
+            // CancelListeners Removed
 
             if (playWeeklyButton != null)
                 playWeeklyButton.onClick.AddListener(OnPlayWeeklyClicked);
 
             SetupModeDescriptions();
-            HideGameModeSelection();
+            // HideGameModeSelection(); // Removed
         }
 
         private void SetupModeDescriptions()
         {
-            if (galleryModeDescription != null)
-                galleryModeDescription.text = "Ancla el puzzle a una pared real de tu espacio.";
-
-            if (comfortModeDescription != null)
-                comfortModeDescription.text = "El puzzle flota frente a ti en posición ergonómica.";
+            // Removed
         }
 
         /// <summary>
@@ -95,6 +88,9 @@ namespace ArtUnbound.UI
         {
             playerData = data;
             UpdateStats();
+            
+            // Default to hidden unless explicitly shown later
+            HideWeeklyHighlight();
         }
 
         /// <summary>
@@ -102,6 +98,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void SetWeeklyHighlight(string artworkId, ArtworkDefinition artworkData)
         {
+            Debug.Log($"[MainMenu] SetWeeklyHighlight called for {artworkId}. Enabling panel.");
             weeklyArtworkId = artworkId;
 
             if (weeklyHighlightPanel != null)
@@ -125,6 +122,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void HideWeeklyHighlight()
         {
+            Debug.Log("[MainMenu] HideWeeklyHighlight called. Disabling panel.");
             if (weeklyHighlightPanel != null)
                 weeklyHighlightPanel.SetActive(false);
         }
@@ -176,27 +174,13 @@ namespace ArtUnbound.UI
 
         private void OnPlayClicked()
         {
-            ShowGameModeSelection();
-        }
-
-        private void ShowGameModeSelection()
-        {
-            if (gameModePanel != null)
-                gameModePanel.SetActive(true);
-        }
-
-        private void HideGameModeSelection()
-        {
-            if (gameModePanel != null)
-                gameModePanel.SetActive(false);
-        }
-
-        private void SelectGameMode(GameMode mode)
-        {
-            HideGameModeSelection();
-            OnGameModeSelected?.Invoke(mode);
+            // Direct play request without mode selection
             OnPlayRequested?.Invoke();
         }
+
+        // private void ShowGameModeSelection() { }
+        // private void HideGameModeSelection() { }
+        // private void SelectGameMode(GameMode mode) { }
 
         private void OnPlayWeeklyClicked()
         {
@@ -236,7 +220,7 @@ namespace ArtUnbound.UI
             else
                 gameObject.SetActive(false);
 
-            HideGameModeSelection();
+            // HideGameModeSelection();
         }
 
         private void OnDestroy()
@@ -244,9 +228,7 @@ namespace ArtUnbound.UI
             if (playButton != null) playButton.onClick.RemoveAllListeners();
             if (galleryButton != null) galleryButton.onClick.RemoveAllListeners();
             if (settingsButton != null) settingsButton.onClick.RemoveAllListeners();
-            if (galleryModeButton != null) galleryModeButton.onClick.RemoveAllListeners();
-            if (comfortModeButton != null) comfortModeButton.onClick.RemoveAllListeners();
-            if (cancelModeButton != null) cancelModeButton.onClick.RemoveAllListeners();
+            // Remove listeners for removed buttons
             if (playWeeklyButton != null) playWeeklyButton.onClick.RemoveAllListeners();
         }
     }

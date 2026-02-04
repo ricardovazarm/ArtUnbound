@@ -52,23 +52,25 @@ Juego de puzzles en Realidad Mixta (RM) basado en hand tracking, con piezas 3D d
 - Gestos: pellizco para tomar/colocar, deslizamiento para navegar.
 - Fallbacks y tolerancias: Alcance de pinza de 1 cm para tomar piezas. Al soltar una pieza a 3 cm o menos del lienzo/pared, se aplica snap magnetico.
 
-### 5.4. Modos de Juego
-#### 5.4.1. Modo Galeria (Pared)
-- El usuario selecciona una pared fisica detectada por Scene Understanding.
-- El lienzo se ancla a la superficie de la pared.
-- Posicion ergonomica: centro del lienzo a altura de ojos (~1.6m del suelo).
-- El usuario puede ajustar altura y tamaño manualmente.
+### 5.4. Modos de Juego y Flujo
+El juego ha unificado su flujo de entrada:
 
-#### 5.4.2. Modo Confort (Sentado)
-- El lienzo aparece flotando frente al usuario a distancia ergonomica.
+#### 5.4.1. Fase de Armado (Lienzo Flotante)
+- **Modo por defecto**: Todos los puzzles comienzan flotando frente al usuario (estilo "Comfort Mode").
 - Distancia base: 0.8m desde la cabeza del usuario.
-- Angulo de inclinacion: 15° hacia el usuario para mejor visibilidad.
-- El lienzo sigue la orientacion inicial del usuario pero permanece fijo una vez colocado.
-- Altura ajustada automaticamente segun posicion sentada detectada.
+- Angulo de inclinacion: 15° hacia el usuario.
+- El lienzo sigue la orientacion inicial del usuario y luego se fija.
+- Esto elimina la necesidad de escanear habitaciones complejas antes de jugar.
+
+#### 5.4.2. Fase de Decoracion (Pared)
+- Ocurre **despues** de completar el puzzle.
+- El usuario selecciona una pared fisica para colgar su obra terminada.
+- Utiliza Scene Understanding para detectar verticales.
+- Permite persistencia de la posicion decorativa.
 
 ### 5.5. UI y Flujo de Juego
-- Seleccion de modo: Galeria vs Confort (pantalla inicial).
-- Seleccion de obra: Lista de cuadros locales, cuadro semanal destacado y acceso a galeria personal.
+- Inicio Simplificado: Sin seleccion de modo "Galeria/Confort" al inicio. Directo a obra.
+- Seleccion de obra: Lista de cuadros locales, cuadro semanal destacado.
 - Seleccion de dificultad: 64, 144, 256 o 512 piezas.
 - HUD durante gameplay: Tiempo, piezas colocadas, indicador de ayuda, boton pausa.
 - Post-juego: Pantalla de resultados con stats, animacion de marco, opciones de accion.

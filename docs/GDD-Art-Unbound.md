@@ -14,17 +14,16 @@ Art Unbound es un juego de puzzles en Realidad Mixta (RM) para Meta Quest. Los j
 ## 3. Pilares de Diseño
 - Inmersión tangible: El mundo real es el soporte. Las piezas tienen un volumen de 0.5 cm y responden a las leyes físicas de contacto con las superficies.
 - Magia cotidiana: Transformar paredes vacías en galerías personales llenas de arte clásico.
-- Flexibilidad ergonómica: Dos modos de juego (Galería y Confort) que respetan la comodidad del usuario sin sacrificar la escala de la obra.
+- Flexibilidad ergonómica: El armado se realiza siempre en un lienzo flotante ergonómico, permitiendo jugar cómodamente sentado o de pie. La integración con la pared ocurre solo al final como recompensa decorativa.
 
 ## 4. Mecánicas Principales de Juego
 ### 4.1. Flujo Inicial de UX (El Inicio)
-El juego define el espacio antes que el contenido para asegurar la ergonomía:
+El juego prioriza la inmediatez y la ergonomía, eliminando la fricción de escanear paredes al inicio:
 
-- Modo de juego: El usuario elige entre Modo Galería (Pared) o Modo Confort (Sentado).
-- Preparación del espacio:
-  - En Modo Galería: El usuario selecciona la pared física. El sistema ancla el marco a la superficie detectada de forma automática (Quest 3/Pro).
-  - En Modo Confort: El lienzo aparece flotando a una distancia ergonómica frente al usuario.
-- Selección de obra: Tras fijar el lienzo, se despliega la Lista de Cuadros (Cuadros locales, Cuadro Semanal y Galería Personal).
+- **Inicio Inmediato**: Al seleccionar una obra, el lienzo aparece automáticamente **flotando frente al usuario** a una distancia ergonómica (similar al antiguo "Modo Confort").
+- **Ajuste de Posición**: El usuario tiene un breve momento para confirmar o ajustar la posición del lienzo flotante antes de comenzar.
+- **Armado**: Todo el proceso de armado sucede en este lienzo flotante, permitiendo jugar sentado o de pie en cualquier lugar.
+- **Colgado (Post-Juego)**: La selección de pared se reserva exclusivamente para el momento de "Colgar" la obra una vez terminada.
 
 ### 4.2. Fisicidad e Interacción
 - Profundidad 3D de piezas: Grosor real de 0.5 cm. Esto otorga presencia física para que el jugador sienta que manipula objetos sólidos.
