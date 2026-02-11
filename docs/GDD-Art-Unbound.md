@@ -20,7 +20,7 @@ Art Unbound es un juego de puzzles en Realidad Mixta (RM) para Meta Quest. Los j
 ### 4.1. Flujo Inicial de UX (El Inicio)
 El juego prioriza la inmediatez y la ergonomía, eliminando la fricción de escanear paredes al inicio:
 
-- **Inicio Inmediato**: Al seleccionar una obra, el lienzo aparece automáticamente **flotando frente al usuario** a una distancia ergonómica (similar al antiguo "Modo Confort").
+- **Inicio Inmediato**: Al seleccionar una obra, el lienzo aparece automáticamente **flotando frente al usuario** a una distancia ergonómica.
 - **Ajuste de Posición**: El usuario tiene un breve momento para confirmar o ajustar la posición del lienzo flotante antes de comenzar.
 - **Armado**: Todo el proceso de armado sucede en este lienzo flotante, permitiendo jugar sentado o de pie en cualquier lugar.
 - **Colgado (Post-Juego)**: La selección de pared se reserva exclusivamente para el momento de "Colgar" la obra una vez terminada.

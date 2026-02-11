@@ -269,10 +269,11 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
+            if (!gameObject.activeSelf)
+                gameObject.SetActive(true);
+
             if (panel != null)
                 panel.SetActive(true);
-            else
-                gameObject.SetActive(true);
         }
 
         public void Hide()

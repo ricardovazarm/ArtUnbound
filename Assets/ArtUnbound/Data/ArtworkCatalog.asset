@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c6fdb83d9af0d41b1c4be3c7694857, type: 3}
   m_Name: ArtworkCatalog
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkCatalog
-  artworks: []
+  artworks:
+  - {fileID: 11400000, guid: f2445d907ef28b64eba8164115638433, type: 2}

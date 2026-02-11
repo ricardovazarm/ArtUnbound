@@ -179,10 +179,22 @@ Si la UI del template funciona pero la tuya no, es probable que tengas **dos** `
    - Inspector `Image`: Color Negro, Alpha 100.
    - `Add Component` > `Scroll Rect`.
    - Arrastra a `Assets/ArtUnbound/Prefabs`. Borra de escena.
-2. **GalleryItem (Simple)**:
-   - `GameObject` > `UI` > `Button - TextMeshPro`. Llámalo `GalleryItem`.
-   - En el inspector, `Add Component` > `Gallery Item Controller` (El script generado).
-   - Arrastra a `Assets/ArtUnbound/Prefabs`. Borra de escena.
+2. **GalleryItem (Solo Imagen)**:
+   - **Root**: `GameObject` > `UI` > `Button`. Llámalo `GalleryItem`.
+     - Este será el objeto clickeable.
+   - **Visual**:
+     - El componente `Image` del botón será el marco o fondo.
+     - Click derecho en `GalleryItem` > `UI` > `Image`. Llámalo `Thumbnail`.
+     - Ajusta el `Thumbnail` para que ocupe casi todo el espacio (o deja márgenes si quieres marco).
+   - **Configuración del Script**:
+     - En el Root `GalleryItem`, `Add Component` > `Gallery Item Controller`.
+     - **Asignar Referencias en Inspector**:
+       - `Thumbnail Image` -> Arrastra el objeto `Thumbnail`.
+       - `Select Button` -> Arrastra el propio objeto `GalleryItem` (Root).
+       - (Los campos para otros botones ya no existen en el script).
+   - **Finalizar**:
+     - Arrastra el objeto `GalleryItem` a la carpeta `Assets/ArtUnbound/Prefabs`.
+     - Borra el objeto de la escena.
 3. **RecordItem (Simple)**:
    - `GameObject` > `UI` > `Panel`. Llámalo `RecordItem`.
    - **Configurar Tamaño:** En el Inspector > **Rect Transform**, haz clic en el icono de **Anchors** (cuadrado con líneas) y selecciona **Middle-Center** (o Top-Center). Ahora verás los campos `Width` y `Height`. Establece **Height** en `50`.
@@ -193,6 +205,18 @@ Si la UI del template funciona pero la tuya no, es probable que tengas **dos** `
    - `GameObject` > `UI` > `Image`. Llámalo `OnboardingDot`.
    - **Configurar Tamaño:** En el Inspector > **Rect Transform**, establece **Width** en `20` y **Height** en `20`.
    - Arrastra a `Assets/ArtUnbound/Prefabs`. Borra de escena.
+
+### 8.5. ComfortModePreview (Visualizador de Confort)
+1. En **Hierarchy**, click derecho > `3D Object` > `Cube`. Nómbralo `ComfortModePreview`.
+2. En el Inspector:
+   - **Scale**: `X: 0.8, Y: 0.6, Z: 0.01` (Tamaño aproximado del tablero).
+3. **Material Transparente (Opcional pero recomendado):**
+   - En `Assets/ArtUnbound/Materials`, crea un material llamado `PreviewMat`.
+   - Cambia **Rendering Mode** a `Transparent`.
+   - En **Albedo**, elige color Cyan (azul claro) y baja el Alpha (A) a 100.
+   - Asigna este material al objeto `ComfortModePreview`.
+4. Arrastra el objeto a `Assets/ArtUnbound/Prefabs`.
+5. Borra el objeto de la escena.
 
 ### 8.4. Creación de Datos (ScriptableObjects)
 **Objetivo:** Crear los archivos de configuración requeridos por el GameBootstrap.
@@ -237,11 +261,13 @@ Si la UI del template funciona pero la tuya no, es probable que tengas **dos** `
 3. Arrastra el objeto `XR Origin` al campo **Anchor Manager**.
 
 #### E) Comfort & Frames
-1. Click derecho sobre `HardwareControllers` > `Create Empty`. Nómbralo `ComfortController`.
+1. Click derecho sobre `HardwareControllers` > `Create Empty`. Nómbralo `CanvasFrameManager`.
+   - `Add Component` > `Canvas Frame Controller`.
+2. Click derecho sobre `HardwareControllers` > `Create Empty`. Nómbralo `ComfortController`.
    - `Add Component` > `Comfort Mode Controller`.
    - Despliega `XR Origin` > `Camera Offset` y busca `Main Camera`. Arrastra `Main Camera` al campo **Head Transform**.
-2. Click derecho sobre `HardwareControllers` > `Create Empty`. Nómbralo `CanvasFrameManager`.
-   - `Add Component` > `Canvas Frame Controller`.
+   - Arrastra el prefab `ComfortModePreview` (creado en paso 8.5) al campo **Preview Prefab**.
+   - Arrastra el objeto `CanvasFrameManager` (creado arriba) al campo **Canvas Frame Controller**.
 
 ### 9.3. Controladores de Lógica (Gameplay)
 1. En **Hierarchy**, click derecho > `Create Empty`. Nómbralo `GameplayControllers`.

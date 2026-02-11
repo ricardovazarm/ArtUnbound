@@ -9,14 +9,34 @@
         "name": "Animation",
         "dependencies": [
           {
+            "name": "Animation",
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "AnimationClip",
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
             "name": "Animator",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
           {
             "name": "AnimatorController",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 1,
             "icon": null
           },
@@ -24,6 +44,12 @@
             "name": "AnimatorOverrideController",
             "scenes": [],
             "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "Motion",
+            "scenes": [],
+            "dependencyType": 1,
             "icon": null
           },
           {
@@ -58,7 +84,9 @@
           },
           {
             "name": "AudioClip",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -78,8 +106,10 @@
           },
           {
             "name": "AudioResource",
-            "scenes": [],
-            "dependencyType": 1,
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
+            "dependencyType": 0,
             "icon": null
           },
           {
@@ -247,7 +277,9 @@
           },
           {
             "name": "LineRenderer",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -411,7 +443,9 @@
           },
           {
             "name": "SkinnedMeshRenderer",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -423,7 +457,9 @@
           },
           {
             "name": "SortingGroup",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -443,7 +479,9 @@
           },
           {
             "name": "SpriteRenderer",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -947,13 +985,17 @@
         "dependencies": [
           {
             "name": "ParticleSystem",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
           {
             "name": "ParticleSystemRenderer",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           }
@@ -972,13 +1014,17 @@
           },
           {
             "name": "CapsuleCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
           {
             "name": "CharacterController",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -990,7 +1036,9 @@
           },
           {
             "name": "MeshCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -1010,7 +1058,9 @@
           },
           {
             "name": "SphereCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },

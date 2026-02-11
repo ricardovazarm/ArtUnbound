@@ -88,7 +88,7 @@ namespace ArtUnbound.UI
         {
             playerData = data;
             UpdateStats();
-            
+
             // Default to hidden unless explicitly shown later
             HideWeeklyHighlight();
         }
@@ -174,6 +174,7 @@ namespace ArtUnbound.UI
 
         private void OnPlayClicked()
         {
+            Debug.Log("[MainMenuController] Play button clicked.");
             // Direct play request without mode selection
             OnPlayRequested?.Invoke();
         }
@@ -207,10 +208,11 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
+            if (!gameObject.activeSelf)
+                gameObject.SetActive(true);
+
             if (menuPanel != null)
                 menuPanel.SetActive(true);
-            else
-                gameObject.SetActive(true);
         }
 
         public void Hide()

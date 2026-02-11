@@ -12,25 +12,15 @@ namespace ArtUnbound.UI
     public class GalleryItemController : MonoBehaviour
     {
         public event Action OnSelected;
-        public event Action OnPlayClicked;
-        public event Action OnHangClicked;
-        public event Action OnRelocateClicked;
-        public event Action OnRemoveClicked;
+
 
         [Header("Display")]
         [SerializeField] private Image thumbnailImage;
         [SerializeField] private Image frameImage;
-        [SerializeField] private TextMeshProUGUI titleText;
-        [SerializeField] private TextMeshProUGUI subtitleText;
-        [SerializeField] private GameObject progressIndicator;
-        [SerializeField] private TextMeshProUGUI progressText;
 
         [Header("Buttons")]
         [SerializeField] private Button selectButton;
-        [SerializeField] private Button playButton;
-        [SerializeField] private Button hangButton;
-        [SerializeField] private Button relocateButton;
-        [SerializeField] private Button removeButton;
+
 
         [Header("Frame Sprites")]
         [SerializeField] private Sprite frameMadera;
@@ -46,20 +36,45 @@ namespace ArtUnbound.UI
 
         private void Awake()
         {
+            if (selectButton == null)
+            {
+                selectButton = GetComponent<Button>();
+            }
+
             if (selectButton != null)
                 selectButton.onClick.AddListener(() => OnSelected?.Invoke());
 
-            if (playButton != null)
-                playButton.onClick.AddListener(() => OnPlayClicked?.Invoke());
 
-            if (hangButton != null)
-                hangButton.onClick.AddListener(() => OnHangClicked?.Invoke());
 
-            if (relocateButton != null)
-                relocateButton.onClick.AddListener(() => OnRelocateClicked?.Invoke());
+            // Auto-setup for Poke Interaction (Direct Touch)
+            SetupPokeInteractions();
+        }
 
-            if (removeButton != null)
-                removeButton.onClick.AddListener(() => OnRemoveClicked?.Invoke());
+        private void SetupPokeInteractions()
+        {
+            AddColliderToButton(selectButton);
+
+        }
+
+        private void AddColliderToButton(Button btn)
+        {
+            if (btn == null) return;
+
+            // Ensure the button has a BoxCollider for Poke detection
+            var collider = btn.GetComponent<BoxCollider>();
+            if (collider == null)
+            {
+                collider = btn.gameObject.AddComponent<BoxCollider>();
+                collider.isTrigger = true;
+
+                // Sizing specific to UI
+                var rectTransform = btn.GetComponent<RectTransform>();
+                if (rectTransform != null)
+                {
+                    collider.size = new Vector3(rectTransform.rect.width, rectTransform.rect.height, 0.01f);
+                    collider.center = new Vector3(0, 0, 0.005f); // Slight offset
+                }
+            }
         }
 
         /// <summary>
@@ -67,23 +82,14 @@ namespace ArtUnbound.UI
         /// </summary>
         public void Setup(string id, FrameTier tier, bool canHang, bool canPlay)
         {
+            Debug.Log($"[GalleryItemController] Setup called for {id}. Tier: {tier}");
             artworkId = id;
             frameTier = tier;
 
             UpdateFrameDisplay();
-            HideProgressIndicator();
 
-            if (playButton != null)
-                playButton.gameObject.SetActive(canPlay);
 
-            if (hangButton != null)
-                hangButton.gameObject.SetActive(canHang);
 
-            if (relocateButton != null)
-                relocateButton.gameObject.SetActive(false);
-
-            if (removeButton != null)
-                removeButton.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -95,25 +101,11 @@ namespace ArtUnbound.UI
             frameTier = placed.frameTier;
 
             UpdateFrameDisplay();
-            HideProgressIndicator();
 
-            if (subtitleText != null)
-            {
-                string dateStr = FormatPlacedDate(placed.placedAt);
-                subtitleText.text = $"Colgado el {dateStr}";
-            }
 
-            if (playButton != null)
-                playButton.gameObject.SetActive(false);
 
-            if (hangButton != null)
-                hangButton.gameObject.SetActive(false);
 
-            if (relocateButton != null)
-                relocateButton.gameObject.SetActive(true);
 
-            if (removeButton != null)
-                removeButton.gameObject.SetActive(true);
         }
 
         private string FormatPlacedDate(string isoDate)
@@ -136,29 +128,9 @@ namespace ArtUnbound.UI
             if (frameImage != null)
                 frameImage.gameObject.SetActive(false);
 
-            HideProgressIndicator();
 
-            if (subtitleText != null)
-            {
-                subtitleText.text = "Guardado";
-            }
 
-            if (playButton != null)
-            {
-                playButton.gameObject.SetActive(true);
-                var playText = playButton.GetComponentInChildren<TextMeshProUGUI>();
-                if (playText != null)
-                    playText.text = "Continuar";
-            }
 
-            if (hangButton != null)
-                hangButton.gameObject.SetActive(false);
-
-            if (relocateButton != null)
-                relocateButton.gameObject.SetActive(false);
-
-            if (removeButton != null)
-                removeButton.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -172,32 +144,11 @@ namespace ArtUnbound.UI
             if (frameImage != null)
                 frameImage.gameObject.SetActive(false);
 
-            ShowProgressIndicator(session.piecesPlaced, session.pieceCount);
 
-            if (subtitleText != null)
-            {
-                int percentage = session.pieceCount > 0
-                    ? (session.piecesPlaced * 100) / session.pieceCount
-                    : 0;
-                subtitleText.text = $"{percentage}% completado";
-            }
 
-            if (playButton != null)
-            {
-                playButton.gameObject.SetActive(true);
-                var playText = playButton.GetComponentInChildren<TextMeshProUGUI>();
-                if (playText != null)
-                    playText.text = "Continuar";
-            }
 
-            if (hangButton != null)
-                hangButton.gameObject.SetActive(false);
 
-            if (relocateButton != null)
-                relocateButton.gameObject.SetActive(false);
 
-            if (removeButton != null)
-                removeButton.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -205,8 +156,22 @@ namespace ArtUnbound.UI
         /// </summary>
         public void SetThumbnail(Sprite sprite)
         {
-            if (thumbnailImage != null && sprite != null)
-                thumbnailImage.sprite = sprite;
+            if (thumbnailImage == null)
+            {
+                // Silent return or debug log level lowered, as user might want image-only or no-thumbnail
+                // But if they want image-only, they DO need the thumbnail.
+                // However, if they map the root image as thumbnail, that works too.
+                return;
+            }
+
+            if (sprite == null)
+            {
+                Debug.LogWarning($"[GalleryItemController] Sprite passed to SetThumbnail is NULL for {artworkId}");
+                return;
+            }
+
+            thumbnailImage.sprite = sprite;
+            thumbnailImage.gameObject.SetActive(true); // Ensure it's visible
         }
 
         /// <summary>
@@ -225,21 +190,19 @@ namespace ArtUnbound.UI
             }
         }
 
-        /// <summary>
-        /// Sets the title text.
-        /// </summary>
-        public void SetTitle(string title)
-        {
-            if (titleText != null)
-                titleText.text = title;
-        }
+
 
         private void UpdateFrameDisplay()
         {
             if (frameImage == null) return;
 
-            frameImage.gameObject.SetActive(true);
-            frameImage.sprite = GetFrameSprite(frameTier);
+            Sprite newSprite = GetFrameSprite(frameTier);
+            if (newSprite != null)
+            {
+                frameImage.gameObject.SetActive(true);
+                frameImage.sprite = newSprite;
+            }
+            // If null, we keep the default sprite assigned in prefab (or do nothing)
         }
 
         private Sprite GetFrameSprite(FrameTier tier)
@@ -255,28 +218,12 @@ namespace ArtUnbound.UI
             };
         }
 
-        private void ShowProgressIndicator(int placed, int total)
-        {
-            if (progressIndicator != null)
-                progressIndicator.SetActive(true);
 
-            if (progressText != null)
-                progressText.text = $"{placed}/{total}";
-        }
-
-        private void HideProgressIndicator()
-        {
-            if (progressIndicator != null)
-                progressIndicator.SetActive(false);
-        }
 
         private void OnDestroy()
         {
             if (selectButton != null) selectButton.onClick.RemoveAllListeners();
-            if (playButton != null) playButton.onClick.RemoveAllListeners();
-            if (hangButton != null) hangButton.onClick.RemoveAllListeners();
-            if (relocateButton != null) relocateButton.onClick.RemoveAllListeners();
-            if (removeButton != null) removeButton.onClick.RemoveAllListeners();
+
         }
     }
 }

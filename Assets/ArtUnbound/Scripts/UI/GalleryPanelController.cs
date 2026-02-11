@@ -46,13 +46,15 @@ namespace ArtUnbound.UI
         private List<ArtworkProgress> completedArtworks = new List<ArtworkProgress>();
         private List<PlacedArtwork> hungArtworks = new List<PlacedArtwork>();
         private List<ArtworkProgress> savedArtworks = new List<ArtworkProgress>();
+        private List<ArtworkDefinition> availableArtworks = new List<ArtworkDefinition>();
         private List<GameObject> instantiatedItems = new List<GameObject>();
 
         public enum GalleryTab
         {
             Completadas,
             Colgadas,
-            Guardadas
+            Guardadas,
+            Disponibles
         }
 
         private void Awake()
@@ -75,14 +77,31 @@ namespace ArtUnbound.UI
         /// <summary>
         /// Shows the gallery panel with the specified tab.
         /// </summary>
-        public void Show(GalleryTab tab = GalleryTab.Completadas)
+        public void Show(GalleryTab? tab = null)
         {
-            if (panel != null)
-                panel.SetActive(true);
-            else
-                gameObject.SetActive(true);
+            Debug.Log($"[GalleryPanelController] Show called. Requested tab: {tab}");
 
-            SwitchTab(tab);
+            // Ensure the script holder is active (Parent)
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
+
+            // Activate the assigned panel (Child/Self)
+            if (panel != null)
+            {
+                panel.SetActive(true);
+            }
+
+            if (tab.HasValue)
+            {
+                SwitchTab(tab.Value);
+            }
+            else
+            {
+                // Ensure the current tab is refreshed/displayed
+                RefreshCurrentTab();
+            }
         }
 
         /// <summary>
@@ -99,11 +118,20 @@ namespace ArtUnbound.UI
         /// <summary>
         /// Sets the data for the gallery.
         /// </summary>
-        public void SetData(List<ArtworkProgress> completed, List<PlacedArtwork> hung, List<ArtworkProgress> saved)
+        public void SetData(List<ArtworkProgress> completed, List<PlacedArtwork> hung, List<ArtworkProgress> saved, List<ArtworkDefinition> available = null)
         {
+            Debug.Log($"[GalleryPanelController] SetData called. Completed: {completed?.Count ?? 0}, Hung: {hung?.Count ?? 0}, Saved: {saved?.Count ?? 0}, Available: {available?.Count ?? 0}");
             completedArtworks = completed ?? new List<ArtworkProgress>();
             hungArtworks = hung ?? new List<PlacedArtwork>();
             savedArtworks = saved ?? new List<ArtworkProgress>();
+            availableArtworks = available ?? new List<ArtworkDefinition>();
+
+            // If no completed artworks, default to Available tab to let user pick one
+            if (completedArtworks.Count == 0 && availableArtworks.Count > 0)
+            {
+                Debug.Log("[GalleryPanelController] No completed artworks found. Defaulting to 'Disponibles' tab.");
+                currentTab = GalleryTab.Disponibles;
+            }
 
             RefreshCurrentTab();
         }
@@ -115,7 +143,31 @@ namespace ArtUnbound.UI
         {
             currentTab = tab;
             UpdateTabIndicators();
+            UpdateTabVisibility();
             RefreshCurrentTab();
+        }
+
+        private void UpdateTabVisibility()
+        {
+            bool isSelectionMode = currentTab == GalleryTab.Disponibles;
+
+            // If we are in "Available/Play" mode, hide the navigation tabs (The Palette)
+            // to make it feel like a distinct screen.
+            // If we are in "My Gallery" mode, show them.
+
+            bool showTabs = !isSelectionMode;
+
+            if (tabCompletadas != null) tabCompletadas.gameObject.SetActive(showTabs);
+            if (tabColgadas != null) tabColgadas.gameObject.SetActive(showTabs);
+            if (tabGuardadas != null) tabGuardadas.gameObject.SetActive(showTabs);
+
+            // Indicators should also be hidden if tabs are hidden
+            if (!showTabs)
+            {
+                if (indicatorCompletadas != null) indicatorCompletadas.SetActive(false);
+                if (indicatorColgadas != null) indicatorColgadas.SetActive(false);
+                if (indicatorGuardadas != null) indicatorGuardadas.SetActive(false);
+            }
         }
 
         private void UpdateTabIndicators()
@@ -132,6 +184,7 @@ namespace ArtUnbound.UI
 
         private void RefreshCurrentTab()
         {
+            Debug.Log($"[GalleryPanelController] RefreshCurrentTab: {currentTab}");
             ClearItems();
 
             switch (currentTab)
@@ -144,6 +197,9 @@ namespace ArtUnbound.UI
                     break;
                 case GalleryTab.Guardadas:
                     PopulateSavedArtworks();
+                    break;
+                case GalleryTab.Disponibles:
+                    PopulateAvailableArtworks();
                     break;
             }
         }
@@ -162,16 +218,19 @@ namespace ArtUnbound.UI
         {
             if (completedArtworks.Count == 0)
             {
+                Debug.Log("[GalleryPanelController] PopulateCompletedArtworks: No artworks. Showing Empty State.");
                 ShowEmptyState("No tienes obras completadas.\n¡Resuelve tu primer puzzle!");
                 return;
             }
 
+            Debug.Log($"[GalleryPanelController] PopulateCompletedArtworks: Creating {completedArtworks.Count} items.");
             HideEmptyState();
 
             foreach (var artwork in completedArtworks)
             {
+                var def = availableArtworks.Find(a => a.artworkId == artwork.artworkId);
                 CreateArtworkItem(artwork.artworkId, artwork.GetBestRecord()?.frameTier ?? FrameTier.Madera,
-                    canHang: true, canPlay: true);
+                    canHang: true, canPlay: true, def);
             }
         }
 
@@ -207,20 +266,43 @@ namespace ArtUnbound.UI
             }
         }
 
-        private void CreateArtworkItem(string artworkId, FrameTier frameTier, bool canHang, bool canPlay)
+        private void PopulateAvailableArtworks()
+        {
+            if (availableArtworks.Count == 0)
+            {
+                ShowEmptyState("No hay obras disponibles en el catálogo.");
+                return;
+            }
+
+            Debug.Log($"[GalleryPanelController] PopulateAvailableArtworks: Creating {availableArtworks.Count} items.");
+            HideEmptyState();
+
+            foreach (var artwork in availableArtworks)
+            {
+                CreateArtworkItem(artwork.artworkId, FrameTier.Madera,
+                    canHang: false, canPlay: true, artwork);
+            }
+        }
+
+        private void CreateArtworkItem(string artworkId, FrameTier frameTier, bool canHang, bool canPlay, ArtworkDefinition artwork = null)
         {
             if (artworkItemPrefab == null || contentContainer == null) return;
 
             var item = Instantiate(artworkItemPrefab, contentContainer);
+            item.transform.localScale = Vector3.one;
             instantiatedItems.Add(item);
 
             var itemController = item.GetComponent<GalleryItemController>();
             if (itemController != null)
             {
                 itemController.Setup(artworkId, frameTier, canHang, canPlay);
+
+                if (artwork != null)
+                {
+                    itemController.SetThumbnail(artwork.thumbnail);
+                }
+
                 itemController.OnSelected += () => OnArtworkSelected?.Invoke(artworkId);
-                itemController.OnPlayClicked += () => OnPlayRequested?.Invoke(artworkId);
-                itemController.OnHangClicked += () => OnHangRequested?.Invoke(artworkId);
             }
         }
 
@@ -229,6 +311,7 @@ namespace ArtUnbound.UI
             if (artworkItemPrefab == null || contentContainer == null) return;
 
             var item = Instantiate(artworkItemPrefab, contentContainer);
+            item.transform.localScale = Vector3.one;
             instantiatedItems.Add(item);
 
             var itemController = item.GetComponent<GalleryItemController>();
@@ -236,8 +319,6 @@ namespace ArtUnbound.UI
             {
                 itemController.SetupPlaced(placed);
                 itemController.OnSelected += () => OnArtworkSelected?.Invoke(placed.artworkId);
-                itemController.OnRelocateClicked += () => OnRelocateRequested?.Invoke(placed.artworkId);
-                itemController.OnRemoveClicked += () => OnRemoveRequested?.Invoke(placed.artworkId);
             }
         }
 
@@ -246,6 +327,7 @@ namespace ArtUnbound.UI
             if (artworkItemPrefab == null || contentContainer == null) return;
 
             var item = Instantiate(artworkItemPrefab, contentContainer);
+            item.transform.localScale = Vector3.one;
             instantiatedItems.Add(item);
 
             var itemController = item.GetComponent<GalleryItemController>();
@@ -253,14 +335,21 @@ namespace ArtUnbound.UI
             {
                 itemController.SetupSaved(artwork);
                 itemController.OnSelected += () => OnArtworkSelected?.Invoke(artwork.artworkId);
-                itemController.OnPlayClicked += () => OnPlayRequested?.Invoke(artwork.artworkId);
             }
         }
 
         private void ShowEmptyState(string message)
         {
+            Debug.Log("[GalleryPanelController] ShowEmptyState called.");
             if (emptyStateObject != null)
+            {
                 emptyStateObject.SetActive(true);
+                Debug.Log($"[GalleryPanelController] EmptyState object active. Message: {message}");
+            }
+            else
+            {
+                Debug.LogError("[GalleryPanelController] EmptyStateObject reference is missing!");
+            }
 
             if (emptyStateText != null)
                 emptyStateText.text = message;
@@ -282,6 +371,7 @@ namespace ArtUnbound.UI
                 GalleryTab.Completadas => completedArtworks.Count,
                 GalleryTab.Colgadas => hungArtworks.Count,
                 GalleryTab.Guardadas => savedArtworks.Count,
+                GalleryTab.Disponibles => availableArtworks.Count,
                 _ => 0
             };
         }

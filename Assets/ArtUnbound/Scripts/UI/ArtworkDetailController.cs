@@ -76,6 +76,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void ShowArtworkDetail(string artworkId, ArtworkProgress progress, ArtworkDefinition artworkData = null)
         {
+            Debug.Log($"[ArtworkDetailController] ShowArtworkDetail called for {artworkId}. Panel active? {(panel != null ? panel.activeSelf : "Panel is null")}");
             currentArtworkId = artworkId;
             currentProgress = progress;
 
@@ -222,6 +223,7 @@ namespace ArtUnbound.UI
         {
             if (pieceCountSelector != null)
             {
+                Hide();
                 pieceCountSelector.ShowSelector("Selecciona dificultad");
             }
             else
@@ -272,10 +274,12 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
+            // Ensure the script holder is active (consistent with ArtworkSelectionController)
+            if (!gameObject.activeSelf)
+                gameObject.SetActive(true);
+
             if (panel != null)
                 panel.SetActive(true);
-            else
-                gameObject.SetActive(true);
         }
 
         public void Hide()

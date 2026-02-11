@@ -27,6 +27,7 @@ namespace ArtUnbound.Core
         [Header("UI Controllers")]
         [SerializeField] private MainMenuController mainMenuController;
         [SerializeField] private GalleryPanelController galleryPanelController;
+        [SerializeField] private ArtworkSelectionController artworkSelectionController; // New Controller
         [SerializeField] private ArtworkDetailController artworkDetailController;
         [SerializeField] private PieceCountSelectorController pieceCountSelector;
         [SerializeField] private PuzzleHUDController puzzleHUD;
@@ -154,11 +155,23 @@ namespace ArtUnbound.Core
                 galleryPanelController.OnPlayRequested += StartPuzzleWithArtwork;
             }
 
+            // Artwork Selection (Play Mode)
+            if (artworkSelectionController != null)
+            {
+                artworkSelectionController.OnArtworkSelected += OnArtworkSelected;
+                artworkSelectionController.OnBackRequested += TransitionToMainMenu;
+            }
+
             // Artwork Detail
             if (artworkDetailController != null)
             {
                 artworkDetailController.OnPlayWithPieceCount += OnPlayWithPieceCount;
-                artworkDetailController.OnBackRequested += ShowGallery;
+                // Back from detail goes to Selection if we came from there, but for now let's simplify:
+                // If we are in "Gallery" mode, it should go back to Gallery.
+                // If we are in "Play" mode, it should go back to Selection.
+                // We might need state tracking for this, but let's default to a smart check or separate callbacks?
+                // For now: 
+                artworkDetailController.OnBackRequested += OnArtworkDetailBackRequested;
             }
 
             // Piece Count Selector
@@ -273,18 +286,25 @@ namespace ArtUnbound.Core
 
         private void ShowGallery()
         {
-            SetState(GameState.Gallery);
+            Debug.Log("[GameBootstrap] ShowGallery called (My Gallery).");
+            SetState(GameState.Gallery); // We can reuse this state or create GameState.ArtworkSelection
 
             HideAllPanels();
 
             if (galleryPanelController != null)
             {
+                // Gallery only shows personal tabs
                 galleryPanelController.SetData(
                     SaveData.GetCompletedArtworks(),
                     SaveData.placedArtworks,
                     SaveData.GetSavedArtworks()
+                // No available artworks needed here anymore
                 );
-                galleryPanelController.Show();
+                galleryPanelController.Show(GalleryPanelController.GalleryTab.Completadas);
+            }
+            else
+            {
+                Debug.LogError("[GameBootstrap] GalleryPanelController reference is missing in Inspector!");
             }
         }
 
@@ -322,14 +342,44 @@ namespace ArtUnbound.Core
                 audioManager.PlayGameplayMusic();
         }
 
+        private void OnArtworkDetailBackRequested()
+        {
+            if (CurrentState == GameState.ArtworkSelection)
+            {
+                ShowArtworkSelection();
+            }
+            else
+            {
+                ShowGallery();
+            }
+        }
+
+
+
         #endregion
 
         #region Event Handlers
 
         private void OnPlayRequested()
         {
-            // Show artwork selection or piece count selection
-            ShowGallery();
+            Debug.Log("[GameBootstrap] OnPlayRequested received. Showing Artwork Selection.");
+            ShowArtworkSelection();
+        }
+
+        private void ShowArtworkSelection()
+        {
+            SetState(GameState.ArtworkSelection); // Ideally add this enum if not exists, or reuse Gallery
+            HideAllPanels();
+
+            if (artworkSelectionController != null)
+            {
+                artworkSelectionController.SetData(localCatalogService.GetAll());
+                artworkSelectionController.Show();
+            }
+            else
+            {
+                Debug.LogError("[GameBootstrap] ArtworkSelectionController reference is missing!");
+            }
         }
 
         // private void OnGameModeSelected(GameMode mode)
@@ -351,6 +401,8 @@ namespace ArtUnbound.Core
 
         private void OnArtworkSelected(string artworkId)
         {
+            Debug.Log($"[GameBootstrap] OnArtworkSelected received for ID: {artworkId}. Transitioning to Detail View.");
+            HideAllPanels();
             selectedArtworkId = artworkId;
 
             var progress = SaveData.GetProgress(artworkId);
@@ -374,6 +426,7 @@ namespace ArtUnbound.Core
 
         private void OnPieceCountSelected(int count)
         {
+            Debug.Log($"[GameBootstrap] OnPieceCountSelected: {count}. Starting Puzzle...");
             selectedPieceCount = count;
             StartPuzzle();
         }
@@ -388,7 +441,7 @@ namespace ArtUnbound.Core
         {
             // Create session
             // Force Comfort Mode logic for puzzle start (Floating Board)
-            CurrentGameMode = GameMode.Comfort; 
+            CurrentGameMode = GameMode.Comfort;
 
             CurrentSession = new PuzzleSessionData
             {
@@ -650,6 +703,7 @@ namespace ArtUnbound.Core
         {
             mainMenuController?.Hide();
             galleryPanelController?.Hide();
+            artworkSelectionController?.Hide();
             artworkDetailController?.Hide();
             pieceCountSelector?.Hide();
             puzzleHUD?.Hide();

@@ -159,10 +159,11 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
+            if (!gameObject.activeSelf)
+                gameObject.SetActive(true);
+
             if (pausePanel != null)
                 pausePanel.SetActive(true);
-            else
-                gameObject.SetActive(true);
 
             HideQuitConfirmation();
         }

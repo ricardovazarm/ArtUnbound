@@ -1,3 +1,4 @@
+using ArtUnbound.Input;
 using System;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace ArtUnbound.MR
         [SerializeField] private Transform headTransform;
         [SerializeField] private GameObject previewPrefab;
         [SerializeField] private CanvasFrameController canvasFrameController;
+        [SerializeField] private HandTrackingInputController inputController;
 
         [Header("Debug")]
         [SerializeField] private bool showDebugGizmos = false;
@@ -48,10 +50,40 @@ namespace ArtUnbound.MR
 
         private void Update()
         {
+            // Fallback for Editor testing with keys
+            if (!isLocked && UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            {
+                LockPosition();
+            }
+
             if (!isLocked && headTransform != null)
             {
                 CalculateErgonomicPosition();
                 UpdatePreview();
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (inputController != null)
+            {
+                inputController.OnPinchStart += HandlePinch;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (inputController != null)
+            {
+                inputController.OnPinchStart -= HandlePinch;
+            }
+        }
+
+        private void HandlePinch(Vector3 pos, Quaternion rot)
+        {
+            if (!isLocked && gameObject.activeSelf)
+            {
+                LockPosition();
             }
         }
 
@@ -60,11 +92,26 @@ namespace ArtUnbound.MR
         /// </summary>
         public void StartPositioning()
         {
+            Debug.Log("[ComfortModeController] StartPositioning called.");
+            if (!gameObject.activeSelf)
+            {
+                Debug.Log("[ComfortModeController] GameObject was inactive. Activating now.");
+                gameObject.SetActive(true);
+            }
+
             isLocked = false;
 
-            if (previewPrefab != null && previewInstance == null)
+            if (previewPrefab != null)
             {
-                previewInstance = Instantiate(previewPrefab);
+                if (previewInstance == null)
+                {
+                    Debug.Log($"[ComfortModeController] Instantiating preview prefab: {previewPrefab.name}");
+                    previewInstance = Instantiate(previewPrefab);
+                }
+            }
+            else
+            {
+                Debug.LogError("[ComfortModeController] PreviewPrefab is NULL!");
             }
 
             CalculateErgonomicPosition();
