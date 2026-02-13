@@ -13,9 +13,10 @@ namespace ArtUnbound.MR
         public event Action OnPositionUnlocked;
 
         [Header("Configuration")]
-        [SerializeField] private float distanceFromHead = 0.8f;
+        [Header("Configuration")]
+        [SerializeField] private float distanceFromHead = 0.4f;
         [SerializeField] private float tiltAngle = 15f;
-        [SerializeField] private float heightOffset = -0.1f;
+        [SerializeField] private float heightOffset = -0.15f;
 
         [Header("References")]
         [SerializeField] private Transform headTransform;
@@ -51,7 +52,7 @@ namespace ArtUnbound.MR
         private void Update()
         {
             // Fallback for Editor testing with keys
-            if (!isLocked && UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            if (!isLocked && UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 LockPosition();
             }
@@ -115,7 +116,12 @@ namespace ArtUnbound.MR
             }
 
             CalculateErgonomicPosition();
-            UpdatePreview();
+            Debug.Log($"[ComfortModeController] Ergonomic Position Calculated: {currentPosition}, Rotation: {currentRotation.eulerAngles}");
+
+            // Auto-lock immediately as requested by user (Fixed position spawn)
+            LockPosition();
+
+            // UpdatePreview(); // No need to update preview if we lock immediately
         }
 
         /// <summary>
@@ -135,7 +141,8 @@ namespace ArtUnbound.MR
             currentPosition.y += heightOffset;
 
             // Calculate rotation (facing the user with tilt)
-            currentRotation = Quaternion.LookRotation(-forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
+            // Negative tilt angle typically tilts top away from viewer if looking at -forward
+            currentRotation = Quaternion.LookRotation(-forward) * Quaternion.Euler(-tiltAngle, 0f, 0f);
         }
 
         /// <summary>
@@ -156,6 +163,7 @@ namespace ArtUnbound.MR
         public void LockPosition()
         {
             isLocked = true;
+            Debug.Log($"[ComfortModeController] LockPosition called. Locking at: {currentPosition}");
 
             // Destroy preview
             if (previewInstance != null)

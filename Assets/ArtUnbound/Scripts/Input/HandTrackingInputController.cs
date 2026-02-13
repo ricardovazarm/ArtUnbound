@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.XR.Hands; // Requires com.unity.xr.hands
+using UnityEngine.XR.Management;
 
 namespace ArtUnbound.Input
 {
@@ -12,117 +13,194 @@ namespace ArtUnbound.Input
         public event Action<Vector3, Quaternion> OnPinchEnd;
         public event Action<float> OnSwipeHorizontal;
 
-        [SerializeField] private float pinchThreshold = 0.8f;
-        [SerializeField] private float swipeVelocityThreshold = 0.5f;
+        [Header("Pinch Settings")]
+        [SerializeField] private float pinchThreshold = 0.8f; // Note: XR Hands usually gives direct boolean for pinch or strength 0-1
 
+        [Header("Swipe Settings")]
+        [SerializeField] private float swipeVelocityThreshold = 0.8f;
+        [SerializeField] private float minSwipeDistance = 0.05f;
+        [SerializeField] private float maxSwipeVerticalVariance = 0.1f;
+        [SerializeField] private float bufferTimeWindow = 0.15f;
+
+        // XR Hands Subsystem Reference
+        private XRHandSubsystem m_HandSubsystem;
+
+        // Swipe Detection State
+        private struct HandPositionSample
+        {
+            public Vector3 position;
+            public float time;
+        }
+
+        private Queue<HandPositionSample> rightHandPositionBuffer = new Queue<HandPositionSample>();
+        private float swipeCooldownTimer = 0f;
+        private const float SWIPE_COOLDOWN = 0.5f;
+
+        // State tracking
         private bool isPinchingRight;
-        private bool isPinchingLeft;
-        
-        private InputDevice rightHandDevice;
-        private InputDevice leftHandDevice;
 
-        private Vector3 lastRightHandPosition;
-        private float swipeCheckTimer = 0f;
+        private void Start()
+        {
+            GetHandSubsystem();
+        }
 
         private void Update()
         {
-            UpdateDevices();
-            ProcessHand(rightHandDevice, true);
-            // ProcessHand(leftHandDevice, false); // Optional: Enable for left hand if needed
-        }
-
-        private void UpdateDevices()
-        {
-            if (!rightHandDevice.isValid)
+            if (m_HandSubsystem == null || !m_HandSubsystem.running)
             {
-                GetDevice(InputDeviceCharacteristics.HandTracking | InputDeviceCharacteristics.Right, ref rightHandDevice);
+                GetHandSubsystem();
+                return;
             }
-            
-            if (!leftHandDevice.isValid)
+
+            // Get Right Hand
+            var rightHand = m_HandSubsystem.rightHand;
+
+            if (rightHand.isTracked)
             {
-                GetDevice(InputDeviceCharacteristics.HandTracking | InputDeviceCharacteristics.Left, ref leftHandDevice);
+                ProcessHand(rightHand, true);
             }
         }
 
-        private void GetDevice(InputDeviceCharacteristics characteristics, ref InputDevice device)
+        private void GetHandSubsystem()
         {
-            List<InputDevice> devices = new List<InputDevice>();
-            InputDevices.GetDevicesWithCharacteristics(characteristics, devices);
-            if (devices.Count > 0)
+            var subsystems = new List<XRHandSubsystem>();
+            SubsystemManager.GetSubsystems(subsystems);
+
+            if (subsystems.Count > 0)
             {
-                device = devices[0];
+                m_HandSubsystem = subsystems[0];
+                Debug.Log($"[HandTracking] Hand Subsystem Found and Linked.");
+                // Ensure it's running
+                if (!m_HandSubsystem.running)
+                {
+                    m_HandSubsystem.Start();
+                }
             }
         }
 
-        private void ProcessHand(InputDevice device, bool isRight)
+        private float debugLogTimer = 0f;
+
+        private void ProcessHand(XRHand hand, bool isRight)
         {
-            if (!device.isValid) return;
+            // 1. Get Palm or Index Tip Position for Swipe
+            // The Palm is usually stable. Index Tip is also good.
+            // Let's use the Palm for "Hand Swipe" to decouple from finger wiggling.
+            var palmJoint = hand.GetJoint(XRHandJointID.Palm);
 
-            // Check Pinch (Index Finger + Thumb)
-            // Note: Common usage map - Trigger or PrimaryButton usually maps to pinch in Hand Tracking profiles
-            bool currentPinch = false;
-            
-            // Try to get specific feature usage for pinch strength if available (e.g. subsystem specific)
-            // Fallback to primary button for broad compatibility
-            if (device.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+            if (!palmJoint.TryGetPose(out Pose palmPose))
             {
-                currentPinch = triggerValue > pinchThreshold;
-            }
-            else if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryPressed))
-            {
-                currentPinch = primaryPressed;
+                return; // Pose not valid this frame
             }
 
-            // Get Hand Position and Rotation
-            Vector3 handPosition = Vector3.zero;
-            Quaternion handRotation = Quaternion.identity;
-            
-            if (device.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 pos))
+            Vector3 handPosition = palmPose.position;
+            Quaternion handRotation = palmPose.rotation;
+
+            // Debug Log every 1s
+            if (isRight && Time.time > debugLogTimer)
             {
-                handPosition = pos;
-            }
-            if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rot))
-            {
-                handRotation = rot;
+                Debug.Log($"[HandTracking] Right Hand Tracked. Palm Pos: {handPosition}");
+                debugLogTimer = Time.time + 1.0f;
             }
 
-            // Handle State Changes
-            bool wasPinching = isRight ? isPinchingRight : isPinchingLeft;
+            // 2. Pinch Detection (Using XRHand native pinch data if available, or manual check)
+            // XRHand doesn't expose a simple "IsPinching" float directly on the struct in early versions,
+            // but often extensions or the Joint data can be used. 
+            // However, typical setup uses "XR Hand Tracking Events" component for high level, but we are in low level.
+            // Let's calculate pinch: Distance between ThumbTip and IndexTip.
 
-            if (currentPinch && !wasPinching)
+            bool currentPinch = CheckPinch(hand);
+
+            if (currentPinch && !isPinchingRight)
             {
+                Debug.Log($"[HandTracking] Pinch START at {handPosition}");
                 OnPinchStart?.Invoke(handPosition, handRotation);
             }
-            else if (currentPinch && wasPinching)
+            else if (currentPinch && isPinchingRight)
             {
-                OnPinchHold?.Invoke(handPosition, handRotation);
+                // OnPinchHold?.Invoke(handPosition, handRotation); 
             }
-            else if (!currentPinch && wasPinching)
+            else if (!currentPinch && isPinchingRight)
             {
+                Debug.Log($"[HandTracking] Pinch END at {handPosition}");
                 OnPinchEnd?.Invoke(handPosition, handRotation);
             }
 
-            if (isRight) isPinchingRight = currentPinch;
-            else isPinchingLeft = currentPinch;
+            isPinchingRight = currentPinch;
 
-            // Handle Swipe (Simple velocity check on X axis)
-            if (isRight)
+            // 3. Swipe Detection
+            DetectSwipe(handPosition);
+        }
+
+        private float pinchDebugTimer = 0f;
+
+        private bool CheckPinch(XRHand hand)
+        {
+            var thumbTip = hand.GetJoint(XRHandJointID.ThumbTip);
+            var indexTip = hand.GetJoint(XRHandJointID.IndexTip);
+
+            if (thumbTip.TryGetPose(out Pose thumbPose) && indexTip.TryGetPose(out Pose indexPose))
             {
-                float velocityX = (handPosition.x - lastRightHandPosition.x) / Time.deltaTime;
-                if (Mathf.Abs(velocityX) > swipeVelocityThreshold)
+                float dist = Vector3.Distance(thumbPose.position, indexPose.position);
+
+                // Debug distance occasionally
+                if (Time.time > pinchDebugTimer)
                 {
-                    // Rate limit swipes
-                    if (Time.time > swipeCheckTimer)
-                    {
-                        OnSwipeHorizontal?.Invoke(velocityX);
-                        swipeCheckTimer = Time.time + 0.5f;
-                    }
+                    // Debug.Log($"[HandTracking] Pinch Dist: {dist:F3} (Thresh: 0.02)");
+                    pinchDebugTimer = Time.time + 1.0f;
                 }
-                lastRightHandPosition = handPosition;
+
+                if (dist < 0.02f) // 2cm
+                {
+                    // Debug.Log($"[HandTracking] Pinch Valid! Dist: {dist:F4}");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void DetectSwipe(Vector3 currentPosition)
+        {
+            float currentTime = Time.time;
+
+            // Add current sample to buffer
+            rightHandPositionBuffer.Enqueue(new HandPositionSample { position = currentPosition, time = currentTime });
+
+            // Remove old samples
+            while (rightHandPositionBuffer.Count > 0 && (currentTime - rightHandPositionBuffer.Peek().time) > bufferTimeWindow)
+            {
+                rightHandPositionBuffer.Dequeue();
+            }
+
+            if (rightHandPositionBuffer.Count < 5) return;
+            if (currentTime < swipeCooldownTimer) return;
+
+            HandPositionSample startSample = rightHandPositionBuffer.Peek();
+            HandPositionSample endSample = new HandPositionSample { position = currentPosition, time = currentTime };
+
+            Vector3 totalDisplacement = endSample.position - startSample.position;
+            float timeDelta = endSample.time - startSample.time;
+
+            if (timeDelta <= 0.0001f) return;
+
+            Vector3 averageVelocity = totalDisplacement / timeDelta;
+
+            // Check Swipe Criteria
+            if (Mathf.Abs(totalDisplacement.x) < minSwipeDistance) return;
+            if (Mathf.Abs(totalDisplacement.y) > maxSwipeVerticalVariance) return;
+
+            if (Mathf.Abs(averageVelocity.x) > swipeVelocityThreshold)
+            {
+                Debug.Log($"[HandTracking] SWIPE DETECTED (XR Hands)! VelX: {averageVelocity.x:F2}");
+
+                // DISABLED: User prefers UI Buttons for scrolling to avoid jittery air-swipe return strokes.
+                // OnSwipeHorizontal?.Invoke(averageVelocity.x);
+
+                swipeCooldownTimer = currentTime + SWIPE_COOLDOWN;
+                rightHandPositionBuffer.Clear();
             }
         }
 
-        // Public simulation methods for Editor testing
+        // Keep simulations for Editor workflow
         public void SimulatePinchStart(Vector3 worldPosition) => OnPinchStart?.Invoke(worldPosition, Quaternion.identity);
         public void SimulatePinchHold(Vector3 worldPosition) => OnPinchHold?.Invoke(worldPosition, Quaternion.identity);
         public void SimulatePinchEnd(Vector3 worldPosition) => OnPinchEnd?.Invoke(worldPosition, Quaternion.identity);

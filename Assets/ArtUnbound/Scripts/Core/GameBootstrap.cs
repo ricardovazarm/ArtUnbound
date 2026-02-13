@@ -6,6 +6,7 @@ using ArtUnbound.MR;
 using ArtUnbound.Services;
 using ArtUnbound.UI;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace ArtUnbound.Core
 {
@@ -23,6 +24,9 @@ namespace ArtUnbound.Core
         [SerializeField] private ArtworkCatalog artworkCatalog;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private FrameConfigSet frameConfigSet;
+
+        [Header("General UI")]
+        [SerializeField] private Transform mainUICanvas;
 
         [Header("UI Controllers")]
         [SerializeField] private MainMenuController mainMenuController;
@@ -96,6 +100,12 @@ namespace ArtUnbound.Core
             else
             {
                 TransitionToMainMenu();
+            }
+
+            // Position the UI Canvas ergonomically with a delay to allow XR tracking to initialize
+            if (mainUICanvas != null)
+            {
+                StartCoroutine(PositionCanvasWithDelay(mainUICanvas));
             }
         }
 
@@ -491,6 +501,31 @@ namespace ArtUnbound.Core
 
         private void OnComfortPositionLocked()
         {
+            Debug.Log("[GameBootstrap] OnComfortPositionLocked received. Positioning PuzzleBoard...");
+
+            // Sync PuzzleBoard position to the calculated comfort position
+            // DISTANCE FIX: Ensure Board is at 0.7m, distinct from ComfortMode (0.4m)
+            if (puzzleBoard != null && comfortModeController != null)
+            {
+                // Calculate Board position based on Head (Camera)
+                Transform head = Camera.main.transform;
+                Vector3 forward = head.forward;
+                forward.y = 0f;
+                forward.Normalize();
+
+                // Use height from comfort mode to keep it aligned vertically
+                float height = comfortModeController.CurrentPosition.y;
+
+                // DISTANCE UPDATED: User requested 0.4m (Same as Canvas)
+                // Use consistent constant
+                Vector3 targetPos = head.position + forward * DefaultPlacementDistance;
+                targetPos.y = height;
+
+                puzzleBoard.transform.position = targetPos;
+                puzzleBoard.transform.rotation = comfortModeController.CurrentRotation;
+                Debug.Log($"[GameBootstrap] PuzzleBoard moved to {targetPos} (Dist: 0.4m override)");
+            }
+
             InitializePuzzleBoard();
             TransitionToPlaying();
         }
@@ -499,12 +534,14 @@ namespace ArtUnbound.Core
         {
             if (puzzleBoard == null) return;
 
+            // Ensure board is active and visible
+            puzzleBoard.gameObject.SetActive(true);
+
             var artworkData = localCatalogService?.GetArtworkById(selectedArtworkId);
             Texture2D artworkTexture = artworkData?.fullImage?.texture;
 
             puzzleBoard.Initialize(selectedPieceCount, artworkTexture);
         }
-
         private void OnPieceSnapped(int gridX, int gridY)
         {
             if (CurrentSession != null)
@@ -728,6 +765,119 @@ namespace ArtUnbound.Core
         {
             saveDataService?.SaveIfDirty();
         }
+
+        private void PositionCanvasErgonomically(Transform canvasTransform)
+        {
+            if (canvasTransform == null) return;
+
+            Transform headTransform = Camera.main != null ? Camera.main.transform : null;
+            if (headTransform == null) return;
+
+            // Constants matching ComfortModeController
+            float distanceFromHead = 0.4f;
+            float heightOffset = -0.15f;
+            float tiltAngle = 15f;
+
+            // Get forward direction, keeping it horizontal
+            Vector3 forward = headTransform.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            // Calculate position
+            Vector3 targetPosition = headTransform.position + forward * distanceFromHead;
+            targetPosition.y += heightOffset;
+
+            // Calculate rotation (facing the user with tilt)
+            Quaternion targetRotation = Quaternion.LookRotation(-forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
+
+            canvasTransform.position = targetPosition;
+            canvasTransform.rotation = targetRotation;
+
+            Debug.Log($"[GameBootstrap] Positioned Main UI Canvas at {targetPosition}");
+        }
+
+        private const float DefaultPlacementDistance = 0.4f;
+
+        private System.Collections.IEnumerator PositionCanvasWithDelay(Transform canvasTransform)
+        {
+            // FAST PATH: 2.0s timeout is enough.
+            float timeout = 2.0f;
+            float timer = 0f;
+            bool trackingFound = false;
+
+            Debug.Log("[GameBootstrap] Waiting for XR Head Tracking (Y > 0.5)...");
+
+            while (!trackingFound && timer < timeout)
+            {
+                // Check if Head (Camera) is at a reasonable height (> 0.5m)
+                // This usually indicates tracking is established.
+                if (Camera.main != null && Camera.main.transform.position.y > 0.5f)
+                {
+                    trackingFound = true;
+                    Debug.Log($"[GameBootstrap] VALID Camera Position (Y>0.5): {Camera.main.transform.position}");
+                }
+
+                if (!trackingFound)
+                {
+                    yield return null;
+                    timer += Time.deltaTime;
+                }
+            }
+
+            // Stabilization: minimal delay to let frame settle
+            yield return new WaitForEndOfFrame();
+
+            if (canvasTransform == null) yield break;
+
+            Transform headTransform = Camera.main != null ? Camera.main.transform : null;
+            if (headTransform == null)
+            {
+                Debug.LogError("[GameBootstrap] FATAL: Camera.main is null.");
+                yield break;
+            }
+
+            Vector3 finalHeadPos = headTransform.position;
+            if (finalHeadPos.y < 0.1f)
+            {
+                Debug.LogWarning("[GameBootstrap] Head still at floor level. Forcing default height.");
+                finalHeadPos.y = 1.6f;
+            }
+
+            Vector3 forward = headTransform.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            // Constants
+            float heightOffset = -0.15f;
+            float tiltAngle = 15f;
+            // Use consistent distance
+            float distance = DefaultPlacementDistance;
+
+            // Calculate Target
+            Vector3 targetPosition = finalHeadPos + forward * distance;
+            targetPosition.y += heightOffset;
+
+            // CALCULATE ROTATIONS
+            // Canvas appears to require 'forward' (Line 905 original), likely has 180 flip in prefab
+            Quaternion canvasRotation = Quaternion.LookRotation(forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
+
+            // PuzzleBoard expects standard '-forward' to face user (matches ComfortModeController)
+            Quaternion boardRotation = Quaternion.LookRotation(-forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
+
+            // 1. Set Canvas
+            canvasTransform.position = targetPosition;
+            canvasTransform.rotation = canvasRotation;
+            Debug.Log($"[GameBootstrap] Positioned Canvas at {targetPosition} (Dist: {distance})");
+
+            // 2. Set PuzzleBoard (Pre-positioning)
+            if (puzzleBoard != null)
+            {
+                puzzleBoard.transform.position = targetPosition;
+                puzzleBoard.transform.rotation = boardRotation;
+                Debug.Log($"[GameBootstrap] Positioned PuzzleBoard matched to Canvas at {targetPosition} (BoardRot adjusted)");
+            }
+        }
+
     }
 
     /// <summary>

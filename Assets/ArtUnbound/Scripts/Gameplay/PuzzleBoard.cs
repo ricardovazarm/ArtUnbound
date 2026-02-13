@@ -30,9 +30,32 @@ namespace ArtUnbound.Gameplay
 
         private void Start()
         {
+            if (inputController == null)
+            {
+                inputController = FindFirstObjectByType<ArtUnbound.Input.HandTrackingInputController>();
+                if (inputController == null)
+                {
+                    Debug.LogWarning("[PuzzleBoard] HandTrackingInputController not found in scene. Creating one.");
+                    GameObject inputObj = new GameObject("HandTrackingInputController");
+                    inputController = inputObj.AddComponent<ArtUnbound.Input.HandTrackingInputController>();
+                }
+                else
+                {
+                    Debug.Log("[PuzzleBoard] HandTrackingInputController found via FindFirstObjectByType.");
+                }
+            }
+            else
+            {
+                Debug.Log("[PuzzleBoard] HandTrackingInputController assigned via Inspector.");
+            }
+
             if (inputController != null)
             {
                 inputController.OnSwipeHorizontal += OnSwipeInput;
+            }
+            else
+            {
+                Debug.LogError("[PuzzleBoard] Failed to initialize HandTrackingInputController!");
             }
         }
 
@@ -58,6 +81,36 @@ namespace ArtUnbound.Gameplay
         private int snappedCount;
         private int totalPieces;
         private Texture2D currentTexture;
+        private Vector3 lastPos;
+
+        private void OnEnable()
+        {
+            Debug.Log("[PuzzleBoard] OnEnable called. GameObject is active.");
+        }
+
+        private void Update()
+        {
+            if (Vector3.Distance(transform.position, lastPos) > 0.01f)
+            {
+                Debug.Log($"[PuzzleBoard] Moved from {lastPos} to {transform.position}");
+                lastPos = transform.position;
+            }
+
+            // TEMPORARY FIX: Force PieceTray position every frame
+            if (scrollController != null)
+            {
+                if (Vector3.Distance(scrollController.transform.localPosition, new Vector3(0, -0.4f, 0)) > 0.01f)
+                {
+                    if (Time.frameCount % 60 == 0) // Log once per second approx
+                    {
+                        Debug.LogWarning($"[PuzzleBoard] PieceTray drifted to {scrollController.transform.localPosition}. Forcing back to (0, -0.4, 0).");
+                    }
+                    scrollController.transform.localPosition = new Vector3(0, -0.4f, 0);
+                    scrollController.transform.localRotation = Quaternion.identity;
+                    scrollController.transform.localScale = Vector3.one;
+                }
+            }
+        }
 
         /// <summary>
         /// Initializes the puzzle board with piece count and artwork texture.
@@ -67,23 +120,25 @@ namespace ArtUnbound.Gameplay
             snappedCount = 0;
             totalPieces = pieceCount;
             currentTexture = artworkTexture;
-            
+
             // Clear existing pieces
             foreach (var piece in activePieces)
             {
                 if (piece != null) Destroy(piece.gameObject);
             }
             activePieces.Clear();
-            
+
             slots.Clear();
             morphologyByPieceId.Clear();
             placedBySlot.Clear();
 
             if (slotRoot == null || pieceCount <= 0)
             {
+                Debug.LogError($"[PuzzleBoard] Initialize failed. SlotRoot: {slotRoot}, PieceCount: {pieceCount}");
                 return;
             }
 
+            Debug.Log($"[PuzzleBoard] Initializing with PieceCount: {pieceCount}, Texture: {artworkTexture?.name} ({artworkTexture?.width}x{artworkTexture?.height})");
             CreateSlotsFromCount(pieceCount);
         }
 
@@ -93,14 +148,14 @@ namespace ArtUnbound.Gameplay
         public void Initialize(ArtworkDefinition definition, int pieceCount)
         {
             snappedCount = 0;
-            
+
             // Clear existing pieces
             foreach (var piece in activePieces)
             {
                 if (piece != null) Destroy(piece.gameObject);
             }
             activePieces.Clear();
-            
+
             slots.Clear();
             morphologyByPieceId.Clear();
             placedBySlot.Clear();
@@ -264,7 +319,10 @@ namespace ArtUnbound.Gameplay
                     id++;
                 }
             }
-            
+
+            // Create Visual Board Context
+            CreateBoardVisual(cols * pieceSize, rows * pieceSize);
+
             // Shuffle and populate scroll
             InitializeScroll();
         }
@@ -274,7 +332,7 @@ namespace ArtUnbound.Gameplay
             var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage.texture;
             if (textureToUse == null) return;
 
-             CalculateGridDimensions(pieceCount, textureToUse.width, textureToUse.height, out int cols, out int rows);
+            CalculateGridDimensions(pieceCount, textureToUse.width, textureToUse.height, out int cols, out int rows);
 
             float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
             float sizeX = cols * pieceSize;
@@ -315,8 +373,49 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
+            // Create Visual Board Context
+            CreateBoardVisual(sizeX, sizeY);
+
             // Shuffle and populate scroll
             InitializeScroll();
+        }
+
+        private void CreateBoardVisual(float width, float height)
+        {
+            if (slotRoot == null) return;
+
+            Debug.Log($"[PuzzleBoard] Creating Board Visual: {width}x{height}");
+
+            // Look for existing board visual
+            Transform existing = slotRoot.Find("BoardVisual");
+            if (existing != null) Destroy(existing.gameObject);
+
+            GameObject boardViz = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            boardViz.name = "BoardVisual";
+            boardViz.transform.SetParent(slotRoot, false);
+
+            // Set scale (slightly larger than puzzle)
+            float margin = 0.02f; // 2cm margin
+            float thickness = 0.01f; // 1cm thickness
+            boardViz.transform.localScale = new Vector3(width + margin * 2, height + margin * 2, thickness);
+
+            // Position behind pieces (Z+ is forward, if pieces are at 0, board should be at +thickness/2 or -thickness/2? 
+            // If user looks at -Z, pieces are at Z=0. Board should be further away (more negative? or positive?)
+            // If pieces face -Z (towards user), board should be at Z > 0 (behind pieces).
+            // Actually, let's just put it at Z = 0.01f (behind pieces if camera is at -Z)
+            boardViz.transform.localPosition = new Vector3(0, 0, 0.01f);
+
+            // Set Material Color (Dark semi-transparent or wood)
+            var renderer = boardViz.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = new Color(0.2f, 0.2f, 0.2f, 1f); // Dark Grey
+                // Force shader to standard if possible, but default primitive has default material.
+            }
+
+            // Remove collider if it interferes with raycast (though we might want it for placement later)
+            // For now, remove to avoid blocking piece interaction if it's in front
+            Destroy(boardViz.GetComponent<Collider>());
         }
 
         private void CalculateGridDimensions(int targetCount, int texWidth, int texHeight, out int cols, out int rows)
@@ -426,27 +525,52 @@ namespace ArtUnbound.Gameplay
         {
             if (piecePrefab == null) return;
 
-            PuzzlePiece piece = Instantiate(piecePrefab, slotRoot.position, Quaternion.identity); // Spawn at root mostly hidden, will be moved by Scroll
+            // Instantiate parented to slotRoot so they move with the board
+            PuzzlePiece piece = Instantiate(piecePrefab, slotRoot);
+            piece.transform.position = slotRoot.position; // Initially at root, scroll will move them
+            piece.transform.rotation = Quaternion.identity;
+
             piece.Initialize(id, GetSlotIndex(row, col), morphology);
             piece.name = $"Piece_{id}_{col}_{row}";
 
+            // Debug.Log($"[PuzzleBoard] Created Piece {id} at {col},{row}. Pos: {piece.transform.position}");
+
             // Generate Mesh
             Mesh mesh = PieceMeshGenerator.GeneratePieceMesh(morphology, pieceSize, col, row, gridCols, gridRows);
-            
+
             // Assign Mesh
             var meshFilter = piece.GetComponentInChildren<MeshFilter>();
             if (meshFilter != null)
             {
                 meshFilter.mesh = mesh;
+                // Debug.Log($"[PuzzleBoard] Piece {id} Mesh Vertices: {mesh.vertexCount}, Triangles: {mesh.triangles.Length}");
             }
-
             var meshRenderer = piece.GetComponentInChildren<MeshRenderer>();
             if (meshRenderer != null && texture != null)
             {
-                meshRenderer.material.mainTexture = texture;
-                // Important: Ensure shader handles transparency if using PNGs
+                // FORCE SAFE MATERIAL: Create a new material to bypass any Prefab shader issues
+                // Try to find URP Lit first, then Standard, then Legacy Diffuse
+                Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+                if (shader == null) shader = Shader.Find("Toon/Lit Input"); // Try different URP
+                if (shader == null) shader = Shader.Find("Standard");
+                if (shader == null) shader = Shader.Find("Mobile/Diffuse");
+
+                if (shader != null)
+                {
+                    Material safeMat = new Material(shader);
+                    // Set texture on both common property names just in case
+                    if (safeMat.HasProperty("_BaseMap")) safeMat.SetTexture("_BaseMap", texture);
+                    if (safeMat.HasProperty("_MainTex")) safeMat.SetTexture("_MainTex", texture);
+                    safeMat.color = Color.white; // Ensure not black
+
+                    meshRenderer.material = safeMat;
+                }
+                else
+                {
+                    Debug.LogError("[PuzzleBoard] Could not find any valid shader! Pieces may be invisible.");
+                }
             }
-            
+
             // Add collider for interaction
             var collider = piece.GetComponentInChildren<MeshCollider>();
             if (collider != null)
@@ -459,20 +583,133 @@ namespace ArtUnbound.Gameplay
 
         private void InitializeScroll()
         {
-            if (scrollController == null) return;
+            if (scrollController == null)
+            {
+                scrollController = GetComponentInChildren<ArtUnbound.UI.PieceScrollController>();
+            }
+
+            if (scrollController == null)
+            {
+                // Try to find an existing "PieceTray" object (common name in prefabs)
+                Transform tray = transform.Find("PieceTray");
+                if (tray != null)
+                {
+                    scrollController = tray.GetComponent<ArtUnbound.UI.PieceScrollController>();
+                    if (scrollController == null)
+                    {
+                        scrollController = tray.gameObject.AddComponent<ArtUnbound.UI.PieceScrollController>();
+                    }
+
+                    // Force reset position to ensure it's visible below board
+                    tray.localPosition = new Vector3(0, -0.4f, 0);
+                    tray.localRotation = Quaternion.identity;
+                    tray.localScale = Vector3.one;
+                }
+            }
+
+            if (scrollController == null)
+            {
+                Debug.LogWarning("[PuzzleBoard] PieceScrollController missing. Creating default Scroll Container.");
+                GameObject scrollObj = new GameObject("PieceScrollContainer");
+                scrollObj.transform.SetParent(transform, false);
+                // Position below the board (approx 30cm down)
+                scrollObj.transform.localPosition = new Vector3(0, -0.3f, 0);
+
+                scrollController = scrollObj.AddComponent<ArtUnbound.UI.PieceScrollController>();
+            }
+
+            if (scrollController == null)
+            {
+                Debug.LogError("[PuzzleBoard] Failed to create or find PieceScrollController!");
+                return;
+            }
+
+            // Always enforce position for PieceTray/Scroll to ensure visibility
+            // This fixes issue where tray might be at strange coordinates from prefab/scene layout
+            scrollController.transform.localPosition = new Vector3(0, -0.4f, 0);
+            scrollController.transform.localRotation = Quaternion.identity;
+            scrollController.transform.localScale = Vector3.one;
+
+            // Remove any interfering ScrollRect component that shouldn't be here
+            var sr = scrollController.GetComponent<UnityEngine.UI.ScrollRect>();
+            if (sr != null)
+            {
+                Debug.LogWarning("[PuzzleBoard] Removing extraneous ScrollRect component from PieceTray.");
+                Destroy(sr);
+            }
+
+            Debug.Log($"[PuzzleBoard] Forced ScrollController position to: {scrollController.transform.localPosition}");
+
+            // Create visual background for the tray
+            // REMOVED: User requested to remove the visual tray.
+            // CreateTrayVisual(scrollController.transform);
+
+            Debug.Log($"[PuzzleBoard] Forced ScrollController position to: {scrollController.transform.localPosition}");
 
             // Shuffle active pieces for initial display
             var shuffledPieces = PieceShuffler.GetShuffledCopy(activePieces);
-            
+
             List<Transform> pieceTransforms = new List<Transform>();
-            foreach(var p in shuffledPieces)
+            foreach (var p in shuffledPieces)
             {
                 pieceTransforms.Add(p.transform);
-                // Reset piece state to InPool or similar handled by scroll controller logic
-                p.ReturnToPool(Vector3.zero); // Position will be managed by scroll
+                // Fix: Do NOT call ReturnToPool here, as it starts a coroutine that overrides the position
+                // set by scrollController.Initialize. Just set the state directly.
+                p.SetState(PieceState.InPool);
             }
 
+            Debug.Log($"[PuzzleBoard] Initializing Scroll with {pieceTransforms.Count} pieces.");
             scrollController.Initialize(pieceTransforms);
+        }
+
+        private void CreateTrayVisual(Transform tray)
+        {
+            // First, check if the tray ITSELF has an Image component (like the screenshot showed)
+            var existingImage = tray.GetComponent<UnityEngine.UI.Image>();
+            if (existingImage != null)
+            {
+                // Make it semi-transparent red
+                existingImage.color = new Color(1f, 0f, 0f, 0.3f);
+                // Also ensure it is large enough
+                var rect = tray.GetComponent<RectTransform>();
+                if (rect != null)
+                {
+                    rect.sizeDelta = new Vector2(3000, 400); // 3m x 0.4m (assuming 1 unit = 1mm? No, UI is weird. Let's just trust color for now)
+                                                             // Actually, if it's world space, we should rely on scale.
+                }
+                return;
+            }
+
+            // Check if child visual already exists
+            if (tray.Find("TrayVisual") != null) return;
+
+            // Create a simple Cube visual (Standard 3D Object)
+            GameObject visual = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            visual.name = "TrayVisual";
+            visual.transform.SetParent(tray, false);
+
+            // Remove collider preventing interaction
+            Destroy(visual.GetComponent<Collider>());
+
+            // Set Material (Transparent Red)
+            var renderer = visual.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material = new Material(Shader.Find("Standard"));
+                renderer.material.SetFloat("_Mode", 3); // Transparent
+                renderer.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                renderer.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                renderer.material.SetInt("_ZWrite", 0);
+                renderer.material.DisableKeyword("_ALPHATEST_ON");
+                renderer.material.EnableKeyword("_ALPHABLEND_ON");
+                renderer.material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                renderer.material.renderQueue = 3000;
+                renderer.material.color = new Color(1f, 0f, 0f, 0.3f);
+            }
+
+            // Set Size: 0.5m width (matched to PieceScrollController), 0.1m height, 0.001m thickness
+            // This relies on the parent (PieceTray) having scale (1,1,1), which we enforce.
+            visual.transform.localScale = new Vector3(0.5f, 0.15f, 0.001f); // Increased height slightly to 0.15 for easier grabbing
         }
 
         private bool EdgesComplement(PieceEdgeState a, PieceEdgeState b)

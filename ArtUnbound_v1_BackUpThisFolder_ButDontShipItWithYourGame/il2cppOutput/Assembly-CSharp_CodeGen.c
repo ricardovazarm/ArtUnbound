@@ -210,6 +210,7 @@ extern void PieceCountSelectorController_U3CAwakeU3Eb__19_2_m2C3C7919D9D9F2ECC37
 extern void PieceCountSelectorController_U3CAwakeU3Eb__19_3_m7CC937034ECDE4F403A38C7644E2948480FC2BC4 (void);
 extern void PieceScrollController_Initialize_m304D8C26ED08B82D752F78D65B7CFC15BF7CD310 (void);
 extern void PieceScrollController_OnSwipe_m2622888DB4EBD57E316DA61CC134E5EAC8CA0D6A (void);
+extern void PieceScrollController_UpdateVisibility_mC4DC8DFACD69B3C8717BF26FDF95141A899E39BA (void);
 extern void PieceScrollController__ctor_m5F73F9D9DE936A69EBC90E1C9C6DBC191EC71C5F (void);
 extern void PostGameController_add_OnPlaceArtworkRequested_mEC1605805F85820604494BEFFC9B9F9FF21C11A2 (void);
 extern void PostGameController_remove_OnPlaceArtworkRequested_mFC1052086076B2D09E260E31B7B03C12EB55B741 (void);
@@ -388,6 +389,9 @@ extern void ComfortModeController_get_CurrentPosition_mF9F4A85BDE85DD67BE2CBA096
 extern void ComfortModeController_get_CurrentRotation_m7D8696A4D7DB4573360379302073302850A43456 (void);
 extern void ComfortModeController_Awake_m0421EC970D7C0997C5DA5D24743B9674355D1AE1 (void);
 extern void ComfortModeController_Update_mD47006259535AB7DF865FEC813B706E8EFA49B51 (void);
+extern void ComfortModeController_OnEnable_m128BFAD0FBF025F4CFAACBE518CC88E801761B42 (void);
+extern void ComfortModeController_OnDisable_m98A1931168DBAE235FF13F83E5C163D5EB9A8E2A (void);
+extern void ComfortModeController_HandlePinch_m4CCC012703DC60D5D9C565B2CE9BDADEFD0827F7 (void);
 extern void ComfortModeController_StartPositioning_m71D495435AACF39826E43BBBD8C08A692D3383AD (void);
 extern void ComfortModeController_CalculateErgonomicPosition_m0E2F7E74011917DEE12ECB61081D33B91541DD09 (void);
 extern void ComfortModeController_UpdatePreview_mCD69378CBE89D0990DEFE55AA338718223391E49 (void);
@@ -464,9 +468,9 @@ extern void HandTrackingInputController_add_OnPinchEnd_m02D9DBCA5A2FC04F86468750
 extern void HandTrackingInputController_remove_OnPinchEnd_m942ABDA6ECC04A8FBD5F5DD7F1D70CB655A970DA (void);
 extern void HandTrackingInputController_add_OnSwipeHorizontal_m89ECD5B492E3E291A8D52398BF874325F0BF72D3 (void);
 extern void HandTrackingInputController_remove_OnSwipeHorizontal_m1352BAEE99DB434832AF98DCB04D5D7238773FF2 (void);
+extern void HandTrackingInputController_Awake_mC850D299B284A4913AFE66022D7F03F2F432D570 (void);
 extern void HandTrackingInputController_Update_mCE39915E5093D16674B1071C1B8F6F52A46F104B (void);
 extern void HandTrackingInputController_UpdateDevices_m681394B54408B9EABE2ACCEB605F515A90CC9283 (void);
-extern void HandTrackingInputController_GetDevice_m1C8044661237017647CE1389215F414FE9A09AFB (void);
 extern void HandTrackingInputController_ProcessHand_m47933D484AFA625E640F04F4EDB8E858CF844364 (void);
 extern void HandTrackingInputController_SimulatePinchStart_mC50EA04821FE0EB22DA6F21F6A7BFA1E54A5C50E (void);
 extern void HandTrackingInputController_SimulatePinchHold_m966458F2B5F79468C2113954A970CC86E6C3BCAC (void);
@@ -489,9 +493,9 @@ extern void HelpModeController_PlayErrorFeedback_mD93F88D175A68DB8DD1262502C5C48
 extern void HelpModeController__ctor_mB88AFA347585317A34DA1234479FF511B24BFDFA (void);
 extern void PieceMeshGenerator_GeneratePieceMesh_mBFA623AB03E26C34CAFC0C2EC00C2F3E3ADFE5E4 (void);
 extern void PieceMeshGenerator_GeneratePieceMesh_m09290ACE38B4F255ADF64A8F2CF8D1ADD99123E2 (void);
-extern void PieceMeshGenerator_GeneratePieceGeometry_m9CD041325DA4A63C8F49F9191910172A0C646207 (void);
-extern void PieceMeshGenerator_GenerateEdgeVertices_mB9D2A452D047DE6FEEC98B547A614E3816F6D4D3 (void);
-extern void PieceMeshGenerator_GetEdgeVectors_m60645B77B50FEC28E7CB4AA20BF09E336266CA84 (void);
+extern void PieceMeshGenerator_GeneratePieceGeometry_m996E9E0415BBA0CBEAE4C40E1F9FAD6007F2A421 (void);
+extern void PieceMeshGenerator_GenerateEdgeVertices_mCD0E9C6C3069094CC5D697D513C3D9A6E00A538F (void);
+extern void PieceMeshGenerator_GetEdgeVectors_m181116C37AF0375D35C44426223EBBB0AAEFF993 (void);
 extern void PieceMeshGenerator_AddVertex_m8C9BAFB68317ACC470BC46251598BD1C17BCECF0 (void);
 extern void PieceMeshGenerator_GenerateAllMorphologyVariants_mAD999B7BCB58EA841DC6B4C6F9A4430A3FBC5066 (void);
 extern void PieceMeshGenerator_GetMorphologyIndex_mBF96AF3A32AAF803619B716E67DA7F57634B0604 (void);
@@ -520,12 +524,15 @@ extern void PuzzleBoard_remove_OnPlacementSuccess_mEAEDE28F5D36D8EE456AEC5AD0C19
 extern void PuzzleBoard_Start_m643ECAA349ACD4B490378648943E7922F3C4EF7A (void);
 extern void PuzzleBoard_OnDestroy_m8F830AAF8063A60EBFCF9C79627DD013F5E8548E (void);
 extern void PuzzleBoard_OnSwipeInput_mA8BB31C5C9EA8C2989544324E24BE516D5575B09 (void);
+extern void PuzzleBoard_OnEnable_mAE704683C9FE2027E6CA6CD3024A207E2BD89D78 (void);
+extern void PuzzleBoard_Update_m5FC647A9F8B8877CF41AE19D1C2E60702EDF812A (void);
 extern void PuzzleBoard_Initialize_m49FB764D5FB27B6F1FB0838F89733D3DD9C64F53 (void);
 extern void PuzzleBoard_Initialize_mF5E8D43E5422BEB0FBBF463EFFC7E19588402BBB (void);
 extern void PuzzleBoard_SetHelpMode_mCD9776826C04A16ADC7BF37FA48E5E0A39243A4E (void);
 extern void PuzzleBoard_TrySnapPiece_m4FEF9C7D8DBEB390279C97AC01BCDCC0AAC782B6 (void);
 extern void PuzzleBoard_CreateSlotsFromCount_mE606064E626371D151DD071D248E4648090121EA (void);
 extern void PuzzleBoard_CreateSlots_mD8FF492BB0B777D88E97A304BB597BDA36E8246C (void);
+extern void PuzzleBoard_CreateBoardVisual_m03F38F32FEC1085642CEBFBEB9CFE3074C7D5AB9 (void);
 extern void PuzzleBoard_CalculateGridDimensions_m81344CA69259FF9B92995773F2501C5E28A40652 (void);
 extern void PuzzleBoard_GenerateMorphology_mE1C3FFEF76D97ADA47589D852401B9394A4731B3 (void);
 extern void PuzzleBoard_CheckMorphologyMatches_m2EB4B018006AED9DD8047B1E960CD1A1ED2C6721 (void);
@@ -534,6 +541,7 @@ extern void PuzzleBoard_IsDefaultMorphology_mA4A46A5D683523A8B7B397F4026E459BE9B
 extern void PuzzleBoard_GetSlotIndex_m769F492B9A3EE26EACC23D9965D9EEF0CE3D8096 (void);
 extern void PuzzleBoard_CreatePiece_m61E6AA25DCEFAF85D051C831BA77CA713402EA44 (void);
 extern void PuzzleBoard_InitializeScroll_mEB8047A40D4FA91A19A7AD4EB730196694912608 (void);
+extern void PuzzleBoard_CreateTrayVisual_mAAD2F84ABB1DAD7FC1A475B08DB1FC9DAB5F4708 (void);
 extern void PuzzleBoard_EdgesComplement_m19BD44DA018E838BF77D78AF7DA58C70F5EB2354 (void);
 extern void PuzzleBoard__ctor_m29831729E6B186F57133228ECF72DE1BD3E63BCB (void);
 extern void PuzzlePiece_add_OnReleased_m5C52B9CC585562508C814B7932264725FF79167A (void);
@@ -845,7 +853,15 @@ extern void GameBootstrap_ApplySettings_m493580035B7E07D644D49254DE5F7D74E260140
 extern void GameBootstrap_HideAllPanels_mD7F7F738DF2E35F4BCABFB078F12B7CEBBE87809 (void);
 extern void GameBootstrap_OnApplicationPause_mC45D3A47460F16F19316F6A9B104AD9D7EDF2318 (void);
 extern void GameBootstrap_OnApplicationQuit_m5D5351E09D3135D94685F1A2573892A70D21FD88 (void);
+extern void GameBootstrap_PositionCanvasErgonomically_m9E40D0859EE38083BD057710F396974D4E6DE173 (void);
+extern void GameBootstrap_PositionCanvasWithDelay_m6201E0E26C0DDDDA340ADABF81AEEA0AB7CEC363 (void);
 extern void GameBootstrap__ctor_m6C058F3AC6B0AAF04763FA20BD1DD6063B4F3E9D (void);
+extern void U3CPositionCanvasWithDelayU3Ed__99__ctor_mFFE142C8EED3205DAAAF99B89EED0DEAE1635D57 (void);
+extern void U3CPositionCanvasWithDelayU3Ed__99_System_IDisposable_Dispose_m0B0218606E9ACB0FD9A62BA5EABEDC4502E272F9 (void);
+extern void U3CPositionCanvasWithDelayU3Ed__99_MoveNext_mCA2CC8DEA648F14D30188ACF7F108279FA05CD59 (void);
+extern void U3CPositionCanvasWithDelayU3Ed__99_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m43118502C0441CBA3FFDDA27C0B358D3FAFC7BD8 (void);
+extern void U3CPositionCanvasWithDelayU3Ed__99_System_Collections_IEnumerator_Reset_mE665D58CABF9D1EDBE101B0145CEAE5A4730DFA7 (void);
+extern void U3CPositionCanvasWithDelayU3Ed__99_System_Collections_IEnumerator_get_Current_mB77E3ABB5EFF8F0C4CA98CC25EA079C25B3575E5 (void);
 extern void WallSelectionController_add_OnWallConfirmed_m9928956B3328E9C0273C3C299A20E0358C677CE6 (void);
 extern void WallSelectionController_remove_OnWallConfirmed_mB9880DC952D07BC054C0438BC6D3E3A0416847E6 (void);
 extern void WallSelectionController_Awake_m5E9EFC6F22F7C54C19417C800CBC0E0C7917885C (void);
@@ -855,7 +871,7 @@ extern void WallSelectionController_TrySelectWall_m8EF92EF327C65BDD16C6C9C165B0F
 extern void WallSelectionController_IsWall_mC1B3CFA159F5FD21C93C0E07DBCF3265409F9411 (void);
 extern void WallSelectionController_ConfirmWall_m0D4F4FF1EFF374EF39E81530DACA395E9FB2BF9B (void);
 extern void WallSelectionController__ctor_mFE9833B73E967E2249463AAAD9A7CDC8AAE42EA3 (void);
-static Il2CppMethodPointer s_methodPointers[848] = 
+static Il2CppMethodPointer s_methodPointers[864] = 
 {
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
@@ -1060,6 +1076,7 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	PieceCountSelectorController_U3CAwakeU3Eb__19_3_m7CC937034ECDE4F403A38C7644E2948480FC2BC4,
 	PieceScrollController_Initialize_m304D8C26ED08B82D752F78D65B7CFC15BF7CD310,
 	PieceScrollController_OnSwipe_m2622888DB4EBD57E316DA61CC134E5EAC8CA0D6A,
+	PieceScrollController_UpdateVisibility_mC4DC8DFACD69B3C8717BF26FDF95141A899E39BA,
 	PieceScrollController__ctor_m5F73F9D9DE936A69EBC90E1C9C6DBC191EC71C5F,
 	PostGameController_add_OnPlaceArtworkRequested_mEC1605805F85820604494BEFFC9B9F9FF21C11A2,
 	PostGameController_remove_OnPlaceArtworkRequested_mFC1052086076B2D09E260E31B7B03C12EB55B741,
@@ -1238,6 +1255,9 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	ComfortModeController_get_CurrentRotation_m7D8696A4D7DB4573360379302073302850A43456,
 	ComfortModeController_Awake_m0421EC970D7C0997C5DA5D24743B9674355D1AE1,
 	ComfortModeController_Update_mD47006259535AB7DF865FEC813B706E8EFA49B51,
+	ComfortModeController_OnEnable_m128BFAD0FBF025F4CFAACBE518CC88E801761B42,
+	ComfortModeController_OnDisable_m98A1931168DBAE235FF13F83E5C163D5EB9A8E2A,
+	ComfortModeController_HandlePinch_m4CCC012703DC60D5D9C565B2CE9BDADEFD0827F7,
 	ComfortModeController_StartPositioning_m71D495435AACF39826E43BBBD8C08A692D3383AD,
 	ComfortModeController_CalculateErgonomicPosition_m0E2F7E74011917DEE12ECB61081D33B91541DD09,
 	ComfortModeController_UpdatePreview_mCD69378CBE89D0990DEFE55AA338718223391E49,
@@ -1314,9 +1334,9 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	HandTrackingInputController_remove_OnPinchEnd_m942ABDA6ECC04A8FBD5F5DD7F1D70CB655A970DA,
 	HandTrackingInputController_add_OnSwipeHorizontal_m89ECD5B492E3E291A8D52398BF874325F0BF72D3,
 	HandTrackingInputController_remove_OnSwipeHorizontal_m1352BAEE99DB434832AF98DCB04D5D7238773FF2,
+	HandTrackingInputController_Awake_mC850D299B284A4913AFE66022D7F03F2F432D570,
 	HandTrackingInputController_Update_mCE39915E5093D16674B1071C1B8F6F52A46F104B,
 	HandTrackingInputController_UpdateDevices_m681394B54408B9EABE2ACCEB605F515A90CC9283,
-	HandTrackingInputController_GetDevice_m1C8044661237017647CE1389215F414FE9A09AFB,
 	HandTrackingInputController_ProcessHand_m47933D484AFA625E640F04F4EDB8E858CF844364,
 	HandTrackingInputController_SimulatePinchStart_mC50EA04821FE0EB22DA6F21F6A7BFA1E54A5C50E,
 	HandTrackingInputController_SimulatePinchHold_m966458F2B5F79468C2113954A970CC86E6C3BCAC,
@@ -1339,9 +1359,9 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	HelpModeController__ctor_mB88AFA347585317A34DA1234479FF511B24BFDFA,
 	PieceMeshGenerator_GeneratePieceMesh_mBFA623AB03E26C34CAFC0C2EC00C2F3E3ADFE5E4,
 	PieceMeshGenerator_GeneratePieceMesh_m09290ACE38B4F255ADF64A8F2CF8D1ADD99123E2,
-	PieceMeshGenerator_GeneratePieceGeometry_m9CD041325DA4A63C8F49F9191910172A0C646207,
-	PieceMeshGenerator_GenerateEdgeVertices_mB9D2A452D047DE6FEEC98B547A614E3816F6D4D3,
-	PieceMeshGenerator_GetEdgeVectors_m60645B77B50FEC28E7CB4AA20BF09E336266CA84,
+	PieceMeshGenerator_GeneratePieceGeometry_m996E9E0415BBA0CBEAE4C40E1F9FAD6007F2A421,
+	PieceMeshGenerator_GenerateEdgeVertices_mCD0E9C6C3069094CC5D697D513C3D9A6E00A538F,
+	PieceMeshGenerator_GetEdgeVectors_m181116C37AF0375D35C44426223EBBB0AAEFF993,
 	PieceMeshGenerator_AddVertex_m8C9BAFB68317ACC470BC46251598BD1C17BCECF0,
 	PieceMeshGenerator_GenerateAllMorphologyVariants_mAD999B7BCB58EA841DC6B4C6F9A4430A3FBC5066,
 	PieceMeshGenerator_GetMorphologyIndex_mBF96AF3A32AAF803619B716E67DA7F57634B0604,
@@ -1370,12 +1390,15 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	PuzzleBoard_Start_m643ECAA349ACD4B490378648943E7922F3C4EF7A,
 	PuzzleBoard_OnDestroy_m8F830AAF8063A60EBFCF9C79627DD013F5E8548E,
 	PuzzleBoard_OnSwipeInput_mA8BB31C5C9EA8C2989544324E24BE516D5575B09,
+	PuzzleBoard_OnEnable_mAE704683C9FE2027E6CA6CD3024A207E2BD89D78,
+	PuzzleBoard_Update_m5FC647A9F8B8877CF41AE19D1C2E60702EDF812A,
 	PuzzleBoard_Initialize_m49FB764D5FB27B6F1FB0838F89733D3DD9C64F53,
 	PuzzleBoard_Initialize_mF5E8D43E5422BEB0FBBF463EFFC7E19588402BBB,
 	PuzzleBoard_SetHelpMode_mCD9776826C04A16ADC7BF37FA48E5E0A39243A4E,
 	PuzzleBoard_TrySnapPiece_m4FEF9C7D8DBEB390279C97AC01BCDCC0AAC782B6,
 	PuzzleBoard_CreateSlotsFromCount_mE606064E626371D151DD071D248E4648090121EA,
 	PuzzleBoard_CreateSlots_mD8FF492BB0B777D88E97A304BB597BDA36E8246C,
+	PuzzleBoard_CreateBoardVisual_m03F38F32FEC1085642CEBFBEB9CFE3074C7D5AB9,
 	PuzzleBoard_CalculateGridDimensions_m81344CA69259FF9B92995773F2501C5E28A40652,
 	PuzzleBoard_GenerateMorphology_mE1C3FFEF76D97ADA47589D852401B9394A4731B3,
 	PuzzleBoard_CheckMorphologyMatches_m2EB4B018006AED9DD8047B1E960CD1A1ED2C6721,
@@ -1384,6 +1407,7 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	PuzzleBoard_GetSlotIndex_m769F492B9A3EE26EACC23D9965D9EEF0CE3D8096,
 	PuzzleBoard_CreatePiece_m61E6AA25DCEFAF85D051C831BA77CA713402EA44,
 	PuzzleBoard_InitializeScroll_mEB8047A40D4FA91A19A7AD4EB730196694912608,
+	PuzzleBoard_CreateTrayVisual_mAAD2F84ABB1DAD7FC1A475B08DB1FC9DAB5F4708,
 	PuzzleBoard_EdgesComplement_m19BD44DA018E838BF77D78AF7DA58C70F5EB2354,
 	PuzzleBoard__ctor_m29831729E6B186F57133228ECF72DE1BD3E63BCB,
 	PuzzlePiece_add_OnReleased_m5C52B9CC585562508C814B7932264725FF79167A,
@@ -1695,7 +1719,15 @@ static Il2CppMethodPointer s_methodPointers[848] =
 	GameBootstrap_HideAllPanels_mD7F7F738DF2E35F4BCABFB078F12B7CEBBE87809,
 	GameBootstrap_OnApplicationPause_mC45D3A47460F16F19316F6A9B104AD9D7EDF2318,
 	GameBootstrap_OnApplicationQuit_m5D5351E09D3135D94685F1A2573892A70D21FD88,
+	GameBootstrap_PositionCanvasErgonomically_m9E40D0859EE38083BD057710F396974D4E6DE173,
+	GameBootstrap_PositionCanvasWithDelay_m6201E0E26C0DDDDA340ADABF81AEEA0AB7CEC363,
 	GameBootstrap__ctor_m6C058F3AC6B0AAF04763FA20BD1DD6063B4F3E9D,
+	U3CPositionCanvasWithDelayU3Ed__99__ctor_mFFE142C8EED3205DAAAF99B89EED0DEAE1635D57,
+	U3CPositionCanvasWithDelayU3Ed__99_System_IDisposable_Dispose_m0B0218606E9ACB0FD9A62BA5EABEDC4502E272F9,
+	U3CPositionCanvasWithDelayU3Ed__99_MoveNext_mCA2CC8DEA648F14D30188ACF7F108279FA05CD59,
+	U3CPositionCanvasWithDelayU3Ed__99_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m43118502C0441CBA3FFDDA27C0B358D3FAFC7BD8,
+	U3CPositionCanvasWithDelayU3Ed__99_System_Collections_IEnumerator_Reset_mE665D58CABF9D1EDBE101B0145CEAE5A4730DFA7,
+	U3CPositionCanvasWithDelayU3Ed__99_System_Collections_IEnumerator_get_Current_mB77E3ABB5EFF8F0C4CA98CC25EA079C25B3575E5,
 	WallSelectionController_add_OnWallConfirmed_m9928956B3328E9C0273C3C299A20E0358C677CE6,
 	WallSelectionController_remove_OnWallConfirmed_mB9880DC952D07BC054C0438BC6D3E3A0416847E6,
 	WallSelectionController_Awake_m5E9EFC6F22F7C54C19417C800CBC0E0C7917885C,
@@ -1715,15 +1747,15 @@ extern void SerializableQuaternion__ctor_m3839A849529785D9916017296B92FBF6D9596E
 extern void SerializableQuaternion_ToQuaternion_m25FDB60BF4578CC90DF983DC010496F29B89DD9D_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[7] = 
 {
-	{ 0x060002DF, PieceMorphology__ctor_m83B0DBE9F4D259D9CD7EFE96AAC5AB1EEC5C1EBB_AdjustorThunk },
-	{ 0x060002E0, PieceMorphology_GetEdge_m317EC2EB0C6C8850E21ED91C258916097E7D7EA3_AdjustorThunk },
-	{ 0x060002E1, PieceMorphology_IsCompatibleWith_mDD50FA76C2656DD875D8AA0701FDA75903A0F6DB_AdjustorThunk },
-	{ 0x060002EE, SerializableVector3__ctor_mE590E0B0FA966D925BE8AE7BC5CE8CB8A42EA217_AdjustorThunk },
-	{ 0x060002EF, SerializableVector3_ToVector3_m5273733CF536CFE315573C66ED53B3F858584DEF_AdjustorThunk },
-	{ 0x060002F0, SerializableQuaternion__ctor_m3839A849529785D9916017296B92FBF6D9596E38_AdjustorThunk },
-	{ 0x060002F1, SerializableQuaternion_ToQuaternion_m25FDB60BF4578CC90DF983DC010496F29B89DD9D_AdjustorThunk },
+	{ 0x060002E7, PieceMorphology__ctor_m83B0DBE9F4D259D9CD7EFE96AAC5AB1EEC5C1EBB_AdjustorThunk },
+	{ 0x060002E8, PieceMorphology_GetEdge_m317EC2EB0C6C8850E21ED91C258916097E7D7EA3_AdjustorThunk },
+	{ 0x060002E9, PieceMorphology_IsCompatibleWith_mDD50FA76C2656DD875D8AA0701FDA75903A0F6DB_AdjustorThunk },
+	{ 0x060002F6, SerializableVector3__ctor_mE590E0B0FA966D925BE8AE7BC5CE8CB8A42EA217_AdjustorThunk },
+	{ 0x060002F7, SerializableVector3_ToVector3_m5273733CF536CFE315573C66ED53B3F858584DEF_AdjustorThunk },
+	{ 0x060002F8, SerializableQuaternion__ctor_m3839A849529785D9916017296B92FBF6D9596E38_AdjustorThunk },
+	{ 0x060002F9, SerializableQuaternion_ToQuaternion_m25FDB60BF4578CC90DF983DC010496F29B89DD9D_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[848] = 
+static const int32_t s_InvokerIndices[864] = 
 {
 	31951,
 	18730,
@@ -1929,6 +1961,7 @@ static const int32_t s_InvokerIndices[848] =
 	14216,
 	14318,
 	18730,
+	18730,
 	14216,
 	14216,
 	14216,
@@ -2108,6 +2141,9 @@ static const int32_t s_InvokerIndices[848] =
 	18730,
 	18730,
 	18730,
+	7467,
+	18730,
+	18730,
 	18730,
 	18730,
 	18730,
@@ -2184,7 +2220,7 @@ static const int32_t s_InvokerIndices[848] =
 	14216,
 	18730,
 	18730,
-	7429,
+	18730,
 	6070,
 	14428,
 	14428,
@@ -2207,14 +2243,14 @@ static const int32_t s_InvokerIndices[848] =
 	18730,
 	21978,
 	19656,
-	19304,
-	19277,
-	20954,
+	19255,
+	19235,
+	19711,
 	19610,
 	31786,
 	29779,
 	23196,
-	20500,
+	20501,
 	31766,
 	22864,
 	30498,
@@ -2238,12 +2274,15 @@ static const int32_t s_InvokerIndices[848] =
 	18730,
 	18730,
 	14318,
+	18730,
+	18730,
 	6677,
 	7241,
 	13998,
 	10102,
 	14141,
 	7241,
+	7398,
 	1099,
 	2049,
 	4393,
@@ -2252,6 +2291,7 @@ static const int32_t s_InvokerIndices[848] =
 	5023,
 	263,
 	18730,
+	14216,
 	4390,
 	18730,
 	14216,
@@ -2563,7 +2603,15 @@ static const int32_t s_InvokerIndices[848] =
 	18730,
 	13998,
 	18730,
+	14216,
+	12250,
 	18730,
+	14141,
+	18730,
+	18273,
+	18493,
+	18730,
+	18493,
 	14216,
 	14216,
 	18730,
@@ -2578,7 +2626,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	848,
+	864,
 	s_methodPointers,
 	7,
 	s_adjustorThunks,
