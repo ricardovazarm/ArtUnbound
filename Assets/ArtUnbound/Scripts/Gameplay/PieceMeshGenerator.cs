@@ -32,21 +32,8 @@ namespace ArtUnbound.Gameplay
             float tabHalfWidth = pieceSize * TAB_WIDTH * 0.5f;
             float thickness = 0.005f; // 5mm thickness
 
-            // 1. Generate Front Face (Z = +halfThickness)
-            // We use the existing logic but offset Z
-            // Note: If Z+ is towards camera, Front Face should be at +Z? 
-            // Standard object: Local origin 0. Front face +Z/2, Back -Z/2?
-            // Let's assume piece origin is center.
-
-            float zFront = 0f; // Let's simplify: Front is at 0, extrude BACK (-Z) so pivot remains on surface?
-                               // User requested explicit Z positioning (0.025). If pivot is center, maybe Thickness/2?
-                               // Let's assume pivot is Back Face = 0, Front Face = Thickness?
-                               // Or Pivot Center?
-                               // User said "Son planas". Standard Plane has normal +Y. Quad normal -Z?
-                               // Let's generate Front at Z=0 (Pivot) and extrude backwards to -Thickness.
-                               // Or Front at Thickness/2, Back at -Thickness/2.
-
-            // Let's go with: Front Face at Z=0. Back Face at Z = -Thickness.
+            // 1. Generate Front Face (Z = 0)
+            // The piece will be centered at origin with front face at Z=0 and back face at Z=-Thickness
             // Wait, if "Z+ is towards user", then Front Face (visible) should be the most Z+ part.
             // If Object is at 0.025, that's its pivot.
             // Be safe: Center geometry around Z=0. Extrude -HalfThick to +HalfThick.

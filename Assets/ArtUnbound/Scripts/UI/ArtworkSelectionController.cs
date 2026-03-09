@@ -40,14 +40,27 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
+            Debug.Log($"[ArtworkSelectionController] Show() called. Panel: {(panel != null ? panel.name : "NULL")}");
+            
             // Ensure the script holder is active
             if (!gameObject.activeSelf)
+            {
+                Debug.Log("[ArtworkSelectionController] GameObject was inactive. Activating now.");
                 gameObject.SetActive(true);
+            }
 
             if (panel != null)
+            {
                 panel.SetActive(true);
+                Debug.Log($"[ArtworkSelectionController] Panel '{panel.name}' activated. Active: {panel.activeSelf}");
+            }
+            else
+            {
+                Debug.LogError("[ArtworkSelectionController] Panel is NULL!");
+            }
 
             RefreshGrid();
+            Debug.Log("[ArtworkSelectionController] Show() completed.");
         }
 
         public void Hide()
@@ -59,6 +72,7 @@ namespace ArtUnbound.UI
         public void SetData(List<ArtworkDefinition> artworks)
         {
             availableArtworks = artworks ?? new List<ArtworkDefinition>();
+            Debug.Log($"[ArtworkSelectionController] SetData() called with {availableArtworks.Count} artworks.");
             RefreshGrid();
         }
 

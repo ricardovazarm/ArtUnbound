@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PuzzleConfig
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.PuzzleConfig
   pieceCounts: 40000000900000000001000000020000
-  snapDistanceCm: 3
+  defaultPieceCount: 144
+  snapDistanceCm: 2
   pinchRangeCm: 1
   pieceSizeCm: 5
   pieceThicknessCm: 0.5

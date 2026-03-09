@@ -34,9 +34,10 @@ namespace ArtUnbound.Feedback
         [SerializeField] private AudioClip galleryAmbient;
 
         [Header("Volume Settings")]
-        [SerializeField] private float sfxVolume = 1.0f;
-        [SerializeField] private float musicVolume = 0.7f;
-        [SerializeField] private float ambientVolume = 0.3f;
+        [SerializeField] private float sfxVolume = 0.7f; // Standard UI sounds
+        [SerializeField] private float musicVolume = 0.3f; // Background music should be subtle
+        [SerializeField] private float ambientVolume = 0.2f;
+        [SerializeField] private float pieceVolume = 0.6f; // Piece sounds are primary gameplay feedback
 
         [Header("Configuration")]
         [SerializeField] private float musicFadeDuration = 1.0f;
@@ -133,7 +134,8 @@ namespace ArtUnbound.Feedback
         /// </summary>
         public void PlayPieceGrab()
         {
-            PlaySound("piece_grab");
+            if (sfxSource == null || pieceGrabSound == null) return;
+            sfxSource.PlayOneShot(pieceGrabSound, pieceVolume);
         }
 
         /// <summary>
@@ -141,7 +143,8 @@ namespace ArtUnbound.Feedback
         /// </summary>
         public void PlayPieceRelease()
         {
-            PlaySound("piece_release");
+            if (sfxSource == null || pieceReleaseSound == null) return;
+            sfxSource.PlayOneShot(pieceReleaseSound, pieceVolume);
         }
 
         /// <summary>
@@ -149,7 +152,8 @@ namespace ArtUnbound.Feedback
         /// </summary>
         public void PlayPieceSnap()
         {
-            PlaySound("piece_snap");
+            if (sfxSource == null || pieceSnapSound == null) return;
+            sfxSource.PlayOneShot(pieceSnapSound, pieceVolume);
         }
 
         /// <summary>
@@ -157,7 +161,8 @@ namespace ArtUnbound.Feedback
         /// </summary>
         public void PlayPieceIncorrect()
         {
-            PlaySound("piece_incorrect");
+            if (sfxSource == null || pieceIncorrectSound == null) return;
+            sfxSource.PlayOneShot(pieceIncorrectSound, pieceVolume);
         }
 
         /// <summary>

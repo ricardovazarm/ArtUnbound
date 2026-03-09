@@ -6,6 +6,7 @@ namespace ArtUnbound.Data
     public class PuzzleConfig : ScriptableObject
     {
         public int[] pieceCounts = { 64, 144, 256, 512 };
+        public int defaultPieceCount = 144; // Normal difficulty
         public float snapDistanceCm = 2.0f;
         public float pinchRangeCm = 1.0f;
         public float pieceSizeCm = 5.0f;

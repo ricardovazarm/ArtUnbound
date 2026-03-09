@@ -66,10 +66,8 @@ namespace ArtUnbound.MR
 
         private void OnEnable()
         {
-            if (inputController != null)
-            {
-                inputController.OnPinchStart += HandlePinch;
-            }
+            // DON'T subscribe here automatically. Only subscribe when StartPositioning() is called.
+            // This prevents the ComfortModeController from hijacking pinch events during menu navigation.
         }
 
         private void OnDisable()
@@ -101,6 +99,14 @@ namespace ArtUnbound.MR
             }
 
             isLocked = false;
+            
+            // NOW subscribe to pinch events (only when positioning is active)
+            if (inputController != null)
+            {
+                inputController.OnPinchStart -= HandlePinch; // Ensure no duplicate
+                inputController.OnPinchStart += HandlePinch;
+                Debug.Log("[ComfortModeController] Subscribed to Pinch events.");
+            }
 
             if (previewPrefab != null)
             {
@@ -164,6 +170,13 @@ namespace ArtUnbound.MR
         {
             isLocked = true;
             Debug.Log($"[ComfortModeController] LockPosition called. Locking at: {currentPosition}");
+
+            // Unsubscribe from pinch events (we're done positioning)
+            if (inputController != null)
+            {
+                inputController.OnPinchStart -= HandlePinch;
+                Debug.Log("[ComfortModeController] Unsubscribed from Pinch events.");
+            }
 
             // Destroy preview
             if (previewInstance != null)

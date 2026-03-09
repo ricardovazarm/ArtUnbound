@@ -1,6 +1,8 @@
 using ArtUnbound.Data;
 using ArtUnbound.Gameplay;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace ArtUnbound.Input
 {
@@ -13,13 +15,16 @@ namespace ArtUnbound.Input
         [SerializeField] private HandTrackingInputController inputController;
         [SerializeField] private LayerMask interactableLayer;
         [SerializeField] private float rayLength = 2.0f;
+        [SerializeField] private bool useRaycast = true; // Enabled for Controllers
         [SerializeField] private LineRenderer rayVisualizer;
 
         private PuzzlePiece currentDraggedPiece;
         private float currentDragDistance;
         private Vector3 dragOffset;
+        private int targetSlotIndex = -1; // Store the slot shown in the highlight
+        private bool pieceWasFromBoard = false; // Track if the piece was grabbed from the board
 
-        private void Start()
+        private void OnEnable()
         {
             if (inputController != null)
             {
@@ -27,6 +32,41 @@ namespace ArtUnbound.Input
                 inputController.OnPinchHold += HandlePinchHold;
                 inputController.OnPinchEnd += HandlePinchEnd;
             }
+        }
+
+        private void Start()
+        {
+            if (rayVisualizer != null)
+            {
+                rayVisualizer.enabled = false;
+                rayVisualizer.useWorldSpace = true;
+                rayVisualizer.positionCount = 2;
+                rayVisualizer.startWidth = 0.02f;
+                rayVisualizer.endWidth = 0.02f;
+
+                if (rayVisualizer.sharedMaterial == null)
+                {
+                    Shader s = Shader.Find("Sprites/Default");
+                    if (s == null) s = Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply");
+                    if (s == null) s = Shader.Find("UI/Default");
+
+                    if (s != null)
+                    {
+                        rayVisualizer.material = new Material(s);
+                        rayVisualizer.material.color = Color.red;
+                    }
+                }
+
+                rayVisualizer.startColor = Color.red;
+                rayVisualizer.endColor = Color.red;
+            }
+        }
+
+        private void Update()
+        {
+            // El Ray Visualizer manual ha sido eliminado para evitar conflictos.
+            // Si necesitas un láser visual para la UI, te recomiendo usar el 
+            // XRRayInteractor o Near-Far Interactor nativo de Unity en los prefabs de las manos.
         }
 
         private void OnDestroy()
@@ -41,49 +81,113 @@ namespace ArtUnbound.Input
 
         private void HandlePinchStart(Vector3 position, Quaternion rotation)
         {
-            Ray ray = new Ray(position, rotation * Vector3.forward);
-            
-            if (rayVisualizer != null)
+            // GUARD: Don't grab a new piece if we're already holding one
+            if (currentDraggedPiece != null)
             {
-                rayVisualizer.enabled = true;
-                rayVisualizer.SetPosition(0, position);
-                rayVisualizer.SetPosition(1, position + ray.direction * rayLength);
+                return;
             }
 
-            if (Physics.Raycast(ray, out RaycastHit hit, rayLength, interactableLayer))
+            currentDragDistance = 0f;
+            dragOffset = Vector3.zero;
+
+            // METHOD 1: Proximity/Sphere Overlap (Primary for Hand Tracking)
+            float grabRadius = 0.015f; // 1.5cm radius
+            Collider[] colliders = Physics.OverlapSphere(position, grabRadius, interactableLayer);
+
+            PuzzlePiece bestPiece = null;
+            float bestDist = float.MaxValue;
+
+            if (colliders.Length > 0)
             {
-                PuzzlePiece piece = hit.collider.GetComponentInParent<PuzzlePiece>();
-                if (piece != null)
+                foreach (var col in colliders)
                 {
-                    currentDraggedPiece = piece;
-                    currentDragDistance = hit.distance;
-                    dragOffset = piece.transform.position - hit.point;
-                    
-                    piece.SetDragged(true);
+                    var p = col.GetComponentInParent<PuzzlePiece>();
+                    if (p != null && p.CurrentState != PieceState.Grabbed)
+                    {
+                        float d = Vector3.Distance(position, p.transform.position);
+                        if (d < bestDist)
+                        {
+                            bestDist = d;
+                            bestPiece = p;
+                        }
+                    }
                 }
+                
+                // CRITICAL FIX: Only grab if piece is ACTUALLY within the grab radius
+                // This prevents grabbing pieces that are far away but have large colliders
+                if (bestPiece != null && bestDist > grabRadius)
+                {
+                    bestPiece = null; // Reject pieces outside the threshold
+                }
+            }
+
+            // METHOD 2: Raycast Fallback (for Controllers)
+            if (useRaycast && bestPiece == null)
+            {
+                Ray ray = new Ray(position, rotation * Vector3.forward);
+                if (Physics.Raycast(ray, out RaycastHit hit, rayLength, interactableLayer))
+                {
+                    var piece = hit.collider.GetComponentInParent<PuzzlePiece>();
+                    if (piece != null && piece.CurrentState != PieceState.Placed && piece.CurrentState != PieceState.Grabbed)
+                    {
+                        // CRITICAL: Validate distance for raycast too
+                        float rayDist = Vector3.Distance(position, piece.transform.position);
+                        if (rayDist <= grabRadius)
+                        {
+                            bestPiece = piece;
+                        }
+                    }
+                }
+            }
+
+            if (bestPiece != null)
+            {
+                // Track if the piece was grabbed from the board
+                pieceWasFromBoard = (bestPiece.CurrentState == PieceState.Placed);
+                
+                // Play grab sound
+                if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                {
+                    ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+                }
+                
+                // If the piece was placed on the board, remove it from the slot first
+                if (pieceWasFromBoard)
+                {
+                    var board = FindFirstObjectByType<PuzzleBoard>();
+                    if (board != null)
+                    {
+                        board.RemovePieceFromSlot(bestPiece);
+                    }
+                }
+                
+                currentDraggedPiece = bestPiece;
+                dragOffset = bestPiece.transform.position - position;
+                bestPiece.SetDragged(true);
             }
         }
 
         private void HandlePinchHold(Vector3 position, Quaternion rotation)
         {
-            Ray ray = new Ray(position, rotation * Vector3.forward);
-
-            if (rayVisualizer != null)
-            {
-                rayVisualizer.SetPosition(0, position);
-                rayVisualizer.SetPosition(1, position + ray.direction * rayLength);
-            }
-
             if (currentDraggedPiece != null)
             {
-                // Move piece
-                Vector3 targetPoint = ray.GetPoint(currentDragDistance) + dragOffset;
+                // Move piece to follow hand position directly with offset
+                Vector3 targetPoint = position + dragOffset;
+
+                // Direct follow (no lerp) for better responsiveness
+                // The piece should feel "glued" to the fingers
+                currentDraggedPiece.transform.position = targetPoint;
+
+                // Keep original rotation (don't rotate the piece)
+                // The piece maintains board orientation for proper snapping
                 
-                // Simple smoothing
-                currentDraggedPiece.transform.position = Vector3.Lerp(currentDraggedPiece.transform.position, targetPoint, Time.deltaTime * 20f);
-                
-                // Align rotation to user (optional) or keep board alignment
-                // For a 2D puzzle on a wall, we usually keep rotation locked to the board's plane or local rotation
+                // Update slot highlight using the ACTUAL piece position (not calculated position)
+                // This ensures the highlight is always based on where the piece really is
+                var board = FindFirstObjectByType<PuzzleBoard>();
+                if (board != null)
+                {
+                    targetSlotIndex = board.UpdateSlotHighlight(currentDraggedPiece.transform.position);
+                }
             }
         }
 
@@ -94,35 +198,108 @@ namespace ArtUnbound.Input
                 rayVisualizer.enabled = false;
             }
 
-            if (currentDraggedPiece != null)
+            // Guard against processing the same pinch end twice
+            if (currentDraggedPiece == null)
             {
-                // Try validation logic inside PuzzlePiece or Board
-                bool snapped = false; 
-
-                // We can check with PuzzleBoard here if we had a reference, 
-                // but PuzzlePiece calls Release(), which should fire an event the Board listens to.
-                // However, the Board listens to OnRelease?
-                // Actually, PuzzleBoard only has TrySnapPiece(piece). 
-                // We need to call that.
-                
-                // Find board? Or assume Singleton? 
-                // Better: GameBootstrap.Instance.PuzzleBoard.TrySnapPiece(currentDraggedPiece);
-                
-                var board = FindFirstObjectByType<PuzzleBoard>(); // Creating a direct dependency or cache it
-                if (board != null)
-                {
-                    snapped = board.TrySnapPiece(currentDraggedPiece);
-                }
-
-                currentDraggedPiece.SetDragged(false); // Validate/Snap or Return managed internally
-                
-                if (!snapped && currentDraggedPiece.CurrentState != PieceState.Placed)
-                {
-                    // Maybe return to scroll? logic handled by piece release?
-                }
-
-                currentDraggedPiece = null;
+                targetSlotIndex = -1;
+                return;
             }
+            
+            // Store references before clearing
+            var piece = currentDraggedPiece;
+            var slotIndex = targetSlotIndex;
+            var wasFromBoard = pieceWasFromBoard;
+            
+            // Clear IMMEDIATELY to prevent double processing
+            piece.SetDragged(false);
+            currentDraggedPiece = null;
+            targetSlotIndex = -1;
+            pieceWasFromBoard = false;
+            
+            // Try to snap the piece to the board using the slot we stored from the highlight
+            var board = FindFirstObjectByType<PuzzleBoard>();
+            if (board != null)
+            {
+                bool snapped = false;
+                
+                if (slotIndex >= 0)
+                {
+                    snapped = board.SnapPieceToSlot(piece, slotIndex);
+                }
+                
+                if (!snapped)
+                {
+                    // Failed to snap - return based on origin
+                    if (wasFromBoard)
+                    {
+                        board.ReturnPieceToTray(piece);
+                    }
+                    else
+                    {
+                        piece.ReturnToPool(piece.GetPoolPosition());
+                    }
+                }
+                
+                // Clear highlight after snap attempt
+                board.ClearSlotHighlight();
+            }
+        }
+
+        private bool TryClickUI(Vector3 origin, Vector3 direction)
+        {
+            Ray ray = new Ray(origin, direction);
+            float closestDist = rayLength;
+            Selectable hitSelectable = null;
+
+            // Find all active selectables (Buttons, Toggles, etc.)
+            Selectable[] selectables = FindObjectsByType<Selectable>(FindObjectsSortMode.None);
+            foreach (var sel in selectables)
+            {
+                if (sel.interactable && sel.gameObject.activeInHierarchy)
+                {
+                    RectTransform rect = sel.GetComponent<RectTransform>();
+                    if (rect != null)
+                    {
+                        // Raycast against the front plane of the RectTransform
+                        Plane plane = new Plane(-rect.forward, rect.position);
+                        if (!plane.Raycast(ray, out float enter))
+                        {
+                            // Try the back plane just in case
+                            plane = new Plane(rect.forward, rect.position);
+                            plane.Raycast(ray, out enter);
+                        }
+
+                        if (enter > 0 && enter < closestDist)
+                        {
+                            Vector3 hitPoint = ray.GetPoint(enter);
+                            Vector3 localHit = rect.InverseTransformPoint(hitPoint);
+
+                            if (rect.rect.Contains(localHit))
+                            {
+                                closestDist = enter;
+                                hitSelectable = sel;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (hitSelectable != null)
+            {
+                PointerEventData pointerData = new PointerEventData(EventSystem.current);
+                ExecuteEvents.Execute(hitSelectable.gameObject, pointerData, ExecuteEvents.pointerClickHandler);
+                ExecuteEvents.Execute(hitSelectable.gameObject, pointerData, ExecuteEvents.submitHandler);
+                
+                Button btn = hitSelectable as Button;
+                if (btn != null && btn.onClick != null)
+                {
+                    btn.onClick.Invoke();
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

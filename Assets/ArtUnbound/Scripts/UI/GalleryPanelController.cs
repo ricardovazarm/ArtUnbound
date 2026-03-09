@@ -13,10 +13,12 @@ namespace ArtUnbound.UI
     public class GalleryPanelController : MonoBehaviour
     {
         public event Action<string> OnArtworkSelected;
+#pragma warning disable CS0067 // Event is declared but never used (reserved for future features)
         public event Action<string> OnPlayRequested;
         public event Action<string> OnHangRequested;
         public event Action<string> OnRelocateRequested;
         public event Action<string> OnRemoveRequested;
+#pragma warning restore CS0067
 
         [Header("Panel References")]
         [SerializeField] private GameObject panel;

@@ -27,6 +27,7 @@ namespace ArtUnbound.Core
 
         [Header("General UI")]
         [SerializeField] private Transform mainUICanvas;
+        [SerializeField] private LoadingSpinner loadingSpinner;
 
         [Header("UI Controllers")]
         [SerializeField] private MainMenuController mainMenuController;
@@ -230,7 +231,7 @@ namespace ArtUnbound.Core
             // Puzzle Board
             if (puzzleBoard != null)
             {
-                puzzleBoard.OnPieceSnapped += OnPieceSnapped;
+                puzzleBoard.OnPlacementSuccess += OnPieceCorrectlyPlaced;
                 puzzleBoard.OnPuzzleComplete += OnPuzzleComplete;
             }
 
@@ -373,18 +374,34 @@ namespace ArtUnbound.Core
         private void OnPlayRequested()
         {
             Debug.Log("[GameBootstrap] OnPlayRequested received. Showing Artwork Selection.");
+            
+            if (artworkSelectionController == null)
+            {
+                Debug.LogError("[GameBootstrap] CRITICAL: artworkSelectionController is NULL! Cannot show artwork selection.");
+                return;
+            }
+            
+            Debug.Log($"[GameBootstrap] artworkSelectionController found: {artworkSelectionController.name}");
             ShowArtworkSelection();
         }
 
         private void ShowArtworkSelection()
         {
-            SetState(GameState.ArtworkSelection); // Ideally add this enum if not exists, or reuse Gallery
+            Debug.Log("[GameBootstrap] ShowArtworkSelection() called.");
+            SetState(GameState.ArtworkSelection);
             HideAllPanels();
+            
+            Debug.Log("[GameBootstrap] HideAllPanels() completed. Now showing artwork selection...");
 
             if (artworkSelectionController != null)
             {
-                artworkSelectionController.SetData(localCatalogService.GetAll());
+                var allArtworks = localCatalogService.GetAll();
+                Debug.Log($"[GameBootstrap] Retrieved {allArtworks.Count} artworks from catalog.");
+                
+                artworkSelectionController.SetData(allArtworks);
                 artworkSelectionController.Show();
+                
+                Debug.Log("[GameBootstrap] ArtworkSelectionController.Show() called successfully.");
             }
             else
             {
@@ -411,17 +428,16 @@ namespace ArtUnbound.Core
 
         private void OnArtworkSelected(string artworkId)
         {
-            Debug.Log($"[GameBootstrap] OnArtworkSelected received for ID: {artworkId}. Transitioning to Detail View.");
+            Debug.Log($"[GameBootstrap] OnArtworkSelected received for ID: {artworkId}. Starting puzzle with default difficulty.");
             HideAllPanels();
             selectedArtworkId = artworkId;
 
-            var progress = SaveData.GetProgress(artworkId);
-            var artworkData = localCatalogService?.GetArtworkById(artworkId);
+            // Use default piece count from config (Normal = 144)
+            selectedPieceCount = puzzleConfig?.defaultPieceCount ?? 144;
+            Debug.Log($"[GameBootstrap] Using default piece count: {selectedPieceCount}");
 
-            if (artworkDetailController != null)
-            {
-                artworkDetailController.ShowArtworkDetail(artworkId, progress, artworkData);
-            }
+            // Go directly to puzzle
+            StartPuzzle();
         }
 
         private void StartPuzzleWithArtwork(string artworkId)
@@ -503,27 +519,19 @@ namespace ArtUnbound.Core
         {
             Debug.Log("[GameBootstrap] OnComfortPositionLocked received. Positioning PuzzleBoard...");
 
-            // Sync PuzzleBoard position to the calculated comfort position
-            // DISTANCE FIX: Ensure Board is at 0.7m, distinct from ComfortMode (0.4m)
-            if (puzzleBoard != null && comfortModeController != null)
+            // Sync PuzzleBoard to match Canvas exactly
+            if (puzzleBoard != null && mainUICanvas != null)
             {
-                // Calculate Board position based on Head (Camera)
-                Transform head = Camera.main.transform;
-                Vector3 forward = head.forward;
-                forward.y = 0f;
-                forward.Normalize();
+                // Use Canvas position and rotation as the base
+                // Board should be at EXACTLY the same position
+                puzzleBoard.transform.position = mainUICanvas.position;
+                
+                // Board rotation = Canvas rotation + 180° to face the user
+                Quaternion canvasRotation = mainUICanvas.rotation;
+                Quaternion boardRotation = canvasRotation * Quaternion.Euler(0f, 180f, 0f);
+                puzzleBoard.transform.rotation = boardRotation;
 
-                // Use height from comfort mode to keep it aligned vertically
-                float height = comfortModeController.CurrentPosition.y;
-
-                // DISTANCE UPDATED: User requested 0.4m (Same as Canvas)
-                // Use consistent constant
-                Vector3 targetPos = head.position + forward * DefaultPlacementDistance;
-                targetPos.y = height;
-
-                puzzleBoard.transform.position = targetPos;
-                puzzleBoard.transform.rotation = comfortModeController.CurrentRotation;
-                Debug.Log($"[GameBootstrap] PuzzleBoard moved to {targetPos} (Dist: 0.4m override)");
+                Debug.Log($"[GameBootstrap] PuzzleBoard synced to Canvas | Pos: {mainUICanvas.position} | Canvas Y: {canvasRotation.eulerAngles.y:F2}° | Board Y: {boardRotation.eulerAngles.y:F2}°");
             }
 
             InitializePuzzleBoard();
@@ -542,7 +550,7 @@ namespace ArtUnbound.Core
 
             puzzleBoard.Initialize(selectedPieceCount, artworkTexture);
         }
-        private void OnPieceSnapped(int gridX, int gridY)
+        private void OnPieceCorrectlyPlaced(PuzzlePiece piece)
         {
             if (CurrentSession != null)
             {
@@ -554,8 +562,8 @@ namespace ArtUnbound.Core
                 puzzleHUD.UpdatePiecesPlaced(CurrentSession?.piecesPlaced ?? 0);
             }
 
-            if (audioManager != null)
-                audioManager.PlayPieceSnap();
+            // Audio is now handled in PuzzleBoard based on correctness
+            // Removed: audioManager.PlayPieceSnap() to avoid duplicate sounds
 
             if (hapticController != null)
                 hapticController.PlaySnapPattern(HandSide.Both);
@@ -800,81 +808,96 @@ namespace ArtUnbound.Core
 
         private System.Collections.IEnumerator PositionCanvasWithDelay(Transform canvasTransform)
         {
-            // FAST PATH: 2.0s timeout is enough.
-            float timeout = 2.0f;
-            float timer = 0f;
-            bool trackingFound = false;
-
-            Debug.Log("[GameBootstrap] Waiting for XR Head Tracking (Y > 0.5)...");
-
-            while (!trackingFound && timer < timeout)
-            {
-                // Check if Head (Camera) is at a reasonable height (> 0.5m)
-                // This usually indicates tracking is established.
-                if (Camera.main != null && Camera.main.transform.position.y > 0.5f)
-                {
-                    trackingFound = true;
-                    Debug.Log($"[GameBootstrap] VALID Camera Position (Y>0.5): {Camera.main.transform.position}");
-                }
-
-                if (!trackingFound)
-                {
-                    yield return null;
-                    timer += Time.deltaTime;
-                }
-            }
-
-            // Stabilization: minimal delay to let frame settle
-            yield return new WaitForEndOfFrame();
-
-            if (canvasTransform == null) yield break;
-
+            // INITIAL POSITIONING: Use default height immediately for responsive UI
             Transform headTransform = Camera.main != null ? Camera.main.transform : null;
             if (headTransform == null)
             {
-                Debug.LogError("[GameBootstrap] FATAL: Camera.main is null.");
+                Debug.LogError("[GameBootstrap] FATAL: Camera.main is null at startup.");
                 yield break;
             }
 
-            Vector3 finalHeadPos = headTransform.position;
-            if (finalHeadPos.y < 0.1f)
-            {
-                Debug.LogWarning("[GameBootstrap] Head still at floor level. Forcing default height.");
-                finalHeadPos.y = 1.6f;
-            }
-
+            // Calculate initial position with default height (1.7m)
             Vector3 forward = headTransform.forward;
             forward.y = 0f;
             forward.Normalize();
 
-            // Constants
             float heightOffset = -0.15f;
-            float tiltAngle = 15f;
-            // Use consistent distance
             float distance = DefaultPlacementDistance;
+            
+            // Use default height of 1.7m for initial positioning
+            Vector3 initialPosition = headTransform.position + forward * distance;
+            initialPosition.y = 1.7f + heightOffset; // Start at 1.7m
 
-            // Calculate Target
+            Quaternion canvasRotation = Quaternion.LookRotation(forward);
+            Quaternion boardRotation = canvasRotation * Quaternion.Euler(0f, 180f, 0f); // Exactly 180° difference
+
+            // Set initial positions
+            canvasTransform.position = initialPosition;
+            canvasTransform.rotation = canvasRotation;
+            
+            if (puzzleBoard != null)
+            {
+                puzzleBoard.transform.position = initialPosition;
+                puzzleBoard.transform.rotation = boardRotation;
+            }
+
+            Debug.Log($"[GameBootstrap] Initial Canvas positioned at 1.7m: {initialPosition}");
+
+            // WAIT FOR TRACKING STABILIZATION: 2 seconds
+            Debug.Log("[GameBootstrap] Waiting 2 seconds for XR tracking to stabilize...");
+            
+            // Show loading spinner
+            if (loadingSpinner != null)
+            {
+                loadingSpinner.Show("Calibrando...");
+            }
+            
+            yield return new WaitForSeconds(2.0f);
+
+            // FINAL POSITIONING: Use actual head height
+            Vector3 finalHeadPos = headTransform.position;
+            
+            // Validate head height is reasonable
+            if (finalHeadPos.y < 1.2f)
+            {
+                Debug.LogWarning($"[GameBootstrap] Head too low ({finalHeadPos.y}m). Using default 1.6m.");
+                finalHeadPos.y = 1.6f;
+            }
+            else if (finalHeadPos.y > 2.0f)
+            {
+                Debug.LogWarning($"[GameBootstrap] Head too high ({finalHeadPos.y}m). Clamping to 2.0m.");
+                finalHeadPos.y = 2.0f;
+            }
+
+            // Recalculate forward direction
+            forward = headTransform.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            // Calculate final target position with actual head height
             Vector3 targetPosition = finalHeadPos + forward * distance;
             targetPosition.y += heightOffset;
 
-            // CALCULATE ROTATIONS
-            // Canvas appears to require 'forward' (Line 905 original), likely has 180 flip in prefab
-            Quaternion canvasRotation = Quaternion.LookRotation(forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
+            // Update rotations
+            canvasRotation = Quaternion.LookRotation(forward);
+            boardRotation = canvasRotation * Quaternion.Euler(0f, 180f, 0f); // Exactly 180° difference
 
-            // PuzzleBoard expects standard '-forward' to face user (matches ComfortModeController)
-            Quaternion boardRotation = Quaternion.LookRotation(-forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
-
-            // 1. Set Canvas
+            // Set final positions
             canvasTransform.position = targetPosition;
             canvasTransform.rotation = canvasRotation;
-            Debug.Log($"[GameBootstrap] Positioned Canvas at {targetPosition} (Dist: {distance})");
+            Debug.Log($"[GameBootstrap] Final Canvas positioned at {targetPosition} (Head: {finalHeadPos.y:F2}m)");
 
-            // 2. Set PuzzleBoard (Pre-positioning)
             if (puzzleBoard != null)
             {
                 puzzleBoard.transform.position = targetPosition;
                 puzzleBoard.transform.rotation = boardRotation;
-                Debug.Log($"[GameBootstrap] Positioned PuzzleBoard matched to Canvas at {targetPosition} (BoardRot adjusted)");
+                Debug.Log($"[GameBootstrap] PuzzleBoard matched to Canvas at {targetPosition}");
+            }
+            
+            // Hide loading spinner
+            if (loadingSpinner != null)
+            {
+                loadingSpinner.Hide();
             }
         }
 

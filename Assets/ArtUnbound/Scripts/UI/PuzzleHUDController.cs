@@ -163,8 +163,8 @@ namespace ArtUnbound.UI
         {
             if (piecesText != null)
             {
-                int percentage = totalPieces > 0 ? Mathf.RoundToInt((float)placedPieces / totalPieces * 100) : 0;
-                piecesText.text = $"{percentage}%";
+                // Show "correct / total" instead of percentage
+                piecesText.text = $"{placedPieces} / {totalPieces}";
             }
 
             if (progressSlider != null)

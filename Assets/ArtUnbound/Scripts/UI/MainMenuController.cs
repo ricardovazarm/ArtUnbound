@@ -174,9 +174,19 @@ namespace ArtUnbound.UI
 
         private void OnPlayClicked()
         {
-            Debug.Log("[MainMenuController] Play button clicked.");
-            // Direct play request without mode selection
+            Debug.Log("[MainMenuController] Play button clicked. Invoking OnPlayRequested event...");
+            
+            if (OnPlayRequested == null)
+            {
+                Debug.LogError("[MainMenuController] OnPlayRequested event has NO subscribers!");
+            }
+            else
+            {
+                Debug.Log($"[MainMenuController] OnPlayRequested has {OnPlayRequested.GetInvocationList().Length} subscriber(s).");
+            }
+            
             OnPlayRequested?.Invoke();
+            Debug.Log("[MainMenuController] OnPlayRequested invoked successfully.");
         }
 
         // private void ShowGameModeSelection() { }

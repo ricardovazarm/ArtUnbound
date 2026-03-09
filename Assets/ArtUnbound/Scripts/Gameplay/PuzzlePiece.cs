@@ -117,7 +117,8 @@ namespace ArtUnbound.Gameplay
         {
             Vector3 startPos = transform.position;
             Quaternion startRot = transform.rotation;
-            Quaternion targetRot = Quaternion.identity;
+            // Target Rotation: Match Parent (Tray) Rotation to stay aligned/vertical with board
+            Quaternion targetRot = transform.parent != null ? transform.parent.rotation : Quaternion.identity;
             float elapsed = 0f;
 
             while (elapsed < returnAnimationDuration)
