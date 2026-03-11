@@ -13,10 +13,12 @@ namespace ArtUnbound.Feedback
         [Header("Particle Settings")]
         [SerializeField] private GameObject particlePrefab;
         [SerializeField] private Color correctPlacementColor = new Color(0.2f, 1f, 0.3f, 1f); // Green
-        [SerializeField] private int particleCount = 15;
-        [SerializeField] private float particleLifetime = 0.5f;
-        [SerializeField] private float particleSpeed = 0.5f;
-        [SerializeField] private float particleSize = 0.02f;
+        [SerializeField] private Color milestoneColor = new Color(1f, 0.85f, 0.2f, 1f); // Gold/amber
+        // Unused particle settings - kept for future use if needed
+        // [SerializeField] private int particleCount = 15;
+        // [SerializeField] private float particleLifetime = 0.5f;
+        // [SerializeField] private float particleSpeed = 0.5f;
+        // [SerializeField] private float particleSize = 0.02f;
 
         private void Awake()
         {
@@ -37,6 +39,37 @@ namespace ArtUnbound.Feedback
         {
             // Use simple burst effect which is more reliable and performant
             PlaySimpleBurstEffect(position);
+        }
+
+        /// <summary>
+        /// Plays milestone effect: larger particle burst.
+        /// Text is shown on the HUD via PuzzleHUDController.ShowMilestoneText.
+        /// </summary>
+        public void PlayMilestoneEffect(Vector3 position, string message)
+        {
+            PlayMilestoneBurstEffect(position);
+        }
+
+        /// <summary>
+        /// Larger burst effect for milestones (gold/amber color).
+        /// </summary>
+        private void PlayMilestoneBurstEffect(Vector3 position)
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.transform.position = position;
+                sphere.transform.localScale = Vector3.one * 0.015f;
+
+                Destroy(sphere.GetComponent<Collider>());
+
+                var renderer = sphere.GetComponent<Renderer>();
+                renderer.material = new Material(Shader.Find("Unlit/Color"));
+                renderer.material.color = milestoneColor;
+
+                var animator = sphere.AddComponent<SimpleBurstAnimator>();
+                animator.Initialize(Random.onUnitSphere * 0.15f, 0.7f);
+            }
         }
 
         /// <summary>

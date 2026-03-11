@@ -29,7 +29,7 @@ namespace ArtUnbound.Data
             pieceCount = 0;
             bestTimeSec = int.MaxValue;
             bestScore = 0;
-            bestFrameTier = FrameTier.Madera;
+            bestFrameTier = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
             completedAt = string.Empty;
             isCompleted = false;
         }
@@ -39,13 +39,14 @@ namespace ArtUnbound.Data
             this.pieceCount = pieceCount;
             bestTimeSec = int.MaxValue;
             bestScore = 0;
-            bestFrameTier = FrameTier.Madera;
+            bestFrameTier = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
             completedAt = string.Empty;
             isCompleted = false;
         }
 
         /// <summary>
         /// Updates the record if the new result is better.
+        /// NEW: Records are now based on TIME only, not score.
         /// </summary>
         /// <returns>True if record was updated.</returns>
         public bool TryUpdateRecord(int timeSec, int score, FrameTier tier)
@@ -59,18 +60,16 @@ namespace ArtUnbound.Data
                 updated = true;
             }
 
-            if (score > bestScore)
-            {
-                bestScore = score;
-                updated = true;
-            }
-
+            // NEW: Record is based on FASTEST time, not highest score
             if (timeSec < bestTimeSec)
             {
                 bestTimeSec = timeSec;
+                bestScore = score;  // Keep score for backward compatibility, but it's not used
                 updated = true;
             }
 
+            // Frame tier is now determined by difficulty, not performance
+            // But we still track it for display purposes
             if (tier > bestFrameTier)
             {
                 bestFrameTier = tier;

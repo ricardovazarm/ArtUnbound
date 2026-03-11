@@ -6,6 +6,8 @@ namespace ArtUnbound.Gameplay
 {
     /// <summary>
     /// Calculates scores and determines frame tiers based on puzzle completion.
+    /// NOTE: Frame tier logic is now obsolete (determined by difficulty in GameBootstrap).
+    /// This controller is kept for backward compatibility and potential future use.
     /// </summary>
     public class ScoringController : MonoBehaviour
     {
@@ -72,13 +74,14 @@ namespace ArtUnbound.Gameplay
 
         /// <summary>
         /// Determines the frame tier based on score, help mode, and piece count.
+        /// NOTE: This method is obsolete. Frame tiers are now determined by difficulty in GameBootstrap.
         /// </summary>
         public FrameTier GetFrameTier(int score, bool helpMode, int pieceCount = 64)
         {
-            // Ebano requires: score >= 300, no help, and at least 256 pieces
+            // Platinum requires: score >= 300, no help, and at least 256 pieces
             if (score >= 300 && !helpMode && pieceCount >= 256)
             {
-                return FrameTier.Ebano;
+                return FrameTier.Platinum;
             }
 
             // Oro requires: score >= 200 and no help
@@ -96,15 +99,16 @@ namespace ArtUnbound.Gameplay
             // Default tier determination
             if (score >= 100) return FrameTier.Plata;
             if (score >= 50) return FrameTier.Bronce;
-            return FrameTier.Madera;
+            return FrameTier.Bronce;  // Changed: Bronce is now lowest tier
         }
 
         /// <summary>
         /// Gets frame tier using the FrameConfigSet.
+        /// NOTE: This method is obsolete. Frame tiers are now determined by difficulty in GameBootstrap.
         /// </summary>
         private FrameTier GetFrameTierFromConfigSet(int score, bool helpMode)
         {
-            FrameTier best = FrameTier.Madera;
+            FrameTier best = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
 
             for (int i = 0; i < frameConfigSet.configs.Count; i++)
             {

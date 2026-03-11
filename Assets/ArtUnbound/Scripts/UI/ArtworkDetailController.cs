@@ -248,12 +248,11 @@ namespace ArtUnbound.UI
         {
             return tier switch
             {
-                FrameTier.Madera => maderaIcon,
                 FrameTier.Bronce => bronceIcon,
                 FrameTier.Plata => plataIcon,
                 FrameTier.Oro => oroIcon,
-                FrameTier.Ebano => ebanoIcon,
-                _ => maderaIcon
+                FrameTier.Platinum => ebanoIcon,  // Reutilizamos el icono de Ebano para Platinum
+                _ => bronceIcon  // Changed: Bronce is default
             };
         }
 

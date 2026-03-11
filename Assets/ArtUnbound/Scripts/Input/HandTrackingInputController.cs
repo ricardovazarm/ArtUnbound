@@ -299,7 +299,7 @@ namespace ArtUnbound.Input
             }
         }
 
-        private float debugLogTimer = 0f;
+        // private float debugLogTimer = 0f; // Removed - not used
 
         private void ProcessHand(XRHand hand, bool isRight)
         {

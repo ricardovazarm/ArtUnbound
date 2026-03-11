@@ -14,6 +14,7 @@ namespace ArtUnbound.UI
         public event Action OnPlayRequested;
         public event Action OnGalleryRequested;
         public event Action OnSettingsRequested;
+        public event Action OnContinueRequested; // New: Continue last puzzle
         // public event Action<GameMode> OnGameModeSelected;
         public event Action<string> OnWeeklyArtworkSelected;
 
@@ -25,6 +26,7 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI subtitleText;
 
         [Header("Main Buttons")]
+        [SerializeField] private Button continueButton; // New: Continue button
         [SerializeField] private Button playButton;
         [SerializeField] private Button galleryButton;
         [SerializeField] private Button settingsButton;
@@ -44,16 +46,20 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI weeklyArtworkArtist;
         [SerializeField] private Button playWeeklyButton;
 
-        [Header("Stats Display")]
-        [SerializeField] private TextMeshProUGUI completedCountText;
-        [SerializeField] private TextMeshProUGUI hungCountText;
-        [SerializeField] private TextMeshProUGUI totalTimeText;
+        // Stats display removed - user will see progress in Gallery instead
+        // [Header("Stats Display")]
+        // [SerializeField] private TextMeshProUGUI completedCountText;
+        // [SerializeField] private TextMeshProUGUI hungCountText;
+        // [SerializeField] private TextMeshProUGUI totalTimeText;
 
         private string weeklyArtworkId;
         private SaveData playerData;
 
         private void Awake()
         {
+            if (continueButton != null)
+                continueButton.onClick.AddListener(OnContinueClicked);
+
             if (playButton != null)
                 playButton.onClick.AddListener(OnPlayClicked);
 
@@ -87,10 +93,29 @@ namespace ArtUnbound.UI
         public void Initialize(SaveData data)
         {
             playerData = data;
-            UpdateStats();
+            // UpdateStats(); // Removed - stats will be shown in Gallery instead
+
+            // Update continue button visibility
+            UpdateContinueButton();
 
             // Default to hidden unless explicitly shown later
             HideWeeklyHighlight();
+        }
+
+        /// <summary>
+        /// Updates the continue button visibility based on saved session.
+        /// </summary>
+        private void UpdateContinueButton()
+        {
+            if (continueButton == null) return;
+
+            // Check if there's a saved session with progress
+            bool hasSavedSession = !string.IsNullOrEmpty(playerData?.lastArtworkId);
+            
+            continueButton.gameObject.SetActive(hasSavedSession);
+            continueButton.interactable = hasSavedSession;
+            
+            Debug.Log($"[MainMenu] Continue button {(hasSavedSession ? "enabled" : "disabled")} - Last artwork: {playerData?.lastArtworkId}");
         }
 
         /// <summary>
@@ -129,9 +154,15 @@ namespace ArtUnbound.UI
 
         /// <summary>
         /// Updates the stats display.
+        /// [DEPRECATED] Stats are now shown in Gallery instead of Main Menu
         /// </summary>
+        [System.Obsolete("Stats display removed from Main Menu - shown in Gallery instead")]
         public void UpdateStats()
         {
+            // Removed - stats will be shown in Gallery panel instead
+            // This prevents reminding users of incomplete progress on the main menu
+            
+            /*
             if (playerData == null) return;
 
             if (completedCountText != null)
@@ -153,8 +184,14 @@ namespace ArtUnbound.UI
                 int minutes = totalMinutes % 60;
                 totalTimeText.text = hours > 0 ? $"{hours}h {minutes}m" : $"{minutes}m";
             }
+            */
         }
 
+        /// <summary>
+        /// Calculates total play time across all completed artworks.
+        /// [DEPRECATED] Used by removed stats display
+        /// </summary>
+        [System.Obsolete("Stats display removed from Main Menu")]
         private int CalculateTotalPlayTime()
         {
             if (playerData?.artworkProgress == null) return 0;
@@ -187,6 +224,12 @@ namespace ArtUnbound.UI
             
             OnPlayRequested?.Invoke();
             Debug.Log("[MainMenuController] OnPlayRequested invoked successfully.");
+        }
+
+        private void OnContinueClicked()
+        {
+            Debug.Log("[MainMenuController] Continue button clicked. Invoking OnContinueRequested event...");
+            OnContinueRequested?.Invoke();
         }
 
         // private void ShowGameModeSelection() { }
@@ -237,6 +280,7 @@ namespace ArtUnbound.UI
 
         private void OnDestroy()
         {
+            if (continueButton != null) continueButton.onClick.RemoveAllListeners();
             if (playButton != null) playButton.onClick.RemoveAllListeners();
             if (galleryButton != null) galleryButton.onClick.RemoveAllListeners();
             if (settingsButton != null) settingsButton.onClick.RemoveAllListeners();

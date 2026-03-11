@@ -12,7 +12,7 @@ namespace ArtUnbound.UI
         [SerializeField] private PieceScrollController scrollController;
         [SerializeField] private float buttonSize = 0.06f; // 6cm button size
         [SerializeField] private float buttonOffsetX = 0.04f; // Horizontal distance between buttons
-        [SerializeField] private float buttonOffsetY = -0.30f; // Position below the tray
+        [SerializeField] private float buttonOffsetY = -0.35f; // Position below the tray (10cm higher than before)
         [SerializeField] private float buttonOffsetZ = 0.03f; // Bring buttons closer to user
 
         private GameObject upButton;

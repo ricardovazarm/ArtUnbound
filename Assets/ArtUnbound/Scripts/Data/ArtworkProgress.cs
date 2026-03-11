@@ -11,7 +11,7 @@ namespace ArtUnbound.Data
     {
         public string artworkId;
         public List<ArtworkRecord> recordsByPieceCount = new List<ArtworkRecord>();
-        public FrameTier bestFrameTier = FrameTier.Madera;
+        public FrameTier bestFrameTier = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
         public string firstCompletedAt = string.Empty;
         public int totalCompletions = 0;
 
@@ -19,7 +19,7 @@ namespace ArtUnbound.Data
         {
             artworkId = string.Empty;
             recordsByPieceCount = new List<ArtworkRecord>();
-            bestFrameTier = FrameTier.Madera;
+            bestFrameTier = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
             firstCompletedAt = string.Empty;
             totalCompletions = 0;
         }

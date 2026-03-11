@@ -139,7 +139,7 @@ namespace ArtUnbound.UI
         public void SetupSavedSession(PuzzleSessionData session)
         {
             artworkId = session.artworkId;
-            frameTier = FrameTier.Madera;
+            frameTier = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
 
             if (frameImage != null)
                 frameImage.gameObject.SetActive(false);
@@ -209,12 +209,11 @@ namespace ArtUnbound.UI
         {
             return tier switch
             {
-                FrameTier.Madera => frameMadera,
                 FrameTier.Bronce => frameBronce,
                 FrameTier.Plata => framePlata,
                 FrameTier.Oro => frameOro,
-                FrameTier.Ebano => frameEbano,
-                _ => frameMadera
+                FrameTier.Platinum => frameEbano,  // Reutilizamos el sprite de Ebano para Platinum
+                _ => frameBronce  // Changed: Bronce is default
             };
         }
 

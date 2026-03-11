@@ -16,6 +16,8 @@ namespace ArtUnbound.Gameplay
         public event Action OnCompleted;
         public event Action<PuzzlePiece> OnPlacementError;
         public event Action<PuzzlePiece> OnPlacementSuccess;
+        public event Action OnBoardStateChanged; // Event for auto-save
+        public event System.Action<ArtUnbound.UI.MilestoneType, int> OnMilestoneAchieved; // type, edgeCount (for Edges)
 
         [SerializeField] private Transform slotRoot;
         [SerializeField] private PuzzlePiece piecePrefab;
@@ -43,14 +45,6 @@ namespace ArtUnbound.Gameplay
                     GameObject inputObj = new GameObject("HandTrackingInputController");
                     inputController = inputObj.AddComponent<ArtUnbound.Input.HandTrackingInputController>();
                 }
-                else
-                {
-                    Debug.Log("[PuzzleBoard] HandTrackingInputController found via FindFirstObjectByType.");
-                }
-            }
-            else
-            {
-                Debug.Log("[PuzzleBoard] HandTrackingInputController assigned via Inspector.");
             }
 
             if (inputController != null)
@@ -84,21 +78,24 @@ namespace ArtUnbound.Gameplay
         private readonly Dictionary<int, PuzzlePiece> placedBySlot = new Dictionary<int, PuzzlePiece>();
         private int snappedCount;
         private int totalPieces;
+
+        // Milestone tracking: rows, cols, edges already celebrated (avoid duplicates)
+        private readonly HashSet<int> completedRows = new HashSet<int>();
+        private readonly HashSet<int> completedCols = new HashSet<int>();
+        private readonly HashSet<int> completedEdges = new HashSet<int>(); // 0=top, 1=bottom, 2=left, 3=right
+        private bool allEdgesCelebrated;
         private Texture2D currentTexture;
         private Vector3 lastPos;
+        private float currentPieceSize = 0.05f; // Current piece size (calculated dynamically)
 
-        private void OnEnable()
-        {
-            Debug.Log("[PuzzleBoard] OnEnable called. GameObject is active.");
-        }
+        // Public getters for progress tracking
+        public int SnappedCount => snappedCount;
+        public int TotalPieces => totalPieces;
 
         private void Update()
         {
             if (Vector3.Distance(transform.position, lastPos) > 0.01f)
-            {
-                Debug.Log($"[PuzzleBoard] Moved from {lastPos} to {transform.position}");
                 lastPos = transform.position;
-            }
 
             // VERTICAL TRAY: Force PieceTray position to the RIGHT of the board (player's right)
             // INVERTED: Canvas is rotated 180°, so player's right = negative X
@@ -108,10 +105,6 @@ namespace ArtUnbound.Gameplay
                 Vector3 targetPos = new Vector3(-0.45f, 0f, 0f); // Player's right side, same height as board center
                 if (Vector3.Distance(scrollController.transform.localPosition, targetPos) > 0.01f)
                 {
-                    if (Time.frameCount % 60 == 0) // Log once per second approx
-                    {
-                        Debug.LogWarning($"[PuzzleBoard] PieceTray drifted to {scrollController.transform.localPosition}. Forcing back to (-0.45, 0, 0).");
-                    }
                     scrollController.transform.localPosition = targetPos;
                     scrollController.transform.localRotation = Quaternion.identity;
                     scrollController.transform.localScale = Vector3.one;
@@ -128,16 +121,19 @@ namespace ArtUnbound.Gameplay
             totalPieces = pieceCount;
             currentTexture = artworkTexture;
 
-            // Clear existing pieces
             foreach (var piece in activePieces)
             {
-                if (piece != null) Destroy(piece.gameObject);
+                if (piece != null) DestroyImmediate(piece.gameObject);
             }
             activePieces.Clear();
 
             slots.Clear();
             morphologyByPieceId.Clear();
             placedBySlot.Clear();
+            completedRows.Clear();
+            completedCols.Clear();
+            completedEdges.Clear();
+            allEdgesCelebrated = false;
 
             if (slotRoot == null || pieceCount <= 0)
             {
@@ -145,7 +141,6 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
-            Debug.Log($"[PuzzleBoard] Initializing with PieceCount: {pieceCount}, Texture: {artworkTexture?.name} ({artworkTexture?.width}x{artworkTexture?.height})");
             CreateSlotsFromCount(pieceCount);
         }
 
@@ -156,16 +151,19 @@ namespace ArtUnbound.Gameplay
         {
             snappedCount = 0;
 
-            // Clear existing pieces
             foreach (var piece in activePieces)
             {
-                if (piece != null) Destroy(piece.gameObject);
+                if (piece != null) DestroyImmediate(piece.gameObject);
             }
             activePieces.Clear();
 
             slots.Clear();
             morphologyByPieceId.Clear();
             placedBySlot.Clear();
+            completedRows.Clear();
+            completedCols.Clear();
+            completedEdges.Clear();
+            allEdgesCelebrated = false;
 
             if (definition == null || slotRoot == null || pieceCount <= 0)
             {
@@ -188,8 +186,6 @@ namespace ArtUnbound.Gameplay
                 return false;
             }
 
-            Debug.Log($"[PuzzleBoard] TrySnapPiece called for piece {piece.name} at position {piece.transform.position}");
-
             // NEW APPROACH: Check distance to board plane (not individual slots)
             // The board plane is defined by the board's transform
             Vector3 boardNormal = transform.forward; // Board faces forward (towards user when rotated)
@@ -199,9 +195,6 @@ namespace ArtUnbound.Gameplay
             Vector3 pieceToBoard = piece.transform.position - boardPosition;
             float distanceToPlane = Mathf.Abs(Vector3.Dot(pieceToBoard, boardNormal));
             
-            Debug.Log($"[PuzzleBoard] Piece distance to board plane: {distanceToPlane:F3}m (Board pos: {boardPosition}, Normal: {boardNormal})");
-            Debug.Log($"[PuzzleBoard] Total slots: {slots.Count}, Placed pieces: {placedBySlot.Count}");
-
             // STEP 1: Check if piece is close enough to the board plane (within 2cm)
             // This is the ONLY requirement to trigger snap
             float maxDepthToPlane = 0.02f; // 2cm perpendicular distance to board plane
@@ -211,8 +204,6 @@ namespace ArtUnbound.Gameplay
                 return false;
             }
 
-            Debug.Log($"[PuzzleBoard] ✓ Piece is within snap depth ({distanceToPlane:F3}m <= {maxDepthToPlane:F3}m). Finding closest slot...");
-
             if (IsDefaultMorphology(piece.Morphology))
             {
                 piece.ApplyMorphology(GetMorphologyForPieceId(piece.PieceId));
@@ -221,8 +212,6 @@ namespace ArtUnbound.Gameplay
             // STEP 2: Project piece position onto board plane
             Vector3 projectedPiecePos = piece.transform.position - boardNormal * Vector3.Dot(pieceToBoard, boardNormal);
             
-            Debug.Log($"[PuzzleBoard] Piece projected onto board plane: {projectedPiecePos}");
-
             // STEP 3: Find closest slot by distance on the board plane (NO distance limit)
             int bestIndex = -1;
             float bestPlanarDist = float.MaxValue;
@@ -241,8 +230,6 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
-            Debug.Log($"[PuzzleBoard] TrySnapPiece: piecePos={piece.transform.position}, bestSlot={bestIndex}, dist={bestPlanarDist:F3}m");
-
             if (bestIndex < 0)
             {
                 Debug.LogWarning("[PuzzleBoard] ✗ No valid slot found (all occupied)!");
@@ -250,7 +237,6 @@ namespace ArtUnbound.Gameplay
             }
 
             // STEP 4: Snap to the closest slot (no planar distance check)
-            Debug.Log($"[PuzzleBoard] SUCCESS! Snapping piece to slot {bestIndex}");
             
             if (puzzleConfig == null || puzzleConfig.useGridSnapping)
             {
@@ -291,13 +277,19 @@ namespace ArtUnbound.Gameplay
             OnPieceSnappedRaw?.Invoke(piece);
             OnPieceSnapped?.Invoke(slots[bestIndex].col, slots[bestIndex].row);
 
+            // Milestone feedback only when piece is in correct position
+            if (isCorrectSlot)
+                TryPlayMilestoneFeedback(slots[bestIndex].col, slots[bestIndex].row, piece.transform.position);
+
             if (snappedCount >= slots.Count)
             {
+                // Log detailed piece placement before completion
+                LogPiecePlacementStatus();
+                
                 OnCompleted?.Invoke();
                 OnPuzzleComplete?.Invoke();
             }
 
-            Debug.Log($"[PuzzleBoard] ✓ SNAP SUCCESS! Piece {piece.name} -> Slot {bestIndex} (Planar: {bestPlanarDist:F3}m, Depth to plane: {distanceToPlane:F3}m, Snapped: {snappedCount}/{slots.Count})");
             
             // Clear highlight after successful snap
             ClearSlotHighlight();
@@ -376,8 +368,6 @@ namespace ArtUnbound.Gameplay
                 return false;
             }
 
-            Debug.Log($"[PuzzleBoard] SnapPieceToSlot: Snapping piece {piece.name} to slot {slotIndex}");
-
             // Apply default morphology if needed
             if (IsDefaultMorphology(piece.Morphology))
             {
@@ -396,12 +386,9 @@ namespace ArtUnbound.Gameplay
             bool isCorrectSlot = slots[slotIndex].pieceId == piece.PieceId;
             bool morphologyMatches = !puzzleConfig || !puzzleConfig.useTriangularMorphology || CheckMorphologyMatches(slotIndex, piece);
 
-            Debug.Log($"🔊 AUDIO DEBUG | PieceId={piece.PieceId} | SlotPieceId={slots[slotIndex].pieceId} | isCorrect={isCorrectSlot} | morphologyMatches={morphologyMatches}");
-
             // Play sound based ONLY on correct slot placement (ignore morphology for audio)
             if (isCorrectSlot)
             {
-                Debug.Log("🎵 Playing CORRECT sound (PlayPieceSnap)");
                 // Correct placement - special sound and particles
                 if (ArtUnbound.Feedback.AudioManager.Instance != null)
                 {
@@ -415,7 +402,6 @@ namespace ArtUnbound.Gameplay
             }
             else
             {
-                Debug.Log("🎵 Playing INCORRECT sound (PlayPieceIncorrect)");
                 // Incorrect placement - normal sound
                 if (ArtUnbound.Feedback.AudioManager.Instance != null)
                 {
@@ -453,6 +439,10 @@ namespace ArtUnbound.Gameplay
             OnPieceSnappedRaw?.Invoke(piece);
             OnPieceSnapped?.Invoke(slots[slotIndex].col, slots[slotIndex].row);
 
+            // Milestone feedback only when piece is in correct position
+            if (isCorrectSlot)
+                TryPlayMilestoneFeedback(slots[slotIndex].col, slots[slotIndex].row, piece.transform.position);
+
             if (snappedCount >= slots.Count)
             {
                 // Puzzle complete - play completion sound
@@ -466,7 +456,9 @@ namespace ArtUnbound.Gameplay
             }
 
             string correctnessMsg = isCorrectSlot ? "✅ CORRECT PLACEMENT" : "❌ INCORRECT PLACEMENT";
-            Debug.Log($"[PuzzleBoard] {correctnessMsg} | Piece {piece.name} (ID:{piece.PieceId}) -> Slot {slotIndex} (Expected:{slots[slotIndex].pieceId}) | Progress: {snappedCount}/{slots.Count} correct");
+            
+            // Notify that board state changed (triggers auto-save)
+            NotifyBoardStateChanged();
             
             return true;
         }
@@ -475,33 +467,43 @@ namespace ArtUnbound.Gameplay
         /// Removes a piece from its current slot on the board.
         /// Used when the player picks up a placed piece to move it.
         /// </summary>
-        public void RemovePieceFromSlot(PuzzlePiece piece)
+        /// <returns>True if the piece was removed, false if it's locked (correctly placed)</returns>
+        public bool RemovePieceFromSlot(PuzzlePiece piece)
         {
-            if (piece == null) return;
+            if (piece == null) return false;
 
             int slotIndex = piece.CurrentSlotIndex;
             if (slotIndex < 0 || slotIndex >= slots.Count)
             {
                 Debug.LogWarning($"[PuzzleBoard] Cannot remove piece {piece.name} - invalid slot index {slotIndex}");
-                return;
+                return false;
             }
 
-            Debug.Log($"[PuzzleBoard] Removing piece {piece.name} from slot {slotIndex}");
+            // PREVENT REMOVING CORRECTLY PLACED PIECES
+            if (slots[slotIndex].pieceId == piece.PieceId)
+            {
+                return false; // Piece is locked, cannot remove
+            }
+
 
             // Remove from the slot
             if (placedBySlot.ContainsKey(slotIndex))
             {
                 placedBySlot.Remove(slotIndex);
                 
-                // If it was correctly placed, decrement snapped count
+                // If it was correctly placed, decrement snapped count (this shouldn't happen now due to check above)
                 if (slots[slotIndex].pieceId == piece.PieceId)
                 {
                     snappedCount--;
-                    Debug.Log($"[PuzzleBoard] Decremented snapped count to {snappedCount}/{slots.Count}");
                 }
             }
 
             piece.SetSlotIndex(-1); // Clear slot reference
+            
+            // Notify that board state changed (triggers auto-save)
+            NotifyBoardStateChanged();
+            
+            return true; // Successfully removed
         }
 
         /// <summary>
@@ -517,24 +519,24 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
-            Debug.Log($"[PuzzleBoard] Returning piece {piece.name} to tray (at end)");
             
             // Ask the scroll controller to add the piece at the end
             scrollController.AddPieceAtEnd(piece);
+            
+            // Notify that board state changed (triggers auto-save)
+            NotifyBoardStateChanged();
         }
 
         private void HighlightSlot(int slotIndex)
         {
             if (slotIndex < 0 || slotIndex >= slots.Count) return;
 
-            Debug.Log($"[PuzzleBoard] HighlightSlot called for slot {slotIndex}");
             
             currentHighlightedSlot = slotIndex;
 
             // Create highlight object if it doesn't exist
             if (slotHighlight == null)
             {
-                Debug.Log($"[PuzzleBoard] Creating slot highlight object");
                 slotHighlight = GameObject.CreatePrimitive(PrimitiveType.Quad);
                 slotHighlight.name = "SlotHighlight";
                 Destroy(slotHighlight.GetComponent<Collider>()); // Remove collider
@@ -548,7 +550,6 @@ namespace ArtUnbound.Gameplay
                 highlightMat.color = new Color(0.5f, 1f, 0f, 0.8f); // Bright yellow-green, more opaque
                 slotHighlight.GetComponent<Renderer>().material = highlightMat;
                 
-                Debug.Log($"[PuzzleBoard] Highlight created with shader: {highlightShader?.name ?? "NULL"}");
             }
 
             // Position and scale the highlight in SLOT ROOT local space
@@ -566,7 +567,6 @@ namespace ArtUnbound.Gameplay
             slotHighlight.transform.localScale = new Vector3(pieceSize * 1.1f, pieceSize * 1.1f, 1f);
             slotHighlight.SetActive(true);
             
-            Debug.Log($"[PuzzleBoard] Highlight positioned at local: {localPos}, world: {slotHighlight.transform.position}, scale {slotHighlight.transform.localScale}, active: {slotHighlight.activeSelf}, renderer enabled: {slotHighlight.GetComponent<Renderer>()?.enabled}");
         }
 
         public void ClearSlotHighlight()
@@ -586,9 +586,13 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
-            CalculateGridDimensions(pieceCount, currentTexture.width, currentTexture.height, out int cols, out int rows);
+            // NEW SYSTEM: Calculate grid AND piece size together
+            CalculateGridAndPieceSize(pieceCount, currentTexture.width, currentTexture.height, 
+                out int cols, out int rows, out float pieceSize);
 
-            float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
+            // Store current piece size for tray initialization
+            currentPieceSize = pieceSize;
+
             float sizeX = cols * pieceSize;
             float sizeY = rows * pieceSize;
             float cellWidth = pieceSize;
@@ -636,6 +640,10 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
+            // Update totalPieces to the ACTUAL number of pieces created
+            totalPieces = slots.Count;
+            Debug.Log($"[PIECE] CreateSlots: slots={slots.Count}, activePieces={activePieces.Count}, targetCount={pieceCount}");
+            
             // Create Visual Board Context
             CreateBoardVisual(cols * pieceSize, rows * pieceSize);
 
@@ -648,9 +656,13 @@ namespace ArtUnbound.Gameplay
             var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage.texture;
             if (textureToUse == null) return;
 
-            CalculateGridDimensions(pieceCount, textureToUse.width, textureToUse.height, out int cols, out int rows);
+            // NEW SYSTEM: Calculate grid AND piece size together
+            CalculateGridAndPieceSize(pieceCount, textureToUse.width, textureToUse.height, 
+                out int cols, out int rows, out float pieceSize);
 
-            float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
+            // Store current piece size for tray initialization
+            currentPieceSize = pieceSize;
+
             float sizeX = cols * pieceSize;
             float sizeY = rows * pieceSize;
             float cellWidth = pieceSize;
@@ -700,11 +712,13 @@ namespace ArtUnbound.Gameplay
         {
             if (slotRoot == null) return;
 
-            Debug.Log($"[PuzzleBoard] Creating Board Visual: {width}x{height}");
 
-            // Look for existing board visual
+            // Look for existing board visual and destroy it IMMEDIATELY
             Transform existing = slotRoot.Find("BoardVisual");
-            if (existing != null) Destroy(existing.gameObject);
+            if (existing != null)
+            {
+                DestroyImmediate(existing.gameObject);
+            }
 
             GameObject boardViz = GameObject.CreatePrimitive(PrimitiveType.Cube);
             boardViz.name = "BoardVisual";
@@ -735,7 +749,6 @@ namespace ArtUnbound.Gameplay
                 boardMat.color = Color.white; // White canvas like a painting
                 renderer.material = boardMat;
                 
-                Debug.Log($"[PuzzleBoard] Board using shader: {boardShader?.name ?? "NULL (will be PINK!)"}");
             }
 
             // Remove collider if it interferes with raycast (though we might want it for placement later)
@@ -751,9 +764,12 @@ namespace ArtUnbound.Gameplay
 
         private void CreateGridLines(Transform parent, float width, float height)
         {
-            // Look for existing grid
+            // Look for existing grid and destroy it IMMEDIATELY
             Transform existing = parent.Find("GridLines");
-            if (existing != null) Destroy(existing.gameObject);
+            if (existing != null)
+            {
+                DestroyImmediate(existing.gameObject);
+            }
 
             GameObject gridContainer = new GameObject("GridLines");
             gridContainer.transform.SetParent(parent, false);
@@ -864,9 +880,73 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
-            Debug.Log($"[PuzzleBoard] Created {slots.Count} slot number labels");
         }
 
+        /// <summary>
+        /// Calculates optimal grid dimensions and piece size based on fixed board width.
+        /// NEW SYSTEM: Board width is fixed (50cm), piece size is dynamic.
+        /// Uses targetCount and aspect ratio to calculate optimal grid.
+        /// </summary>
+        private void CalculateGridAndPieceSize(int targetCount, int texWidth, int texHeight, 
+            out int cols, out int rows, out float pieceSize)
+        {
+            // Get config constraints
+            float boardWidth = puzzleConfig != null ? puzzleConfig.boardWidthM : 0.5f;
+            float boardMaxHeight = puzzleConfig != null ? puzzleConfig.boardMaxHeightM : 0.9f;
+            float minPieceSize = puzzleConfig != null ? puzzleConfig.minPieceSizeM : 0.03f;
+
+            // Calculate aspect ratio
+            float aspectRatio = (float)texWidth / texHeight;
+
+            // Calculate initial grid based on target count and aspect ratio
+            // rows = sqrt(target / ratio)
+            rows = Mathf.RoundToInt(Mathf.Sqrt(targetCount / aspectRatio));
+            if (rows < 2) rows = 2;
+            
+            cols = Mathf.RoundToInt(rows * aspectRatio);
+            if (cols < 2) cols = 2;
+
+            // Calculate piece size based on FIXED board width
+            float pieceSizeFromWidth = boardWidth / cols;
+            
+            // Calculate what board height would be with this piece size
+            float boardHeight = pieceSizeFromWidth * rows;
+
+            // CHECK CONSTRAINT 1: Board height exceeds maximum (90cm)
+            if (boardHeight > boardMaxHeight)
+            {
+                Debug.LogWarning($"[PuzzleBoard] Board height ({boardHeight*100:F1}cm) exceeds max ({boardMaxHeight*100:F1}cm). Calculating from height instead.");
+                
+                // Recalculate piece size based on height constraint
+                pieceSize = boardMaxHeight / rows;
+                
+                // Recalculate board dimensions
+                float actualBoardWidth = pieceSize * cols;
+            }
+            // CHECK CONSTRAINT 2: Piece size is too small (< 3cm)
+            else if (pieceSizeFromWidth < minPieceSize)
+            {
+                Debug.LogWarning($"[PuzzleBoard] Piece size ({pieceSizeFromWidth*100:F2}cm) below minimum ({minPieceSize*100:F1}cm). Using minimum.");
+                
+                pieceSize = minPieceSize;
+                
+                // Recalculate board dimensions with minimum piece size
+                float actualBoardWidth = pieceSize * cols;
+                float actualBoardHeight = pieceSize * rows;
+            }
+            else
+            {
+                // All constraints satisfied - use width-based calculation
+                pieceSize = pieceSizeFromWidth;
+            }
+
+            // Log final grid
+            int actualCount = cols * rows;
+        }
+
+        /// <summary>
+        /// DEPRECATED: Old method kept for reference. Use CalculateGridAndPieceSize instead.
+        /// </summary>
         private void CalculateGridDimensions(int targetCount, int texWidth, int texHeight, out int cols, out int rows)
         {
             float ratio = (float)texWidth / texHeight;
@@ -875,6 +955,9 @@ namespace ArtUnbound.Gameplay
             if (rows < 2) rows = 2;
             cols = Mathf.RoundToInt(rows * ratio);
             if (cols < 2) cols = 2;
+            
+            // Log actual piece count (may differ from target due to aspect ratio)
+            int actualCount = cols * rows;
         }
 
         private PieceMorphology GenerateMorphology(int col, int row, int numCols, int numRows)
@@ -1088,13 +1171,9 @@ namespace ArtUnbound.Gameplay
                 Destroy(sr);
             }
 
-            Debug.Log($"[PuzzleBoard] Forced ScrollController position to: {scrollController.transform.localPosition}");
-
             // Create visual background for the tray
             // REMOVED: User requested to remove the visual tray.
             // CreateTrayVisual(scrollController.transform);
-
-            Debug.Log($"[PuzzleBoard] Forced ScrollController position to: {scrollController.transform.localPosition}");
 
             // Shuffle active pieces for initial display
             var shuffledPieces = PieceShuffler.GetShuffledCopy(activePieces);
@@ -1108,8 +1187,8 @@ namespace ArtUnbound.Gameplay
                 p.SetState(PieceState.InPool);
             }
 
-            Debug.Log($"[PuzzleBoard] Initializing Scroll with {pieceTransforms.Count} pieces.");
-            scrollController.Initialize(pieceTransforms);
+            Debug.Log($"[PIECE] InitializeScroll: passing {pieceTransforms.Count} pieces to tray (slots={slots.Count})");
+            scrollController.Initialize(pieceTransforms, currentPieceSize);
         }
 
         private void CreateTrayVisual(Transform tray)
@@ -1172,5 +1251,337 @@ namespace ArtUnbound.Gameplay
             return (a == PieceEdgeState.Positive && b == PieceEdgeState.Negative)
                 || (a == PieceEdgeState.Negative && b == PieceEdgeState.Positive);
         }
+
+        #region Save/Load State
+
+        /// <summary>
+        /// Captures the current state of the board for saving.
+        /// Returns a list of all placed pieces with their positions.
+        /// </summary>
+        public List<PlacedPieceData> GetCurrentBoardState()
+        {
+            var state = new List<PlacedPieceData>();
+            
+            foreach (var kvp in placedBySlot)
+            {
+                int slotIndex = kvp.Key;
+                PuzzlePiece piece = kvp.Value;
+                
+                if (piece != null)
+                {
+                    state.Add(new PlacedPieceData(piece.PieceId, slotIndex));
+                }
+            }
+            
+            Debug.Log($"[PIECE] GetCurrentBoardState: saving {state.Count} placed (slots={slots.Count}, totalPieces={totalPieces})");
+            return state;
+        }
+
+        /// <summary>
+        /// Restores the board state from saved data.
+        /// Places pieces directly on the board without animation.
+        /// </summary>
+        public void RestoreBoardState(List<PlacedPieceData> savedState)
+        {
+            if (savedState == null || savedState.Count == 0)
+            {
+                return;
+            }
+            
+            Debug.Log($"[PIECE] RestoreBoardState: restoring {savedState.Count} pieces (activePieces={activePieces.Count}, slots={slots.Count})");
+            
+            int restoredCount = 0;
+            
+            foreach (var data in savedState)
+            {
+                // Validate indices
+                if (data.slotIndex < 0 || data.slotIndex >= slots.Count)
+                {
+                    Debug.LogWarning($"[PuzzleBoard] Invalid slot index {data.slotIndex}, skipping");
+                    continue;
+                }
+                
+                // Find the piece by ID
+                var piece = activePieces.Find(p => p.PieceId == data.pieceId);
+                if (piece == null)
+                {
+                    Debug.LogWarning($"[PuzzleBoard] Piece with ID {data.pieceId} not found, skipping");
+                    continue;
+                }
+                
+                var slot = slots[data.slotIndex];
+                
+                // Place piece directly without animation
+                piece.transform.position = slot.position;
+                piece.transform.rotation = transform.rotation;
+                piece.SetSlotIndex(data.slotIndex); // Required so RemovePieceFromSlot works for incorrectly placed pieces
+                piece.SetState(PieceState.Placed);
+                
+                // Make sure piece is active and visible
+                piece.gameObject.SetActive(true);
+                
+                // Register in the board
+                placedBySlot[data.slotIndex] = piece;
+                
+                // Only increment snappedCount if piece is in the CORRECT slot
+                bool isCorrectSlot = (slot.pieceId == piece.PieceId);
+                if (isCorrectSlot)
+                {
+                    snappedCount++;
+                }
+                
+                restoredCount++;
+                
+                // Remove from scroll controller (this will deactivate it in tray, but we reactivate it above)
+                if (scrollController != null)
+                {
+                    scrollController.RemovePieceFromTray(piece);
+                    // Reactivate after removing from tray
+                    piece.gameObject.SetActive(true);
+                }
+            }
+            
+            int trayInPool = 0;
+            if (scrollController != null)
+            {
+                foreach (var p in activePieces)
+                    if (p.CurrentState == PieceState.InPool || p.CurrentState == PieceState.Returning) trayInPool++;
+            }
+            Debug.Log($"[PIECE] RestoreBoardState done: restored={restoredCount}/{savedState.Count}, correctOnBoard={snappedCount}, trayInPool={trayInPool}, totalPieces={totalPieces}");
+
+            // Ensure remaining tray pieces are visible and correctly positioned
+            if (scrollController != null)
+            {
+                scrollController.RefreshTrayAfterRestore();
+            }
+            
+            // Update HUD if needed
+            OnPieceSnapped?.Invoke(snappedCount, totalPieces);
+
+            // Mark already-completed rows/cols/edges so we don't celebrate them on next placement
+            RefreshCompletedMilestones();
+        }
+
+        /// <summary>
+        /// Scans current board state and marks completed rows/cols/edges as celebrated.
+        /// Call after RestoreBoardState so we don't fire milestones for pre-existing completions.
+        /// </summary>
+        private void RefreshCompletedMilestones()
+        {
+            if (slots.Count == 0) return;
+
+            int maxRow = 0, maxCol = 0;
+            foreach (var s in slots)
+            {
+                if (s.row > maxRow) maxRow = s.row;
+                if (s.col > maxCol) maxCol = s.col;
+            }
+
+            for (int r = 0; r <= maxRow; r++)
+            {
+                if (IsRowComplete(r, maxCol)) completedRows.Add(r);
+            }
+            for (int c = 0; c <= maxCol; c++)
+            {
+                if (IsColComplete(c, maxRow)) completedCols.Add(c);
+            }
+            if (IsEdgeComplete(0, maxCol, true)) completedEdges.Add(0);   // top
+            if (IsEdgeComplete(maxRow, maxCol, true)) completedEdges.Add(1); // bottom
+            if (IsEdgeComplete(0, maxRow, false)) completedEdges.Add(2);    // left
+            if (IsEdgeComplete(maxCol, maxRow, false)) completedEdges.Add(3); // right
+            if (completedEdges.Count >= 4) allEdgesCelebrated = true;
+        }
+
+        /// <summary>
+        /// Checks if a milestone was just completed by this placement. Returns (type, edgeCount) or null.
+        /// Deduplicates: row+col = one event, multiple edges = one event.
+        /// </summary>
+        private (ArtUnbound.UI.MilestoneType type, int edgeCount)? TryGetMilestoneForPlacement(int col, int row, Vector3 piecePosition)
+        {
+            if (slots.Count == 0) return null;
+
+            int maxRow = 0, maxCol = 0;
+            foreach (var s in slots)
+            {
+                if (s.row > maxRow) maxRow = s.row;
+                if (s.col > maxCol) maxCol = s.col;
+            }
+
+            bool rowJustCompleted = !completedRows.Contains(row) && IsRowComplete(row, maxCol);
+            bool colJustCompleted = !completedCols.Contains(col) && IsColComplete(col, maxRow);
+
+            var newEdges = new List<int>();
+            if (!completedEdges.Contains(0) && IsEdgeComplete(0, maxCol, true)) newEdges.Add(0);
+            if (!completedEdges.Contains(1) && IsEdgeComplete(maxRow, maxCol, true)) newEdges.Add(1);
+            if (!completedEdges.Contains(2) && IsEdgeComplete(0, maxRow, false)) newEdges.Add(2);
+            if (!completedEdges.Contains(3) && IsEdgeComplete(maxCol, maxRow, false)) newEdges.Add(3);
+
+            bool allEdgesJustCompleted = !allEdgesCelebrated && newEdges.Count > 0 && completedEdges.Count + newEdges.Count >= 4;
+
+            // Build single combined message (no duplicates)
+            var parts = new List<string>();
+            if (rowJustCompleted) { completedRows.Add(row); parts.Add("Fila"); }
+            if (colJustCompleted) { completedCols.Add(col); parts.Add("Columna"); }
+            if (allEdgesJustCompleted) { allEdgesCelebrated = true; parts.Add("Marco completo"); }
+            else if (newEdges.Count > 0)
+            {
+                foreach (int e in newEdges) completedEdges.Add(e);
+                parts.Add(newEdges.Count > 1 ? $"{newEdges.Count} bordes" : "Borde");
+            }
+
+            if (parts.Count == 0) return null;
+
+            if (parts.Count == 1)
+            {
+                if (parts[0] == "Marco completo") return (ArtUnbound.UI.MilestoneType.AllEdges, 0);
+                if (parts[0].Contains("bordes"))
+                {
+                    int n = int.Parse(parts[0].Split(' ')[0]);
+                    return (ArtUnbound.UI.MilestoneType.Edges, n);
+                }
+                if (parts[0] == "Borde") return (ArtUnbound.UI.MilestoneType.Edge, 0);
+                if (parts[0] == "Fila") return (ArtUnbound.UI.MilestoneType.Row, 0);
+                if (parts[0] == "Columna") return (ArtUnbound.UI.MilestoneType.Column, 0);
+            }
+            else
+            {
+                return (ArtUnbound.UI.MilestoneType.RowAndColumn, 0);
+            }
+            return (ArtUnbound.UI.MilestoneType.Row, 0); // fallback
+        }
+
+        private bool IsRowComplete(int row, int maxCol)
+        {
+            for (int c = 0; c <= maxCol; c++)
+            {
+                bool filled = false;
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    if (slots[i].row == row && slots[i].col == c && placedBySlot.ContainsKey(i)) { filled = true; break; }
+                }
+                if (!filled) return false;
+            }
+            return true;
+        }
+
+        private bool IsColComplete(int col, int maxRow)
+        {
+            for (int r = 0; r <= maxRow; r++)
+            {
+                bool filled = false;
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    if (slots[i].col == col && slots[i].row == r && placedBySlot.ContainsKey(i)) { filled = true; break; }
+                }
+                if (!filled) return false;
+            }
+            return true;
+        }
+
+        /// <param name="fixedVal">row index if isRowEdge, else col index</param>
+        /// <param name="maxOther">max col if isRowEdge, else max row</param>
+        /// <param name="isRowEdge">true = top/bottom edge (fixed row), false = left/right (fixed col)</param>
+        private bool IsEdgeComplete(int fixedVal, int maxOther, bool isRowEdge)
+        {
+            for (int k = 0; k <= maxOther; k++)
+            {
+                int r = isRowEdge ? fixedVal : k;
+                int c = isRowEdge ? k : fixedVal;
+                bool filled = false;
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    if (slots[i].row == r && slots[i].col == c && placedBySlot.ContainsKey(i)) { filled = true; break; }
+                }
+                if (!filled) return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Plays milestone feedback (particles, sound, floating text) if row/column/edge was just completed.
+        /// </summary>
+        private void TryPlayMilestoneFeedback(int col, int row, Vector3 piecePosition)
+        {
+            var milestone = TryGetMilestoneForPlacement(col, row, piecePosition);
+            if (!milestone.HasValue) return;
+
+            var (type, edgeCount) = milestone.Value;
+            if (ArtUnbound.Feedback.PieceEffectsManager.Instance != null)
+            {
+                ArtUnbound.Feedback.PieceEffectsManager.Instance.PlayMilestoneEffect(piecePosition, "");
+            }
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+            {
+                ArtUnbound.Feedback.AudioManager.Instance.PlayMilestone();
+            }
+            OnMilestoneAchieved?.Invoke(type, edgeCount);
+        }
+
+        /// <summary>
+        /// Notifies listeners that the board state has changed.
+        /// Used to trigger auto-save.
+        /// </summary>
+        private void NotifyBoardStateChanged()
+        {
+            OnBoardStateChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Hides the scroll buttons (called when puzzle is complete)
+        /// </summary>
+        public void HideScrollButtons()
+        {
+            if (scrollController != null)
+            {
+                scrollController.HideScrollButtons();
+            }
+        }
+
+        /// <summary>
+        /// Public method to check current puzzle status (can be called from Inspector or other scripts)
+        /// </summary>
+        [ContextMenu("Debug: Log Piece Placement Status")]
+        public void DebugLogPiecePlacement()
+        {
+            LogPiecePlacementStatus();
+        }
+
+        /// <summary>
+        /// Logs detailed information about piece placement for debugging
+        /// </summary>
+        private void LogPiecePlacementStatus()
+        {
+            
+            int totalPlaced = 0;
+            int correctlyPlaced = 0;
+            int incorrectlyPlaced = 0;
+            
+            for (int i = 0; i < slots.Count; i++)
+            {
+                var slot = slots[i];
+                if (slot.pieceId >= 0)
+                {
+                    totalPlaced++;
+                    bool isCorrect = slot.pieceId == i;
+                    
+                    if (isCorrect)
+                    {
+                        correctlyPlaced++;
+                    }
+                    else
+                    {
+                        incorrectlyPlaced++;
+                        Debug.LogWarning($"❌ Slot {i} (Row {slot.row}, Col {slot.col}): Has Piece {slot.pieceId} but expects Piece {i}");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"⚠️ Slot {i} (Row {slot.row}, Col {slot.col}): EMPTY");
+                }
+            }
+            
+        }
+
+        #endregion
     }
 }

@@ -19,7 +19,7 @@ namespace ArtUnbound.Input
         [SerializeField] private LineRenderer rayVisualizer;
 
         private PuzzlePiece currentDraggedPiece;
-        private float currentDragDistance;
+        // private float currentDragDistance; // Removed - not used
         private Vector3 dragOffset;
         private int targetSlotIndex = -1; // Store the slot shown in the highlight
         private bool pieceWasFromBoard = false; // Track if the piece was grabbed from the board
@@ -87,11 +87,11 @@ namespace ArtUnbound.Input
                 return;
             }
 
-            currentDragDistance = 0f;
+            // currentDragDistance = 0f; // Removed - not used
             dragOffset = Vector3.zero;
 
             // METHOD 1: Proximity/Sphere Overlap (Primary for Hand Tracking)
-            float grabRadius = 0.015f; // 1.5cm radius
+            float grabRadius = 0.025f; // 2.5cm radius
             Collider[] colliders = Physics.OverlapSphere(position, grabRadius, interactableLayer);
 
             PuzzlePiece bestPiece = null;
@@ -145,20 +145,27 @@ namespace ArtUnbound.Input
                 // Track if the piece was grabbed from the board
                 pieceWasFromBoard = (bestPiece.CurrentState == PieceState.Placed);
                 
-                // Play grab sound
-                if (ArtUnbound.Feedback.AudioManager.Instance != null)
-                {
-                    ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
-                }
-                
-                // If the piece was placed on the board, remove it from the slot first
+                // If the piece was placed on the board, try to remove it
                 if (pieceWasFromBoard)
                 {
                     var board = FindFirstObjectByType<PuzzleBoard>();
                     if (board != null)
                     {
-                        board.RemovePieceFromSlot(bestPiece);
+                        // Try to remove it - will return false if correctly placed (locked)
+                        bool wasRemoved = board.RemovePieceFromSlot(bestPiece);
+                        
+                        if (!wasRemoved)
+                        {
+                            // Piece is correctly placed and locked - cannot grab it
+                            return;
+                        }
                     }
+                }
+                
+                // Play grab sound
+                if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                {
+                    ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
                 }
                 
                 currentDraggedPiece = bestPiece;

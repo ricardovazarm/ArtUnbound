@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cf1befc86c31644b5f6cdf5c024878, type: 3}
   m_Name: PuzzleConfig
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.PuzzleConfig
-  pieceCounts: 40000000900000000001000000020000
-  defaultPieceCount: 144
+  pieceCounts: 4000000079000000c400000021010000
+  defaultPieceCount: 121
+  boardWidthM: 0.5
+  boardMaxHeightM: 0.9
+  minPieceSizeM: 0.03
   snapDistanceCm: 2
   pinchRangeCm: 1
-  pieceSizeCm: 5
   pieceThicknessCm: 0.5
   helpModeDefault: 1
   useGridSnapping: 1
   useTriangularMorphology: 1
+  pieceSizeCm: 5

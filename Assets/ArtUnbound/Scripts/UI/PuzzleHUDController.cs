@@ -7,15 +7,21 @@ using TMPro;
 namespace ArtUnbound.UI
 {
     /// <summary>
-    /// Controls the in-game HUD during puzzle gameplay.
+    /// Controls the in-game HUD during puzzle gameplay (LEFT ZONE).
+    /// Shows artwork info, timer, progress, and quit button.
+    /// Help mode is always enabled.
     /// </summary>
     public class PuzzleHUDController : MonoBehaviour
     {
-        public event Action OnPauseRequested;
-        public event Action<bool> OnHelpModeToggled;
+        public event Action OnExitRequested;
 
         [Header("Panel")]
         [SerializeField] private GameObject hudPanel;
+
+        [Header("Artwork Info")]
+        [SerializeField] private TextMeshProUGUI artworkTitleText;
+        [SerializeField] private TextMeshProUGUI artworkArtistText;
+        [SerializeField] private TextMeshProUGUI artworkDescriptionText;
 
         [Header("Timer Display")]
         [SerializeField] private TextMeshProUGUI timerText;
@@ -26,47 +32,24 @@ namespace ArtUnbound.UI
         [SerializeField] private Slider progressSlider;
         [SerializeField] private Image progressFill;
 
-        [Header("Help Mode")]
-        [SerializeField] private Toggle helpModeToggle;
-        [SerializeField] private TextMeshProUGUI helpModeLabel;
-        [SerializeField] private GameObject helpModeIndicator;
-
         [Header("Buttons")]
-        [SerializeField] private Button pauseButton;
-        [SerializeField] private Button repositionButton;
-
-        [Header("Mini Preview")]
-        [SerializeField] private GameObject miniPreviewPanel;
-        [SerializeField] private Image miniPreviewImage;
-        [SerializeField] private Button togglePreviewButton;
+        [SerializeField] private Button quitButton;
 
         [Header("References")]
         [SerializeField] private PuzzleTimerController timerController;
 
         [Header("Visual Feedback")]
-        [SerializeField] private Color normalProgressColor = new Color(0.2f, 0.6f, 1f);
-        [SerializeField] private Color helpModeProgressColor = new Color(1f, 0.8f, 0.2f);
+        [SerializeField] private Color progressColor = new Color(0.2f, 0.6f, 1f);
 
-        public bool IsHelpModeEnabled => isHelpModeEnabled;
+        public bool IsHelpModeEnabled => true;
 
-        private bool isHelpModeEnabled = false;
         private int totalPieces = 0;
         private int placedPieces = 0;
-        private bool isMiniPreviewVisible = true;
 
         private void Awake()
         {
-            if (pauseButton != null)
-                pauseButton.onClick.AddListener(() => OnPauseRequested?.Invoke());
-
-            if (helpModeToggle != null)
-                helpModeToggle.onValueChanged.AddListener(OnHelpModeChanged);
-
-            if (togglePreviewButton != null)
-                togglePreviewButton.onClick.AddListener(ToggleMiniPreview);
-
-            if (repositionButton != null)
-                repositionButton.onClick.AddListener(OnRepositionRequested);
+            if (quitButton != null)
+                quitButton.onClick.AddListener(() => OnExitRequested?.Invoke());
 
             Hide();
         }
@@ -78,13 +61,14 @@ namespace ArtUnbound.UI
 
         /// <summary>
         /// Initializes the HUD for a new puzzle session.
+        /// Help mode is always enabled.
         /// </summary>
         public void Initialize(int pieceCount, bool helpModeDefault = false)
         {
             totalPieces = pieceCount;
             placedPieces = 0;
 
-            SetHelpMode(helpModeDefault);
+            // Help mode always enabled - parameter ignored
             UpdateProgressDisplay();
 
             Show();
@@ -100,55 +84,18 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
-        /// Sets the help mode state.
+        /// Sets the artwork information (title, artist, description).
         /// </summary>
-        public void SetHelpMode(bool enabled)
+        public void SetArtworkInfo(string title, string artist, string description)
         {
-            isHelpModeEnabled = enabled;
+            if (artworkTitleText != null)
+                artworkTitleText.text = title ?? "";
 
-            if (helpModeToggle != null)
-                helpModeToggle.SetIsOnWithoutNotify(enabled);
+            if (artworkArtistText != null)
+                artworkArtistText.text = artist ?? "";
 
-            if (helpModeIndicator != null)
-                helpModeIndicator.SetActive(enabled);
-
-            if (helpModeLabel != null)
-                helpModeLabel.text = enabled ? "Ayuda: ON" : "Ayuda: OFF";
-
-            UpdateProgressColor();
-        }
-
-        /// <summary>
-        /// Sets the mini preview image.
-        /// </summary>
-        public void SetPreviewImage(Texture2D texture)
-        {
-            if (miniPreviewImage != null && texture != null)
-            {
-                miniPreviewImage.sprite = Sprite.Create(
-                    texture,
-                    new Rect(0, 0, texture.width, texture.height),
-                    new Vector2(0.5f, 0.5f)
-                );
-            }
-        }
-
-        /// <summary>
-        /// Sets the mini preview image from a sprite.
-        /// </summary>
-        public void SetPreviewImage(Sprite sprite)
-        {
-            if (miniPreviewImage != null && sprite != null)
-                miniPreviewImage.sprite = sprite;
-        }
-
-        /// <summary>
-        /// Shows or hides the reposition button (for Comfort Mode).
-        /// </summary>
-        public void SetRepositionButtonVisible(bool visible)
-        {
-            if (repositionButton != null)
-                repositionButton.gameObject.SetActive(visible);
+            if (artworkDescriptionText != null)
+                artworkDescriptionText.text = description ?? "";
         }
 
         private void UpdateTimerDisplay()
@@ -172,62 +119,12 @@ namespace ArtUnbound.UI
                 float progress = totalPieces > 0 ? (float)placedPieces / totalPieces : 0f;
                 progressSlider.value = progress;
             }
-        }
-
-        private void UpdateProgressColor()
-        {
+            
+            // Update progress color
             if (progressFill != null)
             {
-                progressFill.color = isHelpModeEnabled ? helpModeProgressColor : normalProgressColor;
+                progressFill.color = progressColor;
             }
-        }
-
-        private void OnHelpModeChanged(bool isOn)
-        {
-            isHelpModeEnabled = isOn;
-
-            if (helpModeIndicator != null)
-                helpModeIndicator.SetActive(isOn);
-
-            if (helpModeLabel != null)
-                helpModeLabel.text = isOn ? "Ayuda: ON" : "Ayuda: OFF";
-
-            UpdateProgressColor();
-            OnHelpModeToggled?.Invoke(isOn);
-        }
-
-        private void ToggleMiniPreview()
-        {
-            isMiniPreviewVisible = !isMiniPreviewVisible;
-
-            if (miniPreviewPanel != null)
-                miniPreviewPanel.SetActive(isMiniPreviewVisible);
-        }
-
-        /// <summary>
-        /// Shows or hides the mini preview.
-        /// </summary>
-        public void SetMiniPreviewVisible(bool visible)
-        {
-            isMiniPreviewVisible = visible;
-
-            if (miniPreviewPanel != null)
-                miniPreviewPanel.SetActive(visible);
-        }
-
-        private void OnRepositionRequested()
-        {
-            // This will be handled by the game controller
-            Debug.Log("Reposition requested");
-        }
-
-        /// <summary>
-        /// Shows a notification message on the HUD.
-        /// </summary>
-        public void ShowNotification(string message, float duration = 2f)
-        {
-            // Could be implemented with a coroutine to show/hide a notification text
-            Debug.Log($"HUD Notification: {message}");
         }
 
         /// <summary>
@@ -265,10 +162,8 @@ namespace ArtUnbound.UI
 
         private void OnDestroy()
         {
-            if (pauseButton != null) pauseButton.onClick.RemoveAllListeners();
-            if (helpModeToggle != null) helpModeToggle.onValueChanged.RemoveAllListeners();
-            if (togglePreviewButton != null) togglePreviewButton.onClick.RemoveAllListeners();
-            if (repositionButton != null) repositionButton.onClick.RemoveAllListeners();
+            if (quitButton != null) 
+                quitButton.onClick.RemoveAllListeners();
         }
     }
 }

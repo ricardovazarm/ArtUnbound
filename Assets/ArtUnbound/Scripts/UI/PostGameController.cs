@@ -8,39 +8,27 @@ using TMPro;
 namespace ArtUnbound.UI
 {
     /// <summary>
-    /// Controls the post-game results screen.
+    /// Controls the post-game results panel (RIGHT ZONE).
+    /// NEW: Shows only completion message and new record text (time-based).
+    /// Appears on the right side when puzzle is completed.
     /// </summary>
     public class PostGameController : MonoBehaviour
     {
         public event Action OnPlaceArtworkRequested;
         public event Action OnReplayRequested;
-        public event Action OnReturnToMenuRequested;
 
         [Header("UI References")]
         [SerializeField] private GameObject panel;
-        [SerializeField] private TextMeshProUGUI titleText;
-        [SerializeField] private TextMeshProUGUI timeText;
-        [SerializeField] private TextMeshProUGUI piecesText;
-        [SerializeField] private TextMeshProUGUI scoreText;
-        [SerializeField] private TextMeshProUGUI frameTierText;
-        [SerializeField] private Image artworkPreview;
-        [SerializeField] private Image frameIcon;
-        [SerializeField] private GameObject newRecordIndicator;
+        [SerializeField] private TextMeshProUGUI completionText;  // "¡Puzzle Completado!"
+        [SerializeField] private TextMeshProUGUI newRecordText;    // Shows "¡Nuevo Récord! XX:XX" or hidden if not a record
 
         [Header("Buttons")]
         [SerializeField] private Button placeButton;
         [SerializeField] private Button replayButton;
-        [SerializeField] private Button menuButton;
-
-        [Header("Frame Icons")]
-        [SerializeField] private Sprite maderaIcon;
-        [SerializeField] private Sprite bronceIcon;
-        [SerializeField] private Sprite plataIcon;
-        [SerializeField] private Sprite oroIcon;
-        [SerializeField] private Sprite ebanoIcon;
 
         private PuzzleSessionData sessionData;
-        private int finalScore;
+        private int completionTime;
+        private int previousBestTime;
         private FrameTier awardedFrame;
         private bool isNewRecord;
 
@@ -52,51 +40,49 @@ namespace ArtUnbound.UI
             if (replayButton != null)
                 replayButton.onClick.AddListener(OnReplayClicked);
 
-            if (menuButton != null)
-                menuButton.onClick.AddListener(OnMenuClicked);
-
             Hide();
         }
 
         /// <summary>
         /// Shows the results screen with the given data.
+        /// NEW: Only shows completion message and new record text (based on time).
         /// </summary>
-        public void ShowResults(PuzzleSessionData data, int score, FrameTier frame, bool newRecord = false)
+        public void ShowResults(PuzzleSessionData data, int timeSec, int prevBestTime, FrameTier frame, bool newRecord = false)
         {
+            Debug.Log($"[PostGameController] ShowResults called - Time: {timeSec}s, PrevBest: {prevBestTime}s, Frame: {frame}, NewRecord: {newRecord}");
+            
             sessionData = data;
-            finalScore = score;
+            completionTime = timeSec;
+            previousBestTime = prevBestTime;
             awardedFrame = frame;
             isNewRecord = newRecord;
 
             UpdateUI();
             Show();
+            
+            Debug.Log($"[PostGameController] Panel shown. GameObject active: {gameObject.activeInHierarchy}");
         }
 
         private void UpdateUI()
         {
-            if (titleText != null)
-                titleText.text = "¡Puzzle Completado!";
+            // Show completion message
+            if (completionText != null)
+                completionText.text = "¡Puzzle Completado!";
 
-            if (timeText != null)
-                timeText.text = FormatTime(sessionData.GetElapsedSeconds());
-
-            if (piecesText != null)
+            // Show new record text with time if it's a new record
+            if (newRecordText != null)
             {
-                string difficulty = PieceCountSelectorController.GetDifficultyLabel(sessionData.pieceCount);
-                piecesText.text = $"Dificultad: {difficulty}";
+                if (isNewRecord)
+                {
+                    string timeFormatted = FormatTime(completionTime);
+                    newRecordText.text = $"¡Nuevo Récord!\n{timeFormatted}";
+                    newRecordText.gameObject.SetActive(true);
+                }
+                else
+                {
+                    newRecordText.gameObject.SetActive(false);
+                }
             }
-
-            if (scoreText != null)
-                scoreText.text = finalScore.ToString();
-
-            if (frameTierText != null)
-                frameTierText.text = GetFrameTierName(awardedFrame);
-
-            if (frameIcon != null)
-                frameIcon.sprite = GetFrameIcon(awardedFrame);
-
-            if (newRecordIndicator != null)
-                newRecordIndicator.SetActive(isNewRecord);
         }
 
         private string FormatTime(int totalSeconds)
@@ -104,47 +90,6 @@ namespace ArtUnbound.UI
             int minutes = totalSeconds / 60;
             int seconds = totalSeconds % 60;
             return $"{minutes:D2}:{seconds:D2}";
-        }
-
-        private string GetFrameTierName(FrameTier tier)
-        {
-            return tier switch
-            {
-                FrameTier.Madera => "Marco de Madera",
-                FrameTier.Bronce => "Marco de Bronce",
-                FrameTier.Plata => "Marco de Plata",
-                FrameTier.Oro => "Marco de Oro",
-                FrameTier.Ebano => "Marco de Ébano",
-                _ => "Marco"
-            };
-        }
-
-        private Sprite GetFrameIcon(FrameTier tier)
-        {
-            return tier switch
-            {
-                FrameTier.Madera => maderaIcon,
-                FrameTier.Bronce => bronceIcon,
-                FrameTier.Plata => plataIcon,
-                FrameTier.Oro => oroIcon,
-                FrameTier.Ebano => ebanoIcon,
-                _ => maderaIcon
-            };
-        }
-
-        /// <summary>
-        /// Sets the artwork preview image.
-        /// </summary>
-        public void SetArtworkPreview(Texture2D texture)
-        {
-            if (artworkPreview != null && texture != null)
-            {
-                artworkPreview.sprite = Sprite.Create(
-                    texture,
-                    new Rect(0, 0, texture.width, texture.height),
-                    new Vector2(0.5f, 0.5f)
-                );
-            }
         }
 
         public void Show()
@@ -176,21 +121,15 @@ namespace ArtUnbound.UI
             Hide();
         }
 
-        private void OnMenuClicked()
-        {
-            OnReturnToMenuRequested?.Invoke();
-            Hide();
-        }
-
         /// <summary>
         /// Gets the current session data.
         /// </summary>
         public PuzzleSessionData GetSessionData() => sessionData;
 
         /// <summary>
-        /// Gets the final score.
+        /// Gets the completion time in seconds.
         /// </summary>
-        public int GetFinalScore() => finalScore;
+        public int GetCompletionTime() => completionTime;
 
         /// <summary>
         /// Gets the awarded frame tier.
@@ -204,9 +143,6 @@ namespace ArtUnbound.UI
 
             if (replayButton != null)
                 replayButton.onClick.RemoveListener(OnReplayClicked);
-
-            if (menuButton != null)
-                menuButton.onClick.RemoveListener(OnMenuClicked);
         }
     }
 }

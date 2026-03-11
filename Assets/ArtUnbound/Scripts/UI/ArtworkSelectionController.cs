@@ -107,7 +107,7 @@ namespace ArtUnbound.UI
             {
                 // In Play Mode, we only show specific buttons/actions
                 // For now, simpler setup than Gallery
-                itemController.Setup(artwork.artworkId, FrameTier.Madera, canHang: false, canPlay: true);
+                itemController.Setup(artwork.artworkId, FrameTier.Bronce, canHang: false, canPlay: true);  // Changed: Bronce is now lowest tier
 
                 itemController.SetThumbnail(artwork.thumbnail);
 

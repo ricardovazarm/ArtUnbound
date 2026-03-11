@@ -231,7 +231,7 @@ namespace ArtUnbound.UI
             foreach (var artwork in completedArtworks)
             {
                 var def = availableArtworks.Find(a => a.artworkId == artwork.artworkId);
-                CreateArtworkItem(artwork.artworkId, artwork.GetBestRecord()?.frameTier ?? FrameTier.Madera,
+                CreateArtworkItem(artwork.artworkId, artwork.GetBestRecord()?.frameTier ?? FrameTier.Bronce,  // Changed: Bronce is now lowest tier
                     canHang: true, canPlay: true, def);
             }
         }
@@ -281,7 +281,7 @@ namespace ArtUnbound.UI
 
             foreach (var artwork in availableArtworks)
             {
-                CreateArtworkItem(artwork.artworkId, FrameTier.Madera,
+                CreateArtworkItem(artwork.artworkId, FrameTier.Bronce,  // Changed: Bronce is now lowest tier
                     canHang: false, canPlay: true, artwork);
             }
         }

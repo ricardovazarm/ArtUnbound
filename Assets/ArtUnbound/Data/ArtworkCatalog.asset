@@ -14,3 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkCatalog
   artworks:
   - {fileID: 11400000, guid: f2445d907ef28b64eba8164115638433, type: 2}
+  - {fileID: 11400000, guid: 1b75bc11bb9e9e248bc12494431bb78a, type: 2}
+  - {fileID: 11400000, guid: 74a71d5e6ea550c4e82daadfca14fd30, type: 2}
+  - {fileID: 11400000, guid: 39bd92d58dcc3e146872e90202e921f2, type: 2}
+  - {fileID: 11400000, guid: 5b8e5f59dc5457a4fa0c86f5c4af21a1, type: 2}
+  - {fileID: 11400000, guid: 03f1542817b84dd46a6d6ff2e46374e2, type: 2}
+  - {fileID: 11400000, guid: b7aed0457796a504680ab3f68e529f30, type: 2}
+  - {fileID: 11400000, guid: 7fbae115d3f925640a72fbb4a84bf3ce, type: 2}

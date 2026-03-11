@@ -1,0 +1,477 @@
+[
+  {
+    "artworkId": "Met-BridgeoveraPondofWaterLilies",
+    "title": "Bridge over a Pond of Water Lilies",
+    "author": "Claude Monet",
+    "year": 1899,
+    "description": "",
+    "museum": "The Met (NYC)",
+    "artMovement": "Impressionism",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "Bridge over a Pond of Water Lilies.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-TheHorseFair",
+    "title": "The Horse Fair",
+    "author": "Rosa Bonheur",
+    "year": 1852,
+    "description": "Painting",
+    "museum": "The Met (NYC)",
+    "artMovement": "Realism",
+    "aspectRatio": 2.07239263803681,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "The Horse Fair.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-ViewofToledo",
+    "title": "View of Toledo",
+    "author": "El Greco (Domenikos Theotokopoulos)",
+    "year": 1599,
+    "description": "Painting",
+    "museum": "The Met (NYC)",
+    "artMovement": "Spanish Renaissance",
+    "aspectRatio": 0.8953009068425392,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "View of Toledo.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-TheDanceClass",
+    "title": "Dancers Practicing at the Barre",
+    "author": "Edgar Degas",
+    "year": 1877,
+    "description": "Painting",
+    "museum": "The Met (NYC)",
+    "artMovement": "Impressionism",
+    "aspectRatio": 1.0753968253968254,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "The Dance Class.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-TheThirdClassCarriage",
+    "title": "The Third-Class Carriage",
+    "author": "Honoré Daumier",
+    "year": 1864,
+    "description": "Painting",
+    "museum": "The Met (NYC)",
+    "artMovement": "Realism",
+    "aspectRatio": 1.3792048929663607,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "The Third-Class Carriage.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-YoungWomanwithaWaterPitcher",
+    "title": "Young Woman with a Water Pitcher",
+    "author": "Johannes Vermeer",
+    "year": 1657,
+    "description": "Painting",
+    "museum": "The Met (NYC)",
+    "artMovement": "Baroque",
+    "aspectRatio": 0.888402625820569,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "Young Woman with a Water Pitcher.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-UndertheWaveoffKanagawa",
+    "title": "Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series Thirty-six Views of Mount Fuji (Fugaku sanjūrokkei)",
+    "author": "Katsushika Hokusai",
+    "year": 1820,
+    "description": "Woodblock print",
+    "museum": "The Met (NYC)",
+    "artMovement": "Ukiyo-e",
+    "aspectRatio": 1.4747081712062258,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "Under the Wave off Kanagawa.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Met-AristotlewithaBustofHomer",
+    "title": "Aristotle with a Bust of Homer",
+    "author": "Rembrandt (Rembrandt van Rijn)",
+    "year": 1653,
+    "description": "Painting",
+    "museum": "The Met (NYC)",
+    "artMovement": "Baroque",
+    "aspectRatio": 0.9512195121951219,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "Aristotle with a Bust of Homer.jpg",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Mauritshuis-GirlwithaPearlEarring",
+    "title": "Girl with a Pearl Earring",
+    "author": "Johannes Vermeer",
+    "year": 0,
+    "description": "",
+    "museum": "Mauritshuis",
+    "artMovement": "Baroque",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Mauritshuis-ViewofDelft",
+    "title": "View of Delft",
+    "author": "Johannes Vermeer",
+    "year": 0,
+    "description": "",
+    "museum": "Mauritshuis",
+    "artMovement": "Baroque",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Mauritshuis-TheAnatomyLessonofDrNicolaesTu",
+    "title": "The Anatomy Lesson of Dr. Nicolaes Tulp",
+    "author": "Rembrandt",
+    "year": 0,
+    "description": "",
+    "museum": "Mauritshuis",
+    "artMovement": "Baroque",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "NGA-WomanwithaParasol",
+    "title": "Woman with a Parasol",
+    "author": "Claude Monet",
+    "year": 0,
+    "description": "",
+    "museum": "NGA (DC)",
+    "artMovement": "Impressionism",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "NGA-TheArgenteuilBridge",
+    "title": "The Argenteuil Bridge",
+    "author": "Claude Monet",
+    "year": 0,
+    "description": "",
+    "museum": "NGA (DC)",
+    "artMovement": "Impressionism",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "NGA-AYoungGirlReading",
+    "title": "A Young Girl Reading",
+    "author": "J.H. Fragonard",
+    "year": 0,
+    "description": "",
+    "museum": "NGA (DC)",
+    "artMovement": "Rococo",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "VGM-AlmondBlossom",
+    "title": "Almond Blossom",
+    "author": "Vincent van Gogh",
+    "year": 0,
+    "description": "",
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "VGM-TheHarvest",
+    "title": "The Harvest",
+    "author": "Vincent van Gogh",
+    "year": 0,
+    "description": "",
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "NGUK-TheVirginoftheRocks",
+    "title": "The Virgin of the Rocks",
+    "author": "Leonardo da Vinci",
+    "year": 0,
+    "description": "",
+    "museum": "National Gallery UK",
+    "artMovement": "Renaissance",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "NGUK-TheToiletofVenus",
+    "title": "The Toilet of Venus",
+    "author": "Diego Velázquez",
+    "year": 0,
+    "description": "",
+    "museum": "National Gallery UK",
+    "artMovement": "Baroque",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  },
+  {
+    "artworkId": "Yale-TheNightCaf",
+    "title": "The Night Café",
+    "author": "Vincent van Gogh",
+    "year": 0,
+    "description": "",
+    "museum": "Yale Art Gallery",
+    "artMovement": "Post-Impressionism",
+    "aspectRatio": 1.0,
+    "baseSizePortrait": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "baseSizeLandscape": {
+      "x": 0.7,
+      "y": 0.5
+    },
+    "textureFilename": "",
+    "isBaseContent": true,
+    "requiresUnlock": false,
+    "unlockWeek": 0,
+    "complexity": "Medium",
+    "colorVariety": 3,
+    "detailLevel": 3
+  }
+]

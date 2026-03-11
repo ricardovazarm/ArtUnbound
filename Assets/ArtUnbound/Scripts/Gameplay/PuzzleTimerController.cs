@@ -53,6 +53,17 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
+        /// Starts the timer from a specific elapsed time (for resuming saved sessions).
+        /// </summary>
+        public void StartTimer(float initialTime)
+        {
+            elapsedTime = initialTime;
+            isRunning = true;
+            isPaused = false;
+            OnTimerStarted?.Invoke();
+        }
+
+        /// <summary>
         /// Stops the timer completely.
         /// </summary>
         public void StopTimer()

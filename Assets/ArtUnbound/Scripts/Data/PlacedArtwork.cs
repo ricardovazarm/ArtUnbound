@@ -36,7 +36,7 @@ namespace ArtUnbound.Data
         {
             artworkId = string.Empty;
             anchorId = string.Empty;
-            frameTier = FrameTier.Madera;
+            frameTier = FrameTier.Bronce;  // Changed: Bronce is now lowest tier
             position = new SerializableVector3();
             rotation = new SerializableQuaternion();
             isActive = true;

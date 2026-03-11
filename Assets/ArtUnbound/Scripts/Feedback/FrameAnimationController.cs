@@ -7,17 +7,27 @@ namespace ArtUnbound.Feedback
 {
     /// <summary>
     /// Controls the frame reveal animation when puzzle is completed.
+    /// Aligned with FrameTier: Bronce, Plata, Oro, Platinum.
     /// </summary>
     public class FrameAnimationController : MonoBehaviour
     {
         public event Action OnAnimationComplete;
 
-        [Header("Frame Objects")]
-        [SerializeField] private GameObject frameMadera;
+        [Header("Frame Objects (optional - auto-created if null)")]
+        [Tooltip("Bronce = Easy (64 pieces)")]
         [SerializeField] private GameObject frameBronce;
+        [Tooltip("Plata = Normal (130-144 pieces)")]
         [SerializeField] private GameObject framePlata;
+        [Tooltip("Oro = Hard (256 pieces)")]
         [SerializeField] private GameObject frameOro;
-        [SerializeField] private GameObject frameEbano;
+        [Tooltip("Platinum = Expert (512 pieces)")]
+        [SerializeField] private GameObject framePlatinum;
+
+        [Header("Tier Materials (for auto-creation)")]
+        [SerializeField] private Material bronceMaterial;
+        [SerializeField] private Material plataMaterial;
+        [SerializeField] private Material oroMaterial;
+        [SerializeField] private Material platinumMaterial;
 
         [Header("Animation Settings")]
         [SerializeField] private float revealDuration = 1.5f;
@@ -25,20 +35,61 @@ namespace ArtUnbound.Feedback
         [SerializeField] private float glowIntensity = 2f;
         [SerializeField] private float glowDuration = 0.5f;
 
-        [Header("Particle Effects")]
+        [Header("Particle Effects (optional)")]
         [SerializeField] private ParticleSystem sparkleEffect;
         [SerializeField] private ParticleSystem glowEffect;
 
         [Header("Frame Colors")]
-        [SerializeField] private Color maderaColor = new Color(0.55f, 0.35f, 0.17f);
         [SerializeField] private Color bronceColor = new Color(0.8f, 0.5f, 0.2f);
         [SerializeField] private Color plataColor = new Color(0.75f, 0.75f, 0.75f);
         [SerializeField] private Color oroColor = new Color(1f, 0.84f, 0f);
-        [SerializeField] private Color ebanoColor = new Color(0.1f, 0.1f, 0.1f);
+        [SerializeField] private Color platinumColor = new Color(0.85f, 0.85f, 0.9f);
 
         private GameObject currentFrame;
         private FrameTier currentTier;
         private Coroutine animationCoroutine;
+
+        private void Awake()
+        {
+            EnsureFramesExist();
+        }
+
+        /// <summary>
+        /// Creates frame objects if not assigned. Uses tier materials to build simple quad frames.
+        /// </summary>
+        private void EnsureFramesExist()
+        {
+            if (frameBronce != null && framePlata != null && frameOro != null && framePlatinum != null)
+                return;
+
+            if (bronceMaterial == null || plataMaterial == null || oroMaterial == null || platinumMaterial == null)
+            {
+                Debug.LogWarning("[FrameAnimationController] Frame objects and tier materials are unassigned. Frame reveal will play without visuals. Assign materials (Frame_Bronce, Frame_Plata, Frame_Oro, Frame_Platinum) in Inspector.");
+                return;
+            }
+
+            if (frameBronce == null) frameBronce = CreateFrameQuad("FrameBronce", bronceMaterial);
+            if (framePlata == null) framePlata = CreateFrameQuad("FramePlata", plataMaterial);
+            if (frameOro == null) frameOro = CreateFrameQuad("FrameOro", oroMaterial);
+            if (framePlatinum == null) framePlatinum = CreateFrameQuad("FramePlatinum", platinumMaterial);
+        }
+
+        private GameObject CreateFrameQuad(string name, Material mat)
+        {
+            var go = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            go.name = name;
+            go.transform.SetParent(transform, worldPositionStays: false);
+            go.transform.localPosition = Vector3.zero;
+            go.transform.localRotation = Quaternion.identity;
+            go.transform.localScale = new Vector3(0.8f, 0.6f, 0.05f);
+            go.SetActive(false);
+
+            var renderer = go.GetComponent<Renderer>();
+            if (renderer != null && mat != null)
+                renderer.sharedMaterial = mat;
+
+            return go;
+        }
 
         /// <summary>
         /// Plays the frame reveal animation for the given tier.
@@ -188,12 +239,11 @@ namespace ArtUnbound.Feedback
         {
             return tier switch
             {
-                FrameTier.Madera => frameMadera,
                 FrameTier.Bronce => frameBronce,
                 FrameTier.Plata => framePlata,
                 FrameTier.Oro => frameOro,
-                FrameTier.Ebano => frameEbano,
-                _ => frameMadera
+                FrameTier.Platinum => framePlatinum,
+                _ => frameBronce  // Changed: Bronce is default
             };
         }
 
@@ -201,22 +251,20 @@ namespace ArtUnbound.Feedback
         {
             return tier switch
             {
-                FrameTier.Madera => maderaColor,
                 FrameTier.Bronce => bronceColor,
                 FrameTier.Plata => plataColor,
                 FrameTier.Oro => oroColor,
-                FrameTier.Ebano => ebanoColor,
-                _ => maderaColor
+                FrameTier.Platinum => platinumColor,
+                _ => bronceColor  // Changed: Bronce is default
             };
         }
 
         private void HideAllFrames()
         {
-            if (frameMadera != null) frameMadera.SetActive(false);
             if (frameBronce != null) frameBronce.SetActive(false);
             if (framePlata != null) framePlata.SetActive(false);
             if (frameOro != null) frameOro.SetActive(false);
-            if (frameEbano != null) frameEbano.SetActive(false);
+            if (framePlatinum != null) framePlatinum.SetActive(false);
         }
 
         /// <summary>

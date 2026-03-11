@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ArtUnbound.Data
 {
@@ -17,6 +18,7 @@ namespace ArtUnbound.Data
         public string startedAt;
         public string endedAt;
         public bool isCompleted;
+        public List<PlacedPieceData> placedPieces = new List<PlacedPieceData>();
 
         public PuzzleSessionData()
         {
@@ -29,6 +31,7 @@ namespace ArtUnbound.Data
             startedAt = string.Empty;
             endedAt = string.Empty;
             isCompleted = false;
+            placedPieces = new List<PlacedPieceData>();
         }
 
         public PuzzleSessionData(string artworkId, int pieceCount, bool helpMode)
@@ -42,6 +45,7 @@ namespace ArtUnbound.Data
             startedAt = DateTime.UtcNow.ToString("o");
             endedAt = string.Empty;
             isCompleted = false;
+            placedPieces = new List<PlacedPieceData>();
         }
 
         public int GetElapsedSeconds() => Math.Max(1, (int)elapsedTime);

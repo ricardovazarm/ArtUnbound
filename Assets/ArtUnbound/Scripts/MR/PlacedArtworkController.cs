@@ -118,12 +118,11 @@ namespace ArtUnbound.MR
         {
             return tier switch
             {
-                FrameTier.Madera => frameMaderaMesh,
                 FrameTier.Bronce => frameBronceMesh,
                 FrameTier.Plata => framePlataMesh,
                 FrameTier.Oro => frameOroMesh,
-                FrameTier.Ebano => frameEbanoMesh,
-                _ => frameMaderaMesh
+                FrameTier.Platinum => frameEbanoMesh,  // Reutilizamos el mesh de Ebano para Platinum
+                _ => frameBronceMesh  // Changed: Bronce is default
             };
         }
 
@@ -131,12 +130,11 @@ namespace ArtUnbound.MR
         {
             return tier switch
             {
-                FrameTier.Madera => frameMaderaMaterial,
                 FrameTier.Bronce => frameBronceMaterial,
                 FrameTier.Plata => framePlataMaterial,
                 FrameTier.Oro => frameOroMaterial,
-                FrameTier.Ebano => frameEbanoMaterial,
-                _ => frameMaderaMaterial
+                FrameTier.Platinum => frameEbanoMaterial,  // Reutilizamos el material de Ebano para Platinum
+                _ => frameBronceMaterial  // Changed: Bronce is default
             };
         }
 

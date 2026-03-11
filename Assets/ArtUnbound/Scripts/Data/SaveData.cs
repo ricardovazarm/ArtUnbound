@@ -14,6 +14,7 @@ namespace ArtUnbound.Data
         public List<PlacedArtwork> placedArtworks = new List<PlacedArtwork>();
         public GameSettings settings = new GameSettings();
         public string lastArtworkId = string.Empty;
+        public int lastPieceCount = 144; // Last difficulty used
         public GameMode lastGameMode = GameMode.Gallery;
         public bool onboardingCompleted = false;
         public string firstPlayDate = string.Empty;

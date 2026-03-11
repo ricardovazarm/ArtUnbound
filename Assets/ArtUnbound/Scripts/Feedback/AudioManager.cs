@@ -35,9 +35,9 @@ namespace ArtUnbound.Feedback
 
         [Header("Volume Settings")]
         [SerializeField] private float sfxVolume = 0.7f; // Standard UI sounds
-        [SerializeField] private float musicVolume = 0.3f; // Background music should be subtle
+        [SerializeField] private float musicVolume = 0.15f; // Background music - very low to prevent distortion
         [SerializeField] private float ambientVolume = 0.2f;
-        [SerializeField] private float pieceVolume = 0.6f; // Piece sounds are primary gameplay feedback
+        [SerializeField] private float pieceVolume = 0.5f; // Piece sounds - slightly reduced to prevent clipping
 
         [Header("Configuration")]
         [SerializeField] private float musicFadeDuration = 1.0f;
@@ -187,6 +187,15 @@ namespace ArtUnbound.Feedback
         public void PlayNewRecord()
         {
             PlaySound("new_record");
+        }
+
+        /// <summary>
+        /// Plays milestone sound (row/column/edge completion).
+        /// Uses achievement sound for motivational feedback.
+        /// </summary>
+        public void PlayMilestone()
+        {
+            PlaySound("achievement");
         }
 
         /// <summary>
