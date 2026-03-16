@@ -83,6 +83,8 @@ namespace ArtUnbound.UI
         {
             if (!isPaused) return;
 
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
             isPaused = false;
 
             if (timerController != null)
@@ -140,18 +142,24 @@ namespace ArtUnbound.UI
 
         private void ShowQuitConfirmation()
         {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
             if (confirmQuitPanel != null)
                 confirmQuitPanel.SetActive(true);
         }
 
         private void HideQuitConfirmation()
         {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
             if (confirmQuitPanel != null)
                 confirmQuitPanel.SetActive(false);
         }
 
         private void ConfirmQuit()
         {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
             isPaused = false;
             Hide();
             OnQuitRequested?.Invoke();

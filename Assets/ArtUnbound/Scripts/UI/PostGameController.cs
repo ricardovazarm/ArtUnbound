@@ -111,12 +111,16 @@ namespace ArtUnbound.UI
 
         private void OnPlaceArtworkClicked()
         {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
             OnPlaceArtworkRequested?.Invoke();
             Hide();
         }
 
         private void OnReplayClicked()
         {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
             OnReplayRequested?.Invoke();
             Hide();
         }

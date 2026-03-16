@@ -150,7 +150,7 @@ namespace ArtUnbound.UI
             TextMesh textMesh = textObj.AddComponent<TextMesh>();
             textMesh.text = arrowText;
             textMesh.fontSize = 48; // Medium font size
-            textMesh.color = Color.white;
+            textMesh.color = new Color(0.92f, 0.92f, 0.92f, 1f); // Soft gray (Meta: avoid pure white)
             textMesh.anchor = TextAnchor.MiddleCenter;
             textMesh.alignment = TextAlignment.Center;
             textMesh.characterSize = 1.0f; // Normal character size

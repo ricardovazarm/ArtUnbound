@@ -35,6 +35,9 @@ namespace ArtUnbound.UI
         [Header("Buttons")]
         [SerializeField] private Button quitButton;
 
+        [Header("Music Track Display")]
+        [SerializeField] private TextMeshProUGUI musicTrackText;
+
         [Header("References")]
         [SerializeField] private PuzzleTimerController timerController;
 
@@ -49,9 +52,47 @@ namespace ArtUnbound.UI
         private void Awake()
         {
             if (quitButton != null)
-                quitButton.onClick.AddListener(() => OnExitRequested?.Invoke());
+                quitButton.onClick.AddListener(OnQuitClicked);
 
+            SetupMusicTrackDisplay();
             Hide();
+        }
+
+        private void OnEnable()
+        {
+            if (musicTrackText != null && ArtUnbound.Feedback.AudioManager.Instance != null)
+            {
+                ArtUnbound.Feedback.AudioManager.Instance.OnTrackChanged += OnMusicTrackChanged;
+                var (title, artist) = ArtUnbound.Feedback.AudioManager.Instance.CurrentTrack;
+                UpdateMusicTrackText(title, artist);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.OnTrackChanged -= OnMusicTrackChanged;
+        }
+
+        private void SetupMusicTrackDisplay()
+        {
+            if (musicTrackText != null && ArtUnbound.Feedback.AudioManager.Instance != null)
+            {
+                var (title, artist) = ArtUnbound.Feedback.AudioManager.Instance.CurrentTrack;
+                UpdateMusicTrackText(title, artist);
+            }
+        }
+
+        private void OnMusicTrackChanged(string title, string artist)
+        {
+            UpdateMusicTrackText(title, artist);
+        }
+
+        private void UpdateMusicTrackText(string title, string artist)
+        {
+            if (musicTrackText == null) return;
+            musicTrackText.text = string.IsNullOrEmpty(title) && string.IsNullOrEmpty(artist)
+                ? "" : $"♪ {title ?? ""} — {artist ?? ""}";
         }
 
         private void Update()
@@ -160,8 +201,17 @@ namespace ArtUnbound.UI
                 gameObject.SetActive(false);
         }
 
+        private void OnQuitClicked()
+        {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
+            OnExitRequested?.Invoke();
+        }
+
         private void OnDestroy()
         {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.OnTrackChanged -= OnMusicTrackChanged;
             if (quitButton != null) 
                 quitButton.onClick.RemoveAllListeners();
         }

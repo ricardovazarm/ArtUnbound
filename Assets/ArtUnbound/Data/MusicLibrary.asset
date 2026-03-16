@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e5902ad0234561a4f9b5256fe4c00a, type: 3}
+  m_Name: MusicLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.MusicLibrary
+  tracks:
+  - clip: {fileID: 8300000, guid: b7bec529575c9c94eaeaa74004646deb, type: 3}
+    title: Moonlight Sonata
+    artist: Ludwig van Beethoven
+  - clip: {fileID: 8300000, guid: fb25ba373f8aa4f479f45380848b1c13, type: 3}
+    title: Air on the G String (from Orchestral Suite no. 3, BWV 1068)
+    artist: Johann Sebastian Bach
+  - clip: {fileID: 8300000, guid: 5fc8af48e1d4a874d92474475bcd83d0, type: 3}
+    title: Cello Suite no. 1 - Prelude in G, BWV 1007
+    artist: Johann Sebastian Bach
+  - clip: {fileID: 8300000, guid: a65b70430f1de9c47b7b2df2bd6a4333, type: 3}
+    title: Minuet in G major, Anh. 114 - Notebook for Anna Magdalena Bach
+    artist: Johann Sebastian Bach
+  - clip: {fileID: 8300000, guid: e4b31485ae79e3e418df3d79c1fe1cd2, type: 3}
+    title: Prelude in C major, BWV 846
+    artist: Johann Sebastian Bach

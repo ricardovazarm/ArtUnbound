@@ -88,6 +88,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void NextStep()
         {
+            PlayButtonClick();
             if (currentStepIndex < steps.Length - 1)
             {
                 currentStepIndex++;
@@ -104,6 +105,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void PreviousStep()
         {
+            PlayButtonClick();
             if (currentStepIndex > 0)
             {
                 currentStepIndex--;
@@ -116,6 +118,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void Skip()
         {
+            PlayButtonClick();
             isComplete = true;
             Hide();
             OnOnboardingSkipped?.Invoke();
@@ -294,6 +297,12 @@ namespace ArtUnbound.UI
                 panel.SetActive(false);
             else
                 gameObject.SetActive(false);
+        }
+
+        private void PlayButtonClick()
+        {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
         }
 
         private void OnDestroy()

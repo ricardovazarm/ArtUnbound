@@ -29,12 +29,15 @@ namespace ArtUnbound.UI
         [Header("Left Zone - Configuration")]
         [SerializeField] private Slider musicVolumeSlider;
         [SerializeField] private Slider soundVolumeSlider;
+        [SerializeField] private TextMeshProUGUI musicTrackText;
         [SerializeField] private Toggle tutorialToggle;
         [SerializeField] private TextMeshProUGUI globalStatsText; // "12/24 obras completadas"
 
         [Header("Center Zone - Catalog")]
-        [SerializeField] private GameObject catalogGrid; // Container with Grid Layout Group
-        [SerializeField] private ScrollRect catalogScrollRect;
+        [SerializeField] private GameObject catalogGrid; // Container with Grid Layout Group (3x3)
+        [SerializeField] private Button catalogPageLeftButton;
+        [SerializeField] private Button catalogPageRightButton;
+        [SerializeField] private TextMeshProUGUI catalogPageText;
         [SerializeField] private Button filterAllButton;
         [SerializeField] private Button filterInProgressButton;
         [SerializeField] private Button filterCompletedButton;
@@ -56,8 +59,8 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI expertButtonText;
 
         [Header("Visual Feedback")]
-        [SerializeField] private Color normalButtonColor = Color.white;       // Botón normal (más brillante)
-        [SerializeField] private Color dimmedButtonColor = new Color(0.5f, 0.5f, 0.5f, 1f); // Botón no seleccionado (oscuro)
+        [SerializeField] private Color normalButtonColor = new Color(0.537f, 0.424f, 0.29f, 1f); // #896c4a (selected)
+        [SerializeField] private Color dimmedButtonColor = new Color(0.278f, 0.255f, 0.2f, 1f); // #474133 (unselected)
 
         [Header("Configuration")]
         [SerializeField] private PuzzleConfig puzzleConfig; // Reference to PuzzleConfig for piece counts
@@ -69,65 +72,67 @@ namespace ArtUnbound.UI
         private SaveData saveData;
         
         private List<ArtworkDefinition> allArtworks = new List<ArtworkDefinition>();
+        private List<ArtworkDefinition> filteredArtworks = new List<ArtworkDefinition>();
         private List<GameObject> artworkCards = new List<GameObject>();
         private ArtworkDefinition selectedArtwork;
         
         private FilterType currentFilter = FilterType.All;
+        private int currentPage;
+        private const int Columns = 3;
+        private const int Rows = 3;
+        private const int ItemsPerPage = Columns * Rows; // 9
         
-        // Difficulty names - piece counts loaded from PuzzleConfig
-        private Dictionary<int, string> difficultyNames;
         #endregion
 
         #region Unity Lifecycle
         private void Awake()
         {
-            LoadPieceCountsFromConfig();
             SetupButtonListeners();
+            SetupMusicTrackDisplay();
         }
 
         private void OnDestroy()
         {
             RemoveButtonListeners();
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.OnTrackChanged -= OnMusicTrackChanged;
+        }
+
+        private void SetupMusicTrackDisplay()
+        {
+            if (musicTrackText == null || ArtUnbound.Feedback.AudioManager.Instance == null) return;
+            ArtUnbound.Feedback.AudioManager.Instance.OnTrackChanged += OnMusicTrackChanged;
+            var (title, artist) = ArtUnbound.Feedback.AudioManager.Instance.CurrentTrack;
+            UpdateMusicTrackText(title, artist);
+        }
+
+        private void OnMusicTrackChanged(string title, string artist)
+        {
+            UpdateMusicTrackText(title, artist);
+        }
+
+        private void UpdateMusicTrackText(string title, string artist)
+        {
+            if (musicTrackText == null) return;
+            musicTrackText.text = string.IsNullOrEmpty(title) && string.IsNullOrEmpty(artist)
+                ? "" : $"♪ {title ?? ""} — {artist ?? ""}";
         }
         #endregion
 
         #region Initialization
         /// <summary>
-        /// Loads piece counts from PuzzleConfig and sets up difficulty names.
+        /// Gets piece count for difficulty index (0=Easy, 1=Normal, 2=Hard, 3=Expert).
+        /// Uses artwork's piece counts when set, else PuzzleConfig defaults.
         /// </summary>
-        private void LoadPieceCountsFromConfig()
+        private int GetPieceCountForDifficulty(int index)
         {
-            // Load PuzzleConfig if not assigned
-            if (puzzleConfig == null)
-            {
-                puzzleConfig = Resources.Load<PuzzleConfig>("Data/PuzzleConfig");
-                if (puzzleConfig == null)
-                {
-                    Debug.LogError("[UnifiedMainMenu] PuzzleConfig not found! Using default piece counts.");
-                    // Fallback to default values
-                    difficultyNames = new Dictionary<int, string>
-                    {
-                        { 64, "Fácil" },
-                        { 121, "Normal" },
-                        { 196, "Difícil" },
-                        { 289, "Experto" }
-                    };
-                    return;
-                }
-            }
-
-            // Build difficulty names from PuzzleConfig
-            difficultyNames = new Dictionary<int, string>();
-            string[] difficultyLabels = { "Fácil", "Normal", "Difícil", "Experto" };
-            
-            for (int i = 0; i < puzzleConfig.pieceCounts.Length && i < difficultyLabels.Length; i++)
-            {
-                difficultyNames[puzzleConfig.pieceCounts[i]] = difficultyLabels[i];
-            }
-
-            Debug.Log($"[UnifiedMainMenu] Loaded piece counts: {string.Join(", ", puzzleConfig.pieceCounts)}");
+            if (selectedArtwork != null && selectedArtwork.GetPieceCount(index) > 0)
+                return selectedArtwork.GetPieceCount(index);
+            if (puzzleConfig != null && puzzleConfig.pieceCounts.Length > index)
+                return puzzleConfig.pieceCounts[index];
+            return new[] { 64, 121, 196, 289 }[index];
         }
-        
+
         /// <summary>
         /// Initializes the menu with services and data.
         /// </summary>
@@ -150,45 +155,28 @@ namespace ArtUnbound.UI
         {
             // Filter buttons
             if (filterAllButton != null)
-                filterAllButton.onClick.AddListener(() => ApplyFilter(FilterType.All));
+                filterAllButton.onClick.AddListener(() => { PlayButtonClick(); ApplyFilter(FilterType.All); });
             
             if (filterInProgressButton != null)
-                filterInProgressButton.onClick.AddListener(() => ApplyFilter(FilterType.InProgress));
+                filterInProgressButton.onClick.AddListener(() => { PlayButtonClick(); ApplyFilter(FilterType.InProgress); });
             
             if (filterCompletedButton != null)
-                filterCompletedButton.onClick.AddListener(() => ApplyFilter(FilterType.Completed));
+                filterCompletedButton.onClick.AddListener(() => { PlayButtonClick(); ApplyFilter(FilterType.Completed); });
 
-            // Difficulty buttons - use values from PuzzleConfig
-            if (puzzleConfig != null && puzzleConfig.pieceCounts.Length >= 4)
-            {
-                if (easyButton != null)
-                    easyButton.onClick.AddListener(() => StartPuzzle(puzzleConfig.pieceCounts[0])); // Easy
-                
-                if (normalButton != null)
-                    normalButton.onClick.AddListener(() => StartPuzzle(puzzleConfig.pieceCounts[1])); // Normal
-                
-                if (hardButton != null)
-                    hardButton.onClick.AddListener(() => StartPuzzle(puzzleConfig.pieceCounts[2])); // Hard
-                
-                if (expertButton != null)
-                    expertButton.onClick.AddListener(() => StartPuzzle(puzzleConfig.pieceCounts[3])); // Expert
-            }
-            else
-            {
-                Debug.LogWarning("[UnifiedMainMenu] PuzzleConfig not loaded properly, using fallback piece counts");
-                // Fallback to default values
-                if (easyButton != null)
-                    easyButton.onClick.AddListener(() => StartPuzzle(64));
-                
-                if (normalButton != null)
-                    normalButton.onClick.AddListener(() => StartPuzzle(121));
-                
-                if (hardButton != null)
-                    hardButton.onClick.AddListener(() => StartPuzzle(196));
-                
-                if (expertButton != null)
-                    expertButton.onClick.AddListener(() => StartPuzzle(289));
-            }
+            if (catalogPageLeftButton != null)
+                catalogPageLeftButton.onClick.AddListener(GoToPrevPage);
+            if (catalogPageRightButton != null)
+                catalogPageRightButton.onClick.AddListener(GoToNextPage);
+
+            // Difficulty buttons - use artwork's piece counts when set, else PuzzleConfig
+            if (easyButton != null)
+                easyButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(0); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+            if (normalButton != null)
+                normalButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(1); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+            if (hardButton != null)
+                hardButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(2); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+            if (expertButton != null)
+                expertButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(3); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
 
             // Settings controls
             if (musicVolumeSlider != null)
@@ -211,6 +199,11 @@ namespace ArtUnbound.UI
             
             if (filterCompletedButton != null)
                 filterCompletedButton.onClick.RemoveAllListeners();
+
+            if (catalogPageLeftButton != null)
+                catalogPageLeftButton.onClick.RemoveAllListeners();
+            if (catalogPageRightButton != null)
+                catalogPageRightButton.onClick.RemoveAllListeners();
 
             if (easyButton != null)
                 easyButton.onClick.RemoveAllListeners();
@@ -253,8 +246,9 @@ namespace ArtUnbound.UI
             currentFilter = filter;
             UpdateFilterButtonVisuals();
             
-            List<ArtworkDefinition> filteredArtworks = GetFilteredArtworks();
-            PopulateCatalogGrid(filteredArtworks);
+            filteredArtworks = GetFilteredArtworks();
+            currentPage = 0;
+            RefreshCatalogPage();
         }
 
         private List<ArtworkDefinition> GetFilteredArtworks()
@@ -303,14 +297,25 @@ namespace ArtUnbound.UI
         {
             if (button == null) return;
             
+            var image = button.targetGraphic as UnityEngine.UI.Image;
+            float alpha = image != null ? image.color.a : 1f; // Preserve user's alpha
+            Color targetColor = isSelected ? normalButtonColor : dimmedButtonColor;
+            Color colorWithAlpha = new Color(targetColor.r, targetColor.g, targetColor.b, alpha);
+            
             var colors = button.colors;
-            colors.normalColor = isSelected ? normalButtonColor : dimmedButtonColor;
+            colors.normalColor = colorWithAlpha;
+            colors.highlightedColor = new Color(0.85f, 0.9f, 1f, 1f);
+            colors.pressedColor = new Color(0.7f, 0.7f, 0.7f, 1f);
             button.colors = colors;
+            
+            // Aplicar de inmediato (Button puede tardar en hacer DoStateTransition)
+            if (image != null)
+                image.color = colorWithAlpha;
         }
         #endregion
 
-        #region Catalog Grid Population
-        private void PopulateCatalogGrid(List<ArtworkDefinition> artworks)
+        #region Catalog Grid Population (Pagination 3x3)
+        private void RefreshCatalogPage()
         {
             // Clear existing cards
             foreach (var card in artworkCards)
@@ -320,31 +325,80 @@ namespace ArtUnbound.UI
             }
             artworkCards.Clear();
 
-            if (catalogGrid == null)
+            if (catalogGrid == null || artworkCardPrefab == null)
             {
-                Debug.LogError("[UnifiedMainMenu] CatalogGrid is NULL! Assign it in the Inspector.");
+                Debug.LogError("[UnifiedMainMenu] CatalogGrid or ArtworkCardPrefab is NULL!");
                 return;
             }
 
-            if (artworkCardPrefab == null)
-            {
-                Debug.LogError("[UnifiedMainMenu] ArtworkCardPrefab is NULL! Assign it in the Inspector.");
-                return;
-            }
+            int totalItems = filteredArtworks.Count;
+            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)totalItems / ItemsPerPage));
+            currentPage = Mathf.Clamp(currentPage, 0, totalPages - 1);
 
-            Debug.Log($"[UnifiedMainMenu] Populating grid with {artworks.Count} artworks");
+            int startIndex = currentPage * ItemsPerPage;
+            int count = Mathf.Min(ItemsPerPage, totalItems - startIndex);
 
-            // Create cards for filtered artworks
-            foreach (var artwork in artworks)
+            for (int i = 0; i < count; i++)
             {
+                var artwork = filteredArtworks[startIndex + i];
                 GameObject card = Instantiate(artworkCardPrefab, catalogGrid.transform);
                 SetupArtworkCard(card, artwork);
                 artworkCards.Add(card);
-                
-                Debug.Log($"[UnifiedMainMenu] Created card for: {artwork.title}");
             }
 
-            Debug.Log($"[UnifiedMainMenu] Grid population complete: {artworkCards.Count} cards created");
+            // Force layout rebuild so Content gets correct size from GridLayoutGroup
+            if (catalogGrid != null)
+            {
+                Canvas.ForceUpdateCanvases();
+                var catalogRt = catalogGrid.GetComponent<RectTransform>();
+                if (catalogRt != null)
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(catalogRt);
+            }
+
+            UpdatePageIndicator(totalPages);
+            UpdatePageButtons(totalPages);
+        }
+
+        private void GoToPrevPage()
+        {
+            if (currentPage > 0)
+            {
+                PlayButtonClick();
+                currentPage--;
+                RefreshCatalogPage();
+            }
+        }
+
+        private void GoToNextPage()
+        {
+            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)filteredArtworks.Count / ItemsPerPage));
+            if (currentPage < totalPages - 1)
+            {
+                PlayButtonClick();
+                currentPage++;
+                RefreshCatalogPage();
+            }
+        }
+
+        private void UpdatePageIndicator(int totalPages)
+        {
+            if (catalogPageText == null) return;
+            catalogPageText.text = totalPages <= 1 ? "" : $"{currentPage + 1} / {totalPages}";
+        }
+
+        private void UpdatePageButtons(int totalPages)
+        {
+            // Siempre visibles; deshabilitados cuando no aplican (Prev en pág 1, Next en última)
+            if (catalogPageLeftButton != null)
+            {
+                catalogPageLeftButton.gameObject.SetActive(true);
+                catalogPageLeftButton.interactable = currentPage > 0;
+            }
+            if (catalogPageRightButton != null)
+            {
+                catalogPageRightButton.gameObject.SetActive(true);
+                catalogPageRightButton.interactable = currentPage < totalPages - 1 && totalPages > 1;
+            }
         }
 
         private void SetupArtworkCard(GameObject card, ArtworkDefinition artwork)
@@ -361,6 +415,18 @@ namespace ArtUnbound.UI
             if (artworkCard.ThumbnailImage != null && artwork.thumbnail != null)
             {
                 artworkCard.ThumbnailImage.sprite = artwork.thumbnail;
+
+                // Match frame to image aspect ratio: ThumbContainer uses AspectRatioFitter
+                var thumbContainer = artworkCard.ThumbnailImage.transform.parent;
+                if (thumbContainer != null)
+                {
+                    var fitter = thumbContainer.GetComponent<AspectRatioFitter>();
+                    if (fitter == null)
+                        fitter = thumbContainer.gameObject.AddComponent<AspectRatioFitter>();
+                    fitter.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
+                    var r = artwork.thumbnail.rect;
+                    fitter.aspectRatio = r.width / Mathf.Max(r.height, 0.001f);
+                }
             }
 
             // Set title text
@@ -414,6 +480,7 @@ namespace ArtUnbound.UI
         #region Artwork Selection & Detail
         private void SelectArtwork(ArtworkDefinition artwork)
         {
+            PlayButtonClick();
             selectedArtwork = artwork;
             UpdateDetailPanel();
             
@@ -455,6 +522,17 @@ namespace ArtUnbound.UI
             if (detailArtworkImage != null && selectedArtwork.fullImage != null)
             {
                 detailArtworkImage.sprite = selectedArtwork.fullImage;
+                // Match frame to image aspect ratio (same as grid)
+                var detailContainer = detailArtworkImage.transform.parent;
+                if (detailContainer != null)
+                {
+                    var fitter = detailContainer.GetComponent<AspectRatioFitter>();
+                    if (fitter == null)
+                        fitter = detailContainer.gameObject.AddComponent<AspectRatioFitter>();
+                    fitter.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
+                    var r = selectedArtwork.fullImage.rect;
+                    fitter.aspectRatio = r.width / Mathf.Max(r.height, 0.001f);
+                }
             }
 
             // Set title
@@ -481,21 +559,10 @@ namespace ArtUnbound.UI
 
         private void UpdateDifficultyButtons()
         {
-            if (puzzleConfig != null && puzzleConfig.pieceCounts.Length >= 4)
-            {
-                UpdateDifficultyButton(easyButton, easyButtonText, puzzleConfig.pieceCounts[0]);     // Easy
-                UpdateDifficultyButton(normalButton, normalButtonText, puzzleConfig.pieceCounts[1]); // Normal
-                UpdateDifficultyButton(hardButton, hardButtonText, puzzleConfig.pieceCounts[2]);     // Hard
-                UpdateDifficultyButton(expertButton, expertButtonText, puzzleConfig.pieceCounts[3]); // Expert
-            }
-            else
-            {
-                // Fallback
-                UpdateDifficultyButton(easyButton, easyButtonText, 64);
-                UpdateDifficultyButton(normalButton, normalButtonText, 121);
-                UpdateDifficultyButton(hardButton, hardButtonText, 196);
-                UpdateDifficultyButton(expertButton, expertButtonText, 289);
-            }
+            UpdateDifficultyButton(easyButton, easyButtonText, GetPieceCountForDifficulty(0));
+            UpdateDifficultyButton(normalButton, normalButtonText, GetPieceCountForDifficulty(1));
+            UpdateDifficultyButton(hardButton, hardButtonText, GetPieceCountForDifficulty(2));
+            UpdateDifficultyButton(expertButton, expertButtonText, GetPieceCountForDifficulty(3));
         }
 
         private void UpdateDifficultyButton(Button button, TextMeshProUGUI buttonText, int pieceCount)
@@ -503,7 +570,7 @@ namespace ArtUnbound.UI
             if (button == null || buttonText == null || selectedArtwork == null)
                 return;
 
-            string difficultyName = difficultyNames.ContainsKey(pieceCount) ? difficultyNames[pieceCount] : pieceCount.ToString();
+            string label = $"{pieceCount} Pieces";
             
             // Check if this difficulty is in progress (saved session)
             bool hasProgress = HasProgressForDifficulty(selectedArtwork.artworkId, pieceCount);
@@ -515,16 +582,19 @@ namespace ArtUnbound.UI
             
             if (hasProgress)
             {
-                buttonText.text = $"Continuar {difficultyName}";
+                buttonText.text = $"Continue {label}";
             }
             else
             {
-                buttonText.text = difficultyName;
+                buttonText.text = label;
             }
             
             // Highlight selected button (más claro), dim others (oscuro)
             var colors = button.colors;
             colors.normalColor = isSelected ? normalButtonColor : dimmedButtonColor;
+            // Meta MR: preserve distinct hover/pressed feedback
+            colors.highlightedColor = new Color(0.85f, 0.9f, 1f, 1f);
+            colors.pressedColor = new Color(0.7f, 0.7f, 0.7f, 1f);
             button.colors = colors;
         }
 
@@ -631,6 +701,13 @@ namespace ArtUnbound.UI
             if (mainPanel != null)
                 mainPanel.SetActive(true);
             
+            // Refresh music track display (music continues across menu/gameplay)
+            if (musicTrackText != null && ArtUnbound.Feedback.AudioManager.Instance != null)
+            {
+                var (title, artist) = ArtUnbound.Feedback.AudioManager.Instance.CurrentTrack;
+                UpdateMusicTrackText(title, artist);
+            }
+            
             // Refresh data
             if (catalogService != null && saveDataService != null)
             {
@@ -654,6 +731,14 @@ namespace ArtUnbound.UI
             All,
             InProgress,
             Completed
+        }
+        #endregion
+
+        #region Audio Feedback
+        private void PlayButtonClick()
+        {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
         }
         #endregion
     }

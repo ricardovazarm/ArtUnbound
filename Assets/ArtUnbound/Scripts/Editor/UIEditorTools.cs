@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEditor;
 using ArtUnbound.UI;
 using ArtUnbound.Core;
@@ -35,52 +34,8 @@ namespace ArtUnbound.Editor
             if (GUILayout.Button("Settings")) ToggleSolo<SettingsController>();
 
             GUILayout.Space(20);
-            GUILayout.Label("Scroll Fix", EditorStyles.boldLabel);
-            if (GUILayout.Button("Fix Catalog Scroll (Content Size Fitter)"))
-            {
-                FixCatalogScroll();
-            }
-        }
-
-        private static void FixCatalogScroll()
-        {
-            ScrollRect scrollRect = null;
-            var scrollView = GameObject.Find("CatalogScrollView");
-            if (scrollView != null)
-                scrollRect = scrollView.GetComponent<ScrollRect>();
-
-            if (scrollRect == null)
-            {
-                var allScrollRects = Object.FindObjectsByType<ScrollRect>(FindObjectsSortMode.None);
-                foreach (var sr in allScrollRects)
-                {
-                    if (sr.content != null && sr.content.GetComponent<GridLayoutGroup>() != null)
-                    {
-                        scrollRect = sr;
-                        break;
-                    }
-                }
-            }
-
-            if (scrollRect == null || scrollRect.content == null)
-            {
-                Debug.LogWarning("[UIEditorTools] Catalog ScrollRect not found. Open Main scene with UnifiedMainMenu.");
-                return;
-            }
-
-            var content = scrollRect.content;
-            var fitter = content.GetComponent<ContentSizeFitter>();
-            if (fitter == null)
-            {
-                fitter = Undo.AddComponent<ContentSizeFitter>(content.gameObject);
-                Debug.Log("[UIEditorTools] Added ContentSizeFitter to Catalog Content.");
-            }
-
-            Undo.RecordObject(fitter, "Fix Catalog Scroll");
-            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-            fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
-            EditorUtility.SetDirty(content.gameObject);
-            Debug.Log("[UIEditorTools] Catalog scroll fixed: Content will expand with items.");
+            GUILayout.Label("Catalog", EditorStyles.boldLabel);
+            GUILayout.Label("Catalog uses 3x3 pagination with arrow buttons (no scroll). Panel border is built into PanelRounded.png.", EditorStyles.helpBox);
         }
 
         private void SetAllPanelsActive(bool active)

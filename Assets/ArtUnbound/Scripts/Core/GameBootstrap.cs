@@ -255,7 +255,11 @@ namespace ArtUnbound.Core
 
             HideAllPanels();
 
-            // Use UnifiedMainMenu
+            // Start music first so CurrentTrack is set before menu shows
+            if (audioManager != null)
+                audioManager.StartMusicPlayback();
+
+            // Use UnifiedMainMenu (Show refreshes music track from CurrentTrack)
             if (unifiedMainMenu != null)
             {
                 unifiedMainMenu.Show();
@@ -264,9 +268,6 @@ namespace ArtUnbound.Core
             {
                 Debug.LogError("[GameBootstrap] UnifiedMainMenuController reference is missing in Inspector!");
             }
-
-            if (audioManager != null)
-                audioManager.PlayMenuMusic();
         }
 
         /// <summary>
@@ -318,8 +319,7 @@ namespace ArtUnbound.Core
             // if (timerController != null)
             //     timerController.StartTimer();
 
-            if (audioManager != null)
-                audioManager.PlayGameplayMusic();
+            // Music continues from menu - no change needed
         }
 
 
@@ -763,8 +763,8 @@ namespace ArtUnbound.Core
             Transform headTransform = Camera.main != null ? Camera.main.transform : null;
             if (headTransform == null) return;
 
-            // Constants matching ComfortModeController
-            float distanceFromHead = 0.4f;
+            // Constants matching ComfortModeController (Meta MR guideline: 45cm for direct hand interaction)
+            float distanceFromHead = 0.45f;
             float heightOffset = -0.15f;
             float tiltAngle = 15f;
 
@@ -785,7 +785,7 @@ namespace ArtUnbound.Core
 
         }
 
-        private const float DefaultPlacementDistance = 0.4f;
+        private const float DefaultPlacementDistance = 0.45f; // Meta MR guideline: 45cm for direct hand interaction
 
         private System.Collections.IEnumerator PositionCanvasWithDelay(Transform canvasTransform)
         {

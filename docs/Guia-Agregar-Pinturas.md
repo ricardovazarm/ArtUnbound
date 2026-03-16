@@ -43,6 +43,11 @@ Esta guía detalla el proceso para introducir nuevas obras de arte en **Art Unbo
         - **Art Movement**: (ej. `Renacimiento`).
     - **Display:**
         - **Aspect Ratio**: Calcula Ancho/Alto (ej. 0.67). *Nota: El sistema adaptativo del PuzzleBoard usará la textura real, este valor es más referencial para UI.*
+    - **Piece Counts (opcional):** Para mostrar "64 Pieces", "121 Pieces" etc. en los botones de dificultad, usa el script:
+        ```bash
+        python scripts/calc_piece_counts.py 3000 2009
+        ```
+        Pasa las dimensiones de la imagen (ancho alto). Copia los 4 valores a `pieceCountEasy`, `pieceCountNormal`, `pieceCountHard`, `pieceCountExpert`. Si dejas 0, se usará el valor por defecto de PuzzleConfig.
     - **Textures:**
         - **Thumbnail**: Arrastra la misma imagen que usaste para `Full Image` (Unity la redimensionará) o usa una versión pequeña si prefieres optimizar.
         - **Full Image**: Arrastra la imagen importada (La de alta calidad).

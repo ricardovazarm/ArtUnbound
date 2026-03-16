@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using ArtUnbound.Data;
 using UnityEngine;
 
 namespace ArtUnbound.Feedback
@@ -25,10 +27,8 @@ namespace ArtUnbound.Feedback
         [SerializeField] private AudioClip achievementSound;
         [SerializeField] private AudioClip newRecordSound;
 
-        [Header("Music Tracks")]
-        [SerializeField] private AudioClip menuMusic;
-        [SerializeField] private AudioClip gameplayMusic;
-        [SerializeField] private AudioClip victoryMusic;
+        [Header("Music Library")]
+        [SerializeField] private MusicLibrary musicLibrary;
 
         [Header("Ambient Sounds")]
         [SerializeField] private AudioClip galleryAmbient;
@@ -44,8 +44,18 @@ namespace ArtUnbound.Feedback
 
         public static AudioManager Instance { get; private set; }
 
+        /// <summary>Fired when the current track changes. Args: title, artist.</summary>
+        public event Action<string, string> OnTrackChanged;
+
+        /// <summary>Current track info for display.</summary>
+        public (string title, string artist) CurrentTrack => (currentTrackTitle, currentTrackArtist);
+
         private Coroutine musicFadeCoroutine;
         private Dictionary<string, AudioClip> soundEffects;
+        private bool musicPlaybackStarted;
+        private int lastPlayedTrackIndex = -1;
+        private string currentTrackTitle = "";
+        private string currentTrackArtist = "";
 
         private void Awake()
         {
@@ -199,27 +209,56 @@ namespace ArtUnbound.Feedback
         }
 
         /// <summary>
-        /// Plays menu music.
+        /// Starts continuous music playback from the library. Music continues across menu and gameplay.
+        /// Call once at startup; tracks change randomly when each song ends.
+        /// Ignores subsequent calls if already started.
         /// </summary>
-        public void PlayMenuMusic()
+        public void StartMusicPlayback()
         {
-            PlayMusic(menuMusic);
+            if (musicPlaybackStarted)
+                return;
+
+            if (musicLibrary == null || musicLibrary.tracks == null || musicLibrary.tracks.Length == 0)
+                return;
+
+            musicPlaybackStarted = true;
+            PlayNextRandomTrack();
         }
 
-        /// <summary>
-        /// Plays gameplay music.
-        /// </summary>
-        public void PlayGameplayMusic()
+        private void Update()
         {
-            PlayMusic(gameplayMusic);
+            if (!musicPlaybackStarted || musicSource == null || musicFadeCoroutine != null)
+                return;
+
+            if (!musicSource.isPlaying && musicSource.clip != null)
+                PlayNextRandomTrack();
         }
 
-        /// <summary>
-        /// Plays victory music.
-        /// </summary>
-        public void PlayVictoryMusic()
+        private void PlayNextRandomTrack()
         {
-            PlayMusic(victoryMusic);
+            var tracks = musicLibrary.tracks;
+            if (tracks.Length == 0) return;
+
+            int index;
+            if (tracks.Length == 1)
+                index = 0;
+            else
+            {
+                do
+                {
+                    index = UnityEngine.Random.Range(0, tracks.Length);
+                } while (index == lastPlayedTrackIndex);
+            }
+
+            lastPlayedTrackIndex = index;
+            var entry = tracks[index];
+            if (entry.clip == null) return;
+
+            currentTrackTitle = entry.title ?? "";
+            currentTrackArtist = entry.artist ?? "";
+            OnTrackChanged?.Invoke(currentTrackTitle, currentTrackArtist);
+
+            PlayMusic(entry.clip, loop: false);
         }
 
         /// <summary>

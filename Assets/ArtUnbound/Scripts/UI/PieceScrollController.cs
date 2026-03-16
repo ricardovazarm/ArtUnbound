@@ -52,8 +52,9 @@ namespace ArtUnbound.UI
             transform.localPosition = new Vector3(-0.45f, 0f, 0f);
             transform.localRotation = Quaternion.identity;
 
-            // Add scroll buttons component if not already present
-            if (GetComponent<TrayScrollButtons>() == null)
+            // Use PiecesPanelController if present in parent; otherwise add 3D TrayScrollButtons
+            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
+            if (panelController == null && GetComponent<TrayScrollButtons>() == null)
             {
                 gameObject.AddComponent<TrayScrollButtons>();
             }
@@ -113,12 +114,20 @@ namespace ArtUnbound.UI
             UpdateVisibility();
             UpdateButtonStates();
 
-            // Create and show scroll buttons when puzzle starts
-            var scrollButtons = GetComponent<TrayScrollButtons>();
-            if (scrollButtons != null)
+            // Show pieces panel and pagination (PiecesPanelController or 3D TrayScrollButtons)
+            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
+            if (panelController != null)
             {
-                scrollButtons.Initialize();
-                scrollButtons.Show(); // Make sure buttons are visible for new puzzle
+                panelController.Show();
+            }
+            else
+            {
+                var scrollButtons = GetComponent<TrayScrollButtons>();
+                if (scrollButtons != null)
+                {
+                    scrollButtons.Initialize();
+                    scrollButtons.Show();
+                }
             }
         }
 
@@ -182,9 +191,6 @@ namespace ArtUnbound.UI
 
         private void UpdateButtonStates()
         {
-            var scrollButtons = GetComponent<TrayScrollButtons>();
-            if (scrollButtons == null) return;
-
             // Calculate scroll limits based on grid layout
             int totalRows = Mathf.CeilToInt((float)pieceItems.Count / columns);
             float totalContentHeight = totalRows * scrollStep;
@@ -193,7 +199,17 @@ namespace ArtUnbound.UI
             bool canScrollDown = scrollOffset > maxScrollDown + 0.01f;
             bool canScrollUp = scrollOffset < -0.01f;
 
-            scrollButtons.SetButtonStates(canScrollUp, canScrollDown);
+            // Prefer PiecesPanelController for consistent panel UX
+            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
+            if (panelController != null)
+            {
+                panelController.SetPaginationButtonStates(canScrollUp, canScrollDown);
+                return;
+            }
+
+            var scrollButtons = GetComponent<TrayScrollButtons>();
+            if (scrollButtons != null)
+                scrollButtons.SetButtonStates(canScrollUp, canScrollDown);
         }
 
         private void OnPieceStateChanged(ArtUnbound.Gameplay.PuzzlePiece piece, ArtUnbound.Data.PieceState newState)
@@ -390,11 +406,16 @@ namespace ArtUnbound.UI
         /// </summary>
         public void HideScrollButtons()
         {
+            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
+            if (panelController != null)
+            {
+                panelController.Hide();
+                return;
+            }
+
             var scrollButtons = GetComponent<TrayScrollButtons>();
             if (scrollButtons != null)
-            {
                 scrollButtons.Hide();
-            }
         }
     }
 }

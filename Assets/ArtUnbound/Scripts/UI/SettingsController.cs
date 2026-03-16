@@ -79,10 +79,10 @@ namespace ArtUnbound.UI
                 pieceSnapDistanceSlider.onValueChanged.AddListener(OnSnapDistanceChanged);
 
             if (closeButton != null)
-                closeButton.onClick.AddListener(() => OnCloseRequested?.Invoke());
+                closeButton.onClick.AddListener(OnCloseClicked);
 
             if (resetButton != null)
-                resetButton.onClick.AddListener(ResetToDefaults);
+                resetButton.onClick.AddListener(OnResetClicked);
         }
 
         /// <summary>
@@ -255,6 +255,20 @@ namespace ArtUnbound.UI
         private void NotifySettingsChanged()
         {
             OnSettingsChanged?.Invoke(currentSettings);
+        }
+
+        private void OnCloseClicked()
+        {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
+            OnCloseRequested?.Invoke();
+        }
+
+        private void OnResetClicked()
+        {
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
+            ResetToDefaults();
         }
 
         /// <summary>
