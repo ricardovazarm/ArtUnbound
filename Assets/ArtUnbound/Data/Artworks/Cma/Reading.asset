@@ -37,3 +37,7 @@ MonoBehaviour:
   complexity: 1
   colorVariety: 3
   detailLevel: 3
+  pieceCountEasy: 54
+  pieceCountNormal: 126
+  pieceCountHard: 187
+  pieceCountExpert: 308

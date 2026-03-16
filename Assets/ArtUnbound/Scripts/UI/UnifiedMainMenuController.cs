@@ -89,6 +89,48 @@ namespace ArtUnbound.UI
         {
             SetupButtonListeners();
             SetupMusicTrackDisplay();
+            SetupDetailImageSlot();
+        }
+
+        /// <summary>
+        /// Creates a constraining slot for DetailImageContainer so AspectRatioFitter can adjust
+        /// the frame to the image aspect ratio without expanding beyond the allotted space.
+        /// </summary>
+        private void SetupDetailImageSlot()
+        {
+            if (detailArtworkImage == null || detailPanel == null) return;
+
+            var container = detailArtworkImage.transform.parent;
+            if (container == null) return;
+
+            // Already set up (e.g. from previous run in editor)
+            if (container.parent != null && container.parent.name == "DetailImageSlot")
+                return;
+
+            var rt = container.GetComponent<RectTransform>();
+            if (rt == null) return;
+
+            // Create slot with same position/size as current container (max 300x300)
+            var slot = new GameObject("DetailImageSlot");
+            slot.transform.SetParent(detailPanel.transform, false);
+            var slotRT = slot.AddComponent<RectTransform>();
+
+            slotRT.anchorMin = rt.anchorMin;
+            slotRT.anchorMax = rt.anchorMax;
+            slotRT.anchoredPosition = rt.anchoredPosition;
+            slotRT.sizeDelta = rt.sizeDelta;
+            slotRT.pivot = rt.pivot;
+            slotRT.localScale = Vector3.one;
+
+            slot.transform.SetSiblingIndex(container.GetSiblingIndex());
+
+            // Reparent container into slot; it will stretch to fill
+            container.SetParent(slot.transform, false);
+            var containerRT = container.GetComponent<RectTransform>();
+            containerRT.anchorMin = Vector2.zero;
+            containerRT.anchorMax = Vector2.one;
+            containerRT.offsetMin = Vector2.zero;
+            containerRT.offsetMax = Vector2.zero;
         }
 
         private void OnDestroy()
@@ -518,11 +560,12 @@ namespace ArtUnbound.UI
             // Show detail panel
             detailPanel.SetActive(true);
 
-            // Set artwork image
+            // Set artwork image and adjust frame (DetailImageContainer) to image aspect ratio.
+            // DetailImageContainer is inside DetailImageSlot (300x300 max), so AspectRatioFitter
+            // fits within that slot without overlapping the titles below.
             if (detailArtworkImage != null && selectedArtwork.fullImage != null)
             {
                 detailArtworkImage.sprite = selectedArtwork.fullImage;
-                // Match frame to image aspect ratio (same as grid)
                 var detailContainer = detailArtworkImage.transform.parent;
                 if (detailContainer != null)
                 {
