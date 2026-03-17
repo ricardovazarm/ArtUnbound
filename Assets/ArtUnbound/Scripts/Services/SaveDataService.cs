@@ -135,71 +135,75 @@ namespace ArtUnbound.Services
         }
 
         /// <summary>
-        /// Saves a puzzle session to a separate file.
+        /// Saves a puzzle session to SaveData (per artwork+pieceCount). Preserves other artworks' progress.
         /// </summary>
         public void SaveSession(PuzzleSessionData session)
         {
             if (session == null) return;
 
-            try
-            {
-                string json = JsonUtility.ToJson(session, true);
-                File.WriteAllText(sessionPath, json);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error saving session: {e.Message}");
-            }
+            var data = GetCachedData();
+            data.SetInProgressSession(session);
+            Save(data);
         }
 
         /// <summary>
-        /// Loads a puzzle session from the separate file.
+        /// Loads the in-progress session for a specific artwork and piece count.
+        /// Returns null if none exists or it's completed.
         /// </summary>
-        public PuzzleSessionData LoadSession()
+        public PuzzleSessionData LoadSession(string artworkId, int pieceCount)
         {
-            try
+            var data = GetCachedData();
+
+            // Migration: migrate legacy session.json to SaveData once
+            if (File.Exists(sessionPath))
             {
-                if (File.Exists(sessionPath))
+                try
                 {
                     string json = File.ReadAllText(sessionPath);
                     if (!string.IsNullOrWhiteSpace(json))
                     {
-                        return JsonUtility.FromJson<PuzzleSessionData>(json);
+                        var legacy = JsonUtility.FromJson<PuzzleSessionData>(json);
+                        if (legacy != null && !legacy.isCompleted && legacy.placedPieces != null && legacy.placedPieces.Count > 0)
+                        {
+                            data.SetInProgressSession(legacy);
+                            Save(data);
+                        }
+                        File.Delete(sessionPath);
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error loading session: {e.Message}");
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Clears the saved session.
-        /// </summary>
-        public void ClearSession()
-        {
-            try
-            {
-                if (File.Exists(sessionPath))
+                catch (Exception e)
                 {
-                    File.Delete(sessionPath);
+                    Debug.LogWarning($"Session migration failed: {e.Message}");
                 }
             }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error clearing session: {e.Message}");
-            }
+
+            return data.GetInProgressSession(artworkId, pieceCount);
         }
 
         /// <summary>
-        /// Checks if a session exists.
+        /// Clears the in-progress session for a specific artwork+pieceCount only.
         /// </summary>
-        public bool HasSavedSession()
+        public void ClearSession(string artworkId, int pieceCount)
         {
-            return File.Exists(sessionPath);
+            var data = GetCachedData();
+            data.RemoveInProgressSession(artworkId, pieceCount);
+            Save(data);
+        }
+
+        /// <summary>
+        /// Checks if an in-progress session exists for artwork+pieceCount.
+        /// </summary>
+        public bool HasSavedSession(string artworkId, int pieceCount)
+        {
+            return GetCachedData().GetInProgressSession(artworkId, pieceCount) != null;
+        }
+
+        /// <summary>
+        /// Loads any session (in-progress or completed) for restoring the board view.
+        /// </summary>
+        public PuzzleSessionData LoadSessionForDisplay(string artworkId, int pieceCount)
+        {
+            return GetCachedData().GetSessionForArtwork(artworkId, pieceCount);
         }
 
         /// <summary>

@@ -35,6 +35,12 @@ namespace ArtUnbound.UI
             // Buttons will be created when Initialize() is called
         }
 
+        private void OnDestroy()
+        {
+            if (upButton != null) Destroy(upButton);
+            if (downButton != null) Destroy(downButton);
+        }
+
         /// <summary>
         /// Call this to create the scroll buttons (should be called when puzzle starts)
         /// </summary>
@@ -74,40 +80,27 @@ namespace ArtUnbound.UI
         {
             if (upButton != null)
             {
-                // Visual feedback: dim the button if disabled
                 var renderer = upButton.GetComponent<Renderer>();
                 if (renderer != null)
                 {
-                    renderer.material.color = canScrollUp 
-                        ? new Color(0.2f, 0.6f, 1f, 0.9f)  // Normal blue
-                        : new Color(0.2f, 0.3f, 0.5f, 0.5f); // Dimmed gray
+                    var dimmed = new Color(UIButtonTheme.NormalColor.r * 0.5f, UIButtonTheme.NormalColor.g * 0.5f, UIButtonTheme.NormalColor.b * 0.5f, 0.5f);
+                    renderer.material.color = canScrollUp ? UIButtonTheme.NormalColor : dimmed;
                 }
-                
-                // Disable interaction if can't scroll
                 var interactable = upButton.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
                 if (interactable != null)
-                {
                     interactable.enabled = canScrollUp;
-                }
             }
-
             if (downButton != null)
             {
-                // Visual feedback: dim the button if disabled
                 var renderer = downButton.GetComponent<Renderer>();
                 if (renderer != null)
                 {
-                    renderer.material.color = canScrollDown 
-                        ? new Color(0.2f, 0.6f, 1f, 0.9f)  // Normal blue
-                        : new Color(0.2f, 0.3f, 0.5f, 0.5f); // Dimmed gray
+                    var dimmed = new Color(UIButtonTheme.NormalColor.r * 0.5f, UIButtonTheme.NormalColor.g * 0.5f, UIButtonTheme.NormalColor.b * 0.5f, 0.5f);
+                    renderer.material.color = canScrollDown ? UIButtonTheme.NormalColor : dimmed;
                 }
-                
-                // Disable interaction if can't scroll
                 var interactable = downButton.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
                 if (interactable != null)
-                {
                     interactable.enabled = canScrollDown;
-                }
             }
         }
 
@@ -131,10 +124,9 @@ namespace ArtUnbound.UI
             button.transform.localPosition = localPosition;
             button.transform.localScale = new Vector3(buttonSize, buttonSize, 0.01f); // Thin button
 
-            // Create material - bright color for visibility
             Renderer renderer = button.GetComponent<Renderer>();
             Material buttonMat = new Material(Shader.Find("Unlit/Color"));
-            buttonMat.color = new Color(0.2f, 0.6f, 1f, 0.9f); // Blue
+            buttonMat.color = UIButtonTheme.NormalColor;
             renderer.material = buttonMat;
 
             // Add collider for interaction (already has one from CreatePrimitive)
@@ -160,21 +152,17 @@ namespace ArtUnbound.UI
 
         private void AddInteraction(GameObject button, System.Action onPress)
         {
-            // Add XR Simple Interactable for hand/controller interaction
             var interactable = button.AddComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
-            
-            // Subscribe to select events (when user "clicks" the button)
+            var renderer = button.GetComponent<Renderer>();
+
+            interactable.hoverEntered.AddListener(_ => { if (renderer != null) renderer.material.color = UIButtonTheme.HighlightColor; });
+            interactable.hoverExited.AddListener(_ => { if (renderer != null) renderer.material.color = UIButtonTheme.NormalColor; });
+
             interactable.selectEntered.AddListener((args) =>
             {
-                // Play button click sound
                 if (ArtUnbound.Feedback.AudioManager.Instance != null)
-                {
                     ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
-                }
-                
                 onPress?.Invoke();
-                
-                // Visual feedback: flash the button
                 StartCoroutine(FlashButton(button));
             });
         }

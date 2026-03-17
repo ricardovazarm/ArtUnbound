@@ -12,11 +12,13 @@ namespace ArtUnbound.UI
     /// <summary>
     /// Unified main menu controller that combines artwork selection, gallery, and detail view.
     /// Designed for MR with a curved panel layout.
+    /// Runs before GameBootstrap so StatefulButton markers are added before ApplyButtonTheme.
     /// </summary>
+    [DefaultExecutionOrder(-100)]
     public class UnifiedMainMenuController : MonoBehaviour
     {
         #region Events
-        public event Action<string, int> OnStartPuzzle; // artworkId, pieceCount
+        public event Action<string, int, int> OnStartPuzzle; // artworkId, pieceCount, difficultyIndex (0=Easy, 1=Normal, 2=Hard, 3=Expert)
         public event Action<float> OnMusicVolumeChanged;
         public event Action<float> OnSoundVolumeChanged;
         public event Action<bool> OnTutorialToggled;
@@ -57,10 +59,11 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI normalButtonText;
         [SerializeField] private TextMeshProUGUI hardButtonText;
         [SerializeField] private TextMeshProUGUI expertButtonText;
-
-        [Header("Visual Feedback")]
-        [SerializeField] private Color normalButtonColor = new Color(0.537f, 0.424f, 0.29f, 1f); // #896c4a (selected)
-        [SerializeField] private Color dimmedButtonColor = new Color(0.278f, 0.255f, 0.2f, 1f); // #474133 (unselected)
+        [Tooltip("Progress sliders - show % when puzzle has progress. Leave null to hide.")]
+        [SerializeField] private Slider easyProgressSlider;
+        [SerializeField] private Slider normalProgressSlider;
+        [SerializeField] private Slider hardProgressSlider;
+        [SerializeField] private Slider expertProgressSlider;
 
         [Header("Configuration")]
         [SerializeField] private PuzzleConfig puzzleConfig; // Reference to PuzzleConfig for piece counts
@@ -87,9 +90,22 @@ namespace ArtUnbound.UI
         #region Unity Lifecycle
         private void Awake()
         {
+            MarkStatefulButtons();
             SetupButtonListeners();
             SetupMusicTrackDisplay();
             SetupDetailImageSlot();
+        }
+
+        private void MarkStatefulButtons()
+        {
+            void AddIfMissing(Button b) { if (b != null && b.GetComponent<StatefulButton>() == null) b.gameObject.AddComponent<StatefulButton>(); }
+            AddIfMissing(filterAllButton);
+            AddIfMissing(filterInProgressButton);
+            AddIfMissing(filterCompletedButton);
+            AddIfMissing(easyButton);
+            AddIfMissing(normalButton);
+            AddIfMissing(hardButton);
+            AddIfMissing(expertButton);
         }
 
         /// <summary>
@@ -156,8 +172,12 @@ namespace ArtUnbound.UI
         private void UpdateMusicTrackText(string title, string artist)
         {
             if (musicTrackText == null) return;
-            musicTrackText.text = string.IsNullOrEmpty(title) && string.IsNullOrEmpty(artist)
-                ? "" : $"♪ {title ?? ""} — {artist ?? ""}";
+            if (string.IsNullOrEmpty(title) && string.IsNullOrEmpty(artist))
+            {
+                musicTrackText.text = "";
+                return;
+            }
+            musicTrackText.text = $"Song: {title ?? ""} - {artist ?? ""}";
         }
         #endregion
 
@@ -212,13 +232,13 @@ namespace ArtUnbound.UI
 
             // Difficulty buttons - use artwork's piece counts when set, else PuzzleConfig
             if (easyButton != null)
-                easyButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(0); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+                easyButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(0); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc, 0); } });
             if (normalButton != null)
-                normalButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(1); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+                normalButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(1); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc, 1); } });
             if (hardButton != null)
-                hardButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(2); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+                hardButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(2); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc, 2); } });
             if (expertButton != null)
-                expertButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(3); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc); } });
+                expertButton.onClick.AddListener(() => { var pc = GetPieceCountForDifficulty(3); if (pc > 0) { PlayButtonClick(); StartPuzzle(pc, 3); } });
 
             // Settings controls
             if (musicVolumeSlider != null)
@@ -314,10 +334,8 @@ namespace ArtUnbound.UI
         private bool HasInProgressSession(string artworkId)
         {
             if (saveData == null) return false;
-            
-            // Check if there's a saved session for this artwork
-            var session = saveDataService.LoadSession();
-            return session != null && session.artworkId == artworkId && !session.isCompleted;
+            var sessions = saveData.GetInProgressSessionsForArtwork(artworkId);
+            return sessions != null && sessions.Count > 0;
         }
 
         private bool IsArtworkCompleted(string artworkId)
@@ -330,29 +348,9 @@ namespace ArtUnbound.UI
 
         private void UpdateFilterButtonVisuals()
         {
-            UpdateButtonColor(filterAllButton, currentFilter == FilterType.All);
-            UpdateButtonColor(filterInProgressButton, currentFilter == FilterType.InProgress);
-            UpdateButtonColor(filterCompletedButton, currentFilter == FilterType.Completed);
-        }
-
-        private void UpdateButtonColor(Button button, bool isSelected)
-        {
-            if (button == null) return;
-            
-            var image = button.targetGraphic as UnityEngine.UI.Image;
-            float alpha = image != null ? image.color.a : 1f; // Preserve user's alpha
-            Color targetColor = isSelected ? normalButtonColor : dimmedButtonColor;
-            Color colorWithAlpha = new Color(targetColor.r, targetColor.g, targetColor.b, alpha);
-            
-            var colors = button.colors;
-            colors.normalColor = colorWithAlpha;
-            colors.highlightedColor = new Color(0.85f, 0.9f, 1f, 1f);
-            colors.pressedColor = new Color(0.7f, 0.7f, 0.7f, 1f);
-            button.colors = colors;
-            
-            // Aplicar de inmediato (Button puede tardar en hacer DoStateTransition)
-            if (image != null)
-                image.color = colorWithAlpha;
+            UIButtonStatefullTheme.ApplyTo(filterAllButton, currentFilter == FilterType.All);
+            UIButtonStatefullTheme.ApplyTo(filterInProgressButton, currentFilter == FilterType.InProgress);
+            UIButtonStatefullTheme.ApplyTo(filterCompletedButton, currentFilter == FilterType.Completed);
         }
         #endregion
 
@@ -506,14 +504,13 @@ namespace ArtUnbound.UI
 
         private float GetArtworkProgress(string artworkId)
         {
-            var session = saveDataService.LoadSession();
-            if (session != null && session.artworkId == artworkId && !session.isCompleted)
-            {
-                if (session.pieceCount > 0)
-                {
-                    return (session.piecesPlaced / (float)session.pieceCount) * 100f;
-                }
-            }
+            if (saveData == null) return 0f;
+            var sessions = saveData.GetInProgressSessionsForArtwork(artworkId);
+            if (sessions == null || sessions.Count == 0) return 0f;
+            // Use session with most pieces placed
+            var best = sessions.OrderByDescending(s => s.piecesPlaced).FirstOrDefault();
+            if (best != null && best.pieceCount > 0)
+                return (best.piecesPlaced / (float)best.pieceCount) * 100f;
             return 0f;
         }
 
@@ -602,58 +599,51 @@ namespace ArtUnbound.UI
 
         private void UpdateDifficultyButtons()
         {
-            UpdateDifficultyButton(easyButton, easyButtonText, GetPieceCountForDifficulty(0));
-            UpdateDifficultyButton(normalButton, normalButtonText, GetPieceCountForDifficulty(1));
-            UpdateDifficultyButton(hardButton, hardButtonText, GetPieceCountForDifficulty(2));
-            UpdateDifficultyButton(expertButton, expertButtonText, GetPieceCountForDifficulty(3));
+            UpdateDifficultyButton(easyButton, easyButtonText, easyProgressSlider, GetPieceCountForDifficulty(0));
+            UpdateDifficultyButton(normalButton, normalButtonText, normalProgressSlider, GetPieceCountForDifficulty(1));
+            UpdateDifficultyButton(hardButton, hardButtonText, hardProgressSlider, GetPieceCountForDifficulty(2));
+            UpdateDifficultyButton(expertButton, expertButtonText, expertProgressSlider, GetPieceCountForDifficulty(3));
         }
 
-        private void UpdateDifficultyButton(Button button, TextMeshProUGUI buttonText, int pieceCount)
+        private void UpdateDifficultyButton(Button button, TextMeshProUGUI buttonText, Slider progressSlider, int pieceCount)
         {
             if (button == null || buttonText == null || selectedArtwork == null)
                 return;
 
             string label = $"{pieceCount} Pieces";
-            
-            // Check if this difficulty is in progress (saved session)
-            bool hasProgress = HasProgressForDifficulty(selectedArtwork.artworkId, pieceCount);
-            // Check if this is the last played difficulty for the last played artwork
-            bool isLastPlayed = saveData != null && 
-                selectedArtwork.artworkId == saveData.lastArtworkId && 
+            var session = saveData?.GetInProgressSession(selectedArtwork.artworkId, pieceCount);
+            bool hasProgress = session != null && session.piecesPlaced > 0;
+            bool isLastPlayed = saveData != null &&
+                selectedArtwork.artworkId == saveData.lastArtworkId &&
                 pieceCount == saveData.lastPieceCount;
             bool isSelected = hasProgress || isLastPlayed;
-            
-            if (hasProgress)
+
+            buttonText.text = label;
+            UIButtonStatefullTheme.ApplyTo(button, isSelected);
+
+            // Slider: show only when there's progress, set value to 0–1 (read-only progress bar)
+            if (progressSlider != null)
             {
-                buttonText.text = $"Continue {label}";
+                progressSlider.gameObject.SetActive(hasProgress);
+                if (hasProgress && session != null && session.pieceCount > 0)
+                {
+                    progressSlider.minValue = 0f;
+                    progressSlider.maxValue = 1f;
+                    progressSlider.value = session.piecesPlaced / (float)session.pieceCount;
+                    progressSlider.interactable = false; // Display only, not draggable
+                }
             }
-            else
-            {
-                buttonText.text = label;
-            }
-            
-            // Highlight selected button (más claro), dim others (oscuro)
-            var colors = button.colors;
-            colors.normalColor = isSelected ? normalButtonColor : dimmedButtonColor;
-            // Meta MR: preserve distinct hover/pressed feedback
-            colors.highlightedColor = new Color(0.85f, 0.9f, 1f, 1f);
-            colors.pressedColor = new Color(0.7f, 0.7f, 0.7f, 1f);
-            button.colors = colors;
         }
 
         private bool HasProgressForDifficulty(string artworkId, int pieceCount)
         {
-            var session = saveDataService.LoadSession();
-            return session != null && 
-                   session.artworkId == artworkId && 
-                   session.pieceCount == pieceCount && 
-                   !session.isCompleted &&
-                   session.piecesPlaced > 0;
+            var session = saveData?.GetInProgressSession(artworkId, pieceCount);
+            return session != null && session.piecesPlaced > 0;
         }
         #endregion
 
         #region Starting Puzzle
-        private void StartPuzzle(int pieceCount)
+        private void StartPuzzle(int pieceCount, int difficultyIndex)
         {
             if (selectedArtwork == null)
             {
@@ -661,8 +651,8 @@ namespace ArtUnbound.UI
                 return;
             }
 
-            Debug.Log($"[UnifiedMainMenu] Starting puzzle: {selectedArtwork.title} with {pieceCount} pieces");
-            OnStartPuzzle?.Invoke(selectedArtwork.artworkId, pieceCount);
+            Debug.Log($"[UnifiedMainMenu] Starting puzzle: {selectedArtwork.title} with {pieceCount} pieces (difficulty {difficultyIndex})");
+            OnStartPuzzle?.Invoke(selectedArtwork.artworkId, pieceCount, difficultyIndex);
         }
         #endregion
 
@@ -765,6 +755,17 @@ namespace ArtUnbound.UI
         {
             if (mainPanel != null)
                 mainPanel.SetActive(false);
+        }
+
+        /// <summary>
+        /// Refreshes filter and difficulty button colors. Call when canvas becomes visible
+        /// (e.g. after calibration) so selected state is applied correctly.
+        /// </summary>
+        public void RefreshButtonColors()
+        {
+            UpdateFilterButtonVisuals();
+            if (selectedArtwork != null)
+                UpdateDifficultyButtons();
         }
         #endregion
 

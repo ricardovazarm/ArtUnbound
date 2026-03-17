@@ -168,6 +168,14 @@ namespace ArtUnbound.Input
                     ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
                 }
                 
+                // When grabbing from tray (rotated), align piece to board so placement looks natural
+                if (!pieceWasFromBoard)
+                {
+                    var board = FindFirstObjectByType<PuzzleBoard>();
+                    if (board != null)
+                        bestPiece.transform.rotation = board.transform.rotation;
+                }
+                
                 currentDraggedPiece = bestPiece;
                 dragOffset = bestPiece.transform.position - position;
                 bestPiece.SetDragged(true);
@@ -228,12 +236,23 @@ namespace ArtUnbound.Input
             if (board != null)
             {
                 bool snapped = false;
-                
+
                 if (slotIndex >= 0)
                 {
-                    snapped = board.SnapPieceToSlot(piece, slotIndex);
+                    // Only snap if piece is actually within snap distance on release (prevents accidental placement)
+                    if (board.IsWithinSnapDistance(piece.transform.position, slotIndex))
+                    {
+                        snapped = board.SnapPieceToSlot(piece, slotIndex);
+                        if (snapped)
+                            Debug.Log($"[SNAP] Piece snapped to slot {slotIndex}");
+                    }
+                    else
+                    {
+                        float dist = Vector3.Distance(piece.transform.position, board.GetSlotPosition(slotIndex));
+                        Debug.Log($"[SNAP] Skipped: piece {dist * 100:F1}cm from slot {slotIndex} (beyond snap distance)");
+                    }
                 }
-                
+
                 if (!snapped)
                 {
                     // Failed to snap - return based on origin

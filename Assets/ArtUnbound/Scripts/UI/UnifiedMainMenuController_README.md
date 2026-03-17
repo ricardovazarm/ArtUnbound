@@ -132,6 +132,10 @@ En el componente `UnifiedMainMenuController`, asigna:
 - `normalButtonText` → NormalButtonText
 - `hardButtonText` → HardButtonText
 - `expertButtonText` → ExpertButtonText
+- `easyProgressSlider` → Slider bajo EasyButton (opcional, muestra % de avance)
+- `normalProgressSlider` → Slider bajo NormalButton (opcional)
+- `hardProgressSlider` → Slider bajo HardButton (opcional)
+- `expertProgressSlider` → Slider bajo ExpertButton (opcional)
 
 ---
 

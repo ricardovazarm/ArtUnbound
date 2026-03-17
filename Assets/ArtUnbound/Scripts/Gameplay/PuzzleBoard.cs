@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using ArtUnbound.Data;
 using UnityEngine;
@@ -87,10 +88,15 @@ namespace ArtUnbound.Gameplay
         private Texture2D currentTexture;
         private Vector3 lastPos;
         private float currentPieceSize = 0.05f; // Current piece size (calculated dynamically)
+        private float boardWidthM;
+        private float boardHeightM;
+        private GameObject fullImageReveal;
 
         // Public getters for progress tracking
         public int SnappedCount => snappedCount;
         public int TotalPieces => totalPieces;
+        public int PlacedCount => placedBySlot.Count;
+        public int IncorrectCount => placedBySlot.Count - snappedCount;
 
         private void Update()
         {
@@ -99,14 +105,14 @@ namespace ArtUnbound.Gameplay
 
             // VERTICAL TRAY: Force PieceTray position to the RIGHT of the board (player's right)
             // INVERTED: Canvas is rotated 180°, so player's right = negative X
-            // Distance: 0.45m (45cm to player's right) to accommodate 5-column grid
+            // Use 0.1f threshold so we only correct large drift; PieceScrollController may add trayOffsetX (e.g. -0.05)
+            // Note: Do NOT reset localRotation - PieceScrollController sets it (e.g. 15° Y) to align with pagination panel
             if (scrollController != null)
             {
                 Vector3 targetPos = new Vector3(-0.45f, 0f, 0f); // Player's right side, same height as board center
-                if (Vector3.Distance(scrollController.transform.localPosition, targetPos) > 0.01f)
+                if (Vector3.Distance(scrollController.transform.localPosition, targetPos) > 0.1f)
                 {
                     scrollController.transform.localPosition = targetPos;
-                    scrollController.transform.localRotation = Quaternion.identity;
                     scrollController.transform.localScale = Vector3.one;
                 }
             }
@@ -120,6 +126,12 @@ namespace ArtUnbound.Gameplay
             snappedCount = 0;
             totalPieces = pieceCount;
             currentTexture = artworkTexture;
+
+            if (fullImageReveal != null)
+            {
+                Destroy(fullImageReveal);
+                fullImageReveal = null;
+            }
 
             foreach (var piece in activePieces)
             {
@@ -150,6 +162,14 @@ namespace ArtUnbound.Gameplay
         public void Initialize(ArtworkDefinition definition, int pieceCount)
         {
             snappedCount = 0;
+            var textureToUse = definition?.puzzleTexture != null ? definition.puzzleTexture : definition?.fullImage?.texture;
+            currentTexture = textureToUse;
+
+            if (fullImageReveal != null)
+            {
+                Destroy(fullImageReveal);
+                fullImageReveal = null;
+            }
 
             foreach (var piece in activePieces)
             {
@@ -317,18 +337,16 @@ namespace ArtUnbound.Gameplay
                 return -1;
             }
 
-            // Find closest slot and track top 5 for debugging
+            // Find closest slot, but only highlight if within snap distance
             int bestIndex = -1;
             float bestDist = float.MaxValue;
-            var nearbySlots = new System.Collections.Generic.List<(int index, float dist)>();
+            float snapDistM = puzzleConfig != null ? puzzleConfig.snapDistanceCm * 0.01f : 0.02f;
 
             for (int i = 0; i < slots.Count; i++)
             {
                 if (placedBySlot.ContainsKey(i)) continue;
 
                 float dist = Vector3.Distance(piecePosition, slots[i].position);
-                nearbySlots.Add((i, dist));
-                
                 if (dist < bestDist)
                 {
                     bestDist = dist;
@@ -336,12 +354,46 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
-            if (bestIndex >= 0 && bestIndex != currentHighlightedSlot)
+            // Only highlight if piece is actually within snap range (prevents highlight when picking from tray)
+            if (bestIndex >= 0 && bestDist > snapDistM)
+            {
+                bestIndex = -1;
+                ClearSlotHighlight();
+            }
+            else if (bestIndex >= 0 && bestIndex != currentHighlightedSlot)
             {
                 HighlightSlot(bestIndex);
+                Debug.Log($"[HIGHLIGHT] Slot {bestIndex} lit: piece {distanceToPlane * 100:F1}cm from board plane, {bestDist * 100:F1}cm from slot (within {snapDistM * 100:F0}cm)");
             }
-            
+
             return bestIndex;
+        }
+
+        /// <summary>
+        /// Returns the world position of a slot (for debug/logging).
+        /// </summary>
+        public Vector3 GetSlotPosition(int slotIndex)
+        {
+            if (slotIndex < 0 || slotIndex >= slots.Count) return Vector3.zero;
+            return slots[slotIndex].position;
+        }
+
+        /// <summary>
+        /// Returns true if the piece is close enough to the slot to snap. Prevents accidental placement when releasing far from board.
+        /// </summary>
+        public bool IsWithinSnapDistance(Vector3 piecePosition, int slotIndex)
+        {
+            if (slotIndex < 0 || slotIndex >= slots.Count) return false;
+
+            Vector3 boardNormal = transform.forward;
+            Vector3 pieceToBoard = piecePosition - transform.position;
+            float distanceToPlane = Mathf.Abs(Vector3.Dot(pieceToBoard, boardNormal));
+            float maxDepthToPlane = 0.02f;
+            if (distanceToPlane > maxDepthToPlane) return false;
+
+            float distToSlot = Vector3.Distance(piecePosition, slots[slotIndex].position);
+            float snapDistM = puzzleConfig != null ? puzzleConfig.snapDistanceCm * 0.01f : 0.02f;
+            return distToSlot <= snapDistM;
         }
 
         /// <summary>
@@ -582,7 +634,13 @@ namespace ArtUnbound.Gameplay
         {
             if (currentTexture == null)
             {
-                Debug.LogError("No texture assigned for puzzle generation");
+                Debug.LogError("[PuzzleBoard] No texture assigned for puzzle generation. Check that ArtworkDefinition.fullImage has a valid Sprite. Pieces will NOT appear.");
+                return;
+            }
+
+            if (piecePrefab == null)
+            {
+                Debug.LogError("[PuzzleBoard] piecePrefab is not assigned in the Inspector. Pieces will NOT appear.");
                 return;
             }
 
@@ -618,11 +676,15 @@ namespace ArtUnbound.Gameplay
                         0.015f // Correct Z for visual placement
                     );
 
-                    PieceMorphology morphology = GenerateMorphology(x, y, cols, rows);
+                    // Slot (col,row) expects the piece that shows texture for that position.
+                    // UVs are flipped horizontally (board 180° Y), so piece (cols-1-x, y) shows texture at (x,y).
+                    int expectedPieceId = y * cols + (cols - 1 - x);
+                    int slotCol = cols - 1 - x; // Piece (x,y) goes to slot (slotCol, y)
+                    PieceMorphology morphology = GenerateMorphology(slotCol, y, cols, rows); // Morphology for slot position
 
                     PuzzleSlot slot = new PuzzleSlot
                     {
-                        pieceId = id,
+                        pieceId = expectedPieceId,
                         row = y,
                         col = x,
                         position = slotRoot.TransformPoint(localPos),
@@ -633,7 +695,7 @@ namespace ArtUnbound.Gameplay
                     slots.Add(slot);
                     morphologyByPieceId[id] = morphology;
 
-                    // Create Piece Visual
+                    // Create Piece Visual (piece at texture pos x,y, with morphology for its slot)
                     CreatePiece(id, x, y, cols, rows, morphology, pieceSize, currentTexture);
 
                     id++;
@@ -653,8 +715,12 @@ namespace ArtUnbound.Gameplay
 
         private void CreateSlots(ArtworkDefinition definition, int pieceCount)
         {
-            var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage.texture;
-            if (textureToUse == null) return;
+            var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage?.texture;
+            if (textureToUse == null)
+            {
+                Debug.LogError($"[PuzzleBoard] Artwork '{definition?.artworkId}' has no texture (puzzleTexture and fullImage.texture are null). Pieces will NOT appear.");
+                return;
+            }
 
             // NEW SYSTEM: Calculate grid AND piece size together
             CalculateGridAndPieceSize(pieceCount, textureToUse.width, textureToUse.height, 
@@ -679,11 +745,15 @@ namespace ArtUnbound.Gameplay
                         0.015f // Correct Z for visual placement per user
                     );
 
-                    PieceMorphology morphology = GenerateMorphology(x, y, cols, rows);
+                    // Slot (col,row) expects the piece that shows texture for that position.
+                    // UVs are flipped horizontally (board 180° Y), so piece (cols-1-x, y) shows texture at (x,y).
+                    int expectedPieceId = y * cols + (cols - 1 - x);
+                    int slotCol = cols - 1 - x; // Piece (x,y) goes to slot (slotCol, y)
+                    PieceMorphology morphology = GenerateMorphology(slotCol, y, cols, rows); // Morphology for slot position
 
                     PuzzleSlot slot = new PuzzleSlot
                     {
-                        pieceId = id,
+                        pieceId = expectedPieceId,
                         row = y,
                         col = x,
                         position = slotRoot.TransformPoint(localPos),
@@ -694,12 +764,15 @@ namespace ArtUnbound.Gameplay
                     slots.Add(slot);
                     morphologyByPieceId[id] = morphology;
 
-                    // Create Piece Visual
+                    // Create Piece Visual (piece at texture pos x,y, with morphology for its slot)
                     CreatePiece(id, x, y, cols, rows, morphology, pieceSize, textureToUse);
 
                     id++;
                 }
             }
+
+            totalPieces = slots.Count;
+            Debug.Log($"[PIECE] CreateSlots(definition): slots={slots.Count}, activePieces={activePieces.Count}");
 
             // Create Visual Board Context
             CreateBoardVisual(sizeX, sizeY);
@@ -712,6 +785,8 @@ namespace ArtUnbound.Gameplay
         {
             if (slotRoot == null) return;
 
+            boardWidthM = width;
+            boardHeightM = height;
 
             // Look for existing board visual and destroy it IMMEDIATELY
             Transform existing = slotRoot.Find("BoardVisual");
@@ -1407,47 +1482,40 @@ namespace ArtUnbound.Gameplay
                 if (s.col > maxCol) maxCol = s.col;
             }
 
-            bool rowJustCompleted = !completedRows.Contains(row) && IsRowComplete(row, maxCol);
-            bool colJustCompleted = !completedCols.Contains(col) && IsColComplete(col, maxRow);
-
             var newEdges = new List<int>();
             if (!completedEdges.Contains(0) && IsEdgeComplete(0, maxCol, true)) newEdges.Add(0);
             if (!completedEdges.Contains(1) && IsEdgeComplete(maxRow, maxCol, true)) newEdges.Add(1);
             if (!completedEdges.Contains(2) && IsEdgeComplete(0, maxRow, false)) newEdges.Add(2);
             if (!completedEdges.Contains(3) && IsEdgeComplete(maxCol, maxRow, false)) newEdges.Add(3);
 
-            bool allEdgesJustCompleted = !allEdgesCelebrated && newEdges.Count > 0 && completedEdges.Count + newEdges.Count >= 4;
-
-            // Build single combined message (no duplicates)
-            var parts = new List<string>();
-            if (rowJustCompleted) { completedRows.Add(row); parts.Add("Fila"); }
-            if (colJustCompleted) { completedCols.Add(col); parts.Add("Columna"); }
-            if (allEdgesJustCompleted) { allEdgesCelebrated = true; parts.Add("Marco completo"); }
-            else if (newEdges.Count > 0)
+            // Edge takes priority: if any edge completes, show "Edge complete" and stop.
+            // Corner piece (2 edges) = still just "Edge complete".
+            if (newEdges.Count > 0)
             {
                 foreach (int e in newEdges) completedEdges.Add(e);
-                parts.Add(newEdges.Count > 1 ? $"{newEdges.Count} bordes" : "Borde");
-            }
-
-            if (parts.Count == 0) return null;
-
-            if (parts.Count == 1)
-            {
-                if (parts[0] == "Marco completo") return (ArtUnbound.UI.MilestoneType.AllEdges, 0);
-                if (parts[0].Contains("bordes"))
+                foreach (int e in newEdges)
                 {
-                    int n = int.Parse(parts[0].Split(' ')[0]);
-                    return (ArtUnbound.UI.MilestoneType.Edges, n);
+                    if (e == 0) completedRows.Add(0);
+                    else if (e == 1) completedRows.Add(maxRow);
+                    else if (e == 2) completedCols.Add(0);
+                    else if (e == 3) completedCols.Add(maxCol);
                 }
-                if (parts[0] == "Borde") return (ArtUnbound.UI.MilestoneType.Edge, 0);
-                if (parts[0] == "Fila") return (ArtUnbound.UI.MilestoneType.Row, 0);
-                if (parts[0] == "Columna") return (ArtUnbound.UI.MilestoneType.Column, 0);
+                bool allEdgesJustCompleted = !allEdgesCelebrated && completedEdges.Count >= 4;
+                if (allEdgesJustCompleted) { allEdgesCelebrated = true; return (ArtUnbound.UI.MilestoneType.AllEdges, 0); }
+                return (ArtUnbound.UI.MilestoneType.Edge, 0);
             }
-            else
-            {
-                return (ArtUnbound.UI.MilestoneType.RowAndColumn, 0);
-            }
-            return (ArtUnbound.UI.MilestoneType.Row, 0); // fallback
+
+            // No edges: check row/column only (interior rows/cols, not edges).
+            bool rowJustCompleted = !completedRows.Contains(row) && IsRowComplete(row, maxCol);
+            bool colJustCompleted = !completedCols.Contains(col) && IsColComplete(col, maxRow);
+
+            if (rowJustCompleted) completedRows.Add(row);
+            if (colJustCompleted) completedCols.Add(col);
+
+            if (rowJustCompleted && colJustCompleted) return (ArtUnbound.UI.MilestoneType.RowAndColumn, 0);
+            if (rowJustCompleted) return (ArtUnbound.UI.MilestoneType.Row, 0);
+            if (colJustCompleted) return (ArtUnbound.UI.MilestoneType.Column, 0);
+            return null;
         }
 
         private bool IsRowComplete(int row, int maxCol)
@@ -1538,6 +1606,90 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
+        /// Replaces the assembled pieces with the full artwork image and plays a reveal animation.
+        /// Called when the last piece is placed.
+        /// </summary>
+        public void ShowFullImageReveal()
+        {
+            if (slotRoot == null || currentTexture == null)
+            {
+                Debug.LogWarning($"[PuzzleBoard] ShowFullImageReveal skipped: slotRoot={slotRoot != null}, texture={currentTexture != null}");
+                return;
+            }
+
+            // Remove previous reveal if any
+            if (fullImageReveal != null)
+            {
+                Destroy(fullImageReveal);
+            }
+
+            // Hide all pieces and grid lines
+            foreach (var piece in activePieces)
+            {
+                if (piece != null) piece.gameObject.SetActive(false);
+            }
+            Transform gridLines = slotRoot.Find("GridLines");
+            if (gridLines != null) gridLines.gameObject.SetActive(false);
+
+            // Create full-image quad. Z=0.0155: in front of pieces towards user.
+            // Rotation 180° Y to face user; 180° Z to correct upside-down texture.
+            fullImageReveal = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            fullImageReveal.name = "FullImageReveal";
+            Destroy(fullImageReveal.GetComponent<Collider>());
+
+            fullImageReveal.transform.SetParent(slotRoot, false);
+            fullImageReveal.transform.localPosition = new Vector3(0, 0, 0.0155f);
+            fullImageReveal.transform.localRotation = Quaternion.Euler(0, 180, 180);
+            fullImageReveal.transform.localScale = new Vector3(boardWidthM, boardHeightM, 1f);
+
+            var renderer = fullImageReveal.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                Shader shader = Shader.Find("Universal Render Pipeline/Unlit");
+                if (shader == null) shader = Shader.Find("Unlit/Texture");
+                if (shader == null) shader = Shader.Find("Sprites/Default");
+                if (shader != null)
+                {
+                    Material mat = new Material(shader);
+                    if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", currentTexture);
+                    if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", currentTexture);
+                    // Quad rotated 180° Y shows "back" face: texture appears mirrored. Flip both U and V to correct.
+                    // _BaseMap_ST: (scaleX, scaleY, offsetX, offsetY)
+                    if (mat.HasProperty("_BaseMap_ST"))
+                        mat.SetVector("_BaseMap_ST", new Vector4(-1, -1, 1, 1));
+                    else
+                        mat.mainTextureScale = new Vector2(-1, -1);
+                    renderer.material = mat;
+                }
+            }
+
+            StartCoroutine(AnimateFullImageReveal());
+        }
+
+        private IEnumerator AnimateFullImageReveal()
+        {
+            if (fullImageReveal == null) yield break;
+
+            float duration = 0.5f;
+            float elapsed = 0f;
+            Vector3 startScale = new Vector3(boardWidthM * 0.92f, boardHeightM * 0.92f, 1f);
+            Vector3 endScale = new Vector3(boardWidthM, boardHeightM, 1f);
+
+            fullImageReveal.transform.localScale = startScale;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+                t = 1f - (1f - t) * (1f - t); // Ease out quad
+                fullImageReveal.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+                yield return null;
+            }
+
+            fullImageReveal.transform.localScale = endScale;
+        }
+
+        /// <summary>
         /// Public method to check current puzzle status (can be called from Inspector or other scripts)
         /// </summary>
         [ContextMenu("Debug: Log Piece Placement Status")]
@@ -1559,10 +1711,10 @@ namespace ArtUnbound.Gameplay
             for (int i = 0; i < slots.Count; i++)
             {
                 var slot = slots[i];
-                if (slot.pieceId >= 0)
+                if (placedBySlot.TryGetValue(i, out PuzzlePiece piece))
                 {
                     totalPlaced++;
-                    bool isCorrect = slot.pieceId == i;
+                    bool isCorrect = piece.PieceId == slot.pieceId;
                     
                     if (isCorrect)
                     {
@@ -1571,7 +1723,7 @@ namespace ArtUnbound.Gameplay
                     else
                     {
                         incorrectlyPlaced++;
-                        Debug.LogWarning($"❌ Slot {i} (Row {slot.row}, Col {slot.col}): Has Piece {slot.pieceId} but expects Piece {i}");
+                        Debug.LogWarning($"❌ Slot {i} (Row {slot.row}, Col {slot.col}): Has Piece {piece.PieceId} but expects Piece {slot.pieceId}");
                     }
                 }
                 else

@@ -48,6 +48,7 @@ namespace ArtUnbound.UI
 
         private int totalPieces = 0;
         private int placedPieces = 0;
+        private int incorrectPieces = 0;
 
         private void Awake()
         {
@@ -91,8 +92,12 @@ namespace ArtUnbound.UI
         private void UpdateMusicTrackText(string title, string artist)
         {
             if (musicTrackText == null) return;
-            musicTrackText.text = string.IsNullOrEmpty(title) && string.IsNullOrEmpty(artist)
-                ? "" : $"♪ {title ?? ""} — {artist ?? ""}";
+            if (string.IsNullOrEmpty(title) && string.IsNullOrEmpty(artist))
+            {
+                musicTrackText.text = "";
+                return;
+            }
+            musicTrackText.text = $"Song: {title ?? ""} - {artist ?? ""}";
         }
 
         private void Update()
@@ -108,6 +113,7 @@ namespace ArtUnbound.UI
         {
             totalPieces = pieceCount;
             placedPieces = 0;
+            incorrectPieces = 0;
 
             // Help mode always enabled - parameter ignored
             UpdateProgressDisplay();
@@ -116,11 +122,21 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
-        /// Updates the pieces placed count.
+        /// Updates the pieces placed count (correct only).
         /// </summary>
         public void UpdatePiecesPlaced(int placed)
         {
             placedPieces = placed;
+            UpdateProgressDisplay();
+        }
+
+        /// <summary>
+        /// Updates progress with correct and incorrect counts.
+        /// </summary>
+        public void UpdateProgress(int correct, int incorrect)
+        {
+            placedPieces = correct;
+            incorrectPieces = incorrect;
             UpdateProgressDisplay();
         }
 
@@ -151,8 +167,7 @@ namespace ArtUnbound.UI
         {
             if (piecesText != null)
             {
-                // Show "correct / total" instead of percentage
-                piecesText.text = $"{placedPieces} / {totalPieces}";
+                piecesText.text = $"Total: {totalPieces} / Correct: {placedPieces} / Incorrect: {incorrectPieces}";
             }
 
             if (progressSlider != null)

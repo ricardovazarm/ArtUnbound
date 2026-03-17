@@ -45,6 +45,14 @@ namespace ArtUnbound.UI
         private float contentHeight = 0f;
         private float currentPieceSize = 0.05f; // Current piece size (set by Initialize)
 
+        [Header("Pagination (UI)")]
+        [Tooltip("Assign PiecesPanelController to use your UI pagination bar. If null, 3D TrayScrollButtons will be created as fallback.")]
+        [SerializeField] private PiecesPanelController panelController;
+        [Tooltip("Y rotation (degrees) to align tray with pagination panel. Default 15.")]
+        [SerializeField] private float trayRotationY = 15f;
+        [Tooltip("Extra X offset (meters) to center tray with pagination buttons. Negative = more to player's right. Default -0.08 (8cm).")]
+        [SerializeField] private float trayOffsetX = -0.08f;
+
         private void Awake()
         {
             // Position tray to YOUR RIGHT (player's right side)
@@ -52,9 +60,13 @@ namespace ArtUnbound.UI
             transform.localPosition = new Vector3(-0.45f, 0f, 0f);
             transform.localRotation = Quaternion.identity;
 
-            // Use PiecesPanelController if present in parent; otherwise add 3D TrayScrollButtons
-            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
-            if (panelController == null && GetComponent<TrayScrollButtons>() == null)
+            if (panelController != null)
+            {
+                var fallback = GetComponent<TrayScrollButtons>();
+                if (fallback != null)
+                    Destroy(fallback); // Prefer UI buttons over 3D fallback
+            }
+            else if (GetComponent<TrayScrollButtons>() == null)
             {
                 gameObject.AddComponent<TrayScrollButtons>();
             }
@@ -115,9 +127,11 @@ namespace ArtUnbound.UI
             UpdateButtonStates();
 
             // Show pieces panel and pagination (PiecesPanelController or 3D TrayScrollButtons)
-            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
             if (panelController != null)
             {
+                // Apply Y rotation and X offset to align tray with pagination panel
+                transform.localRotation = Quaternion.Euler(0f, trayRotationY, 0f);
+                transform.localPosition += new Vector3(trayOffsetX, 0f, 0f);
                 panelController.Show();
             }
             else
@@ -141,14 +155,17 @@ namespace ArtUnbound.UI
             Initialize(pieces, 0.05f);
         }
 
+        /// <summary>Rows per page = visible rows on screen. Each Up/Down scrolls one full page.</summary>
+        private int RowsPerPage => visibleRows;
+
         public void ScrollUp()
         {
-            ScrollBy(scrollStep * 3f);
+            ScrollBy(scrollStep * RowsPerPage);
         }
 
         public void ScrollDown()
         {
-            ScrollBy(-scrollStep * 3f);
+            ScrollBy(-scrollStep * RowsPerPage);
         }
 
         // Compatibility methods for existing Unity button connections
@@ -165,6 +182,14 @@ namespace ArtUnbound.UI
             // Calculate scroll limits based on grid layout
             int totalRows = Mathf.CeilToInt((float)pieceItems.Count / columns);
             float totalContentHeight = totalRows * scrollStep;
+            int piecesPerPage = columns * visibleRows;
+            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)pieceItems.Count / piecesPerPage));
+
+            // No scrolling when only 1 page
+            if (totalPages <= 1)
+            {
+                return;
+            }
             
             // ScrollDown makes offset negative (content moves up to see items below)
             // ScrollUp makes offset positive (content moves down to see items above)
@@ -199,17 +224,27 @@ namespace ArtUnbound.UI
             bool canScrollDown = scrollOffset > maxScrollDown + 0.01f;
             bool canScrollUp = scrollOffset < -0.01f;
 
+            // Page = full screen of rows. totalPages = ceil(pieces / piecesPerPage), e.g. 70 pieces, 20/page -> 4 pages
+            int piecesPerPage = columns * visibleRows;
+            int totalPages = pieceItems.Count == 0 ? 1 : Mathf.Max(1, Mathf.CeilToInt((float)pieceItems.Count / piecesPerPage));
+            float pageStep = scrollStep * RowsPerPage;
+            int currentPage = totalPages <= 1 ? 1 : Mathf.Clamp(1 + Mathf.RoundToInt(-scrollOffset / pageStep), 1, totalPages);
+
+            // When only 1 page, disable both buttons (no scrolling)
+            bool upEnabled = totalPages > 1 && canScrollUp;
+            bool downEnabled = totalPages > 1 && canScrollDown;
+
             // Prefer PiecesPanelController for consistent panel UX
-            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
             if (panelController != null)
             {
-                panelController.SetPaginationButtonStates(canScrollUp, canScrollDown);
+                panelController.SetPaginationButtonStates(upEnabled, downEnabled);
+                panelController.SetPageIndicator(currentPage, totalPages);
                 return;
             }
 
             var scrollButtons = GetComponent<TrayScrollButtons>();
             if (scrollButtons != null)
-                scrollButtons.SetButtonStates(canScrollUp, canScrollDown);
+                scrollButtons.SetButtonStates(upEnabled, downEnabled);
         }
 
         private void OnPieceStateChanged(ArtUnbound.Gameplay.PuzzlePiece piece, ArtUnbound.Data.PieceState newState)
@@ -406,7 +441,6 @@ namespace ArtUnbound.UI
         /// </summary>
         public void HideScrollButtons()
         {
-            var panelController = transform.parent != null ? transform.parent.GetComponentInChildren<PiecesPanelController>() : null;
             if (panelController != null)
             {
                 panelController.Hide();

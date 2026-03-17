@@ -57,14 +57,30 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
-        /// Called by PieceScrollController to show/hide pagination buttons.
+        /// Called by PieceScrollController to enable/disable pagination buttons.
+        /// Same policy as catalog: buttons always visible, disabled when not applicable.
         /// </summary>
         public void SetPaginationButtonStates(bool canScrollUp, bool canScrollDown)
         {
             if (scrollUpButton != null)
-                scrollUpButton.gameObject.SetActive(canScrollUp);
+            {
+                scrollUpButton.gameObject.SetActive(true);
+                scrollUpButton.interactable = canScrollUp;
+            }
             if (scrollDownButton != null)
-                scrollDownButton.gameObject.SetActive(canScrollDown);
+            {
+                scrollDownButton.gameObject.SetActive(true);
+                scrollDownButton.interactable = canScrollDown;
+            }
+        }
+
+        /// <summary>
+        /// Updates the page indicator text (e.g. "1 / 1" or "2 / 5").
+        /// </summary>
+        public void SetPageIndicator(int currentPage, int totalPages)
+        {
+            if (pageText != null)
+                pageText.text = $"{currentPage} / {totalPages}";
         }
 
         /// <summary>

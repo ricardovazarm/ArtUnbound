@@ -154,13 +154,15 @@ namespace ArtUnbound.Gameplay
                 triangles.Add(botNext);
             }
 
+            // Weld duplicate vertices (e.g. at corners) so normals smooth across edges - avoids visible triangular facets
+            WeldVertices(vertices, uvs, triangles);
+
             Mesh mesh = new Mesh();
             mesh.SetVertices(vertices);
             mesh.SetTriangles(triangles, 0);
             mesh.SetUVs(0, uvs);
 
-            // Recalculate normals to smooth (or flat)
-            mesh.RecalculateNormals(); // Will smooth the sides if shared verts? No, corners are duped, so hard edges. Good.
+            mesh.RecalculateNormals();
             mesh.RecalculateBounds();
 
             return mesh;
@@ -168,16 +170,18 @@ namespace ArtUnbound.Gameplay
 
         /// <summary>
         /// Generates a mesh for a piece at a specific grid position.
+        /// UVs are flipped horizontally to compensate for the board's 180° Y rotation (so the image faces correctly).
         /// </summary>
         public static Mesh GeneratePieceMesh(PieceMorphology morphology, float pieceSize, int col, int row, int gridCols, int gridRows)
         {
             // Calculate UV coordinates based on grid position
-            float uMin = (float)col / gridCols;
-            float uMax = (float)(col + 1) / gridCols;
+            float uLeft = (float)col / gridCols;
+            float uRight = (float)(col + 1) / gridCols;
             float vMin = 1f - (float)(row + 1) / gridRows; // Flip V for typical texture coordinates
             float vMax = 1f - (float)row / gridRows;
 
-            return GeneratePieceMesh(morphology, pieceSize, new Vector2(uMin, vMin), new Vector2(uMax, vMax));
+            // Flip U: board is rotated 180° around Y to face user, which mirrors the image. Swap U to correct it.
+            return GeneratePieceMesh(morphology, pieceSize, new Vector2(uRight, vMin), new Vector2(uLeft, vMax));
         }
 
         private static void GeneratePieceGeometry(
@@ -315,6 +319,52 @@ namespace ArtUnbound.Gameplay
                     outward = Vector3.left;
                     break;
             }
+        }
+
+        /// <summary>
+        /// Welds vertices at the same position so normals smooth across edges, hiding triangular facets.
+        /// </summary>
+        private static void WeldVertices(List<Vector3> vertices, List<Vector2> uvs, List<int> triangles)
+        {
+            const float epsilon = 0.00001f;
+            int n = vertices.Count;
+            int[] remap = new int[n]; // remap[i] = new index for vertex i
+
+            List<Vector3> newVertices = new List<Vector3>();
+            List<Vector2> newUvs = new List<Vector2>();
+
+            for (int i = 0; i < n; i++)
+            {
+                Vector3 v = vertices[i];
+                int found = -1;
+                for (int j = 0; j < newVertices.Count; j++)
+                {
+                    if (Vector3.Distance(newVertices[j], v) < epsilon)
+                    {
+                        found = j;
+                        break;
+                    }
+                }
+                if (found >= 0)
+                {
+                    remap[i] = found;
+                    // Keep first UV; welded vertices at corners have nearly identical UVs
+                }
+                else
+                {
+                    remap[i] = newVertices.Count;
+                    newVertices.Add(v);
+                    newUvs.Add(uvs[i]);
+                }
+            }
+
+            for (int t = 0; t < triangles.Count; t++)
+                triangles[t] = remap[triangles[t]];
+
+            vertices.Clear();
+            vertices.AddRange(newVertices);
+            uvs.Clear();
+            uvs.AddRange(newUvs);
         }
 
         private static int AddVertex(List<Vector3> vertices, List<Vector2> uvs, Vector3 position, Vector2 uvMin, Vector2 uvMax, float halfSize)

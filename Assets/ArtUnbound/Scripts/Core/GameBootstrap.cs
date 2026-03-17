@@ -65,6 +65,7 @@ namespace ArtUnbound.Core
 
         private string selectedArtworkId;
         private int selectedPieceCount = 64;
+        private int selectedDifficultyIndex = 0; // 0=Easy(Bronce), 1=Normal(Plata), 2=Hard(Oro), 3=Expert(Platinum)
 
         private void Awake()
         {
@@ -78,6 +79,7 @@ namespace ArtUnbound.Core
                 return;
             }
 
+            ApplyButtonTheme(); // Apply base theme first so filter/tab-specific colors aren't overwritten
             InitializeServices();
             HideAllPanels(); // Ensure clean state immediately
             LoadData();
@@ -157,11 +159,7 @@ namespace ArtUnbound.Core
 
         private void SetupEventListeners()
         {
-            // Unified Main Menu
-            if (unifiedMainMenu != null)
-            {
-                unifiedMainMenu.OnStartPuzzle += OnUnifiedMenuStartPuzzle;
-            }
+            // Unified Main Menu - OnStartPuzzle subscribed below with other handlers
 
             // Post Game
             if (postGameController != null)
@@ -207,12 +205,7 @@ namespace ArtUnbound.Core
             // UnifiedMainMenu
             if (unifiedMainMenu != null)
             {
-                unifiedMainMenu.OnStartPuzzle += (artworkId, pieceCount) =>
-                {
-                    selectedArtworkId = artworkId;
-                    selectedPieceCount = pieceCount;
-                    StartPuzzle();
-                };
+                unifiedMainMenu.OnStartPuzzle += OnUnifiedMenuStartPuzzle;
 
                 unifiedMainMenu.OnMusicVolumeChanged += (volume) =>
                 {
@@ -252,7 +245,7 @@ namespace ArtUnbound.Core
         public void TransitionToMainMenu()
         {
             SetState(GameState.MainMenu);
-
+            HidePiecesPagination();
             HideAllPanels();
 
             // Start music first so CurrentTrack is set before menu shows
@@ -272,14 +265,13 @@ namespace ArtUnbound.Core
 
         /// <summary>
         /// Handler for UnifiedMainMenu's OnStartPuzzle event.
-        /// Receives artworkId and pieceCount directly from the unified menu.
+        /// Receives artworkId, pieceCount, and difficultyIndex (0=Easy, 1=Normal, 2=Hard, 3=Expert).
         /// </summary>
-        private void OnUnifiedMenuStartPuzzle(string artworkId, int pieceCount)
+        private void OnUnifiedMenuStartPuzzle(string artworkId, int pieceCount, int difficultyIndex)
         {
             selectedArtworkId = artworkId;
             selectedPieceCount = pieceCount;
-            
-            
+            selectedDifficultyIndex = difficultyIndex;
             StartPuzzle();
         }
 
@@ -381,8 +373,8 @@ namespace ArtUnbound.Core
                 puzzleBoard.transform.rotation = rotation;
             }
 
-            InitializePuzzleBoard();
-            TransitionToPlaying();
+            if (!InitializePuzzleBoard())
+                TransitionToPlaying();
         }
 
         private void OnComfortPositionLocked()
@@ -402,13 +394,14 @@ namespace ArtUnbound.Core
 
             }
 
-            InitializePuzzleBoard();
-            TransitionToPlaying();
+            if (!InitializePuzzleBoard())
+                TransitionToPlaying();
         }
 
-        private void InitializePuzzleBoard()
+        /// <returns>True if restored a completed puzzle (caller should skip TransitionToPlaying).</returns>
+        private bool InitializePuzzleBoard()
         {
-            if (puzzleBoard == null) return;
+            if (puzzleBoard == null) return false;
 
             // Ensure board is active and visible
             puzzleBoard.gameObject.SetActive(true);
@@ -416,7 +409,24 @@ namespace ArtUnbound.Core
             var artworkData = localCatalogService?.GetArtworkById(selectedArtworkId);
             Texture2D artworkTexture = artworkData?.fullImage?.texture;
 
-            puzzleBoard.Initialize(selectedPieceCount, artworkTexture);
+            if (artworkData == null)
+            {
+                Debug.LogError($"[GameBootstrap] No artwork found for id='{selectedArtworkId}'. Pieces will NOT appear.");
+            }
+            else if (artworkTexture == null)
+            {
+                Debug.LogError($"[GameBootstrap] Artwork '{selectedArtworkId}' has no texture (fullImage.texture is null). Pieces will NOT appear.");
+            }
+
+            // Prefer Initialize(ArtworkDefinition) - it uses puzzleTexture or fullImage.texture
+            if (artworkData != null)
+            {
+                puzzleBoard.Initialize(artworkData, selectedPieceCount);
+            }
+            else
+            {
+                puzzleBoard.Initialize(selectedPieceCount, artworkTexture);
+            }
             
             // IMPORTANT: Update selectedPieceCount to the ACTUAL piece count
             // (may differ from target due to aspect ratio)
@@ -433,70 +443,62 @@ namespace ArtUnbound.Core
                 puzzleHUD.Initialize(actualPieceCount, true); // Help mode always enabled
             }
             
-            // Check if there's a saved session to restore
-            var savedSession = saveDataService.LoadSession();
-            
-            if (savedSession != null 
-                && savedSession.artworkId == selectedArtworkId 
-                && !savedSession.isCompleted
-                && savedSession.placedPieces != null
-                && savedSession.placedPieces.Count > 0)
+            // Check for saved session (in-progress or completed)
+            var savedSession = saveDataService.LoadSession(selectedArtworkId, actualPieceCount);
+            var displaySession = savedSession ?? saveDataService.LoadSessionForDisplay(selectedArtworkId, actualPieceCount);
+
+            if (displaySession != null && displaySession.placedPieces != null && displaySession.placedPieces.Count > 0)
             {
-                // Use the saved session instead of creating a new one
-                CurrentSession = savedSession;
-                
-                // Update piece count to actual (in case it was saved with target count)
+                CurrentSession = displaySession;
                 CurrentSession.pieceCount = actualPieceCount;
-                
-                // Restore pieces on the board (now with one less piece if it was complete)
-                Debug.Log($"[PIECE] GameBootstrap: restoring session savedPlaced={savedSession.placedPieces.Count}, actualPieceCount={actualPieceCount}");
-                puzzleBoard.RestoreBoardState(savedSession.placedPieces);
-                
-                // Update HUD with ACTUAL correct pieces count (from board, not session)
+
+                Debug.Log($"[PIECE] GameBootstrap: restoring session savedPlaced={displaySession.placedPieces.Count}, completed={displaySession.isCompleted}");
+                puzzleBoard.RestoreBoardState(displaySession.placedPieces);
+
                 if (puzzleHUD != null)
                 {
-                    int correctPieces = puzzleBoard.SnappedCount;
-                    int totalPieces = puzzleBoard.TotalPieces;
-                    Debug.Log($"[PIECE] GameBootstrap restore: HUD updated {correctPieces}/{totalPieces} correct");
-                    
-                    puzzleHUD.UpdatePiecesPlaced(correctPieces);
-                    
-                    // Force refresh display
-                    if (correctPieces > 0)
-                    {
-                        // Trigger another update to ensure UI refreshes
-                        StartCoroutine(RefreshHUDAfterDelay(correctPieces));
-                    }
+                    puzzleHUD.UpdateProgress(puzzleBoard.SnappedCount, puzzleBoard.IncorrectCount);
+                    if (puzzleBoard.SnappedCount > 0)
+                        StartCoroutine(RefreshHUDAfterDelay());
                 }
-                
-                // Start timer from saved elapsed time
-                if (timerController != null)
+
+                if (displaySession.isCompleted)
                 {
-                    timerController.StartTimer(savedSession.elapsedTime);
+                    // Completed puzzle: stop timer, hide tray, show full image, PostGamePanel
+                    SetState(GameState.PostGame);
+                    unifiedMainMenu?.Hide(); // Hide main menu (don't use HideAllPanels - it hides puzzleBoard)
+                    if (timerController != null)
+                        timerController.StopTimer();
+                    puzzleBoard?.HideScrollButtons();
+                    puzzleBoard?.ShowFullImageReveal();
+
+                    var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
+                    int timeSec = record?.bestTimeSec ?? displaySession.GetElapsedSeconds();
+                    int difficultyIdx = GetDifficultyIndexFromPieceCount(selectedArtworkId, actualPieceCount);
+                    FrameTier frameTier = record?.bestFrameTier ?? GetFrameTierFromDifficultyIndex(difficultyIdx);
+
+                    if (postGameController != null)
+                        postGameController.ShowResults(displaySession, timeSec, timeSec, frameTier, false);
+
+                    if (puzzleHUD != null) puzzleHUD.Show();
+                    puzzleAchievements?.Show();
+                    return true; // Skip TransitionToPlaying - we're in PostGame
+                }
+                else
+                {
+                    if (timerController != null)
+                        timerController.StartTimer(displaySession.elapsedTime);
                 }
             }
             else
             {
-                // No saved session or different puzzle - start fresh
-                
-                // Clear any old session that doesn't match
-                if (savedSession != null)
-                {
-                    saveDataService.ClearSession();
-                }
-                
-                // Update CurrentSession piece count if it exists
                 if (CurrentSession != null)
-                {
                     CurrentSession.pieceCount = actualPieceCount;
-                }
-                
-                // Just make sure timer starts from 0
+
                 if (timerController != null)
-                {
                     timerController.StartTimer(0f);
-                }
             }
+            return false;
         }
         private void OnPieceCorrectlyPlaced(PuzzlePiece piece)
         {
@@ -505,10 +507,7 @@ namespace ArtUnbound.Core
                 CurrentSession.piecesPlaced++;
             }
 
-            if (puzzleHUD != null)
-            {
-                puzzleHUD.UpdatePiecesPlaced(CurrentSession?.piecesPlaced ?? 0);
-            }
+            // HUD updated by OnBoardStateChanged
 
             // Audio is now handled in PuzzleBoard based on correctness
             // Removed: audioManager.PlayPieceSnap() to avoid duplicate sounds
@@ -525,6 +524,7 @@ namespace ArtUnbound.Core
         private void OnPuzzleComplete()
         {
             SetState(GameState.PostGame);
+            // Don't call HideAllPanels - it hides puzzleBoard; we need board+full image visible
 
             if (timerController != null)
                 timerController.StopTimer();
@@ -535,14 +535,18 @@ namespace ArtUnbound.Core
                 CurrentSession.EndSession();
             }
 
-            // IMPORTANT: Clear saved session since puzzle is completed
-            saveDataService.ClearSession();
+            // Keep completed session in storage so user can return and see the assembled puzzle
+            if (CurrentSession != null)
+            {
+                CurrentSession.placedPieces = puzzleBoard.GetCurrentBoardState();
+                saveDataService.SaveSession(CurrentSession);
+            }
 
             // Get completion time from the timer (simple counter, source of truth)
             int timeSec = timerController != null ? timerController.GetElapsedSeconds() : (CurrentSession?.GetElapsedSeconds() ?? 1);
             
-            // Frame tier now based ONLY on difficulty (piece count)
-            FrameTier frameTier = GetFrameTierFromPieceCount(selectedPieceCount);
+            // Frame tier based on difficulty SIZE (Easy=Bronce, Normal=Plata, Hard=Oro, Expert=Platinum)
+            FrameTier frameTier = GetFrameTierFromDifficultyIndex(selectedDifficultyIndex);
 
             // Check for new record (based on TIME only)
             var progress = SaveData.GetProgress(selectedArtworkId);
@@ -571,7 +575,10 @@ namespace ArtUnbound.Core
 
             // Hide scroll buttons when puzzle is complete
             if (puzzleBoard != null)
+            {
                 puzzleBoard.HideScrollButtons();
+                puzzleBoard.ShowFullImageReveal();
+            }
 
             // Keep board and HUD visible, only show post game panel on top
             // puzzleHUD?.Hide(); // Uncomment if you want to hide HUD
@@ -590,17 +597,8 @@ namespace ArtUnbound.Core
 
         private void QuitToMenu()
         {
-            // Save session with current timer before clearing (user may exit without placing a piece)
             SaveCurrentSessionIfPlaying();
             CurrentSession = null;
-            
-            // Hide the puzzle board
-            if (puzzleBoard != null)
-            {
-                puzzleBoard.gameObject.SetActive(false);
-            }
-            
-            // Return to main menu (which shows UnifiedMainMenu)
             TransitionToMainMenu();
         }
 
@@ -627,6 +625,10 @@ namespace ArtUnbound.Core
             
             // Save immediately to disk
             saveDataService.SaveSession(CurrentSession);
+            
+            // Update HUD with correct/incorrect counts
+            if (puzzleHUD != null)
+                puzzleHUD.UpdateProgress(puzzleBoard.SnappedCount, puzzleBoard.IncorrectCount);
             
             Debug.Log($"[PIECE] Auto-save: placed={CurrentSession.piecesPlaced}, total={boardState.Count}");
         }
@@ -676,7 +678,22 @@ namespace ArtUnbound.Core
 
         private void ReplayPuzzle()
         {
-            StartPuzzle();
+            // Clear session so we start fresh (record/time/frame stay in ArtworkProgress)
+            saveDataService.ClearSession(selectedArtworkId, selectedPieceCount);
+            postGameController?.Hide();
+
+            // Create fresh session and re-initialize board (pieces back to tray)
+            CurrentSession = new PuzzleSessionData
+            {
+                artworkId = selectedArtworkId,
+                pieceCount = selectedPieceCount,
+                gameMode = CurrentGameMode,
+                helpModeUsed = true
+            };
+            CurrentSession.StartSession();
+
+            InitializePuzzleBoard();
+            TransitionToPlaying();
         }
 
         private void OnOnboardingComplete()
@@ -700,6 +717,14 @@ namespace ArtUnbound.Core
 
         #endregion
 
+        private void ApplyButtonTheme()
+        {
+            if (mainUICanvas != null)
+                ArtUnbound.UI.UIButtonTheme.ApplyToAllIn(mainUICanvas);
+            if (puzzleBoard != null)
+                ArtUnbound.UI.UIButtonTheme.ApplyToAllIn(puzzleBoard.transform);
+        }
+
         private void HideAllPanels()
         {
             unifiedMainMenu?.Hide();
@@ -708,11 +733,14 @@ namespace ArtUnbound.Core
             postGameController?.Hide();
             onboardingController?.Hide();
             
-            // Hide puzzle board when switching to menu
             if (puzzleBoard != null)
-            {
                 puzzleBoard.gameObject.SetActive(false);
-            }
+        }
+
+        /// <summary>Call when leaving puzzle (quit or complete) to hide pieces pagination panel.</summary>
+        private void HidePiecesPagination()
+        {
+            puzzleBoard?.HideScrollButtons();
         }
 
         private void OnApplicationPause(bool pauseStatus)
@@ -859,7 +887,11 @@ namespace ArtUnbound.Core
             {
                 canvasTransform.gameObject.SetActive(true);
             }
-            
+
+            yield return null; // Wait one frame so Canvas/Button state is settled before applying colors
+            if (unifiedMainMenu != null)
+                unifiedMainMenu.RefreshButtonColors();
+
             // Hide loading spinner
             if (loadingSpinner != null)
             {
@@ -867,36 +899,54 @@ namespace ArtUnbound.Core
             }
         }
 
-        private System.Collections.IEnumerator RefreshHUDAfterDelay(int correctPieces)
+        private System.Collections.IEnumerator RefreshHUDAfterDelay()
         {
             yield return new UnityEngine.WaitForSeconds(0.1f);
-            
-            if (puzzleHUD != null)
-            {
-                puzzleHUD.UpdatePiecesPlaced(correctPieces);
-            }
+            if (puzzleHUD != null && puzzleBoard != null)
+                puzzleHUD.UpdateProgress(puzzleBoard.SnappedCount, puzzleBoard.IncorrectCount);
         }
 
         /// <summary>
-        /// Determines the frame tier based on piece count (difficulty).
+        /// Determines the frame tier based on difficulty SIZE (which puzzle size was selected).
         /// Easy = Bronce, Normal = Plata, Hard = Oro, Expert = Platinum
         /// </summary>
-        private FrameTier GetFrameTierFromPieceCount(int pieceCount)
+        private FrameTier GetFrameTierFromDifficultyIndex(int difficultyIndex)
         {
-            // Easy: 64 pieces
-            if (pieceCount <= 64)
-                return FrameTier.Bronce;
-            
-            // Normal: ~130-144 pieces (anything between Easy and Hard)
-            if (pieceCount <= 200)
-                return FrameTier.Plata;
-            
-            // Hard: 256 pieces
-            if (pieceCount <= 256)
-                return FrameTier.Oro;
-            
-            // Expert: 512 pieces
-            return FrameTier.Platinum;
+            return difficultyIndex switch
+            {
+                0 => FrameTier.Bronce,   // Easy (smallest)
+                1 => FrameTier.Plata,   // Normal
+                2 => FrameTier.Oro,     // Hard
+                3 => FrameTier.Platinum,// Expert (largest)
+                _ => FrameTier.Bronce
+            };
+        }
+
+        /// <summary>
+        /// Infers difficulty index from piece count by matching against artwork's piece counts.
+        /// Used when restoring a completed puzzle (we don't have the original difficulty index).
+        /// Falls back to PuzzleConfig.pieceCounts if artwork has no custom counts.
+        /// </summary>
+        private int GetDifficultyIndexFromPieceCount(string artworkId, int pieceCount)
+        {
+            var artwork = localCatalogService?.GetArtworkById(artworkId);
+            if (artwork != null)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (artwork.GetPieceCount(i) == pieceCount)
+                        return i;
+                }
+            }
+            if (puzzleConfig != null && puzzleConfig.pieceCounts != null)
+            {
+                for (int i = 0; i < puzzleConfig.pieceCounts.Length && i < 4; i++)
+                {
+                    if (puzzleConfig.pieceCounts[i] == pieceCount)
+                        return i;
+                }
+            }
+            return 0; // Default to Easy if no match
         }
     }
 

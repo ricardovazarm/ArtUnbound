@@ -19,11 +19,13 @@ namespace ArtUnbound.UI
 
         [Header("UI References")]
         [SerializeField] private GameObject panel;
-        [SerializeField] private TextMeshProUGUI completionText;  // "¡Puzzle Completado!"
-        [SerializeField] private TextMeshProUGUI newRecordText;    // Shows "¡Nuevo Récord! XX:XX" or hidden if not a record
+        [SerializeField] private TextMeshProUGUI completionText;  // "Puzzle Complete!"
+        [SerializeField] private TextMeshProUGUI timeText;         // "Completed in: 01:23:02"
+        [SerializeField] private TextMeshProUGUI frameText;       // "Bronze frame earned!"
+        [SerializeField] private TextMeshProUGUI newRecordText;   // Kept for future use - currently hidden
 
         [Header("Buttons")]
-        [SerializeField] private Button placeButton;
+        [SerializeField] private Button placeButton;  // Hidden for now - behavior to change later
         [SerializeField] private Button replayButton;
 
         private PuzzleSessionData sessionData;
@@ -35,7 +37,10 @@ namespace ArtUnbound.UI
         private void Awake()
         {
             if (placeButton != null)
+            {
                 placeButton.onClick.AddListener(OnPlaceArtworkClicked);
+                placeButton.gameObject.SetActive(false);  // Hidden for now
+            }
 
             if (replayButton != null)
                 replayButton.onClick.AddListener(OnReplayClicked);
@@ -65,31 +70,40 @@ namespace ArtUnbound.UI
 
         private void UpdateUI()
         {
-            // Show completion message
             if (completionText != null)
-                completionText.text = "¡Puzzle Completado!";
+                completionText.text = "Puzzle Complete!";
 
-            // Show new record text with time if it's a new record
+            if (timeText != null)
+                timeText.text = $"Completed in: {FormatTime(completionTime)}";
+
+            if (frameText != null)
+                frameText.text = $"{GetFrameDisplayName(awardedFrame)} frame earned!";
+
+            // New record - functionality kept, text hidden for now
             if (newRecordText != null)
-            {
-                if (isNewRecord)
-                {
-                    string timeFormatted = FormatTime(completionTime);
-                    newRecordText.text = $"¡Nuevo Récord!\n{timeFormatted}";
-                    newRecordText.gameObject.SetActive(true);
-                }
-                else
-                {
-                    newRecordText.gameObject.SetActive(false);
-                }
-            }
+                newRecordText.gameObject.SetActive(false);
         }
 
         private string FormatTime(int totalSeconds)
         {
-            int minutes = totalSeconds / 60;
+            int hours = totalSeconds / 3600;
+            int minutes = (totalSeconds % 3600) / 60;
             int seconds = totalSeconds % 60;
+            if (hours > 0)
+                return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
             return $"{minutes:D2}:{seconds:D2}";
+        }
+
+        private static string GetFrameDisplayName(FrameTier tier)
+        {
+            return tier switch
+            {
+                FrameTier.Bronce => "Bronze",
+                FrameTier.Plata => "Silver",
+                FrameTier.Oro => "Gold",
+                FrameTier.Platinum => "Platinum",
+                _ => "Bronze"
+            };
         }
 
         public void Show()
