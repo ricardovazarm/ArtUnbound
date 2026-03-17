@@ -117,6 +117,15 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
+        /// Sets the elapsed time (e.g. when restoring a completed session).
+        /// Does not start or stop the timer.
+        /// </summary>
+        public void SetElapsedTime(float seconds)
+        {
+            elapsedTime = Mathf.Max(0f, seconds);
+        }
+
+        /// <summary>
         /// Gets the elapsed time in whole seconds (minimum 1 to avoid division by zero).
         /// </summary>
         public int GetElapsedSeconds()

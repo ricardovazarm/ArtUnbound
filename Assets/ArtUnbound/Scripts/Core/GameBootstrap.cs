@@ -437,10 +437,18 @@ namespace ArtUnbound.Core
                 selectedPieceCount = actualPieceCount;
             }
             
-            // Re-initialize HUD with the ACTUAL piece count
+            // Re-initialize HUD with the ACTUAL piece count and artwork info
             if (puzzleHUD != null)
             {
                 puzzleHUD.Initialize(actualPieceCount, true); // Help mode always enabled
+                if (artworkData != null)
+                {
+                    puzzleHUD.SetArtworkInfo(
+                        artworkData.title,
+                        artworkData.author,
+                        artworkData.description
+                    );
+                }
             }
             
             // Check for saved session (in-progress or completed)
@@ -467,15 +475,18 @@ namespace ArtUnbound.Core
                     // Completed puzzle: stop timer, hide tray, show full image, PostGamePanel
                     SetState(GameState.PostGame);
                     unifiedMainMenu?.Hide(); // Hide main menu (don't use HideAllPanels - it hides puzzleBoard)
-                    if (timerController != null)
-                        timerController.StopTimer();
-                    puzzleBoard?.HideScrollButtons();
-                    puzzleBoard?.ShowFullImageReveal();
-
                     var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
                     int timeSec = record?.bestTimeSec ?? displaySession.GetElapsedSeconds();
                     int difficultyIdx = GetDifficultyIndexFromPieceCount(selectedArtworkId, actualPieceCount);
                     FrameTier frameTier = record?.bestFrameTier ?? GetFrameTierFromDifficultyIndex(difficultyIdx);
+
+                    if (timerController != null)
+                    {
+                        timerController.SetElapsedTime(timeSec);
+                        timerController.StopTimer();
+                    }
+                    puzzleBoard?.HideScrollButtons();
+                    puzzleBoard?.ShowFullImageReveal(frameTier);
 
                     if (postGameController != null)
                         postGameController.ShowResults(displaySession, timeSec, timeSec, frameTier, false);
@@ -577,7 +588,7 @@ namespace ArtUnbound.Core
             if (puzzleBoard != null)
             {
                 puzzleBoard.HideScrollButtons();
-                puzzleBoard.ShowFullImageReveal();
+                puzzleBoard.ShowFullImageReveal(frameTier);
             }
 
             // Keep board and HUD visible, only show post game panel on top

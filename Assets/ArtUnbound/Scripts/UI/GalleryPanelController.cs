@@ -50,6 +50,7 @@ namespace ArtUnbound.UI
         private List<ArtworkProgress> savedArtworks = new List<ArtworkProgress>();
         private List<ArtworkDefinition> availableArtworks = new List<ArtworkDefinition>();
         private List<GameObject> instantiatedItems = new List<GameObject>();
+        private SaveData saveData;
 
         public enum GalleryTab
         {
@@ -120,13 +121,14 @@ namespace ArtUnbound.UI
         /// <summary>
         /// Sets the data for the gallery.
         /// </summary>
-        public void SetData(List<ArtworkProgress> completed, List<PlacedArtwork> hung, List<ArtworkProgress> saved, List<ArtworkDefinition> available = null)
+        public void SetData(List<ArtworkProgress> completed, List<PlacedArtwork> hung, List<ArtworkProgress> saved, List<ArtworkDefinition> available = null, SaveData saveData = null)
         {
             Debug.Log($"[GalleryPanelController] SetData called. Completed: {completed?.Count ?? 0}, Hung: {hung?.Count ?? 0}, Saved: {saved?.Count ?? 0}, Available: {available?.Count ?? 0}");
             completedArtworks = completed ?? new List<ArtworkProgress>();
             hungArtworks = hung ?? new List<PlacedArtwork>();
             savedArtworks = saved ?? new List<ArtworkProgress>();
             availableArtworks = available ?? new List<ArtworkDefinition>();
+            this.saveData = saveData;
 
             // If no completed artworks, default to Available tab to let user pick one
             if (completedArtworks.Count == 0 && availableArtworks.Count > 0)
@@ -231,7 +233,7 @@ namespace ArtUnbound.UI
             foreach (var artwork in completedArtworks)
             {
                 var def = availableArtworks.Find(a => a.artworkId == artwork.artworkId);
-                CreateArtworkItem(artwork.artworkId, artwork.GetBestRecord()?.frameTier ?? FrameTier.Bronce,  // Changed: Bronce is now lowest tier
+                CreateArtworkItem(artwork.artworkId, artwork.bestFrameTier,  // Best frame earned across all difficulties
                     canHang: true, canPlay: true, def);
             }
         }
@@ -281,8 +283,9 @@ namespace ArtUnbound.UI
 
             foreach (var artwork in availableArtworks)
             {
-                CreateArtworkItem(artwork.artworkId, FrameTier.Bronce,  // Changed: Bronce is now lowest tier
-                    canHang: false, canPlay: true, artwork);
+                var progress = saveData?.GetProgress(artwork.artworkId);
+                var frameTier = (progress != null && progress.HasBeenCompleted()) ? progress.bestFrameTier : FrameTier.Madera;  // Madera when no frame earned
+                CreateArtworkItem(artwork.artworkId, frameTier, canHang: false, canPlay: true, artwork);
             }
         }
 

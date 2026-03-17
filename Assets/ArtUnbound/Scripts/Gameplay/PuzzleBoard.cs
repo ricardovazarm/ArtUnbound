@@ -29,6 +29,14 @@ namespace ArtUnbound.Gameplay
         [SerializeField] private HelpModeController helpModeController;
         [SerializeField] private Color errorGlowColor = new Color(1f, 0.2f, 0.2f, 0.8f);
 
+        [Header("Frame (for completed image reveal)")]
+        [SerializeField] private FrameConfigSet frameConfigSet;
+        [Tooltip("Fallback if FrameConfigSet has no config for tier")]
+        [SerializeField] private Material frameBronceMaterial;
+        [SerializeField] private Material framePlataMaterial;
+        [SerializeField] private Material frameOroMaterial;
+        [SerializeField] private Material frameEbanoMaterial;
+
         private readonly List<PuzzlePiece> activePieces = new List<PuzzlePiece>();
         
         // Slot highlighting
@@ -91,6 +99,7 @@ namespace ArtUnbound.Gameplay
         private float boardWidthM;
         private float boardHeightM;
         private GameObject fullImageReveal;
+        private GameObject fullImageRevealFrame;
 
         // Public getters for progress tracking
         public int SnappedCount => snappedCount;
@@ -132,6 +141,11 @@ namespace ArtUnbound.Gameplay
                 Destroy(fullImageReveal);
                 fullImageReveal = null;
             }
+            if (fullImageRevealFrame != null)
+            {
+                Destroy(fullImageRevealFrame);
+                fullImageRevealFrame = null;
+            }
 
             foreach (var piece in activePieces)
             {
@@ -169,6 +183,11 @@ namespace ArtUnbound.Gameplay
             {
                 Destroy(fullImageReveal);
                 fullImageReveal = null;
+            }
+            if (fullImageRevealFrame != null)
+            {
+                Destroy(fullImageRevealFrame);
+                fullImageRevealFrame = null;
             }
 
             foreach (var piece in activePieces)
@@ -215,9 +234,8 @@ namespace ArtUnbound.Gameplay
             Vector3 pieceToBoard = piece.transform.position - boardPosition;
             float distanceToPlane = Mathf.Abs(Vector3.Dot(pieceToBoard, boardNormal));
             
-            // STEP 1: Check if piece is close enough to the board plane (within 2cm)
-            // This is the ONLY requirement to trigger snap
-            float maxDepthToPlane = 0.02f; // 2cm perpendicular distance to board plane
+            // STEP 1: Check if piece is close enough to the board plane
+            float maxDepthToPlane = (puzzleConfig != null ? puzzleConfig.maxDepthToPlaneCm : 4f) * 0.01f;
             if (distanceToPlane > maxDepthToPlane)
             {
                 Debug.LogWarning($"[PuzzleBoard] ✗ Piece too far from board plane: {distanceToPlane:F3}m > {maxDepthToPlane:F3}m");
@@ -330,7 +348,7 @@ namespace ArtUnbound.Gameplay
             Vector3 pieceToBoard = piecePosition - boardPosition;
             float distanceToPlane = Mathf.Abs(Vector3.Dot(pieceToBoard, boardNormal));
 
-            float maxDepthToPlane = 0.02f; // 2cm
+            float maxDepthToPlane = (puzzleConfig != null ? puzzleConfig.maxDepthToPlaneCm : 4f) * 0.01f;
             if (distanceToPlane > maxDepthToPlane)
             {
                 ClearSlotHighlight();
@@ -340,7 +358,7 @@ namespace ArtUnbound.Gameplay
             // Find closest slot, but only highlight if within snap distance
             int bestIndex = -1;
             float bestDist = float.MaxValue;
-            float snapDistM = puzzleConfig != null ? puzzleConfig.snapDistanceCm * 0.01f : 0.02f;
+            float snapDistM = puzzleConfig != null ? puzzleConfig.snapDistanceCm * 0.01f : 0.03f;
 
             for (int i = 0; i < slots.Count; i++)
             {
@@ -388,11 +406,11 @@ namespace ArtUnbound.Gameplay
             Vector3 boardNormal = transform.forward;
             Vector3 pieceToBoard = piecePosition - transform.position;
             float distanceToPlane = Mathf.Abs(Vector3.Dot(pieceToBoard, boardNormal));
-            float maxDepthToPlane = 0.02f;
+            float maxDepthToPlane = (puzzleConfig != null ? puzzleConfig.maxDepthToPlaneCm : 4f) * 0.01f;
             if (distanceToPlane > maxDepthToPlane) return false;
 
             float distToSlot = Vector3.Distance(piecePosition, slots[slotIndex].position);
-            float snapDistM = puzzleConfig != null ? puzzleConfig.snapDistanceCm * 0.01f : 0.02f;
+            float snapDistM = puzzleConfig != null ? puzzleConfig.snapDistanceCm * 0.01f : 0.03f;
             return distToSlot <= snapDistM;
         }
 
@@ -1607,9 +1625,10 @@ namespace ArtUnbound.Gameplay
 
         /// <summary>
         /// Replaces the assembled pieces with the full artwork image and plays a reveal animation.
-        /// Called when the last piece is placed.
+        /// Creates a 3D frame around the image with the correct material for the earned tier.
         /// </summary>
-        public void ShowFullImageReveal()
+        /// <param name="frameTier">The frame tier earned (Bronce, Plata, Oro, Platinum).</param>
+        public void ShowFullImageReveal(FrameTier frameTier = FrameTier.Bronce)
         {
             if (slotRoot == null || currentTexture == null)
             {
@@ -1621,6 +1640,12 @@ namespace ArtUnbound.Gameplay
             if (fullImageReveal != null)
             {
                 Destroy(fullImageReveal);
+                fullImageReveal = null;
+            }
+            if (fullImageRevealFrame != null)
+            {
+                Destroy(fullImageRevealFrame);
+                fullImageRevealFrame = null;
             }
 
             // Hide all pieces and grid lines
@@ -1654,7 +1679,6 @@ namespace ArtUnbound.Gameplay
                     if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", currentTexture);
                     if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", currentTexture);
                     // Quad rotated 180° Y shows "back" face: texture appears mirrored. Flip both U and V to correct.
-                    // _BaseMap_ST: (scaleX, scaleY, offsetX, offsetY)
                     if (mat.HasProperty("_BaseMap_ST"))
                         mat.SetVector("_BaseMap_ST", new Vector4(-1, -1, 1, 1));
                     else
@@ -1663,7 +1687,66 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
+            // Create 3D frame around the image
+            CreateFrameAroundImage(frameTier);
+
             StartCoroutine(AnimateFullImageReveal());
+        }
+
+        /// <summary>
+        /// Creates a 3D frame (4 extruded bars) around the full image with the correct material.
+        /// Each bar is a cuboid with depth for a real picture-frame look.
+        /// </summary>
+        private void CreateFrameAroundImage(FrameTier frameTier)
+        {
+            Material frameMat = GetFrameMaterial(frameTier);
+            if (frameMat == null) return;
+
+            const float thickness = 0.02f; // 2cm frame thickness (visible width)
+            const float depth = 0.02f;      // 2cm frame depth (extrusion)
+            float w = boardWidthM;
+            float h = boardHeightM;
+
+            fullImageRevealFrame = new GameObject("FullImageRevealFrame");
+            fullImageRevealFrame.transform.SetParent(slotRoot, false);
+            fullImageRevealFrame.transform.localPosition = new Vector3(0, 0, 0.015f); // Align with image plane
+            fullImageRevealFrame.transform.localRotation = Quaternion.Euler(0, 180, 180);
+            fullImageRevealFrame.transform.localScale = Vector3.one;
+
+            // Top, Bottom, Left, Right bars - each is an elongated cube (cuboid)
+            CreateFrameBar("FrameTop", fullImageRevealFrame.transform, w + thickness * 2f, thickness, depth, 0f, h / 2f + thickness / 2f, frameMat);
+            CreateFrameBar("FrameBottom", fullImageRevealFrame.transform, w + thickness * 2f, thickness, depth, 0f, -h / 2f - thickness / 2f, frameMat);
+            CreateFrameBar("FrameLeft", fullImageRevealFrame.transform, thickness, h, depth, -w / 2f - thickness / 2f, 0f, frameMat);
+            CreateFrameBar("FrameRight", fullImageRevealFrame.transform, thickness, h, depth, w / 2f + thickness / 2f, 0f, frameMat);
+        }
+
+        private void CreateFrameBar(string name, Transform parent, float width, float height, float depth, float localX, float localY, Material mat)
+        {
+            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.name = name;
+            Destroy(cube.GetComponent<Collider>());
+            cube.transform.SetParent(parent, false);
+            cube.transform.localPosition = new Vector3(localX, localY, 0f);
+            cube.transform.localRotation = Quaternion.identity;
+            cube.transform.localScale = new Vector3(width, height, depth);
+            var r = cube.GetComponent<Renderer>();
+            if (r != null && mat != null)
+                r.sharedMaterial = mat;
+        }
+
+        private Material GetFrameMaterial(FrameTier tier)
+        {
+            var config = frameConfigSet?.GetConfig(tier);
+            if (config?.frameMaterial != null)
+                return config.frameMaterial;
+            return tier switch
+            {
+                FrameTier.Bronce => frameBronceMaterial,
+                FrameTier.Plata => framePlataMaterial,
+                FrameTier.Oro => frameOroMaterial,
+                FrameTier.Platinum => frameEbanoMaterial,
+                _ => frameBronceMaterial
+            };
         }
 
         private IEnumerator AnimateFullImageReveal()

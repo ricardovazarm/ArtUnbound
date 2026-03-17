@@ -18,6 +18,10 @@ namespace ArtUnbound.Input
         public bool useControllers = true; // Make it accessible by InteractionManager
         [SerializeField] private XRNode controllerNode = XRNode.RightHand; // Primary controller
 
+        [Header("Pinch Settings (Hand Tracking)")]
+        [Tooltip("Max distance (cm) between thumb and index to register pinch. Higher = easier to trigger.")]
+        [SerializeField] private float pinchThresholdCm = 3.5f;
+
         [Header("Swipe Settings")]
         [SerializeField] private float swipeVelocityThreshold = 0.8f;
         [SerializeField] private float minSwipeDistance = 0.05f;
@@ -327,7 +331,8 @@ namespace ArtUnbound.Input
             if (thumbTip.TryGetPose(out Pose thumbPose) && indexTip.TryGetPose(out Pose indexPose))
             {
                 float dist = Vector3.Distance(thumbPose.position, indexPose.position);
-                if (dist < 0.025f) // Slightly increased threshold for reliability (2.5cm)
+                float thresholdM = pinchThresholdCm * 0.01f;
+                if (dist < thresholdM)
                 {
                     currentPinch = true;
                 }
@@ -374,9 +379,9 @@ namespace ArtUnbound.Input
                     pinchDebugTimer = Time.time + 1.0f;
                 }
 
-                if (dist < 0.02f) // 2cm
+                float thresholdM = pinchThresholdCm * 0.01f;
+                if (dist < thresholdM)
                 {
-                    // Debug.Log($"[HandTracking] Pinch Valid! Dist: {dist:F4}");
                     return true;
                 }
             }

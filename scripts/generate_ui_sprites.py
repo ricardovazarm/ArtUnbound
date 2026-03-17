@@ -209,6 +209,51 @@ def create_frame_wood(size=(695, 695), border=80, seed=42):
     return img
 
 
+def create_frame_material(size=(695, 695), border=40, base_rgb=(180, 150, 80), highlight_rgb=None, shadow_rgb=None):
+    """
+    Frame with same shape as FrameDetail (wood): border bars, transparent center.
+    Uses material-specific colors for metallic look. Same layout as create_frame_wood.
+    """
+    w, h = size
+    img = Image.new("RGBA", size, (0, 0, 0, 0))
+    pixels = img.load()
+    b = border
+
+    def clamp(c):
+        return max(0, min(255, int(c)))
+
+    # Default highlight/shadow from base
+    if highlight_rgb is None:
+        highlight_rgb = tuple(clamp(c * 1.15) for c in base_rgb)
+    if shadow_rgb is None:
+        shadow_rgb = tuple(clamp(c * 0.75) for c in base_rgb)
+
+    def draw_bar(x1, y1, x2, y2, horizontal):
+        """Draw bar with gradient: darker inner, lighter outer. Same shape as wood frame."""
+        for py in range(y1, y2):
+            for px in range(x1, x2):
+                dist_inner = min(px - x1, py - y1, x2 - 1 - px, y2 - 1 - py)
+                t = min(1.0, dist_inner / max(1, b * 0.35))
+                # Blend: shadow (inner) -> base -> highlight (outer)
+                r = clamp(base_rgb[0] * (1 - t) + shadow_rgb[0] * t)
+                g = clamp(base_rgb[1] * (1 - t) + shadow_rgb[1] * t)
+                b_ = clamp(base_rgb[2] * (1 - t) + shadow_rgb[2] * t)
+                # Subtle outer highlight
+                dist_outer = min(px - x1, py - y1, x2 - 1 - px, y2 - 1 - py) if horizontal else min(px - x1, py - y1, x2 - 1 - px, y2 - 1 - py)
+                if dist_outer < b // 4:
+                    blend = 1 - dist_outer / (b / 4)
+                    r = clamp(r + (highlight_rgb[0] - r) * blend * 0.5)
+                    g = clamp(g + (highlight_rgb[1] - g) * blend * 0.5)
+                    b_ = clamp(b_ + (highlight_rgb[2] - b_) * blend * 0.5)
+                pixels[px, py] = (r, g, b_, 255)
+
+    draw_bar(0, 0, w, b, True)
+    draw_bar(0, h - b, w, h, True)
+    draw_bar(0, b, b, h - b, False)
+    draw_bar(w - b, b, w, h - b, False)
+    return img
+
+
 def create_frame_layered(size=(695, 695), border=174, inner_transparent=True):
     """
     Frame with depth and layering — warm golden-brown, polished wood look.
@@ -267,11 +312,47 @@ def main():
     create_panel_rounded().save(out_dir / "PanelRounded.png")
     print("Generated: PanelRounded.png (with built-in border)")
 
-    # --- Frames: natural wood (light oak, grain, subtle depth) ---
-    create_frame_wood(size=(695, 695), border=40).save(out_dir / "FrameThumbnail.png")
+    # --- Frames: FrameDetail shape (wood) as base. Madera = copy of FrameDetail. ---
+    frame_detail = create_frame_wood(size=(695, 695), border=40)
+    frame_detail.save(out_dir / "FrameThumbnail.png")
     print("Generated: FrameThumbnail.png (wood, 695x695)")
-    create_frame_wood(size=(695, 695), border=40).save(out_dir / "FrameDetail.png")
+    frame_detail.save(out_dir / "FrameDetail.png")
     print("Generated: FrameDetail.png (wood, 695x695)")
+    frame_detail.save(out_dir / "FrameMadera.png")
+    print("Generated: FrameMadera.png (same shape as FrameDetail, wood)")
+
+    # --- Tier frames: same shape as FrameDetail, different materials ---
+    create_frame_material(
+        size=(695, 695), border=40,
+        base_rgb=(205, 127, 50),
+        highlight_rgb=(230, 160, 90),
+        shadow_rgb=(140, 85, 35),
+    ).save(out_dir / "FrameBronce.png")
+    print("Generated: FrameBronce.png (same shape, bronze)")
+
+    create_frame_material(
+        size=(695, 695), border=40,
+        base_rgb=(192, 192, 192),
+        highlight_rgb=(220, 220, 220),
+        shadow_rgb=(140, 140, 140),
+    ).save(out_dir / "FramePlata.png")
+    print("Generated: FramePlata.png (same shape, silver)")
+
+    create_frame_material(
+        size=(695, 695), border=40,
+        base_rgb=(218, 165, 32),
+        highlight_rgb=(255, 215, 100),
+        shadow_rgb=(160, 120, 20),
+    ).save(out_dir / "FrameOro.png")
+    print("Generated: FrameOro.png (same shape, gold)")
+
+    create_frame_material(
+        size=(695, 695), border=40,
+        base_rgb=(55, 50, 45),
+        highlight_rgb=(85, 78, 70),
+        shadow_rgb=(35, 32, 28),
+    ).save(out_dir / "FrameEbano.png")
+    print("Generated: FrameEbano.png (same shape, ebony/platinum)")
 
     print("\nDone. Buttons and frames have transparent backgrounds.")
 

@@ -21,7 +21,10 @@ namespace ArtUnbound.Data
         public float minPieceSizeM = 0.03f;
 
         [Header("Snapping & Interaction")]
-        public float snapDistanceCm = 2.0f;
+        [Tooltip("Max distance (cm) from piece to slot center to allow snap. Higher = more forgiving.")]
+        public float snapDistanceCm = 3.0f;
+        [Tooltip("Max perpendicular distance (cm) from piece to board plane. Higher = allows piece slightly behind board.")]
+        public float maxDepthToPlaneCm = 4.0f;
         public float pinchRangeCm = 1.0f;
         public float pieceThicknessCm = 0.5f;
 

@@ -172,8 +172,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.UI.ArtworkCard
   thumbnailImage: {fileID: 1663948302451664785}
+  frameImage: {fileID: 8000000000000000003}
   titleText: {fileID: 0}
   progressText: {fileID: 0}
+  frameMadera: {fileID: 21300000, guid: 153834cf453888b46aaa4eec753dd68e, type: 3}
+  frameBronce: {fileID: 21300000, guid: da728e5c813bf224692d8b8a5dc35aaa, type: 3}
+  framePlata: {fileID: 21300000, guid: 024c6994af3c3534a82db5602d48b6f9, type: 3}
+  frameOro: {fileID: 21300000, guid: 499f53897a4b6dc4c89d2863feb41740, type: 3}
+  frameEbano: {fileID: 21300000, guid: 26fd7293fa0b9724d8b1abc197ecb067, type: 3}
 --- !u!1 &8000000000000000000
 GameObject:
   m_ObjectHideFlags: 0

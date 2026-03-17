@@ -45,7 +45,14 @@ UI button, elongated rectangle, rounded corners, dark gray fill (#3C4150), white
 
 ## Marcos (9-slice)
 
-**Estilo actual:** Plano con varias capas (no ornamento barroco). Generados por `python scripts/generate_ui_sprites.py` — no requieren IA.
+**Flujo recomendado:** Los marcos se definen primero como **materiales Unity** (para uso en 3D con profundidad). Los sprites 2D para grid y detalle se generan desde esos materiales:
+
+1. **Materiales** en `Assets/ArtUnbound/Materials/`: `Frame_Madera`, `Frame_Bronce`, `Frame_Plata`, `Frame_Oro`, `Frame_Ebano`
+2. **Bake sprites:** Menú `Art Unbound > Bake Frame Sprites from Materials` — renderiza cada material sobre un mesh de marco y guarda PNG en `Assets/ArtUnbound/UI/Sprites/`
+
+Así los sprites del grid/detalle coinciden visualmente con los marcos 3D en paredes.
+
+**Alternativa legacy:** `python scripts/generate_ui_sprites.py` — genera marcos planos sin material.
 
 Si prefieres IA con fondo blanco: pide **fondo blanco sólido** (#FFFFFF). Después: `python scripts/white_to_transparent.py`
 

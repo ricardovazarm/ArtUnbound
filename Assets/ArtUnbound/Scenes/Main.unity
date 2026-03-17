@@ -1066,7 +1066,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 953771118}
+  - {fileID: 1978741601}
   m_Father: {fileID: 912984927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.UI.PuzzleAchievementsController
   milestoneText: {fileID: 953771119}
+  milestonePanel: {fileID: 1978741600}
   milestoneTextDuration: 1.5
   rowComplete: Row Complete!
   columnComplete: Column Complete!
@@ -2013,6 +2014,11 @@ MonoBehaviour:
   helpModeEnabled: 1
   helpModeController: {fileID: 1024376885}
   errorGlowColor: {r: 1, g: 0.2, b: 0.2, a: 0.8}
+  frameConfigSet: {fileID: 11400000, guid: 219f39128622c024c81125e8417e2cc1, type: 2}
+  frameBronceMaterial: {fileID: 2100000, guid: ac4fe5be539e1d744a1b8e93c7f1186b, type: 2}
+  framePlataMaterial: {fileID: 2100000, guid: 4fcd1ad1828a0664c914888754194896, type: 2}
+  frameOroMaterial: {fileID: 2100000, guid: acc34145f9d3147448a7aad7fe34bd38, type: 2}
+  frameEbanoMaterial: {fileID: 2100000, guid: 5a8accc18bbc7fd45a7c210532c77eda, type: 2}
 --- !u!1 &270044642
 GameObject:
   m_ObjectHideFlags: 0
@@ -5943,11 +5949,11 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953771117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 123559024}
+  m_Father: {fileID: 1978741601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -5983,8 +5989,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255360
-  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6001,8 +6007,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8561,6 +8567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Input.HandTrackingInputController
   useControllers: 0
   controllerNode: 5
+  pinchThresholdCm: 3.5
   swipeVelocityThreshold: 0.5
   minSwipeDistance: 0.05
   maxSwipeVerticalVariance: 0.1
@@ -9133,6 +9140,7 @@ MonoBehaviour:
   artworkCardPrefab: {fileID: 6327047767407985700, guid: db33b7e717a014d4482cf654ce8e2d74, type: 3}
   detailPanel: {fileID: 1705195979}
   detailArtworkImage: {fileID: 680195467}
+  detailFrameImage: {fileID: 680195471}
   detailTitleText: {fileID: 1181566828}
   detailArtistText: {fileID: 2116982462}
   detailDescriptionText: {fileID: 723912214}
@@ -9149,6 +9157,11 @@ MonoBehaviour:
   hardProgressSlider: {fileID: 1476353120}
   expertProgressSlider: {fileID: 0}
   puzzleConfig: {fileID: 0}
+  frameMadera: {fileID: 21300000, guid: 153834cf453888b46aaa4eec753dd68e, type: 3}
+  frameBronce: {fileID: 21300000, guid: da728e5c813bf224692d8b8a5dc35aaa, type: 3}
+  framePlata: {fileID: 21300000, guid: 024c6994af3c3534a82db5602d48b6f9, type: 3}
+  frameOro: {fileID: 21300000, guid: 499f53897a4b6dc4c89d2863feb41740, type: 3}
+  frameEbano: {fileID: 21300000, guid: 26fd7293fa0b9724d8b1abc197ecb067, type: 3}
 --- !u!1 &1441646638
 GameObject:
   m_ObjectHideFlags: 0
@@ -10127,6 +10140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Input.HandTrackingInputController
   useControllers: 0
   controllerNode: 4
+  pinchThresholdCm: 3.5
   swipeVelocityThreshold: 0.5
   minSwipeDistance: 0.05
   maxSwipeVerticalVariance: 0.1
@@ -11614,6 +11628,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961416076}
   m_CullTransparentMesh: 1
+--- !u!1 &1978741600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978741601}
+  - component: {fileID: 1978741603}
+  - component: {fileID: 1978741602}
+  m_Layer: 5
+  m_Name: PanelCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1978741601
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978741600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 953771118}
+  m_Father: {fileID: 123559024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1978741602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978741600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.92}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a7b8c9d0e1f2345678901234abcdef01, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1978741603
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978741600}
+  m_CullTransparentMesh: 1
 --- !u!1 &1993604032
 GameObject:
   m_ObjectHideFlags: 0
@@ -12687,7 +12777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 50, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2130000001

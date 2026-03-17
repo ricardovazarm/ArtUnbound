@@ -209,11 +209,12 @@ namespace ArtUnbound.UI
         {
             return tier switch
             {
+                FrameTier.Madera => frameMadera,
                 FrameTier.Bronce => frameBronce,
                 FrameTier.Plata => framePlata,
                 FrameTier.Oro => frameOro,
-                FrameTier.Platinum => frameEbano,  // Reutilizamos el sprite de Ebano para Platinum
-                _ => frameBronce  // Changed: Bronce is default
+                FrameTier.Platinum => frameEbano,
+                _ => frameMadera
             };
         }
 

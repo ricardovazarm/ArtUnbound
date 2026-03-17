@@ -26,6 +26,8 @@ namespace ArtUnbound.UI
     {
         [Header("Milestone Text")]
         [SerializeField] private TextMeshProUGUI milestoneText;
+        [Tooltip("Panel that contains the text (for Show/Hide). If null, uses milestoneText's parent or the text itself.")]
+        [SerializeField] private GameObject milestonePanel;
         [SerializeField] private float milestoneTextDuration = 2f;
 
         [Header("Message Strings (edit for localization)")]
@@ -69,17 +71,27 @@ namespace ArtUnbound.UI
 
             float d = duration > 0 ? duration : milestoneTextDuration;
             milestoneText.text = message;
-            milestoneText.gameObject.SetActive(true);
+            var panel = GetMilestonePanel();
+            if (panel != null) panel.SetActive(true);
 
             StopAllCoroutines();
             StartCoroutine(ClearMilestoneAfterDelay(d));
         }
 
+        private GameObject GetMilestonePanel()
+        {
+            if (milestonePanel != null) return milestonePanel;
+            if (milestoneText != null && milestoneText.transform.parent != null)
+                return milestoneText.transform.parent.gameObject;
+            return milestoneText != null ? milestoneText.gameObject : null;
+        }
+
         private IEnumerator ClearMilestoneAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            if (milestoneText != null)
-                milestoneText.text = "";
+            var panel = GetMilestonePanel();
+            if (panel != null) panel.SetActive(false);
+            if (milestoneText != null) milestoneText.text = "";
         }
 
         /// <summary>
@@ -105,6 +117,9 @@ namespace ArtUnbound.UI
         public void ClearMilestoneText()
         {
             StopAllCoroutines();
+            var panel = GetMilestonePanel();
+            if (panel != null)
+                panel.SetActive(false);
             if (milestoneText != null)
                 milestoneText.text = "";
         }

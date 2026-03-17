@@ -202,7 +202,7 @@ namespace ArtUnbound.UI
                     bestTimeText.text = FormatTime(bestRecord.bestTimeSec);
 
                 if (bestFrameIcon != null)
-                    bestFrameIcon.sprite = GetFrameIcon(bestRecord.frameTier);
+                    bestFrameIcon.sprite = GetFrameIcon(progress.bestFrameTier);  // Best frame earned across all difficulties
             }
             else
             {
@@ -248,11 +248,12 @@ namespace ArtUnbound.UI
         {
             return tier switch
             {
+                FrameTier.Madera => maderaIcon,
                 FrameTier.Bronce => bronceIcon,
                 FrameTier.Plata => plataIcon,
                 FrameTier.Oro => oroIcon,
-                FrameTier.Platinum => ebanoIcon,  // Reutilizamos el icono de Ebano para Platinum
-                _ => bronceIcon  // Changed: Bronce is default
+                FrameTier.Platinum => ebanoIcon,
+                _ => maderaIcon
             };
         }
 

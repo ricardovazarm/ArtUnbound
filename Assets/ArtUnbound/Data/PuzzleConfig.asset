@@ -17,7 +17,8 @@ MonoBehaviour:
   boardWidthM: 0.5
   boardMaxHeightM: 0.9
   minPieceSizeM: 0.03
-  snapDistanceCm: 2
+  snapDistanceCm: 3
+  maxDepthToPlaneCm: 4
   pinchRangeCm: 1
   pieceThicknessCm: 0.5
   helpModeDefault: 1

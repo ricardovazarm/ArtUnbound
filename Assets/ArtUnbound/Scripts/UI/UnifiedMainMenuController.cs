@@ -48,6 +48,7 @@ namespace ArtUnbound.UI
         [Header("Right Zone - Detail Panel")]
         [SerializeField] private GameObject detailPanel;
         [SerializeField] private Image detailArtworkImage;
+        [SerializeField] private Image detailFrameImage;
         [SerializeField] private TextMeshProUGUI detailTitleText;
         [SerializeField] private TextMeshProUGUI detailArtistText;
         [SerializeField] private TextMeshProUGUI detailDescriptionText;
@@ -67,6 +68,13 @@ namespace ArtUnbound.UI
 
         [Header("Configuration")]
         [SerializeField] private PuzzleConfig puzzleConfig; // Reference to PuzzleConfig for piece counts
+
+        [Header("Frame Sprites (Detail Panel)")]
+        [SerializeField] private Sprite frameMadera;
+        [SerializeField] private Sprite frameBronce;
+        [SerializeField] private Sprite framePlata;
+        [SerializeField] private Sprite frameOro;
+        [SerializeField] private Sprite frameEbano;
         #endregion
 
         #region Private Fields
@@ -499,7 +507,9 @@ namespace ArtUnbound.UI
 
             var progress = saveData?.GetProgress(artwork.artworkId);
             bool isCompleted = progress != null && progress.HasBeenCompleted();
-            Debug.Log($"[UnifiedMainMenu] Setup card: {artwork.title}, Completed: {isCompleted}, Progress: {progressPercent:F0}%");
+            var frameTier = (progress != null && progress.HasBeenCompleted()) ? progress.bestFrameTier : FrameTier.Madera;
+            artworkCard.SetFrameTier(frameTier);
+            Debug.Log($"[UnifiedMainMenu] Setup card: {artwork.title}, Completed: {isCompleted}, Frame: {frameTier}, Progress: {progressPercent:F0}%");
         }
 
         private float GetArtworkProgress(string artworkId)
@@ -557,6 +567,11 @@ namespace ArtUnbound.UI
             // Show detail panel
             detailPanel.SetActive(true);
 
+            // Set detail frame tier (bronze, silver, etc. when completed; wood when not)
+            var progress = saveData?.GetProgress(selectedArtwork.artworkId);
+            var frameTier = (progress != null && progress.HasBeenCompleted()) ? progress.bestFrameTier : FrameTier.Madera;
+            SetDetailFrameTier(frameTier);
+
             // Set artwork image and adjust frame (DetailImageContainer) to image aspect ratio.
             // DetailImageContainer is inside DetailImageSlot (300x300 max), so AspectRatioFitter
             // fits within that slot without overlapping the titles below.
@@ -595,6 +610,43 @@ namespace ArtUnbound.UI
 
             // Update difficulty buttons
             UpdateDifficultyButtons();
+        }
+
+        private void SetDetailFrameTier(FrameTier tier)
+        {
+            var frameImg = detailFrameImage;
+            if (frameImg == null && detailPanel != null)
+            {
+                foreach (var t in detailPanel.GetComponentsInChildren<Transform>(true))
+                {
+                    if (t.name == "FrameDetail")
+                    {
+                        frameImg = t.GetComponent<Image>();
+                        break;
+                    }
+                }
+            }
+            if (frameImg == null) return;
+
+            Sprite sprite = GetDetailFrameSprite(tier);
+            if (sprite != null)
+            {
+                frameImg.gameObject.SetActive(true);
+                frameImg.sprite = sprite;
+            }
+        }
+
+        private Sprite GetDetailFrameSprite(FrameTier tier)
+        {
+            return tier switch
+            {
+                FrameTier.Madera => frameMadera,
+                FrameTier.Bronce => frameBronce,
+                FrameTier.Plata => framePlata,
+                FrameTier.Oro => frameOro,
+                FrameTier.Platinum => frameEbano,
+                _ => frameMadera
+            };
         }
 
         private void UpdateDifficultyButtons()
