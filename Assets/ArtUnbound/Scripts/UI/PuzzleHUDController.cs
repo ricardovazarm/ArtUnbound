@@ -22,6 +22,8 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI artworkTitleText;
         [SerializeField] private TextMeshProUGUI artworkArtistText;
         [SerializeField] private TextMeshProUGUI artworkDescriptionText;
+        [Tooltip("Image in Leftzone showing the artwork as reference while assembling the puzzle.")]
+        [SerializeField] private Image artworkReferenceImage;
 
         [Header("Timer Display")]
         [SerializeField] private TextMeshProUGUI timerText;
@@ -153,6 +155,18 @@ namespace ArtUnbound.UI
 
             if (artworkDescriptionText != null)
                 artworkDescriptionText.text = description ?? "";
+        }
+
+        /// <summary>
+        /// Sets the artwork reference image (full image) shown in the Leftzone for puzzle assembly.
+        /// </summary>
+        public void SetArtworkReference(Sprite sprite)
+        {
+            if (artworkReferenceImage != null)
+            {
+                artworkReferenceImage.sprite = sprite;
+                artworkReferenceImage.enabled = sprite != null;
+            }
         }
 
         private void UpdateTimerDisplay()

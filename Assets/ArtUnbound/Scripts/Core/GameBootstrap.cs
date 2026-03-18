@@ -47,6 +47,7 @@ namespace ArtUnbound.Core
         [SerializeField] private WallHighlightController wallHighlightController;
         [SerializeField] private ComfortModeController comfortModeController;
         [SerializeField] private CanvasFrameController canvasFrameController;
+        [SerializeField] private WallDetectionService wallDetectionService;
 
         [Header("Feedback Controllers")]
         [SerializeField] private AudioManager audioManager;
@@ -300,6 +301,7 @@ namespace ArtUnbound.Core
                         currentArtwork.author,
                         currentArtwork.description
                     );
+                    puzzleHUD.SetArtworkReference(currentArtwork.fullImage);
                 }
                 
                 puzzleHUD.Show();
@@ -433,7 +435,6 @@ namespace ArtUnbound.Core
             int actualPieceCount = puzzleBoard.TotalPieces;
             if (actualPieceCount != selectedPieceCount)
             {
-                Debug.Log($"[PIECE] GameBootstrap: piece count adjusted target={selectedPieceCount} -> actual={actualPieceCount}");
                 selectedPieceCount = actualPieceCount;
             }
             
@@ -448,6 +449,7 @@ namespace ArtUnbound.Core
                         artworkData.author,
                         artworkData.description
                     );
+                    puzzleHUD.SetArtworkReference(artworkData.fullImage);
                 }
             }
             
@@ -460,7 +462,6 @@ namespace ArtUnbound.Core
                 CurrentSession = displaySession;
                 CurrentSession.pieceCount = actualPieceCount;
 
-                Debug.Log($"[PIECE] GameBootstrap: restoring session savedPlaced={displaySession.placedPieces.Count}, completed={displaySession.isCompleted}");
                 puzzleBoard.RestoreBoardState(displaySession.placedPieces);
 
                 if (puzzleHUD != null)
@@ -488,11 +489,13 @@ namespace ArtUnbound.Core
                     puzzleBoard?.HideScrollButtons();
                     puzzleBoard?.ShowFullImageReveal(frameTier);
 
+                    int wallCount = DetectAndLogWalls();
                     if (postGameController != null)
-                        postGameController.ShowResults(displaySession, timeSec, timeSec, frameTier, false);
+                        postGameController.ShowResults(displaySession, timeSec, timeSec, frameTier, false, wallCount);
 
                     if (puzzleHUD != null) puzzleHUD.Show();
                     puzzleAchievements?.Show();
+                    puzzleAchievements?.ShowPlaceHint();
                     return true; // Skip TransitionToPlaying - we're in PostGame
                 }
                 else
@@ -593,16 +596,18 @@ namespace ArtUnbound.Core
 
             // Keep board and HUD visible, only show post game panel on top
             // puzzleHUD?.Hide(); // Uncomment if you want to hide HUD
-            
-            // Show post game screen (without hiding everything else)
+
+            int wallCount = DetectAndLogWalls();
             if (postGameController != null)
             {
-                postGameController.ShowResults(CurrentSession, timeSec, previousBestTime, frameTier, isNewRecord);
+                postGameController.ShowResults(CurrentSession, timeSec, previousBestTime, frameTier, isNewRecord, wallCount);
             }
             else
             {
                 Debug.LogError("[GameBootstrap] postGameController is NULL! Cannot show post-game panel.");
             }
+
+            puzzleAchievements?.ShowPlaceHint();
         }
 
 
@@ -641,7 +646,6 @@ namespace ArtUnbound.Core
             if (puzzleHUD != null)
                 puzzleHUD.UpdateProgress(puzzleBoard.SnappedCount, puzzleBoard.IncorrectCount);
             
-            Debug.Log($"[PIECE] Auto-save: placed={CurrentSession.piecesPlaced}, total={boardState.Count}");
         }
 
         // OnHelpModeToggled removed - help mode always enabled
@@ -958,6 +962,24 @@ namespace ArtUnbound.Core
                 }
             }
             return 0; // Default to Easy if no match
+        }
+
+        /// <summary>
+        /// Detects walls in the room and logs the result. Called when entering PostGame.
+        /// Returns the number of walls detected (0 if none or service unavailable).
+        /// </summary>
+        private int DetectAndLogWalls()
+        {
+            var service = wallDetectionService != null
+                ? wallDetectionService
+                : FindFirstObjectByType<WallDetectionService>();
+
+            if (service != null)
+            {
+                service.EnsureWallDetectionEnabled();
+                return service.DetectWalls();
+            }
+            return 0;
         }
     }
 

@@ -113,13 +113,15 @@ namespace ArtUnbound.UI
                 pieceItems.AddRange(pieces);
             }
 
-            Debug.Log($"[PIECE] Tray Initialize: totalPieces={pieceItems.Count}, columns={columns}, visibleRows={visibleRows}");
             if (pieceItems.Count == 0) return;
 
             // Calculate total content height for grid layout
             // Total rows = ceil(pieceCount / columns)
             int totalRows = Mathf.CeilToInt((float)pieceItems.Count / columns);
             contentHeight = totalRows * scrollStep;
+
+            int piecesPerPage = columns * visibleRows;
+            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)pieceItems.Count / piecesPerPage));
 
             // Apply initial layout
             RepositionAllPieces();
@@ -174,29 +176,19 @@ namespace ArtUnbound.UI
 
         private void ScrollBy(float amount)
         {
-            if (pieceItems == null || pieceItems.Count == 0)
-            {
-                return;
-            }
+            if (pieceItems == null || pieceItems.Count == 0) return;
 
-            // Calculate scroll limits based on grid layout
             int totalRows = Mathf.CeilToInt((float)pieceItems.Count / columns);
             float totalContentHeight = totalRows * scrollStep;
             int piecesPerPage = columns * visibleRows;
             int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)pieceItems.Count / piecesPerPage));
-
-            // No scrolling when only 1 page
-            if (totalPages <= 1)
-            {
-                return;
-            }
-            
-            // ScrollDown makes offset negative (content moves up to see items below)
-            // ScrollUp makes offset positive (content moves down to see items above)
-            float maxScrollDown = -Mathf.Max(0f, totalContentHeight - visibleHeight);
+            float pageStep = scrollStep * RowsPerPage;
+            // Allow reaching the last page: must scroll at least (totalPages-1)*pageStep to show page N
+            float minScrollForLastPage = (totalPages - 1) * pageStep;
+            float maxScrollDown = -Mathf.Max(0f, totalContentHeight - visibleHeight, minScrollForLastPage);
             float maxScrollUp = 0f;
-            
-            // If content fits entirely in viewport, don't allow any scrolling
+
+            if (totalPages <= 1) return;
             if (totalContentHeight <= visibleHeight)
             {
                 scrollOffset = 0f;
@@ -204,11 +196,13 @@ namespace ArtUnbound.UI
                 return;
             }
 
-            // Update global scroll offset with clamping
+            // Don't scroll down when already on last page (prevents scrolling past content)
+            int currentPage = Mathf.Clamp(1 + Mathf.RoundToInt(-scrollOffset / pageStep), 1, totalPages);
+            if (amount < 0f && currentPage >= totalPages) return;
+
             float newScrollOffset = scrollOffset + amount;
             scrollOffset = Mathf.Clamp(newScrollOffset, maxScrollDown, maxScrollUp);
 
-            // Reposition all pieces based on the new scroll offset
             RepositionAllPieces();
             UpdateVisibility();
             UpdateButtonStates();
@@ -216,25 +210,22 @@ namespace ArtUnbound.UI
 
         private void UpdateButtonStates()
         {
-            // Calculate scroll limits based on grid layout
             int totalRows = Mathf.CeilToInt((float)pieceItems.Count / columns);
             float totalContentHeight = totalRows * scrollStep;
-            float maxScrollDown = -Mathf.Max(0f, totalContentHeight - visibleHeight);
-            
-            bool canScrollDown = scrollOffset > maxScrollDown + 0.01f;
-            bool canScrollUp = scrollOffset < -0.01f;
-
-            // Page = full screen of rows. totalPages = ceil(pieces / piecesPerPage), e.g. 70 pieces, 20/page -> 4 pages
             int piecesPerPage = columns * visibleRows;
             int totalPages = pieceItems.Count == 0 ? 1 : Mathf.Max(1, Mathf.CeilToInt((float)pieceItems.Count / piecesPerPage));
             float pageStep = scrollStep * RowsPerPage;
+            float minScrollForLastPage = (totalPages - 1) * pageStep;
+            float maxScrollDown = -Mathf.Max(0f, totalContentHeight - visibleHeight, minScrollForLastPage);
+            bool canScrollDown = scrollOffset > maxScrollDown + 0.01f;
+            bool canScrollUp = scrollOffset < -0.01f;
+
             int currentPage = totalPages <= 1 ? 1 : Mathf.Clamp(1 + Mathf.RoundToInt(-scrollOffset / pageStep), 1, totalPages);
 
-            // When only 1 page, disable both buttons (no scrolling)
+            // Disable "next" when on last page to prevent scrolling past content
             bool upEnabled = totalPages > 1 && canScrollUp;
-            bool downEnabled = totalPages > 1 && canScrollDown;
+            bool downEnabled = totalPages > 1 && canScrollDown && currentPage < totalPages;
 
-            // Prefer PiecesPanelController for consistent panel UX
             if (panelController != null)
             {
                 panelController.SetPaginationButtonStates(upEnabled, downEnabled);
@@ -260,14 +251,9 @@ namespace ArtUnbound.UI
             if (removedPiece == null) return;
             
             int index = pieceItems.IndexOf(removedPiece.transform);
-            if (index < 0)
-            {
-                Debug.LogWarning($"[PIECE] CloseGap: piece {removedPiece.PieceId} NOT in pieceItems (count={pieceItems.Count})");
-                return;
-            }
+            if (index < 0) return;
 
             pieceItems.RemoveAt(index);
-            Debug.Log($"[PIECE] CloseGap: piece {removedPiece.PieceId} removed from tray, trayCount={pieceItems.Count}");
 
             // Reposition all remaining pieces to close the gap
             RepositionAllPieces();
@@ -306,7 +292,6 @@ namespace ArtUnbound.UI
             if (piece == null) return;
 
             pieceItems.Add(piece.transform);
-            Debug.Log($"[PIECE] AddPieceAtEnd: piece {piece.PieceId} returned to tray, trayCount={pieceItems.Count}");
             piece.transform.SetParent(transform, false);
             piece.transform.localScale = Vector3.one;
             
@@ -377,13 +362,11 @@ namespace ArtUnbound.UI
 
         private void UpdateVisibility()
         {
-            // Align visibility bounds with grid layout: top at StartY, bottom at StartY - visibleHeight
             float yMax = StartY + 0.05f;
             float yMin = StartY - visibleHeight - 0.05f;
-
-            // Calculate horizontal bounds for the grid
             float gridWidth = (columns - 1) * horizontalSpacing;
             float halfWidth = gridWidth / 2f;
+            int visibleCount = 0;
 
             for (int i = 0; i < pieceItems.Count; i++)
             {
@@ -391,14 +374,13 @@ namespace ArtUnbound.UI
 
                 var p = pieceItems[i].GetComponent<ArtUnbound.Gameplay.PuzzlePiece>();
                 if (p != null && p.CurrentState == ArtUnbound.Data.PieceState.Placed)
-                    continue; // Skip pieces on board - they use different coordinate space
+                    continue;
 
                 Vector3 localPos = pieceItems[i].localPosition;
-
-                // Check if piece is within visible bounds (aligned with RepositionAllPieces layout)
                 bool isVisibleVertical = localPos.y >= yMin && localPos.y <= yMax;
                 bool isVisibleHorizontal = localPos.x >= -halfWidth - 0.05f && localPos.x <= halfWidth + 0.05f;
                 bool isVisible = isVisibleVertical && isVisibleHorizontal;
+                if (isVisible) visibleCount++;
 
                 if (pieceItems[i].gameObject.activeSelf != isVisible)
                 {
@@ -426,14 +408,6 @@ namespace ArtUnbound.UI
             if (piece == null) return;
             
             piece.gameObject.SetActive(false);
-            int inPoolCount = 0;
-            foreach (var t in pieceItems)
-            {
-                var p = t?.GetComponent<ArtUnbound.Gameplay.PuzzlePiece>();
-                if (p != null && (p.CurrentState == ArtUnbound.Data.PieceState.InPool || p.CurrentState == ArtUnbound.Data.PieceState.Returning))
-                    inPoolCount++;
-            }
-            Debug.Log($"[PIECE] RemovePieceFromTray: piece {piece.PieceId} hidden (restore), trayInPoolCount={inPoolCount}, pieceItemsTotal={pieceItems.Count}");
         }
 
         /// <summary>

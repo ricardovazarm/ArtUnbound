@@ -23,6 +23,7 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI timeText;         // "Completed in: 01:23:02"
         [SerializeField] private TextMeshProUGUI frameText;       // "Bronze frame earned!"
         [SerializeField] private TextMeshProUGUI newRecordText;   // Kept for future use - currently hidden
+        [SerializeField] private TextMeshProUGUI wallStatusText;  // "Paredes detectadas: Sí/No" (below board)
 
         [Header("Buttons")]
         [SerializeField] private Button placeButton;  // Hidden for now - behavior to change later
@@ -48,24 +49,23 @@ namespace ArtUnbound.UI
             Hide();
         }
 
+        private int lastWallCount = -1;
+
         /// <summary>
         /// Shows the results screen with the given data.
-        /// NEW: Only shows completion message and new record text (based on time).
+        /// wallCount: number of walls detected (0 = none). Used for on-device feedback when console is unavailable.
         /// </summary>
-        public void ShowResults(PuzzleSessionData data, int timeSec, int prevBestTime, FrameTier frame, bool newRecord = false)
+        public void ShowResults(PuzzleSessionData data, int timeSec, int prevBestTime, FrameTier frame, bool newRecord = false, int wallCount = -1)
         {
-            Debug.Log($"[PostGameController] ShowResults called - Time: {timeSec}s, PrevBest: {prevBestTime}s, Frame: {frame}, NewRecord: {newRecord}");
-            
             sessionData = data;
             completionTime = timeSec;
             previousBestTime = prevBestTime;
             awardedFrame = frame;
             isNewRecord = newRecord;
+            lastWallCount = wallCount;
 
             UpdateUI();
             Show();
-            
-            Debug.Log($"[PostGameController] Panel shown. GameObject active: {gameObject.activeInHierarchy}");
         }
 
         private void UpdateUI()
@@ -82,6 +82,38 @@ namespace ArtUnbound.UI
             // New record - functionality kept, text hidden for now
             if (newRecordText != null)
                 newRecordText.gameObject.SetActive(false);
+
+            // Wall detection status (visible on device when console is unavailable)
+            EnsureWallStatusTextExists();
+            if (wallStatusText != null)
+            {
+                wallStatusText.gameObject.SetActive(true);
+                wallStatusText.text = lastWallCount >= 0
+                    ? (lastWallCount > 0 ? $"Paredes detectadas: Sí ({lastWallCount})" : "Paredes detectadas: No")
+                    : "Paredes: —";
+            }
+        }
+
+        private void EnsureWallStatusTextExists()
+        {
+            if (wallStatusText != null) return;
+            if (panel == null) return;
+
+            var go = new GameObject("WallStatusText");
+            go.transform.SetParent(panel.transform, false);
+            var rect = go.AddComponent<RectTransform>();
+            rect.anchorMin = new Vector2(0.5f, 0f);
+            rect.anchorMax = new Vector2(0.5f, 0f);
+            rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.anchoredPosition = new Vector2(0f, -95f);
+            rect.sizeDelta = new Vector2(400f, 28f);
+
+            var tmp = go.AddComponent<TextMeshProUGUI>();
+            tmp.fontSize = 18;
+            tmp.alignment = TextAlignmentOptions.Center;
+            tmp.color = new Color(0.9f, 0.9f, 0.9f, 0.9f);
+            tmp.text = "Paredes: —";
+            wallStatusText = tmp;
         }
 
         private string FormatTime(int totalSeconds)
