@@ -705,7 +705,7 @@ namespace ArtUnbound.Core
             // Play haptic feedback
             if (hapticController != null)
             {
-                hapticController.TriggerHaptic(HapticType.Light);
+                hapticController.PlayLightHaptic();
             }
         }
 
@@ -724,7 +724,7 @@ namespace ArtUnbound.Core
             
             if (hapticController != null)
             {
-                hapticController.TriggerHaptic(HapticType.Success);
+                hapticController.PlaySuccessHaptic();
             }
             
             // Return to main menu
