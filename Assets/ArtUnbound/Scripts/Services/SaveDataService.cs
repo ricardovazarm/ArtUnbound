@@ -298,5 +298,40 @@ namespace ArtUnbound.Services
         /// Checks if save data exists.
         /// </summary>
         public bool HasSaveData() => File.Exists(savePath);
+
+        /// <summary>
+        /// Adds an anchored artwork and saves.
+        /// </summary>
+        public void AddAnchoredArtwork(AnchoredArtwork anchored)
+        {
+            var data = GetCachedData();
+            data.anchoredArtworks.Add(anchored);
+            Save(data);
+        }
+
+        /// <summary>
+        /// Removes an anchored artwork and saves.
+        /// </summary>
+        public bool RemoveAnchoredArtwork(string artworkId)
+        {
+            var data = GetCachedData();
+            int removed = data.anchoredArtworks.RemoveAll(a => a.artworkId == artworkId);
+            
+            if (removed > 0)
+            {
+                Save(data);
+                return true;
+            }
+            
+            return false;
+        }
+
+        /// <summary>
+        /// Gets all anchored artworks.
+        /// </summary>
+        public List<AnchoredArtwork> GetAnchoredArtworks()
+        {
+            return GetCachedData().anchoredArtworks ?? new List<AnchoredArtwork>();
+        }
     }
 }

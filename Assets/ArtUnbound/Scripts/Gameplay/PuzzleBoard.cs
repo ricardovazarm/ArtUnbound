@@ -1818,5 +1818,52 @@ namespace ArtUnbound.Gameplay
         }
 
         #endregion
+
+        #region Artwork Hanging Support
+
+        /// <summary>
+        /// Gets the transform of the completed frame (for hanging on walls).
+        /// Returns the FullImageRevealFrame if it exists, otherwise SlotRoot.
+        /// </summary>
+        public Transform GetCompletedFrameTransform()
+        {
+            if (fullImageRevealFrame != null)
+                return fullImageRevealFrame.transform;
+            
+            if (fullImageReveal != null)
+                return fullImageReveal.transform;
+            
+            return slotRoot;
+        }
+
+        /// <summary>
+        /// Enables or disables frame interaction (makes it grabbable).
+        /// </summary>
+        public void EnableFrameInteraction(bool enable)
+        {
+            Transform frame = GetCompletedFrameTransform();
+            if (frame == null) return;
+
+            // Add or remove collider for pinch detection
+            var collider = frame.GetComponent<BoxCollider>();
+            if (enable && collider == null)
+            {
+                collider = frame.gameObject.AddComponent<BoxCollider>();
+                // Approximate frame size based on board dimensions
+                collider.size = new Vector3(boardWidthM, boardHeightM, 0.05f);
+                Debug.Log($"[PuzzleBoard] Added BoxCollider to frame: size={collider.size}");
+            }
+            else if (!enable && collider != null)
+            {
+                Destroy(collider);
+            }
+
+            if (enable)
+            {
+                Debug.Log("[PuzzleBoard] Frame interaction enabled - frame is now grabbable");
+            }
+        }
+
+        #endregion
     }
 }

@@ -100,6 +100,13 @@ See `docs/Guia-Agregar-Pinturas.md` for the full guide. Summary:
 - **Piece materials are created at runtime** using shader discovery order: URP Lit → Standard → Mobile/Diffuse
 - **Swipe-based scroll is disabled** — use the `ScrollLeft()`/`ScrollRight()` buttons on `PieceScrollController` instead
 - `SaveDataService.SaveIfDirty()` is called on `OnApplicationPause` and `OnApplicationQuit` for auto-save
+- **Artwork Hanging System**: When a puzzle is completed, players can grab the frame with a pinch gesture, and it will attach to their hand. The system uses:
+  - `ArtworkHangingController` (MR namespace) — Main orchestrator managing the state flow (Idle → Grabbed → Previewing → Placing → Placed)
+  - `HandAttachmentController` (MR namespace) — Makes the frame follow the hand smoothly with configurable offset and scale
+  - `WallPlacementDetector` (MR namespace) — Raycasts from the frame to detect valid wall surfaces and shows a ghost preview (green=valid, red=invalid)
+  - `WallAnchorManager` (MR namespace) — Creates AR anchors and persists them to `SaveData.anchoredArtworks` (note: full spatial anchor persistence across sessions requires Meta Spatial Anchor API integration)
+  - `PuzzleBoard.GetCompletedFrameTransform()` and `EnableFrameInteraction()` expose the completed frame for grabbing
+  - Integration happens in `GameBootstrap.OnPlaceArtworkRequested()` which is called from `PostGameController` when the player clicks the placement button
 
 ## Documentation
 

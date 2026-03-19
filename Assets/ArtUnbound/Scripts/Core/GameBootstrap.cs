@@ -51,6 +51,8 @@ namespace ArtUnbound.Core
         [Header("MR Services")]
         [SerializeField] private SpatialPermissionService spatialPermissionService;
         [SerializeField] private WallDetectionService wallDetectionService;
+        [SerializeField] private ArtworkHangingController artworkHangingController;
+        [SerializeField] private WallAnchorManager wallAnchorManager;
 
         [Header("Feedback Controllers")]
         [SerializeField] private AudioManager audioManager;
@@ -140,11 +142,18 @@ namespace ArtUnbound.Core
             weeklyUnlockService = new WeeklyUnlockService();
             localTelemetryService = new LocalTelemetryService();
             localCatalogService = new LocalCatalogService(artworkCatalog);
-            
+
             // Initialize UnifiedMainMenu with services
             if (unifiedMainMenu != null)
             {
                 unifiedMainMenu.Initialize(localCatalogService, saveDataService);
+            }
+
+            // Initialize WallAnchorManager with SaveDataService
+            if (wallAnchorManager != null)
+            {
+                wallAnchorManager.Initialize(saveDataService);
+                Debug.Log("[GameBootstrap] WallAnchorManager initialized");
             }
         }
 
@@ -659,36 +668,97 @@ namespace ArtUnbound.Core
 
         private void OnPlaceArtworkRequested()
         {
-            // Start wall selection for hanging
-            if (wallHighlightController != null)
+            // NEW SYSTEM: Use ArtworkHangingController instead of old wall selection
+            if (artworkHangingController != null)
             {
-                wallHighlightController.OnWallSelected += OnHangWallSelected;
-                wallHighlightController.StartSelection();
+                FrameTier frameTier = postGameController?.GetAwardedFrame() ?? FrameTier.Bronce;
+                
+                // Enable frame grabbing
+                artworkHangingController.EnableFrameGrab(selectedArtworkId, frameTier);
+                
+                // Enable frame interaction on puzzle board
+                if (puzzleBoard != null)
+                {
+                    puzzleBoard.EnableFrameInteraction(true);
+                }
+                
+                // Subscribe to hanging events
+                artworkHangingController.OnFrameGrabbed += OnFrameGrabbed;
+                artworkHangingController.OnFramePlaced += OnFramePlaced;
+                artworkHangingController.OnPlacementCancelled += OnPlacementCancelled;
+                
+                // Hide UI panels to allow free movement
+                HideAllPanels();
+                
+                Debug.Log($"[GameBootstrap] Started artwork hanging flow for {selectedArtworkId}");
+            }
+            else
+            {
+                Debug.LogError("[GameBootstrap] ArtworkHangingController is null - cannot start hanging flow");
             }
         }
 
-        private void OnHangWallSelected(Vector3 position, Quaternion rotation)
+        private void OnFrameGrabbed()
         {
-            wallHighlightController.OnWallSelected -= OnHangWallSelected;
-
-            // Get the frame tier from the completed puzzle
-            FrameTier frameTier = postGameController?.GetAwardedFrame() ?? FrameTier.Bronce;
-
-            // Create placed artwork
-            var placed = new PlacedArtwork
+            Debug.Log("[GameBootstrap] Frame grabbed - UI hidden, placement mode active");
+            
+            // Play haptic feedback
+            if (hapticController != null)
             {
-                artworkId = selectedArtworkId,
-                frameTier = frameTier,
-                placedDate = DateTime.Now,
-                scale = 1.0f
-            };
-            placed.SetPosition(position);
-            placed.SetRotation(rotation);
+                hapticController.TriggerHaptic(HapticType.Light);
+            }
+        }
 
-            saveDataService.AddPlacedArtwork(placed);
-            SaveData = saveDataService.GetCachedData();
-
+        private void OnFramePlaced()
+        {
+            Debug.Log($"[GameBootstrap] Frame placed successfully for {selectedArtworkId}");
+            
+            // Cleanup
+            CleanupArtworkHanging();
+            
+            // Play success feedback
+            if (audioManager != null)
+            {
+                audioManager.PlayPuzzleComplete(); // Reuse completion sound
+            }
+            
+            if (hapticController != null)
+            {
+                hapticController.TriggerHaptic(HapticType.Success);
+            }
+            
+            // Return to main menu
             TransitionToMainMenu();
+        }
+
+        private void OnPlacementCancelled()
+        {
+            Debug.Log("[GameBootstrap] Artwork placement cancelled");
+            
+            // Cleanup
+            CleanupArtworkHanging();
+            
+            // Show PostGame panel again
+            if (postGameController != null)
+            {
+                postGameController.Show();
+            }
+        }
+
+        private void CleanupArtworkHanging()
+        {
+            if (artworkHangingController != null)
+            {
+                artworkHangingController.OnFrameGrabbed -= OnFrameGrabbed;
+                artworkHangingController.OnFramePlaced -= OnFramePlaced;
+                artworkHangingController.OnPlacementCancelled -= OnPlacementCancelled;
+                artworkHangingController.DisableFrameGrab();
+            }
+            
+            if (puzzleBoard != null)
+            {
+                puzzleBoard.EnableFrameInteraction(false);
+            }
         }
 
         private void ReplayPuzzle()

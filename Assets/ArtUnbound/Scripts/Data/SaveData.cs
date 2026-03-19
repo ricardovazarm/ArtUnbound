@@ -14,6 +14,8 @@ namespace ArtUnbound.Data
         public List<PlacedArtwork> placedArtworks = new List<PlacedArtwork>();
         /// <summary>In-progress puzzle sessions per artwork+pieceCount. Preserved when switching artworks.</summary>
         public List<PuzzleSessionData> inProgressSessions = new List<PuzzleSessionData>();
+        /// <summary>Spatial anchors for artworks hung on walls.</summary>
+        public List<AnchoredArtwork> anchoredArtworks = new List<AnchoredArtwork>();
         public GameSettings settings = new GameSettings();
         public string lastArtworkId = string.Empty;
         public int lastPieceCount = 144; // Last difficulty used
@@ -32,6 +34,7 @@ namespace ArtUnbound.Data
             completedArtworks = new List<string>();
             placedArtworks = new List<PlacedArtwork>();
             inProgressSessions = new List<PuzzleSessionData>();
+            anchoredArtworks = new List<AnchoredArtwork>();
             settings = new GameSettings();
             lastArtworkId = string.Empty;
             lastGameMode = GameMode.Gallery;
