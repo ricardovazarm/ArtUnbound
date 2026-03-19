@@ -47,6 +47,9 @@ namespace ArtUnbound.Core
         [SerializeField] private WallHighlightController wallHighlightController;
         [SerializeField] private ComfortModeController comfortModeController;
         [SerializeField] private CanvasFrameController canvasFrameController;
+        
+        [Header("MR Services")]
+        [SerializeField] private SpatialPermissionService spatialPermissionService;
         [SerializeField] private WallDetectionService wallDetectionService;
 
         [Header("Feedback Controllers")]
@@ -495,7 +498,6 @@ namespace ArtUnbound.Core
 
                     if (puzzleHUD != null) puzzleHUD.Show();
                     puzzleAchievements?.Show();
-                    puzzleAchievements?.ShowPlaceHint();
                     return true; // Skip TransitionToPlaying - we're in PostGame
                 }
                 else
@@ -606,8 +608,6 @@ namespace ArtUnbound.Core
             {
                 Debug.LogError("[GameBootstrap] postGameController is NULL! Cannot show post-game panel.");
             }
-
-            puzzleAchievements?.ShowPlaceHint();
         }
 
 
@@ -979,6 +979,8 @@ namespace ArtUnbound.Core
                 service.EnsureWallDetectionEnabled();
                 return service.DetectWalls();
             }
+            
+            Debug.LogWarning("[GameBootstrap] WallDetectionService not found. Wall detection disabled.");
             return 0;
         }
     }
