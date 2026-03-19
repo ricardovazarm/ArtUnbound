@@ -29,7 +29,6 @@ namespace ArtUnbound.MR
         [SerializeField] private PuzzleBoard puzzleBoard;
 
         [Header("Settings")]
-        [SerializeField] private float grabDetectionRadius = 0.1f; // 10cm
         [SerializeField] private float placementAnimationDuration = 0.5f;
 
         private HangingState currentState = HangingState.Idle;
@@ -72,6 +71,8 @@ namespace ArtUnbound.MR
         /// </summary>
         public void EnableFrameGrab(string artworkId, FrameTier frameTier)
         {
+            Debug.Log($"[ArtworkHanging] EnableFrameGrab called for {artworkId}, tier: {frameTier}");
+            
             if (puzzleBoard == null)
             {
                 Debug.LogError("[ArtworkHanging] Cannot enable grab: PuzzleBoard is null");
@@ -87,25 +88,96 @@ namespace ArtUnbound.MR
             
             if (completedFrame == null)
             {
-                Debug.LogWarning("[ArtworkHanging] No completed frame found on puzzle board");
+                Debug.LogError("[ArtworkHanging] No completed frame found on puzzle board!");
                 return;
             }
 
-            // Add collider if not present (for pinch detection)
-            if (completedFrame.GetComponent<BoxCollider>() == null)
-            {
-                var collider = completedFrame.gameObject.AddComponent<BoxCollider>();
-                collider.size = new Vector3(0.5f, 0.5f, 0.05f); // Approximate frame size
-            }
+            Debug.Log($"[ArtworkHanging] Found completed frame: {completedFrame.name}");
 
-            // Subscribe to pinch events
-            if (handInput != null)
+            // Add GrabbableFrame component to make it interactive
+            var grabbableFrame = completedFrame.GetComponent<GrabbableFrame>();
+            if (grabbableFrame == null)
             {
-                handInput.OnPinchStart += OnPinchStart;
-                handInput.OnPinchEnd += OnPinchEnd;
+                grabbableFrame = completedFrame.gameObject.AddComponent<GrabbableFrame>();
+                Debug.Log("[ArtworkHanging] Added GrabbableFrame component");
             }
+            
+            // Subscribe to grab event to forward it
+            grabbableFrame.OnFrameGrabbed += HandleFrameGrabbed;
+            
+            grabbableFrame.IsGrabbable = true;
+            Debug.Log("[ArtworkHanging] Frame is now grabbable");
 
-            Debug.Log($"[ArtworkHanging] Enabled frame grab for {artworkId} (Tier: {frameTier})");
+            Debug.Log($"[ArtworkHanging] Enabled frame grab for {artworkId} (Tier: {frameTier}), State: {currentState}");
+        }
+        
+        /// <summary>
+        /// Tries to place the frame on a nearby wall. Returns true if placed, false otherwise.
+        /// </summary>
+        public bool TryPlaceOnWall(Transform frameClone, Vector3 position)
+        {
+            // Use WallPlacementDetector to check if near a wall
+            if (placementDetector == null)
+            {
+                Debug.LogWarning("[ArtworkHanging] No WallPlacementDetector available");
+                OnPlacementCancelled?.Invoke();
+                return false;
+            }
+            
+            // Check if there's a valid wall nearby
+            bool foundWall = placementDetector.CheckNearbyWall(position, out Vector3 wallPosition, out Quaternion wallRotation);
+            
+            if (!foundWall)
+            {
+                Debug.Log("[ArtworkHanging] No wall found nearby - cancelling placement");
+                OnPlacementCancelled?.Invoke();
+                return false;
+            }
+            
+            // Snap frame to wall
+            frameClone.position = wallPosition;
+            frameClone.rotation = wallRotation;
+            
+            // Create persistent anchor
+            if (anchorManager != null)
+            {
+                bool success = anchorManager.CreateAnchor(
+                    currentArtworkId,
+                    wallPosition,
+                    wallRotation,
+                    currentFrameTier,
+                    frameClone
+                );
+                
+                if (success)
+                {
+                    currentState = HangingState.Placed;
+                    OnFramePlaced?.Invoke();
+                    Debug.Log($"[ArtworkHanging] Frame successfully placed on wall and anchored");
+                    return true;
+                }
+                else
+                {
+                    Debug.LogError("[ArtworkHanging] Failed to create anchor");
+                    OnPlacementCancelled?.Invoke();
+                    return false;
+                }
+            }
+            else
+            {
+                Debug.LogError("[ArtworkHanging] No WallAnchorManager available");
+                OnPlacementCancelled?.Invoke();
+                return false;
+            }
+        }
+
+        private void HandleFrameGrabbed()
+        {
+            Debug.Log("[ArtworkHanging] Frame was grabbed by user");
+            currentState = HangingState.Grabbed;
+            
+            // Forward the event
+            OnFrameGrabbed?.Invoke();
         }
 
         /// <summary>
@@ -113,67 +185,20 @@ namespace ArtUnbound.MR
         /// </summary>
         public void DisableFrameGrab()
         {
-            if (handInput != null)
+            if (completedFrame != null)
             {
-                handInput.OnPinchStart -= OnPinchStart;
-                handInput.OnPinchEnd -= OnPinchEnd;
+                var grabbableFrame = completedFrame.GetComponent<GrabbableFrame>();
+                if (grabbableFrame != null)
+                {
+                    grabbableFrame.OnFrameGrabbed -= HandleFrameGrabbed;
+                    grabbableFrame.IsGrabbable = false;
+                }
             }
 
             currentState = HangingState.Idle;
             completedFrame = null;
             
             Debug.Log("[ArtworkHanging] Disabled frame grab");
-        }
-
-        private void OnPinchStart(Vector3 pinchPosition, Quaternion pinchRotation)
-        {
-            if (currentState == HangingState.Idle)
-            {
-                // Check if pinch is near the frame
-                if (completedFrame != null && Vector3.Distance(pinchPosition, completedFrame.position) < grabDetectionRadius)
-                {
-                    GrabFrame();
-                }
-            }
-        }
-
-        private void OnPinchEnd(Vector3 pinchPosition, Quaternion pinchRotation)
-        {
-            if (currentState == HangingState.Grabbed || currentState == HangingState.Previewing)
-            {
-                ReleaseFrame();
-            }
-        }
-
-        private void GrabFrame()
-        {
-            if (completedFrame == null || handInput == null) return;
-
-            // Get the hand transform
-            Transform handTransform = handInput.TrackedObject;
-            if (handTransform == null)
-            {
-                Debug.LogWarning("[ArtworkHanging] Cannot grab frame: hand transform is null");
-                return;
-            }
-
-            // Attach frame to hand
-            if (handAttachment != null)
-            {
-                handAttachment.Attach(completedFrame, handTransform);
-            }
-
-            // Start placement detection
-            if (placementDetector != null)
-            {
-                placementDetector.StartDetection();
-            }
-
-            currentState = HangingState.Grabbed;
-            
-            OnFrameGrabbed?.Invoke();
-            
-            Debug.Log("[ArtworkHanging] Frame grabbed");
         }
 
         private void ReleaseFrame()

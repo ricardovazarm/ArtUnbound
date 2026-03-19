@@ -24,9 +24,12 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI frameText;       // "Bronze frame earned!"
         [SerializeField] private TextMeshProUGUI newRecordText;   // Kept for future use - currently hidden
         [SerializeField] private TextMeshProUGUI wallStatusText;  // "Paredes detectadas: Sí/No" (below board)
+        
+        [Header("Hang Artwork Instruction")]
+        [Tooltip("Text that appears above the painting with instruction to pinch and place. Located in a separate panel (center), not in the PostGame panel (right).")]
+        [SerializeField] private GameObject hangInstructionText;  // "Pinch the paint to place it on the wall."
 
         [Header("Buttons")]
-        [SerializeField] private Button placeButton;  // Hidden for now - behavior to change later
         [SerializeField] private Button replayButton;
 
         private PuzzleSessionData sessionData;
@@ -37,14 +40,12 @@ namespace ArtUnbound.UI
 
         private void Awake()
         {
-            if (placeButton != null)
-            {
-                placeButton.onClick.AddListener(OnPlaceArtworkClicked);
-                placeButton.gameObject.SetActive(false);  // Hidden for now
-            }
-
             if (replayButton != null)
                 replayButton.onClick.AddListener(OnReplayClicked);
+
+            // Make sure hang instruction is hidden initially
+            if (hangInstructionText != null)
+                hangInstructionText.SetActive(false);
 
             Hide();
         }
@@ -66,6 +67,17 @@ namespace ArtUnbound.UI
 
             UpdateUI();
             Show();
+            
+            // Automatically enable artwork hanging mode if walls were detected
+            if (lastWallCount > 0)
+            {
+                Debug.Log($"[PostGame] Walls detected ({lastWallCount}), automatically enabling artwork hanging mode");
+                OnPlaceArtworkRequested?.Invoke();
+            }
+            else
+            {
+                Debug.Log("[PostGame] No walls detected, artwork hanging mode NOT enabled");
+            }
         }
 
         private void UpdateUI()
@@ -92,6 +104,24 @@ namespace ArtUnbound.UI
                     ? (lastWallCount > 0 ? $"Paredes detectadas: Sí ({lastWallCount})" : "Paredes detectadas: No")
                     : "Paredes: —";
             }
+            
+        // Show/hide hang instruction text based on wall detection
+        if (hangInstructionText != null)
+        {
+            bool hasWalls = lastWallCount > 0;
+            hangInstructionText.SetActive(hasWalls);
+            
+            // Check if the text is actually visible (parent might be inactive)
+            bool isActiveInHierarchy = hangInstructionText.activeInHierarchy;
+            bool isActiveSelf = hangInstructionText.activeSelf;
+            bool parentActive = hangInstructionText.transform.parent != null && hangInstructionText.transform.parent.gameObject.activeInHierarchy;
+            
+            Debug.Log($"[PostGame] Hang instruction text - SetActive({hasWalls}), activeSelf: {isActiveSelf}, activeInHierarchy: {isActiveInHierarchy}, parent active: {parentActive}, walls: {lastWallCount}");
+        }
+        else
+        {
+            Debug.LogWarning("[PostGame] hangInstructionText is null! Please assign it in the Inspector.");
+        }
         }
 
         private void EnsureWallStatusTextExists()
@@ -145,6 +175,9 @@ namespace ArtUnbound.UI
 
             if (panel != null)
                 panel.SetActive(true);
+            
+            // Update UI to refresh instruction text based on lastWallCount
+            UpdateUI();
         }
 
         public void Hide()
@@ -153,14 +186,10 @@ namespace ArtUnbound.UI
                 panel.SetActive(false);
             else
                 gameObject.SetActive(false);
-        }
-
-        private void OnPlaceArtworkClicked()
-        {
-            if (ArtUnbound.Feedback.AudioManager.Instance != null)
-                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
-            OnPlaceArtworkRequested?.Invoke();
-            Hide();
+            
+            // Also hide the hang instruction text when hiding the panel
+            if (hangInstructionText != null)
+                hangInstructionText.SetActive(false);
         }
 
         private void OnReplayClicked()
@@ -188,9 +217,6 @@ namespace ArtUnbound.UI
 
         private void OnDestroy()
         {
-            if (placeButton != null)
-                placeButton.onClick.RemoveListener(OnPlaceArtworkClicked);
-
             if (replayButton != null)
                 replayButton.onClick.RemoveListener(OnReplayClicked);
         }

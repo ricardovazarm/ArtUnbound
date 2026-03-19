@@ -26,11 +26,11 @@ namespace ArtUnbound.Core
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private FrameConfigSet frameConfigSet;
 
-        [Header("General UI")]
-        [SerializeField] private Transform mainUICanvas;
-        [SerializeField] private LoadingSpinner loadingSpinner;
+    [Header("General UI")]
+    [SerializeField] private Transform mainUICanvas;
+    [SerializeField] private LoadingSpinner loadingSpinner;
 
-        [Header("UI Controllers")]
+    [Header("UI Controllers")]
         [SerializeField] private UnifiedMainMenuController unifiedMainMenu; // Unified main menu (replaces old menu system)
         [SerializeField] private PuzzleHUDController puzzleHUD;
         [SerializeField] private PuzzleAchievementsController puzzleAchievements;
@@ -687,8 +687,8 @@ namespace ArtUnbound.Core
                 artworkHangingController.OnFramePlaced += OnFramePlaced;
                 artworkHangingController.OnPlacementCancelled += OnPlacementCancelled;
                 
-                // Hide UI panels to allow free movement
-                HideAllPanels();
+                // DON'T hide panels yet - wait until user grabs the frame
+                // HideAllPanels(); // Moved to OnFrameGrabbed()
                 
                 Debug.Log($"[GameBootstrap] Started artwork hanging flow for {selectedArtworkId}");
             }
@@ -700,7 +700,10 @@ namespace ArtUnbound.Core
 
         private void OnFrameGrabbed()
         {
-            Debug.Log("[GameBootstrap] Frame grabbed - UI hidden, placement mode active");
+            Debug.Log("[GameBootstrap] Frame grabbed - hiding UI, placement mode active");
+            
+            // NOW hide UI panels to allow free movement
+            HideAllPanels();
             
             // Play haptic feedback
             if (hapticController != null)
@@ -727,23 +730,55 @@ namespace ArtUnbound.Core
                 hapticController.PlaySuccessHaptic();
             }
             
-            // Return to main menu
-            TransitionToMainMenu();
-        }
-
-        private void OnPlacementCancelled()
-        {
-            Debug.Log("[GameBootstrap] Artwork placement cancelled");
-            
-            // Cleanup
-            CleanupArtworkHanging();
-            
-            // Show PostGame panel again
+            // Show completion message and return to menu
             if (postGameController != null)
             {
                 postGameController.Show();
+                // TODO: Maybe show a "Artwork placed!" message
             }
+            
+            // Return to main menu after a delay
+            Invoke(nameof(TransitionToMainMenu), 2f);
         }
+
+    private void OnPlacementCancelled()
+    {
+        Debug.Log("[GameBootstrap] Artwork placement cancelled");
+        
+        // Cleanup
+        CleanupArtworkHanging();
+        
+        // Re-enable CenterZone (puzzleAchievements is the CenterZone GameObject)
+        if (puzzleAchievements != null)
+        {
+            puzzleAchievements.gameObject.SetActive(true);
+            Debug.Log("[GameBootstrap] CenterZone (puzzleAchievements) re-enabled");
+        }
+        
+        // Show PostGame panel and board again
+        if (postGameController != null)
+        {
+            postGameController.Show();
+            Debug.Log("[GameBootstrap] PostGame panel re-shown");
+        }
+        
+        if (puzzleBoard != null)
+        {
+            puzzleBoard.gameObject.SetActive(true);
+            Debug.Log("[GameBootstrap] PuzzleBoard re-enabled");
+        }
+        
+        // Re-show the HUD
+        if (puzzleHUD != null)
+        {
+            puzzleHUD.Show();
+            Debug.Log("[GameBootstrap] PuzzleHUD re-shown");
+        }
+        else
+        {
+            Debug.LogWarning("[GameBootstrap] puzzleHUD is null!");
+        }
+    }
 
         private void CleanupArtworkHanging()
         {

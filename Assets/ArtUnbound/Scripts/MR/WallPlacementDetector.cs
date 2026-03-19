@@ -37,6 +37,59 @@ namespace ArtUnbound.MR
         }
 
         /// <summary>
+        /// Checks if there's a valid wall near the given position (without continuous tracking).
+        /// Used when releasing the frame to check for placement.
+        /// </summary>
+        public bool CheckNearbyWall(Vector3 position, out Vector3 wallPosition, out Quaternion wallRotation)
+        {
+            wallPosition = position;
+            wallRotation = Quaternion.identity;
+            
+            // Raycast in multiple directions to find a nearby wall
+            Vector3[] directions = new Vector3[]
+            {
+                Vector3.forward,
+                Vector3.back,
+                Vector3.left,
+                Vector3.right,
+                (Vector3.forward + Vector3.left).normalized,
+                (Vector3.forward + Vector3.right).normalized,
+                (Vector3.back + Vector3.left).normalized,
+                (Vector3.back + Vector3.right).normalized
+            };
+            
+            float closestDistance = float.MaxValue;
+            bool foundWall = false;
+            
+            foreach (var direction in directions)
+            {
+                Ray ray = new Ray(position, direction);
+                
+                if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance, wallLayerMask))
+                {
+                    if (IsWallSurface(hit) && !IsOccupiedByOtherArtwork(hit.point))
+                    {
+                        float distance = Vector3.Distance(position, hit.point);
+                        if (distance < closestDistance)
+                        {
+                            closestDistance = distance;
+                            wallPosition = hit.point;
+                            wallRotation = Quaternion.LookRotation(-hit.normal);
+                            foundWall = true;
+                        }
+                    }
+                }
+            }
+            
+            if (foundWall)
+            {
+                Debug.Log($"[WallPlacement] Found wall at distance: {closestDistance:F2}m");
+            }
+            
+            return foundWall;
+        }
+
+        /// <summary>
         /// Starts detecting valid wall placements.
         /// </summary>
         public void StartDetection()

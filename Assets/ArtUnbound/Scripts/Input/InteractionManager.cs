@@ -1,5 +1,6 @@
 using ArtUnbound.Data;
 using ArtUnbound.Gameplay;
+using ArtUnbound.MR;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -7,7 +8,7 @@ using UnityEngine.EventSystems;
 namespace ArtUnbound.Input
 {
     /// <summary>
-    /// Bridges HandTracking input with Gameplay objects (PuzzlePieces).
+    /// Bridges HandTracking input with Gameplay objects (PuzzlePieces and GrabbableFrame).
     /// Handles Raycasting and Dragging logic.
     /// </summary>
     public class InteractionManager : MonoBehaviour
@@ -19,6 +20,7 @@ namespace ArtUnbound.Input
         [SerializeField] private LineRenderer rayVisualizer;
 
         private PuzzlePiece currentDraggedPiece;
+        private GrabbableFrame currentDraggedFrame; // NEW: For hanging artwork
         // private float currentDragDistance; // Removed - not used
         private Vector3 dragOffset;
         private int targetSlotIndex = -1; // Store the slot shown in the highlight
@@ -81,8 +83,8 @@ namespace ArtUnbound.Input
 
         private void HandlePinchStart(Vector3 position, Quaternion rotation)
         {
-            // GUARD: Don't grab a new piece if we're already holding one
-            if (currentDraggedPiece != null)
+            // GUARD: Don't grab a new object if we're already holding one
+            if (currentDraggedPiece != null || currentDraggedFrame != null)
             {
                 return;
             }
@@ -95,12 +97,23 @@ namespace ArtUnbound.Input
             Collider[] colliders = Physics.OverlapSphere(position, grabRadius, interactableLayer);
 
             PuzzlePiece bestPiece = null;
+            GrabbableFrame grabbableFrame = null;
             float bestDist = float.MaxValue;
 
             if (colliders.Length > 0)
             {
                 foreach (var col in colliders)
                 {
+                    // Check for GrabbableFrame first (priority when hanging artwork)
+                    var frame = col.GetComponent<GrabbableFrame>();
+                    if (frame != null && frame.IsGrabbable && !frame.IsBeingDragged)
+                    {
+                        grabbableFrame = frame;
+                        Debug.Log($"[InteractionManager] Found grabbable frame at {frame.transform.position}");
+                        break; // Frame takes priority
+                    }
+                    
+                    // Otherwise check for puzzle pieces
                     var p = col.GetComponentInParent<PuzzlePiece>();
                     if (p != null && p.CurrentState != PieceState.Grabbed)
                     {
@@ -113,15 +126,23 @@ namespace ArtUnbound.Input
                     }
                 }
                 
-                // CRITICAL FIX: Only grab if piece is ACTUALLY within the grab radius
-                // This prevents grabbing pieces that are far away but have large colliders
+                // CRITICAL FIX: Only grab if object is ACTUALLY within the grab radius
                 if (bestPiece != null && bestDist > grabRadius)
                 {
                     bestPiece = null; // Reject pieces outside the threshold
                 }
             }
 
-            // METHOD 2: Raycast Fallback (for Controllers)
+            // Handle frame grab
+            if (grabbableFrame != null)
+            {
+                grabbableFrame.StartDrag(position);
+                currentDraggedFrame = grabbableFrame;
+                Debug.Log("[InteractionManager] Started dragging frame");
+                return;
+            }
+
+            // METHOD 2: Raycast Fallback (for Controllers) - only for pieces
             if (useRaycast && bestPiece == null)
             {
                 Ray ray = new Ray(position, rotation * Vector3.forward);
@@ -184,6 +205,15 @@ namespace ArtUnbound.Input
 
         private void HandlePinchHold(Vector3 position, Quaternion rotation)
         {
+            // Handle frame dragging
+            if (currentDraggedFrame != null)
+            {
+                currentDraggedFrame.UpdateDrag(position);
+                // TODO: Show wall placement preview here
+                return;
+            }
+            
+            // Handle piece dragging
             if (currentDraggedPiece != null)
             {
                 // Move piece to follow hand position directly with offset
@@ -211,6 +241,39 @@ namespace ArtUnbound.Input
             if (rayVisualizer != null)
             {
                 rayVisualizer.enabled = false;
+            }
+
+            // Handle frame release
+            if (currentDraggedFrame != null)
+            {
+                Transform clonedFrame = currentDraggedFrame.ClonedFrame;
+                Vector3 releasePosition = clonedFrame != null ? clonedFrame.position : Vector3.zero;
+                
+                currentDraggedFrame.EndDrag();
+                
+                // Check if near a wall for placement
+                bool placedOnWall = false;
+                if (clonedFrame != null)
+                {
+                    // Find ArtworkHangingController to handle wall placement
+                    var hangingController = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
+                    if (hangingController != null)
+                    {
+                        placedOnWall = hangingController.TryPlaceOnWall(clonedFrame, releasePosition);
+                    }
+                    
+                    if (!placedOnWall)
+                    {
+                        // Not near a wall - destroy the clone
+                        Debug.Log("[InteractionManager] Frame not placed on wall - destroying clone");
+                        Destroy(clonedFrame.gameObject);
+                        currentDraggedFrame.RestoreOriginal();
+                    }
+                }
+                
+                currentDraggedFrame = null;
+                Debug.Log($"[InteractionManager] Released frame (placed on wall: {placedOnWall})");
+                return;
             }
 
             // Guard against processing the same pinch end twice
