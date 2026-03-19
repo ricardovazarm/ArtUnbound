@@ -18,12 +18,6 @@ namespace ArtUnbound.MR
         [SerializeField] private ARAnchorManager anchorManager;
         private SaveDataService saveDataService;
 
-        [Header("Frame Prefabs")]
-        [SerializeField] private GameObject frameBroncePrefab;
-        [SerializeField] private GameObject framePlataPrefab;
-        [SerializeField] private GameObject frameOroPrefab;
-        [SerializeField] private GameObject framePlatinumPrefab;
-
         private Dictionary<string, ARAnchor> activeAnchors = new Dictionary<string, ARAnchor>();
         private Dictionary<string, GameObject> spawnedArtworks = new Dictionary<string, GameObject>();
 
@@ -52,9 +46,9 @@ namespace ArtUnbound.MR
         }
 
         /// <summary>
-        /// Creates a spatial anchor at the specified position and saves it.
+        /// Creates a spatial anchor at the specified position and anchors the existing frame.
         /// </summary>
-        public bool CreateAnchor(string artworkId, Vector3 worldPosition, Quaternion worldRotation, FrameTier frameTier)
+        public bool CreateAnchor(string artworkId, Vector3 worldPosition, Quaternion worldRotation, FrameTier frameTier, Transform existingFrame = null)
         {
             if (anchorManager == null)
             {
@@ -92,8 +86,19 @@ namespace ArtUnbound.MR
             // Save to persistent storage
             SaveAnchorData(artworkId, anchorId, Vector3.zero, Quaternion.identity, 1f, frameTier);
 
-            // Spawn the artwork at this anchor
-            SpawnArtworkAtAnchor(artworkId, anchor, frameTier);
+            // If an existing frame was provided, parent it to the anchor
+            if (existingFrame != null)
+            {
+                existingFrame.SetParent(anchor.transform, true);
+                existingFrame.tag = "PlacedArtwork"; // For collision detection
+                spawnedArtworks[artworkId] = existingFrame.gameObject;
+                
+                Debug.Log($"[WallAnchor] Anchored existing frame for {artworkId}");
+            }
+            else
+            {
+                Debug.LogWarning($"[WallAnchor] No existing frame provided, artwork will not be visible");
+            }
 
             Debug.Log($"[WallAnchor] Created anchor {anchorId} for artwork {artworkId} at {worldPosition}");
             
@@ -150,53 +155,6 @@ namespace ArtUnbound.MR
                 
                 Debug.LogWarning($"[WallAnchor] Anchor persistence not yet implemented. Artwork {anchoredArtwork.artworkId} will not be restored.");
             }
-        }
-
-        /// <summary>
-        /// Spawns an artwork GameObject at the specified anchor.
-        /// </summary>
-        private void SpawnArtworkAtAnchor(string artworkId, ARAnchor anchor, FrameTier frameTier)
-        {
-            GameObject framePrefab = GetFramePrefab(frameTier);
-            
-            if (framePrefab == null)
-            {
-                Debug.LogWarning($"[WallAnchor] No prefab found for frame tier {frameTier}, using default");
-                framePrefab = frameBroncePrefab;
-            }
-
-            if (framePrefab == null)
-            {
-                Debug.LogError("[WallAnchor] Cannot spawn artwork: frame prefab is null");
-                return;
-            }
-
-            // Instantiate the frame as a child of the anchor
-            GameObject artworkInstance = Instantiate(framePrefab, anchor.transform);
-            artworkInstance.name = $"Artwork_{artworkId}";
-            artworkInstance.transform.localPosition = Vector3.zero;
-            artworkInstance.transform.localRotation = Quaternion.identity;
-            artworkInstance.tag = "PlacedArtwork"; // For collision detection
-
-            // Store reference
-            spawnedArtworks[artworkId] = artworkInstance;
-
-            Debug.Log($"[WallAnchor] Spawned artwork {artworkId} at anchor {anchor.trackableId}");
-        }
-
-        /// <summary>
-        /// Gets the appropriate frame prefab for the given tier.
-        /// </summary>
-        private GameObject GetFramePrefab(FrameTier tier)
-        {
-            return tier switch
-            {
-                FrameTier.Bronce => frameBroncePrefab,
-                FrameTier.Plata => framePlataPrefab,
-                FrameTier.Oro => frameOroPrefab,
-                FrameTier.Platinum => framePlatinumPrefab,
-                _ => frameBroncePrefab
-            };
         }
 
         /// <summary>

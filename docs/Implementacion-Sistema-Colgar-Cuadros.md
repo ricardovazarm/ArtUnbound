@@ -150,11 +150,7 @@ Para que el sistema funcione, se deben asignar las siguientes referencias en el 
 
 ### **WallAnchorManager (Inspector)**
 - `AR Anchor Manager` → Auto-detecta (debe estar en XR Origin)
-- **Frame Prefabs**:
-  - `Frame Bronce Prefab` → Asignar prefab del marco de bronce
-  - `Frame Plata Prefab` → Asignar prefab del marco de plata
-  - `Frame Oro Prefab` → Asignar prefab del marco de oro
-  - `Frame Platinum Prefab` → Asignar prefab del marco de platino
+- ✅ **Ya NO necesitas asignar prefabs** - El sistema usa el frame creado por PuzzleBoard
 
 ### **HandAttachmentController (Inspector)**
 - `Follow Speed` → 12
@@ -173,6 +169,13 @@ Para que el sistema funcione, se deben asignar las siguientes referencias en el 
 ---
 
 ## ⚠️ Notas Importantes
+
+### **Frame Dinámico (NO requiere Prefabs)**
+✅ **El sistema usa el frame que ya está creado** por `PuzzleBoard.ShowFullImageReveal()`:
+- El frame se crea proceduralmente como 4 barras de cubos (Top, Bottom, Left, Right)
+- Se ajusta automáticamente al tamaño del puzzle (`boardWidthM` × `boardHeightM`)
+- Cuando se ancla, todo el `SlotRoot` (imagen + frame) se parentea al AR Anchor
+- **NO necesitas crear ni asignar prefabs de marcos**
 
 ### **Persistencia de Anchors**
 ❗ **IMPORTANTE**: La persistencia completa de anchors entre sesiones **NO está implementada** aún. 

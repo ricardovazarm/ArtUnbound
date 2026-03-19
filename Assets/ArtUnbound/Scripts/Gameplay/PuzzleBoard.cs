@@ -1823,16 +1823,12 @@ namespace ArtUnbound.Gameplay
 
         /// <summary>
         /// Gets the transform of the completed frame (for hanging on walls).
-        /// Returns the FullImageRevealFrame if it exists, otherwise SlotRoot.
+        /// Returns the SlotRoot which contains both the FullImageReveal and FullImageRevealFrame.
         /// </summary>
         public Transform GetCompletedFrameTransform()
         {
-            if (fullImageRevealFrame != null)
-                return fullImageRevealFrame.transform;
-            
-            if (fullImageReveal != null)
-                return fullImageReveal.transform;
-            
+            // Return SlotRoot which contains the entire completed artwork
+            // (FullImageReveal + FullImageRevealFrame + frame bars)
             return slotRoot;
         }
 

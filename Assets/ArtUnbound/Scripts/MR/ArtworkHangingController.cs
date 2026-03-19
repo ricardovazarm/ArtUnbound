@@ -287,7 +287,8 @@ namespace ArtUnbound.MR
                     currentArtworkId,
                     completedFrame.position,
                     completedFrame.rotation,
-                    currentFrameTier
+                    currentFrameTier,
+                    completedFrame  // Pass the existing frame transform
                 );
 
                 if (success)
@@ -312,28 +313,32 @@ namespace ArtUnbound.MR
 
         /// <summary>
         /// Gets the completed frame transform from the puzzle board.
+        /// Returns SlotRoot which contains both the image and the frame.
         /// </summary>
         private Transform GetCompletedFrameTransform()
         {
             if (puzzleBoard == null) return null;
 
-            // Look for the FullImageRevealFrame (created by ShowFullImageReveal)
+            // The SlotRoot contains the FullImageReveal and FullImageRevealFrame
+            // We need to return SlotRoot so we can move the entire completed artwork
             Transform slotRoot = puzzleBoard.transform.Find("SlotRoot");
+            
             if (slotRoot == null)
             {
-                Debug.LogWarning("[ArtworkHanging] SlotRoot not found");
-                return slotRoot;
+                Debug.LogWarning("[ArtworkHanging] SlotRoot not found in PuzzleBoard");
+                return null;
             }
 
+            // Verify that the frame was created
             Transform frameTransform = slotRoot.Find("FullImageRevealFrame");
-            if (frameTransform == null)
+            Transform imageTransform = slotRoot.Find("FullImageReveal");
+            
+            if (frameTransform == null || imageTransform == null)
             {
-                Debug.LogWarning("[ArtworkHanging] FullImageRevealFrame not found");
-                // Fallback: return SlotRoot itself (it contains the full image reveal)
-                return slotRoot;
+                Debug.LogWarning($"[ArtworkHanging] Completed artwork not fully created. Frame: {frameTransform != null}, Image: {imageTransform != null}");
             }
 
-            return frameTransform;
+            return slotRoot;
         }
 
         private void OnDestroy()
