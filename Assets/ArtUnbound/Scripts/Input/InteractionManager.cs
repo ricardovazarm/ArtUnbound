@@ -93,7 +93,7 @@ namespace ArtUnbound.Input
             dragOffset = Vector3.zero;
 
             // METHOD 1: Proximity/Sphere Overlap (Primary for Hand Tracking)
-            float grabRadius = 0.025f; // 2.5cm radius
+            float grabRadius = 0.04f; // 4cm radius - easier to grab pieces
             Collider[] colliders = Physics.OverlapSphere(position, grabRadius, interactableLayer);
 
             PuzzlePiece bestPiece = null;
@@ -106,6 +106,16 @@ namespace ArtUnbound.Input
                 {
                     // Check for GrabbableFrame first (priority when hanging artwork)
                     var frame = col.GetComponent<GrabbableFrame>();
+                    
+                    // If no GrabbableFrame component, check if this is a placed artwork
+                    if (frame == null && col.CompareTag("PlacedArtwork"))
+                    {
+                        // This is a placed artwork - add GrabbableFrame to allow repositioning
+                        frame = col.gameObject.AddComponent<GrabbableFrame>();
+                        frame.IsGrabbable = true;
+                        Debug.Log($"[InteractionManager] Added GrabbableFrame to placed artwork for repositioning: {col.name}");
+                    }
+                    
                     if (frame != null && frame.IsGrabbable && !frame.IsBeingDragged)
                     {
                         grabbableFrame = frame;
@@ -209,7 +219,10 @@ namespace ArtUnbound.Input
             if (currentDraggedFrame != null)
             {
                 currentDraggedFrame.UpdateDrag(position);
-                // TODO: Show wall placement preview here
+                
+                // Update frame rotation to face away from nearest wall
+                UpdateFrameRotationToNearestWall(currentDraggedFrame.ClonedFrame);
+                
                 return;
             }
             
@@ -247,28 +260,46 @@ namespace ArtUnbound.Input
             if (currentDraggedFrame != null)
             {
                 Transform clonedFrame = currentDraggedFrame.ClonedFrame;
-                Vector3 releasePosition = clonedFrame != null ? clonedFrame.position : Vector3.zero;
+                
+                if (clonedFrame == null)
+                {
+                    Debug.LogError("[InteractionManager] ClonedFrame is null! Cannot place on wall.");
+                    currentDraggedFrame = null;
+                    return;
+                }
+                
+                Vector3 releasePosition = clonedFrame.position;
+                Debug.Log($"[InteractionManager] Releasing frame clone: {clonedFrame.name} at {releasePosition}");
                 
                 currentDraggedFrame.EndDrag();
                 
                 // Check if near a wall for placement
                 bool placedOnWall = false;
-                if (clonedFrame != null)
+                
+                // Find ArtworkHangingController to handle wall placement
+                var hangingController = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
+                if (hangingController != null)
                 {
-                    // Find ArtworkHangingController to handle wall placement
-                    var hangingController = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
-                    if (hangingController != null)
-                    {
-                        placedOnWall = hangingController.TryPlaceOnWall(clonedFrame, releasePosition);
-                    }
-                    
-                    if (!placedOnWall)
-                    {
-                        // Not near a wall - destroy the clone
-                        Debug.Log("[InteractionManager] Frame not placed on wall - destroying clone");
-                        Destroy(clonedFrame.gameObject);
-                        currentDraggedFrame.RestoreOriginal();
-                    }
+                    Debug.Log($"[InteractionManager] Passing clone {clonedFrame.name} to TryPlaceOnWall");
+                    placedOnWall = hangingController.TryPlaceOnWall(clonedFrame, releasePosition);
+                }
+                else
+                {
+                    Debug.LogError("[InteractionManager] ArtworkHangingController not found!");
+                }
+                
+                if (placedOnWall)
+                {
+                    // Successfully placed on wall - the clone is now anchored
+                    // The original frame in PuzzleBoard will be hidden by GameBootstrap
+                    Debug.Log($"[InteractionManager] Frame successfully placed on wall: {clonedFrame.name}");
+                }
+                else
+                {
+                    // Not near a wall - destroy the clone and restore original
+                    Debug.Log($"[InteractionManager] Frame not placed on wall - destroying clone: {clonedFrame.name}");
+                    Destroy(clonedFrame.gameObject);
+                    currentDraggedFrame.RestoreOriginal();
                 }
                 
                 currentDraggedFrame = null;
@@ -389,6 +420,26 @@ namespace ArtUnbound.Input
             }
 
             return false;
+        }
+        
+        /// <summary>
+        /// Updates the frame rotation to face away from the nearest wall during dragging.
+        /// This provides visual feedback and makes placement more intuitive.
+        /// </summary>
+        private void UpdateFrameRotationToNearestWall(Transform frameClone)
+        {
+            if (frameClone == null) return;
+            
+            // Find the nearest wall using WallPlacementDetector logic
+            var detector = FindFirstObjectByType<ArtUnbound.MR.WallPlacementDetector>();
+            if (detector == null) return;
+            
+            // Check for nearby wall
+            if (detector.CheckNearbyWall(frameClone.position, out Vector3 wallPosition, out Quaternion wallRotation))
+            {
+                // Smoothly rotate the frame to face outward from the wall
+                frameClone.rotation = Quaternion.Slerp(frameClone.rotation, wallRotation, Time.deltaTime * 10f);
+            }
         }
     }
 }

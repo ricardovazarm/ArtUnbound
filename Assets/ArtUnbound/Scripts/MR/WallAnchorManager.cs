@@ -61,6 +61,17 @@ namespace ArtUnbound.MR
                 Debug.LogError("[WallAnchor] Cannot create anchor: artworkId is null or empty");
                 return false;
             }
+            
+            if (existingFrame == null)
+            {
+                Debug.LogError("[WallAnchor] Cannot create anchor: existingFrame is null");
+                return false;
+            }
+            
+            Debug.Log($"[WallAnchor] CreateAnchor called for {artworkId}");
+            Debug.Log($"[WallAnchor] Received frame: {existingFrame.name} at {existingFrame.position}");
+            Debug.Log($"[WallAnchor] Frame rotation: {existingFrame.rotation.eulerAngles}");
+            Debug.Log($"[WallAnchor] Frame has {existingFrame.childCount} children");
 
             // Create a new GameObject to hold the anchor
             GameObject anchorObject = new GameObject($"Anchor_{artworkId}");
@@ -86,19 +97,18 @@ namespace ArtUnbound.MR
             // Save to persistent storage
             SaveAnchorData(artworkId, anchorId, Vector3.zero, Quaternion.identity, 1f, frameTier);
 
-            // If an existing frame was provided, parent it to the anchor
-            if (existingFrame != null)
-            {
-                existingFrame.SetParent(anchor.transform, true);
-                existingFrame.tag = "PlacedArtwork"; // For collision detection
-                spawnedArtworks[artworkId] = existingFrame.gameObject;
-                
-                Debug.Log($"[WallAnchor] Anchored existing frame for {artworkId}");
-            }
-            else
-            {
-                Debug.LogWarning($"[WallAnchor] No existing frame provided, artwork will not be visible");
-            }
+            // Parent the frame to the anchor
+            existingFrame.SetParent(anchor.transform, true); // Keep world position and rotation
+            
+            // Tag the frame so it can be detected by other systems
+            existingFrame.tag = "PlacedArtwork";
+            
+            // Store reference
+            spawnedArtworks[artworkId] = existingFrame.gameObject;
+            
+            Debug.Log($"[WallAnchor] Anchored frame {existingFrame.name} for {artworkId} at {worldPosition}");
+            Debug.Log($"[WallAnchor] Frame hierarchy: {existingFrame.name} -> {anchor.name}");
+            Debug.Log($"[WallAnchor] Frame final position: {existingFrame.position}, rotation: {existingFrame.rotation.eulerAngles}");
 
             Debug.Log($"[WallAnchor] Created anchor {anchorId} for artwork {artworkId} at {worldPosition}");
             
@@ -182,6 +192,51 @@ namespace ArtUnbound.MR
             }
 
             return false;
+        }
+        
+        /// <summary>
+        /// Updates the position and rotation of an existing anchored artwork.
+        /// Used when the user repositions an already-placed artwork.
+        /// </summary>
+        public bool UpdateAnchorPosition(string artworkId, Vector3 newPosition, Quaternion newRotation)
+        {
+            if (!spawnedArtworks.ContainsKey(artworkId))
+            {
+                Debug.LogWarning($"[WallAnchor] Cannot update: artwork {artworkId} not found");
+                return false;
+            }
+            
+            GameObject artworkObject = spawnedArtworks[artworkId];
+            Transform anchorTransform = artworkObject.transform.parent;
+            
+            if (anchorTransform == null)
+            {
+                Debug.LogError($"[WallAnchor] Artwork {artworkId} has no anchor parent");
+                return false;
+            }
+            
+            // Update the anchor's position and rotation
+            anchorTransform.position = newPosition;
+            anchorTransform.rotation = newRotation;
+            
+            Debug.Log($"[WallAnchor] Updated anchor for {artworkId} to position {newPosition}, rotation {newRotation.eulerAngles}");
+            
+            // TODO: Update save data with new position
+            
+            return true;
+        }
+        
+        /// <summary>
+        /// Gets the artwork GameObject for a given artworkId.
+        /// Used to check if an artwork is already placed and to enable re-grabbing.
+        /// </summary>
+        public GameObject GetPlacedArtwork(string artworkId)
+        {
+            if (spawnedArtworks.TryGetValue(artworkId, out GameObject artworkObject))
+            {
+                return artworkObject;
+            }
+            return null;
         }
 
         /// <summary>

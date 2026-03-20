@@ -178,6 +178,13 @@ namespace ArtUnbound.Gameplay
             snappedCount = 0;
             var textureToUse = definition?.puzzleTexture != null ? definition.puzzleTexture : definition?.fullImage?.texture;
             currentTexture = textureToUse;
+            
+            // Ensure slotRoot is active (it may have been disabled during artwork hanging)
+            if (slotRoot != null && !slotRoot.gameObject.activeSelf)
+            {
+                slotRoot.gameObject.SetActive(true);
+                Debug.Log("[PuzzleBoard] SlotRoot re-enabled for new puzzle");
+            }
 
             if (fullImageReveal != null)
             {

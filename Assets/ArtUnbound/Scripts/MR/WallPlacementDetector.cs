@@ -36,58 +36,147 @@ namespace ArtUnbound.MR
             planeManager = FindFirstObjectByType<ARPlaneManager>();
         }
 
-        /// <summary>
-        /// Checks if there's a valid wall near the given position (without continuous tracking).
-        /// Used when releasing the frame to check for placement.
-        /// </summary>
-        public bool CheckNearbyWall(Vector3 position, out Vector3 wallPosition, out Quaternion wallRotation)
+    /// <summary>
+    /// Checks if there's a valid wall near the given position (without continuous tracking).
+    /// Used when releasing the frame to check for placement.
+    /// </summary>
+    public bool CheckNearbyWall(Vector3 position, out Vector3 wallPosition, out Quaternion wallRotation)
+    {
+        wallPosition = position;
+        wallRotation = Quaternion.identity;
+        
+        // First, try to find AR vertical planes directly (more reliable for Quest)
+        if (planeManager != null)
         {
-            wallPosition = position;
-            wallRotation = Quaternion.identity;
-            
-            // Raycast in multiple directions to find a nearby wall
-            Vector3[] directions = new Vector3[]
-            {
-                Vector3.forward,
-                Vector3.back,
-                Vector3.left,
-                Vector3.right,
-                (Vector3.forward + Vector3.left).normalized,
-                (Vector3.forward + Vector3.right).normalized,
-                (Vector3.back + Vector3.left).normalized,
-                (Vector3.back + Vector3.right).normalized
-            };
-            
             float closestDistance = float.MaxValue;
-            bool foundWall = false;
+            ARPlane closestPlane = null;
+            Vector3 closestPoint = Vector3.zero;
             
-            foreach (var direction in directions)
+            foreach (var plane in planeManager.trackables)
             {
-                Ray ray = new Ray(position, direction);
-                
-                if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance, wallLayerMask))
+                if (plane.alignment == PlaneAlignment.Vertical)
                 {
-                    if (IsWallSurface(hit) && !IsOccupiedByOtherArtwork(hit.point))
+                    // Find the closest point on the plane to the position
+                    Vector3 planeCenter = plane.transform.position;
+                    Vector3 planeNormal = plane.transform.up; // For vertical planes, 'up' is the outward normal
+                    
+                    // Project position onto plane
+                    Vector3 toPosition = position - planeCenter;
+                    float distanceAlongNormal = Vector3.Dot(toPosition, planeNormal);
+                    Vector3 projectedPoint = position - planeNormal * distanceAlongNormal;
+                    
+                    // Check if projected point is within plane bounds
+                    Vector3 localPoint = plane.transform.InverseTransformPoint(projectedPoint);
+                    Vector2 localPoint2D = new Vector2(localPoint.x, localPoint.z);
+                    
+                    // Simple bounds check (planes are roughly rectangular)
+                    float halfWidth = plane.size.x / 2f;
+                    float halfHeight = plane.size.y / 2f;
+                    
+                    if (Mathf.Abs(localPoint2D.x) <= halfWidth && Mathf.Abs(localPoint2D.y) <= halfHeight)
                     {
-                        float distance = Vector3.Distance(position, hit.point);
-                        if (distance < closestDistance)
+                        float distance = Mathf.Abs(distanceAlongNormal);
+                        
+                        if (distance < closestDistance && distance < raycastDistance)
                         {
                             closestDistance = distance;
-                            wallPosition = hit.point;
-                            wallRotation = Quaternion.LookRotation(-hit.normal);
-                            foundWall = true;
+                            closestPlane = plane;
+                            closestPoint = projectedPoint;
                         }
                     }
                 }
             }
             
-            if (foundWall)
+            if (closestPlane != null && !IsOccupiedByOtherArtwork(closestPoint))
             {
-                Debug.Log($"[WallPlacement] Found wall at distance: {closestDistance:F2}m");
+                wallPosition = closestPoint;
+                
+                // Get the plane's normal (perpendicular to wall surface)
+                Vector3 planeNormal = closestPlane.transform.up;
+                
+                // Determine which direction the artwork should face
+                // It should face AWAY from the wall, towards the user
+                // Check which side of the plane the user/camera is on
+                Vector3 cameraPosition = Camera.main != null ? Camera.main.transform.position : position;
+                Vector3 toCamera = cameraPosition - closestPoint;
+                
+                // If the plane normal points towards the camera, use it as-is
+                // If it points away from camera, flip it
+                float dotToCamera = Vector3.Dot(planeNormal, toCamera.normalized);
+                Vector3 outwardNormal = dotToCamera > 0 ? planeNormal : -planeNormal;
+                
+                // The artwork should face in the direction of the outward normal
+                wallRotation = Quaternion.LookRotation(outwardNormal);
+                
+                Debug.Log($"[WallPlacement] Found AR plane wall at distance: {closestDistance:F2}m, plane: {closestPlane.name}");
+                Debug.Log($"[WallPlacement] Plane normal: {planeNormal}, Dot to camera: {dotToCamera:F2}, Outward normal: {outwardNormal}");
+                Debug.Log($"[WallPlacement] Wall rotation: {wallRotation.eulerAngles}");
+                return true;
             }
-            
-            return foundWall;
         }
+        
+        // Fallback: Raycast in multiple directions to find a nearby wall (for non-AR walls or as backup)
+        Vector3[] directions = new Vector3[]
+        {
+            Vector3.forward,
+            Vector3.back,
+            Vector3.left,
+            Vector3.right,
+            (Vector3.forward + Vector3.left).normalized,
+            (Vector3.forward + Vector3.right).normalized,
+            (Vector3.back + Vector3.left).normalized,
+            (Vector3.back + Vector3.right).normalized
+        };
+        
+        float closestDistance_raycast = float.MaxValue;
+        bool foundWall = false;
+        Vector3 bestWallNormal = Vector3.zero;
+        
+        foreach (var direction in directions)
+        {
+            Ray ray = new Ray(position, direction);
+            
+            if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance, wallLayerMask))
+            {
+                if (IsWallSurface(hit) && !IsOccupiedByOtherArtwork(hit.point))
+                {
+                    float distance = Vector3.Distance(position, hit.point);
+                    if (distance < closestDistance_raycast)
+                    {
+                        closestDistance_raycast = distance;
+                        wallPosition = hit.point;
+                        bestWallNormal = hit.normal;
+                        foundWall = true;
+                    }
+                }
+            }
+        }
+        
+        if (foundWall)
+        {
+            // Determine which direction the artwork should face
+            // The hit normal points away from the surface we hit
+            // We want the artwork to face the same direction as the normal (outward from wall)
+            Vector3 cameraPosition = Camera.main != null ? Camera.main.transform.position : position;
+            Vector3 toCamera = cameraPosition - wallPosition;
+            
+            // If the wall normal points towards the camera, use it as-is
+            // If it points away from camera, flip it
+            float dotToCamera = Vector3.Dot(bestWallNormal, toCamera.normalized);
+            Vector3 outwardNormal = dotToCamera > 0 ? bestWallNormal : -bestWallNormal;
+            
+            wallRotation = Quaternion.LookRotation(outwardNormal);
+            
+            Debug.Log($"[WallPlacement] Found wall via raycast at distance: {closestDistance_raycast:F2}m");
+            Debug.Log($"[WallPlacement] Wall normal: {bestWallNormal}, Dot to camera: {dotToCamera:F2}, Outward normal: {outwardNormal}");
+        }
+        else
+        {
+            Debug.Log($"[WallPlacement] No wall found near position {position}");
+        }
+        
+        return foundWall;
+    }
 
         /// <summary>
         /// Starts detecting valid wall placements.

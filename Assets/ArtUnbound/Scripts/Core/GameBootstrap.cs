@@ -712,34 +712,36 @@ namespace ArtUnbound.Core
             }
         }
 
-        private void OnFramePlaced()
+    private void OnFramePlaced()
+    {
+        Debug.Log($"[GameBootstrap] Frame placed successfully for {selectedArtworkId}");
+        
+        // Play success feedback
+        if (audioManager != null)
         {
-            Debug.Log($"[GameBootstrap] Frame placed successfully for {selectedArtworkId}");
-            
-            // Cleanup
-            CleanupArtworkHanging();
-            
-            // Play success feedback
-            if (audioManager != null)
-            {
-                audioManager.PlayPuzzleComplete(); // Reuse completion sound
-            }
-            
-            if (hapticController != null)
-            {
-                hapticController.PlaySuccessHaptic();
-            }
-            
-            // Show completion message and return to menu
-            if (postGameController != null)
-            {
-                postGameController.Show();
-                // TODO: Maybe show a "Artwork placed!" message
-            }
-            
-            // Return to main menu after a delay
-            Invoke(nameof(TransitionToMainMenu), 2f);
+            audioManager.PlayPuzzleComplete(); // Reuse completion sound
         }
+        
+        if (hapticController != null)
+        {
+            hapticController.PlaySuccessHaptic();
+        }
+        
+        // Hide the original PuzzleBoard (the clone is now on the wall)
+        // DO NOT destroy it - it's reused for all puzzles
+        if (puzzleBoard != null)
+        {
+            puzzleBoard.gameObject.SetActive(false);
+            Debug.Log("[GameBootstrap] PuzzleBoard hidden after successful placement");
+        }
+        
+        // Cleanup the hanging controller (unsubscribe events, etc)
+        CleanupArtworkHanging();
+        
+        // Go directly to main menu (no need to show PostGame panel)
+        Debug.Log("[GameBootstrap] Returning to main menu after artwork placement");
+        TransitionToMainMenu();
+    }
 
     private void OnPlacementCancelled()
     {

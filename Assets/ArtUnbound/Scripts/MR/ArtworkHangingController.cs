@@ -113,9 +113,19 @@ namespace ArtUnbound.MR
         
         /// <summary>
         /// Tries to place the frame on a nearby wall. Returns true if placed, false otherwise.
+        /// Handles both new placement and repositioning of existing artworks.
         /// </summary>
-        public bool TryPlaceOnWall(Transform frameClone, Vector3 position)
+        public bool TryPlaceOnWall(Transform frameClone, Vector3 position, bool isRepositioning = false)
         {
+            if (frameClone == null)
+            {
+                Debug.LogError("[ArtworkHanging] frameClone is null!");
+                OnPlacementCancelled?.Invoke();
+                return false;
+            }
+            
+            Debug.Log($"[ArtworkHanging] Attempting to place frame: {frameClone.name} at {position}, repositioning: {isRepositioning}");
+            
             // Use WallPlacementDetector to check if near a wall
             if (placementDetector == null)
             {
@@ -134,16 +144,42 @@ namespace ArtUnbound.MR
                 return false;
             }
             
-            // Snap frame to wall
-            frameClone.position = wallPosition;
+            // Position frame slightly away from wall (5mm) to avoid z-fighting
+            Vector3 offsetPosition = wallPosition + wallRotation * Vector3.forward * 0.005f;
+            
+            // Snap frame to wall with the wall's rotation (perpendicular to wall surface)
+            frameClone.position = offsetPosition;
             frameClone.rotation = wallRotation;
             
-            // Create persistent anchor
-            if (anchorManager != null)
+            Debug.Log($"[ArtworkHanging] Placing frame at {offsetPosition}");
+            Debug.Log($"[ArtworkHanging] Frame rotation set to: {wallRotation.eulerAngles}");
+            
+            // Handle repositioning vs new placement
+            if (isRepositioning && anchorManager != null)
             {
+                // Update existing anchor position
+                bool success = anchorManager.UpdateAnchorPosition(currentArtworkId, offsetPosition, wallRotation);
+                
+                if (success)
+                {
+                    currentState = HangingState.Placed;
+                    OnFramePlaced?.Invoke();
+                    Debug.Log($"[ArtworkHanging] Frame repositioned successfully for {currentArtworkId}");
+                    return true;
+                }
+                else
+                {
+                    Debug.LogError("[ArtworkHanging] Failed to update anchor position");
+                    OnPlacementCancelled?.Invoke();
+                    return false;
+                }
+            }
+            else if (anchorManager != null)
+            {
+                // Create new anchor
                 bool success = anchorManager.CreateAnchor(
                     currentArtworkId,
-                    wallPosition,
+                    offsetPosition,
                     wallRotation,
                     currentFrameTier,
                     frameClone
@@ -153,7 +189,7 @@ namespace ArtUnbound.MR
                 {
                     currentState = HangingState.Placed;
                     OnFramePlaced?.Invoke();
-                    Debug.Log($"[ArtworkHanging] Frame successfully placed on wall and anchored");
+                    Debug.Log($"[ArtworkHanging] Frame successfully placed on wall and anchored for {currentArtworkId}");
                     return true;
                 }
                 else
