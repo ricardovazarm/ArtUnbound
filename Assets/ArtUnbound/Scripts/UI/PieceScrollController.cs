@@ -188,10 +188,22 @@ namespace ArtUnbound.UI
             float maxScrollDown = -Mathf.Max(0f, totalContentHeight - visibleHeight, minScrollForLastPage);
             float maxScrollUp = 0f;
 
-            if (totalPages <= 1) return;
+            // When only one pagination page remains, list packs from the top — a negative offset
+            // from "page 2" would leave the tray visually empty while the UI still shows 1/1.
+            if (totalPages <= 1)
+            {
+                scrollOffset = 0f;
+                RepositionAllPieces();
+                UpdateVisibility();
+                UpdateButtonStates();
+                return;
+            }
+
             if (totalContentHeight <= visibleHeight)
             {
                 scrollOffset = 0f;
+                RepositionAllPieces();
+                UpdateVisibility();
                 UpdateButtonStates();
                 return;
             }
@@ -255,10 +267,70 @@ namespace ArtUnbound.UI
 
             pieceItems.RemoveAt(index);
 
-            // Reposition all remaining pieces to close the gap
+            SyncScrollOffsetAfterPieceCountChanged();
+        }
+
+        /// <summary>
+        /// After pool size changes, fix scroll so we are not stuck on a stale "page 2" offset
+        /// when only one pagination page remains (ScrollBy used to return without resetting offset).
+        /// </summary>
+        private void SyncScrollOffsetAfterPieceCountChanged()
+        {
+            if (pieceItems == null || pieceItems.Count == 0)
+            {
+                scrollOffset = 0f;
+                UpdateButtonStates();
+                return;
+            }
+
+            int totalRows = Mathf.CeilToInt((float)pieceItems.Count / columns);
+            float totalContentHeight = totalRows * scrollStep;
+            int piecesPerPage = columns * visibleRows;
+            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)pieceItems.Count / piecesPerPage));
+            float pageStep = scrollStep * RowsPerPage;
+            float minScrollForLastPage = (totalPages - 1) * pageStep;
+            float maxScrollDown = -Mathf.Max(0f, totalContentHeight - visibleHeight, minScrollForLastPage);
+            float maxScrollUp = 0f;
+
+            if (totalPages <= 1 || totalContentHeight <= visibleHeight)
+                scrollOffset = 0f;
+            else
+                scrollOffset = Mathf.Clamp(scrollOffset, maxScrollDown, maxScrollUp);
+
             RepositionAllPieces();
             UpdateVisibility();
             UpdateButtonStates();
+
+            // If still no pool pieces in view (multi-page only), step toward previous page
+            if (totalPages > 1 && !AnyPoolPieceVisibleInTrayViewport())
+            {
+                ScrollUp();
+            }
+        }
+
+        private bool AnyPoolPieceVisibleInTrayViewport()
+        {
+            float yMax = StartY + 0.05f;
+            float yMin = StartY - visibleHeight - 0.05f;
+            float gridWidth = (columns - 1) * horizontalSpacing;
+            float halfWidth = gridWidth / 2f;
+
+            for (int i = 0; i < pieceItems.Count; i++)
+            {
+                if (pieceItems[i] == null) continue;
+
+                var p = pieceItems[i].GetComponent<ArtUnbound.Gameplay.PuzzlePiece>();
+                if (p != null && p.CurrentState == ArtUnbound.Data.PieceState.Placed)
+                    continue;
+
+                Vector3 localPos = pieceItems[i].localPosition;
+                bool inY = localPos.y >= yMin && localPos.y <= yMax;
+                bool inX = localPos.x >= -halfWidth - 0.05f && localPos.x <= halfWidth + 0.05f;
+                if (inY && inX)
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>

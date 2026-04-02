@@ -177,11 +177,12 @@ namespace ArtUnbound.Gameplay
             // Calculate UV coordinates based on grid position
             float uLeft = (float)col / gridCols;
             float uRight = (float)(col + 1) / gridCols;
-            float vMin = 1f - (float)(row + 1) / gridRows; // Flip V for typical texture coordinates
-            float vMax = 1f - (float)row / gridRows;
+            float vBottom = (float)row / gridRows;
+            float vTop = (float)(row + 1) / gridRows;
 
-            // Flip U: board is rotated 180° around Y to face user, which mirrors the image. Swap U to correct it.
-            return GeneratePieceMesh(morphology, pieceSize, new Vector2(uRight, vMin), new Vector2(uLeft, vMax));
+            // Board is rotated 180° around Y to face user, which mirrors the image horizontally.
+            // Swap U coordinates to correct horizontal flip: (uRight, uLeft). V uses top-down texture convention.
+            return GeneratePieceMesh(morphology, pieceSize, new Vector2(uRight, 1f - vTop), new Vector2(uLeft, 1f - vBottom));
         }
 
         private static void GeneratePieceGeometry(

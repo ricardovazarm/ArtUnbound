@@ -2517,6 +2517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.MR.WallAnchorManager
   anchorManager: {fileID: 376669978}
+  artworkCatalog: {fileID: 11400000, guid: 914ee175299fcf641afa8e569d702e7d, type: 2}
 --- !u!1 &367184304
 GameObject:
   m_ObjectHideFlags: 0

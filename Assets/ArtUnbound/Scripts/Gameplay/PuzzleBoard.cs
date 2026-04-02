@@ -1631,6 +1631,29 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
+        /// Tiling/offset for the <b>completed-puzzle</b> full-image quad only (<see cref="ShowFullImageReveal"/>).
+        /// Quest/Android standalone often needs a different V term than Editor/Meta Link; do not use for tray pieces or other UI.
+        /// </summary>
+        private static void ApplyCompletedFullImageTextureMapping(Material mat)
+        {
+            if (mat == null) return;
+
+            // The FullImageReveal quad uses localRotation (0, 180, 0).
+            // Combined with slotRoot's world Y:180, the net world rotation is Identity.
+            // The quad is viewed from its back face, which mirrors U horizontally.
+            // Scale X = -1 corrects that mirror; V needs no correction on any platform.
+            if (mat.HasProperty("_BaseMap_ST"))
+                mat.SetVector("_BaseMap_ST", new Vector4(-1f, 1f, 1f, 0f));
+            if (mat.HasProperty("_MainTex_ST"))
+                mat.SetVector("_MainTex_ST", new Vector4(-1f, 1f, 1f, 0f));
+            if (!mat.HasProperty("_BaseMap_ST") && !mat.HasProperty("_MainTex_ST"))
+            {
+                mat.mainTextureScale = new Vector2(-1f, 1f);
+                mat.mainTextureOffset = new Vector2(1f, 0f);
+            }
+        }
+
+        /// <summary>
         /// Replaces the assembled pieces with the full artwork image and plays a reveal animation.
         /// Creates a 3D frame around the image with the correct material for the earned tier.
         /// </summary>
@@ -1671,7 +1694,7 @@ namespace ArtUnbound.Gameplay
 
             fullImageReveal.transform.SetParent(slotRoot, false);
             fullImageReveal.transform.localPosition = new Vector3(0, 0, 0.0155f);
-            fullImageReveal.transform.localRotation = Quaternion.Euler(0, 180, 180);
+            fullImageReveal.transform.localRotation = Quaternion.Euler(0, 180, 0);
             fullImageReveal.transform.localScale = new Vector3(boardWidthM, boardHeightM, 1f);
 
             var renderer = fullImageReveal.GetComponent<Renderer>();
@@ -1685,11 +1708,7 @@ namespace ArtUnbound.Gameplay
                     Material mat = new Material(shader);
                     if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", currentTexture);
                     if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", currentTexture);
-                    // Quad rotated 180° Y shows "back" face: texture appears mirrored. Flip both U and V to correct.
-                    if (mat.HasProperty("_BaseMap_ST"))
-                        mat.SetVector("_BaseMap_ST", new Vector4(-1, -1, 1, 1));
-                    else
-                        mat.mainTextureScale = new Vector2(-1, -1);
+                    ApplyCompletedFullImageTextureMapping(mat);
                     renderer.material = mat;
                 }
             }
@@ -1717,7 +1736,7 @@ namespace ArtUnbound.Gameplay
             fullImageRevealFrame = new GameObject("FullImageRevealFrame");
             fullImageRevealFrame.transform.SetParent(slotRoot, false);
             fullImageRevealFrame.transform.localPosition = new Vector3(0, 0, 0.015f); // Align with image plane
-            fullImageRevealFrame.transform.localRotation = Quaternion.Euler(0, 180, 180);
+            fullImageRevealFrame.transform.localRotation = Quaternion.Euler(0, 180, 0);
             fullImageRevealFrame.transform.localScale = Vector3.one;
 
             // Top, Bottom, Left, Right bars - each is an elongated cube (cuboid)

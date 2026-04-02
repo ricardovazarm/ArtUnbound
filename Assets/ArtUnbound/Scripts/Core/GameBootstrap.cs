@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using ArtUnbound.Data;
 using ArtUnbound.Feedback;
@@ -118,6 +119,24 @@ namespace ArtUnbound.Core
             {
                 StartCoroutine(PositionCanvasWithDelay(mainUICanvas));
             }
+            
+            // Load saved spatial anchors after a delay to allow tracking to stabilize
+            if (wallAnchorManager != null)
+            {
+                StartCoroutine(LoadAnchorsWithDelay());
+            }
+        }
+        
+        /// <summary>
+        /// Coroutine to load spatial anchors after tracking stabilizes.
+        /// </summary>
+        private IEnumerator LoadAnchorsWithDelay()
+        {
+            // Wait for tracking to be stable (same delay as canvas positioning)
+            yield return new WaitForSeconds(2f);
+            
+            Debug.Log("[GameBootstrap] Loading saved spatial anchors");
+            wallAnchorManager.LoadAndSpawnAnchors();
         }
 
         private void SetupCameraForPassthrough()
@@ -485,7 +504,6 @@ namespace ArtUnbound.Core
 
                 if (displaySession.isCompleted)
                 {
-                    // Completed puzzle: stop timer, hide tray, show full image, PostGamePanel
                     SetState(GameState.PostGame);
                     unifiedMainMenu?.Hide(); // Hide main menu (don't use HideAllPanels - it hides puzzleBoard)
                     var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
