@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329d3c49d1d2d9248b8bac22706c9aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.MR.WallAnchorManager
-  anchorManager: {fileID: 376669978}
+  arAnchorManager: {fileID: 376669978}
   artworkCatalog: {fileID: 11400000, guid: 914ee175299fcf641afa8e569d702e7d, type: 2}
 --- !u!1 &367184304
 GameObject:

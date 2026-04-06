@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interactable
+  - PlacedArtwork
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - PuzzleBoard
   - MRSurface
   - UI_World
-  - 
+  - PlacedArtwork
   - 
   - 
   - 

@@ -6,200 +6,152 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using ArtUnbound.Data;
 using ArtUnbound.Services;
-using ArtUnbound.Gameplay;
+
+using SerializableGuid = UnityEngine.XR.ARSubsystems.SerializableGuid;
 
 namespace ArtUnbound.MR
 {
     /// <summary>
-    /// Manages spatial anchors for artworks hung on walls using Meta Spatial Anchors.
-    /// Handles creating, saving, loading, and spawning anchored artworks with persistence across sessions.
+    /// Manages persistent spatial anchors for artworks hung on walls.
+    /// Uses AR Foundation's ARAnchorManager (TryAddAnchorAsync / TrySaveAnchorAsync /
+    /// TryLoadAnchorAsync) which works correctly with the project's OpenXR setup.
+    /// NOTE: OVRSpatialAnchor was the previous approach but requires OVRManager in the
+    /// scene; this project uses AR Foundation + OpenXR, so OVRManager is absent.
     /// </summary>
     public class WallAnchorManager : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private ARAnchorManager anchorManager;
+        [SerializeField] private ARAnchorManager arAnchorManager;
         [SerializeField] private ArtworkCatalog artworkCatalog;
-        
+
         private SaveDataService saveDataService;
 
-        private Dictionary<Guid, OVRSpatialAnchor> activeAnchors = new Dictionary<Guid, OVRSpatialAnchor>();
+        // artworkId → the live ARAnchor (only for artworks placed this session)
+        private Dictionary<string, ARAnchor> activeAnchorsByArtworkId = new Dictionary<string, ARAnchor>();
+        // artworkId → the frame GameObject parented to the anchor
         private Dictionary<string, GameObject> spawnedArtworks = new Dictionary<string, GameObject>();
 
         public event Action<string, Vector3> OnArtworkAnchored; // artworkId, position
 
         private void Awake()
         {
-            if (anchorManager == null)
-            {
-                anchorManager = FindFirstObjectByType<ARAnchorManager>();
-            }
+            if (arAnchorManager == null)
+                arAnchorManager = FindFirstObjectByType<ARAnchorManager>();
 
-            if (anchorManager == null)
-            {
+            if (arAnchorManager == null)
                 Debug.LogError("[WallAnchor] ARAnchorManager not found. Please add one to the XR Origin.");
-            }
         }
 
-        /// <summary>
-        /// Initializes the WallAnchorManager with the SaveDataService.
-        /// </summary>
         public void Initialize(SaveDataService service)
         {
             saveDataService = service;
             Debug.Log("[WallAnchor] Initialized with SaveDataService");
         }
 
+        // ─────────────────────────────────────────────────────────────────────
+        //  CREATE & SAVE
+        // ─────────────────────────────────────────────────────────────────────
+
         /// <summary>
-        /// Creates a persistent spatial anchor at the specified position and anchors the existing frame.
-        /// Uses Meta Spatial Anchors for persistence across sessions.
+        /// Places existingFrame on the wall and creates a persistent spatial anchor for it.
+        /// Returns true immediately if parameters are valid; anchor save happens asynchronously.
         /// </summary>
-        public bool CreateAnchor(string artworkId, Vector3 worldPosition, Quaternion worldRotation, FrameTier frameTier, Transform existingFrame = null)
+        public bool CreateAnchor(string artworkId, Vector3 worldPosition, Quaternion worldRotation,
+            FrameTier frameTier, Transform existingFrame = null,
+            float boardWidth = 0.5f, float boardHeight = 0.5f)
         {
             if (string.IsNullOrEmpty(artworkId))
             {
                 Debug.LogError("[WallAnchor] Cannot create anchor: artworkId is null or empty");
                 return false;
             }
-            
             if (existingFrame == null)
             {
                 Debug.LogError("[WallAnchor] Cannot create anchor: existingFrame is null");
                 return false;
             }
-            
-            Debug.Log($"[WallAnchor] CreateAnchor called for {artworkId}");
-            Debug.Log($"[WallAnchor] Received frame: {existingFrame.name} at {existingFrame.position}");
-            Debug.Log($"[WallAnchor] Frame rotation: {existingFrame.rotation.eulerAngles}");
-
-            // Create a new GameObject to hold the anchor
-            GameObject anchorObject = new GameObject($"Anchor_{artworkId}");
-            anchorObject.transform.position = worldPosition;
-            anchorObject.transform.rotation = worldRotation;
-
-            Debug.Log($"[WallAnchor] Anchor GameObject created at {worldPosition}, rotation: {worldRotation.eulerAngles}");
-
-            // Add OVRSpatialAnchor component for persistence
-            OVRSpatialAnchor spatialAnchor = anchorObject.AddComponent<OVRSpatialAnchor>();
-            
-            if (spatialAnchor == null)
+            if (arAnchorManager == null)
             {
-                Debug.LogError("[WallAnchor] Failed to create OVRSpatialAnchor component");
-                Destroy(anchorObject);
+                Debug.LogError("[WallAnchor] ARAnchorManager is null, cannot create anchor");
                 return false;
             }
 
-            Debug.Log($"[WallAnchor] OVRSpatialAnchor component added (enabled: {spatialAnchor.enabled}, GameObject active: {anchorObject.activeInHierarchy})");
+            Debug.Log($"[WallAnchor] CreateAnchor called for {artworkId} at {worldPosition}");
 
-            // Save spatial anchor for persistence (UUID will be assigned inside coroutine after Created)
-            StartCoroutine(SaveSpatialAnchorAsync(spatialAnchor, artworkId, frameTier));
-
-            // Parent the frame to the anchor
-            existingFrame.SetParent(anchorObject.transform, true); // Keep world position and rotation
-            
-            // Tag the frame so it can be detected by other systems
+            // Tag the frame and register it immediately so the scene looks correct right away
             existingFrame.tag = "PlacedArtwork";
-            
-            // Store reference
             spawnedArtworks[artworkId] = existingFrame.gameObject;
-            
-            Debug.Log($"[WallAnchor] Anchored frame {existingFrame.name} for {artworkId} at {worldPosition}");
-            Debug.Log($"[WallAnchor] Spatial Anchor will be saved asynchronously (UUID will be logged after Created)");
+
+            // Create anchor asynchronously (fire-and-forget from caller's perspective)
+            DoCreateAndSaveAnchor(artworkId, worldPosition, worldRotation, frameTier,
+                                  existingFrame, boardWidth, boardHeight);
 
             OnArtworkAnchored?.Invoke(artworkId, worldPosition);
-            
             return true;
         }
 
-        /// <summary>
-        /// Coroutine to save the spatial anchor asynchronously and persist to storage.
-        /// </summary>
-        private IEnumerator SaveSpatialAnchorAsync(OVRSpatialAnchor anchor, string artworkId, FrameTier frameTier)
+        private async void DoCreateAndSaveAnchor(string artworkId, Vector3 worldPosition,
+            Quaternion worldRotation, FrameTier frameTier, Transform existingFrame,
+            float boardWidth, float boardHeight)
         {
-            Debug.Log($"[WallAnchor] SaveSpatialAnchorAsync started for {artworkId}, anchor is null: {anchor == null}");
-            
-            if (anchor == null)
-            {
-                Debug.LogError($"[WallAnchor] Anchor is null for {artworkId}, cannot save");
-                yield break;
-            }
-            
-            // CRITICAL: Wait at least 1 frame for Unity to initialize the OVRSpatialAnchor component
-            yield return null;
-            
-            Debug.Log($"[WallAnchor] After first frame wait - GameObject active: {anchor.gameObject.activeInHierarchy}, Component enabled: {anchor.enabled}");
-            
-            int frameCount = 0;
-            int maxWaitFrames = 600; // 10 seconds timeout
-            
-            // Wait for anchor to be created
-            while (!anchor.Created && frameCount < maxWaitFrames)
-            {
-                frameCount++;
-                if (frameCount % 60 == 0) // Log every 60 frames (~1 second)
-                {
-                    Debug.Log($"[WallAnchor] Still waiting for Created... Frame {frameCount}, Created: {anchor.Created}");
-                }
-                yield return null;
-            }
-            
-            if (!anchor.Created)
-            {
-                Debug.LogError($"[WallAnchor] Anchor failed to reach Created state after {frameCount} frames for {artworkId}");
-                Debug.LogError($"[WallAnchor] This may indicate: 1) Scene tracking not active, 2) Position not trackable, 3) Missing permissions");
-                yield break;
-            }
+            // Create a temporary parent so the frame stays visible while we await
+            var tempParent = new GameObject($"TempAnchor_{artworkId}");
+            tempParent.transform.SetPositionAndRotation(worldPosition, worldRotation);
+            existingFrame.SetParent(tempParent.transform, worldPositionStays: true);
 
-            Debug.Log($"[WallAnchor] Anchor created for {artworkId} after {frameCount} frames, UUID: {anchor.Uuid}");
+            // Ask AR Foundation to create a spatial anchor at the wall pose
+            var pose = new UnityEngine.Pose(worldPosition, worldRotation);
+            var addResult = await arAnchorManager.TryAddAnchorAsync(pose);
 
-            // NOW that Created is true, we can safely access the UUID and store the anchor
-            Guid anchorUuid = anchor.Uuid;
-            activeAnchors[anchorUuid] = anchor;
-            
-            Debug.Log($"[WallAnchor] Anchor UUID registered: {anchorUuid}");
-
-            // Save the anchor to device storage for persistence
-            var saveTask = anchor.SaveAnchorAsync();
-            
-            while (!saveTask.IsCompleted)
+            if (!addResult.status.IsSuccess())
             {
-                yield return null;
-            }
-
-            var saveResult = saveTask.GetAwaiter().GetResult();
-            
-            if (saveResult.Success)
-            {
-                Debug.Log($"[WallAnchor] Successfully saved anchor {anchor.Uuid} to device storage for {artworkId}");
-                
-                // Save anchor data to our save system
-                SaveAnchorData(artworkId, anchor.Uuid.ToString(), Vector3.zero, Quaternion.identity, 1f, frameTier);
-            }
-            else
-            {
-                Debug.LogError($"[WallAnchor] Failed to save anchor for {artworkId}: {saveResult.Status}");
-            }
-        }
-
-        /// <summary>
-        /// Saves anchor data to persistent storage.
-        /// </summary>
-        private void SaveAnchorData(string artworkId, string anchorId, Vector3 localPosition, Quaternion localRotation, float scale, FrameTier frameTier)
-        {
-            if (saveDataService == null)
-            {
-                Debug.LogWarning("[WallAnchor] SaveDataService is null, cannot save anchor data");
+                Debug.LogError($"[WallAnchor] TryAddAnchorAsync failed for {artworkId}: {addResult.status}");
+                // Keep temp parent so the artwork stays visible (unsaved)
                 return;
             }
 
-            var anchoredArtwork = new AnchoredArtwork(artworkId, anchorId, localPosition, localRotation, scale, frameTier);
-            saveDataService.AddAnchoredArtwork(anchoredArtwork);
+            ARAnchor anchor = addResult.value;
+            activeAnchorsByArtworkId[artworkId] = anchor;
 
-            Debug.Log($"[WallAnchor] Saved anchor data for {artworkId}");
+            // Re-parent to the real AR anchor (world position stays correct)
+            existingFrame.SetParent(anchor.transform, worldPositionStays: true);
+            Destroy(tempParent);
+
+            Debug.Log($"[WallAnchor] Anchor created for {artworkId}, saving to device storage...");
+
+            // Persist the anchor so it survives across sessions
+            var saveResult = await arAnchorManager.TrySaveAnchorAsync(anchor);
+
+            if (!saveResult.status.IsSuccess())
+            {
+                Debug.LogError($"[WallAnchor] TrySaveAnchorAsync failed for {artworkId}: {saveResult.status}");
+                return;
+            }
+
+            SerializableGuid persistentGuid = saveResult.value;
+            Debug.Log($"[WallAnchor] Anchor saved. Persistent GUID: {persistentGuid.guid}");
+
+            // Record anchor data so we can reload it next session
+            var anchoredArtwork = new AnchoredArtwork(
+                artworkId,
+                persistentGuid.guid.ToString(),
+                Vector3.zero,        // local offset = zero (anchor IS at frame position)
+                Quaternion.identity,
+                1f,
+                frameTier,
+                boardWidth,
+                boardHeight
+            );
+            saveDataService?.AddAnchoredArtwork(anchoredArtwork);
+            Debug.Log($"[WallAnchor] Anchor data saved for {artworkId}");
         }
 
+        // ─────────────────────────────────────────────────────────────────────
+        //  LOAD (called at app startup)
+        // ─────────────────────────────────────────────────────────────────────
+
         /// <summary>
-        /// Loads all saved spatial anchors and spawns artworks at their positions.
-        /// Call this on app startup after Scene API is ready.
+        /// Loads all saved spatial anchors and spawns artwork at each position.
         /// </summary>
         public void LoadAndSpawnAnchors()
         {
@@ -210,7 +162,6 @@ namespace ArtUnbound.MR
             }
 
             var anchoredArtworks = saveDataService.GetAnchoredArtworks();
-            
             if (anchoredArtworks == null || anchoredArtworks.Count == 0)
             {
                 Debug.Log("[WallAnchor] No anchored artworks to load");
@@ -219,195 +170,295 @@ namespace ArtUnbound.MR
 
             Debug.Log($"[WallAnchor] Loading {anchoredArtworks.Count} anchored artworks");
 
-            // Extract UUIDs from saved artworks
-            List<Guid> uuidsToLoad = new List<Guid>();
-            foreach (var artwork in anchoredArtworks)
+            foreach (var artworkData in anchoredArtworks)
             {
-                if (Guid.TryParse(artwork.anchorId, out Guid uuid))
-                {
-                    uuidsToLoad.Add(uuid);
-                    Debug.Log($"[WallAnchor] Added UUID {uuid} for artwork {artwork.artworkId}");
-                }
-                else
-                {
-                    Debug.LogWarning($"[WallAnchor] Failed to parse UUID for artwork {artwork.artworkId}: {artwork.anchorId}");
-                }
+                DoLoadAndSpawnAnchor(artworkData);
             }
+        }
 
-            if (uuidsToLoad.Count == 0)
+        private async void DoLoadAndSpawnAnchor(AnchoredArtwork artworkData)
+        {
+            if (!Guid.TryParse(artworkData.anchorId, out Guid guid))
             {
-                Debug.LogWarning("[WallAnchor] No valid UUIDs found in saved artworks");
+                Debug.LogWarning($"[WallAnchor] Invalid anchor ID for {artworkData.artworkId}: '{artworkData.anchorId}'");
                 return;
             }
 
-            Debug.Log($"[WallAnchor] Starting coroutine to load {uuidsToLoad.Count} UUIDs");
-            // Start coroutine to load and spawn anchors
-            StartCoroutine(LoadUnboundAnchorsCoroutine(uuidsToLoad, anchoredArtworks));
-        }
+            Debug.Log($"[WallAnchor] Loading anchor {guid} for {artworkData.artworkId}");
 
-        /// <summary>
-        /// Coroutine to load unbound anchors and spawn artworks.
-        /// </summary>
-        private IEnumerator LoadUnboundAnchorsCoroutine(List<Guid> uuids, List<AnchoredArtwork> anchoredArtworks)
-        {
-            Debug.Log($"[WallAnchor] LoadUnboundAnchorsCoroutine started with {uuids.Count} UUIDs");
-            
-            // Buffer for unbound anchors
-            List<OVRSpatialAnchor.UnboundAnchor> unboundAnchors = new List<OVRSpatialAnchor.UnboundAnchor>();
+            var savedGuid = new SerializableGuid(guid);
+            var loadResult = await arAnchorManager.TryLoadAnchorAsync(savedGuid);
 
-            Debug.Log($"[WallAnchor] Calling OVRSpatialAnchor.LoadUnboundAnchorsAsync...");
-            
-            // Load unbound anchors by UUID
-            var loadTask = OVRSpatialAnchor.LoadUnboundAnchorsAsync(uuids, unboundAnchors);
-            
-            Debug.Log($"[WallAnchor] LoadUnboundAnchorsAsync task created, waiting for completion...");
-            
-            while (!loadTask.IsCompleted)
+            if (!loadResult.status.IsSuccess())
             {
-                yield return null;
+                Debug.LogError($"[WallAnchor] TryLoadAnchorAsync failed for {artworkData.artworkId}: {loadResult.status}. Removing stale entry.");
+                saveDataService?.RemoveAnchoredArtwork(artworkData.artworkId);
+                return;
             }
 
-            Debug.Log($"[WallAnchor] LoadUnboundAnchorsAsync completed");
+            ARAnchor anchor = loadResult.value;
+            activeAnchorsByArtworkId[artworkData.artworkId] = anchor;
 
-            var loadResult = loadTask.GetAwaiter().GetResult();
-            
-            Debug.Log($"[WallAnchor] Load result - Success: {loadResult.Success}, Status: {loadResult.Status}");
-            
-            if (!loadResult.Success)
+            Debug.Log($"[WallAnchor] Anchor loaded for {artworkData.artworkId}, trackingState: {anchor.trackingState}");
+
+            // Spawn the artwork but keep it hidden until the anchor is fully localized.
+            // Before localization, the anchor transform sits near the tracking origin (camera),
+            // which would make the artwork appear to "follow the headset".
+            GameObject artworkRoot = SpawnArtworkAtAnchor(artworkData, anchor.transform);
+
+            if (artworkRoot != null)
             {
-                Debug.LogError($"[WallAnchor] Failed to load anchors: {loadResult.Status}");
-                yield break;
-            }
-
-            Debug.Log($"[WallAnchor] Successfully loaded {unboundAnchors.Count} unbound anchors");
-
-            // Create a dictionary for quick lookup
-            Dictionary<string, AnchoredArtwork> artworksByAnchorId = new Dictionary<string, AnchoredArtwork>();
-            foreach (var artwork in anchoredArtworks)
-            {
-                artworksByAnchorId[artwork.anchorId] = artwork;
-            }
-
-            // Localize and bind each anchor
-            foreach (var unboundAnchor in unboundAnchors)
-            {
-                string anchorId = unboundAnchor.Uuid.ToString();
-                
-                if (!artworksByAnchorId.TryGetValue(anchorId, out AnchoredArtwork artworkData))
+                if (anchor.trackingState == TrackingState.Tracking)
                 {
-                    Debug.LogWarning($"[WallAnchor] Found anchor {anchorId} but no matching artwork data");
-                    continue;
+                    // Already localized — show immediately
+                    artworkRoot.SetActive(true);
+                    Debug.Log($"[WallAnchor] Anchor already tracking, artwork shown for {artworkData.artworkId}");
                 }
-
-                // Start localization
-                StartCoroutine(LocalizeAndBindAnchor(unboundAnchor, artworkData));
+                else
+                {
+                    // Hide until the anchor localizes to avoid the floating-near-head artifact
+                    artworkRoot.SetActive(false);
+                    Debug.Log($"[WallAnchor] Waiting for anchor to localize before showing {artworkData.artworkId}");
+                    StartCoroutine(WaitForAnchorTracking(anchor, artworkRoot, artworkData.artworkId));
+                }
             }
         }
 
-        /// <summary>
-        /// Coroutine to localize an unbound anchor and bind it to a GameObject.
-        /// </summary>
-        private IEnumerator LocalizeAndBindAnchor(OVRSpatialAnchor.UnboundAnchor unboundAnchor, AnchoredArtwork artworkData)
+        private IEnumerator WaitForAnchorTracking(ARAnchor anchor, GameObject artworkRoot, string artworkId)
         {
-            Debug.Log($"[WallAnchor] Localizing anchor for artwork {artworkData.artworkId}");
+            const float timeout = 30f;
+            float elapsed = 0f;
 
-            // Start localization
-            var localizeTask = unboundAnchor.LocalizeAsync();
-            
-            while (!localizeTask.IsCompleted)
+            while (anchor != null && anchor.trackingState != TrackingState.Tracking && elapsed < timeout)
             {
                 yield return null;
+                elapsed += Time.deltaTime;
             }
 
-            bool localized = localizeTask.GetAwaiter().GetResult();
-            
-            if (!localized)
-            {
-                Debug.LogError($"[WallAnchor] Failed to localize anchor for {artworkData.artworkId}");
-                yield break;
-            }
+            if (artworkRoot == null) yield break;
 
-            Debug.Log($"[WallAnchor] Successfully localized anchor for {artworkData.artworkId}");
+            if (anchor != null && anchor.trackingState == TrackingState.Tracking)
+                Debug.Log($"[WallAnchor] Anchor localized for {artworkId}, showing artwork");
+            else
+                Debug.LogWarning($"[WallAnchor] Anchor did not localize after {timeout}s for {artworkId}, showing anyway");
 
-            // Create GameObject at anchor position
-            GameObject anchorObject = new GameObject($"Anchor_{artworkData.artworkId}");
-            OVRSpatialAnchor spatialAnchor = anchorObject.AddComponent<OVRSpatialAnchor>();
-
-            // Bind the unbound anchor to the OVRSpatialAnchor component
-            unboundAnchor.BindTo(spatialAnchor);
-
-            // Wait for binding to complete
-            while (!spatialAnchor.Created)
-            {
-                yield return null;
-            }
-
-            // Store the anchor
-            activeAnchors[spatialAnchor.Uuid] = spatialAnchor;
-
-            // Spawn the artwork at this anchor
-            SpawnArtworkAtAnchor(artworkData, anchorObject.transform);
+            artworkRoot.SetActive(true);
         }
 
-        /// <summary>
-        /// Spawns an artwork at the given anchor transform.
-        /// </summary>
-        private void SpawnArtworkAtAnchor(AnchoredArtwork artworkData, Transform anchorTransform)
+        // ─────────────────────────────────────────────────────────────────────
+        //  SPAWN (reconstruct frame at anchor)
+        // ─────────────────────────────────────────────────────────────────────
+
+        /// <returns>The root GameObject of the spawned artwork (inactive — caller decides when to show it).</returns>
+        private GameObject SpawnArtworkAtAnchor(AnchoredArtwork artworkData, Transform anchorTransform)
         {
             if (artworkCatalog == null)
             {
                 Debug.LogError("[WallAnchor] Missing ArtworkCatalog reference for spawning artwork");
-                return;
+                return null;
             }
 
-            // Find the artwork definition
             ArtworkDefinition artworkDef = artworkCatalog.artworks.Find(a => a.artworkId == artworkData.artworkId);
             if (artworkDef == null)
             {
                 Debug.LogError($"[WallAnchor] Artwork definition not found for {artworkData.artworkId}");
-                return;
+                return null;
             }
 
-            // TODO: Implement full artwork spawning with puzzle pieces
-            // For now, create a simple placeholder
-            GameObject artworkObject = GameObject.CreatePrimitive(PrimitiveType.Quad);
-            artworkObject.name = $"PlacedArtwork_{artworkData.artworkId}";
-            artworkObject.transform.SetParent(anchorTransform, false);
-            artworkObject.transform.localPosition = artworkData.localPosition.ToVector3();
-            artworkObject.transform.localRotation = artworkData.localRotation.ToQuaternion();
-            artworkObject.transform.localScale = Vector3.one * artworkData.scale * 0.5f;
-            artworkObject.tag = "PlacedArtwork";
+            float w = artworkData.boardWidth > 0f ? artworkData.boardWidth : 0.5f;
+            float h = artworkData.boardHeight > 0f ? artworkData.boardHeight : 0.5f;
 
-            if (artworkDef.puzzleTexture != null)
+            // Root container (mirrors the SlotRoot clone structure)
+            var root = new GameObject($"PlacedArtwork_{artworkData.artworkId}");
+            root.tag = "PlacedArtwork";
+            root.transform.SetParent(anchorTransform, worldPositionStays: false);
+            root.transform.localPosition = artworkData.localPosition.ToVector3();
+            root.transform.localRotation = artworkData.localRotation.ToQuaternion();
+
+            // Image quad (same UV mapping as PuzzleBoard.ShowFullImageReveal)
+            var quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            quad.name = "FullImageReveal";
+            Destroy(quad.GetComponent<Collider>());
+            quad.transform.SetParent(root.transform, worldPositionStays: false);
+            quad.transform.localPosition = new Vector3(0f, 0f, 0.0155f);
+            quad.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+            quad.transform.localScale = new Vector3(w, h, 1f);
+
+            // Resolve texture — same fallback chain as PuzzleBoard
+            Texture texture = artworkDef.puzzleTexture != null
+                ? (Texture)artworkDef.puzzleTexture
+                : artworkDef.fullImage?.texture;
+
+            if (texture != null)
             {
-                var renderer = artworkObject.GetComponent<Renderer>();
-                if (renderer != null)
-                    renderer.material.mainTexture = artworkDef.puzzleTexture;
+                var quadRenderer = quad.GetComponent<Renderer>();
+
+                // Same shader search order as PuzzleBoard.ShowFullImageReveal
+                Shader shader = Shader.Find("Universal Render Pipeline/Unlit");
+                if (shader == null) shader = Shader.Find("Unlit/Texture");
+                if (shader == null) shader = Shader.Find("Sprites/Default"); // always present on device
+
+                if (shader != null)
+                {
+                    var mat = new Material(shader);
+                    if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", texture);
+                    if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", texture);
+                    // Mirror U — same as PuzzleBoard.ApplyCompletedFullImageTextureMapping
+                    if (mat.HasProperty("_BaseMap_ST")) mat.SetVector("_BaseMap_ST", new Vector4(-1f, 1f, 1f, 0f));
+                    if (mat.HasProperty("_MainTex_ST")) mat.SetVector("_MainTex_ST", new Vector4(-1f, 1f, 1f, 0f));
+                    quadRenderer.material = mat;
+                    Debug.Log($"[WallAnchor] Image material assigned using shader '{shader.name}' for {artworkData.artworkId}");
+                }
+                else
+                {
+                    Debug.LogError($"[WallAnchor] No usable shader found for artwork image ({artworkData.artworkId})");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"[WallAnchor] No texture on artwork definition for {artworkData.artworkId}");
             }
 
-            spawnedArtworks[artworkData.artworkId] = artworkObject;
-            
-            Debug.Log($"[WallAnchor] Spawned artwork {artworkData.artworkId} at anchor");
+            // Frame bars (same as PuzzleBoard.CreateFrameAroundImage)
+            BuildFrameBars(root.transform, w, h, artworkData.frameTier);
+
+            // BoxCollider so the artwork can be re-grabbed
+            var col = root.AddComponent<BoxCollider>();
+            col.size = new Vector3(w, h, 0.05f);
+
+            spawnedArtworks[artworkData.artworkId] = root;
+            Debug.Log($"[WallAnchor] Spawned artwork {artworkData.artworkId} ({w:F3}×{h:F3}m) at anchor (hidden until tracking)");
+            return root;
         }
 
+        private void BuildFrameBars(Transform parent, float w, float h, FrameTier tier)
+        {
+            Material mat = GetFrameMaterial(tier);
+            const float thickness = 0.02f;
+            const float depth = 0.02f;
+
+            var frameRoot = new GameObject("FullImageRevealFrame");
+            frameRoot.transform.SetParent(parent, worldPositionStays: false);
+            frameRoot.transform.localPosition = new Vector3(0f, 0f, 0.015f);
+            frameRoot.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+
+            CreateFrameBar("FrameTop",    frameRoot.transform, w + thickness * 2f, thickness, depth, 0f,             h / 2f + thickness / 2f, mat);
+            CreateFrameBar("FrameBottom", frameRoot.transform, w + thickness * 2f, thickness, depth, 0f,            -h / 2f - thickness / 2f, mat);
+            CreateFrameBar("FrameLeft",   frameRoot.transform, thickness,          h,          depth, -w / 2f - thickness / 2f, 0f, mat);
+            CreateFrameBar("FrameRight",  frameRoot.transform, thickness,          h,          depth,  w / 2f + thickness / 2f, 0f, mat);
+        }
+
+        private static void CreateFrameBar(string barName, Transform parent, float width, float height,
+            float depth, float localX, float localY, Material mat)
+        {
+            var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.name = barName;
+            Destroy(cube.GetComponent<Collider>());
+            cube.transform.SetParent(parent, worldPositionStays: false);
+            cube.transform.localPosition = new Vector3(localX, localY, 0f);
+            cube.transform.localRotation = Quaternion.identity;
+            cube.transform.localScale = new Vector3(width, height, depth);
+            if (mat != null)
+                cube.GetComponent<Renderer>().sharedMaterial = mat;
+        }
+
+        private Material GetFrameMaterial(FrameTier tier)
+        {
+            // Minimal fallback materials — the full material set is on PuzzleBoard
+            // which is not available here; we use solid colors as stand-ins.
+            Color color = tier switch
+            {
+                FrameTier.Bronce   => new Color(0.55f, 0.35f, 0.15f),
+                FrameTier.Plata    => new Color(0.75f, 0.75f, 0.78f),
+                FrameTier.Oro      => new Color(0.85f, 0.72f, 0.20f),
+                FrameTier.Platinum => new Color(0.90f, 0.90f, 0.95f),
+                _                  => new Color(0.55f, 0.35f, 0.15f),
+            };
+            Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+            if (shader == null) return null;
+            var mat = new Material(shader);
+            if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", color);
+            else mat.color = color;
+            return mat;
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
+        //  REPOSITION
+        // ─────────────────────────────────────────────────────────────────────
+
         /// <summary>
-        /// Removes an anchored artwork from the scene and save data.
+        /// Updates the world position of an already-placed artwork by erasing the old
+        /// anchor and creating a new one at the new position.
         /// </summary>
+        public bool UpdateAnchorPosition(string artworkId, Vector3 newPosition, Quaternion newRotation)
+        {
+            if (!spawnedArtworks.TryGetValue(artworkId, out GameObject artworkObject))
+            {
+                Debug.LogWarning($"[WallAnchor] Cannot update: artwork {artworkId} not found");
+                return false;
+            }
+
+            var artworks = saveDataService?.GetAnchoredArtworks();
+            var existingData = artworks?.Find(a => a.artworkId == artworkId);
+
+            artworkObject.transform.SetParent(null, worldPositionStays: true);
+            artworkObject.transform.SetPositionAndRotation(newPosition, newRotation);
+
+            DoEraseAndRecreate(artworkId, newPosition, newRotation,
+                existingData?.frameTier ?? FrameTier.Bronce,
+                artworkObject.transform,
+                existingData?.boardWidth ?? 0.5f,
+                existingData?.boardHeight ?? 0.5f,
+                existingData?.anchorId);
+            return true;
+        }
+
+        private async void DoEraseAndRecreate(string artworkId, Vector3 newPosition,
+            Quaternion newRotation, FrameTier frameTier, Transform existingFrame,
+            float boardWidth, float boardHeight, string oldAnchorId)
+        {
+            // Erase old persistent anchor
+            if (!string.IsNullOrEmpty(oldAnchorId) && Guid.TryParse(oldAnchorId, out Guid oldGuid))
+            {
+                var eraseStatus = await arAnchorManager.TryEraseAnchorAsync(new SerializableGuid(oldGuid));
+                if (!eraseStatus.IsSuccess())
+                    Debug.LogWarning($"[WallAnchor] TryEraseAnchorAsync failed for old anchor of {artworkId}: {eraseStatus}");
+
+                saveDataService?.RemoveAnchoredArtwork(artworkId);
+            }
+
+            if (activeAnchorsByArtworkId.TryGetValue(artworkId, out ARAnchor oldAnchor) && oldAnchor != null)
+            {
+                existingFrame.SetParent(null, worldPositionStays: true);
+                // ARAnchorManager will clean up oldAnchor automatically
+                activeAnchorsByArtworkId.Remove(artworkId);
+            }
+
+            DoCreateAndSaveAnchor(artworkId, newPosition, newRotation, frameTier,
+                                  existingFrame, boardWidth, boardHeight);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
+        //  REMOVE
+        // ─────────────────────────────────────────────────────────────────────
+
         public bool RemoveAnchoredArtwork(string artworkId)
         {
-            // Remove from scene
             if (spawnedArtworks.TryGetValue(artworkId, out GameObject artworkObject))
             {
                 Destroy(artworkObject);
                 spawnedArtworks.Remove(artworkId);
             }
 
-            // Remove from save data
             if (saveDataService != null)
             {
-                bool removed = saveDataService.RemoveAnchoredArtwork(artworkId);
-                
-                if (removed)
+                // Erase persistent anchor in background
+                var artworks = saveDataService.GetAnchoredArtworks();
+                var data = artworks?.Find(a => a.artworkId == artworkId);
+                if (data != null && Guid.TryParse(data.anchorId, out Guid guid))
+                    DoEraseAnchor(new SerializableGuid(guid));
+
+                if (saveDataService.RemoveAnchoredArtwork(artworkId))
                 {
                     Debug.Log($"[WallAnchor] Removed anchored artwork {artworkId}");
                     return true;
@@ -416,116 +467,30 @@ namespace ArtUnbound.MR
 
             return false;
         }
-        
-        /// <summary>
-        /// Updates the position and rotation of an existing anchored artwork.
-        /// Used when the user repositions an already-placed artwork.
-        /// Note: OVRSpatialAnchor position updates require re-saving the anchor.
-        /// </summary>
-        public bool UpdateAnchorPosition(string artworkId, Vector3 newPosition, Quaternion newRotation)
+
+        private async void DoEraseAnchor(SerializableGuid guid)
         {
-            if (!spawnedArtworks.ContainsKey(artworkId))
-            {
-                Debug.LogWarning($"[WallAnchor] Cannot update: artwork {artworkId} not found");
-                return false;
-            }
-            
-            GameObject artworkObject = spawnedArtworks[artworkId];
-            Transform anchorTransform = artworkObject.transform.parent;
-            
-            if (anchorTransform == null)
-            {
-                Debug.LogError($"[WallAnchor] Artwork {artworkId} has no anchor parent");
-                return false;
-            }
-            
-            // Get the OVRSpatialAnchor component
-            OVRSpatialAnchor spatialAnchor = anchorTransform.GetComponent<OVRSpatialAnchor>();
-            if (spatialAnchor == null)
-            {
-                Debug.LogError($"[WallAnchor] Anchor for {artworkId} has no OVRSpatialAnchor component");
-                return false;
-            }
-            
-            // Update the anchor's position and rotation
-            anchorTransform.position = newPosition;
-            anchorTransform.rotation = newRotation;
-            
-            Debug.Log($"[WallAnchor] Updated anchor for {artworkId} to position {newPosition}, rotation {newRotation.eulerAngles}");
-            
-            // Re-save the anchor with new position
-            StartCoroutine(ResaveSpatialAnchor(spatialAnchor, artworkId));
-            
-            return true;
-        }
-        
-        /// <summary>
-        /// Coroutine to re-save a spatial anchor after repositioning.
-        /// </summary>
-        private IEnumerator ResaveSpatialAnchor(OVRSpatialAnchor anchor, string artworkId)
-        {
-            // Erase the old anchor from storage
-            var eraseTask = anchor.EraseAnchorAsync();
-            while (!eraseTask.IsCompleted)
-            {
-                yield return null;
-            }
-            
-            var eraseResult = eraseTask.GetAwaiter().GetResult();
-            
-            if (!eraseResult.Success)
-            {
-                Debug.LogWarning($"[WallAnchor] Failed to erase old anchor for {artworkId}, attempting save anyway");
-            }
-            
-            // Save the anchor with new position
-            var saveTask = anchor.SaveAnchorAsync();
-            while (!saveTask.IsCompleted)
-            {
-                yield return null;
-            }
-            
-            var saveResult = saveTask.GetAwaiter().GetResult();
-            
-            if (saveResult.Success)
-            {
-                Debug.Log($"[WallAnchor] Successfully re-saved anchor for {artworkId}");
-            }
-            else
-            {
-                Debug.LogError($"[WallAnchor] Failed to re-save anchor for {artworkId}: {saveResult.Status}");
-            }
-        }
-        
-        /// <summary>
-        /// Gets the artwork GameObject for a given artworkId.
-        /// Used to check if an artwork is already placed and to enable re-grabbing.
-        /// </summary>
-        public GameObject GetPlacedArtwork(string artworkId)
-        {
-            if (spawnedArtworks.TryGetValue(artworkId, out GameObject artworkObject))
-            {
-                return artworkObject;
-            }
-            return null;
+            var status = await arAnchorManager.TryEraseAnchorAsync(guid);
+            if (!status.IsSuccess())
+                Debug.LogWarning($"[WallAnchor] DoEraseAnchor failed: {status}");
         }
 
-        /// <summary>
-        /// Gets all currently anchored artwork IDs.
-        /// </summary>
+        // ─────────────────────────────────────────────────────────────────────
+        //  QUERIES
+        // ─────────────────────────────────────────────────────────────────────
+
+        public GameObject GetPlacedArtwork(string artworkId)
+        {
+            spawnedArtworks.TryGetValue(artworkId, out GameObject obj);
+            return obj;
+        }
+
         public List<string> GetAnchoredArtworkIds()
         {
             var ids = new List<string>();
-            
             if (saveDataService != null)
-            {
-                var anchoredArtworks = saveDataService.GetAnchoredArtworks();
-                foreach (var artwork in anchoredArtworks)
-                {
-                    ids.Add(artwork.artworkId);
-                }
-            }
-
+                foreach (var a in saveDataService.GetAnchoredArtworks())
+                    ids.Add(a.artworkId);
             return ids;
         }
     }

@@ -1620,6 +1620,15 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
+        /// Returns the board dimensions in meters. Valid after a puzzle is initialized.
+        /// </summary>
+        public void GetBoardDimensions(out float width, out float height)
+        {
+            width = boardWidthM;
+            height = boardHeightM;
+        }
+
+        /// <summary>
         /// Hides the scroll buttons (called when puzzle is complete)
         /// </summary>
         public void HideScrollButtons()

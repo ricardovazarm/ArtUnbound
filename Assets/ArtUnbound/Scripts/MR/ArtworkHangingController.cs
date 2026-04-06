@@ -176,13 +176,20 @@ namespace ArtUnbound.MR
             }
             else if (anchorManager != null)
             {
+                // Get board dimensions for persistence/reconstruction
+                float boardW = 0.5f, boardH = 0.5f;
+                if (puzzleBoard != null)
+                    puzzleBoard.GetBoardDimensions(out boardW, out boardH);
+
                 // Create new anchor
                 bool success = anchorManager.CreateAnchor(
                     currentArtworkId,
                     offsetPosition,
                     wallRotation,
                     currentFrameTier,
-                    frameClone
+                    frameClone,
+                    boardW,
+                    boardH
                 );
                 
                 if (success)
@@ -344,12 +351,18 @@ namespace ArtUnbound.MR
 
             if (anchorManager != null && completedFrame != null)
             {
+                float boardW = 0.5f, boardH = 0.5f;
+                if (puzzleBoard != null)
+                    puzzleBoard.GetBoardDimensions(out boardW, out boardH);
+
                 bool success = anchorManager.CreateAnchor(
                     currentArtworkId,
                     completedFrame.position,
                     completedFrame.rotation,
                     currentFrameTier,
-                    completedFrame  // Pass the existing frame transform
+                    completedFrame,
+                    boardW,
+                    boardH
                 );
 
                 if (success)

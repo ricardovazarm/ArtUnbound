@@ -11,10 +11,12 @@ namespace ArtUnbound.Data
     public class AnchoredArtwork
     {
         public string artworkId;
-        public string anchorId;           // UUID of the AR Anchor
+        public string anchorId;           // Persistent GUID from ARAnchorManager.TrySaveAnchorAsync
         public SerializableVector3 localPosition;  // Position relative to anchor
         public SerializableQuaternion localRotation; // Rotation relative to anchor
         public float scale = 1f;
+        public float boardWidth = 0.5f;   // Board width in meters (for reconstruction)
+        public float boardHeight = 0.5f;  // Board height in meters (for reconstruction)
         public FrameTier frameTier;
         public long placedTimestamp;      // DateTime.Ticks
 
@@ -29,13 +31,15 @@ namespace ArtUnbound.Data
             placedTimestamp = DateTime.UtcNow.Ticks;
         }
 
-        public AnchoredArtwork(string artworkId, string anchorId, Vector3 position, Quaternion rotation, float scale, FrameTier tier)
+        public AnchoredArtwork(string artworkId, string anchorId, Vector3 position, Quaternion rotation, float scale, FrameTier tier, float boardWidth = 0.5f, float boardHeight = 0.5f)
         {
             this.artworkId = artworkId;
             this.anchorId = anchorId;
             this.localPosition = new SerializableVector3(position);
             this.localRotation = new SerializableQuaternion(rotation);
             this.scale = scale;
+            this.boardWidth = boardWidth;
+            this.boardHeight = boardHeight;
             this.frameTier = tier;
             this.placedTimestamp = DateTime.UtcNow.Ticks;
         }

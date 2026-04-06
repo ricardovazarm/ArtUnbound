@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Engine**: Unity 6 LTS (6000.3.1f1)
 - **Target**: Meta Quest 3 / Meta Quest Pro (Android, MR passthrough)
-- **Key packages**: XR Hands (`com.unity.xr.hands`), Meta OpenXR 2.1.0, Meta XR Core SDK 83.0.1, AR Foundation, XR Interaction Toolkit
+- **Key packages**: XR Hands (`com.unity.xr.hands`), Meta XR All-in-One SDK v85.0.0, OpenXR, AR Foundation, XR Interaction Toolkit
 
 ## Build & Development
 
@@ -69,21 +69,36 @@ Each piece edge is `PieceEdgeState`: `Flat` (border) | `Positive` (tab out) | `N
 
 **ScriptableObjects** (in `Assets/ArtUnbound/Data/`):
 - `ArtworkCatalog.asset` — master list of all `ArtworkDefinition` assets
-- `PuzzleConfig.asset` — snap distance, piece size (5 cm), thickness (0.5 cm), difficulty counts
-- `FrameConfigSet.asset` — frame tier thresholds and materials
+- `PuzzleConfig.asset` — snap distance (3cm planar, 5cm depth), piece size (5 cm), thickness (0.5 cm), difficulty counts
+- `FrameConfigSet.asset` — frame tier materials (optional, has fallback materials in PuzzleBoard)
+- `MusicLibrary.asset` — ordered list of music tracks with title/artist metadata; `AudioManager` fires `OnTrackChanged` when switching tracks (used by `PuzzleHUDController`)
 
-**Runtime save data** serialized as JSON to `Application.persistentDataPath/save.json`. Uses `Newtonsoft.Json` (not `JsonUtility`) because `SaveData` uses `Dictionary<string, ArtworkProgress>`.
+**Runtime save data** serialized as JSON to `Application.persistentDataPath/save.json`. Uses `Newtonsoft.Json` (not `JsonUtility`) because `SaveData` uses `Dictionary<string, ArtworkProgress>`. `GameSettings` (audio volumes, haptics, help mode default, snap distance) is persisted inside `SaveData`.
 
-**Score formula**: `score = floor((pieceCount × 100 / timeSec) × difficultyMultiplier × helpFactor)`
-- Difficulty multipliers: 64→1.0×, 144→1.5×, 256→2.0×, 512→3.0×
-- Help penalty: ×0.5 if help mode was used
-- Frame tiers: Madera(0), Bronce(50), Plata(100), Oro(200+no-help), Ebano(300+no-help+256+pieces)
+**Scoring & Frame Tiers (SIMPLIFIED SYSTEM)**:
+- **Scoring is obsolete** — only completion TIME matters now (recorded per artwork + piece count)
+- **Frame tiers are determined by DIFFICULTY SELECTED**, not by score:
+  - **Easy** (64 pieces) → **Bronce** frame
+  - **Normal** (144 pieces) → **Plata** frame
+  - **Hard** (256 pieces) → **Oro** frame
+  - **Expert** (512 pieces) → **Platinum** frame
+- Logic lives in `GameBootstrap.GetFrameTierFromDifficultyIndex()`
+- `ScoringController` is kept for backward compatibility but marked as obsolete
+- `FrameConfigSet` is OPTIONAL — if not configured or materials missing, `PuzzleBoard` uses fallback materials (`frameBronceMaterial`, `framePlataMaterial`, `frameOroMaterial`, `frameEbanoMaterial`)
 
 ### UI Architecture
 
 All UI panels extend a common show/hide pattern. `GameBootstrap.HideAllPanels()` calls `.Hide()` on all controllers before showing the relevant one. UI lives on a World Space canvas positioned ergonomically at startup (`PositionCanvasWithDelay` coroutine waits for `Camera.main.transform.position.y > 0.5f`).
 
-Scroll for the piece tray uses **UI buttons** (not air-swipe) — swipe detection is implemented but intentionally disabled in `DetectSwipe()` to avoid accidental triggers.
+**Unified Main Menu** (`UnifiedMainMenuController`) handles the `ArtworkSelection` state as a single curved MR panel with three sub-views: artwork catalog (3×3 grid with pagination and All/InProgress/Completed filters), gallery of hung artworks, and artwork detail (difficulty buttons + per-difficulty progress sliders). This replaces the older separate screen approach.
+
+**In-Game HUD** (`PuzzleHUDController`) displays during `Playing` state: artwork title/artist/description, full reference image in the left zone, timer, piece progress (Total/Correct/Incorrect), current music track (title – artist from `MusicLibrary`), room wall detection count, and a quit button.
+
+**Milestone Panel** (`PuzzleAchievementsController`) shows contextual messages when the player completes a row, column, edge, or full frame. Messages are configurable strings (Spanish). Tracks which rows/columns/edges have been completed to avoid duplicate notifications.
+
+**Piece Tray** uses `PiecesPanelController` for pagination UI (page indicator + scroll buttons). The actual 3D world-space scroll buttons are `TrayScrollButtons` (↑/↓ arrows). Swipe detection is implemented but intentionally disabled in `DetectSwipe()` to avoid accidental triggers.
+
+**UI Theme System**: `UIButtonTheme` (`#896C4A` normal, `#d4c089` hover/selected) is the centralized button color source. `UIButtonStatefullTheme` applies theming to `StatefulButton` components differently. `ButtonHoverColor` drives hover transitions. Apply these components rather than setting colors directly on buttons.
 
 ## Adding New Artworks
 
@@ -100,13 +115,48 @@ See `docs/Guia-Agregar-Pinturas.md` for the full guide. Summary:
 - **Piece materials are created at runtime** using shader discovery order: URP Lit → Standard → Mobile/Diffuse
 - **Swipe-based scroll is disabled** — use the `ScrollLeft()`/`ScrollRight()` buttons on `PieceScrollController` instead
 - `SaveDataService.SaveIfDirty()` is called on `OnApplicationPause` and `OnApplicationQuit` for auto-save
-- **Artwork Hanging System**: When a puzzle is completed, players can grab the frame with a pinch gesture, and it will attach to their hand. The system uses:
-  - `ArtworkHangingController` (MR namespace) — Main orchestrator managing the state flow (Idle → Grabbed → Previewing → Placing → Placed)
-  - `HandAttachmentController` (MR namespace) — Makes the frame follow the hand smoothly with configurable offset and scale
-  - `WallPlacementDetector` (MR namespace) — Raycasts from the frame to detect valid wall surfaces and shows a ghost preview (green=valid, red=invalid)
-  - `WallAnchorManager` (MR namespace) — Creates AR anchors and persists them to `SaveData.anchoredArtworks` (note: full spatial anchor persistence across sessions requires Meta Spatial Anchor API integration)
-  - `PuzzleBoard.GetCompletedFrameTransform()` and `EnableFrameInteraction()` expose the completed frame for grabbing
-  - Integration happens in `GameBootstrap.OnPlaceArtworkRequested()` which is called from `PostGameController` when the player clicks the placement button
+- **`PieceEffectsManager`** is a singleton (`Feedback` namespace) that spawns particle bursts on correct snaps and milestone completions — reference it via `PieceEffectsManager.Instance`
+- **`HelpModeController`** (Gameplay) is always active (help is not an opt-in toggle at runtime despite the save flag); the help penalty is applied at scoring time based on `PuzzleSessionData.helpModeUsed`
+- **Spatial permissions** are requested at startup by `SpatialPermissionService` (MR namespace); the Android manifest modifier `SpatialPermissionManifestModifier` (Editor) injects the required permissions on build
+- **`IndexTipFollower`** (Input namespace) attaches to the Poke Interactor and tracks the index finger tip via `XRHandSubsystem` — required for the raycast fallback in `InteractionManager`
+- **Grab radius for pieces**: 4cm (increased from 2.5cm for easier interaction)
+- **Snap tolerance**: 3cm planar distance, 5cm perpendicular depth (increased from 4cm for more forgiving placement)
+
+### Artwork Hanging System (Meta Spatial Anchors)
+
+When a puzzle is completed, players can grab the completed frame with a pinch gesture and place it on a real wall. The system uses **Meta Spatial Anchors (OVRSpatialAnchor)** for persistent placement across sessions.
+
+**Key Components**:
+- **`ArtworkHangingController`** (MR namespace) — Main orchestrator; enables frame grabbing after completion
+- **`InteractionManager`** (Input namespace) — Detects pinch on completed frame (tagged "PlacedArtwork"), creates clone for dragging
+- **`GrabbableFrame`** (MR namespace) — Component added to frames to make them interactive; clones the frame on grab
+- **`WallPlacementDetector`** (MR namespace) — Prioritizes AR vertical planes (`ARPlaneManager`), calculates correct "face user" rotation
+- **`WallAnchorManager`** (MR namespace) — Creates/saves/loads `OVRSpatialAnchor` instances for persistence
+- **`GameBootstrap.OnFrameGrabbed/OnFramePlaced/OnPlacementCancelled`** — Manages UI visibility during placement flow
+
+**Placement Flow**:
+1. User completes puzzle → `PostGameController` shown with results
+2. User pinches completed frame → `InteractionManager.HandlePinchStart()` detects it
+3. Frame clone created, original hidden, all UI panels hidden
+4. Clone follows hand, dynamically rotates to face nearest wall during drag (`UpdateFrameRotationToNearestWall`)
+5. On release near wall (5mm from surface) → `OVRSpatialAnchor` created, clone parented to anchor, anchor saved asynchronously
+6. On release away from wall → clone destroyed, original frame + UI panels restored
+
+**Repositioning**:
+- Already-placed artworks (tagged "PlacedArtwork") can be grabbed again
+- `InteractionManager` dynamically adds `GrabbableFrame` to them
+- On release, calls `WallAnchorManager.UpdateAnchorPosition()` which erases old anchor and saves new one
+
+**Persistence**:
+- Anchors are saved to device storage via `OVRSpatialAnchor.SaveAnchorAsync()`
+- `WallAnchorManager.LoadAndSpawnAnchors()` is called 2 seconds after app start (in `GameBootstrap.LoadAnchorsWithDelay()`)
+- Uses `OVRSpatialAnchor.LoadUnboundAnchorsAsync()` → `LocalizeAsync()` → `BindTo()` workflow
+- Currently spawns simple placeholder quads; TODO: spawn full reconstructed puzzle frames
+
+**Android Permissions**:
+- `SpatialAnchorManifestModifier.cs` (Editor folder) automatically adds required permissions to AndroidManifest.xml on build:
+  - `com.oculus.permission.USE_ANCHOR_API`
+  - `com.oculus.feature.SPATIAL_ANCHOR_SUPPORT`
 
 ## Documentation
 

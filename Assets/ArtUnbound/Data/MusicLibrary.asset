@@ -28,3 +28,12 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: e4b31485ae79e3e418df3d79c1fe1cd2, type: 3}
     title: Prelude in C major, BWV 846
     artist: Johann Sebastian Bach
+  - clip: {fileID: 8300000, guid: a6bebcdf386161743ac0d2274950143d, type: 3}
+    title: "Bagatelle no. 25 ''F\xFCr Elise'', WoO 59"
+    artist: Ludwig van Beethoven
+  - clip: {fileID: 8300000, guid: 7d739e876ada3374b9bc0f336ad4f288, type: 3}
+    title: Piano Sonata no. 8 in C minor 'Pathetique', Op. 13 - III. Rondo - Allegro
+    artist: Ludwig van Beethoven
+  - clip: {fileID: 8300000, guid: 03bce645abea85e48ba8925ac0d2ebc1, type: 3}
+    title: Piano Sonata no. 11, K. 331 - III. Alla Turca
+    artist: Wolfgang Amadeus Mozart
