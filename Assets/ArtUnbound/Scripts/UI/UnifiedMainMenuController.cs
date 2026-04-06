@@ -483,11 +483,12 @@ namespace ArtUnbound.UI
                 artworkCard.TitleText.text = artwork.title;
             }
 
-            // Add click listener
+            // Add click listener — pass the card transform so SelectArtwork can fire the trail
             var button = card.GetComponent<Button>();
             if (button != null)
             {
-                button.onClick.AddListener(() => SelectArtwork(artwork));
+                var cardTransform = card.transform;
+                button.onClick.AddListener(() => SelectArtwork(artwork, cardTransform));
             }
 
             // Show progress percentage
@@ -527,12 +528,21 @@ namespace ArtUnbound.UI
         #endregion
 
         #region Artwork Selection & Detail
-        private void SelectArtwork(ArtworkDefinition artwork)
+        private void SelectArtwork(ArtworkDefinition artwork, Transform cardTransform = null)
         {
             PlayButtonClick();
             selectedArtwork = artwork;
             UpdateDetailPanel();
-            
+
+            // Fire attention trail from the selected card to the detail panel
+            if (cardTransform != null && detailPanel != null &&
+                ArtUnbound.Feedback.SelectionTrailController.Instance != null)
+            {
+                Vector3 origin = cardTransform.position;
+                Vector3 destination = detailPanel.transform.position;
+                ArtUnbound.Feedback.SelectionTrailController.Instance.PlayTrail(origin, destination);
+            }
+
             Debug.Log($"[UnifiedMainMenu] Selected artwork: {artwork.title}");
         }
 
