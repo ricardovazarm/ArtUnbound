@@ -100,6 +100,14 @@ namespace ArtUnbound.Gameplay
         private readonly HashSet<int> completedEdges = new HashSet<int>(); // 0=top, 1=bottom, 2=left, 3=right
         private bool allEdgesCelebrated;
         private Texture2D currentTexture;
+
+        // Edge-state arrays for varied piece morphology.
+        // hEdges[row * edgeCols + col]  = bottom edge of piece (col, row);  size = cols*(rows-1)
+        // vEdges[row * (edgeCols-1) + col] = right edge of piece (col, row); size = (cols-1)*rows
+        // true → Positive (tab out), false → Negative (tab in)
+        private bool[] hEdges;
+        private bool[] vEdges;
+        private int edgeCols; // stored so GenerateMorphology can index the arrays
         private Vector3 lastPos;
         private float currentPieceSize = 0.05f; // Current piece size (calculated dynamically)
         private float boardWidthM;
@@ -676,8 +684,11 @@ namespace ArtUnbound.Gameplay
             }
 
             // NEW SYSTEM: Calculate grid AND piece size together
-            CalculateGridAndPieceSize(pieceCount, currentTexture.width, currentTexture.height, 
+            CalculateGridAndPieceSize(pieceCount, currentTexture.width, currentTexture.height,
                 out int cols, out int rows, out float pieceSize);
+
+            // Generate varied edge states (seed from pieceCount + texture size for reproducibility)
+            GenerateEdgeStates(cols, rows, pieceCount ^ (currentTexture.width * 31) ^ (currentTexture.height * 17));
 
             // Store current piece size for tray initialization
             currentPieceSize = pieceSize;
@@ -754,8 +765,11 @@ namespace ArtUnbound.Gameplay
             }
 
             // NEW SYSTEM: Calculate grid AND piece size together
-            CalculateGridAndPieceSize(pieceCount, textureToUse.width, textureToUse.height, 
+            CalculateGridAndPieceSize(pieceCount, textureToUse.width, textureToUse.height,
                 out int cols, out int rows, out float pieceSize);
+
+            // Generate varied edge states seeded by artworkId → same artwork always produces same shapes
+            GenerateEdgeStates(cols, rows, definition.artworkId?.GetHashCode() ?? 0);
 
             // Store current piece size for tray initialization
             currentPieceSize = pieceSize;
@@ -1076,19 +1090,52 @@ namespace ArtUnbound.Gameplay
             int actualCount = cols * rows;
         }
 
+        /// <summary>
+        /// Builds the hEdges / vEdges arrays that drive piece morphology variety.
+        /// Each internal shared edge is randomly Positive or Negative (seeded by artworkId
+        /// so the same puzzle always produces the same shapes).
+        /// </summary>
+        private void GenerateEdgeStates(int cols, int rows, int seed)
+        {
+            edgeCols = cols;
+
+            // Save and restore Unity's global random state so we don't affect anything else.
+            UnityEngine.Random.State savedState = UnityEngine.Random.state;
+            UnityEngine.Random.InitState(seed);
+
+            // Horizontal shared edges: bottom of piece (col, row) for row 0..rows-2
+            hEdges = new bool[cols * (rows - 1)];
+            for (int i = 0; i < hEdges.Length; i++)
+                hEdges[i] = UnityEngine.Random.value > 0.5f;
+
+            // Vertical shared edges: right of piece (col, row) for col 0..cols-2
+            vEdges = new bool[(cols - 1) * rows];
+            for (int i = 0; i < vEdges.Length; i++)
+                vEdges[i] = UnityEngine.Random.value > 0.5f;
+
+            UnityEngine.Random.state = savedState;
+        }
+
         private PieceMorphology GenerateMorphology(int col, int row, int numCols, int numRows)
         {
-            bool parity = (col + row) % 2 == 0;
-            PieceEdgeState innerState = parity ? PieceEdgeState.Positive : PieceEdgeState.Negative;
-            PieceMorphology m = new PieceMorphology
-            {
-                top = row == 0 ? PieceEdgeState.Flat : innerState,
-                right = col == numCols - 1 ? PieceEdgeState.Flat : innerState,
-                bottom = row == numRows - 1 ? PieceEdgeState.Flat : innerState,
-                left = col == 0 ? PieceEdgeState.Flat : innerState
-            };
+            // Each shared edge state was assigned in GenerateEdgeStates.
+            // A piece sees its neighbor's shared edge as the OPPOSITE state → always fits.
+            PieceEdgeState H(int c, int r) => hEdges[r * numCols + c] ? PieceEdgeState.Positive : PieceEdgeState.Negative;
+            PieceEdgeState V(int c, int r) => vEdges[r * (numCols - 1) + c] ? PieceEdgeState.Positive : PieceEdgeState.Negative;
+            PieceEdgeState OppH(int c, int r) => hEdges[r * numCols + c] ? PieceEdgeState.Negative : PieceEdgeState.Positive;
+            PieceEdgeState OppV(int c, int r) => vEdges[r * (numCols - 1) + c] ? PieceEdgeState.Negative : PieceEdgeState.Positive;
 
-            return m;
+            return new PieceMorphology
+            {
+                // top:    opposite of the bottom edge of the piece above us
+                top    = row == 0           ? PieceEdgeState.Flat : OppH(col, row - 1),
+                // bottom: our own bottom edge
+                bottom = row == numRows - 1 ? PieceEdgeState.Flat : H(col, row),
+                // right:  our own right edge
+                right  = col == numCols - 1 ? PieceEdgeState.Flat : V(col, row),
+                // left:   opposite of the right edge of the piece to our left
+                left   = col == 0           ? PieceEdgeState.Flat : OppV(col - 1, row)
+            };
         }
 
         private bool CheckMorphologyMatches(int slotIndex, PuzzlePiece piece)
