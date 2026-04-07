@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Basket of Apples
   title: The Basket of Apples
-  author: "Paul C\xE9zanne"
+  author: Paul Cezanne
   year: 1893
   description: 'Museum: Art Institute of Chicago
 
@@ -34,10 +34,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 63
   pieceCountNormal: 130
   pieceCountHard: 208
   pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -40,18 +40,21 @@ namespace ArtUnbound.MR
     /// Checks if there's a valid wall near the given position (without continuous tracking).
     /// Used when releasing the frame to check for placement.
     /// </summary>
-    public bool CheckNearbyWall(Vector3 position, out Vector3 wallPosition, out Quaternion wallRotation)
+    /// <param name="maxDistance">Override the search radius. Default (-1) uses raycastDistance.
+    /// Pass a small value (e.g. 0.35f) to distinguish "near wall" from "in the middle of the room".</param>
+    public bool CheckNearbyWall(Vector3 position, out Vector3 wallPosition, out Quaternion wallRotation, float maxDistance = -1f)
     {
+        float searchDistance = maxDistance > 0f ? maxDistance : raycastDistance;
         wallPosition = position;
         wallRotation = Quaternion.identity;
-        
+
         // First, try to find AR vertical planes directly (more reliable for Quest)
         if (planeManager != null)
         {
             float closestDistance = float.MaxValue;
             ARPlane closestPlane = null;
             Vector3 closestPoint = Vector3.zero;
-            
+
             foreach (var plane in planeManager.trackables)
             {
                 if (plane.alignment == PlaneAlignment.Vertical)
@@ -59,25 +62,25 @@ namespace ArtUnbound.MR
                     // Find the closest point on the plane to the position
                     Vector3 planeCenter = plane.transform.position;
                     Vector3 planeNormal = plane.transform.up; // For vertical planes, 'up' is the outward normal
-                    
+
                     // Project position onto plane
                     Vector3 toPosition = position - planeCenter;
                     float distanceAlongNormal = Vector3.Dot(toPosition, planeNormal);
                     Vector3 projectedPoint = position - planeNormal * distanceAlongNormal;
-                    
+
                     // Check if projected point is within plane bounds
                     Vector3 localPoint = plane.transform.InverseTransformPoint(projectedPoint);
                     Vector2 localPoint2D = new Vector2(localPoint.x, localPoint.z);
-                    
+
                     // Simple bounds check (planes are roughly rectangular)
                     float halfWidth = plane.size.x / 2f;
                     float halfHeight = plane.size.y / 2f;
-                    
+
                     if (Mathf.Abs(localPoint2D.x) <= halfWidth && Mathf.Abs(localPoint2D.y) <= halfHeight)
                     {
                         float distance = Mathf.Abs(distanceAlongNormal);
-                        
-                        if (distance < closestDistance && distance < raycastDistance)
+
+                        if (distance < closestDistance && distance < searchDistance)
                         {
                             closestDistance = distance;
                             closestPlane = plane;
@@ -127,16 +130,16 @@ namespace ArtUnbound.MR
             (Vector3.back + Vector3.left).normalized,
             (Vector3.back + Vector3.right).normalized
         };
-        
+
         float closestDistance_raycast = float.MaxValue;
         bool foundWall = false;
         Vector3 bestWallNormal = Vector3.zero;
-        
+
         foreach (var direction in directions)
         {
             Ray ray = new Ray(position, direction);
-            
-            if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance, wallLayerMask))
+
+            if (Physics.Raycast(ray, out RaycastHit hit, searchDistance, wallLayerMask))
             {
                 if (IsWallSurface(hit) && !IsOccupiedByOtherArtwork(hit.point))
                 {

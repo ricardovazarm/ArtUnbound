@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Brook
   title: The Brook
-  author: "Paul C\xE9zanne"
+  author: Paul Cezanne
   year: 1900
   description: 'Museum: Cleveland Museum of Art
 
@@ -34,10 +34,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 70
   pieceCountNormal: 108
   pieceCountHard: 204
   pieceCountExpert: 266
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

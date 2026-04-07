@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Reclining Young Woman in Spanish Costume
   title: Reclining Young Woman in Spanish Costume
-  author: "\xC9douard Manet"
+  author: Edouard Manet
   year: 1862
   description: 'Museum: Yale Art Gallery
 
@@ -34,10 +34,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 56
   pieceCountNormal: 120
   pieceCountHard: 208
   pieceCountExpert: 304
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

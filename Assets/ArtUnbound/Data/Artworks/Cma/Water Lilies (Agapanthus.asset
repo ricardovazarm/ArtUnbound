@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
   m_Name: Water Lilies (Agapanthus
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
-  artworkId: Water Lilies (Agapanthus
-  title: Water Lilies (Agapanthus
+  artworkId: Water Lilies (Agapanthus)
+  title: Water Lilies (Agapanthus)
   author: Claude Monet
   year: 1926
   description: 'Museum: Cleveland Museum of Art
@@ -34,10 +34,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 55
   pieceCountNormal: 136
   pieceCountHard: 220
   pieceCountExpert: 312
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
   m_Name: "Portrait of the Infante Luis de Borb\xF3n"
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
-  artworkId: "Portrait of the Infante Luis de Borb\xF3n"
-  title: "Portrait of the Infante Luis de Borb\xF3n"
+  artworkId: Portrait of the Infante Luis de Borbon
+  title: Portrait of the Infante Luis de Borbon
   author: Francisco de Goya
   year: 1783
   description: 'Museum: Cleveland Museum of Art
@@ -34,10 +34,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 60
   pieceCountNormal: 126
   pieceCountHard: 187
   pieceCountExpert: 294
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

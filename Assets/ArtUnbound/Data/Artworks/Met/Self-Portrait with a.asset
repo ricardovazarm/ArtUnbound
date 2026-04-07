@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Met-436532
   title: Self-Portrait with a Straw Hat
-  author: Vincent van Gogh
+  author: Vincent Van Gogh
   year: 1890
   description: 'Obverse: The Potato Peeler
 
@@ -36,10 +36,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 4
   pieceCountEasy: 63
   pieceCountNormal: 120
   pieceCountHard: 208
   pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 4

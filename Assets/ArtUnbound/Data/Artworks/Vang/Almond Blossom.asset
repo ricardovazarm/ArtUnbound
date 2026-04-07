@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Almond Blossom
   title: Almond Blossom
-  author: Vincent van Gogh
+  author: Vincent Van Gogh
   year: 1890
   description: 'Museum: Van Gogh Museum
 
@@ -36,10 +36,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 63
   pieceCountNormal: 130
   pieceCountHard: 180
   pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

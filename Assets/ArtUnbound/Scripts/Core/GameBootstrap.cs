@@ -354,6 +354,9 @@ namespace ArtUnbound.Core
 
         private void StartPuzzle()
         {
+            // Reset any hanging state from a previous completed puzzle
+            CleanupArtworkHanging();
+
             // Save last played artwork and difficulty
             SaveData.lastArtworkId = selectedArtworkId;
             SaveData.lastPieceCount = selectedPieceCount;
@@ -763,11 +766,12 @@ namespace ArtUnbound.Core
 
     private void OnPlacementCancelled()
     {
-        Debug.Log("[GameBootstrap] Artwork placement cancelled");
-        
-        // Cleanup
-        CleanupArtworkHanging();
-        
+        Debug.Log("[GameBootstrap] Artwork placement cancelled - frame remains grabbable");
+
+        // Do NOT call CleanupArtworkHanging() here — that would disable IsGrabbable on the
+        // completed frame and prevent the user from trying to hang it again without restarting.
+        // Cleanup only happens in OnFramePlaced (successful hang) or StartPuzzle (new puzzle).
+
         // Re-enable CenterZone (puzzleAchievements is the CenterZone GameObject)
         if (puzzleAchievements != null)
         {

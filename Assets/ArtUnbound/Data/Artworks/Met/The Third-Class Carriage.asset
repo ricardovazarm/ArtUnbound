@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Third-Class Carriage
   title: The Third-Class Carriage
-  author: "Honor\xE9 Daumier"
+  author: Honore Daumier
   year: 1864
   description: 'Museum: The Met (NYC)
 
@@ -33,10 +33,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 70
   pieceCountNormal: 108
   pieceCountHard: 192
   pieceCountExpert: 315
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

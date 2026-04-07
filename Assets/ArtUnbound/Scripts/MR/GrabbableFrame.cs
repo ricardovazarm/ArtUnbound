@@ -27,10 +27,11 @@ namespace ArtUnbound.MR
             set
             {
                 isGrabbable = value;
+                // Refresh reference if the previous collider was destroyed
+                if (frameCollider == null)
+                    frameCollider = GetComponent<BoxCollider>();
                 if (frameCollider != null)
-                {
                     frameCollider.enabled = isGrabbable;
-                }
             }
         }
 

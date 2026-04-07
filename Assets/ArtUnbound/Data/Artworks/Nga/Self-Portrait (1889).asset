@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Self-Portrait (1889)
   title: Self-Portrait (1889)
-  author: Vincent van Gogh
+  author: Vincent Van Gogh
   year: 1889
   description: 'Museum: National Gallery of Art
 
@@ -34,10 +34,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 63
   pieceCountNormal: 130
   pieceCountHard: 192
   pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

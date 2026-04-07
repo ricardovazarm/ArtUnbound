@@ -15,7 +15,7 @@ MonoBehaviour:
   tracks:
   - clip: {fileID: 8300000, guid: b7bec529575c9c94eaeaa74004646deb, type: 3}
     title: Moonlight Sonata
-    artist: Ludwig van Beethoven
+    artist: Ludwig Van Beethoven
   - clip: {fileID: 8300000, guid: fb25ba373f8aa4f479f45380848b1c13, type: 3}
     title: Air on the G String (from Orchestral Suite no. 3, BWV 1068)
     artist: Johann Sebastian Bach
@@ -29,10 +29,10 @@ MonoBehaviour:
     title: Prelude in C major, BWV 846
     artist: Johann Sebastian Bach
   - clip: {fileID: 8300000, guid: a6bebcdf386161743ac0d2274950143d, type: 3}
-    title: "Bagatelle no. 25 ''F\xFCr Elise'', WoO 59"
-    artist: Ludwig van Beethoven
+    title: Bagatelle no. 25 Fur Elise, WoO 59
+    artist: Ludwig Van Beethoven
   - clip: {fileID: 8300000, guid: 7d739e876ada3374b9bc0f336ad4f288, type: 3}
-    title: Piano Sonata no. 8 in C minor 'Pathetique', Op. 13 - III. Rondo - Allegro
+    title: Piano Sonata no. 8 in C minor Pathetique, Op. 13 - III. Rondo - Allegro
     artist: Ludwig van Beethoven
   - clip: {fileID: 8300000, guid: 03bce645abea85e48ba8925ac0d2ebc1, type: 3}
     title: Piano Sonata no. 11, K. 331 - III. Alla Turca

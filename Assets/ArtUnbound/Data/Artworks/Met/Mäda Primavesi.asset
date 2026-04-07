@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
   m_Name: "M\xE4da Primavesi"
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
-  artworkId: "M\xE4da Primavesi"
-  title: "M\xE4da Primavesi"
+  artworkId: Mada Primavesi
+  title: Mada Primavesi
   author: Gustav Klimt
   year: 1912
   description: 'Museum: The Met (NYC)
@@ -33,10 +33,10 @@ MonoBehaviour:
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0
-  complexity: 1
-  colorVariety: 3
-  detailLevel: 3
   pieceCountEasy: 63
   pieceCountNormal: 130
   pieceCountHard: 192
   pieceCountExpert: 300
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -80,6 +80,13 @@ namespace ArtUnbound.MR
 
             // Tag the frame and register it immediately so the scene looks correct right away
             existingFrame.tag = "PlacedArtwork";
+            // Ensure it's on PuzzlePiece layer so InteractionManager can detect it for repositioning
+            int puzzlePieceLayer = LayerMask.NameToLayer("PuzzlePiece");
+            if (puzzlePieceLayer >= 0) existingFrame.gameObject.layer = puzzlePieceLayer;
+            var identifier = existingFrame.GetComponent<PlacedArtworkIdentifier>();
+            if (identifier == null)
+                identifier = existingFrame.gameObject.AddComponent<PlacedArtworkIdentifier>();
+            identifier.artworkId = artworkId;
             spawnedArtworks[artworkId] = existingFrame.gameObject;
 
             // Create anchor asynchronously (fire-and-forget from caller's perspective)
@@ -107,6 +114,17 @@ namespace ArtUnbound.MR
             {
                 Debug.LogError($"[WallAnchor] TryAddAnchorAsync failed for {artworkId}: {addResult.status}");
                 // Keep temp parent so the artwork stays visible (unsaved)
+                // Still ensure the BoxCollider is enabled so it can be grabbed
+                if (existingFrame != null)
+                {
+                    var col = existingFrame.GetComponent<BoxCollider>();
+                    if (col == null)
+                    {
+                        col = existingFrame.gameObject.AddComponent<BoxCollider>();
+                        col.size = new Vector3(boardWidth, boardHeight, 0.05f);
+                    }
+                    col.enabled = true;
+                }
                 return;
             }
 
@@ -116,6 +134,21 @@ namespace ArtUnbound.MR
             // Re-parent to the real AR anchor (world position stays correct)
             existingFrame.SetParent(anchor.transform, worldPositionStays: true);
             Destroy(tempParent);
+
+            // Ensure a grabbable BoxCollider exists and is enabled.
+            // CleanupArtworkHanging() fires before this await completes and calls
+            // DisableFrameGrab() → BoxCollider.enabled = false. We restore it here so
+            // the placed artwork can be grabbed for repositioning (matches SpawnArtworkAtAnchor).
+            if (existingFrame != null)
+            {
+                var col = existingFrame.GetComponent<BoxCollider>();
+                if (col == null)
+                {
+                    col = existingFrame.gameObject.AddComponent<BoxCollider>();
+                    col.size = new Vector3(boardWidth, boardHeight, 0.05f);
+                }
+                col.enabled = true;
+            }
 
             Debug.Log($"[WallAnchor] Anchor created for {artworkId}, saving to device storage...");
 
@@ -271,6 +304,11 @@ namespace ArtUnbound.MR
             // Root container (mirrors the SlotRoot clone structure)
             var root = new GameObject($"PlacedArtwork_{artworkData.artworkId}");
             root.tag = "PlacedArtwork";
+            // Must be on PuzzlePiece layer so InteractionManager's OverlapSphere can detect it
+            int puzzlePieceLayer = LayerMask.NameToLayer("PuzzlePiece");
+            if (puzzlePieceLayer >= 0) root.layer = puzzlePieceLayer;
+            var identifier = root.AddComponent<PlacedArtworkIdentifier>();
+            identifier.artworkId = artworkData.artworkId;
             root.transform.SetParent(anchorTransform, worldPositionStays: false);
             root.transform.localPosition = artworkData.localPosition.ToVector3();
             root.transform.localRotation = artworkData.localRotation.ToQuaternion();
@@ -303,9 +341,9 @@ namespace ArtUnbound.MR
                     var mat = new Material(shader);
                     if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", texture);
                     if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", texture);
-                    // Mirror U — same as PuzzleBoard.ApplyCompletedFullImageTextureMapping
-                    if (mat.HasProperty("_BaseMap_ST")) mat.SetVector("_BaseMap_ST", new Vector4(-1f, 1f, 1f, 0f));
-                    if (mat.HasProperty("_MainTex_ST")) mat.SetVector("_MainTex_ST", new Vector4(-1f, 1f, 1f, 0f));
+                    // Standard UV mapping — same as PuzzleBoard.ApplyCompletedFullImageTextureMapping
+                    if (mat.HasProperty("_BaseMap_ST")) mat.SetVector("_BaseMap_ST", new Vector4(1f, 1f, 0f, 0f));
+                    if (mat.HasProperty("_MainTex_ST")) mat.SetVector("_MainTex_ST", new Vector4(1f, 1f, 0f, 0f));
                     quadRenderer.material = mat;
                     Debug.Log($"[WallAnchor] Image material assigned using shader '{shader.name}' for {artworkData.artworkId}");
                 }
@@ -436,6 +474,54 @@ namespace ArtUnbound.MR
 
             DoCreateAndSaveAnchor(artworkId, newPosition, newRotation, frameTier,
                                   existingFrame, boardWidth, boardHeight);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
+        //  SPECIFIC-INSTANCE HELPERS (for repositioning/removing grabbed artworks)
+        // ─────────────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Moves a SPECIFIC artwork transform to a new wall position and re-anchors it.
+        /// Unlike UpdateAnchorPosition, this operates on the provided transform rather than
+        /// whatever is currently stored in spawnedArtworks[artworkId].
+        /// </summary>
+        public void UpdateAnchorForSpecificArtwork(string artworkId, Transform artworkTransform,
+            Vector3 newPosition, Quaternion newRotation)
+        {
+            if (artworkTransform == null) return;
+
+            var artworks = saveDataService?.GetAnchoredArtworks();
+            var existingData = artworks?.Find(a => a.artworkId == artworkId);
+
+            artworkTransform.SetParent(null, worldPositionStays: true);
+            artworkTransform.SetPositionAndRotation(newPosition, newRotation);
+
+            // Point the dictionary at this specific object going forward
+            spawnedArtworks[artworkId] = artworkTransform.gameObject;
+
+            DoEraseAndRecreate(artworkId, newPosition, newRotation,
+                existingData?.frameTier ?? FrameTier.Bronce,
+                artworkTransform,
+                existingData?.boardWidth ?? 0.5f,
+                existingData?.boardHeight ?? 0.5f,
+                existingData?.anchorId);
+        }
+
+        /// <summary>
+        /// Removes one anchor entry from storage without destroying any GameObjects.
+        /// Use when the caller already handles destroying the physical object.
+        /// </summary>
+        public void EraseArtworkStorageEntry(string artworkId)
+        {
+            var artworks = saveDataService?.GetAnchoredArtworks();
+            var data = artworks?.Find(a => a.artworkId == artworkId);
+            if (data != null && Guid.TryParse(data.anchorId, out Guid guid))
+                DoEraseAnchor(new SerializableGuid(guid));
+
+            saveDataService?.RemoveAnchoredArtwork(artworkId);
+
+            if (spawnedArtworks.TryGetValue(artworkId, out GameObject stored) && stored == null)
+                spawnedArtworks.Remove(artworkId);
         }
 
         // ─────────────────────────────────────────────────────────────────────

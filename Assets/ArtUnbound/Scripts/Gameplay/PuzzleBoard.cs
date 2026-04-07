@@ -29,6 +29,12 @@ namespace ArtUnbound.Gameplay
         [SerializeField] private HelpModeController helpModeController;
         [SerializeField] private Color errorGlowColor = new Color(1f, 0.2f, 0.2f, 0.8f);
 
+        [Header("Board backing (behind pieces)")]
+        [Tooltip("Optional fabric or surface material (e.g. Yughues M_YFFaM_*). Cloned at runtime. When set, overrides Board Backing Texture.")]
+        [SerializeField] private Material boardBackingMaterial;
+        [Tooltip("Optional albedo/base map when no backing material is assigned. Applied to URP Lit (or fallback) behind the puzzle grid.")]
+        [SerializeField] private Texture2D boardBackingTexture;
+
         [Header("Frame (for completed image reveal)")]
         [SerializeField] private FrameConfigSet frameConfigSet;
         [Tooltip("Fallback if FrameConfigSet has no config for tier")]
@@ -835,20 +841,30 @@ namespace ArtUnbound.Gameplay
             // Actually, let's just put it at Z = 0.01f (behind pieces if camera is at -Z)
             boardViz.transform.localPosition = new Vector3(0, 0, 0.01f);
 
-            // Set Material Color (White canvas)
+            // Backing surface: optional fabric material/texture, else white canvas
             var renderer = boardViz.GetComponent<Renderer>();
             if (renderer != null)
             {
-                // Try different shaders until we find one that works
-                Shader boardShader = Shader.Find("Universal Render Pipeline/Lit");
-                if (boardShader == null) boardShader = Shader.Find("Standard");
-                if (boardShader == null) boardShader = Shader.Find("Diffuse");
-                if (boardShader == null) boardShader = Shader.Find("Mobile/Diffuse");
-                
-                Material boardMat = new Material(boardShader);
-                boardMat.color = Color.white; // White canvas like a painting
-                renderer.material = boardMat;
-                
+                if (boardBackingMaterial != null)
+                {
+                    renderer.material = new Material(boardBackingMaterial);
+                }
+                else
+                {
+                    Shader boardShader = Shader.Find("Universal Render Pipeline/Lit");
+                    if (boardShader == null) boardShader = Shader.Find("Standard");
+                    if (boardShader == null) boardShader = Shader.Find("Diffuse");
+                    if (boardShader == null) boardShader = Shader.Find("Mobile/Diffuse");
+
+                    Material boardMat = new Material(boardShader);
+                    boardMat.color = Color.white;
+                    if (boardBackingTexture != null)
+                    {
+                        if (boardMat.HasProperty("_BaseMap")) boardMat.SetTexture("_BaseMap", boardBackingTexture);
+                        if (boardMat.HasProperty("_MainTex")) boardMat.SetTexture("_MainTex", boardBackingTexture);
+                    }
+                    renderer.material = boardMat;
+                }
             }
 
             // Remove collider if it interferes with raycast (though we might want it for placement later)
@@ -1648,17 +1664,17 @@ namespace ArtUnbound.Gameplay
             if (mat == null) return;
 
             // The FullImageReveal quad uses localRotation (0, 180, 0).
-            // Combined with slotRoot's world Y:180, the net world rotation is Identity.
-            // The quad is viewed from its back face, which mirrors U horizontally.
-            // Scale X = -1 corrects that mirror; V needs no correction on any platform.
+            // slotRoot world Y ≈ 180°, so the combined world rotation is ~0° (Identity).
+            // The user therefore sees the FRONT face of the quad — no UV mirroring occurs.
+            // Use standard tiling (1,1) with no offset; no X flip needed.
             if (mat.HasProperty("_BaseMap_ST"))
-                mat.SetVector("_BaseMap_ST", new Vector4(-1f, 1f, 1f, 0f));
+                mat.SetVector("_BaseMap_ST", new Vector4(1f, 1f, 0f, 0f));
             if (mat.HasProperty("_MainTex_ST"))
-                mat.SetVector("_MainTex_ST", new Vector4(-1f, 1f, 1f, 0f));
+                mat.SetVector("_MainTex_ST", new Vector4(1f, 1f, 0f, 0f));
             if (!mat.HasProperty("_BaseMap_ST") && !mat.HasProperty("_MainTex_ST"))
             {
-                mat.mainTextureScale = new Vector2(-1f, 1f);
-                mat.mainTextureOffset = new Vector2(1f, 0f);
+                mat.mainTextureScale = new Vector2(1f, 1f);
+                mat.mainTextureOffset = new Vector2(0f, 0f);
             }
         }
 

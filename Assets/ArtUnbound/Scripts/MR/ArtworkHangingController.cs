@@ -134,8 +134,8 @@ namespace ArtUnbound.MR
                 return false;
             }
             
-            // Check if there's a valid wall nearby
-            bool foundWall = placementDetector.CheckNearbyWall(position, out Vector3 wallPosition, out Quaternion wallRotation);
+            // Check if there's a valid wall nearby (tight radius — must actually be close to a wall)
+            bool foundWall = placementDetector.CheckNearbyWall(position, out Vector3 wallPosition, out Quaternion wallRotation, 0.20f);
             
             if (!foundWall)
             {
@@ -214,6 +214,61 @@ namespace ArtUnbound.MR
             }
         }
 
+        /// <summary>
+        /// Handles grab/release of an already-placed wall artwork (not an in-puzzle frame).
+        /// If near a wall: repositions the anchor. If away from wall: removes the artwork entirely.
+        /// </summary>
+        public void TryRepositionWallArtwork(string artworkId, GrabbableFrame sourceFrame, Transform clonedFrame, Vector3 releasePosition)
+        {
+            if (string.IsNullOrEmpty(artworkId))
+            {
+                Debug.LogWarning("[ArtworkHanging] TryRepositionWallArtwork: no artworkId");
+                Destroy(clonedFrame?.gameObject);
+                return;
+            }
+
+            Vector3 wallPos = Vector3.zero;
+            Quaternion wallRot = Quaternion.identity;
+            // Use a tight proximity radius (0.35m) so artwork released in the middle of the room
+            // is correctly treated as "away from wall" — the full raycastDistance (2m) would
+            // always find a wall somewhere in the room and never trigger removal.
+            bool nearWall = placementDetector != null &&
+                            placementDetector.CheckNearbyWall(releasePosition, out wallPos, out wallRot, 0.20f);
+
+            if (nearWall && clonedFrame != null)
+            {
+                Vector3 offsetPos = wallPos + wallRot * Vector3.forward * 0.005f;
+
+                // Move the SPECIFIC grabbed artwork (sourceFrame.gameObject) to the new position.
+                // We cannot rely on anchorManager.UpdateAnchorPosition because spawnedArtworks[artworkId]
+                // may point to a different instance when duplicates exist.
+                if (sourceFrame != null)
+                {
+                    sourceFrame.gameObject.transform.SetParent(null, worldPositionStays: true);
+                    sourceFrame.gameObject.transform.SetPositionAndRotation(offsetPos, wallRot);
+                    sourceFrame.RestoreOriginal(); // make it visible at new position
+                }
+
+                if (anchorManager != null && !string.IsNullOrEmpty(artworkId))
+                    anchorManager.UpdateAnchorForSpecificArtwork(artworkId, sourceFrame?.gameObject.transform, offsetPos, wallRot);
+
+                Destroy(clonedFrame.gameObject);
+                Debug.Log($"[ArtworkHanging] Wall artwork {artworkId} repositioned");
+            }
+            else
+            {
+                // Released away from any wall — destroy the SPECIFIC grabbed object directly.
+                Destroy(clonedFrame?.gameObject);
+                Destroy(sourceFrame?.gameObject);
+
+                // Clean up one storage entry (anchor erasure) without touching other instances.
+                if (anchorManager != null && !string.IsNullOrEmpty(artworkId))
+                    anchorManager.EraseArtworkStorageEntry(artworkId);
+
+                Debug.Log($"[ArtworkHanging] Wall artwork {artworkId} removed from wall");
+            }
+        }
+
         private void HandleFrameGrabbed()
         {
             Debug.Log("[ArtworkHanging] Frame was grabbed by user");
@@ -235,12 +290,15 @@ namespace ArtUnbound.MR
                 {
                     grabbableFrame.OnFrameGrabbed -= HandleFrameGrabbed;
                     grabbableFrame.IsGrabbable = false;
+                    // Destroy the component so EnableFrameGrab creates it fresh next time
+                    // (avoids stale BoxCollider reference issues across puzzle sessions)
+                    Destroy(grabbableFrame);
                 }
             }
 
             currentState = HangingState.Idle;
             completedFrame = null;
-            
+
             Debug.Log("[ArtworkHanging] Disabled frame grab");
         }
 

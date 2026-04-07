@@ -20,8 +20,9 @@ namespace ArtUnbound.Input
         [SerializeField] private LineRenderer rayVisualizer;
 
         private PuzzlePiece currentDraggedPiece;
-        private GrabbableFrame currentDraggedFrame; // NEW: For hanging artwork
-        // private float currentDragDistance; // Removed - not used
+        private GrabbableFrame currentDraggedFrame; // For hanging artwork
+        private bool isRepositioningWallArtwork = false; // True when dragging a placed wall artwork
+        private string repositioningArtworkId = null;
         private Vector3 dragOffset;
         private int targetSlotIndex = -1; // Store the slot shown in the highlight
         private bool pieceWasFromBoard = false; // Track if the piece was grabbed from the board
@@ -106,16 +107,53 @@ namespace ArtUnbound.Input
                 {
                     // Check for GrabbableFrame first (priority when hanging artwork)
                     var frame = col.GetComponent<GrabbableFrame>();
-                    
-                    // If no GrabbableFrame component, check if this is a placed artwork
+
+                    // If no GrabbableFrame component, check if this is a placed wall artwork
                     if (frame == null && col.CompareTag("PlacedArtwork"))
                     {
-                        // This is a placed artwork - add GrabbableFrame to allow repositioning
+                        // Try PlacedArtworkIdentifier first, then fall back to name parsing
+                        string artId = null;
+                        var placedId = col.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+                        if (placedId != null && !string.IsNullOrEmpty(placedId.artworkId))
+                        {
+                            artId = placedId.artworkId;
+                        }
+                        else
+                        {
+                            // Fallback: "PlacedArtwork_<artworkId>" naming from WallAnchorManager
+                            string goName = col.gameObject.name;
+                            const string prefix = "PlacedArtwork_";
+                            if (goName.StartsWith(prefix))
+                                artId = goName.Substring(prefix.Length);
+                        }
+
                         frame = col.gameObject.AddComponent<GrabbableFrame>();
                         frame.IsGrabbable = true;
-                        Debug.Log($"[InteractionManager] Added GrabbableFrame to placed artwork for repositioning: {col.name}");
+                        isRepositioningWallArtwork = true;
+                        repositioningArtworkId = artId;
+                        Debug.Log($"[InteractionManager] Grabbing placed artwork for repositioning: {artId ?? "unknown"}");
                     }
-                    
+                    // If GrabbableFrame already exists from a previous grab, still check if
+                    // this is a placed artwork — the component is left over from the first grab
+                    // and the CompareTag branch above was skipped.
+                    else if (frame != null && col.CompareTag("PlacedArtwork"))
+                    {
+                        string artId = null;
+                        var placedId = col.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+                        if (placedId != null && !string.IsNullOrEmpty(placedId.artworkId))
+                            artId = placedId.artworkId;
+                        else
+                        {
+                            string goName = col.gameObject.name;
+                            const string prefix = "PlacedArtwork_";
+                            if (goName.StartsWith(prefix))
+                                artId = goName.Substring(prefix.Length);
+                        }
+                        isRepositioningWallArtwork = true;
+                        repositioningArtworkId = artId;
+                        Debug.Log($"[InteractionManager] Re-grabbing placed artwork for repositioning: {artId ?? "unknown"}");
+                    }
+
                     if (frame != null && frame.IsGrabbable && !frame.IsBeingDragged)
                     {
                         grabbableFrame = frame;
@@ -260,50 +298,63 @@ namespace ArtUnbound.Input
             if (currentDraggedFrame != null)
             {
                 Transform clonedFrame = currentDraggedFrame.ClonedFrame;
-                
+
                 if (clonedFrame == null)
                 {
                     Debug.LogError("[InteractionManager] ClonedFrame is null! Cannot place on wall.");
                     currentDraggedFrame = null;
+                    isRepositioningWallArtwork = false;
+                    repositioningArtworkId = null;
                     return;
                 }
-                
+
                 Vector3 releasePosition = clonedFrame.position;
-                Debug.Log($"[InteractionManager] Releasing frame clone: {clonedFrame.name} at {releasePosition}");
-                
                 currentDraggedFrame.EndDrag();
-                
-                // Check if near a wall for placement
-                bool placedOnWall = false;
-                
-                // Find ArtworkHangingController to handle wall placement
+
                 var hangingController = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
-                if (hangingController != null)
+
+                if (isRepositioningWallArtwork)
                 {
-                    Debug.Log($"[InteractionManager] Passing clone {clonedFrame.name} to TryPlaceOnWall");
-                    placedOnWall = hangingController.TryPlaceOnWall(clonedFrame, releasePosition);
+                    // Wall-artwork grab: reposition on wall or remove if away from wall
+                    if (hangingController != null)
+                    {
+                        hangingController.TryRepositionWallArtwork(repositioningArtworkId, currentDraggedFrame, clonedFrame, releasePosition);
+                    }
+                    else
+                    {
+                        // Fallback: just destroy clone and restore original
+                        Destroy(clonedFrame.gameObject);
+                        currentDraggedFrame.RestoreOriginal();
+                    }
+
+                    isRepositioningWallArtwork = false;
+                    repositioningArtworkId = null;
                 }
                 else
                 {
-                    Debug.LogError("[InteractionManager] ArtworkHangingController not found!");
+                    // In-puzzle completed frame: place on wall or restore (keep grabbable)
+                    bool placedOnWall = false;
+                    if (hangingController != null)
+                    {
+                        Debug.Log($"[InteractionManager] Passing clone {clonedFrame.name} to TryPlaceOnWall");
+                        placedOnWall = hangingController.TryPlaceOnWall(clonedFrame, releasePosition);
+                    }
+                    else
+                    {
+                        Debug.LogError("[InteractionManager] ArtworkHangingController not found!");
+                    }
+
+                    if (!placedOnWall)
+                    {
+                        // Not near a wall — destroy clone, restore original so it can be grabbed again
+                        Destroy(clonedFrame.gameObject);
+                        currentDraggedFrame.RestoreOriginal();
+                    }
+
+                    Debug.Log($"[InteractionManager] Released in-puzzle frame (placed on wall: {placedOnWall})");
                 }
-                
-                if (placedOnWall)
-                {
-                    // Successfully placed on wall - the clone is now anchored
-                    // The original frame in PuzzleBoard will be hidden by GameBootstrap
-                    Debug.Log($"[InteractionManager] Frame successfully placed on wall: {clonedFrame.name}");
-                }
-                else
-                {
-                    // Not near a wall - destroy the clone and restore original
-                    Debug.Log($"[InteractionManager] Frame not placed on wall - destroying clone: {clonedFrame.name}");
-                    Destroy(clonedFrame.gameObject);
-                    currentDraggedFrame.RestoreOriginal();
-                }
-                
+
                 currentDraggedFrame = null;
-                Debug.Log($"[InteractionManager] Released frame (placed on wall: {placedOnWall})");
                 return;
             }
 
