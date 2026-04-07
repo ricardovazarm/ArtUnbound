@@ -210,7 +210,8 @@ namespace ArtUnbound.Core
             // HUD
             if (puzzleHUD != null)
             {
-                puzzleHUD.OnExitRequested += QuitToMenu; // Changed: exit returns to main menu
+                puzzleHUD.OnExitRequested += QuitToMenu;
+                puzzleHUD.OnHighlightWrongRequested += HighlightWrongPieces;
             }
 
             // Puzzle Board
@@ -646,6 +647,36 @@ namespace ArtUnbound.Core
             SaveCurrentSessionIfPlaying();
             CurrentSession = null;
             TransitionToMainMenu();
+        }
+
+        /// <summary>
+        /// Highlights all incorrectly placed pieces with a red burst + wiggle + sound.
+        /// Triggered by the "highlight wrong" button in the HUD.
+        /// </summary>
+        private void HighlightWrongPieces()
+        {
+            if (puzzleBoard == null) return;
+
+            var wrongPieces = puzzleBoard.GetIncorrectlyPlacedPieces();
+            if (wrongPieces.Count == 0) return;
+
+            // Play incorrect sound once for all pieces
+            ArtUnbound.Feedback.AudioManager.Instance?.PlayPieceIncorrect();
+
+            StartCoroutine(HighlightWrongPiecesStaggered(wrongPieces));
+        }
+
+        private System.Collections.IEnumerator HighlightWrongPiecesStaggered(
+            System.Collections.Generic.List<ArtUnbound.Gameplay.PuzzlePiece> pieces)
+        {
+            float stagger = 0.08f; // seconds between each piece highlight
+            foreach (var piece in pieces)
+            {
+                if (piece == null) continue;
+                piece.PlayWiggleEffect();
+                ArtUnbound.Feedback.PieceEffectsManager.Instance?.PlayWrongPlacementHighlight(piece.transform.position);
+                yield return new WaitForSeconds(stagger);
+            }
         }
 
         /// <summary>

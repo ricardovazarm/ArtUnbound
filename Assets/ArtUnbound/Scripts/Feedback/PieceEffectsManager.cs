@@ -14,6 +14,7 @@ namespace ArtUnbound.Feedback
         [SerializeField] private GameObject particlePrefab;
         [SerializeField] private Color correctPlacementColor = new Color(0.2f, 1f, 0.3f, 1f); // Green
         [SerializeField] private Color milestoneColor = new Color(1f, 0.85f, 0.2f, 1f); // Gold/amber
+        [SerializeField] private Color wrongPlacementColor = new Color(1f, 0.15f, 0.1f, 1f); // Red
         // Unused particle settings - kept for future use if needed
         // [SerializeField] private int particleCount = 15;
         // [SerializeField] private float particleLifetime = 0.5f;
@@ -69,6 +70,25 @@ namespace ArtUnbound.Feedback
 
                 var animator = sphere.AddComponent<SimpleBurstAnimator>();
                 animator.Initialize(Random.onUnitSphere * 0.15f, 0.7f);
+            }
+        }
+
+        /// <summary>
+        /// Red burst effect to highlight a wrongly placed piece.
+        /// </summary>
+        public void PlayWrongPlacementHighlight(Vector3 position)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.transform.position = position;
+                sphere.transform.localScale = Vector3.one * 0.012f;
+                Destroy(sphere.GetComponent<Collider>());
+                var renderer = sphere.GetComponent<Renderer>();
+                renderer.material = new Material(Shader.Find("Unlit/Color"));
+                renderer.material.color = wrongPlacementColor;
+                var animator = sphere.AddComponent<SimpleBurstAnimator>();
+                animator.Initialize(Random.onUnitSphere * 0.08f, 0.5f);
             }
         }
 

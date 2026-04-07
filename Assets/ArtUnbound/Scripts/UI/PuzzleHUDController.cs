@@ -14,6 +14,7 @@ namespace ArtUnbound.UI
     public class PuzzleHUDController : MonoBehaviour
     {
         public event Action OnExitRequested;
+        public event Action OnHighlightWrongRequested;
 
         [Header("Panel")]
         [SerializeField] private GameObject hudPanel;
@@ -36,6 +37,7 @@ namespace ArtUnbound.UI
 
         [Header("Buttons")]
         [SerializeField] private Button quitButton;
+        [SerializeField] private Button highlightWrongButton;
 
         [Header("Music Track Display")]
         [SerializeField] private TextMeshProUGUI musicTrackText;
@@ -56,6 +58,9 @@ namespace ArtUnbound.UI
         {
             if (quitButton != null)
                 quitButton.onClick.AddListener(OnQuitClicked);
+
+            if (highlightWrongButton != null)
+                highlightWrongButton.onClick.AddListener(() => OnHighlightWrongRequested?.Invoke());
 
             SetupMusicTrackDisplay();
             Hide();

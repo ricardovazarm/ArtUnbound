@@ -121,6 +121,20 @@ namespace ArtUnbound.Gameplay
         public int PlacedCount => placedBySlot.Count;
         public int IncorrectCount => placedBySlot.Count - snappedCount;
 
+        /// <summary>Returns all pieces that are placed in the wrong slot.</summary>
+        public List<PuzzlePiece> GetIncorrectlyPlacedPieces()
+        {
+            var result = new List<PuzzlePiece>();
+            foreach (var kvp in placedBySlot)
+            {
+                int slotIndex = kvp.Key;
+                PuzzlePiece piece = kvp.Value;
+                if (piece != null && slotIndex < slots.Count && slots[slotIndex].pieceId != piece.PieceId)
+                    result.Add(piece);
+            }
+            return result;
+        }
+
         private void Update()
         {
             if (Vector3.Distance(transform.position, lastPos) > 0.01f)

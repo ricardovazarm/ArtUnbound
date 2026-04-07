@@ -100,6 +100,35 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
+        /// Plays a short left-right wiggle to signal the piece is in the wrong position.
+        /// </summary>
+        public void PlayWiggleEffect()
+        {
+            if (currentState == PieceState.Grabbed) return; // don't wiggle while held
+            StartCoroutine(WiggleCoroutine());
+        }
+
+        private IEnumerator WiggleCoroutine()
+        {
+            Quaternion originalRotation = transform.rotation;
+            float duration = 0.45f;
+            float elapsed = 0f;
+            float frequency = 28f;   // oscillations per second
+            float amplitude = 4f;    // degrees
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float decay = 1f - (elapsed / duration);
+                float angle = Mathf.Sin(elapsed * frequency) * amplitude * decay;
+                transform.rotation = originalRotation * Quaternion.AngleAxis(angle, transform.up);
+                yield return null;
+            }
+
+            transform.rotation = originalRotation;
+        }
+
+        /// <summary>
         /// Returns the piece to the carousel/pool.
         /// </summary>
         public void ReturnToPool(Vector3 targetPosition)
