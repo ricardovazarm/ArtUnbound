@@ -91,7 +91,18 @@ Al iniciar el puzzle, el espacio se divide en tres zonas:
 
 > **Nota**: No existe una distancia mínima de snap — cualquier pieza soltada cerca del tablero se coloca en el slot disponible más cercano. No hay rechazo por morfología; el sistema registra si el resultado es correcto o no mediante los contadores.
 
-### 4.5. Hitos durante el Armado
+### 4.5. Resaltar Piezas Incorrectas
+
+El panel izquierdo incluye un botón **"¿Cuáles están mal?"** que el usuario puede presionar en cualquier momento durante el armado. Al activarlo:
+
+1. Cada pieza colocada en el lugar equivocado emite un **burst de partículas rojas** en su posición.
+2. La pieza realiza un **movimiento de oscilación** (wiggle) de lado a lado durante ~0.45 segundos.
+3. Se reproduce el **sonido de colocación incorrecta** una sola vez para todo el conjunto.
+4. Los efectos se aplican de forma **escalonada** (80 ms entre pieza y pieza) para que el usuario pueda distinguir cuáles son.
+
+El botón no mueve ni reposiciona las piezas — solo las señala visualmente para que el usuario decida si las quiere corregir.
+
+### 4.6. Hitos durante el Armado
 
 El sistema detecta y celebra:
 - Completar una fila completa.
@@ -101,7 +112,7 @@ El sistema detecta y celebra:
 
 Cada hito dispara un mensaje contextual en pantalla y efectos de partículas.
 
-### 4.6. Finalización y Post-Juego
+### 4.7. Finalización y Post-Juego
 
 1. Al colocar todas las piezas correctamente se activa la animación de revelación: el cuadro completo aparece con el marco de la dificultad elegida.
 2. Se muestra el panel de post-juego con el tiempo de resolución y el marco ganado.
@@ -232,7 +243,25 @@ Sistema de temas unificado: color normal `#896C4A`, hover/seleccionado `#d4c089`
 
 ---
 
-## 11. Beneficios Cognitivos y de Bienestar
+## 11. Modelo de Monetización
+
+### 11.1. Precio Base
+
+Art Unbound se comercializa como una aplicación de pago en la **Meta Quest Store** a un precio de **$9.99 USD**. Este precio incluye todo el contenido disponible al momento de la compra: el catálogo completo de obras de dominio público y todas las funcionalidades del juego, sin compras adicionales requeridas para disfrutar la experiencia completa.
+
+### 11.2. Paquetes de Contenido Adicional *(monetización futura)*
+
+Se planea ofrecer **paquetes de pinturas de pago** como contenido descargable (DLC) opcional. Estos paquetes incluirían obras que requieren el pago de regalías — por ejemplo, colecciones temáticas de museos específicos, movimientos artísticos o épocas históricas — ampliando el catálogo más allá de las obras de dominio público.
+
+Este modelo permite:
+- Mantener un precio de entrada accesible para la app base.
+- Ofrecer contenido premium a usuarios que desean una colección más amplia.
+- Recuperar el costo de las licencias de obras protegidas mediante ingresos directos por paquete.
+
+---
+
+## 12. Beneficios Cognitivos y de Bienestar
+
 
 Art Unbound no es únicamente entretenimiento — combina deliberadamente tres actividades con beneficios documentados para la salud mental y cognitiva.
 
@@ -270,7 +299,7 @@ Art Unbound integra estas tres dimensiones en una sola sesión de juego: el usua
 
 ---
 
-## 12. Evaluación de Escalabilidad Futura
+## 13. Evaluación de Escalabilidad Futura
 
 La versión actual opera de forma completamente local (offline first). Más adelante se evaluará la implementación de servicios en la nube para las siguientes funciones:
 
@@ -281,7 +310,7 @@ La versión actual opera de forma completamente local (offline first). Más adel
 
 ---
 
-## 13. Arquitectura Técnica (Resumen)
+## 14. Arquitectura Técnica (Resumen)
 
 - **Motor**: Unity 6 LTS (6000.3.1f1)
 - **SDK**: Meta XR All-in-One SDK v85.0.0
