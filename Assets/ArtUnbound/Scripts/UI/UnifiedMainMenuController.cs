@@ -40,6 +40,7 @@ namespace ArtUnbound.UI
         [SerializeField] private Button catalogPageLeftButton;
         [SerializeField] private Button catalogPageRightButton;
         [SerializeField] private TextMeshProUGUI catalogPageText;
+        [SerializeField] private TextMeshProUGUI packNameText; // Shows pack name and price (only visible in Expand mode)
         [SerializeField] private Button filterAllButton;
         [SerializeField] private Button filterInProgressButton;
         [SerializeField] private Button filterCompletedButton;
@@ -233,6 +234,10 @@ namespace ArtUnbound.UI
             this.catalogService = catalogService;
             this.saveDataService = saveDataService;
             this.saveData = saveDataService.GetCachedData();
+
+            // Hide pack name text by default (only shown in Expand mode)
+            if (packNameText != null)
+                packNameText.gameObject.SetActive(false);
 
             LoadArtworks();
             UpdateGlobalStats();
@@ -525,13 +530,26 @@ namespace ArtUnbound.UI
                 if (catalog != null && catalog.packs.Count > 0)
                 {
                     var pack = catalog.packs[currentPackIndex];
-                    string purchased = purchaseService.IsPurchased(pack.packId) ? "" : $"  {pack.price}";
+                    
+                    // Show pack name and price in dedicated field
+                    if (packNameText != null)
+                    {
+                        packNameText.gameObject.SetActive(true);
+                        string purchased = purchaseService.IsPurchased(pack.packId) ? "" : $" — {pack.price}";
+                        packNameText.text = $"{pack.packName}{purchased}";
+                    }
+                    
+                    // Show only pagination in catalogPageText
                     catalogPageText.text = catalog.packs.Count > 1
-                        ? $"{pack.packName}{purchased}  ({currentPackIndex + 1}/{catalog.packs.Count})"
-                        : $"{pack.packName}{purchased}";
+                        ? $"({currentPackIndex + 1}/{catalog.packs.Count})"
+                        : "";
                 }
                 return;
             }
+            
+            // Hide pack name field when not in Expand mode
+            if (packNameText != null)
+                packNameText.gameObject.SetActive(false);
 
             catalogPageText.text = totalPages <= 1 ? "" : $"{currentPage + 1} / {totalPages}";
         }
