@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Death of Socrates
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Death of Socrates
+  title: The Death of Socrates
+  author: Jacques-Louis David
+  year: 1787
+  description: "Museum: The Met\nArt Movement: Neoclassicism\nYear: 1787"
+  museum: The Met
+  artMovement: Neoclassicism
+  aspectRatio: 1.5021
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: ce76e6f224eacdc43bcbaa5122694353, type: 3}
+  fullImage: {fileID: 21300000, guid: 14f0890a6a6ee5b40ae3218786d1462f, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 77
+  pieceCountNormal: 126
+  pieceCountHard: 187
+  pieceCountExpert: 294
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Adeline Ravoux
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Adeline Ravoux
+  title: Adeline Ravoux
+  author: Vincent Van Gogh
+  year: 1890
+  description: "Museum: Cleveland Museum of Art\nArt Movement: Post-Impressionism\nYear: 1890"
+  museum: Cleveland Museum of Art
+  artMovement: Post-Impressionism
+  aspectRatio: 1.0032
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: e540754863c69184fb9d93441cc55165, type: 3}
+  fullImage: {fileID: 21300000, guid: 822f52bb705e08d4396f31370619e944, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 64
+  pieceCountNormal: 121
+  pieceCountHard: 196
+  pieceCountExpert: 289
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

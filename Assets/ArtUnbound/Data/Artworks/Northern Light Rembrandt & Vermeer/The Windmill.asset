@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Windmill
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Windmill
+  title: The Windmill
+  author: Rembrandt van Rijn
+  year: 1645
+  description: "Museum: National Gallery of Art\nArt Movement: Dutch Golden Age\nYear: 1645"
+  museum: National Gallery of Art
+  artMovement: Dutch Golden Age
+  aspectRatio: 1.1973
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: b1d1c7b12b1c2264ca7b594c4b259c1b, type: 3}
+  fullImage: {fileID: 21300000, guid: 64da88bbba2a31444a1e968a5d488e78, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 56
+  pieceCountNormal: 120
+  pieceCountHard: 208
+  pieceCountExpert: 304
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

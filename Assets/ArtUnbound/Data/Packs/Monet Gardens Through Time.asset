@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Monet Gardens Through Time
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_monet_gardens_through_time
+  packName: Monet Gardens Through Time
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: bcdec1e5573548729ab81ea1a05b0465, type: 2}
+  - {fileID: 11400000, guid: 53e2f9e7770f4533bce4799095187d90, type: 2}
+  - {fileID: 11400000, guid: 1556fcd86c224303a85447237870e187, type: 2}
+  - {fileID: 11400000, guid: 516e615919a54247b1a78dfa257390d2, type: 2}
+  - {fileID: 11400000, guid: 0bd6e23bfc784c7c8f69a5c2f006bc54, type: 2}
+  - {fileID: 11400000, guid: edcd6252945c47468f28986dab45829f, type: 2}
+  - {fileID: 11400000, guid: 24c876b6ebd84c8f8d64e0b9fd65dd1f, type: 2}
+  - {fileID: 11400000, guid: 11670fd9cd1a4ac1ab57b2e21893ef48, type: 2}
+  - {fileID: 11400000, guid: 9b566b5238644ed29a8a4b5a95f97274, type: 2}
+  - {fileID: 11400000, guid: e24bdcef92d44d50b69571056b70e0ae, type: 2}
+  - {fileID: 11400000, guid: 421bac590e6c4f1fa9ff70f79985e6da, type: 2}
+  - {fileID: 11400000, guid: 75f578ae30584b6487dbd5d9b2fc1b6d, type: 2}

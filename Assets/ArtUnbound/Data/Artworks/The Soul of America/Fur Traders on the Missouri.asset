@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Fur Traders on the Missouri
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Fur Traders on the Missouri
+  title: Fur Traders on the Missouri
+  author: George Caleb Bingham
+  year: 1845
+  description: "Museum: The Met\nArt Movement: American Realism (Luminism)\nYear: 1845"
+  museum: The Met
+  artMovement: American Realism (Luminism)
+  aspectRatio: 1.2499
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 069443c666bbe554599005c29869f497, type: 3}
+  fullImage: {fileID: 21300000, guid: 1869513da40daff4ab1e1a7dc127b914, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 63
+  pieceCountNormal: 120
+  pieceCountHard: 208
+  pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

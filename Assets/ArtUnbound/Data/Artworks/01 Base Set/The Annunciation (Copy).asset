@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Annunciation (Copy)
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Annunciation (Copy)
+  title: The Annunciation (Copy)
+  author: Fra Angelico
+  year: 1434
+  description: "Museum: Prado / San Marco\nArt Movement: Early Renaissance\nYear: 1434"
+  museum: Prado / San Marco
+  artMovement: Early Renaissance
+  aspectRatio: 1.0135
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 6b8ed91e115e6814299d8f311ded0e8d, type: 3}
+  fullImage: {fileID: 21300000, guid: 0c5f350efd6e8f24480cacfcf950141f, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 64
+  pieceCountNormal: 121
+  pieceCountHard: 196
+  pieceCountExpert: 289
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

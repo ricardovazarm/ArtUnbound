@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Bathers at Asnieres (Study)
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Bathers at Asnieres (Study)
+  title: Bathers at Asnieres (Study)
+  author: Georges Seurat
+  year: 1884
+  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism / Pointillism\nYear: 1884"
+  museum: Art Institute of Chicago
+  artMovement: Post-Impressionism / Pointillism
+  aspectRatio: 1.6017
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: b5bae8c69faf7e546ad9ed991b0db169, type: 3}
+  fullImage: {fileID: 21300000, guid: 0b2d8a8b66dbc4a44857570c5623f85c, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 60
+  pieceCountNormal: 126
+  pieceCountHard: 198
+  pieceCountExpert: 273
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -22,6 +22,8 @@ namespace ArtUnbound.Data
         public GameMode lastGameMode = GameMode.Gallery;
         public bool onboardingCompleted = false;
         public string firstPlayDate = string.Empty;
+        /// <summary>Pack IDs that have been purchased by the user.</summary>
+        public List<string> purchasedPackIds = new List<string>();
 
         /// <summary>
         /// Alias for progressByArtwork for consistency with UI code.
@@ -40,6 +42,7 @@ namespace ArtUnbound.Data
             lastGameMode = GameMode.Gallery;
             onboardingCompleted = false;
             firstPlayDate = DateTime.UtcNow.ToString("o");
+            purchasedPackIds = new List<string>();
         }
 
         /// <summary>Gets in-progress session for artwork+pieceCount, or null.</summary>

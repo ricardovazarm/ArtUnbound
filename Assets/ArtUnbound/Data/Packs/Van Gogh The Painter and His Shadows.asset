@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Van Gogh The Painter and His Shadows
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_van_gogh_the_painter_and_his_shadows
+  packName: Van Gogh The Painter and His Shadows
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: bf3951a150dd43959cb8b12f925ff306, type: 2}
+  - {fileID: 11400000, guid: 7c459846838e447bb8deffef7fd0673b, type: 2}
+  - {fileID: 11400000, guid: 9323942d46414526aca74faeaba13315, type: 2}
+  - {fileID: 11400000, guid: 375bff82de8f4cf5a98a990d765c8453, type: 2}
+  - {fileID: 11400000, guid: e487d88817fc423a81a5aab6dd89ae58, type: 2}
+  - {fileID: 11400000, guid: dfd656edf5b74cc9a4bbbf6881eaa4a0, type: 2}
+  - {fileID: 11400000, guid: 540e722ffe6b422086138bfdad8a7cc0, type: 2}
+  - {fileID: 11400000, guid: dfc96adc796f4efaa77c91d1cecc7e0f, type: 2}
+  - {fileID: 11400000, guid: 685284ad8a5b4297b727f53e17f533ca, type: 2}
+  - {fileID: 11400000, guid: 909c2a856b574536b0071dec1048df1d, type: 2}

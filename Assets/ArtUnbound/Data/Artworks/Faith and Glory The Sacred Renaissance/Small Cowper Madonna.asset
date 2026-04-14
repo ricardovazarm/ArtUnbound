@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Small Cowper Madonna
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Small Cowper Madonna
+  title: Small Cowper Madonna
+  author: Raphael
+  year: 1505
+  description: "Museum: National Gallery of Art\nArt Movement: High Renaissance\nYear: 1505"
+  museum: National Gallery of Art
+  artMovement: High Renaissance
+  aspectRatio: 0.7349
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: bef368765db3d784bb4b6c49daa6ce33, type: 3}
+  fullImage: {fileID: 21300000, guid: e74b772642ade084d98d798dba92a7b0, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 63
+  pieceCountNormal: 130
+  pieceCountHard: 192
+  pieceCountExpert: 300
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

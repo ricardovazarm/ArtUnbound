@@ -26,6 +26,7 @@ namespace ArtUnbound.Core
         [SerializeField] private ArtworkCatalog artworkCatalog;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private FrameConfigSet frameConfigSet;
+        [SerializeField] private ArtworkPackCatalog artworkPackCatalog;
 
     [Header("General UI")]
     [SerializeField] private Transform mainUICanvas;
@@ -54,6 +55,9 @@ namespace ArtUnbound.Core
         [SerializeField] private WallDetectionService wallDetectionService;
         [SerializeField] private ArtworkHangingController artworkHangingController;
         [SerializeField] private WallAnchorManager wallAnchorManager;
+
+        [Header("Pack System")]
+        [SerializeField] private PackPurchaseService packPurchaseService;
 
         [Header("Feedback Controllers")]
         [SerializeField] private AudioManager audioManager;
@@ -162,10 +166,17 @@ namespace ArtUnbound.Core
             localTelemetryService = new LocalTelemetryService();
             localCatalogService = new LocalCatalogService(artworkCatalog);
 
+            // Initialize pack purchase service
+            if (packPurchaseService != null)
+            {
+                packPurchaseService.Initialize(saveDataService);
+            }
+
             // Initialize UnifiedMainMenu with services
             if (unifiedMainMenu != null)
             {
                 unifiedMainMenu.Initialize(localCatalogService, saveDataService);
+                unifiedMainMenu.SetPackPurchaseService(packPurchaseService);
             }
 
             // Initialize WallAnchorManager with SaveDataService

@@ -291,6 +291,31 @@ namespace ArtUnbound.Services
         }
 
         /// <summary>
+        /// Returns true if the pack with the given ID has been purchased.
+        /// </summary>
+        public bool IsPurchased(string packId)
+        {
+            var data = GetCachedData();
+            return data.purchasedPackIds != null && data.purchasedPackIds.Contains(packId);
+        }
+
+        /// <summary>
+        /// Marks a pack as purchased and saves.
+        /// </summary>
+        public void MarkAsPurchased(string packId)
+        {
+            var data = GetCachedData();
+            if (data.purchasedPackIds == null)
+                data.purchasedPackIds = new System.Collections.Generic.List<string>();
+
+            if (!data.purchasedPackIds.Contains(packId))
+            {
+                data.purchasedPackIds.Add(packId);
+                Save(data);
+            }
+        }
+
+        /// <summary>
         /// Gets the save file path.
         /// </summary>
         public string GetSavePath() => savePath;

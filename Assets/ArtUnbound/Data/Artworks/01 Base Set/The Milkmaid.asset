@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Milkmaid
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Milkmaid
+  title: The Milkmaid
+  author: Johannes Vermeer
+  year: 1658
+  description: "Museum: Rijksmuseum\nArt Movement: Dutch Golden Age\nYear: 1658"
+  museum: Rijksmuseum
+  artMovement: Dutch Golden Age
+  aspectRatio: 0.898
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: bef77367eac410b41a35a8966532f16f, type: 3}
+  fullImage: {fileID: 21300000, guid: b8f6de78c270dd648895a9bfcd6acc84, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 56
+  pieceCountNormal: 132
+  pieceCountHard: 195
+  pieceCountExpert: 288
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

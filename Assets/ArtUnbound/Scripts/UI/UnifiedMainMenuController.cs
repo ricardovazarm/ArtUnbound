@@ -43,6 +43,7 @@ namespace ArtUnbound.UI
         [SerializeField] private Button filterAllButton;
         [SerializeField] private Button filterInProgressButton;
         [SerializeField] private Button filterCompletedButton;
+        [SerializeField] private Button filterExpandButton;   // 4th filter: "Expand Your Gallery"
         [SerializeField] private GameObject artworkCardPrefab; // Prefab for artwork thumbnail cards
 
         [Header("Right Zone - Detail Panel")]
@@ -56,6 +57,12 @@ namespace ArtUnbound.UI
         [SerializeField] private Button normalButton;
         [SerializeField] private Button hardButton;
         [SerializeField] private Button expertButton;
+
+        [Header("Right Zone - Pack Unlock UI")]
+        [Tooltip("Parent GameObject that contains the unlock button and price text. Shown when artwork belongs to an unpurchased pack.")]
+        [SerializeField] private GameObject unlockSection;
+        [SerializeField] private Button unlockButton;
+        [SerializeField] private TextMeshProUGUI unlockPriceText;
         [SerializeField] private TextMeshProUGUI easyButtonText;
         [SerializeField] private TextMeshProUGUI normalButtonText;
         [SerializeField] private TextMeshProUGUI hardButtonText;
@@ -81,18 +88,24 @@ namespace ArtUnbound.UI
         private LocalCatalogService catalogService;
         private SaveDataService saveDataService;
         private SaveData saveData;
-        
+        private PackPurchaseService purchaseService;
+
         private List<ArtworkDefinition> allArtworks = new List<ArtworkDefinition>();
         private List<ArtworkDefinition> filteredArtworks = new List<ArtworkDefinition>();
         private List<GameObject> artworkCards = new List<GameObject>();
         private ArtworkDefinition selectedArtwork;
-        
+
         private FilterType currentFilter = FilterType.All;
         private int currentPage;
         private const int Columns = 3;
         private const int Rows = 3;
         private const int ItemsPerPage = Columns * Rows; // 9
-        
+
+        // Expand (DLC packs) mode
+        private bool isExpandMode = false;
+        private int currentPackIndex = 0;
+        private string currentUnlockPackId;
+
         #endregion
 
         #region Unity Lifecycle
@@ -110,6 +123,7 @@ namespace ArtUnbound.UI
             AddIfMissing(filterAllButton);
             AddIfMissing(filterInProgressButton);
             AddIfMissing(filterCompletedButton);
+            AddIfMissing(filterExpandButton);
             AddIfMissing(easyButton);
             AddIfMissing(normalButton);
             AddIfMissing(hardButton);
@@ -204,6 +218,14 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
+        /// Wires the pack purchase service. Call after Initialize().
+        /// </summary>
+        public void SetPackPurchaseService(PackPurchaseService svc)
+        {
+            purchaseService = svc;
+        }
+
+        /// <summary>
         /// Initializes the menu with services and data.
         /// </summary>
         public void Initialize(LocalCatalogService catalogService, SaveDataService saveDataService)
@@ -226,12 +248,18 @@ namespace ArtUnbound.UI
             // Filter buttons
             if (filterAllButton != null)
                 filterAllButton.onClick.AddListener(() => { PlayButtonClick(); ApplyFilter(FilterType.All); });
-            
+
             if (filterInProgressButton != null)
                 filterInProgressButton.onClick.AddListener(() => { PlayButtonClick(); ApplyFilter(FilterType.InProgress); });
-            
+
             if (filterCompletedButton != null)
                 filterCompletedButton.onClick.AddListener(() => { PlayButtonClick(); ApplyFilter(FilterType.Completed); });
+
+            if (filterExpandButton != null)
+                filterExpandButton.onClick.AddListener(() => { PlayButtonClick(); ApplyExpandFilter(); });
+
+            if (unlockButton != null)
+                unlockButton.onClick.AddListener(OnUnlockClicked);
 
             if (catalogPageLeftButton != null)
                 catalogPageLeftButton.onClick.AddListener(GoToPrevPage);
@@ -269,6 +297,12 @@ namespace ArtUnbound.UI
             
             if (filterCompletedButton != null)
                 filterCompletedButton.onClick.RemoveAllListeners();
+
+            if (filterExpandButton != null)
+                filterExpandButton.onClick.RemoveAllListeners();
+
+            if (unlockButton != null)
+                unlockButton.onClick.RemoveAllListeners();
 
             if (catalogPageLeftButton != null)
                 catalogPageLeftButton.onClick.RemoveAllListeners();
@@ -314,9 +348,42 @@ namespace ArtUnbound.UI
         private void ApplyFilter(FilterType filter)
         {
             currentFilter = filter;
+            isExpandMode = false;
             UpdateFilterButtonVisuals();
-            
+
             filteredArtworks = GetFilteredArtworks();
+            currentPage = 0;
+            RefreshCatalogPage();
+        }
+
+        private void ApplyExpandFilter()
+        {
+            if (purchaseService == null || purchaseService.PackCatalog == null ||
+                purchaseService.PackCatalog.packs.Count == 0)
+            {
+                Debug.LogWarning("[UnifiedMainMenu] No pack catalog available for Expand filter.");
+                return;
+            }
+
+            currentFilter = FilterType.Expand;
+            isExpandMode = true;
+            currentPackIndex = 0;
+            UpdateFilterButtonVisuals();
+            RefreshExpandPage();
+        }
+
+        private void RefreshExpandPage()
+        {
+            var catalog = purchaseService?.PackCatalog;
+            if (catalog == null || catalog.packs.Count == 0) return;
+
+            currentPackIndex = Mathf.Clamp(currentPackIndex, 0, catalog.packs.Count - 1);
+            var pack = catalog.packs[currentPackIndex];
+            filteredArtworks = pack.artworks != null
+                ? pack.artworks.Where(a => a != null).ToList()
+                : new List<ArtworkDefinition>();
+
+            // In expand mode currentPage is always 0 — each pack fits in one page
             currentPage = 0;
             RefreshCatalogPage();
         }
@@ -327,13 +394,13 @@ namespace ArtUnbound.UI
             {
                 case FilterType.All:
                     return allArtworks;
-                
+
                 case FilterType.InProgress:
                     return allArtworks.Where(artwork => HasInProgressSession(artwork.artworkId)).ToList();
-                
+
                 case FilterType.Completed:
                     return allArtworks.Where(artwork => IsArtworkCompleted(artwork.artworkId)).ToList();
-                
+
                 default:
                     return allArtworks;
             }
@@ -349,7 +416,6 @@ namespace ArtUnbound.UI
         private bool IsArtworkCompleted(string artworkId)
         {
             if (saveData == null) return false;
-            
             var progress = saveData.GetProgress(artworkId);
             return progress != null && progress.HasBeenCompleted();
         }
@@ -359,6 +425,7 @@ namespace ArtUnbound.UI
             UIButtonStatefullTheme.ApplyTo(filterAllButton, currentFilter == FilterType.All);
             UIButtonStatefullTheme.ApplyTo(filterInProgressButton, currentFilter == FilterType.InProgress);
             UIButtonStatefullTheme.ApplyTo(filterCompletedButton, currentFilter == FilterType.Completed);
+            UIButtonStatefullTheme.ApplyTo(filterExpandButton, currentFilter == FilterType.Expand);
         }
         #endregion
 
@@ -409,9 +476,17 @@ namespace ArtUnbound.UI
 
         private void GoToPrevPage()
         {
-            if (currentPage > 0)
+            PlayButtonClick();
+            if (isExpandMode)
             {
-                PlayButtonClick();
+                if (currentPackIndex > 0)
+                {
+                    currentPackIndex--;
+                    RefreshExpandPage();
+                }
+            }
+            else if (currentPage > 0)
+            {
                 currentPage--;
                 RefreshCatalogPage();
             }
@@ -419,23 +494,67 @@ namespace ArtUnbound.UI
 
         private void GoToNextPage()
         {
-            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)filteredArtworks.Count / ItemsPerPage));
-            if (currentPage < totalPages - 1)
+            PlayButtonClick();
+            if (isExpandMode)
             {
-                PlayButtonClick();
-                currentPage++;
-                RefreshCatalogPage();
+                var catalog = purchaseService?.PackCatalog;
+                if (catalog != null && currentPackIndex < catalog.packs.Count - 1)
+                {
+                    currentPackIndex++;
+                    RefreshExpandPage();
+                }
+            }
+            else
+            {
+                int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)filteredArtworks.Count / ItemsPerPage));
+                if (currentPage < totalPages - 1)
+                {
+                    currentPage++;
+                    RefreshCatalogPage();
+                }
             }
         }
 
         private void UpdatePageIndicator(int totalPages)
         {
             if (catalogPageText == null) return;
+
+            if (isExpandMode)
+            {
+                var catalog = purchaseService?.PackCatalog;
+                if (catalog != null && catalog.packs.Count > 0)
+                {
+                    var pack = catalog.packs[currentPackIndex];
+                    string purchased = purchaseService.IsPurchased(pack.packId) ? "" : $"  {pack.price}";
+                    catalogPageText.text = catalog.packs.Count > 1
+                        ? $"{pack.packName}{purchased}  ({currentPackIndex + 1}/{catalog.packs.Count})"
+                        : $"{pack.packName}{purchased}";
+                }
+                return;
+            }
+
             catalogPageText.text = totalPages <= 1 ? "" : $"{currentPage + 1} / {totalPages}";
         }
 
         private void UpdatePageButtons(int totalPages)
         {
+            if (isExpandMode)
+            {
+                var catalog = purchaseService?.PackCatalog;
+                int packCount = catalog != null ? catalog.packs.Count : 0;
+                if (catalogPageLeftButton != null)
+                {
+                    catalogPageLeftButton.gameObject.SetActive(true);
+                    catalogPageLeftButton.interactable = currentPackIndex > 0;
+                }
+                if (catalogPageRightButton != null)
+                {
+                    catalogPageRightButton.gameObject.SetActive(true);
+                    catalogPageRightButton.interactable = currentPackIndex < packCount - 1;
+                }
+                return;
+            }
+
             // Siempre visibles; deshabilitados cuando no aplican (Prev en pág 1, Next en última)
             if (catalogPageLeftButton != null)
             {
@@ -618,8 +737,56 @@ namespace ArtUnbound.UI
                 detailDescriptionText.text = selectedArtwork.description;
             }
 
-            // Update difficulty buttons
+            // Update difficulty buttons & unlock section
             UpdateDifficultyButtons();
+            UpdateUnlockSection();
+        }
+
+        private void UpdateUnlockSection()
+        {
+            if (unlockSection == null || selectedArtwork == null) return;
+
+            var pack = purchaseService?.GetPackForArtwork(selectedArtwork.artworkId);
+            bool isLocked = pack != null && !(purchaseService?.IsPurchased(pack.packId) ?? false);
+            currentUnlockPackId = isLocked ? pack.packId : null;
+
+            unlockSection.SetActive(isLocked);
+
+            if (isLocked && unlockPriceText != null)
+                unlockPriceText.text = $"Unlock — {pack.price}";
+
+            // Disable/enable play buttons based on lock state
+            if (easyButton != null)   easyButton.interactable   = !isLocked;
+            if (normalButton != null) normalButton.interactable = !isLocked;
+            if (hardButton != null)   hardButton.interactable   = !isLocked;
+            if (expertButton != null) expertButton.interactable = !isLocked;
+        }
+
+        private void OnUnlockClicked()
+        {
+            if (string.IsNullOrEmpty(currentUnlockPackId) || purchaseService == null) return;
+
+            PlayButtonClick();
+            purchaseService.PurchasePack(
+                currentUnlockPackId,
+                onSuccess: () =>
+                {
+                    // Hide unlock section and re-enable play buttons
+                    if (unlockSection != null) unlockSection.SetActive(false);
+                    if (easyButton != null)   easyButton.interactable   = true;
+                    if (normalButton != null) normalButton.interactable = true;
+                    if (hardButton != null)   hardButton.interactable   = true;
+                    if (expertButton != null) expertButton.interactable = true;
+                    currentUnlockPackId = null;
+
+                    // Refresh catalog so locked icons disappear from the grid
+                    if (isExpandMode) RefreshExpandPage(); else RefreshCatalogPage();
+                },
+                onFailure: () =>
+                {
+                    Debug.LogWarning($"[UnifiedMainMenu] Purchase failed for pack: {currentUnlockPackId}");
+                }
+            );
         }
 
         private void SetDetailFrameTier(FrameTier tier)
@@ -836,7 +1003,8 @@ namespace ArtUnbound.UI
         {
             All,
             InProgress,
-            Completed
+            Completed,
+            Expand
         }
         #endregion
 

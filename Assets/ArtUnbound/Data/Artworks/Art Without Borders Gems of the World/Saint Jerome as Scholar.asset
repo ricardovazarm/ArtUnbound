@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Saint Jerome as Scholar
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Saint Jerome as Scholar
+  title: Saint Jerome as Scholar
+  author: El Greco
+  year: 1610
+  description: "Museum: The Met\nArt Movement: Mannerism\nYear: 1610"
+  museum: The Met
+  artMovement: Mannerism
+  aspectRatio: 0.8247
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: a9bf2e14c5aa3ef41822ff4a648770df, type: 3}
+  fullImage: {fileID: 21300000, guid: d3fde2585d224ea439447212c61288d6, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 63
+  pieceCountNormal: 120
+  pieceCountHard: 180
+  pieceCountExpert: 304
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Village of Eragny
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Village of Eragny
+  title: Village of Eragny
+  author: Camille Pissarro
+  year: 1895
+  description: "Museum: Birmingham Museum of Art\nArt Movement: Impressionism / Pointillism\nYear: 1895"
+  museum: Birmingham Museum of Art
+  artMovement: Impressionism / Pointillism
+  aspectRatio: 1.2378
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 38bb6047d8a37c546a389ca15fead91c, type: 3}
+  fullImage: {fileID: 21300000, guid: 3ae75f5b9ba123d4b8e673e694f64e58, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 63
+  pieceCountNormal: 120
+  pieceCountHard: 208
+  pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

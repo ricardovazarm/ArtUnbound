@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Manet and the Impressionist Circle
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_manet_and_the_impressionist_circle
+  packName: Manet and the Impressionist Circle
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: 0d65b413e47e4a378da62fa372ca383e, type: 2}
+  - {fileID: 11400000, guid: c9e976c335204e829b45da524344ed08, type: 2}
+  - {fileID: 11400000, guid: 608b4fd16bfb46e18cee81005416a112, type: 2}
+  - {fileID: 11400000, guid: 5de87f90f1c841febf83e7143341a24a, type: 2}
+  - {fileID: 11400000, guid: eab655c58b854695a408794662f9c5d5, type: 2}
+  - {fileID: 11400000, guid: 4e4ffc5721014c8a9161f758c9a24490, type: 2}
+  - {fileID: 11400000, guid: e6ba39a7f976493589a72bdfafaba05a, type: 2}
+  - {fileID: 11400000, guid: 370b3e6ece70444c917b7a8b916deab1, type: 2}
+  - {fileID: 11400000, guid: d898cc7844364e7398cfe9fa1b3d6723, type: 2}
+  - {fileID: 11400000, guid: 79fd1b8e8f6e45adb99f555b1931440a, type: 2}
+  - {fileID: 11400000, guid: 0c5b08503d454d2aa76cc390ecadf1b3, type: 2}
+  - {fileID: 11400000, guid: 86b5fbd0ee324e5f941da21c9f064e2a, type: 2}

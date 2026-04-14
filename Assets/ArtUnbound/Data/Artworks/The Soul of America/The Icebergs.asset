@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Icebergs
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Icebergs
+  title: The Icebergs
+  author: Frederic Edwin Church
+  year: 1861
+  description: "Museum: Dallas Museum of Art\nArt Movement: Romanticism (Hudson River School)\nYear: 1861"
+  museum: Dallas Museum of Art
+  artMovement: Romanticism (Hudson River School)
+  aspectRatio: 1.7467
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: f67cb5ffd73ea2c4ba393b6c24b7fe92, type: 3}
+  fullImage: {fileID: 21300000, guid: 9db83c2c8e1cb904195c499ea9a9777a, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 60
+  pieceCountNormal: 112
+  pieceCountHard: 209
+  pieceCountExpert: 299
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Houses of Parliament, Sunset
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Houses of Parliament, Sunset
+  title: The Houses of Parliament, Sunset
+  author: Claude Monet
+  year: 1903
+  description: "Museum: National Gallery of Art\nArt Movement: Impressionism\nYear: 1903"
+  museum: National Gallery of Art
+  artMovement: Impressionism
+  aspectRatio: 1.1321
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: a8fe17ad35a579c418941efb2f81e353, type: 3}
+  fullImage: {fileID: 21300000, guid: e0c9bda70426d9542920f2db703b5a06, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 72
+  pieceCountNormal: 110
+  pieceCountHard: 195
+  pieceCountExpert: 288
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

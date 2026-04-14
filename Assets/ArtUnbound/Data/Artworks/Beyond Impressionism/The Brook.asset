@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Brook
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Brook
+  title: The Brook
+  author: Paul Cezanne
+  year: 1900
+  description: "Museum: Cleveland Museum of Art\nArt Movement: Post-Impressionism\nYear: 1900"
+  museum: Cleveland Museum of Art
+  artMovement: Post-Impressionism
+  aspectRatio: 1.3821
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 364837954a86f504a86d90da769c8d46, type: 3}
+  fullImage: {fileID: 21300000, guid: a8ce8ed47142d5244a2d7fa45c4ccdb4, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 70
+  pieceCountNormal: 108
+  pieceCountHard: 204
+  pieceCountExpert: 266
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

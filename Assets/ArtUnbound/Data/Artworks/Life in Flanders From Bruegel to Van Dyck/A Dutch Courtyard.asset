@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: A Dutch Courtyard
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: A Dutch Courtyard
+  title: A Dutch Courtyard
+  author: Pieter de Hooch
+  year: 1658
+  description: "Museum: National Gallery of Art\nArt Movement: Dutch Golden Age\nYear: 1658"
+  museum: National Gallery of Art
+  artMovement: Dutch Golden Age
+  aspectRatio: 0.8633
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: cc2aca50ad1f3b84d8b6c8b23e6bc292, type: 3}
+  fullImage: {fileID: 21300000, guid: 9e8a2e9bd6eea8b4e8262e6cc9339222, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 0
+  requiresUnlock: 1
+  unlockWeek: 0
+  pieceCountEasy: 72
+  pieceCountNormal: 120
+  pieceCountHard: 195
+  pieceCountExpert: 288
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

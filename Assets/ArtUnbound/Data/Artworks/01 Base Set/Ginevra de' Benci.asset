@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Ginevra de' Benci
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Ginevra de' Benci
+  title: Ginevra de' Benci
+  author: Leonardo da Vinci
+  year: 1474
+  description: "Museum: National Gallery of Art\nArt Movement: Italian Renaissance\nYear: 1474"
+  museum: National Gallery of Art
+  artMovement: Italian Renaissance
+  aspectRatio: 0.9695
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 6b15a22333983dd4b87f92dd4e37712f, type: 3}
+  fullImage: {fileID: 21300000, guid: 4801ea4424dae7843a9530af98ad3526, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 64
+  pieceCountNormal: 121
+  pieceCountHard: 196
+  pieceCountExpert: 272
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

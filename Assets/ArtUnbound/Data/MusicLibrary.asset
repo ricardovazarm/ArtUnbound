@@ -37,3 +37,34 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 03bce645abea85e48ba8925ac0d2ebc1, type: 3}
     title: Piano Sonata no. 11, K. 331 - III. Alla Turca
     artist: Wolfgang Amadeus Mozart
+  - clip: {fileID: 8300000, guid: 46ccf520189eba74f9f437204a8356e3, type: 3}
+    title: Symphony no. 40 in G minor
+    artist: Wolfgang Amadeus Mozart
+  - clip: {fileID: 8300000, guid: 674d8b3aaf116a94ba8e29ea4fcb2d36, type: 3}
+    title: Serenade in G major
+    artist: Wolfgang Amadeus Mozart
+  - clip: {fileID: 8300000, guid: 713c20af78a6acc46ad873768c26250c, type: 3}
+    title: Swan Lake Op.20 - Act II Pt.1
+    artist: Piotr Ilyich Tchaikovsky
+  - clip: {fileID: 8300000, guid: ab390702e32ecf846972bf0292dab894, type: 3}
+    title: Nocturne in B flat minor, Op. 9 no. 1
+    artist: Frederic Chopin
+  - clip: {fileID: 8300000, guid: 3364c5dad60dea240b05c6db709b9c4c, type: 3}
+    title: Nocturne in E flat minor, Op. 9 no. 2
+    artist: Frederic Chopin
+  - clip: {fileID: 8300000, guid: fab55fb23b388884aac6b93058e56b98, type: 3}
+    title: Fantaisie - Impromptu, Op. 66
+    artist: Frederic Chopin
+  - clip: {fileID: 8300000, guid: 44178dd0e705f2a4ebe6b2e29d59479c, type: 3}
+    title: Concerto No. 4 in F minor, Op. 8, RV 297, 'L'inverno' (Winter) - Allegro
+      non molto
+    artist: Antonio Vivaldi
+  - clip: {fileID: 8300000, guid: 65e1e30ba9495884c83a1b0253a97511, type: 3}
+    title: Violin Concerto in E major, RV 269 'Spring'
+    artist: Antonio Vivaldi
+  - clip: {fileID: 8300000, guid: 49232d75ddabfa344bb9f0f4c3ebbf20, type: 3}
+    title: Violin Concerto in F major, RV 293 'Autumn'
+    artist: Antonio Vivaldi
+  - clip: {fileID: 8300000, guid: be522122bfd33f24c8cec07fc1bdb3da, type: 3}
+    title: Violin Concerto in G minor, RV 315 'Summer'
+    artist: Antonio Vivaldi

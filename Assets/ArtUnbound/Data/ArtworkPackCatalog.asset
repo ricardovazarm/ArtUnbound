@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9098375f6debd314c8210bb6622dbef3, type: 3}
+  m_Name: ArtworkPackCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackCatalog
+  packs:
+  - {fileID: 11400000, guid: 846e12b600fb4560885a34a42f70378d, type: 2}
+  - {fileID: 11400000, guid: 51e88c072f824360941f07603fc5a105, type: 2}
+  - {fileID: 11400000, guid: 58f3ddb90a284113ae01fee4795c6ff9, type: 2}
+  - {fileID: 11400000, guid: 7393f69503dc4630a1c9c6690dd3cddd, type: 2}
+  - {fileID: 11400000, guid: 46bcb38612a2418298a6408de220d2f1, type: 2}
+  - {fileID: 11400000, guid: 1a5fad9f89854977ab38def4060f4327, type: 2}
+  - {fileID: 11400000, guid: a768e3c913284dc1a4e1a1ef2e37160c, type: 2}
+  - {fileID: 11400000, guid: 095f599539474eddaf2cb9759e63be46, type: 2}
+  - {fileID: 11400000, guid: 331f8f756894477a91053aa51e811568, type: 2}
+  - {fileID: 11400000, guid: d265bc3f250d47e8b5e88f01d7c838c3, type: 2}
+  - {fileID: 11400000, guid: 9e669be1e1ed4579ba470f05dbce13a2, type: 2}
+  - {fileID: 11400000, guid: a7f94591cf4c485ea385956dcea1c244, type: 2}
+  - {fileID: 11400000, guid: ad64430aa3d84c1bb84eb18d93cc33b2, type: 2}
+  - {fileID: 11400000, guid: 6ce923f440d645dc9574acfecf7f96a1, type: 2}
