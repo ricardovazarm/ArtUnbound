@@ -101,8 +101,8 @@ namespace ArtUnbound.UI
                 if (descriptionText != null)
                     descriptionText.text = data.description;
 
-                if (artworkImage != null && data.thumbnail != null)
-                    artworkImage.sprite = data.thumbnail;
+                if (artworkImage != null && data.fullImage != null)
+                    artworkImage.sprite = data.fullImage;
             }
             else
             {
