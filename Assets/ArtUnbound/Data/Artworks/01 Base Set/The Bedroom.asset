@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Bedroom
   title: The Bedroom
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1888
   description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism\nYear: 1888"
   museum: Art Institute of Chicago

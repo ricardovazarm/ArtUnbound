@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Small Cowper Madonna
   author: Raphael
   year: 1505
-  description: "Museum: National Gallery of Art\nArt Movement: High Renaissance\nYear: 1505"
+  description: "Museum: National Gallery of Art\nArt Movement: Renaissance\nYear: 1505"
   museum: National Gallery of Art
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.7349
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

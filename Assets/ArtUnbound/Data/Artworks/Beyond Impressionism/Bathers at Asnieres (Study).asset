@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Bathers at Asnieres (Study)
   author: Georges Seurat
   year: 1884
-  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism / Pointillism\nYear: 1884"
+  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism\nYear: 1884"
   museum: Art Institute of Chicago
-  artMovement: Post-Impressionism / Pointillism
+  artMovement: Post-Impressionism
   aspectRatio: 1.6017
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

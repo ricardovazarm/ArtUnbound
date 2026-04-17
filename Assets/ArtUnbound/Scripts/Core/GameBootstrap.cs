@@ -33,7 +33,9 @@ namespace ArtUnbound.Core
     [SerializeField] private LoadingSpinner loadingSpinner;
 
     [Header("UI Controllers")]
-        [SerializeField] private UnifiedMainMenuController unifiedMainMenu; // Unified main menu (replaces old menu system)
+        [SerializeField] private UnifiedMainMenuController unifiedMainMenu;       // Menú clásico (3×3 paginado)
+        [SerializeField] private RadialGridGalleryController radialGridGallery;  // Galería radial (experimental)
+        [SerializeField] private NativeGalleryController nativeGallery;          // Galería nativa (Prime Video style)
         [SerializeField] private PuzzleHUDController puzzleHUD;
         [SerializeField] private PuzzleAchievementsController puzzleAchievements;
         [SerializeField] private PostGameController postGameController;
@@ -55,6 +57,12 @@ namespace ArtUnbound.Core
         [SerializeField] private WallDetectionService wallDetectionService;
         [SerializeField] private ArtworkHangingController artworkHangingController;
         [SerializeField] private WallAnchorManager wallAnchorManager;
+
+        [Header("Feature Flags")]
+        [Tooltip("true = usa la galería nativa (Prime Video style) — recomendado.")]
+        [SerializeField] private bool useNativeGallery = true;
+        [Tooltip("true = usa la galería radial experimental (palm navigation).")]
+        [SerializeField] private bool useRadialGallery = false;
 
         [Header("Pack System")]
         [SerializeField] private PackPurchaseService packPurchaseService;
@@ -179,6 +187,14 @@ namespace ArtUnbound.Core
                 unifiedMainMenu.SetPackPurchaseService(packPurchaseService);
             }
 
+            // Initialize RadialGridGallery (galería radial — solo si está asignada)
+            if (radialGridGallery != null)
+                radialGridGallery.Initialize(localCatalogService, saveDataService);
+
+            // Initialize NativeGallery (galería Prime Video style)
+            if (nativeGallery != null)
+                nativeGallery.Initialize(localCatalogService, saveDataService);
+
             // Initialize WallAnchorManager with SaveDataService
             if (wallAnchorManager != null)
             {
@@ -246,6 +262,17 @@ namespace ArtUnbound.Core
                 comfortModeController.OnPositionLocked += OnComfortPositionLocked;
             }
 
+            // RadialGridGallery
+            if (radialGridGallery != null)
+                radialGridGallery.OnStartPuzzle += OnUnifiedMenuStartPuzzle;
+
+            // NativeGallery
+            if (nativeGallery != null)
+            {
+                nativeGallery.OnStartPuzzle    += OnUnifiedMenuStartPuzzle;
+                nativeGallery.OnSettingsChanged += OnNativeGallerySettingsChanged;
+            }
+
             // UnifiedMainMenu
             if (unifiedMainMenu != null)
             {
@@ -296,14 +323,22 @@ namespace ArtUnbound.Core
             if (audioManager != null)
                 audioManager.StartMusicPlayback();
 
-            // Use UnifiedMainMenu (Show refreshes music track from CurrentTrack)
-            if (unifiedMainMenu != null)
+            // Mostrar galería activa según el feature flag (prioridad: Native > Radial > Classic)
+            if (useNativeGallery && nativeGallery != null)
+            {
+                nativeGallery.Show();
+            }
+            else if (useRadialGallery && radialGridGallery != null)
+            {
+                radialGridGallery.Show();
+            }
+            else if (unifiedMainMenu != null)
             {
                 unifiedMainMenu.Show();
             }
             else
             {
-                Debug.LogError("[GameBootstrap] UnifiedMainMenuController reference is missing in Inspector!");
+                Debug.LogError("[GameBootstrap] No hay controlador de menú asignado en el Inspector.");
             }
         }
 
@@ -520,7 +555,10 @@ namespace ArtUnbound.Core
                 if (displaySession.isCompleted)
                 {
                     SetState(GameState.PostGame);
-                    unifiedMainMenu?.Hide(); // Hide main menu (don't use HideAllPanels - it hides puzzleBoard)
+                    // Ocultar todas las galerías sin usar HideAllPanels (que también oculta el puzzleBoard)
+                    unifiedMainMenu?.Hide();
+                    radialGridGallery?.Hide();
+                    nativeGallery?.Hide();
                     var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
                     int timeSec = record?.bestTimeSec ?? displaySession.GetElapsedSeconds();
                     int difficultyIdx = GetDifficultyIndexFromPieceCount(selectedArtworkId, actualPieceCount);
@@ -890,6 +928,22 @@ namespace ArtUnbound.Core
             TransitionToMainMenu();
         }
 
+        /// <summary>
+        /// Callback cuando el usuario mueve un slider en la NativeGallery.
+        /// Persiste los valores y los aplica inmediatamente al AudioManager.
+        /// </summary>
+        private void OnNativeGallerySettingsChanged(float music, float sfx, bool haptics)
+        {
+            if (SaveData?.settings != null)
+            {
+                SaveData.settings.musicVolume    = music;
+                SaveData.settings.sfxVolume      = sfx;
+                SaveData.settings.hapticsEnabled = haptics;
+                saveDataService.MarkDirty();
+            }
+            ApplySettings(SaveData?.settings);
+        }
+
         private void ApplySettings(GameSettings settings)
         {
             if (settings == null) return;
@@ -914,6 +968,8 @@ namespace ArtUnbound.Core
         private void HideAllPanels()
         {
             unifiedMainMenu?.Hide();
+            radialGridGallery?.Hide();
+            nativeGallery?.Hide();
             puzzleHUD?.Hide();
             puzzleAchievements?.Hide();
             postGameController?.Hide();
@@ -999,7 +1055,7 @@ namespace ArtUnbound.Core
 
         }
 
-        private const float DefaultPlacementDistance = 0.45f; // Meta MR guideline: 45cm for direct hand interaction
+        private const float DefaultPlacementDistance = 0.55f; // 55cm from user (10cm further than original 45cm)
 
         private System.Collections.IEnumerator PositionCanvasWithDelay(Transform canvasTransform)
         {

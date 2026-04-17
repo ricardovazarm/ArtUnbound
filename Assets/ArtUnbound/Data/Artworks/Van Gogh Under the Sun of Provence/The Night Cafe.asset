@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Night Cafe
   title: The Night Cafe
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1888
   description: "Museum: Yale Art Gallery\nArt Movement: Post-Impressionism\nYear: 1888"
   museum: Yale Art Gallery

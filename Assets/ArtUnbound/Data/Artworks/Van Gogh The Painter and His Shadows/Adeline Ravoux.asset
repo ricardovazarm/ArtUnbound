@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Adeline Ravoux
   title: Adeline Ravoux
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1890
   description: "Museum: Cleveland Museum of Art\nArt Movement: Post-Impressionism\nYear: 1890"
   museum: Cleveland Museum of Art

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Card Players
   title: Card Players
-  author: Paul Cézanne
+  author: Paul Cezanne
   year: 1895
   description: "Museum: Musée d'Orsay\nArt Movement: Post-Impressionism\nYear: 1895"
   museum: Musée d'Orsay

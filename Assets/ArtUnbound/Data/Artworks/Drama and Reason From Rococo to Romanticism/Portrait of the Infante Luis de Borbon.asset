@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Portrait of the Infante Luis de Borbon
   author: Francisco de Goya
   year: 1783
-  description: "Museum: Cleveland Museum of Art\nArt Movement: Rococo / Neoclassicism\nYear: 1783"
+  description: "Museum: Cleveland Museum of Art\nArt Movement: Rococo\nYear: 1783"
   museum: Cleveland Museum of Art
-  artMovement: Rococo / Neoclassicism
+  artMovement: Rococo
   aspectRatio: 0.6482
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

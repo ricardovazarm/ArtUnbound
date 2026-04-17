@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Saint George and the Dragon
   author: Raphael
   year: 1506
-  description: "Museum: National Gallery of Art\nArt Movement: High Renaissance\nYear: 1506"
+  description: "Museum: National Gallery of Art\nArt Movement: Renaissance\nYear: 1506"
   museum: National Gallery of Art
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.7639
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

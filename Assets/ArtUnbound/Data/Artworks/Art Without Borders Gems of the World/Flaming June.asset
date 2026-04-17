@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Flaming June
   author: Frederic Leighton
   year: 1895
-  description: "Museum: Museo de Arte de Ponce, Puerto Rico\nArt Movement: Victorian Academicism\nYear: 1895"
+  description: "Museum: Museo de Arte de Ponce, Puerto Rico\nArt Movement: Realism\nYear: 1895"
   museum: Museo de Arte de Ponce, Puerto Rico
-  artMovement: Victorian Academicism
+  artMovement: Realism
   aspectRatio: 0.9992
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

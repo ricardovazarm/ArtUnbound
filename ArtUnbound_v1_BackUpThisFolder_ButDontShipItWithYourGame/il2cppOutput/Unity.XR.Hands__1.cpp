@@ -1277,8 +1277,8 @@ struct List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC_StaticFields
 };
 struct U3CPrivateImplementationDetailsU3E_tBF5663E9A4A0B6D6E1CDFF5C036B265B03455C16_StaticFields
 {
-	__StaticArrayInitTypeSizeU3D5495_t4B038F807DBC59AF0D6622B44C3AB08F4F415463 ___1A4DAEADAED112791A8824B4C6708E4AA4B3173F5459D80E8DAFBB0E785C8F02;
 	__StaticArrayInitTypeSizeU3D4969_t46E0C06885DD467AF89DCD93D56A5DB91BD397CA ___C9460348E9DBAA9C96845772CA69E452E4107D383727029313B3B0DB64A12472;
+	__StaticArrayInitTypeSizeU3D5495_t4B038F807DBC59AF0D6622B44C3AB08F4F415463 ___CDD272464D51A431E2930288E4F53354F0E5BCBE453D683CC271AFB83B29BADA;
 };
 struct BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E_StaticFields
 {
@@ -2223,7 +2223,7 @@ extern "C" int32_t CDECL ReversePInvokeWrapper_XRHandOrientationUtility_CheckDir
 
 	return static_cast<int32_t>(returnValue);
 }
-// Method Definition Index: 102885
+// Method Definition Index: 126093
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryGetOriginTransform_m4C47068E124A8CD7DD57972975AD35D46195B18C (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1** ___0_originTransform, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2235,7 +2235,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryGetOriginTra
 	}
 	int32_t G_B3_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:21>
 		bool L_0;
 		L_0 = XRHandOrientationUtility_TryEnsureOriginAndHead_m6159005080E75FFDC5FF48979D626563DA38554A(NULL);
 		if (!L_0)
@@ -2259,16 +2259,16 @@ IL_0014:
 
 IL_0015:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:22>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1** L_3 = ___0_originTransform;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_OriginTransform;
 		*((RuntimeObject**)L_3) = (RuntimeObject*)L_4;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_3, (void*)(RuntimeObject*)L_4);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:23>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:23>
 		return (bool)G_B3_0;
 	}
 }
-// Method Definition Index: 102886
+// Method Definition Index: 126094
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryGetHeadTransform_m034B4D9A65D4A0473D4A17AC71C25F41CDDF15E3 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1** ___0_headTransform, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2280,7 +2280,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryGetHeadTrans
 	}
 	int32_t G_B3_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:28>
 		bool L_0;
 		L_0 = XRHandOrientationUtility_TryEnsureOriginAndHead_m6159005080E75FFDC5FF48979D626563DA38554A(NULL);
 		if (!L_0)
@@ -2304,16 +2304,16 @@ IL_0014:
 
 IL_0015:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:29>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1** L_3 = ___0_headTransform;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = ((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_HeadTransform;
 		*((RuntimeObject**)L_3) = (RuntimeObject*)L_4;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_3, (void*)(RuntimeObject*)L_4);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:30>
 		return (bool)G_B3_0;
 	}
 }
-// Method Definition Index: 102887
+// Method Definition Index: 126095
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryEnsureOriginAndHead_m6159005080E75FFDC5FF48979D626563DA38554A (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2325,7 +2325,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryEnsureOrigin
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:35>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_0 = ((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_Origin;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -2336,19 +2336,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_TryEnsureOrigin
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:36>
 		return (bool)1;
 	}
 
 IL_000f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:39>
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_2;
 		L_2 = Object_FindAnyObjectByType_TisXROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE_m1D39A9DC25BAEAFE4377FD24CFBBD57A12198E26(0, Object_FindAnyObjectByType_TisXROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE_m1D39A9DC25BAEAFE4377FD24CFBBD57A12198E26_RuntimeMethod_var);
 		((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_Origin = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_Origin), (void*)L_2);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:44>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:44>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_3 = ((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_Origin;
 		bool L_4;
 		L_4 = Object_op_Equality_mB6120F782D83091EF56A198FCEBCF066DB4A9605(L_3, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
@@ -2358,13 +2358,13 @@ IL_000f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:45>
 		return (bool)0;
 	}
 
 IL_0029:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:47>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_5 = ((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_Origin;
 		NullCheck(L_5);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
@@ -2374,7 +2374,7 @@ IL_0029:
 		L_7 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_6, NULL);
 		((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_OriginTransform = L_7;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_OriginTransform), (void*)L_7);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:48>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_8 = ((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_Origin;
 		NullCheck(L_8);
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_9;
@@ -2384,11 +2384,11 @@ IL_0029:
 		L_10 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_9, NULL);
 		((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_HeadTransform = L_10;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_StaticFields*)il2cpp_codegen_static_fields_for(XRHandOrientationUtility_t7B3B31E5E7873AB1C28998D4AA15B062DD93BC9B_il2cpp_TypeInfo_var))->___s_HeadTransform), (void*)L_10);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:49>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 102888
+// Method Definition Index: 126096
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandOrientationUtility_GetHandAxisDirection_m22DCBF77C9092CC37C826CBA9CE6F978ABB6EF6B (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, int32_t ___1_handAxis, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___2_rootRotation, float ___3_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
@@ -2400,7 +2400,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandOrientationUtility_GetHandAxisDire
 		return;
 	}
 }
-// Method Definition Index: 102889
+// Method Definition Index: 126097
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_CheckDirectionAlignment_m17843C2016EE560DD53714E713BCC11F6FCBFB7A (int32_t ___0_condition, float ___1_threshold, bool ___2_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___3_handAxisDirection, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_referenceDirection, const RuntimeMethod* method) 
 {
 	{
@@ -2414,7 +2414,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_CheckDirectionA
 		return L_5;
 	}
 }
-// Method Definition Index: 102890
+// Method Definition Index: 126098
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandOrientationUtility_GetHandAxisDirectionU24BurstManaged_mD456588F704C8E921FD46688A18EED1D76A5E690 (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, int32_t ___1_handAxis, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___2_rootRotation, float ___3_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
@@ -2441,7 +2441,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandOrientationUtility_GetHandAxisDire
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:64>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_1 = ___0_result;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_2 = ___2_rootRotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_3 = (*(quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*)L_2);
@@ -2451,13 +2451,13 @@ IL_0014:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_5;
 		L_5 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_3, L_4, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_1 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:65>
 		return;
 	}
 
 IL_003a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:68>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_6 = ___0_result;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_7 = ___2_rootRotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_8 = (*(quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*)L_7);
@@ -2468,13 +2468,13 @@ IL_003a:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_11;
 		L_11 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_8, L_10, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_6 = L_11;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:69>
 		return;
 	}
 
 IL_005c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:72>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_12 = ___0_result;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_13 = ___2_rootRotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_14 = (*(quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*)L_13);
@@ -2484,23 +2484,23 @@ IL_005c:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_16;
 		L_16 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_14, L_15, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_12 = L_16;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:73>
 		return;
 	}
 
 IL_0082:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:76>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_17 = ___0_result;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_18;
 		memset((&L_18), 0, sizeof(L_18));
 		float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline((&L_18), (0.0f), (0.0f), (1.0f), NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_17 = L_18;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:79>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:79>
 		return;
 	}
 }
-// Method Definition Index: 102891
+// Method Definition Index: 126099
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_CheckDirectionAlignmentU24BurstManaged_m6254E91337D55E39549F97F50C098F223D8F67EE (int32_t ___0_condition, float ___1_threshold, bool ___2_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___3_handAxisDirection, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_referenceDirection, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -2509,15 +2509,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_CheckDirectionA
 	memset((&V_1), 0, sizeof(V_1));
 	float V_2 = 0.0f;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:91>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:91>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_0 = ___3_handAxisDirection;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_1 = (*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_0);
 		V_0 = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:92>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:92>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_2 = ___4_referenceDirection;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_3 = (*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_2);
 		V_1 = L_3;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:93>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:93>
 		bool L_4 = ___2_ignorePositionY;
 		if (!L_4)
 		{
@@ -2525,25 +2525,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_CheckDirectionA
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:95>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:95>
 		(&V_0)->___y = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:96>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:96>
 		(&V_1)->___y = (0.0f);
 	}
 
 IL_002a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:99>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:99>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_5 = V_1;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_6;
 		L_6 = math_normalize_mF02431EFC9E3212E0245EFF5C13BC9DC34512399_inline(L_5, NULL);
 		V_1 = L_6;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:100>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:100>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_7 = V_0;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_8;
 		L_8 = math_normalize_mF02431EFC9E3212E0245EFF5C13BC9DC34512399_inline(L_7, NULL);
 		V_0 = L_8;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:102>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:102>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_9 = V_0;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_10 = V_1;
 		float L_11;
@@ -2572,7 +2572,7 @@ IL_002a:
 
 IL_0054:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:106>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:106>
 		float L_13 = V_2;
 		float L_14 = ___1_threshold;
 		float L_15;
@@ -2584,7 +2584,7 @@ IL_0054:
 
 IL_0063:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:109>
 		float L_17 = V_2;
 		float L_18;
 		L_18 = math_abs_m3D9508B36B045BFE7B89C6C69AD34596264E4FE1_inline(L_17, NULL);
@@ -2600,7 +2600,7 @@ IL_0063:
 
 IL_008c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:112>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:112>
 		float L_23 = V_2;
 		float L_24 = ___1_threshold;
 		float L_25;
@@ -2612,7 +2612,7 @@ IL_008c:
 
 IL_009c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:115>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:115>
 		return (bool)0;
 	}
 }
@@ -2652,7 +2652,7 @@ IL2CPP_EXTERN_C  void DelegatePInvokeWrapper_GetHandAxisDirection_000001B9U24Pos
 	il2cppPInvokeFunc(___0_result, ___1_handAxis, ___2_rootRotation, ___3_handednessMultiplier);
 
 }
-// Method Definition Index: 102892
+// Method Definition Index: 126100
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24PostfixBurstDelegate__ctor_m9ACB7E7790648DF8AD6C954AC1FB45CD79106817 (GetHandAxisDirection_000001B9U24PostfixBurstDelegate_t7CF70C1B4459411FA0D7C8C1C60B50D2CC1B9890* __this, RuntimeObject* ___0_p, intptr_t ___1_p, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_p);
@@ -2689,13 +2689,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24PostfixB
 	}
 	__this->___extra_arg = (intptr_t)&GetHandAxisDirection_000001B9U24PostfixBurstDelegate_Invoke_mD1E7C990A6C8E44CBAF5AE085A07765FBC45542F_Multicast;
 }
-// Method Definition Index: 102893
+// Method Definition Index: 126101
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24PostfixBurstDelegate_Invoke_mD1E7C990A6C8E44CBAF5AE085A07765FBC45542F (GetHandAxisDirection_000001B9U24PostfixBurstDelegate_t7CF70C1B4459411FA0D7C8C1C60B50D2CC1B9890* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, int32_t ___1_handAxis, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___2_rootRotation, float ___3_handednessMultiplier, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, int32_t, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*, float, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_result, ___1_handAxis, ___2_rootRotation, ___3_handednessMultiplier, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 102894
+// Method Definition Index: 126102
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GetHandAxisDirection_000001B9U24PostfixBurstDelegate_BeginInvoke_m06F320181F587AF81E6874DE4C5A10AB557AD22A (GetHandAxisDirection_000001B9U24PostfixBurstDelegate_t7CF70C1B4459411FA0D7C8C1C60B50D2CC1B9890* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, int32_t ___1_handAxis, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___2_rootRotation, float ___3_handednessMultiplier, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___4_p, RuntimeObject* ___5_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2713,7 +2713,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GetHandAxisDirection_000001B9U
 	__d_args[3] = Box(il2cpp_defaults.single_class, &___3_handednessMultiplier);
 	return (RuntimeObject*)il2cpp_codegen_delegate_begin_invoke((RuntimeDelegate*)__this, __d_args, (RuntimeDelegate*)___4_p, (RuntimeObject*)___5_p);
 }
-// Method Definition Index: 102895
+// Method Definition Index: 126103
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24PostfixBurstDelegate_EndInvoke_mB1845D855FCD57BE49FF8FF0BC9FE9A3F7F5F73A (GetHandAxisDirection_000001B9U24PostfixBurstDelegate_t7CF70C1B4459411FA0D7C8C1C60B50D2CC1B9890* __this, RuntimeObject* ___0_p, const RuntimeMethod* method) 
 {
 	il2cpp_codegen_delegate_end_invoke((Il2CppAsyncResult*) ___0_p, 0);
@@ -2726,7 +2726,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24PostfixB
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102896
+// Method Definition Index: 126104
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24BurstDirectCall_GetFunctionPointerDiscard_m17E54F4EFA7212CFB2984EE94DDA41E2A54134FB (intptr_t* ___0_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2769,7 +2769,7 @@ IL_002a:
 		return;
 	}
 }
-// Method Definition Index: 102897
+// Method Definition Index: 126105
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t GetHandAxisDirection_000001B9U24BurstDirectCall_GetFunctionPointer_m847FE28F9A3261D8D48A9DC604F92C2D86D589F4 (const RuntimeMethod* method) 
 {
 	intptr_t V_0;
@@ -2781,7 +2781,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t GetHandAxisDirection_000001B9U24Burs
 		return L_0;
 	}
 }
-// Method Definition Index: 102898
+// Method Definition Index: 126106
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetHandAxisDirection_000001B9U24BurstDirectCall_Invoke_m69A573A256B5EC37096B221074ED7D83D5AA3D2C (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, int32_t ___1_handAxis, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___2_rootRotation, float ___3_handednessMultiplier, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2871,7 +2871,7 @@ IL2CPP_EXTERN_C  bool DelegatePInvokeWrapper_CheckDirectionAlignment_000001BAU24
 
 	return static_cast<bool>(returnValue);
 }
-// Method Definition Index: 102899
+// Method Definition Index: 126107
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckDirectionAlignment_000001BAU24PostfixBurstDelegate__ctor_m29B574E8A7017FB46749C8E10F1CF697F1A56778 (CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_t3051719EBCE38FF4F1377A1CE3C0F0C48FD49EB8* __this, RuntimeObject* ___0_p, intptr_t ___1_p, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_p);
@@ -2900,13 +2900,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckDirectionAlignment_000001BAU24Postf
 	}
 	__this->___extra_arg = (intptr_t)&CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_Invoke_m25DE470E945D68FD42A80010AF4AD22C0C409C18_Multicast;
 }
-// Method Definition Index: 102900
+// Method Definition Index: 126108
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_Invoke_m25DE470E945D68FD42A80010AF4AD22C0C409C18 (CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_t3051719EBCE38FF4F1377A1CE3C0F0C48FD49EB8* __this, int32_t ___0_condition, float ___1_threshold, bool ___2_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___3_handAxisDirection, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_referenceDirection, const RuntimeMethod* method) 
 {
 	typedef bool (*FunctionPointerType) (RuntimeObject*, int32_t, float, bool, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, const RuntimeMethod*);
 	return ((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_condition, ___1_threshold, ___2_ignorePositionY, ___3_handAxisDirection, ___4_referenceDirection, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 102901
+// Method Definition Index: 126109
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_BeginInvoke_m44C402DBC71B9577C1995080F3224E722EEB016E (CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_t3051719EBCE38FF4F1377A1CE3C0F0C48FD49EB8* __this, int32_t ___0_condition, float ___1_threshold, bool ___2_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___3_handAxisDirection, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_referenceDirection, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___5_p, RuntimeObject* ___6_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2924,7 +2924,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CheckDirectionAlignment_000001
 	__d_args[4] = Box(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E_il2cpp_TypeInfo_var, &*___4_referenceDirection);
 	return (RuntimeObject*)il2cpp_codegen_delegate_begin_invoke((RuntimeDelegate*)__this, __d_args, (RuntimeDelegate*)___5_p, (RuntimeObject*)___6_p);
 }
-// Method Definition Index: 102902
+// Method Definition Index: 126110
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_EndInvoke_mA0923DD74FE30158AD5ED05763571F55B227548A (CheckDirectionAlignment_000001BAU24PostfixBurstDelegate_t3051719EBCE38FF4F1377A1CE3C0F0C48FD49EB8* __this, RuntimeObject* ___0_p, const RuntimeMethod* method) 
 {
 	RuntimeObject *__result = il2cpp_codegen_delegate_end_invoke((Il2CppAsyncResult*) ___0_p, 0);
@@ -2938,7 +2938,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckDirectionAlignment_000001BAU24Postf
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102903
+// Method Definition Index: 126111
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckDirectionAlignment_000001BAU24BurstDirectCall_GetFunctionPointerDiscard_m062DCE0E232AF429418AF34EFA3F6AB7C31B1C30 (intptr_t* ___0_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2981,7 +2981,7 @@ IL_002a:
 		return;
 	}
 }
-// Method Definition Index: 102904
+// Method Definition Index: 126112
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t CheckDirectionAlignment_000001BAU24BurstDirectCall_GetFunctionPointer_m4E23FB109F09FAE465D265DBA917DC552A0B523B (const RuntimeMethod* method) 
 {
 	intptr_t V_0;
@@ -2993,7 +2993,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t CheckDirectionAlignment_000001BAU24B
 		return L_0;
 	}
 }
-// Method Definition Index: 102905
+// Method Definition Index: 126113
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckDirectionAlignment_000001BAU24BurstDirectCall_Invoke_mAD7866B355C0EC9E28EBA72BA885C187AAB7F141 (int32_t ___0_condition, float ___1_threshold, bool ___2_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___3_handAxisDirection, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_referenceDirection, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3055,47 +3055,47 @@ IL_0023:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102906
+// Method Definition Index: 126114
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* XRHandPose_get_handShape_mA2F9CEE75E542EF50DCFEABD1BF970718E9FAAB7 (XRHandPose_tBCC4141B6DBAD79194D350AC1F9D3E732696D7DB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:23>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:23>
 		XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* L_0 = __this->___m_HandShape;
 		return L_0;
 	}
 }
-// Method Definition Index: 102907
+// Method Definition Index: 126115
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandPose_set_handShape_m8A14ECB97DF294D25B4BE6DC1DBAA5484CE67492 (XRHandPose_tBCC4141B6DBAD79194D350AC1F9D3E732696D7DB* __this, XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:24>
 		XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* L_0 = ___0_value;
 		__this->___m_HandShape = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_HandShape), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102908
+// Method Definition Index: 126116
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* XRHandPose_get_relativeOrientation_mA8D3C1D17AB2CB3CB3CE8809924D8A4EEDC50A00 (XRHandPose_tBCC4141B6DBAD79194D350AC1F9D3E732696D7DB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:32>
 		XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* L_0 = __this->___m_RelativeOrientation;
 		return L_0;
 	}
 }
-// Method Definition Index: 102909
+// Method Definition Index: 126117
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandPose_set_relativeOrientation_m44B3F740F9FAC0F6201AECA2FB1F8D61AEFC92FC (XRHandPose_tBCC4141B6DBAD79194D350AC1F9D3E732696D7DB* __this, XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:33>
 		XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* L_0 = ___0_value;
 		__this->___m_RelativeOrientation = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RelativeOrientation), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102910
+// Method Definition Index: 126118
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandPose_CheckConditions_m1AA79343590962148283F7115D397716EF004EC1 (XRHandPose_tBCC4141B6DBAD79194D350AC1F9D3E732696D7DB* __this, XRHandJointsUpdatedEventArgs_t23369A3B3D49D837CF21B765B7F0E248F362E31F* ___0_eventArgs, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3107,14 +3107,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandPose_CheckConditions_m1AA793435909
 	XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:56>
 		XRHandJointsUpdatedEventArgs_t23369A3B3D49D837CF21B765B7F0E248F362E31F* L_0 = ___0_eventArgs;
 		NullCheck(L_0);
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 L_1 = L_0->___hand;
 		V_0 = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:57>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:58>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandPose.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandPose.cs:59>
 		bool L_2;
 		L_2 = XRHand_get_isTracked_mDFC9D4FDE271E2DC90D5459B1A6EA304F97B7428_inline((&V_0), NULL);
 		if (!L_2)
@@ -3160,7 +3160,7 @@ IL_0046:
 		return (bool)0;
 	}
 }
-// Method Definition Index: 102911
+// Method Definition Index: 126119
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandPose__ctor_m822689942F18D4D70CB582F0C95E7760F49935BB (XRHandPose_tBCC4141B6DBAD79194D350AC1F9D3E732696D7DB* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3176,67 +3176,67 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandPose__ctor_m822689942F18D4D70CB582
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102912
+// Method Definition Index: 126120
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UserConditionU5BU5D_t3B4F228099EF8DEAD13FC9A41DB4B766B2027901* XRHandRelativeOrientation_get_userConditions_m6B1C21B9F2C2103159123D08199DE190A2A9B93E (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:370>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:370>
 		UserConditionU5BU5D_t3B4F228099EF8DEAD13FC9A41DB4B766B2027901* L_0 = __this->___m_UserConditions;
 		return L_0;
 	}
 }
-// Method Definition Index: 102913
+// Method Definition Index: 126121
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRelativeOrientation_set_userConditions_mEEC5D8340CFC9A551AEE449583484C02EB9B99CD (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, UserConditionU5BU5D_t3B4F228099EF8DEAD13FC9A41DB4B766B2027901* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:371>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:371>
 		UserConditionU5BU5D_t3B4F228099EF8DEAD13FC9A41DB4B766B2027901* L_0 = ___0_value;
 		__this->___m_UserConditions = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_UserConditions), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102914
+// Method Definition Index: 126122
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TargetConditionU5BU5D_t6541DC237935334D1012AB729E1E4A79B2CC8733* XRHandRelativeOrientation_get_targetConditions_m64D81B35234FCFCD72C25BCCE7986FED69BCE8AE (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:386>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:386>
 		TargetConditionU5BU5D_t6541DC237935334D1012AB729E1E4A79B2CC8733* L_0 = __this->___m_TargetConditions;
 		return L_0;
 	}
 }
-// Method Definition Index: 102915
+// Method Definition Index: 126123
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRelativeOrientation_set_targetConditions_mC221979339B8BC56906EA622D77632589CDFC4A8 (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, TargetConditionU5BU5D_t6541DC237935334D1012AB729E1E4A79B2CC8733* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:387>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:387>
 		TargetConditionU5BU5D_t6541DC237935334D1012AB729E1E4A79B2CC8733* L_0 = ___0_value;
 		__this->___m_TargetConditions = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TargetConditions), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102916
+// Method Definition Index: 126124
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* XRHandRelativeOrientation_get_targetTransform_mD2416FA32E7CC2A90180F40434A9D563DE595E86 (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:402>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:402>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___m_TargetTransform;
 		return L_0;
 	}
 }
-// Method Definition Index: 102917
+// Method Definition Index: 126125
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRelativeOrientation_set_targetTransform_m78FCA6C9CF25397FBA1D0B97FEAE66818BBDAE80 (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:403>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:403>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
 		__this->___m_TargetTransform = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TargetTransform), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102918
+// Method Definition Index: 126126
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRelativeOrientation_CheckConditions_m9F50DCF7D3FCEE4EC77E4520F80637052FF7A526 (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 ___0_rootPose, int32_t ___1_handedness, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3262,8 +3262,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRelativeOrientation_CheckCondition
 	int32_t V_9 = 0;
 	float G_B6_0 = 0.0f;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:416>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:417>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:416>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:417>
 		bool L_0;
 		L_0 = XRHandOrientationUtility_TryGetOriginTransform_m4C47068E124A8CD7DD57972975AD35D46195B18C((&V_0), NULL);
 		if (!L_0)
@@ -3282,25 +3282,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRelativeOrientation_CheckCondition
 
 IL_0012:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:418>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:418>
 		return (bool)0;
 	}
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:420>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:420>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_2 = ___0_rootPose;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = L_2.___position;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_4;
 		L_4 = float3_op_Implicit_mE1831A3AC179B7EB3236F8202EC8DD5CE05376AB(L_3, NULL);
 		V_2 = L_4;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:421>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:421>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_5 = ___0_rootPose;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_6 = L_5.___rotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_7;
 		L_7 = quaternion_op_Implicit_m12C97CDC5FE642C53837F73E2F9B8761D530C502(L_6, NULL);
 		V_3 = L_7;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:422>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:422>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = V_0;
 		NullCheck(L_8);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_9;
@@ -3314,7 +3314,7 @@ IL_0014:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_13;
 		L_13 = float3_op_Implicit_mE1831A3AC179B7EB3236F8202EC8DD5CE05376AB(L_12, NULL);
 		RigidTransform__ctor_m7665CC6FBD784FC7CB02E48B0A4B58008A4BC709_inline((&V_4), L_10, L_13, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:423>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:423>
 		int32_t L_14 = ___1_handedness;
 		if ((((int32_t)L_14) == ((int32_t)2)))
 		{
@@ -3334,18 +3334,18 @@ IL_0054:
 IL_0059:
 	{
 		V_5 = G_B6_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:424>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:424>
 		V_7 = 0;
 		goto IL_009f;
 	}
 
 IL_0060:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:426>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:427>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:428>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:429>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:430>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:426>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:427>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:428>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:429>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:430>
 		UserConditionU5BU5D_t3B4F228099EF8DEAD13FC9A41DB4B766B2027901* L_15 = __this->___m_UserConditions;
 		int32_t L_16 = V_7;
 		NullCheck(L_15);
@@ -3377,20 +3377,20 @@ IL_0060:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:431>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:431>
 		return (bool)0;
 	}
 
 IL_0099:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:424>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:424>
 		int32_t L_28 = V_7;
 		V_7 = ((int32_t)il2cpp_codegen_add(L_28, 1));
 	}
 
 IL_009f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:424>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:424>
 		int32_t L_29 = V_7;
 		UserConditionU5BU5D_t3B4F228099EF8DEAD13FC9A41DB4B766B2027901* L_30 = __this->___m_UserConditions;
 		NullCheck(L_30);
@@ -3400,7 +3400,7 @@ IL_009f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:434>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:434>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_31 = __this->___m_TargetTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_32;
@@ -3411,13 +3411,13 @@ IL_009f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:435>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:435>
 		return (bool)1;
 	}
 
 IL_00bb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:437>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:437>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33 = __this->___m_TargetTransform;
 		NullCheck(L_33);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_34;
@@ -3431,17 +3431,17 @@ IL_00bb:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_38;
 		L_38 = float3_op_Implicit_mE1831A3AC179B7EB3236F8202EC8DD5CE05376AB(L_37, NULL);
 		RigidTransform__ctor_m7665CC6FBD784FC7CB02E48B0A4B58008A4BC709_inline((&V_6), L_35, L_38, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:438>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:438>
 		V_9 = 0;
 		goto IL_0109;
 	}
 
 IL_00e7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:440>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:441>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:442>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:443>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:440>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:441>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:442>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:443>
 		TargetConditionU5BU5D_t6541DC237935334D1012AB729E1E4A79B2CC8733* L_39 = __this->___m_TargetConditions;
 		int32_t L_40 = V_9;
 		NullCheck(L_39);
@@ -3457,20 +3457,20 @@ IL_00e7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:444>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:444>
 		return (bool)0;
 	}
 
 IL_0103:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:438>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:438>
 		int32_t L_45 = V_9;
 		V_9 = ((int32_t)il2cpp_codegen_add(L_45, 1));
 	}
 
 IL_0109:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:438>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:438>
 		int32_t L_46 = V_9;
 		TargetConditionU5BU5D_t6541DC237935334D1012AB729E1E4A79B2CC8733* L_47 = __this->___m_TargetConditions;
 		NullCheck(L_47);
@@ -3480,11 +3480,11 @@ IL_0109:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:447>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:447>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 102919
+// Method Definition Index: 126127
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRelativeOrientation__ctor_mCAAB557CF2B71351EC296AB06F442FEEBBCF3295 (XRHandRelativeOrientation_tED6CB53B17DB9FC245E0DD142F75883E9B52A580* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3521,112 +3521,112 @@ extern "C" void CDECL ReversePInvokeWrapper_UserCondition_GetReferenceDirection_
 	*___0_result = ____0_result_empty;
 
 }
-// Method Definition Index: 102920
+// Method Definition Index: 126128
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UserCondition_get_handAxis_m2C2694863D1008DA1E8860643E6A777DDF8ADB68 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:31>
 		int32_t L_0 = __this->___m_HandAxis;
 		return L_0;
 	}
 }
-// Method Definition Index: 102921
+// Method Definition Index: 126129
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_set_handAxis_m70D5BC0F12C6A5C7544E7389589FEB98CF015DB7 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:32>
 		int32_t L_0 = ___0_value;
 		__this->___m_HandAxis = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102922
+// Method Definition Index: 126130
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UserCondition_get_alignmentCondition_m607F9D76A31D520C10DBC535F3282771D45A943A (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:40>
 		int32_t L_0 = __this->___m_AlignmentCondition;
 		return L_0;
 	}
 }
-// Method Definition Index: 102923
+// Method Definition Index: 126131
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_set_alignmentCondition_mD8E26D680EC2503D59EB576808BE3501FE9CEB76 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:41>
 		int32_t L_0 = ___0_value;
 		__this->___m_AlignmentCondition = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102924
+// Method Definition Index: 126132
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UserCondition_get_referenceDirection_m08F01E0DFE784CCC9AEEF5E08D5F31CF1CE80E79 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:49>
 		int32_t L_0 = __this->___m_ReferenceDirection;
 		return L_0;
 	}
 }
-// Method Definition Index: 102925
+// Method Definition Index: 126133
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_set_referenceDirection_m942A08B239B19975C73C49ACE685AE7226F6FCD6 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:50>
 		int32_t L_0 = ___0_value;
 		__this->___m_ReferenceDirection = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102926
+// Method Definition Index: 126134
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float UserCondition_get_angleTolerance_m591948011B2900DD5803F6FA9CEFB6F6412AE038 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:65>
 		float L_0 = __this->___m_AngleTolerance;
 		return L_0;
 	}
 }
-// Method Definition Index: 102927
+// Method Definition Index: 126135
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_set_angleTolerance_m0CBC9891307ADBED56457D351FAE3F05F9CF03C1 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:66>
 		float L_0 = ___0_value;
 		__this->___m_AngleTolerance = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102928
+// Method Definition Index: 126136
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_get_ignorePositionY_mD1A62EF161A9AC8DA33AE939BE0C5EC75ED9E931 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:74>
 		bool L_0 = __this->___m_IgnorePositionY;
 		return L_0;
 	}
 }
-// Method Definition Index: 102929
+// Method Definition Index: 126137
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_set_ignorePositionY_mF2B506AB76039F1B56B7E6678B64B767487C09DA (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:75>
 		bool L_0 = ___0_value;
 		__this->___m_IgnorePositionY = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102930
+// Method Definition Index: 126138
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckCondition_m186EC035E4F62B20CFEF63E029FA5DA8D33D77BB (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___1_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___2_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_headTransform, float ___4_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:83>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:84>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:85>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:86>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:87>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:88>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:89>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:83>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:84>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:86>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:87>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:88>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:89>
 		int32_t L_0 = __this->___m_HandAxis;
 		int32_t L_1 = __this->___m_AlignmentCondition;
 		int32_t L_2 = __this->___m_ReferenceDirection;
@@ -3642,7 +3642,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckCondition_m186EC035E4
 		return L_10;
 	}
 }
-// Method Definition Index: 102931
+// Method Definition Index: 126139
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckConditionBursted_m4832D36A5DE1AB66CE3254F57BF80C27D321BECC (int32_t ___0_handAxis, int32_t ___1_alignmentCondition, int32_t ___2_referenceDirection, float ___3_tolerance, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___5_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___6_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_headTransform, bool ___8_ignorePositionY, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
@@ -3661,7 +3661,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckConditionBursted_m483
 		return L_10;
 	}
 }
-// Method Definition Index: 102932
+// Method Definition Index: 126140
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_GetReferenceDirection_mD177EE306D367D6EAEDCBD5185FDA666FA21EA29 (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_handPosition, int32_t ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_headTransform, float ___5_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
@@ -3675,7 +3675,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_GetReferenceDirection_mD17
 		return;
 	}
 }
-// Method Definition Index: 102933
+// Method Definition Index: 126141
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition__ctor_m3D92CF44D51C8CD20F4161ABDBD71F2F03B785E6 (UserCondition_tF7AC65EF54D84D7C0A6135F53FD78261B92421BE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3683,7 +3683,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition__ctor_m3D92CF44D51C8CD20F4
 		return;
 	}
 }
-// Method Definition Index: 102934
+// Method Definition Index: 126142
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckConditionBurstedU24BurstManaged_m0E81EBA6AC67AE7B41846D4E54BACC28B1ECBCEA (int32_t ___0_handAxis, int32_t ___1_alignmentCondition, int32_t ___2_referenceDirection, float ___3_tolerance, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___5_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___6_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_headTransform, bool ___8_ignorePositionY, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -3691,34 +3691,34 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckConditionBurstedU24Bu
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:105>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:106>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:107>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:108>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:105>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:106>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:107>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:108>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:109>
 		int32_t L_0 = ___0_handAxis;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_1 = ___5_rootRotation;
 		float L_2 = ___9_handednessMultiplier;
 		XRHandOrientationUtility_GetHandAxisDirection_m22DCBF77C9092CC37C826CBA9CE6F978ABB6EF6B((&V_0), L_0, L_1, L_2, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:111>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:112>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:113>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:114>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:115>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:116>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:117>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:111>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:112>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:113>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:114>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:115>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:116>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:117>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_3 = ___4_rootPosition;
 		int32_t L_4 = ___2_referenceDirection;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___6_originTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_6 = ___7_headTransform;
 		float L_7 = ___9_handednessMultiplier;
 		UserCondition_GetReferenceDirection_mD177EE306D367D6EAEDCBD5185FDA666FA21EA29((&V_1), L_3, L_4, L_5, L_6, L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:119>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:120>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:121>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:122>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:123>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:119>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:120>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:121>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:122>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:123>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:124>
 		int32_t L_8 = ___1_alignmentCondition;
 		float L_9 = ___3_tolerance;
 		bool L_10 = ___8_ignorePositionY;
@@ -3727,7 +3727,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UserCondition_CheckConditionBurstedU24Bu
 		return L_11;
 	}
 }
-// Method Definition Index: 102935
+// Method Definition Index: 126143
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_GetReferenceDirectionU24BurstManaged_m7598FB8518D86DDA1277CE29681F4843ED506CC0 (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_handPosition, int32_t ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_headTransform, float ___5_handednessMultiplier, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -3764,7 +3764,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UserCondition_GetReferenceDirectionU24Bu
 
 IL_001f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:142>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:142>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_1 = ___3_handTrackingOrigin;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_2 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_1);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_3;
@@ -3773,13 +3773,13 @@ IL_001f:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_4;
 		L_4 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_2, L_3, NULL);
 		V_0 = L_4;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:143>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:143>
 		goto IL_00e1;
 	}
 
 IL_0044:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:146>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:146>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___4_headTransform;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_6 = L_5->___pos;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_7 = ___3_handTrackingOrigin;
@@ -3791,13 +3791,13 @@ IL_0044:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_12;
 		L_12 = float3_op_Subtraction_mB6036E9849D95650D6E73DA0D179CD7B61E696F2_inline(L_6, L_11, NULL);
 		V_0 = L_12;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:147>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:147>
 		goto IL_00e1;
 	}
 
 IL_0064:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:150>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:150>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_13 = ___4_headTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_14 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_13);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_15;
@@ -3806,13 +3806,13 @@ IL_0064:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_16;
 		L_16 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_14, L_15, NULL);
 		V_0 = L_16;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:151>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:151>
 		goto IL_00e1;
 	}
 
 IL_0087:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:154>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:154>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_17 = ___4_headTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_18 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_17);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_19;
@@ -3821,13 +3821,13 @@ IL_0087:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_20;
 		L_20 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_18, L_19, NULL);
 		V_0 = L_20;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:155>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:155>
 		goto IL_00e1;
 	}
 
 IL_00aa:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:158>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:158>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_21 = ___4_headTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_22 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_21);
 		float L_23 = ___5_handednessMultiplier;
@@ -3837,19 +3837,19 @@ IL_00aa:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_25;
 		L_25 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_22, L_24, NULL);
 		V_0 = L_25;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:159>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:159>
 		goto IL_00e1;
 	}
 
 IL_00cb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:162>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:162>
 		float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline((&V_0), (0.0f), (1.0f), (0.0f), NULL);
 	}
 
 IL_00e1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:166>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:166>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_26 = ___0_result;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_27 = ___3_handTrackingOrigin;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_28 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_27);
@@ -3860,7 +3860,7 @@ IL_00e1:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_32;
 		L_32 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_30, L_31, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_26 = L_32;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:167>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:167>
 		return;
 	}
 }
@@ -3903,7 +3903,7 @@ IL2CPP_EXTERN_C  bool DelegatePInvokeWrapper_CheckConditionBursted_000002B8U24Po
 
 	return static_cast<bool>(returnValue);
 }
-// Method Definition Index: 102936
+// Method Definition Index: 126144
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckConditionBursted_000002B8U24PostfixBurstDelegate__ctor_m9DE4E60213CFEA973280F5B5E7FF44CBF35479D8 (CheckConditionBursted_000002B8U24PostfixBurstDelegate_t981D787A590B4F6D9E7EBD88F7DDA923CF0DDF2A* __this, RuntimeObject* ___0_p, intptr_t ___1_p, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_p);
@@ -3932,13 +3932,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckConditionBursted_000002B8U24Postfix
 	}
 	__this->___extra_arg = (intptr_t)&CheckConditionBursted_000002B8U24PostfixBurstDelegate_Invoke_m96FE99EB96699761C67F2C49C37AFA2662FA7A42_Multicast;
 }
-// Method Definition Index: 102937
+// Method Definition Index: 126145
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002B8U24PostfixBurstDelegate_Invoke_m96FE99EB96699761C67F2C49C37AFA2662FA7A42 (CheckConditionBursted_000002B8U24PostfixBurstDelegate_t981D787A590B4F6D9E7EBD88F7DDA923CF0DDF2A* __this, int32_t ___0_handAxis, int32_t ___1_alignmentCondition, int32_t ___2_referenceDirection, float ___3_tolerance, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___5_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___6_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_headTransform, bool ___8_ignorePositionY, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	typedef bool (*FunctionPointerType) (RuntimeObject*, int32_t, int32_t, int32_t, float, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, bool, float, const RuntimeMethod*);
 	return ((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_handAxis, ___1_alignmentCondition, ___2_referenceDirection, ___3_tolerance, ___4_rootPosition, ___5_rootRotation, ___6_originTransform, ___7_headTransform, ___8_ignorePositionY, ___9_handednessMultiplier, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 102938
+// Method Definition Index: 126146
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CheckConditionBursted_000002B8U24PostfixBurstDelegate_BeginInvoke_mC710EAFFA5E359416509A5708F9DA38125600B87 (CheckConditionBursted_000002B8U24PostfixBurstDelegate_t981D787A590B4F6D9E7EBD88F7DDA923CF0DDF2A* __this, int32_t ___0_handAxis, int32_t ___1_alignmentCondition, int32_t ___2_referenceDirection, float ___3_tolerance, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___5_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___6_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_headTransform, bool ___8_ignorePositionY, float ___9_handednessMultiplier, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___10_p, RuntimeObject* ___11_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3965,7 +3965,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CheckConditionBursted_000002B8
 	__d_args[9] = Box(il2cpp_defaults.single_class, &___9_handednessMultiplier);
 	return (RuntimeObject*)il2cpp_codegen_delegate_begin_invoke((RuntimeDelegate*)__this, __d_args, (RuntimeDelegate*)___10_p, (RuntimeObject*)___11_p);
 }
-// Method Definition Index: 102939
+// Method Definition Index: 126147
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002B8U24PostfixBurstDelegate_EndInvoke_mE9949EABDF5E2E5B54D578810D1CAD1FDFCBB8CA (CheckConditionBursted_000002B8U24PostfixBurstDelegate_t981D787A590B4F6D9E7EBD88F7DDA923CF0DDF2A* __this, RuntimeObject* ___0_p, const RuntimeMethod* method) 
 {
 	RuntimeObject *__result = il2cpp_codegen_delegate_end_invoke((Il2CppAsyncResult*) ___0_p, 0);
@@ -3979,7 +3979,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002B8U24Postfix
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102940
+// Method Definition Index: 126148
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckConditionBursted_000002B8U24BurstDirectCall_GetFunctionPointerDiscard_m64C020ACAEBDFC19CA025EAF64A4D982A48EE399 (intptr_t* ___0_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4022,7 +4022,7 @@ IL_002a:
 		return;
 	}
 }
-// Method Definition Index: 102941
+// Method Definition Index: 126149
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t CheckConditionBursted_000002B8U24BurstDirectCall_GetFunctionPointer_mFDE090BC98B1108E140CB960208F69B76011FDDB (const RuntimeMethod* method) 
 {
 	intptr_t V_0;
@@ -4034,7 +4034,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t CheckConditionBursted_000002B8U24Bur
 		return L_0;
 	}
 }
-// Method Definition Index: 102942
+// Method Definition Index: 126150
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002B8U24BurstDirectCall_Invoke_mDC81327EA31686BC3CF22B2B74EFF729074DC087 (int32_t ___0_handAxis, int32_t ___1_alignmentCondition, int32_t ___2_referenceDirection, float ___3_tolerance, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___5_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___6_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_headTransform, bool ___8_ignorePositionY, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4134,7 +4134,7 @@ IL2CPP_EXTERN_C  void DelegatePInvokeWrapper_GetReferenceDirection_000002B9U24Po
 	il2cppPInvokeFunc(___0_result, ___1_handPosition, ___2_direction, ___3_handTrackingOrigin, ___4_headTransform, ___5_handednessMultiplier);
 
 }
-// Method Definition Index: 102943
+// Method Definition Index: 126151
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24PostfixBurstDelegate__ctor_m408E090B033274F3D2AC2A72D1787790119D4C96 (GetReferenceDirection_000002B9U24PostfixBurstDelegate_tE7B492E75ECC2D1AA3B4006573B878A9A17E3D66* __this, RuntimeObject* ___0_p, intptr_t ___1_p, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_p);
@@ -4171,13 +4171,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24Postfix
 	}
 	__this->___extra_arg = (intptr_t)&GetReferenceDirection_000002B9U24PostfixBurstDelegate_Invoke_m3DC3C2B17448D650E58EFFF94F0E4C42059BAAAF_Multicast;
 }
-// Method Definition Index: 102944
+// Method Definition Index: 126152
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24PostfixBurstDelegate_Invoke_m3DC3C2B17448D650E58EFFF94F0E4C42059BAAAF (GetReferenceDirection_000002B9U24PostfixBurstDelegate_tE7B492E75ECC2D1AA3B4006573B878A9A17E3D66* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_handPosition, int32_t ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_headTransform, float ___5_handednessMultiplier, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, int32_t, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, float, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_result, ___1_handPosition, ___2_direction, ___3_handTrackingOrigin, ___4_headTransform, ___5_handednessMultiplier, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 102945
+// Method Definition Index: 126153
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GetReferenceDirection_000002B9U24PostfixBurstDelegate_BeginInvoke_m7EC8D6BF1A9822694C778DA36B755958DBAB95E2 (GetReferenceDirection_000002B9U24PostfixBurstDelegate_tE7B492E75ECC2D1AA3B4006573B878A9A17E3D66* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_handPosition, int32_t ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_headTransform, float ___5_handednessMultiplier, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___6_p, RuntimeObject* ___7_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4197,7 +4197,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GetReferenceDirection_000002B9
 	__d_args[5] = Box(il2cpp_defaults.single_class, &___5_handednessMultiplier);
 	return (RuntimeObject*)il2cpp_codegen_delegate_begin_invoke((RuntimeDelegate*)__this, __d_args, (RuntimeDelegate*)___6_p, (RuntimeObject*)___7_p);
 }
-// Method Definition Index: 102946
+// Method Definition Index: 126154
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24PostfixBurstDelegate_EndInvoke_m99DBEB09E4A5F2141810581A990831294FF9BDBA (GetReferenceDirection_000002B9U24PostfixBurstDelegate_tE7B492E75ECC2D1AA3B4006573B878A9A17E3D66* __this, RuntimeObject* ___0_p, const RuntimeMethod* method) 
 {
 	il2cpp_codegen_delegate_end_invoke((Il2CppAsyncResult*) ___0_p, 0);
@@ -4210,7 +4210,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24Postfix
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102947
+// Method Definition Index: 126155
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24BurstDirectCall_GetFunctionPointerDiscard_mC302B2F3758FC8006282C255D49527FD17417856 (intptr_t* ___0_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4253,7 +4253,7 @@ IL_002a:
 		return;
 	}
 }
-// Method Definition Index: 102948
+// Method Definition Index: 126156
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t GetReferenceDirection_000002B9U24BurstDirectCall_GetFunctionPointer_m8A144A9FCE7F798608A20AC682F0993BDFC3912D (const RuntimeMethod* method) 
 {
 	intptr_t V_0;
@@ -4265,7 +4265,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t GetReferenceDirection_000002B9U24Bur
 		return L_0;
 	}
 }
-// Method Definition Index: 102949
+// Method Definition Index: 126157
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002B9U24BurstDirectCall_Invoke_m8FE06B6CDBEB0D755CDBFB5C52278CB5B5122A25 (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_handPosition, int32_t ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_headTransform, float ___5_handednessMultiplier, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4349,111 +4349,111 @@ extern "C" void CDECL ReversePInvokeWrapper_TargetCondition_GetReferenceDirectio
 	*___0_result = ____0_result_empty;
 
 }
-// Method Definition Index: 102950
+// Method Definition Index: 126158
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TargetCondition_get_handAxis_m329B2B338D817F599DED50EB5824D522DBA96FD5 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:212>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:212>
 		int32_t L_0 = __this->___m_HandAxis;
 		return L_0;
 	}
 }
-// Method Definition Index: 102951
+// Method Definition Index: 126159
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_set_handAxis_m486B6226407572962322EC01D95EDF99FE7AAB44 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:213>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:213>
 		int32_t L_0 = ___0_value;
 		__this->___m_HandAxis = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102952
+// Method Definition Index: 126160
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TargetCondition_get_alignmentCondition_m0CA794D9AC0E4D6FA5BB415FEB36A1A254E3661B (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:221>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:221>
 		int32_t L_0 = __this->___m_AlignmentCondition;
 		return L_0;
 	}
 }
-// Method Definition Index: 102953
+// Method Definition Index: 126161
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_set_alignmentCondition_m9D1E6DA0F3255B97510CB5AF7D8DC5B67E4B86EB (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:222>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:222>
 		int32_t L_0 = ___0_value;
 		__this->___m_AlignmentCondition = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102954
+// Method Definition Index: 126162
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TargetCondition_get_referenceDirection_m60603D4DC97830FA0ADA54C9075728EE9C7F2217 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:230>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:230>
 		int32_t L_0 = __this->___m_ReferenceDirection;
 		return L_0;
 	}
 }
-// Method Definition Index: 102955
+// Method Definition Index: 126163
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_set_referenceDirection_mAC7A4FEA9DFA3D5725B9EA84B7BB68A78BFF1810 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:231>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:231>
 		int32_t L_0 = ___0_value;
 		__this->___m_ReferenceDirection = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102956
+// Method Definition Index: 126164
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float TargetCondition_get_angleTolerance_m4457BAC5A181A50B5714E2B8133068F098962D2A (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:246>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:246>
 		float L_0 = __this->___m_AngleTolerance;
 		return L_0;
 	}
 }
-// Method Definition Index: 102957
+// Method Definition Index: 126165
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_set_angleTolerance_m132144F1D60690FC0A13A173160996F00CE49343 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:247>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:247>
 		float L_0 = ___0_value;
 		__this->___m_AngleTolerance = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102958
+// Method Definition Index: 126166
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_get_ignorePositionY_m3A69C732A0A9AB15844F73A6568E72C9C7251B6E (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:255>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:255>
 		bool L_0 = __this->___m_IgnorePositionY;
 		return L_0;
 	}
 }
-// Method Definition Index: 102959
+// Method Definition Index: 126167
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_set_ignorePositionY_mD8A432E79AC36B62C6416928F252EFD8038648A7 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:256>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:256>
 		bool L_0 = ___0_value;
 		__this->___m_IgnorePositionY = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102960
+// Method Definition Index: 126168
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckCondition_mECF6E124309E2847C5CA2369E972FBF6220434F8 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___1_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___2_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_targetTransform, float ___4_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:265>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:266>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:267>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:268>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:269>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:270>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:265>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:266>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:267>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:268>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:269>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:270>
 		int32_t L_0 = __this->___m_HandAxis;
 		int32_t L_1 = __this->___m_AlignmentCondition;
 		int32_t L_2 = __this->___m_ReferenceDirection;
@@ -4469,7 +4469,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckCondition_mECF6E124
 		return L_10;
 	}
 }
-// Method Definition Index: 102961
+// Method Definition Index: 126169
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditionBursted_m5BF2FE20A6D5BC6FF6391D46C73B0FDFEBC99001 (int32_t ___0_xrHandAxis, int32_t ___1_condition, int32_t ___2_direction, float ___3_threshold, bool ___4_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___5_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___6_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___8_targetTransform, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
@@ -4488,7 +4488,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditionBursted_m5
 		return L_10;
 	}
 }
-// Method Definition Index: 102962
+// Method Definition Index: 126170
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_GetReferenceDirection_m104D8D094C832F78EFF6FDCBC5C5A9033CB2430D (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_rootPosition, int32_t* ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_targetTransform, const RuntimeMethod* method) 
 {
 	{
@@ -4501,7 +4501,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_GetReferenceDirection_m1
 		return;
 	}
 }
-// Method Definition Index: 102963
+// Method Definition Index: 126171
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition__ctor_m9A17371A0D4D29EDF3562C1A2FF348CAEB570240 (TargetCondition_t9E5AA9B893A798E0E5B72AAF6EE4D2432D4F4E8B* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4509,7 +4509,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition__ctor_m9A17371A0D4D29EDF
 		return;
 	}
 }
-// Method Definition Index: 102964
+// Method Definition Index: 126172
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditionBurstedU24BurstManaged_mF415DF3978A57CA2A940DE586A021A78D5A2EE75 (int32_t ___0_xrHandAxis, int32_t ___1_condition, int32_t ___2_direction, float ___3_threshold, bool ___4_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___5_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___6_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___8_targetTransform, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -4517,31 +4517,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditionBurstedU24
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:285>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:286>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:287>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:288>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:289>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:285>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:286>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:287>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:288>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:289>
 		int32_t L_0 = ___0_xrHandAxis;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_1 = ___6_rootRotation;
 		float L_2 = ___9_handednessMultiplier;
 		XRHandOrientationUtility_GetHandAxisDirection_m22DCBF77C9092CC37C826CBA9CE6F978ABB6EF6B((&V_0), L_0, L_1, L_2, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:291>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:292>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:293>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:294>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:295>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:296>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:291>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:292>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:293>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:294>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:295>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:296>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_3 = ___5_rootPosition;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_4 = ___7_originTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___8_targetTransform;
 		TargetCondition_GetReferenceDirection_m104D8D094C832F78EFF6FDCBC5C5A9033CB2430D((&V_1), L_3, (&___2_direction), L_4, L_5, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:298>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:299>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:300>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:301>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:302>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:303>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:298>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:299>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:300>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:301>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:302>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:303>
 		int32_t L_6 = ___1_condition;
 		float L_7 = ___3_threshold;
 		bool L_8 = ___4_ignorePositionY;
@@ -4550,14 +4550,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditionBurstedU24
 		return L_9;
 	}
 }
-// Method Definition Index: 102965
+// Method Definition Index: 126173
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_GetReferenceDirectionU24BurstManaged_mD302D609303C01863E6C09627F1D57A6303D92E1 (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_rootPosition, int32_t* ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_targetTransform, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	int32_t V_1 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:317>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:317>
 		int32_t* L_0 = ___2_direction;
 		int32_t L_1 = *((int32_t*)L_0);
 		V_1 = L_1;
@@ -4588,7 +4588,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TargetCondition_GetReferenceDirectionU24
 
 IL_001e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:320>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:320>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_3 = ___4_targetTransform;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_4 = L_3->___pos;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___3_handTrackingOrigin;
@@ -4600,13 +4600,13 @@ IL_001e:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_10;
 		L_10 = float3_op_Subtraction_mB6036E9849D95650D6E73DA0D179CD7B61E696F2_inline(L_4, L_9, NULL);
 		V_0 = L_10;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:321>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:321>
 		goto IL_00bd;
 	}
 
 IL_003e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:324>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:324>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_11 = ___4_targetTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_12 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_11);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_13;
@@ -4615,13 +4615,13 @@ IL_003e:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_14;
 		L_14 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_12, L_13, NULL);
 		V_0 = L_14;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:325>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:325>
 		goto IL_00bd;
 	}
 
 IL_0061:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:328>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:328>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_15 = ___4_targetTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_16 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_15);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_17;
@@ -4630,13 +4630,13 @@ IL_0061:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_18;
 		L_18 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_16, L_17, NULL);
 		V_0 = L_18;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:329>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:329>
 		goto IL_00bd;
 	}
 
 IL_0084:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:332>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:332>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_19 = ___4_targetTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_20 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_19);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_21;
@@ -4645,19 +4645,19 @@ IL_0084:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_22;
 		L_22 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_20, L_21, NULL);
 		V_0 = L_22;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:333>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:333>
 		goto IL_00bd;
 	}
 
 IL_00a7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:336>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:336>
 		float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline((&V_0), (0.0f), (1.0f), (0.0f), NULL);
 	}
 
 IL_00bd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:340>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:340>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_23 = ___0_result;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_24 = ___3_handTrackingOrigin;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_25 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_24);
@@ -4668,7 +4668,7 @@ IL_00bd:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_29;
 		L_29 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_27, L_28, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_23 = L_29;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:341>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:341>
 		return;
 	}
 }
@@ -4711,7 +4711,7 @@ IL2CPP_EXTERN_C  bool DelegatePInvokeWrapper_CheckConditionBursted_000002C6U24Po
 
 	return static_cast<bool>(returnValue);
 }
-// Method Definition Index: 102966
+// Method Definition Index: 126174
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckConditionBursted_000002C6U24PostfixBurstDelegate__ctor_m62446DDE541591572B258B3011A53F1227CA96DA (CheckConditionBursted_000002C6U24PostfixBurstDelegate_t8D1D6D9948B06069D3607246E11F0A25D7023CBD* __this, RuntimeObject* ___0_p, intptr_t ___1_p, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_p);
@@ -4740,13 +4740,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckConditionBursted_000002C6U24Postfix
 	}
 	__this->___extra_arg = (intptr_t)&CheckConditionBursted_000002C6U24PostfixBurstDelegate_Invoke_m8F44735F784A7A6451731079E3F0E92AB42861CC_Multicast;
 }
-// Method Definition Index: 102967
+// Method Definition Index: 126175
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002C6U24PostfixBurstDelegate_Invoke_m8F44735F784A7A6451731079E3F0E92AB42861CC (CheckConditionBursted_000002C6U24PostfixBurstDelegate_t8D1D6D9948B06069D3607246E11F0A25D7023CBD* __this, int32_t ___0_xrHandAxis, int32_t ___1_condition, int32_t ___2_direction, float ___3_threshold, bool ___4_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___5_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___6_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___8_targetTransform, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	typedef bool (*FunctionPointerType) (RuntimeObject*, int32_t, int32_t, int32_t, float, bool, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, float, const RuntimeMethod*);
 	return ((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_xrHandAxis, ___1_condition, ___2_direction, ___3_threshold, ___4_ignorePositionY, ___5_rootPosition, ___6_rootRotation, ___7_originTransform, ___8_targetTransform, ___9_handednessMultiplier, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 102968
+// Method Definition Index: 126176
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CheckConditionBursted_000002C6U24PostfixBurstDelegate_BeginInvoke_mD674851CD81BC6D93FD38E392577978966BDA126 (CheckConditionBursted_000002C6U24PostfixBurstDelegate_t8D1D6D9948B06069D3607246E11F0A25D7023CBD* __this, int32_t ___0_xrHandAxis, int32_t ___1_condition, int32_t ___2_direction, float ___3_threshold, bool ___4_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___5_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___6_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___8_targetTransform, float ___9_handednessMultiplier, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___10_p, RuntimeObject* ___11_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4773,7 +4773,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CheckConditionBursted_000002C6
 	__d_args[9] = Box(il2cpp_defaults.single_class, &___9_handednessMultiplier);
 	return (RuntimeObject*)il2cpp_codegen_delegate_begin_invoke((RuntimeDelegate*)__this, __d_args, (RuntimeDelegate*)___10_p, (RuntimeObject*)___11_p);
 }
-// Method Definition Index: 102969
+// Method Definition Index: 126177
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002C6U24PostfixBurstDelegate_EndInvoke_m79119552D7D5E0DD89131D524928BFF913A40BC8 (CheckConditionBursted_000002C6U24PostfixBurstDelegate_t8D1D6D9948B06069D3607246E11F0A25D7023CBD* __this, RuntimeObject* ___0_p, const RuntimeMethod* method) 
 {
 	RuntimeObject *__result = il2cpp_codegen_delegate_end_invoke((Il2CppAsyncResult*) ___0_p, 0);
@@ -4787,7 +4787,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002C6U24Postfix
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102970
+// Method Definition Index: 126178
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CheckConditionBursted_000002C6U24BurstDirectCall_GetFunctionPointerDiscard_mF606FAA883B8BD09242AE2003798CE7C9021E7F6 (intptr_t* ___0_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4830,7 +4830,7 @@ IL_002a:
 		return;
 	}
 }
-// Method Definition Index: 102971
+// Method Definition Index: 126179
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t CheckConditionBursted_000002C6U24BurstDirectCall_GetFunctionPointer_mDE5977CA86C7022441CA1062D602BD69D748B06E (const RuntimeMethod* method) 
 {
 	intptr_t V_0;
@@ -4842,7 +4842,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t CheckConditionBursted_000002C6U24Bur
 		return L_0;
 	}
 }
-// Method Definition Index: 102972
+// Method Definition Index: 126180
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool CheckConditionBursted_000002C6U24BurstDirectCall_Invoke_mAF0038CBE32CC755D59E2A09205DCD06E23697AD (int32_t ___0_xrHandAxis, int32_t ___1_condition, int32_t ___2_direction, float ___3_threshold, bool ___4_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___5_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___6_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___8_targetTransform, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4942,7 +4942,7 @@ IL2CPP_EXTERN_C  void DelegatePInvokeWrapper_GetReferenceDirection_000002C7U24Po
 	il2cppPInvokeFunc(___0_result, ___1_rootPosition, ___2_direction, ___3_handTrackingOrigin, ___4_targetTransform);
 
 }
-// Method Definition Index: 102973
+// Method Definition Index: 126181
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24PostfixBurstDelegate__ctor_m02880EA71D2C12C39884F5BD198E6521E4438A6C (GetReferenceDirection_000002C7U24PostfixBurstDelegate_t36167E664B6FB0AB159941C020055A5752BDDB57* __this, RuntimeObject* ___0_p, intptr_t ___1_p, const RuntimeMethod* method) 
 {
 	__this->___method_ptr = (intptr_t)il2cpp_codegen_get_method_pointer((RuntimeMethod*)___1_p);
@@ -4979,13 +4979,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24Postfix
 	}
 	__this->___extra_arg = (intptr_t)&GetReferenceDirection_000002C7U24PostfixBurstDelegate_Invoke_mEAB0696584B4D97522E02DA0A15D58666654E8E5_Multicast;
 }
-// Method Definition Index: 102974
+// Method Definition Index: 126182
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24PostfixBurstDelegate_Invoke_mEAB0696584B4D97522E02DA0A15D58666654E8E5 (GetReferenceDirection_000002C7U24PostfixBurstDelegate_t36167E664B6FB0AB159941C020055A5752BDDB57* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_rootPosition, int32_t* ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_targetTransform, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*, int32_t*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_result, ___1_rootPosition, ___2_direction, ___3_handTrackingOrigin, ___4_targetTransform, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 102975
+// Method Definition Index: 126183
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GetReferenceDirection_000002C7U24PostfixBurstDelegate_BeginInvoke_m1A2E95BEBA5E2CC56E6B38592FB23788868C9582 (GetReferenceDirection_000002C7U24PostfixBurstDelegate_t36167E664B6FB0AB159941C020055A5752BDDB57* __this, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_rootPosition, int32_t* ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_targetTransform, AsyncCallback_t7FEF460CBDCFB9C5FA2EF776984778B9A4145F4C* ___5_p, RuntimeObject* ___6_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5004,7 +5004,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GetReferenceDirection_000002C7
 	__d_args[4] = Box(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD_il2cpp_TypeInfo_var, &*___4_targetTransform);
 	return (RuntimeObject*)il2cpp_codegen_delegate_begin_invoke((RuntimeDelegate*)__this, __d_args, (RuntimeDelegate*)___5_p, (RuntimeObject*)___6_p);
 }
-// Method Definition Index: 102976
+// Method Definition Index: 126184
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24PostfixBurstDelegate_EndInvoke_m829AF5C29BAE6750FF1C92CFA7D7EFE547237558 (GetReferenceDirection_000002C7U24PostfixBurstDelegate_t36167E664B6FB0AB159941C020055A5752BDDB57* __this, RuntimeObject* ___0_p, const RuntimeMethod* method) 
 {
 	il2cpp_codegen_delegate_end_invoke((Il2CppAsyncResult*) ___0_p, 0);
@@ -5017,7 +5017,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24Postfix
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102977
+// Method Definition Index: 126185
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24BurstDirectCall_GetFunctionPointerDiscard_mB4AFD90F103903D2BCA0F14A64226B48BEEDF354 (intptr_t* ___0_p, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5060,7 +5060,7 @@ IL_002a:
 		return;
 	}
 }
-// Method Definition Index: 102978
+// Method Definition Index: 126186
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t GetReferenceDirection_000002C7U24BurstDirectCall_GetFunctionPointer_mF2E6A3407F6C00A9F1B2A1EA7BD5FB0053F0B26F (const RuntimeMethod* method) 
 {
 	intptr_t V_0;
@@ -5072,7 +5072,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t GetReferenceDirection_000002C7U24Bur
 		return L_0;
 	}
 }
-// Method Definition Index: 102979
+// Method Definition Index: 126187
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GetReferenceDirection_000002C7U24BurstDirectCall_Invoke_m453631682F3ACCD5EC4D2367FA95B02E5EAF1226 (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_rootPosition, int32_t* ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_targetTransform, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5133,27 +5133,27 @@ IL_0023:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 102980
+// Method Definition Index: 126188
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* XRHandShape_get_fingerShapeConditions_m6D0296755D80D99B2AA0D64D6556968D30B1D62E (XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:28>
 		List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* L_0 = __this->___m_FingerShapeConditions;
 		return L_0;
 	}
 }
-// Method Definition Index: 102981
+// Method Definition Index: 126189
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandShape_set_fingerShapeConditions_mD84ADBCD89EAFD341100D185FE526947118936B3 (XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* __this, List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:29>
 		List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* L_0 = ___0_value;
 		__this->___m_FingerShapeConditions = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_FingerShapeConditions), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102982
+// Method Definition Index: 126190
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandShape_CheckConditions_mFF777819E243AC4554B9044649725B8D8BA073BD (XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* __this, XRHandJointsUpdatedEventArgs_t23369A3B3D49D837CF21B765B7F0E248F362E31F* ___0_eventArgs, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5165,7 +5165,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandShape_CheckConditions_mFF777819E24
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:53>
 		XRHandJointsUpdatedEventArgs_t23369A3B3D49D837CF21B765B7F0E248F362E31F* L_0 = ___0_eventArgs;
 		NullCheck(L_0);
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* L_1 = (XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471*)(&L_0->___hand);
@@ -5177,20 +5177,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandShape_CheckConditions_mFF777819E24
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:54>
 		return (bool)0;
 	}
 
 IL_000f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:56>
 		V_0 = 0;
 		goto IL_002d;
 	}
 
 IL_0013:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:58>
 		List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* L_3 = __this->___m_FingerShapeConditions;
 		int32_t L_4 = V_0;
 		NullCheck(L_3);
@@ -5206,20 +5206,20 @@ IL_0013:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:59>
 		return (bool)0;
 	}
 
 IL_0029:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:56>
 		int32_t L_8 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_8, 1));
 	}
 
 IL_002d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:56>
 		int32_t L_9 = V_0;
 		List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* L_10 = __this->___m_FingerShapeConditions;
 		NullCheck(L_10);
@@ -5231,11 +5231,11 @@ IL_002d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:62>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 102983
+// Method Definition Index: 126191
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandShape__ctor_m0B99E17F76B2C398822619339D4EC4DC94B5DFF6 (XRHandShape_t225192C9F2E1371524B2C53C203421368A1C45B0* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5246,7 +5246,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandShape__ctor_m0B99E17F76B2C39882261
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandShape.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandShape.cs:21>
 		List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE* L_0 = (List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE*)il2cpp_codegen_object_new(List_1_tD8D661435D537BE5B9DB5C776B5BEEBFA6D4A5BE_il2cpp_TypeInfo_var);
 		List_1__ctor_m312247B51AAB2E901128C9CBBD5234605CF58CAD(L_0, List_1__ctor_m312247B51AAB2E901128C9CBBD5234605CF58CAD_RuntimeMethod_var);
 		__this->___m_FingerShapeConditions = L_0;
@@ -5457,11 +5457,11 @@ IL2CPP_EXTERN_C void XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F07
 		marshaled.___m_RightHandJoints = NULL;
 	}
 }
-// Method Definition Index: 102984
+// Method Definition Index: 126192
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_isLeftHandTracked_m6BEF01829C7EBDE073A3E8603E77F560EEDD0483 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:42>
 		bool L_0 = __this->___m_IsLeftHandTracked;
 		return L_0;
 	}
@@ -5475,11 +5475,11 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_get_isLeftHandTracked_m6BEF01829C7EBDE0
 	_returnValue = XRHandCaptureFrame_get_isLeftHandTracked_m6BEF01829C7EBDE073A3E8603E77F560EEDD0483_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102985
+// Method Definition Index: 126193
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_isLeftHandTracked_mBC5E8BB854388902FE4F8D1BB78123C996E06BB7 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:43>
 		bool L_0 = ___0_value;
 		__this->___m_IsLeftHandTracked = L_0;
 		return;
@@ -5492,11 +5492,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_isLeftHandTracked_mBC5E8BB854388902
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_isLeftHandTracked_mBC5E8BB854388902FE4F8D1BB78123C996E06BB7_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102986
+// Method Definition Index: 126194
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_isRightHandTracked_mBD528FF43970E6BC71D6A9BCB2998672C6FA0394 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:47>
 		bool L_0 = __this->___m_IsRightHandTracked;
 		return L_0;
 	}
@@ -5510,11 +5510,11 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_get_isRightHandTracked_mBD528FF43970E6B
 	_returnValue = XRHandCaptureFrame_get_isRightHandTracked_mBD528FF43970E6BC71D6A9BCB2998672C6FA0394_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102987
+// Method Definition Index: 126195
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_isRightHandTracked_m34B7750271F60CCD0A0652E1BE6308C996436EAA (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:48>
 		bool L_0 = ___0_value;
 		__this->___m_IsRightHandTracked = L_0;
 		return;
@@ -5527,11 +5527,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_isRightHandTracked_m34B7750271F60CC
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_isRightHandTracked_m34B7750271F60CCD0A0652E1BE6308C996436EAA_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102988
+// Method Definition Index: 126196
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_areAllLeftJointsValid_m73FC7B6251DBDE83C5910A60BCC3D9DB80DF84B2 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:53>
 		bool L_0 = __this->___m_AreAllLeftJointsValid;
 		return L_0;
 	}
@@ -5545,11 +5545,11 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_get_areAllLeftJointsValid_m73FC7B6251DB
 	_returnValue = XRHandCaptureFrame_get_areAllLeftJointsValid_m73FC7B6251DBDE83C5910A60BCC3D9DB80DF84B2_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102989
+// Method Definition Index: 126197
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_areAllLeftJointsValid_m310B9314FCD7DBC3FE3ECF17C8D64BBE412EFC67 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:54>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllLeftJointsValid = L_0;
 		return;
@@ -5562,11 +5562,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_areAllLeftJointsValid_m310B9314FCD7
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_areAllLeftJointsValid_m310B9314FCD7DBC3FE3ECF17C8D64BBE412EFC67_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102990
+// Method Definition Index: 126198
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_areAllRightJointsValid_m8D4ACB225F4DA36C7BE20942C902AFC16384CC70 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:59>
 		bool L_0 = __this->___m_AreAllRightJointsValid;
 		return L_0;
 	}
@@ -5580,11 +5580,11 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_get_areAllRightJointsValid_m8D4ACB225F4
 	_returnValue = XRHandCaptureFrame_get_areAllRightJointsValid_m8D4ACB225F4DA36C7BE20942C902AFC16384CC70_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102991
+// Method Definition Index: 126199
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_areAllRightJointsValid_mA10CF9209D5D932F6DF22872F07C9D9159068407 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:60>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllRightJointsValid = L_0;
 		return;
@@ -5597,11 +5597,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_areAllRightJointsValid_mA10CF9209D5
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_areAllRightJointsValid_mA10CF9209D5D932F6DF22872F07C9D9159068407_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102992
+// Method Definition Index: 126200
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* XRHandCaptureFrame_get_leftHandJoints_m78BD47309EA84403B23B29514D7CE1DFED42DE18 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:65>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = __this->___m_LeftHandJoints;
 		return L_0;
 	}
@@ -5615,11 +5615,11 @@ IL2CPP_EXTERN_C  XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* XR
 	_returnValue = XRHandCaptureFrame_get_leftHandJoints_m78BD47309EA84403B23B29514D7CE1DFED42DE18_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102993
+// Method Definition Index: 126201
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_leftHandJoints_mCE5B734EEDF1E9A3B6085A74A65C2CF59130155B (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:66>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = ___0_value;
 		__this->___m_LeftHandJoints = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_LeftHandJoints), (void*)L_0);
@@ -5633,11 +5633,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_leftHandJoints_mCE5B734EEDF1E9A3B60
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_leftHandJoints_mCE5B734EEDF1E9A3B6085A74A65C2CF59130155B_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102994
+// Method Definition Index: 126202
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* XRHandCaptureFrame_get_rightHandJoints_m8D4FA667AFE7908458A6AA7D56F7AD70F704C877 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:71>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = __this->___m_RightHandJoints;
 		return L_0;
 	}
@@ -5651,11 +5651,11 @@ IL2CPP_EXTERN_C  XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* XR
 	_returnValue = XRHandCaptureFrame_get_rightHandJoints_m8D4FA667AFE7908458A6AA7D56F7AD70F704C877_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102995
+// Method Definition Index: 126203
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_rightHandJoints_mC248B769D7717CE3AE3DC196862CCB6C167B84AD (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:72>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = ___0_value;
 		__this->___m_RightHandJoints = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RightHandJoints), (void*)L_0);
@@ -5669,11 +5669,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_rightHandJoints_mC248B769D7717CE3AE
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_rightHandJoints_mC248B769D7717CE3AE3DC196862CCB6C167B84AD_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102996
+// Method Definition Index: 126204
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandCaptureFrame_get_timestamp_m227CFEE837E9261F7FE2E793AAD6D86FEA9EF0A2 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:81>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:81>
 		float L_0 = __this->___m_Timestamp;
 		return L_0;
 	}
@@ -5687,11 +5687,11 @@ IL2CPP_EXTERN_C  float XRHandCaptureFrame_get_timestamp_m227CFEE837E9261F7FE2E79
 	_returnValue = XRHandCaptureFrame_get_timestamp_m227CFEE837E9261F7FE2E793AAD6D86FEA9EF0A2_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 102997
+// Method Definition Index: 126205
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_timestamp_mEEF9E4A271C31E6C2B8B53A3B4BAED595BD3CE10 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:82>
 		float L_0 = ___0_value;
 		__this->___m_Timestamp = L_0;
 		return;
@@ -5704,11 +5704,11 @@ IL2CPP_EXTERN_C  void XRHandCaptureFrame_set_timestamp_mEEF9E4A271C31E6C2B8B53A3
 	_thisAdjusted = reinterpret_cast<XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073*>(__this + _offset);
 	XRHandCaptureFrame_set_timestamp_mEEF9E4A271C31E6C2B8B53A3B4BAED595BD3CE10_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 102998
+// Method Definition Index: 126206
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_IsHandTracked_mD7A8A2CAECE581F05378E47CC71F7BCC8CD9C1CD (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, int32_t ___0_handedness, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:94>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:94>
 		int32_t L_0 = ___0_handedness;
 		if ((((int32_t)L_0) == ((int32_t)1)))
 		{
@@ -5735,7 +5735,7 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_IsHandTracked_mD7A8A2CAECE581F05378E47C
 	_returnValue = XRHandCaptureFrame_IsHandTracked_mD7A8A2CAECE581F05378E47CC71F7BCC8CD9C1CD(_thisAdjusted, ___0_handedness, method);
 	return _returnValue;
 }
-// Method Definition Index: 102999
+// Method Definition Index: 126207
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_TryGetJoint_m87F3AFD1181595D157ACBEDB387652A113DD1923 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783* ___0_joint, int32_t ___1_handedness, int32_t ___2_id, const RuntimeMethod* method) 
 {
 	XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* V_0 = NULL;
@@ -5750,7 +5750,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_TryGetJoint_m87F3AFD1
 	memset((&G_B9_0), 0, sizeof(G_B9_0));
 	XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783* G_B9_1 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:108>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:108>
 		int32_t L_0 = ___1_handedness;
 		if ((((int32_t)L_0) == ((int32_t)1)))
 		{
@@ -5772,7 +5772,7 @@ IL_000c:
 IL_0012:
 	{
 		V_0 = G_B3_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:109>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_3 = V_0;
 		if (!L_3)
 		{
@@ -5794,7 +5794,7 @@ IL_001d:
 IL_001e:
 	{
 		V_1 = (bool)G_B6_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:110>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:110>
 		XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783* L_5 = ___0_joint;
 		bool L_6 = V_1;
 		if (L_6)
@@ -5828,7 +5828,7 @@ IL_002e:
 IL_003a:
 	{
 		*(XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783*)G_B9_1 = G_B9_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:111>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:111>
 		bool L_13 = V_1;
 		return L_13;
 	}
@@ -5842,42 +5842,42 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_TryGetJoint_m87F3AFD1181595D157ACBEDB38
 	_returnValue = XRHandCaptureFrame_TryGetJoint_m87F3AFD1181595D157ACBEDB387652A113DD1923(_thisAdjusted, ___0_joint, ___1_handedness, ___2_id, method);
 	return _returnValue;
 }
-// Method Definition Index: 103000
+// Method Definition Index: 126208
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandCaptureFrame_GetHashCode_mDB3AB41ED2B716B73A6C3AE72DEF11B1B8142909 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:122>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:122>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = __this->___m_LeftHandJoints;
 		NullCheck((RuntimeObject*)L_0);
 		int32_t L_1;
 		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(2, (RuntimeObject*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:123>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:123>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_2 = __this->___m_RightHandJoints;
 		NullCheck((RuntimeObject*)L_2);
 		int32_t L_3;
 		L_3 = VirtualFuncInvoker0< int32_t >::Invoke(2, (RuntimeObject*)L_2);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:124>
 		float* L_4 = (float*)(&__this->___m_Timestamp);
 		int32_t L_5;
 		L_5 = Single_GetHashCode_mC3F1E099D1CF165C2D71FBCC5EF6A6792F9021D2(L_4, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:125>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:125>
 		bool* L_6 = (bool*)(&__this->___m_IsLeftHandTracked);
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.boolean_class);
 		int32_t L_7;
 		L_7 = Boolean_GetHashCode_mEDB6904770C962BAF4510E5D24F08083C33900E3(L_6, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:126>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:126>
 		bool* L_8 = (bool*)(&__this->___m_IsRightHandTracked);
 		int32_t L_9;
 		L_9 = Boolean_GetHashCode_mEDB6904770C962BAF4510E5D24F08083C33900E3(L_8, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:127>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:127>
 		bool* L_10 = (bool*)(&__this->___m_AreAllLeftJointsValid);
 		int32_t L_11;
 		L_11 = Boolean_GetHashCode_mEDB6904770C962BAF4510E5D24F08083C33900E3(L_10, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:128>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:128>
 		bool* L_12 = (bool*)(&__this->___m_AreAllRightJointsValid);
 		int32_t L_13;
 		L_13 = Boolean_GetHashCode_mEDB6904770C962BAF4510E5D24F08083C33900E3(L_12, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:129>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:129>
 		return ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_1, ((int32_t)486187739))), L_3)), ((int32_t)486187739))), L_5)), ((int32_t)486187739))), L_7)), ((int32_t)486187739))), L_9)), ((int32_t)486187739))), L_11)), ((int32_t)486187739))), L_13));
 	}
 }
@@ -5890,17 +5890,17 @@ IL2CPP_EXTERN_C  int32_t XRHandCaptureFrame_GetHashCode_mDB3AB41ED2B716B73A6C3AE
 	_returnValue = XRHandCaptureFrame_GetHashCode_mDB3AB41ED2B716B73A6C3AE72DEF11B1B8142909(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103001
+// Method Definition Index: 126209
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_Equals_m96E6CE9E999970E9108F9ED871830454D4079DD6 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___0_other, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:143>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:144>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:145>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:146>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:147>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:148>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:149>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:143>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:144>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:145>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:146>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:147>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:148>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:149>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = __this->___m_LeftHandJoints;
 		XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 L_1 = ___0_other;
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_2 = L_1.___m_LeftHandJoints;
@@ -5975,7 +5975,7 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_Equals_m96E6CE9E999970E9108F9ED87183045
 	_returnValue = XRHandCaptureFrame_Equals_m96E6CE9E999970E9108F9ED871830454D4079DD6(_thisAdjusted, ___0_other, method);
 	return _returnValue;
 }
-// Method Definition Index: 103002
+// Method Definition Index: 126210
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_Equals_mE70B864CBA0F415C31DB9C2F3B50517EF49809FD (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5985,7 +5985,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_Equals_mE70B864CBA0F4
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:161>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:161>
 		RuntimeObject* L_0 = ___0_obj;
 		if (!((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073_il2cpp_TypeInfo_var)))
 		{
@@ -6013,22 +6013,22 @@ IL2CPP_EXTERN_C  bool XRHandCaptureFrame_Equals_mE70B864CBA0F415C31DB9C2F3B50517
 	_returnValue = XRHandCaptureFrame_Equals_mE70B864CBA0F415C31DB9C2F3B50517EF49809FD(_thisAdjusted, ___0_obj, method);
 	return _returnValue;
 }
-// Method Definition Index: 103003
+// Method Definition Index: 126211
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_op_Equality_m1BDB1635BC7C42DCB23F72061933E998ED9ACBB5 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___0_lhs, XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:172>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:172>
 		XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandCaptureFrame_Equals_m96E6CE9E999970E9108F9ED871830454D4079DD6((&___0_lhs), L_0, NULL);
 		return L_1;
 	}
 }
-// Method Definition Index: 103004
+// Method Definition Index: 126212
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_op_Inequality_m5F94C2124EC9F672F8FA2688F9F9921F00F64C01 (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___0_lhs, XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:183>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:183>
 		XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandCaptureFrame_Equals_m96E6CE9E999970E9108F9ED871830454D4079DD6((&___0_lhs), L_0, NULL);
@@ -6043,35 +6043,35 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_op_Inequality_m5F94C2
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103005
+// Method Definition Index: 126213
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandCaptureSequence_get_durationInSeconds_mBA819931E78008CF5A3BEE2D43F04BE1A0FCE63D (XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:26>
 		float L_0 = __this->___m_DurationInSeconds;
 		return L_0;
 	}
 }
-// Method Definition Index: 103006
+// Method Definition Index: 126214
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureSequence_set_durationInSeconds_m685CBC1614578A29C081942D345361A12AD630A9 (XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:27>
 		float L_0 = ___0_value;
 		__this->___m_DurationInSeconds = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103007
+// Method Definition Index: 126215
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* XRHandCaptureSequence_get_frames_mEB13ECB1DDF6CA3D1DF7BA8338CF20B0C2C21DC7 (XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:34>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:34>
 		List_1_tE22B6E306DDA01F674E59C9D38C70B3061C6638A* L_0 = __this->___m_Frames;
 		return L_0;
 	}
 }
-// Method Definition Index: 103008
+// Method Definition Index: 126216
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureSequence_AddFrame_mC8F545E5298A057A3F3BBCC47059FDCAC596B5B1 (XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* __this, XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___0_frame, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6081,16 +6081,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureSequence_AddFrame_mC8F545E5
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:38>
 		List_1_tE22B6E306DDA01F674E59C9D38C70B3061C6638A* L_0 = __this->___m_Frames;
 		XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 L_1 = ___0_frame;
 		NullCheck(L_0);
 		List_1_Add_m1B7E4FE6C5B6BF4DE5B98354163B4D307C84917C_inline(L_0, L_1, List_1_Add_m1B7E4FE6C5B6BF4DE5B98354163B4D307C84917C_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:39>
 		return;
 	}
 }
-// Method Definition Index: 103009
+// Method Definition Index: 126217
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureSequence__ctor_m8716966F1B107FEC4814BF8C40D5947E97EE5ED4 (XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6101,7 +6101,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandCaptureSequence__ctor_m8716966F1B1
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:14>
 		List_1_tE22B6E306DDA01F674E59C9D38C70B3061C6638A* L_0 = (List_1_tE22B6E306DDA01F674E59C9D38C70B3061C6638A*)il2cpp_codegen_object_new(List_1_tE22B6E306DDA01F674E59C9D38C70B3061C6638A_il2cpp_TypeInfo_var);
 		List_1__ctor_mC8A1A3B193CBEE671E57C6896885573B588A5F64(L_0, List_1__ctor_mC8A1A3B193CBEE671E57C6896885573B588A5F64_RuntimeMethod_var);
 		__this->___m_Frames = L_0;
@@ -6204,11 +6204,11 @@ IL2CPP_EXTERN_C void XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86E
 IL2CPP_EXTERN_C void XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A_marshal_com_cleanup(XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A_marshaled_com& marshaled)
 {
 }
-// Method Definition Index: 103010
+// Method Definition Index: 126218
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_areAllLeftJointsValid_m527E2D32D9FA3BE7D06430B223B9D31248283CB5 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:20>
 		bool L_0 = __this->___m_AreAllLeftJointsValid;
 		return L_0;
 	}
@@ -6222,11 +6222,11 @@ IL2CPP_EXTERN_C  bool XRHandRecordingFrameBuffer_get_areAllLeftJointsValid_m527E
 	_returnValue = XRHandRecordingFrameBuffer_get_areAllLeftJointsValid_m527E2D32D9FA3BE7D06430B223B9D31248283CB5_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103011
+// Method Definition Index: 126219
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_areAllLeftJointsValid_m1CC5D1AB4BA037369BED0DDDDC7418A15624CAE0 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:21>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllLeftJointsValid = L_0;
 		return;
@@ -6239,11 +6239,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameBuffer_set_areAllLeftJointsValid_m1CC5
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A*>(__this + _offset);
 	XRHandRecordingFrameBuffer_set_areAllLeftJointsValid_m1CC5D1AB4BA037369BED0DDDDC7418A15624CAE0_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103012
+// Method Definition Index: 126220
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_areAllRightJointsValid_m7BC3C309A881F1D887D8C770617F9EED2B1E53E7 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:26>
 		bool L_0 = __this->___m_AreAllRightJointsValid;
 		return L_0;
 	}
@@ -6257,11 +6257,11 @@ IL2CPP_EXTERN_C  bool XRHandRecordingFrameBuffer_get_areAllRightJointsValid_m7BC
 	_returnValue = XRHandRecordingFrameBuffer_get_areAllRightJointsValid_m7BC3C309A881F1D887D8C770617F9EED2B1E53E7_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103013
+// Method Definition Index: 126221
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_areAllRightJointsValid_mC8E70C38A6DFAB321EAD46D832045D97D413F3F5 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:27>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllRightJointsValid = L_0;
 		return;
@@ -6274,11 +6274,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameBuffer_set_areAllRightJointsValid_mC8E
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A*>(__this + _offset);
 	XRHandRecordingFrameBuffer_set_areAllRightJointsValid_mC8E70C38A6DFAB321EAD46D832045D97D413F3F5_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103014
+// Method Definition Index: 126222
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_isLeftHandTracked_m5D366D58395315E0B7F5A5B36BCE565E63E13221 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:32>
 		bool L_0 = __this->___m_IsLeftHandTracked;
 		return L_0;
 	}
@@ -6292,11 +6292,11 @@ IL2CPP_EXTERN_C  bool XRHandRecordingFrameBuffer_get_isLeftHandTracked_m5D366D58
 	_returnValue = XRHandRecordingFrameBuffer_get_isLeftHandTracked_m5D366D58395315E0B7F5A5B36BCE565E63E13221_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103015
+// Method Definition Index: 126223
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_isLeftHandTracked_m7C4FC3E2C67661DAD9BB30A0E6A3B130C973AF0C (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:33>
 		bool L_0 = ___0_value;
 		__this->___m_IsLeftHandTracked = L_0;
 		return;
@@ -6309,11 +6309,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameBuffer_set_isLeftHandTracked_m7C4FC3E2
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A*>(__this + _offset);
 	XRHandRecordingFrameBuffer_set_isLeftHandTracked_m7C4FC3E2C67661DAD9BB30A0E6A3B130C973AF0C_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103016
+// Method Definition Index: 126224
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_isRightHandTracked_mE6F9B3F9E4CDCCC651C51D9F5CCDFEEEB186DAFD (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:38>
 		bool L_0 = __this->___m_IsRightHandTracked;
 		return L_0;
 	}
@@ -6327,11 +6327,11 @@ IL2CPP_EXTERN_C  bool XRHandRecordingFrameBuffer_get_isRightHandTracked_mE6F9B3F
 	_returnValue = XRHandRecordingFrameBuffer_get_isRightHandTracked_mE6F9B3F9E4CDCCC651C51D9F5CCDFEEEB186DAFD_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103017
+// Method Definition Index: 126225
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_isRightHandTracked_m76879B2055EE23D87E07E26E919B9DD187C08972 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:39>
 		bool L_0 = ___0_value;
 		__this->___m_IsRightHandTracked = L_0;
 		return;
@@ -6344,7 +6344,7 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameBuffer_set_isRightHandTracked_m76879B2
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A*>(__this + _offset);
 	XRHandRecordingFrameBuffer_set_isRightHandTracked_m76879B2055EE23D87E07E26E919B9DD187C08972_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103018
+// Method Definition Index: 126226
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer__ctor_mF0316268A2189D496C8AF2471582D791CF7DBC5F (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, float ___0_timestamp, bool ___1_isLeftHandTracked, bool ___2_isRightHandTracked, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6366,17 +6366,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer__ctor_mF03162
 	memset((&G_B6_0), 0, sizeof(G_B6_0));
 	XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* G_B6_1 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:44>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:44>
 		float L_0 = ___0_timestamp;
 		__this->___m_Timestamp = L_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:46>
 		bool L_1 = ___1_isLeftHandTracked;
 		__this->___m_IsLeftHandTracked = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:47>
 		bool L_2 = ___2_isRightHandTracked;
 		__this->___m_IsRightHandTracked = L_2;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:49>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:50>
 		bool L_3 = ___1_isLeftHandTracked;
 		if (L_3)
 		{
@@ -6407,8 +6407,8 @@ IL_0024:
 IL_0032:
 	{
 		G_B3_1->___m_LeftHandJoints = G_B3_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:51>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:51>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:52>
 		bool L_7 = ___2_isRightHandTracked;
 		if (L_7)
 		{
@@ -6439,11 +6439,11 @@ IL_0046:
 IL_0054:
 	{
 		G_B6_1->___m_RightHandJoints = G_B6_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:54>
 		__this->___m_AreAllLeftJointsValid = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:55>
 		__this->___m_AreAllRightJointsValid = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:56>
 		return;
 	}
 }
@@ -6454,7 +6454,7 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameBuffer__ctor_mF0316268A2189D496C8AF247
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A*>(__this + _offset);
 	XRHandRecordingFrameBuffer__ctor_mF0316268A2189D496C8AF2471582D791CF7DBC5F(_thisAdjusted, ___0_timestamp, ___1_isLeftHandTracked, ___2_isRightHandTracked, method);
 }
-// Method Definition Index: 103019
+// Method Definition Index: 126227
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_Dispose_m5298596F3289C87EB436AED6BF5C8D8E1AF30B66 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6465,7 +6465,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_Dispose_m5298
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:60>
 		NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* L_0 = (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347*)(&__this->___m_LeftHandJoints);
 		bool L_1;
 		L_1 = NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_inline(L_0, NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_RuntimeMethod_var);
@@ -6475,14 +6475,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_Dispose_m5298
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:61>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:61>
 		NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* L_2 = (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347*)(&__this->___m_LeftHandJoints);
 		NativeArray_1_Dispose_m02B53BA57A6C99724A5DE5A834F98AC80577A5E6(L_2, NativeArray_1_Dispose_m02B53BA57A6C99724A5DE5A834F98AC80577A5E6_RuntimeMethod_var);
 	}
 
 IL_0018:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:63>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:63>
 		NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* L_3 = (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347*)(&__this->___m_RightHandJoints);
 		bool L_4;
 		L_4 = NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_inline(L_3, NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_RuntimeMethod_var);
@@ -6492,14 +6492,14 @@ IL_0018:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:64>
 		NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* L_5 = (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347*)(&__this->___m_RightHandJoints);
 		NativeArray_1_Dispose_m02B53BA57A6C99724A5DE5A834F98AC80577A5E6(L_5, NativeArray_1_Dispose_m02B53BA57A6C99724A5DE5A834F98AC80577A5E6_RuntimeMethod_var);
 	}
 
 IL_0030:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:65>
 		return;
 	}
 }
@@ -6510,7 +6510,7 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameBuffer_Dispose_m5298596F3289C87EB436AE
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A*>(__this + _offset);
 	XRHandRecordingFrameBuffer_Dispose_m5298596F3289C87EB436AED6BF5C8D8E1AF30B66(_thisAdjusted, method);
 }
-// Method Definition Index: 103020
+// Method Definition Index: 126228
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_TryCaptureHandJoints_mF2055CAC98410B0DBF0DBBA0D1BC07FC72E07065 (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* ___0_hand, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6531,7 +6531,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_TryCaptureHan
 	NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347 G_B5_0;
 	memset((&G_B5_0), 0, sizeof(G_B5_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:69>
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* L_0 = ___0_hand;
 		bool L_1;
 		L_1 = XRHand_get_isTracked_mDFC9D4FDE271E2DC90D5459B1A6EA304F97B7428_inline(L_0, NULL);
@@ -6541,13 +6541,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_TryCaptureHan
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:70>
 		return (bool)0;
 	}
 
 IL_000a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:72>
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* L_2 = ___0_hand;
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 L_3 = (*(XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471*)L_2);
 		V_1 = L_3;
@@ -6573,7 +6573,7 @@ IL_0023:
 IL_0029:
 	{
 		V_0 = G_B5_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:74>
 		bool L_7;
 		L_7 = NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_inline((&V_0), NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_RuntimeMethod_var);
 		if (!L_7)
@@ -6594,26 +6594,26 @@ IL_0029:
 
 IL_0043:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:75>
 		return (bool)0;
 	}
 
 IL_0045:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:77>
 		V_2 = 1;
 		goto IL_0071;
 	}
 
 IL_0049:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:79>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:79>
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* L_10 = ___0_hand;
 		int32_t L_11 = V_2;
 		XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783 L_12;
 		L_12 = XRHand_GetJoint_mDD5E7D4F45C9701AF8911EA4394F258CB5E68035(L_10, L_11, NULL);
 		V_3 = L_12;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:80>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:80>
 		bool L_13;
 		L_13 = XRHandJoint_TryGetPose_m1AA1E69E7753E1CC4E64F8649751BF7D30CE113E((&V_3), (&V_4), NULL);
 		if (L_13)
@@ -6622,26 +6622,26 @@ IL_0049:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:82>
 		return (bool)0;
 	}
 
 IL_005e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:84>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:84>
 		int32_t L_14 = V_2;
 		int32_t L_15;
 		L_15 = XRHandJointIDUtility_ToIndex_mBF5EC77C077B14029F71E64F112F37544BFD9E02(L_14, NULL);
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_16 = V_4;
 		IL2CPP_NATIVEARRAY_SET_ITEM(Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971, ((&V_0))->___m_Buffer, L_15, (L_16));
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:77>
 		int32_t L_17 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add((int32_t)L_17, 1));
 	}
 
 IL_0071:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:77>
 		int32_t L_18 = V_2;
 		if ((((int32_t)L_18) < ((int32_t)((int32_t)27))))
 		{
@@ -6649,7 +6649,7 @@ IL_0071:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:86>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:86>
 		return (bool)1;
 	}
 }
@@ -6662,7 +6662,7 @@ IL2CPP_EXTERN_C  bool XRHandRecordingFrameBuffer_TryCaptureHandJoints_mF2055CAC9
 	_returnValue = XRHandRecordingFrameBuffer_TryCaptureHandJoints_mF2055CAC98410B0DBF0DBBA0D1BC07FC72E07065(_thisAdjusted, ___0_hand, method);
 	return _returnValue;
 }
-// Method Definition Index: 103021
+// Method Definition Index: 126229
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B XRHandRecordingFrameBuffer_WriteFrameHandData_m0D58AE81FBC0EABB06CEB310AE308DD5CB3C1B4A (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6695,7 +6695,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandRecordingRawFrame_t0128B86579CF9D72E3B7
 	XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B V_9;
 	memset((&V_9), 0, sizeof(V_9));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:91>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:91>
 		MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_0 = (MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2*)il2cpp_codegen_object_new(MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2_il2cpp_TypeInfo_var);
 		MemoryStream__ctor_m8F3BAE0B48E65BAA13C52FB020E502B3EA22CA6B(L_0, NULL);
 		V_0 = L_0;
@@ -6728,7 +6728,7 @@ IL_012f:
 		try
 		{
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:92>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:92>
 				MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_3 = V_0;
 				BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_4 = (BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E*)il2cpp_codegen_object_new(BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E_il2cpp_TypeInfo_var);
 				BinaryWriter__ctor_mF2F1235E378C3EC493A8C816597BCEB4205A9CA0(L_4, L_3, NULL);
@@ -6762,32 +6762,32 @@ IL_0125_1:
 				try
 				{
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:95>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:95>
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_7 = V_1;
 						float L_8 = __this->___m_Timestamp;
 						NullCheck(L_7);
 						VirtualActionInvoker1< float >::Invoke(22, L_7, L_8);
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:98>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:98>
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_9 = V_1;
 						bool L_10 = __this->___m_IsLeftHandTracked;
 						NullCheck(L_9);
 						VirtualActionInvoker1< bool >::Invoke(8, L_9, L_10);
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:99>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:99>
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_11 = V_1;
 						bool L_12 = __this->___m_IsRightHandTracked;
 						NullCheck(L_11);
 						VirtualActionInvoker1< bool >::Invoke(8, L_11, L_12);
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:100>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:100>
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_13 = V_1;
 						bool L_14 = __this->___m_AreAllLeftJointsValid;
 						NullCheck(L_13);
 						VirtualActionInvoker1< bool >::Invoke(8, L_13, L_14);
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:101>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:101>
 						BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_15 = V_1;
 						bool L_16 = __this->___m_AreAllRightJointsValid;
 						NullCheck(L_15);
 						VirtualActionInvoker1< bool >::Invoke(8, L_15, L_16);
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:104>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:104>
 						bool L_17 = __this->___m_AreAllLeftJointsValid;
 						if (!L_17)
 						{
@@ -6795,7 +6795,7 @@ IL_0125_1:
 						}
 					}
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:106>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:106>
 						NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* L_18 = (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347*)(&__this->___m_LeftHandJoints);
 						Enumerator_t2E027D9CC56D1C869DF0B8ADC33AE52F04DD3037 L_19;
 						L_19 = NativeArray_1_GetEnumerator_m8858AFE48EBD289D4462C90754B2D7695457EB1B(L_18, NativeArray_1_GetEnumerator_m8858AFE48EBD289D4462C90754B2D7695457EB1B_RuntimeMethod_var);
@@ -6819,11 +6819,11 @@ FINALLY_007c_2:
 
 IL_0060_3:
 							{
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:106>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:106>
 								Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_20;
 								L_20 = Enumerator_get_Current_m0D229D21CE849470620200D6E2DEB3672F3099F3_inline((&V_4), Enumerator_get_Current_m0D229D21CE849470620200D6E2DEB3672F3099F3_RuntimeMethod_var);
 								V_5 = L_20;
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:108>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:108>
 								BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_21 = V_1;
 								Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_22 = V_5;
 								XRHandRecordingFrameBuffer_WritePose_m8BC58563974354B3D83748D0AD14ABF3A8D64A70(L_21, L_22, NULL);
@@ -6831,7 +6831,7 @@ IL_0060_3:
 
 IL_0071_3:
 							{
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:106>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:106>
 								bool L_23;
 								L_23 = Enumerator_MoveNext_mFD994AEBF3EAEEF2BEBEAC0A0FBB4854505A381F_inline((&V_4), Enumerator_MoveNext_mFD994AEBF3EAEEF2BEBEAC0A0FBB4854505A381F_RuntimeMethod_var);
 								if (L_23)
@@ -6851,7 +6851,7 @@ IL_0071_3:
 
 IL_008a_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:113>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:113>
 						bool L_24 = __this->___m_AreAllRightJointsValid;
 						if (!L_24)
 						{
@@ -6859,7 +6859,7 @@ IL_008a_2:
 						}
 					}
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:115>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:115>
 						NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* L_25 = (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347*)(&__this->___m_RightHandJoints);
 						Enumerator_t2E027D9CC56D1C869DF0B8ADC33AE52F04DD3037 L_26;
 						L_26 = NativeArray_1_GetEnumerator_m8858AFE48EBD289D4462C90754B2D7695457EB1B(L_25, NativeArray_1_GetEnumerator_m8858AFE48EBD289D4462C90754B2D7695457EB1B_RuntimeMethod_var);
@@ -6883,11 +6883,11 @@ FINALLY_00bd_2:
 
 IL_00a1_3:
 							{
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:115>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:115>
 								Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_27;
 								L_27 = Enumerator_get_Current_m0D229D21CE849470620200D6E2DEB3672F3099F3_inline((&V_4), Enumerator_get_Current_m0D229D21CE849470620200D6E2DEB3672F3099F3_RuntimeMethod_var);
 								V_6 = L_27;
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:117>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:117>
 								BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_28 = V_1;
 								Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_29 = V_6;
 								XRHandRecordingFrameBuffer_WritePose_m8BC58563974354B3D83748D0AD14ABF3A8D64A70(L_28, L_29, NULL);
@@ -6895,7 +6895,7 @@ IL_00a1_3:
 
 IL_00b2_3:
 							{
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:115>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:115>
 								bool L_30;
 								L_30 = Enumerator_MoveNext_mFD994AEBF3EAEEF2BEBEAC0A0FBB4854505A381F_inline((&V_4), Enumerator_MoveNext_mFD994AEBF3EAEEF2BEBEAC0A0FBB4854505A381F_RuntimeMethod_var);
 								if (L_30)
@@ -6915,13 +6915,13 @@ IL_00b2_3:
 
 IL_00cb_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:121>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:121>
 						MemoryStream_tAAED1B42172E3390584E4194308AB878E786AAC2* L_31 = V_0;
 						NullCheck(L_31);
 						ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_32;
-						L_32 = VirtualFuncInvoker0< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(40, L_31);
+						L_32 = VirtualFuncInvoker0< ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* >::Invoke(41, L_31);
 						V_2 = L_32;
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:122>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:122>
 						ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_33 = V_2;
 						NullCheck(L_33);
 						NativeArray_1__ctor_m981CC7E27B6C9946024877F2696920951443B04F((&V_3), ((int32_t)(((RuntimeArray*)L_33)->max_length)), 4, 1, NativeArray_1__ctor_m981CC7E27B6C9946024877F2696920951443B04F_RuntimeMethod_var);
@@ -6939,7 +6939,7 @@ FINALLY_010e_2:
 						try
 						{
 							{
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:123>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:123>
 								ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_34 = V_2;
 								ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_35 = L_34;
 								V_8 = L_35;
@@ -6972,7 +6972,7 @@ IL_00f0_3:
 
 IL_00fb_3:
 							{
-								//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:125>
+								//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:125>
 								NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_38 = V_3;
 								void* L_39;
 								L_39 = NativeArrayUnsafeUtility_GetUnsafePtr_TisByte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3_m8CFDB2DF56E810A2E2FB3686AF676FCAC65AFCC2(L_38, NativeArrayUnsafeUtility_GetUnsafePtr_TisByte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3_m8CFDB2DF56E810A2E2FB3686AF676FCAC65AFCC2_RuntimeMethod_var);
@@ -6991,7 +6991,7 @@ IL_00fb_3:
 
 IL_0112_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:128>
+						//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:128>
 						NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_42 = V_3;
 						XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B L_43;
 						memset((&L_43), 0, sizeof(L_43));
@@ -7014,7 +7014,7 @@ IL_0112_2:
 
 IL_0130:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:130>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:130>
 		XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B L_44 = V_9;
 		return L_44;
 	}
@@ -7028,60 +7028,60 @@ IL2CPP_EXTERN_C  XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB
 	_returnValue = XRHandRecordingFrameBuffer_WriteFrameHandData_m0D58AE81FBC0EABB06CEB310AE308DD5CB3C1B4A(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103022
+// Method Definition Index: 126230
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_WritePose_m8BC58563974354B3D83748D0AD14ABF3A8D64A70 (BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* ___0_writer, Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 ___1_pose, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:135>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:135>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_0 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_1 = ___1_pose;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2 = L_1.___position;
 		float L_3 = L_2.___x;
 		NullCheck(L_0);
 		VirtualActionInvoker1< float >::Invoke(22, L_0, L_3);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:136>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:136>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_4 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_5 = ___1_pose;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = L_5.___position;
 		float L_7 = L_6.___y;
 		NullCheck(L_4);
 		VirtualActionInvoker1< float >::Invoke(22, L_4, L_7);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:137>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:137>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_8 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_9 = ___1_pose;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10 = L_9.___position;
 		float L_11 = L_10.___z;
 		NullCheck(L_8);
 		VirtualActionInvoker1< float >::Invoke(22, L_8, L_11);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:140>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:140>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_12 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_13 = ___1_pose;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_14 = L_13.___rotation;
 		float L_15 = L_14.___x;
 		NullCheck(L_12);
 		VirtualActionInvoker1< float >::Invoke(22, L_12, L_15);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:141>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:141>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_16 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_17 = ___1_pose;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_18 = L_17.___rotation;
 		float L_19 = L_18.___y;
 		NullCheck(L_16);
 		VirtualActionInvoker1< float >::Invoke(22, L_16, L_19);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:142>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:142>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_20 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_21 = ___1_pose;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_22 = L_21.___rotation;
 		float L_23 = L_22.___z;
 		NullCheck(L_20);
 		VirtualActionInvoker1< float >::Invoke(22, L_20, L_23);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:143>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:143>
 		BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_24 = ___0_writer;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_25 = ___1_pose;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_26 = L_25.___rotation;
 		float L_27 = L_26.___w;
 		NullCheck(L_24);
 		VirtualActionInvoker1< float >::Invoke(22, L_24, L_27);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:144>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:144>
 		return;
 	}
 }
@@ -7093,11 +7093,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_WritePose_m8B
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103023
+// Method Definition Index: 126231
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF XRHandRecordingRawFrame_get_blob_mBDC39317AF56672A3C3169FDCEEA1277F90EEC3F (XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:9>
 		NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_0 = __this->___m_Blob;
 		return L_0;
 	}
@@ -7111,14 +7111,14 @@ IL2CPP_EXTERN_C  NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF XRHandR
 	_returnValue = XRHandRecordingRawFrame_get_blob_mBDC39317AF56672A3C3169FDCEEA1277F90EEC3F_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103024
+// Method Definition Index: 126232
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingRawFrame__ctor_m559D000F1B864E1217D720F768663B1C95C939FA (XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B* __this, NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF ___0_blob, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:13>
 		NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_0 = ___0_blob;
 		__this->___m_Blob = L_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:14>
 		return;
 	}
 }
@@ -7129,7 +7129,7 @@ IL2CPP_EXTERN_C  void XRHandRecordingRawFrame__ctor_m559D000F1B864E1217D720F7686
 	_thisAdjusted = reinterpret_cast<XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B*>(__this + _offset);
 	XRHandRecordingRawFrame__ctor_m559D000F1B864E1217D720F768663B1C95C939FA_inline(_thisAdjusted, ___0_blob, method);
 }
-// Method Definition Index: 103025
+// Method Definition Index: 126233
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingRawFrame_Dispose_m7533D32B25641D7A710AA42A975C956CAF9F8B45 (XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7140,7 +7140,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingRawFrame_Dispose_m7533D32
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:18>
 		NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF* L_0 = (NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF*)(&__this->___m_Blob);
 		bool L_1;
 		L_1 = NativeArray_1_get_IsCreated_mD74FCA194584E6EA7916853B62401EB78240A081_inline(L_0, NativeArray_1_get_IsCreated_mD74FCA194584E6EA7916853B62401EB78240A081_RuntimeMethod_var);
@@ -7150,14 +7150,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingRawFrame_Dispose_m7533D32
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:20>
 		NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF* L_2 = (NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF*)(&__this->___m_Blob);
 		NativeArray_1_Dispose_m8B0F342847ECB90EB814E1F6AA5BF7DC2F271AEA(L_2, NativeArray_1_Dispose_m8B0F342847ECB90EB814E1F6AA5BF7DC2F271AEA_RuntimeMethod_var);
 	}
 
 IL_0018:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:22>
 		return;
 	}
 }
@@ -7176,46 +7176,46 @@ IL2CPP_EXTERN_C  void XRHandRecordingRawFrame_Dispose_m7533D32B25641D7A710AA42A9
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103026
+// Method Definition Index: 126234
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_get_assetName_mA0704C58FF38E1969181758BEF6C3C5E5BEBB3B7 (XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:16>
 		String_t* L_0 = __this->___m_AssetName;
 		return L_0;
 	}
 }
-// Method Definition Index: 103027
+// Method Definition Index: 126235
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase_set_assetName_mD209B5AE8DCE0CF5B8380EA7B6F5BF2435E81D26 (XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:17>
 		String_t* L_0 = ___0_value;
 		__this->___m_AssetName = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_AssetName), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103028
+// Method Definition Index: 126236
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandRecordingBase_get_durationInSeconds_m4D1844B576755576D52E0172A74DA69EC2C689FA (XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:25>
 		float L_0 = __this->___m_DurationInSeconds;
 		return L_0;
 	}
 }
-// Method Definition Index: 103029
+// Method Definition Index: 126237
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase_set_durationInSeconds_m0907949D139607022991F49FEB93BCF745C4F5FD (XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:26>
 		float L_0 = ___0_value;
 		__this->___m_DurationInSeconds = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103030
+// Method Definition Index: 126238
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_get_internalBinaryFileName_mE0EAF9535968691CF094638AAB48D943EDB58399 (XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7225,14 +7225,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_get_internalBin
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:30>
 		String_t* L_0 = __this->___m_UniqueID;
 		String_t* L_1;
 		L_1 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(L_0, _stringLiteralB9F4CAE91EA401034E1F28BA28E3E304570A3758, NULL);
 		return L_1;
 	}
 }
-// Method Definition Index: 103032
+// Method Definition Index: 126240
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase_DeleteFileFromDisk_m4FFE1D5CCDEC1F7C6B4210ED425947B6F7B42C2D (String_t* ___0_fileName, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7245,7 +7245,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase_DeleteFileFromDisk_m
 	Exception_t* V_1 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:46>
 		String_t* L_0;
 		L_0 = XRHandRecordingBase_GetDeviceStoragePath_mC4831418B64E5F0B7E5E59BF14C81B03901CBC57(NULL);
 		String_t* L_1 = ___0_fileName;
@@ -7257,7 +7257,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase_DeleteFileFromDisk_m
 	try
 	{
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:50>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:50>
 			String_t* L_3 = V_0;
 			bool L_4;
 			L_4 = File_Exists_m95E329ABBE3EAD6750FE1989BBA6884457136D4A(L_3, NULL);
@@ -7267,14 +7267,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase_DeleteFileFromDisk_m
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:51>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:51>
 			String_t* L_5 = V_0;
 			File_Delete_mE29829DA504F3E1B8BCB78F21E2862C9ED7EC386(L_5, NULL);
 		}
 
 IL_001a_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:52>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:52>
 			goto IL_0030;
 		}
 	}
@@ -7291,27 +7291,27 @@ IL_001a_1:
 CATCH_001c:
 	{
 		Exception_t* L_6 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:53>
 		V_1 = L_6;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:55>
 		String_t* L_7 = V_0;
 		Exception_t* L_8 = V_1;
 		String_t* L_9;
 		L_9 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral5A65415EB0A4581B5F16E0CB5640DC01BF264778)), L_7, L_8, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_9, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:56>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_0030;
 	}
 
 IL_0030:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:57>
 		return;
 	}
 }
-// Method Definition Index: 103033
+// Method Definition Index: 126241
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_GetDeviceStoragePath_mC4831418B64E5F0B7E5E59BF14C81B03901CBC57 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7323,18 +7323,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_GetDeviceStorag
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:64>
 		il2cpp_codegen_runtime_class_init_inline(Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
 		String_t* L_0;
 		L_0 = Application_get_persistentDataPath_mC58BD3E1A20732E0A536491DBCAE6505B1624399(NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:65>
 		il2cpp_codegen_runtime_class_init_inline(Path_t8A38A801D0219E8209C1B1D90D82D4D755D998BC_il2cpp_TypeInfo_var);
 		String_t* L_1;
 		L_1 = Path_Combine_m1ADAC05CDA2D1D61B172DF65A81E86592696BEAE(L_0, _stringLiteral83D184B018D64592CD859093E75DE82D0B1F8AF9, NULL);
 		return L_1;
 	}
 }
-// Method Definition Index: 103034
+// Method Definition Index: 126242
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_GenerateUniqueID_mEEDCA1C6B7FD0C38FD29CD1104717A7CC1831D14 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7347,7 +7347,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_GenerateUniqueI
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBase.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBase.cs:70>
 		il2cpp_codegen_runtime_class_init_inline(DateTime_t66193957C73913903DDAD89FEDC46139BCA5802D_il2cpp_TypeInfo_var);
 		DateTime_t66193957C73913903DDAD89FEDC46139BCA5802D L_0;
 		L_0 = DateTime_get_UtcNow_m06B6E9995FE16846A0F71EC9DB23E90BE2C5F9FA(NULL);
@@ -7362,7 +7362,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingBase_GenerateUniqueI
 		return L_6;
 	}
 }
-// Method Definition Index: 103035
+// Method Definition Index: 126243
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase__ctor_mCDC2C45ABD995BFAFCA55BB7CF3D08E0A2182F04 (XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09* __this, const RuntimeMethod* method) 
 {
 	{
@@ -7378,7 +7378,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBase__ctor_mCDC2C45ABD995
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103036
+// Method Definition Index: 126244
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_add_statusChanged_m792BE11D3847E28A7F874EF5444F121F34319816 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7421,7 +7421,7 @@ IL_0007:
 		return;
 	}
 }
-// Method Definition Index: 103037
+// Method Definition Index: 126245
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_remove_statusChanged_m4975D13A5052835501E8C2E7E6FCE53A51EAC26D (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7464,7 +7464,7 @@ IL_0007:
 		return;
 	}
 }
-// Method Definition Index: 103038
+// Method Definition Index: 126246
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_add_frameCaptured_mCDB3A1C321EBD242DF3F4FB52CFA2EE1C11332DB (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7507,7 +7507,7 @@ IL_0007:
 		return;
 	}
 }
-// Method Definition Index: 103039
+// Method Definition Index: 126247
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_remove_frameCaptured_m2449EF2870C30B905DB115EC6B7D413C17A8FC07 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7550,7 +7550,7 @@ IL_0007:
 		return;
 	}
 }
-// Method Definition Index: 103040
+// Method Definition Index: 126248
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob__ctor_m816C3451A59CC1A2BFF9E9834E3B276672F1394B (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7561,21 +7561,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob__ctor_m816C3451A59CC
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:35>
 		XRHandRecordingBase__ctor_mCDC2C45ABD995BFAFCA55BB7CF3D08E0A2182F04(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:37>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:37>
 		List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_0 = (List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC*)il2cpp_codegen_object_new(List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC_il2cpp_TypeInfo_var);
 		List_1__ctor_m792403AA0CA890125615BF8435075D3FDAE72EC6(L_0, List_1__ctor_m792403AA0CA890125615BF8435075D3FDAE72EC6_RuntimeMethod_var);
 		__this->___m_Frames = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Frames), (void*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:38>
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* L_1 = (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*)(&__this->___m_CurrentStatusChangedEventArgs);
 		il2cpp_codegen_initobj(L_1, sizeof(XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0));
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:39>
 		return;
 	}
 }
-// Method Definition Index: 103041
+// Method Definition Index: 126249
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Dispose_m1471C95A8B516B60E38347D9A18DEE3F23B2ACE1 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7593,7 +7593,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Dispose_m1471C95A8B5
 	XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:49>
 		bool L_0 = __this->___m_IsRecording;
 		if (!L_0)
 		{
@@ -7601,13 +7601,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Dispose_m1471C95A8B5
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:50>
 		XRHandRecordingBlob_Stop_mF8E541C77744057C75BF8B267C51CCDBE1CBDC20(__this, NULL);
 	}
 
 IL_000e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:52>
 		List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_1 = __this->___m_Frames;
 		NullCheck(L_1);
 		Enumerator_t09BB21E9C467FB276FF3669E1DA7F9DF99954D9A L_2;
@@ -7632,17 +7632,17 @@ FINALLY_0036:
 
 IL_001c_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:52>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:52>
 				XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B L_3;
 				L_3 = Enumerator_get_Current_m1D25DFFB651D9115B6FF60727EC8BCCC73F9E45E_inline((&V_0), Enumerator_get_Current_m1D25DFFB651D9115B6FF60727EC8BCCC73F9E45E_RuntimeMethod_var);
 				V_1 = L_3;
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:54>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:54>
 				XRHandRecordingRawFrame_Dispose_m7533D32B25641D7A710AA42A975C956CAF9F8B45((&V_1), NULL);
 			}
 
 IL_002b_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:52>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:52>
 				bool L_4;
 				L_4 = Enumerator_MoveNext_m2BB286F1D379C374CED37F02C07B33CC5C2FBF59((&V_0), Enumerator_MoveNext_m2BB286F1D379C374CED37F02C07B33CC5C2FBF59_RuntimeMethod_var);
 				if (L_4)
@@ -7662,44 +7662,44 @@ IL_002b_1:
 
 IL_0044:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:57>
 		List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_5 = __this->___m_Frames;
 		NullCheck(L_5);
 		List_1_Clear_m88508DB2B92551FDE3FE2DD3C7D1E43D9D385BE9_inline(L_5, List_1_Clear_m88508DB2B92551FDE3FE2DD3C7D1E43D9D385BE9_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:58>
 		return;
 	}
 }
-// Method Definition Index: 103042
+// Method Definition Index: 126250
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Reset_mF72DAA0CCE5838F8BB4EFBAB8061DEB5D703BF5C (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:68>
 		XRHandRecordingBlob_Clear_mE76DE0C1F9281FD8A0EEBD977303A619C98074B5(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:69>
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:70>
 		__this->___m_StartTime = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:71>
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_AssetName = (String_t*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_AssetName), (void*)(String_t*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:72>
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_UniqueID = (String_t*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_UniqueID), (void*)(String_t*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:73>
 		__this->___m_IsRecording = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:74>
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* L_0 = (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*)(&__this->___m_CurrentStatusChangedEventArgs);
 		il2cpp_codegen_initobj(L_0, sizeof(XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0));
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:75>
 		return;
 	}
 }
-// Method Definition Index: 103043
+// Method Definition Index: 126251
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Clear_mE76DE0C1F9281FD8A0EEBD977303A619C98074B5 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:87>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:87>
 		bool L_0 = __this->___m_IsRecording;
 		if (!L_0)
 		{
@@ -7707,21 +7707,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Clear_mE76DE0C1F9281
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:88>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:88>
 		XRHandRecordingBlob_Stop_mF8E541C77744057C75BF8B267C51CCDBE1CBDC20(__this, NULL);
 	}
 
 IL_000e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:90>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:90>
 		XRHandRecordingBlob_Dispose_m1471C95A8B516B60E38347D9A18DEE3F23B2ACE1(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:91>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:91>
 		XRHandRecordingBlob_CleanupSubscription_m3AE3DD370A13768FCADACEBBFF24A978C11E968E(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:92>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:92>
 		return;
 	}
 }
-// Method Definition Index: 103044
+// Method Definition Index: 126252
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryInitialize_m8C6F047DC740025CE6E4479C3F27A44266516594 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C ___0_args, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7738,7 +7738,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryInitialize_m8C6F0
 	Exception_t* V_1 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:108>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:108>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0;
 		L_0 = XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF_inline((&___0_args), NULL);
 		if (L_0)
@@ -7747,16 +7747,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryInitialize_m8C6F0
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:110>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:110>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral7F5D2A503DB2E0C686FFFB44C7675CA620C38BEB, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:111>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:111>
 		return (bool)0;
 	}
 
 IL_0015:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:114>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:114>
 		bool L_1 = __this->___m_IsRecording;
 		if (!L_1)
 		{
@@ -7764,10 +7764,10 @@ IL_0015:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:116>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:116>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(_stringLiteralC46C03928BDCF5D998060BF387DBBFD253028AAC, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:117>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:117>
 		return (bool)0;
 	}
 
@@ -7776,14 +7776,14 @@ IL_0029:
 	}
 	try
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:122>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:122>
 		XRHandRecordingBlob_CleanupSubscription_m3AE3DD370A13768FCADACEBBFF24A978C11E968E(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:123>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:123>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_2;
 		L_2 = XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF_inline((&___0_args), NULL);
 		__this->___m_Subsystem = L_2;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Subsystem), (void*)L_2);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:124>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_3 = __this->___m_Subsystem;
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_4 = L_3;
 		NullCheck(L_4);
@@ -7795,20 +7795,20 @@ IL_0029:
 		NullCheck(L_4);
 		L_4->___updatedHands = ((Action_3_t7D778238CD0A45B8368B3EAC4062AD2D477E1997*)Castclass((RuntimeObject*)L_7, Action_3_t7D778238CD0A45B8368B3EAC4062AD2D477E1997_il2cpp_TypeInfo_var));
 		Il2CppCodeGenWriteBarrier((void**)(&L_4->___updatedHands), (void*)((Action_3_t7D778238CD0A45B8368B3EAC4062AD2D477E1997*)Castclass((RuntimeObject*)L_7, Action_3_t7D778238CD0A45B8368B3EAC4062AD2D477E1997_il2cpp_TypeInfo_var)));
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:126>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:126>
 		__this->___m_IsRecording = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:127>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:127>
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:128>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:128>
 		__this->___m_StartTime = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:129>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:129>
 		String_t* L_8;
 		L_8 = XRHandRecordingBase_GenerateUniqueID_mEEDCA1C6B7FD0C38FD29CD1104717A7CC1831D14(NULL);
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_UniqueID = L_8;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_UniqueID), (void*)L_8);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:131>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:131>
 		XRHandRecordingBlob_NotifyStatusChanged_m55383BB7B7C306614EE4B8BA92A59D65F0698190(__this, 1, (String_t*)NULL, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:132>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:132>
 		V_0 = (bool)1;
 		goto IL_00b2;
 	}
@@ -7825,9 +7825,9 @@ IL_0029:
 CATCH_0098:
 	{
 		Exception_t* L_9 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:134>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:134>
 		V_1 = L_9;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:136>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:136>
 		Exception_t* L_10 = V_1;
 		NullCheck(L_10);
 		String_t* L_11;
@@ -7836,7 +7836,7 @@ CATCH_0098:
 		L_12 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7C0C0D2B58C2F979672180013B233AF79EE40D4C)), L_11, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_12, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:137>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:137>
 		V_0 = (bool)0;
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_00b2;
@@ -7844,22 +7844,22 @@ CATCH_0098:
 
 IL_00b2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:139>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:139>
 		bool L_13 = V_0;
 		return L_13;
 	}
 }
-// Method Definition Index: 103045
+// Method Definition Index: 126253
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Stop_mF8E541C77744057C75BF8B267C51CCDBE1CBDC20 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:147>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:147>
 		XRHandRecordingBlob_StopRecordingInternal_m7B40480B1F28C69D310FE50DA450817F4A0CEE28(__this, 3, (String_t*)NULL, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:148>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:148>
 		return;
 	}
 }
-// Method Definition Index: 103046
+// Method Definition Index: 126254
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TrySave_m71C7A0805B0B28A9793270EEC9475CE378266A77 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 ___0_args, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7875,7 +7875,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TrySave_m71C7A0805B0
 	bool G_B5_0 = false;
 	bool G_B4_0 = false;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:162>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:162>
 		String_t* L_0;
 		L_0 = XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE_inline((&___0_args), NULL);
 		bool L_1;
@@ -7886,16 +7886,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TrySave_m71C7A0805B0
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:164>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:164>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral00E2868CD76D06401C2049F2E3A99E93CCC2B93A, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:165>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:165>
 		return (bool)0;
 	}
 
 IL_001a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:168>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:168>
 		String_t* L_2;
 		L_2 = XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE_inline((&___0_args), NULL);
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_AssetName = L_2;
@@ -7904,10 +7904,10 @@ IL_001a:
 	try
 	{
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:172>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:172>
 			bool L_3;
 			L_3 = XRHandRecordingBlob_TryWriteRecordedDataToDisk_m167C53E97290C093FB47FDB6C6D4E187C6D04BF0(__this, NULL);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:174>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:174>
 			bool L_4 = L_3;
 			if (!L_4)
 			{
@@ -7917,16 +7917,16 @@ IL_001a:
 			G_B4_0 = L_4;
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:176>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:176>
 			XRHandRecordingBlob_NotifyStatusChanged_m55383BB7B7C306614EE4B8BA92A59D65F0698190(__this, 6, (String_t*)NULL, NULL);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:179>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:179>
 			XRHandRecordingBlob_Dispose_m1471C95A8B516B60E38347D9A18DEE3F23B2ACE1(__this, NULL);
 			G_B5_0 = G_B4_0;
 		}
 
 IL_003e_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:182>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:182>
 			V_0 = G_B5_0;
 			goto IL_005b;
 		}
@@ -7944,9 +7944,9 @@ IL_003e_1:
 CATCH_0041:
 	{
 		Exception_t* L_5 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:184>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:184>
 		V_1 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:186>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:186>
 		Exception_t* L_6 = V_1;
 		NullCheck(L_6);
 		String_t* L_7;
@@ -7955,7 +7955,7 @@ CATCH_0041:
 		L_8 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral41CF86E1D96CAF2D49317725AAC0E0B5C243D0DB)), L_7, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_8, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:187>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:187>
 		V_0 = (bool)0;
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_005b;
@@ -7963,16 +7963,16 @@ CATCH_0041:
 
 IL_005b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:189>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:189>
 		bool L_9 = V_0;
 		return L_9;
 	}
 }
-// Method Definition Index: 103047
+// Method Definition Index: 126255
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Delete_m7C0498DD8E4AEDC4E0E8423B79C4823C27CF8EB0 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:200>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:200>
 		bool L_0 = __this->___m_IsRecording;
 		if (!L_0)
 		{
@@ -7980,23 +7980,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_Delete_m7C0498DD8E4A
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:201>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:201>
 		XRHandRecordingBlob_Stop_mF8E541C77744057C75BF8B267C51CCDBE1CBDC20(__this, NULL);
 	}
 
 IL_000e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:203>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:203>
 		XRHandRecordingBlob_Dispose_m1471C95A8B516B60E38347D9A18DEE3F23B2ACE1(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:204>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:204>
 		String_t* L_1;
 		L_1 = XRHandRecordingBase_get_internalBinaryFileName_mE0EAF9535968691CF094638AAB48D943EDB58399(__this, NULL);
 		XRHandRecordingBase_DeleteFileFromDisk_m4FFE1D5CCDEC1F7C6B4210ED425947B6F7B42C2D(L_1, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:205>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:205>
 		return;
 	}
 }
-// Method Definition Index: 103048
+// Method Definition Index: 126256
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_OnUpdatedHands_m7E24915599734018C406AD56E92C7EA9E6207A41 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_subsystem, int32_t ___1_updateSuccessFlags, int32_t ___2_updateType, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8008,7 +8008,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_OnUpdatedHands_m7E24
 	Exception_t* V_0 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:212>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:212>
 		int32_t L_0 = ___2_updateType;
 		if (!L_0)
 		{
@@ -8025,13 +8025,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_OnUpdatedHands_m7E24
 
 IL_000b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:213>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:213>
 		return;
 	}
 
 IL_000c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:215>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:215>
 		float L_2 = __this->___m_StartTime;
 		if ((!(((float)L_2) == ((float)(0.0f)))))
 		{
@@ -8039,7 +8039,7 @@ IL_000c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:216>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:216>
 		float L_3;
 		L_3 = Time_get_timeSinceLevelLoad_m65C386103A91B172781032CA1A6FFDEC8CFBA921(NULL);
 		__this->___m_StartTime = L_3;
@@ -8047,12 +8047,12 @@ IL_000c:
 
 IL_0024:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:218>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:218>
 		float L_4;
 		L_4 = Time_get_timeSinceLevelLoad_m65C386103A91B172781032CA1A6FFDEC8CFBA921(NULL);
 		float L_5 = __this->___m_StartTime;
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds = ((float)il2cpp_codegen_subtract(L_4, L_5));
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:220>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:220>
 		float L_6 = ((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds;
 		il2cpp_codegen_runtime_class_init_inline(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var);
 		float L_7;
@@ -8063,9 +8063,9 @@ IL_0024:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:222>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:222>
 		XRHandRecordingBlob_StopRecordingInternal_m7B40480B1F28C69D310FE50DA450817F4A0CEE28(__this, 4, (String_t*)NULL, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:223>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:223>
 		return;
 	}
 
@@ -8074,11 +8074,11 @@ IL_004c:
 	}
 	try
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:228>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:228>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_8 = ___0_subsystem;
 		int32_t L_9 = ___1_updateSuccessFlags;
 		XRHandRecordingBlob_CaptureFrame_m4AE0BE3851719D85F4620D308DB35D676E20798E(__this, L_8, L_9, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:229>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:229>
 		goto IL_007c;
 	}
 	catch(Il2CppExceptionWrapper& e)
@@ -8094,9 +8094,9 @@ IL_004c:
 CATCH_0057:
 	{
 		Exception_t* L_10 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:230>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:230>
 		V_0 = L_10;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:232>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:232>
 		Exception_t* L_11 = V_0;
 		NullCheck(L_11);
 		String_t* L_12;
@@ -8105,24 +8105,24 @@ CATCH_0057:
 		L_13 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral027F3B5571244C1E0B4A7C747153226A1198DE54)), L_12, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_13, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:233>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:233>
 		Exception_t* L_14 = V_0;
 		NullCheck(L_14);
 		String_t* L_15;
 		L_15 = VirtualFuncInvoker0< String_t* >::Invoke(5, L_14);
 		XRHandRecordingBlob_StopRecordingInternal_m7B40480B1F28C69D310FE50DA450817F4A0CEE28(__this, 5, L_15, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:234>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:234>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_007c;
 	}
 
 IL_007c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:235>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:235>
 		return;
 	}
 }
-// Method Definition Index: 103049
+// Method Definition Index: 126257
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CaptureFrame_m4AE0BE3851719D85F4620D308DB35D676E20798E (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_subsystem, int32_t ___1_updateSuccessFlags, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8139,8 +8139,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CaptureFrame_m4AE0BE
 	XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B V_2;
 	memset((&V_2), 0, sizeof(V_2));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:239>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:240>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:239>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:240>
 		float L_0 = ((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds;
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_1 = ___0_subsystem;
 		NullCheck(L_1);
@@ -8164,16 +8164,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CaptureFrame_m4AE0BE
 
 FINALLY_008a:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:260>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:260>
 				XRHandRecordingFrameBuffer_Dispose_m5298596F3289C87EB436AED6BF5C8D8E1AF30B66((&V_0), NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:261>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:261>
 				return;
 			}
 		});
 		try
 		{
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:244>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:244>
 				XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_7 = ___0_subsystem;
 				NullCheck(L_7);
 				XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 L_8;
@@ -8182,7 +8182,7 @@ FINALLY_008a:
 				bool L_9;
 				L_9 = XRHandRecordingFrameBuffer_TryCaptureHandJoints_mF2055CAC98410B0DBF0DBBA0D1BC07FC72E07065((&V_0), (&V_1), NULL);
 				XRHandRecordingFrameBuffer_set_areAllLeftJointsValid_m1CC5D1AB4BA037369BED0DDDDC7418A15624CAE0_inline((&V_0), L_9, NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:245>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:245>
 				XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_10 = ___0_subsystem;
 				NullCheck(L_10);
 				XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 L_11;
@@ -8191,16 +8191,16 @@ FINALLY_008a:
 				bool L_12;
 				L_12 = XRHandRecordingFrameBuffer_TryCaptureHandJoints_mF2055CAC98410B0DBF0DBBA0D1BC07FC72E07065((&V_0), (&V_1), NULL);
 				XRHandRecordingFrameBuffer_set_areAllRightJointsValid_mC8E70C38A6DFAB321EAD46D832045D97D413F3F5_inline((&V_0), L_12, NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:246>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:246>
 				XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B L_13;
 				L_13 = XRHandRecordingFrameBuffer_WriteFrameHandData_m0D58AE81FBC0EABB06CEB310AE308DD5CB3C1B4A((&V_0), NULL);
 				V_2 = L_13;
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:248>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:248>
 				List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_14 = __this->___m_Frames;
 				XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B L_15 = V_2;
 				NullCheck(L_14);
 				List_1_Add_m508DF7AA551B63864C6EDF7B23EBBA0245FA40B1_inline(L_14, L_15, List_1_Add_m508DF7AA551B63864C6EDF7B23EBBA0245FA40B1_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:251>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:251>
 				List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_16 = __this->___m_Frames;
 				NullCheck(L_16);
 				int32_t L_17;
@@ -8211,16 +8211,16 @@ FINALLY_008a:
 				}
 			}
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:253>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:253>
 				XRHandRecordingBlob_NotifyStatusChanged_m55383BB7B7C306614EE4B8BA92A59D65F0698190(__this, 2, (String_t*)NULL, NULL);
 			}
 
 IL_0081_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:256>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:256>
 				int32_t L_18 = ___1_updateSuccessFlags;
 				XRHandRecordingBlob_NotifyFrameCaptured_m08DF9CC20B545542B6A4ED72C33EFABE86DA70D7(__this, L_18, NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:257>
+				//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:257>
 				goto IL_0092;
 			}
 		}
@@ -8232,15 +8232,15 @@ IL_0081_1:
 
 IL_0092:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:262>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:262>
 		return;
 	}
 }
-// Method Definition Index: 103050
+// Method Definition Index: 126258
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_StopRecordingInternal_m7B40480B1F28C69D310FE50DA450817F4A0CEE28 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, int32_t ___0_status, String_t* ___1_errorMessage, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:266>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:266>
 		bool L_0 = __this->___m_IsRecording;
 		if (L_0)
 		{
@@ -8248,25 +8248,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_StopRecordingInterna
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:267>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:267>
 		return;
 	}
 
 IL_0009:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:269>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:269>
 		__this->___m_IsRecording = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:270>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:270>
 		XRHandRecordingBlob_CleanupSubscription_m3AE3DD370A13768FCADACEBBFF24A978C11E968E(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:271>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:271>
 		int32_t L_1 = ___0_status;
 		String_t* L_2 = ___1_errorMessage;
 		XRHandRecordingBlob_NotifyStatusChanged_m55383BB7B7C306614EE4B8BA92A59D65F0698190(__this, L_1, L_2, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:272>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:272>
 		return;
 	}
 }
-// Method Definition Index: 103051
+// Method Definition Index: 126259
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyStatusChanged_m55383BB7B7C306614EE4B8BA92A59D65F0698190 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, int32_t ___0_status, String_t* ___1_errorMessage, const RuntimeMethod* method) 
 {
 	XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 V_0;
@@ -8276,14 +8276,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyStatusChanged_
 	Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* G_B4_0 = NULL;
 	Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* G_B3_0 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:276>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:277>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:278>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:279>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:280>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:281>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:282>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:283>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:276>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:277>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:278>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:279>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:280>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:281>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:282>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:283>
 		il2cpp_codegen_initobj((&V_1), sizeof(XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0));
 		int32_t L_0 = ___0_status;
 		XRHandRecordingStatusChangedEventArgs_set_status_mA52842D8D75A40E6602E3C744085250395E6418D_inline((&V_1), L_0, NULL);
@@ -8297,7 +8297,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyStatusChanged_
 		XRHandRecordingStatusChangedEventArgs_set_errorMessage_mC24DFFA83534E92AC78620FE51D3F9865959E953_inline((&V_1), L_4, NULL);
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_5 = V_1;
 		V_0 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:285>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:285>
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_6 = V_0;
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_7 = __this->___m_CurrentStatusChangedEventArgs;
 		bool L_8;
@@ -8308,13 +8308,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyStatusChanged_
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:286>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:286>
 		return;
 	}
 
 IL_0050:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:288>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:288>
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_9 = V_0;
 		__this->___m_CurrentStatusChangedEventArgs = L_9;
 		Il2CppCodeGenWriteBarrier((void**)&(((&__this->___m_CurrentStatusChangedEventArgs))->___U3CrecordingNameU3Ek__BackingField), (void*)NULL);
@@ -8324,7 +8324,7 @@ IL_0050:
 		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
 		Il2CppCodeGenWriteBarrier((void**)&(((&__this->___m_CurrentStatusChangedEventArgs))->___U3CsubsystemU3Ek__BackingField), (void*)NULL);
 		#endif
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:289>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:289>
 		Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* L_10 = __this->___statusChanged;
 		Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* L_11 = L_10;
 		if (L_11)
@@ -8343,11 +8343,11 @@ IL_0062:
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_12 = V_0;
 		NullCheck(G_B4_0);
 		Action_1_Invoke_m82576E247EABE42EAF73B5FA4A73AB54896A854E_inline(G_B4_0, L_12, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:290>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:290>
 		return;
 	}
 }
-// Method Definition Index: 103052
+// Method Definition Index: 126260
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyFrameCaptured_m08DF9CC20B545542B6A4ED72C33EFABE86DA70D7 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, int32_t ___0_updateSuccessFlags, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8363,13 +8363,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyFrameCaptured_
 	Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* G_B2_0 = NULL;
 	Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* G_B1_0 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:294>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:295>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:296>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:297>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:298>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:299>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:300>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:294>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:295>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:296>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:297>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:298>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:299>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:300>
 		il2cpp_codegen_initobj((&V_1), sizeof(XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623));
 		float L_0 = ((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds;
 		XRHandRecordingFrameCapturedEventArgs_set_elapsedTime_m9C74741865DB757A34A99E7B9F9580F4F199DB8D_inline((&V_1), L_0, NULL);
@@ -8384,7 +8384,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_NotifyFrameCaptured_
 		XRHandRecordingFrameCapturedEventArgs_set_frameIndex_m2A1299C436CB64B501872C11DE20ABA37E57F331_inline((&V_1), ((int32_t)il2cpp_codegen_subtract(L_4, 1)), NULL);
 		XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623 L_5 = V_1;
 		V_0 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:302>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:302>
 		Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* L_6 = __this->___frameCaptured;
 		Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* L_7 = L_6;
 		if (L_7)
@@ -8403,11 +8403,11 @@ IL_004b:
 		XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623 L_8 = V_0;
 		NullCheck(G_B2_0);
 		Action_1_Invoke_m8E116A3340BC2764B89D7DFA01586DBF8411CDBB_inline(G_B2_0, L_8, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:303>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:303>
 		return;
 	}
 }
-// Method Definition Index: 103053
+// Method Definition Index: 126261
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CleanupSubscription_m3AE3DD370A13768FCADACEBBFF24A978C11E968E (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8418,7 +8418,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CleanupSubscription_
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:307>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:307>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___m_Subsystem;
 		if (!L_0)
 		{
@@ -8426,7 +8426,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CleanupSubscription_
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:308>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:308>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_1 = __this->___m_Subsystem;
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_2 = L_1;
 		NullCheck(L_2);
@@ -8442,11 +8442,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingBlob_CleanupSubscription_
 
 IL_002f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:309>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:309>
 		return;
 	}
 }
-// Method Definition Index: 103054
+// Method Definition Index: 126262
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryWriteRecordedDataToDisk_m167C53E97290C093FB47FDB6C6D4E187C6D04BF0 (XRHandRecordingBlob_t3F663F163EA9AF5DEDB35D1768D6315ED7E58069* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8478,11 +8478,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryWriteRecordedData
 	try
 	{
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:315>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:315>
 			String_t* L_0;
 			L_0 = XRHandRecordingBase_GetDeviceStoragePath_mC4831418B64E5F0B7E5E59BF14C81B03901CBC57(NULL);
 			V_0 = L_0;
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:316>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:316>
 			String_t* L_1 = V_0;
 			bool L_2;
 			L_2 = Directory_Exists_m3D125E9E88C291CF11113444F961A64DD83AE1C7(L_1, NULL);
@@ -8492,7 +8492,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryWriteRecordedData
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:318>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:318>
 			String_t* L_3 = V_0;
 			DirectoryInfo_tEAEEC018EB49B4A71907FFEAFE935FAA8F9C1FE2* L_4;
 			L_4 = Directory_CreateDirectory_m16EC5CE8561A997C6635E06DC24C77590F29D94F(L_3, NULL);
@@ -8500,14 +8500,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryWriteRecordedData
 
 IL_0015_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:321>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:321>
 			String_t* L_5 = V_0;
 			String_t* L_6;
 			L_6 = XRHandRecordingBase_get_internalBinaryFileName_mE0EAF9535968691CF094638AAB48D943EDB58399(__this, NULL);
 			il2cpp_codegen_runtime_class_init_inline(Path_t8A38A801D0219E8209C1B1D90D82D4D755D998BC_il2cpp_TypeInfo_var);
 			String_t* L_7;
 			L_7 = Path_Combine_m1ADAC05CDA2D1D61B172DF65A81E86592696BEAE(L_5, L_6, NULL);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:323>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:323>
 			FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_8;
 			L_8 = File_Open_m3C4C3B31523AC0687F60FFD1B0FD51F49161EB64(L_7, 2, NULL);
 			V_1 = L_8;
@@ -8540,11 +8540,11 @@ IL_00c4_1:
 			try
 			{
 				{
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:325>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:325>
 					FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_11 = V_1;
 					NullCheck(L_11);
 					VirtualActionInvoker1< int64_t >::Invoke(13, L_11, ((int64_t)0));
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:326>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:326>
 					FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_12 = V_1;
 					BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_13 = (BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E*)il2cpp_codegen_object_new(BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E_il2cpp_TypeInfo_var);
 					BinaryWriter__ctor_mF2F1235E378C3EC493A8C816597BCEB4205A9CA0(L_13, L_12, NULL);
@@ -8578,21 +8578,21 @@ IL_00b8_2:
 					try
 					{
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:329>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:329>
 							BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_16 = V_2;
 							NullCheck(L_16);
 							VirtualActionInvoker1< int32_t >::Invoke(18, L_16, 1);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:332>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:332>
 							BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_17 = V_2;
 							String_t* L_18 = ((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_AssetName;
 							NullCheck(L_17);
 							VirtualActionInvoker1< String_t* >::Invoke(23, L_17, L_18);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:335>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:335>
 							BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_19 = V_2;
 							float L_20 = ((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds;
 							NullCheck(L_19);
 							VirtualActionInvoker1< float >::Invoke(22, L_19, L_20);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:338>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:338>
 							BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_21 = V_2;
 							List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_22 = __this->___m_Frames;
 							NullCheck(L_22);
@@ -8600,7 +8600,7 @@ IL_00b8_2:
 							L_23 = List_1_get_Count_m034048142B456165BB7CDD1982C51C5436E3024C_inline(L_22, List_1_get_Count_m034048142B456165BB7CDD1982C51C5436E3024C_RuntimeMethod_var);
 							NullCheck(L_21);
 							VirtualActionInvoker1< int32_t >::Invoke(18, L_21, L_23);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:340>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:340>
 							List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* L_24 = __this->___m_Frames;
 							NullCheck(L_24);
 							Enumerator_t09BB21E9C467FB276FF3669E1DA7F9DF99954D9A L_25;
@@ -8625,11 +8625,11 @@ FINALLY_009f_3:
 
 IL_0075_4:
 								{
-									//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:340>
+									//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:340>
 									XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B L_26;
 									L_26 = Enumerator_get_Current_m1D25DFFB651D9115B6FF60727EC8BCCC73F9E45E_inline((&V_3), Enumerator_get_Current_m1D25DFFB651D9115B6FF60727EC8BCCC73F9E45E_RuntimeMethod_var);
 									V_4 = L_26;
-									//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:342>
+									//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:342>
 									BinaryWriter_tFB94D67EDFA3F6A34744A163BDABE287FDF2ED1E* L_27 = V_2;
 									NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_28;
 									L_28 = XRHandRecordingRawFrame_get_blob_mBDC39317AF56672A3C3169FDCEEA1277F90EEC3F_inline((&V_4), NULL);
@@ -8642,7 +8642,7 @@ IL_0075_4:
 
 IL_0094_4:
 								{
-									//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:340>
+									//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:340>
 									bool L_30;
 									L_30 = Enumerator_MoveNext_m2BB286F1D379C374CED37F02C07B33CC5C2FBF59((&V_3), Enumerator_MoveNext_m2BB286F1D379C374CED37F02C07B33CC5C2FBF59_RuntimeMethod_var);
 									if (L_30)
@@ -8662,7 +8662,7 @@ IL_0094_4:
 
 IL_00ad_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:344>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:344>
 							goto IL_00b9_2;
 						}
 					}
@@ -8674,7 +8674,7 @@ IL_00ad_3:
 
 IL_00b9_2:
 				{
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:345>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:345>
 					goto IL_00c5_1;
 				}
 			}
@@ -8686,7 +8686,7 @@ IL_00b9_2:
 
 IL_00c5_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:346>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:346>
 			V_6 = (bool)1;
 			goto IL_00f2;
 		}
@@ -8704,9 +8704,9 @@ IL_00c5_1:
 CATCH_00ca:
 	{
 		Exception_t* L_31 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:348>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:348>
 		V_7 = L_31;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:350>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:350>
 		String_t* L_32;
 		L_32 = XRHandRecordingBase_get_internalBinaryFileName_mE0EAF9535968691CF094638AAB48D943EDB58399(__this, NULL);
 		Exception_t* L_33 = V_7;
@@ -8717,7 +8717,7 @@ CATCH_00ca:
 		L_35 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral58A5DD15B7DA3A4E2645FAAD8A1C0DF86E4E9447)), L_32, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral1168E92C164109D6220480DEDA987085B2A21155)), L_34, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_35, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:351>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:351>
 		V_6 = (bool)0;
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_00f2;
@@ -8725,12 +8725,12 @@ CATCH_00ca:
 
 IL_00f2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:353>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:353>
 		bool L_36 = V_6;
 		return L_36;
 	}
 }
-// Method Definition Index: 103055
+// Method Definition Index: 126263
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryReadCaptureSequenceFromDisk_m6250A7ED061A575045211100F31407249296B7B3 (String_t* ___0_filePath, XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** ___1_captureData, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -8772,7 +8772,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryReadCaptureSequen
 	Exception_t* V_15 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:368>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:368>
 		XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_0 = ___1_captureData;
 		*((RuntimeObject**)L_0) = (RuntimeObject*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_0, (void*)(RuntimeObject*)NULL);
@@ -8780,7 +8780,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryReadCaptureSequen
 	try
 	{
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:371>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:371>
 			String_t* L_1 = ___0_filePath;
 			bool L_2;
 			L_2 = File_Exists_m95E329ABBE3EAD6750FE1989BBA6884457136D4A(L_1, NULL);
@@ -8790,20 +8790,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingBlob_TryReadCaptureSequen
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:373>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:373>
 			String_t* L_3 = ___0_filePath;
 			String_t* L_4;
 			L_4 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral99F9CDE948F716A4DDFA6FB68F1304E44204098B, L_3, NULL);
 			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 			Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_4, NULL);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:374>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:374>
 			V_0 = (bool)0;
 			goto IL_025c;
 		}
 
 IL_0022_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:377>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:377>
 			String_t* L_5 = ___0_filePath;
 			FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_6;
 			L_6 = File_Open_m3C4C3B31523AC0687F60FFD1B0FD51F49161EB64(L_5, 3, NULL);
@@ -8837,11 +8837,11 @@ IL_0211_1:
 			try
 			{
 				{
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:379>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:379>
 					FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_9 = V_1;
 					NullCheck(L_9);
 					VirtualActionInvoker1< int64_t >::Invoke(13, L_9, ((int64_t)0));
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:380>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:380>
 					FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_10 = V_1;
 					BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_11 = (BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158*)il2cpp_codegen_object_new(BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158_il2cpp_TypeInfo_var);
 					BinaryReader__ctor_m898732FE0DBEDD480B24F6DE45A9AC696E44CC0F(L_11, L_10, NULL);
@@ -8875,19 +8875,19 @@ IL_0205_2:
 					try
 					{
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:382>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:382>
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_14 = ___1_captureData;
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_15;
 							L_15 = ScriptableObject_CreateInstance_TisXRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237_mEE26205722321DFB1872CA0F85F1042508B0EB31(ScriptableObject_CreateInstance_TisXRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237_mEE26205722321DFB1872CA0F85F1042508B0EB31_RuntimeMethod_var);
 							*((RuntimeObject**)L_14) = (RuntimeObject*)L_15;
 							Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_14, (void*)(RuntimeObject*)L_15);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:385>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:385>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_16 = V_2;
 							NullCheck(L_16);
 							int32_t L_17;
 							L_17 = VirtualFuncInvoker0< int32_t >::Invoke(15, L_16);
 							V_3 = L_17;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:386>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:386>
 							int32_t L_18 = V_3;
 							if ((((int32_t)L_18) == ((int32_t)1)))
 							{
@@ -8895,9 +8895,9 @@ IL_0205_2:
 							}
 						}
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:388>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:389>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:390>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:388>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:389>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:390>
 							int32_t L_19 = V_3;
 							int32_t L_20 = L_19;
 							RuntimeObject* L_21 = Box(il2cpp_defaults.int32_class, &L_20);
@@ -8911,35 +8911,35 @@ IL_0205_2:
 							L_26 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(L_22, L_25, _stringLiteralF09068F12C912E4EFC50C4863CC7B1756696122F, NULL);
 							il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 							Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_26, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:391>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:391>
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_27 = ___1_captureData;
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_28 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_27);
 							il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 							Object_DestroyImmediate_m6336EBC83591A5DB64EC70C92132824C6E258705(L_28, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:392>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:392>
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_29 = ___1_captureData;
 							*((RuntimeObject**)L_29) = (RuntimeObject*)NULL;
 							Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_29, (void*)(RuntimeObject*)NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:393>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:393>
 							V_0 = (bool)0;
 							goto IL_025c;
 						}
 
 IL_008b_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:397>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:397>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_30 = V_2;
 							NullCheck(L_30);
 							String_t* L_31;
 							L_31 = VirtualFuncInvoker0< String_t* >::Invoke(22, L_30);
 							V_4 = L_31;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:399>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:399>
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_32 = ___1_captureData;
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_33 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_32);
 							String_t* L_34 = V_4;
 							NullCheck(L_33);
 							Object_set_name_mC79E6DC8FFD72479C90F0C4CC7F42A0FEAF5AE47(L_33, L_34, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:402>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:402>
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_35 = ___1_captureData;
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_36 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_35);
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_37 = V_2;
@@ -8948,52 +8948,52 @@ IL_008b_3:
 							L_38 = VirtualFuncInvoker0< float >::Invoke(19, L_37);
 							NullCheck(L_36);
 							XRHandCaptureSequence_set_durationInSeconds_m685CBC1614578A29C081942D345361A12AD630A9_inline(L_36, L_38, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:405>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:405>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_39 = V_2;
 							NullCheck(L_39);
 							int32_t L_40;
 							L_40 = VirtualFuncInvoker0< int32_t >::Invoke(15, L_39);
 							V_5 = L_40;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:407>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:407>
 							V_6 = 0;
 							goto IL_01f1_3;
 						}
 
 IL_00b9_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:409>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:409>
 							il2cpp_codegen_initobj((&V_7), sizeof(XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073));
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:412>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:412>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_41 = V_2;
 							NullCheck(L_41);
 							float L_42;
 							L_42 = VirtualFuncInvoker0< float >::Invoke(19, L_41);
 							XRHandCaptureFrame_set_timestamp_mEEF9E4A271C31E6C2B8B53A3B4BAED595BD3CE10_inline((&V_7), L_42, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:415>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:415>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_43 = V_2;
 							NullCheck(L_43);
 							bool L_44;
 							L_44 = VirtualFuncInvoker0< bool >::Invoke(9, L_43);
 							XRHandCaptureFrame_set_isLeftHandTracked_mBC5E8BB854388902FE4F8D1BB78123C996E06BB7_inline((&V_7), L_44, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:416>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:416>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_45 = V_2;
 							NullCheck(L_45);
 							bool L_46;
 							L_46 = VirtualFuncInvoker0< bool >::Invoke(9, L_45);
 							XRHandCaptureFrame_set_isRightHandTracked_m34B7750271F60CCD0A0652E1BE6308C996436EAA_inline((&V_7), L_46, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:419>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:419>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_47 = V_2;
 							NullCheck(L_47);
 							bool L_48;
 							L_48 = VirtualFuncInvoker0< bool >::Invoke(9, L_47);
 							XRHandCaptureFrame_set_areAllLeftJointsValid_m310B9314FCD7DBC3FE3ECF17C8D64BBE412EFC67_inline((&V_7), L_48, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:420>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:420>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_49 = V_2;
 							NullCheck(L_49);
 							bool L_50;
 							L_50 = VirtualFuncInvoker0< bool >::Invoke(9, L_49);
 							XRHandCaptureFrame_set_areAllRightJointsValid_mA10CF9209D5D932F6DF22872F07C9D9159068407_inline((&V_7), L_50, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:423>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:423>
 							bool L_51;
 							L_51 = XRHandCaptureFrame_get_areAllLeftJointsValid_m73FC7B6251DBDE83C5910A60BCC3D9DB80DF84B2_inline((&V_7), NULL);
 							if (!L_51)
@@ -9002,25 +9002,25 @@ IL_00b9_3:
 							}
 						}
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:425>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:425>
 							int32_t L_52;
 							L_52 = XRHandJointIDUtility_ToIndex_mBF5EC77C077B14029F71E64F112F37544BFD9E02(((int32_t)27), NULL);
 							XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_53 = (XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1*)(XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1*)SZArrayNew(XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1_il2cpp_TypeInfo_var, (uint32_t)L_52);
 							XRHandCaptureFrame_set_leftHandJoints_mCE5B734EEDF1E9A3B6085A74A65C2CF59130155B_inline((&V_7), L_53, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:426>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:426>
 							V_8 = 1;
 							goto IL_016c_3;
 						}
 
 IL_0123_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:428>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:428>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_54 = V_2;
 							Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_55;
 							L_55 = XRHandRecordingBlob_ReadPose_m15F6A97913C91EC90AB3A3B98B1719E74D2272EA(L_54, NULL);
 							V_9 = L_55;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:429>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:430>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:429>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:430>
 							int32_t L_56 = V_8;
 							Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_57 = V_9;
 							il2cpp_codegen_initobj((&V_11), sizeof(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2));
@@ -9030,7 +9030,7 @@ IL_0123_3:
 							XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783 L_60;
 							L_60 = XRHandProviderUtility_CreateJoint_m821C313C0A76868D0E5BB50368DD0EF240237B75(1, 2, L_56, L_57, (0.0f), L_58, L_59, NULL);
 							V_10 = L_60;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:431>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:431>
 							XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_61;
 							L_61 = XRHandCaptureFrame_get_leftHandJoints_m78BD47309EA84403B23B29514D7CE1DFED42DE18_inline((&V_7), NULL);
 							int32_t L_62 = V_8;
@@ -9039,14 +9039,14 @@ IL_0123_3:
 							XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783 L_64 = V_10;
 							NullCheck(L_61);
 							(L_61)->SetAt(static_cast<il2cpp_array_size_t>(L_63), (XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783)L_64);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:426>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:426>
 							int32_t L_65 = V_8;
 							V_8 = ((int32_t)il2cpp_codegen_add((int32_t)L_65, 1));
 						}
 
 IL_016c_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:426>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:426>
 							int32_t L_66 = V_8;
 							if ((((int32_t)L_66) < ((int32_t)((int32_t)27))))
 							{
@@ -9056,7 +9056,7 @@ IL_016c_3:
 
 IL_0172_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:436>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:436>
 							bool L_67;
 							L_67 = XRHandCaptureFrame_get_areAllRightJointsValid_m8D4ACB225F4DA36C7BE20942C902AFC16384CC70_inline((&V_7), NULL);
 							if (!L_67)
@@ -9065,25 +9065,25 @@ IL_0172_3:
 							}
 						}
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:438>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:438>
 							int32_t L_68;
 							L_68 = XRHandJointIDUtility_ToIndex_mBF5EC77C077B14029F71E64F112F37544BFD9E02(((int32_t)27), NULL);
 							XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_69 = (XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1*)(XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1*)SZArrayNew(XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1_il2cpp_TypeInfo_var, (uint32_t)L_68);
 							XRHandCaptureFrame_set_rightHandJoints_mC248B769D7717CE3AE3DC196862CCB6C167B84AD_inline((&V_7), L_69, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:439>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:439>
 							V_12 = 1;
 							goto IL_01dc_3;
 						}
 
 IL_0193_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:441>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:441>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_70 = V_2;
 							Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_71;
 							L_71 = XRHandRecordingBlob_ReadPose_m15F6A97913C91EC90AB3A3B98B1719E74D2272EA(L_70, NULL);
 							V_13 = L_71;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:442>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:443>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:442>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:443>
 							int32_t L_72 = V_12;
 							Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_73 = V_13;
 							il2cpp_codegen_initobj((&V_11), sizeof(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2));
@@ -9093,7 +9093,7 @@ IL_0193_3:
 							XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783 L_76;
 							L_76 = XRHandProviderUtility_CreateJoint_m821C313C0A76868D0E5BB50368DD0EF240237B75(2, 2, L_72, L_73, (0.0f), L_74, L_75, NULL);
 							V_14 = L_76;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:444>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:444>
 							XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_77;
 							L_77 = XRHandCaptureFrame_get_rightHandJoints_m8D4FA667AFE7908458A6AA7D56F7AD70F704C877_inline((&V_7), NULL);
 							int32_t L_78 = V_12;
@@ -9102,14 +9102,14 @@ IL_0193_3:
 							XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783 L_80 = V_14;
 							NullCheck(L_77);
 							(L_77)->SetAt(static_cast<il2cpp_array_size_t>(L_79), (XRHandJoint_tDB955774276659AFD2294D516FC8A76A51E94783)L_80);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:439>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:439>
 							int32_t L_81 = V_12;
 							V_12 = ((int32_t)il2cpp_codegen_add((int32_t)L_81, 1));
 						}
 
 IL_01dc_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:439>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:439>
 							int32_t L_82 = V_12;
 							if ((((int32_t)L_82) < ((int32_t)((int32_t)27))))
 							{
@@ -9119,20 +9119,20 @@ IL_01dc_3:
 
 IL_01e2_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:449>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:449>
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_83 = ___1_captureData;
 							XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_84 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_83);
 							XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 L_85 = V_7;
 							NullCheck(L_84);
 							XRHandCaptureSequence_AddFrame_mC8F545E5298A057A3F3BBCC47059FDCAC596B5B1(L_84, L_85, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:407>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:407>
 							int32_t L_86 = V_6;
 							V_6 = ((int32_t)il2cpp_codegen_add(L_86, 1));
 						}
 
 IL_01f1_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:407>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:407>
 							int32_t L_87 = V_6;
 							int32_t L_88 = V_5;
 							if ((((int32_t)L_87) < ((int32_t)L_88)))
@@ -9141,7 +9141,7 @@ IL_01f1_3:
 							}
 						}
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:451>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:451>
 							goto IL_0206_2;
 						}
 					}
@@ -9153,7 +9153,7 @@ IL_01f1_3:
 
 IL_0206_2:
 				{
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:452>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:452>
 					goto IL_0212_1;
 				}
 			}
@@ -9165,7 +9165,7 @@ IL_0206_2:
 
 IL_0212_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:453>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:453>
 			V_0 = (bool)1;
 			goto IL_025c;
 		}
@@ -9184,9 +9184,9 @@ CATCH_0216:
 	{
 		{
 			Exception_t* L_89 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:455>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:455>
 			V_15 = L_89;
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:457>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:457>
 			String_t* L_90 = ___0_filePath;
 			Exception_t* L_91 = V_15;
 			NullCheck(L_91);
@@ -9196,7 +9196,7 @@ CATCH_0216:
 			L_93 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral56BB44F0ADC5C83FB050927DD57CE286DC1D9E85)), L_90, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral1168E92C164109D6220480DEDA987085B2A21155)), L_92, NULL);
 			il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 			Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_93, NULL);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:458>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:458>
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_94 = ___1_captureData;
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_95 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_94);
 			il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var)));
@@ -9208,7 +9208,7 @@ CATCH_0216:
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:460>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:460>
 			il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var)));
 			bool L_97;
 			L_97 = Application_get_isEditor_mEAC51E3ACE6DCE438087FB14BD75A3C219D354D0(NULL);
@@ -9218,7 +9218,7 @@ CATCH_0216:
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:461>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:461>
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_98 = ___1_captureData;
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_99 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_98);
 			il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var)));
@@ -9228,7 +9228,7 @@ CATCH_0216:
 
 IL_024e:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:463>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:463>
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_100 = ___1_captureData;
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* L_101 = *((XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237**)L_100);
 			il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var)));
@@ -9237,7 +9237,7 @@ IL_024e:
 
 IL_0255:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:464>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:464>
 			XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237** L_102 = ___1_captureData;
 			*((RuntimeObject**)L_102) = (RuntimeObject*)NULL;
 			Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_102, (void*)(RuntimeObject*)NULL);
@@ -9245,7 +9245,7 @@ IL_0255:
 
 IL_0258:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:466>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:466>
 			V_0 = (bool)0;
 			IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 			goto IL_025c;
@@ -9254,22 +9254,22 @@ IL_0258:
 
 IL_025c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:468>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:468>
 		bool L_103 = V_0;
 		return L_103;
 	}
 }
-// Method Definition Index: 103056
+// Method Definition Index: 126264
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 XRHandRecordingBlob_ReadPose_m15F6A97913C91EC90AB3A3B98B1719E74D2272EA (BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* ___0_reader, const RuntimeMethod* method) 
 {
 	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:473>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:474>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:475>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:476>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:477>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:473>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:474>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:475>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:476>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:477>
 		BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_0 = ___0_reader;
 		NullCheck(L_0);
 		float L_1;
@@ -9285,12 +9285,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6;
 		memset((&L_6), 0, sizeof(L_6));
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_6), L_1, L_3, L_5, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:480>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:481>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:482>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:483>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:484>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:485>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:480>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:481>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:482>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:483>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:484>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:485>
 		BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_7 = ___0_reader;
 		NullCheck(L_7);
 		float L_8;
@@ -9308,7 +9308,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 		float L_14;
 		L_14 = VirtualFuncInvoker0< float >::Invoke(19, L_13);
 		Quaternion__ctor_m868FD60AA65DD5A8AC0C5DEB0608381A8D85FCD8_inline((&V_0), L_8, L_10, L_12, L_14, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingBlob.cs:487>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingBlob.cs:487>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_15 = V_0;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_16;
 		memset((&L_16), 0, sizeof(L_16));
@@ -9378,11 +9378,11 @@ IL2CPP_EXTERN_C void XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023
 IL2CPP_EXTERN_C void XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623_marshal_com_cleanup(XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623_marshaled_com& marshaled)
 {
 }
-// Method Definition Index: 103057
+// Method Definition Index: 126265
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandRecordingFrameCapturedEventArgs_get_elapsedTime_m8418278A637F97BA42A9FC4562C9EBC92ED443CB (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
 		float L_0 = __this->___U3CelapsedTimeU3Ek__BackingField;
 		return L_0;
 	}
@@ -9396,11 +9396,11 @@ IL2CPP_EXTERN_C  float XRHandRecordingFrameCapturedEventArgs_get_elapsedTime_m84
 	_returnValue = XRHandRecordingFrameCapturedEventArgs_get_elapsedTime_m8418278A637F97BA42A9FC4562C9EBC92ED443CB_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103058
+// Method Definition Index: 126266
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_elapsedTime_m9C74741865DB757A34A99E7B9F9580F4F199DB8D (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
 		float L_0 = ___0_value;
 		__this->___U3CelapsedTimeU3Ek__BackingField = L_0;
 		return;
@@ -9413,11 +9413,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameCapturedEventArgs_set_elapsedTime_m9C7
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623*>(__this + _offset);
 	XRHandRecordingFrameCapturedEventArgs_set_elapsedTime_m9C74741865DB757A34A99E7B9F9580F4F199DB8D_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103059
+// Method Definition Index: 126267
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHandRecordingFrameCapturedEventArgs_get_subsystem_mF52ABF24F088139122DDAFA5B133A107C4FA1F49 (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___U3CsubsystemU3Ek__BackingField;
 		return L_0;
 	}
@@ -9431,11 +9431,11 @@ IL2CPP_EXTERN_C  XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHa
 	_returnValue = XRHandRecordingFrameCapturedEventArgs_get_subsystem_mF52ABF24F088139122DDAFA5B133A107C4FA1F49_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103060
+// Method Definition Index: 126268
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_subsystem_mB93BEC8ADCE0DD7D7FA488C1BBBCF17ABEC1CE75 (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = ___0_value;
 		__this->___U3CsubsystemU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubsystemU3Ek__BackingField), (void*)L_0);
@@ -9449,11 +9449,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameCapturedEventArgs_set_subsystem_mB93BE
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623*>(__this + _offset);
 	XRHandRecordingFrameCapturedEventArgs_set_subsystem_mB93BEC8ADCE0DD7D7FA488C1BBBCF17ABEC1CE75_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103061
+// Method Definition Index: 126269
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandRecordingFrameCapturedEventArgs_get_updateSuccessFlags_m5B7D03EB98AEE16E0CB074521C1166F928E81789 (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
 		int32_t L_0 = __this->___U3CupdateSuccessFlagsU3Ek__BackingField;
 		return L_0;
 	}
@@ -9467,11 +9467,11 @@ IL2CPP_EXTERN_C  int32_t XRHandRecordingFrameCapturedEventArgs_get_updateSuccess
 	_returnValue = XRHandRecordingFrameCapturedEventArgs_get_updateSuccessFlags_m5B7D03EB98AEE16E0CB074521C1166F928E81789_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103062
+// Method Definition Index: 126270
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_updateSuccessFlags_m86F19A2B1D274CAA443C74FD35AC4961260740F1 (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
 		int32_t L_0 = ___0_value;
 		__this->___U3CupdateSuccessFlagsU3Ek__BackingField = L_0;
 		return;
@@ -9484,11 +9484,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingFrameCapturedEventArgs_set_updateSuccessFla
 	_thisAdjusted = reinterpret_cast<XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623*>(__this + _offset);
 	XRHandRecordingFrameCapturedEventArgs_set_updateSuccessFlags_m86F19A2B1D274CAA443C74FD35AC4961260740F1_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103063
+// Method Definition Index: 126271
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandRecordingFrameCapturedEventArgs_get_frameIndex_mB1013A2EF060AA0CFEB101BEF309729983F9EB6F (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
 		int32_t L_0 = __this->___U3CframeIndexU3Ek__BackingField;
 		return L_0;
 	}
@@ -9502,11 +9502,11 @@ IL2CPP_EXTERN_C  int32_t XRHandRecordingFrameCapturedEventArgs_get_frameIndex_mB
 	_returnValue = XRHandRecordingFrameCapturedEventArgs_get_frameIndex_mB1013A2EF060AA0CFEB101BEF309729983F9EB6F_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103064
+// Method Definition Index: 126272
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_frameIndex_m2A1299C436CB64B501872C11DE20ABA37E57F331 (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
 		int32_t L_0 = ___0_value;
 		__this->___U3CframeIndexU3Ek__BackingField = L_0;
 		return;
@@ -9581,11 +9581,11 @@ IL2CPP_EXTERN_C void XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6
 IL2CPP_EXTERN_C void XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C_marshal_com_cleanup(XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C_marshaled_com& marshaled)
 {
 }
-// Method Definition Index: 103065
+// Method Definition Index: 126273
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___U3CsubsystemU3Ek__BackingField;
 		return L_0;
 	}
@@ -9599,11 +9599,11 @@ IL2CPP_EXTERN_C  XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHa
 	_returnValue = XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103066
+// Method Definition Index: 126274
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingInitializeArgs_set_subsystem_m97755BBA78C25B45DD9CD34F574FDE2CA851CB1A (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = ___0_value;
 		__this->___U3CsubsystemU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubsystemU3Ek__BackingField), (void*)L_0);
@@ -9617,17 +9617,17 @@ IL2CPP_EXTERN_C  void XRHandRecordingInitializeArgs_set_subsystem_m97755BBA78C25
 	_thisAdjusted = reinterpret_cast<XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C*>(__this + _offset);
 	XRHandRecordingInitializeArgs_set_subsystem_m97755BBA78C25B45DD9CD34F574FDE2CA851CB1A_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103067
+// Method Definition Index: 126275
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandRecordingInitializeArgs_GetHashCode_m793A953E69CFEBC79E29DA370302EC6C1D512216 (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:26>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0;
 		L_0 = XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF_inline(__this, NULL);
 		NullCheck(L_0);
 		int32_t L_1;
 		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:27>
 		return L_1;
 	}
 }
@@ -9640,11 +9640,11 @@ IL2CPP_EXTERN_C  int32_t XRHandRecordingInitializeArgs_GetHashCode_m793A953E69CF
 	_returnValue = XRHandRecordingInitializeArgs_GetHashCode_m793A953E69CFEBC79E29DA370302EC6C1D512216(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103068
+// Method Definition Index: 126276
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingInitializeArgs_Equals_m4B70762E9FC740ADC79C2AA408E9364C055B6941 (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C ___0_other, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:42>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0;
 		L_0 = XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF_inline(__this, NULL);
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_1;
@@ -9661,7 +9661,7 @@ IL2CPP_EXTERN_C  bool XRHandRecordingInitializeArgs_Equals_m4B70762E9FC740ADC79C
 	_returnValue = XRHandRecordingInitializeArgs_Equals_m4B70762E9FC740ADC79C2AA408E9364C055B6941(_thisAdjusted, ___0_other, method);
 	return _returnValue;
 }
-// Method Definition Index: 103069
+// Method Definition Index: 126277
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingInitializeArgs_Equals_m98B771EF5F594138D2733D43F1B3182A199ED6D5 (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -9671,7 +9671,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingInitializeArgs_Equals_m98
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:55>
 		RuntimeObject* L_0 = ___0_obj;
 		if (!((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C_il2cpp_TypeInfo_var)))
 		{
@@ -9699,22 +9699,22 @@ IL2CPP_EXTERN_C  bool XRHandRecordingInitializeArgs_Equals_m98B771EF5F594138D273
 	_returnValue = XRHandRecordingInitializeArgs_Equals_m98B771EF5F594138D2733D43F1B3182A199ED6D5(_thisAdjusted, ___0_obj, method);
 	return _returnValue;
 }
-// Method Definition Index: 103070
+// Method Definition Index: 126278
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingInitializeArgs_op_Equality_m7FF5749174532786215A14A7998F51042DEE282D (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C ___0_lhs, XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:66>
 		XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandRecordingInitializeArgs_Equals_m4B70762E9FC740ADC79C2AA408E9364C055B6941((&___0_lhs), L_0, NULL);
 		return L_1;
 	}
 }
-// Method Definition Index: 103071
+// Method Definition Index: 126279
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingInitializeArgs_op_Inequality_m8771F27E2DBC2F590EFB0856BDC6C9BE8D7AF065 (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C ___0_lhs, XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:77>
 		XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandRecordingInitializeArgs_Equals_m4B70762E9FC740ADC79C2AA408E9364C055B6941((&___0_lhs), L_0, NULL);
@@ -9729,40 +9729,40 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingInitializeArgs_op_Inequal
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103072
+// Method Definition Index: 126280
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingMetadata__ctor_mC477328ED90B335AB780FAFDCB34E060850D1CB0 (XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98* __this, String_t* ___0_uniqueID, String_t* ___1_assetName, float ___2_durationInSeconds, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:22>
 		XRHandRecordingBase__ctor_mCDC2C45ABD995BFAFCA55BB7CF3D08E0A2182F04(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:24>
 		String_t* L_0 = ___0_uniqueID;
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_UniqueID = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_UniqueID), (void*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:25>
 		String_t* L_1 = ___1_assetName;
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_AssetName = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_AssetName), (void*)L_1);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:26>
 		float L_2 = ___2_durationInSeconds;
 		((XRHandRecordingBase_tC2A8DC0AD2C958FD506AF262FA632345C32C4E09*)__this)->___m_DurationInSeconds = L_2;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:27>
 		return;
 	}
 }
-// Method Definition Index: 103073
+// Method Definition Index: 126281
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingMetadata_Delete_mAF7A29FE889E501A0C32B0CD18E1B01CFEB4E3F8 (XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:38>
 		String_t* L_0;
 		L_0 = XRHandRecordingBase_get_internalBinaryFileName_mE0EAF9535968691CF094638AAB48D943EDB58399(__this, NULL);
 		XRHandRecordingBase_DeleteFileFromDisk_m4FFE1D5CCDEC1F7C6B4210ED425947B6F7B42C2D(L_0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:39>
 		return;
 	}
 }
-// Method Definition Index: 103074
+// Method Definition Index: 126282
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingMetadata_GetSavedRecordingMetadata_mD0D43B4F2F385F994622BD090719BFC659EDB30D (List_1_tAFE1F3EA76E0D329AD13CAE1E11B56B94E0AB746* ___0_existingRecordings, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -9783,13 +9783,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingMetadata_GetSavedRecordin
 	try
 	{
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:55>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:55>
 			String_t* L_0;
 			L_0 = XRHandRecordingBase_GetDeviceStoragePath_mC4831418B64E5F0B7E5E59BF14C81B03901CBC57(NULL);
 			V_0 = L_0;
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:56>
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:57>
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:58>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:56>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:57>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:58>
 			String_t* L_1 = V_0;
 			bool L_2;
 			L_2 = Directory_Exists_m3D125E9E88C291CF11113444F961A64DD83AE1C7(L_1, NULL);
@@ -9815,7 +9815,7 @@ IL_0015_1:
 
 IL_0020_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:60>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:60>
 			V_1 = G_B3_0;
 			V_2 = 0;
 			goto IL_003c_1;
@@ -9823,13 +9823,13 @@ IL_0020_1:
 
 IL_0025_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:60>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:60>
 			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_6 = V_1;
 			int32_t L_7 = V_2;
 			NullCheck(L_6);
 			int32_t L_8 = L_7;
 			String_t* L_9 = (L_6)->GetAt(static_cast<il2cpp_array_size_t>(L_8));
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:62>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:62>
 			bool L_10;
 			L_10 = XRHandRecordingMetadata_TryGetSavedRecordingMetadata_mA022704103DF23B928934F1296426172463FB78A(L_9, (&V_3), NULL);
 			if (!L_10)
@@ -9838,7 +9838,7 @@ IL_0025_1:
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:64>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:64>
 			List_1_tAFE1F3EA76E0D329AD13CAE1E11B56B94E0AB746* L_11 = ___0_existingRecordings;
 			XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98* L_12 = V_3;
 			NullCheck(L_11);
@@ -9853,7 +9853,7 @@ IL_0038_1:
 
 IL_003c_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:60>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:60>
 			int32_t L_14 = V_2;
 			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_15 = V_1;
 			NullCheck(L_15);
@@ -9863,7 +9863,7 @@ IL_003c_1:
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:67>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:67>
 			goto IL_005e;
 		}
 	}
@@ -9880,9 +9880,9 @@ IL_003c_1:
 CATCH_0044:
 	{
 		Exception_t* L_16 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:68>
 		V_4 = L_16;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:70>
 		Exception_t* L_17 = V_4;
 		NullCheck(L_17);
 		String_t* L_18;
@@ -9891,18 +9891,18 @@ CATCH_0044:
 		L_19 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralE0A6B053A95A75A30479A695E80F51CF43F7263C)), L_18, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_19, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:71>
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_005e;
 	}
 
 IL_005e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:72>
 		return;
 	}
 }
-// Method Definition Index: 103075
+// Method Definition Index: 126283
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingMetadata_TryGetSavedRecordingMetadata_mA022704103DF23B928934F1296426172463FB78A (String_t* ___0_filePath, XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98** ___1_recordingMetadata, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -9930,7 +9930,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingMetadata_TryGetSavedRecor
 	Exception_t* V_7 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:80>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:80>
 		XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98** L_0 = ___1_recordingMetadata;
 		*((RuntimeObject**)L_0) = (RuntimeObject*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_0, (void*)(RuntimeObject*)NULL);
@@ -9938,7 +9938,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingMetadata_TryGetSavedRecor
 	try
 	{
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:83>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:83>
 			String_t* L_1 = ___0_filePath;
 			bool L_2;
 			L_2 = File_Exists_m95E329ABBE3EAD6750FE1989BBA6884457136D4A(L_1, NULL);
@@ -9948,26 +9948,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingMetadata_TryGetSavedRecor
 			}
 		}
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:85>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:85>
 			String_t* L_3 = ___0_filePath;
 			String_t* L_4;
 			L_4 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral99F9CDE948F716A4DDFA6FB68F1304E44204098B, L_3, NULL);
 			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 			Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_4, NULL);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:86>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:86>
 			V_3 = (bool)0;
 			goto IL_00ea;
 		}
 
 IL_0022_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:89>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:89>
 			String_t* L_5 = ___0_filePath;
 			il2cpp_codegen_runtime_class_init_inline(Path_t8A38A801D0219E8209C1B1D90D82D4D755D998BC_il2cpp_TypeInfo_var);
 			String_t* L_6;
 			L_6 = Path_GetFileNameWithoutExtension_m2D14CCBAB9C60DC8D32C2443CCE3D34644822FAF(L_5, NULL);
 			V_0 = L_6;
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:93>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:93>
 			String_t* L_7 = ___0_filePath;
 			FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_8;
 			L_8 = File_Open_m3C4C3B31523AC0687F60FFD1B0FD51F49161EB64(L_7, 3, NULL);
@@ -10001,11 +10001,11 @@ IL_00b9_1:
 			try
 			{
 				{
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:95>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:95>
 					FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_11 = V_4;
 					NullCheck(L_11);
 					VirtualActionInvoker1< int64_t >::Invoke(13, L_11, ((int64_t)0));
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:96>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:96>
 					FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_12 = V_4;
 					BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_13 = (BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158*)il2cpp_codegen_object_new(BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158_il2cpp_TypeInfo_var);
 					BinaryReader__ctor_m898732FE0DBEDD480B24F6DE45A9AC696E44CC0F(L_13, L_12, NULL);
@@ -10039,13 +10039,13 @@ IL_00ab_2:
 					try
 					{
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:99>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:99>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_16 = V_5;
 							NullCheck(L_16);
 							int32_t L_17;
 							L_17 = VirtualFuncInvoker0< int32_t >::Invoke(15, L_16);
 							V_6 = L_17;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:100>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:100>
 							int32_t L_18 = V_6;
 							if ((((int32_t)L_18) == ((int32_t)1)))
 							{
@@ -10053,10 +10053,10 @@ IL_00ab_2:
 							}
 						}
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:102>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:103>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:104>
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:105>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:102>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:103>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:104>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:105>
 							int32_t L_19 = V_6;
 							int32_t L_20 = L_19;
 							RuntimeObject* L_21 = Box(il2cpp_defaults.int32_class, &L_20);
@@ -10070,30 +10070,30 @@ IL_00ab_2:
 							L_26 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(_stringLiteralC3CB87FD6B2C61C22472077798A17DEA09DB0A7A, L_22, L_25, _stringLiteralC48266D84752A1B9AC2919EC0CB31506671FA713, NULL);
 							il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 							Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_26, NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:106>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:106>
 							XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98** L_27 = ___1_recordingMetadata;
 							*((RuntimeObject**)L_27) = (RuntimeObject*)NULL;
 							Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_27, (void*)(RuntimeObject*)NULL);
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:107>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:107>
 							V_3 = (bool)0;
 							goto IL_00ea;
 						}
 
 IL_008e_3:
 						{
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:111>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:111>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_28 = V_5;
 							NullCheck(L_28);
 							String_t* L_29;
 							L_29 = VirtualFuncInvoker0< String_t* >::Invoke(22, L_28);
 							V_1 = L_29;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:114>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:114>
 							BinaryReader_t9A6D85F0FE9AE4EBB5E8D66997DFD1D84939E158* L_30 = V_5;
 							NullCheck(L_30);
 							float L_31;
 							L_31 = VirtualFuncInvoker0< float >::Invoke(19, L_30);
 							V_2 = L_31;
-							//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:115>
+							//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:115>
 							goto IL_00ac_2;
 						}
 					}
@@ -10105,7 +10105,7 @@ IL_008e_3:
 
 IL_00ac_2:
 				{
-					//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:116>
+					//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:116>
 					goto IL_00ba_1;
 				}
 			}
@@ -10117,7 +10117,7 @@ IL_00ac_2:
 
 IL_00ba_1:
 		{
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:117>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:117>
 			XRHandRecordingMetadata_t0E92A5348799F83DD28A5EACF335C48679D71A98** L_32 = ___1_recordingMetadata;
 			String_t* L_33 = V_0;
 			String_t* L_34 = V_1;
@@ -10126,7 +10126,7 @@ IL_00ba_1:
 			XRHandRecordingMetadata__ctor_mC477328ED90B335AB780FAFDCB34E060850D1CB0(L_36, L_33, L_34, L_35, NULL);
 			*((RuntimeObject**)L_32) = (RuntimeObject*)L_36;
 			Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_32, (void*)(RuntimeObject*)L_36);
-			//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:118>
+			//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:118>
 			V_3 = (bool)1;
 			goto IL_00ea;
 		}
@@ -10144,9 +10144,9 @@ IL_00ba_1:
 CATCH_00c8:
 	{
 		Exception_t* L_37 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:120>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:120>
 		V_7 = L_37;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:122>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:122>
 		String_t* L_38 = ___0_filePath;
 		Exception_t* L_39 = V_7;
 		NullCheck(L_39);
@@ -10156,7 +10156,7 @@ CATCH_00c8:
 		L_41 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral56BB44F0ADC5C83FB050927DD57CE286DC1D9E85)), L_38, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral1168E92C164109D6220480DEDA987085B2A21155)), L_40, NULL);
 		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_41, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:123>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:123>
 		V_3 = (bool)0;
 		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
 		goto IL_00ea;
@@ -10164,7 +10164,7 @@ CATCH_00c8:
 
 IL_00ea:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:125>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingMetadata.cs:125>
 		bool L_42 = V_3;
 		return L_42;
 	}
@@ -10205,11 +10205,11 @@ IL2CPP_EXTERN_C void XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157A
 	il2cpp_codegen_marshal_free_bstring(marshaled.___U3CrecordingNameU3Ek__BackingField);
 	marshaled.___U3CrecordingNameU3Ek__BackingField = NULL;
 }
-// Method Definition Index: 103076
+// Method Definition Index: 126284
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
 		String_t* L_0 = __this->___U3CrecordingNameU3Ek__BackingField;
 		return L_0;
 	}
@@ -10223,11 +10223,11 @@ IL2CPP_EXTERN_C  String_t* XRHandRecordingSaveArgs_get_recordingName_m6FC20026EC
 	_returnValue = XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103077
+// Method Definition Index: 126285
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingSaveArgs_set_recordingName_m92FAF58FDF28D5CFA64981DC58087F26216D8ECC (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
 		String_t* L_0 = ___0_value;
 		__this->___U3CrecordingNameU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CrecordingNameU3Ek__BackingField), (void*)L_0);
@@ -10241,17 +10241,17 @@ IL2CPP_EXTERN_C  void XRHandRecordingSaveArgs_set_recordingName_m92FAF58FDF28D5C
 	_thisAdjusted = reinterpret_cast<XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05*>(__this + _offset);
 	XRHandRecordingSaveArgs_set_recordingName_m92FAF58FDF28D5CFA64981DC58087F26216D8ECC_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103078
+// Method Definition Index: 126286
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandRecordingSaveArgs_GetHashCode_m186D7C3FEDC29DC54645BDBD95FA7C0D43D71B13 (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:27>
 		String_t* L_0;
 		L_0 = XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE_inline(__this, NULL);
 		NullCheck(L_0);
 		int32_t L_1;
 		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:28>
 		return L_1;
 	}
 }
@@ -10264,11 +10264,11 @@ IL2CPP_EXTERN_C  int32_t XRHandRecordingSaveArgs_GetHashCode_m186D7C3FEDC29DC546
 	_returnValue = XRHandRecordingSaveArgs_GetHashCode_m186D7C3FEDC29DC54645BDBD95FA7C0D43D71B13(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103079
+// Method Definition Index: 126287
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingSaveArgs_Equals_m28116F456C8B18D73E6A87555F72B7180F9CC49D (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 ___0_other, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:43>
 		String_t* L_0;
 		L_0 = XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE_inline(__this, NULL);
 		String_t* L_1;
@@ -10287,7 +10287,7 @@ IL2CPP_EXTERN_C  bool XRHandRecordingSaveArgs_Equals_m28116F456C8B18D73E6A87555F
 	_returnValue = XRHandRecordingSaveArgs_Equals_m28116F456C8B18D73E6A87555F72B7180F9CC49D(_thisAdjusted, ___0_other, method);
 	return _returnValue;
 }
-// Method Definition Index: 103080
+// Method Definition Index: 126288
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingSaveArgs_Equals_m2EB036538249ED73D8AB11487DAED33650CDBB04 (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -10297,7 +10297,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingSaveArgs_Equals_m2EB03653
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:56>
 		RuntimeObject* L_0 = ___0_obj;
 		if (!((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05_il2cpp_TypeInfo_var)))
 		{
@@ -10325,22 +10325,22 @@ IL2CPP_EXTERN_C  bool XRHandRecordingSaveArgs_Equals_m2EB036538249ED73D8AB11487D
 	_returnValue = XRHandRecordingSaveArgs_Equals_m2EB036538249ED73D8AB11487DAED33650CDBB04(_thisAdjusted, ___0_obj, method);
 	return _returnValue;
 }
-// Method Definition Index: 103081
+// Method Definition Index: 126289
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingSaveArgs_op_Equality_m549415FE99505353F9A36577643B9B4230FB43E2 (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 ___0_lhs, XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:67>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:67>
 		XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandRecordingSaveArgs_Equals_m28116F456C8B18D73E6A87555F72B7180F9CC49D((&___0_lhs), L_0, NULL);
 		return L_1;
 	}
 }
-// Method Definition Index: 103082
+// Method Definition Index: 126290
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingSaveArgs_op_Inequality_mA733D92DF195435F40A648C8219A4F94BBBA64A8 (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 ___0_lhs, XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:78>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:78>
 		XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05 L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandRecordingSaveArgs_Equals_m28116F456C8B18D73E6A87555F72B7180F9CC49D((&___0_lhs), L_0, NULL);
@@ -10355,7 +10355,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingSaveArgs_op_Inequality_mA
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103083
+// Method Definition Index: 126291
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandRecordingSettings_get_timeLimitInSeconds_m07693E3F24D19AF6BB323714B3B0300592FCC9F0 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -10365,13 +10365,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandRecordingSettings_get_timeLimitIn
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
 		il2cpp_codegen_runtime_class_init_inline(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var);
 		float L_0 = ((XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_StaticFields*)il2cpp_codegen_static_fields_for(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var))->___U3CtimeLimitInSecondsU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103084
+// Method Definition Index: 126292
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingSettings_set_timeLimitInSeconds_m4C1BEC6958B31CB675CB5717D74B69805394BA5E (float ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -10381,20 +10381,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingSettings_set_timeLimitInS
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
 		float L_0 = ___0_value;
 		il2cpp_codegen_runtime_class_init_inline(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var);
 		((XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_StaticFields*)il2cpp_codegen_static_fields_for(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var))->___U3CtimeLimitInSecondsU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103085
+// Method Definition Index: 126293
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingSettings__cctor_m8B58D68ACDC6B87108CAAA4A822923FD784AE629 (const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSettings.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSettings.cs:17>
 		XRHandRecordingSettings_set_timeLimitInSeconds_m4C1BEC6958B31CB675CB5717D74B69805394BA5E_inline((60.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSettings.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSettings.cs:18>
 		return;
 	}
 }
@@ -10468,11 +10468,11 @@ IL2CPP_EXTERN_C void XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC4
 IL2CPP_EXTERN_C void XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0_marshal_com_cleanup(XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0_marshaled_com& marshaled)
 {
 }
-// Method Definition Index: 103086
+// Method Definition Index: 126294
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandRecordingStatusChangedEventArgs_get_status_mD97C9AAAC26DE3515678696C312C49AAFD2F0AEC (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
 		int32_t L_0 = __this->___U3CstatusU3Ek__BackingField;
 		return L_0;
 	}
@@ -10486,11 +10486,11 @@ IL2CPP_EXTERN_C  int32_t XRHandRecordingStatusChangedEventArgs_get_status_mD97C9
 	_returnValue = XRHandRecordingStatusChangedEventArgs_get_status_mD97C9AAAC26DE3515678696C312C49AAFD2F0AEC_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103087
+// Method Definition Index: 126295
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_status_mA52842D8D75A40E6602E3C744085250395E6418D (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
 		int32_t L_0 = ___0_value;
 		__this->___U3CstatusU3Ek__BackingField = L_0;
 		return;
@@ -10503,11 +10503,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingStatusChangedEventArgs_set_status_mA52842D8
 	_thisAdjusted = reinterpret_cast<XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*>(__this + _offset);
 	XRHandRecordingStatusChangedEventArgs_set_status_mA52842D8D75A40E6602E3C744085250395E6418D_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103088
+// Method Definition Index: 126296
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float XRHandRecordingStatusChangedEventArgs_get_elapsedTime_m5D0EBE6D10F9DAA16DF1E119715BA3107F461B77 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
 		float L_0 = __this->___U3CelapsedTimeU3Ek__BackingField;
 		return L_0;
 	}
@@ -10521,11 +10521,11 @@ IL2CPP_EXTERN_C  float XRHandRecordingStatusChangedEventArgs_get_elapsedTime_m5D
 	_returnValue = XRHandRecordingStatusChangedEventArgs_get_elapsedTime_m5D0EBE6D10F9DAA16DF1E119715BA3107F461B77_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103089
+// Method Definition Index: 126297
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_elapsedTime_m1D76562BF0B659234A590698C628A79584EE26B6 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
 		float L_0 = ___0_value;
 		__this->___U3CelapsedTimeU3Ek__BackingField = L_0;
 		return;
@@ -10538,11 +10538,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingStatusChangedEventArgs_set_elapsedTime_m1D7
 	_thisAdjusted = reinterpret_cast<XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*>(__this + _offset);
 	XRHandRecordingStatusChangedEventArgs_set_elapsedTime_m1D76562BF0B659234A590698C628A79584EE26B6_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103090
+// Method Definition Index: 126298
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingStatusChangedEventArgs_get_recordingName_m41BC76D9DAA2AFEC4A8308F6709FBEC21D3F7714 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
 		String_t* L_0 = __this->___U3CrecordingNameU3Ek__BackingField;
 		return L_0;
 	}
@@ -10556,11 +10556,11 @@ IL2CPP_EXTERN_C  String_t* XRHandRecordingStatusChangedEventArgs_get_recordingNa
 	_returnValue = XRHandRecordingStatusChangedEventArgs_get_recordingName_m41BC76D9DAA2AFEC4A8308F6709FBEC21D3F7714_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103091
+// Method Definition Index: 126299
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_recordingName_m5F42C44C0AF9CF88A5B1D8A4C19E085446BC380C (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
 		String_t* L_0 = ___0_value;
 		__this->___U3CrecordingNameU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CrecordingNameU3Ek__BackingField), (void*)L_0);
@@ -10574,11 +10574,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingStatusChangedEventArgs_set_recordingName_m5
 	_thisAdjusted = reinterpret_cast<XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*>(__this + _offset);
 	XRHandRecordingStatusChangedEventArgs_set_recordingName_m5F42C44C0AF9CF88A5B1D8A4C19E085446BC380C_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103092
+// Method Definition Index: 126300
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* XRHandRecordingStatusChangedEventArgs_get_errorMessage_m51FA64EB72CCDA834CA6F84F67F52BEF15233C6C (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
 		String_t* L_0 = __this->___U3CerrorMessageU3Ek__BackingField;
 		return L_0;
 	}
@@ -10592,11 +10592,11 @@ IL2CPP_EXTERN_C  String_t* XRHandRecordingStatusChangedEventArgs_get_errorMessag
 	_returnValue = XRHandRecordingStatusChangedEventArgs_get_errorMessage_m51FA64EB72CCDA834CA6F84F67F52BEF15233C6C_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103093
+// Method Definition Index: 126301
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_errorMessage_mC24DFFA83534E92AC78620FE51D3F9865959E953 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
 		String_t* L_0 = ___0_value;
 		__this->___U3CerrorMessageU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CerrorMessageU3Ek__BackingField), (void*)L_0);
@@ -10610,11 +10610,11 @@ IL2CPP_EXTERN_C  void XRHandRecordingStatusChangedEventArgs_set_errorMessage_mC2
 	_thisAdjusted = reinterpret_cast<XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*>(__this + _offset);
 	XRHandRecordingStatusChangedEventArgs_set_errorMessage_mC24DFFA83534E92AC78620FE51D3F9865959E953_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103094
+// Method Definition Index: 126302
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_TryGetErrorMessage_mF9FF359EFCA3F9E4CFEEAAE30E71B1B9C51734D7 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, String_t** ___0_errorMessage, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:84>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:84>
 		String_t* L_0;
 		L_0 = XRHandRecordingStatusChangedEventArgs_get_errorMessage_m51FA64EB72CCDA834CA6F84F67F52BEF15233C6C_inline(__this, NULL);
 		bool L_1;
@@ -10625,23 +10625,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_Tr
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:86>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:86>
 		String_t** L_2 = ___0_errorMessage;
 		*((RuntimeObject**)L_2) = (RuntimeObject*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_2, (void*)(RuntimeObject*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:87>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:87>
 		return (bool)0;
 	}
 
 IL_0012:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:90>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:90>
 		String_t** L_3 = ___0_errorMessage;
 		String_t* L_4;
 		L_4 = XRHandRecordingStatusChangedEventArgs_get_errorMessage_m51FA64EB72CCDA834CA6F84F67F52BEF15233C6C_inline(__this, NULL);
 		*((RuntimeObject**)L_3) = (RuntimeObject*)L_4;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_3, (void*)(RuntimeObject*)L_4);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:91>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:91>
 		return (bool)1;
 	}
 }
@@ -10654,11 +10654,11 @@ IL2CPP_EXTERN_C  bool XRHandRecordingStatusChangedEventArgs_TryGetErrorMessage_m
 	_returnValue = XRHandRecordingStatusChangedEventArgs_TryGetErrorMessage_mF9FF359EFCA3F9E4CFEEAAE30E71B1B9C51734D7(_thisAdjusted, ___0_errorMessage, method);
 	return _returnValue;
 }
-// Method Definition Index: 103095
+// Method Definition Index: 126303
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHandRecordingStatusChangedEventArgs_get_subsystem_mC577E41E73734FEA09482DE6B3453DF0CF35A892 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___U3CsubsystemU3Ek__BackingField;
 		return L_0;
 	}
@@ -10672,11 +10672,11 @@ IL2CPP_EXTERN_C  XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHa
 	_returnValue = XRHandRecordingStatusChangedEventArgs_get_subsystem_mC577E41E73734FEA09482DE6B3453DF0CF35A892_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103096
+// Method Definition Index: 126304
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_subsystem_m39E889424DAC3FA4B69712712111F7B228BE11EF (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = ___0_value;
 		__this->___U3CsubsystemU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubsystemU3Ek__BackingField), (void*)L_0);
@@ -10690,43 +10690,43 @@ IL2CPP_EXTERN_C  void XRHandRecordingStatusChangedEventArgs_set_subsystem_m39E88
 	_thisAdjusted = reinterpret_cast<XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0*>(__this + _offset);
 	XRHandRecordingStatusChangedEventArgs_set_subsystem_m39E889424DAC3FA4B69712712111F7B228BE11EF_inline(_thisAdjusted, ___0_value, method);
 }
-// Method Definition Index: 103097
+// Method Definition Index: 126305
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t XRHandRecordingStatusChangedEventArgs_GetHashCode_m3999D4185F1EB5510BF9F573CF17DB2904AE0879 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
 	float V_1 = 0.0f;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:107>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:107>
 		int32_t L_0;
 		L_0 = XRHandRecordingStatusChangedEventArgs_get_status_mD97C9AAAC26DE3515678696C312C49AAFD2F0AEC_inline(__this, NULL);
 		V_0 = L_0;
 		int32_t L_1;
 		L_1 = Int32_GetHashCode_m253D60FF7527A483E91004B7A2366F13E225E295((&V_0), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:108>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:108>
 		float L_2;
 		L_2 = XRHandRecordingStatusChangedEventArgs_get_elapsedTime_m5D0EBE6D10F9DAA16DF1E119715BA3107F461B77_inline(__this, NULL);
 		V_1 = L_2;
 		int32_t L_3;
 		L_3 = Single_GetHashCode_mC3F1E099D1CF165C2D71FBCC5EF6A6792F9021D2((&V_1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:109>
 		String_t* L_4;
 		L_4 = XRHandRecordingStatusChangedEventArgs_get_recordingName_m41BC76D9DAA2AFEC4A8308F6709FBEC21D3F7714_inline(__this, NULL);
 		NullCheck(L_4);
 		int32_t L_5;
 		L_5 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_4);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:110>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:110>
 		String_t* L_6;
 		L_6 = XRHandRecordingStatusChangedEventArgs_get_errorMessage_m51FA64EB72CCDA834CA6F84F67F52BEF15233C6C_inline(__this, NULL);
 		NullCheck(L_6);
 		int32_t L_7;
 		L_7 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_6);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:111>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:111>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_8;
 		L_8 = XRHandRecordingStatusChangedEventArgs_get_subsystem_mC577E41E73734FEA09482DE6B3453DF0CF35A892_inline(__this, NULL);
 		NullCheck(L_8);
 		int32_t L_9;
 		L_9 = VirtualFuncInvoker0< int32_t >::Invoke(2, L_8);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:112>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:112>
 		return ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_multiply(L_1, ((int32_t)486187739))), L_3)), ((int32_t)486187739))), L_5)), ((int32_t)486187739))), L_7)), ((int32_t)486187739))), L_9));
 	}
 }
@@ -10739,15 +10739,15 @@ IL2CPP_EXTERN_C  int32_t XRHandRecordingStatusChangedEventArgs_GetHashCode_m3999
 	_returnValue = XRHandRecordingStatusChangedEventArgs_GetHashCode_m3999D4185F1EB5510BF9F573CF17DB2904AE0879(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 103098
+// Method Definition Index: 126306
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_Equals_m2AECC6F947F13862C7B64796FC9C987D8E35A0C2 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 ___0_other, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:127>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:128>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:129>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:130>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:131>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:127>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:128>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:129>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:130>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:131>
 		int32_t L_0;
 		L_0 = XRHandRecordingStatusChangedEventArgs_get_status_mD97C9AAAC26DE3515678696C312C49AAFD2F0AEC_inline(__this, NULL);
 		int32_t L_1;
@@ -10813,7 +10813,7 @@ IL2CPP_EXTERN_C  bool XRHandRecordingStatusChangedEventArgs_Equals_m2AECC6F947F1
 	_returnValue = XRHandRecordingStatusChangedEventArgs_Equals_m2AECC6F947F13862C7B64796FC9C987D8E35A0C2(_thisAdjusted, ___0_other, method);
 	return _returnValue;
 }
-// Method Definition Index: 103099
+// Method Definition Index: 126307
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_Equals_m87106BAA2D84EF1E77B897FD82C3D93B9B1B3676 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -10823,7 +10823,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_Eq
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:145>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:145>
 		RuntimeObject* L_0 = ___0_obj;
 		if (!((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0_il2cpp_TypeInfo_var)))
 		{
@@ -10851,22 +10851,22 @@ IL2CPP_EXTERN_C  bool XRHandRecordingStatusChangedEventArgs_Equals_m87106BAA2D84
 	_returnValue = XRHandRecordingStatusChangedEventArgs_Equals_m87106BAA2D84EF1E77B897FD82C3D93B9B1B3676(_thisAdjusted, ___0_obj, method);
 	return _returnValue;
 }
-// Method Definition Index: 103100
+// Method Definition Index: 126308
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_op_Equality_m45AB9EA43056C17D1C3622AE218C8303DCD9A9B2 (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 ___0_lhs, XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:158>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:158>
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandRecordingStatusChangedEventArgs_Equals_m2AECC6F947F13862C7B64796FC9C987D8E35A0C2((&___0_lhs), L_0, NULL);
 		return L_1;
 	}
 }
-// Method Definition Index: 103101
+// Method Definition Index: 126309
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_op_Inequality_m05AE5814A71BF83601DF5259CCCA8D3E438C616D (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 ___0_lhs, XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:171>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:171>
 		XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 L_0 = ___1_rhs;
 		bool L_1;
 		L_1 = XRHandRecordingStatusChangedEventArgs_Equals_m2AECC6F947F13862C7B64796FC9C987D8E35A0C2((&___0_lhs), L_0, NULL);
@@ -10913,7 +10913,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRHandRecordingStatusChangedEventArgs_op
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 103102
+// Method Definition Index: 126310
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U24BurstDirectCallInitializer_Initialize_mECC8CD09976577EF3165CA0645A5B94E58F15085 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -10933,7 +10933,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U24BurstDirectCallInitializer_Initialize
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 106832
+// Method Definition Index: 131486
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* XROrigin_get_Origin_mCE6A3B327ACE6FAEDCC67A9DC952FEED191C26B6_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -10942,7 +10942,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9
 		return L_0;
 	}
 }
-// Method Definition Index: 106826
+// Method Definition Index: 131480
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* XROrigin_get_Camera_m8959027D616F5BD9AEAE3E41ADEE23BBC2CE3629_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -10951,7 +10951,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC
 		return L_0;
 	}
 }
-// Method Definition Index: 67632
+// Method Definition Index: 83190
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* __this, float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) 
 {
 	{
@@ -10968,7 +10968,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void float3__ctor_mC61002CD0EC13D
 		return;
 	}
 }
-// Method Definition Index: 64919
+// Method Definition Index: 80477
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline (quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 ___0_q, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_v, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -11005,7 +11005,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_16;
 	}
 }
-// Method Definition Index: 64338
+// Method Definition Index: 79896
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E math_normalize_mF02431EFC9E3212E0245EFF5C13BC9DC34512399_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -11022,7 +11022,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_5;
 	}
 }
-// Method Definition Index: 64103
+// Method Definition Index: 79661
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_dot_mE193D8880350D74CC8D63A0D53CDC5902F844AAD_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_x, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_y, const RuntimeMethod* method) 
 {
 	{
@@ -11042,7 +11042,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_dot_mE193D8880350D74CC
 		return ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1, L_3)), ((float)il2cpp_codegen_multiply(L_5, L_7)))), ((float)il2cpp_codegen_multiply(L_9, L_11))));
 	}
 }
-// Method Definition Index: 64583
+// Method Definition Index: 80141
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_radians_m0903022269E582AD877B86952497295D642036E8_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -11051,7 +11051,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_radians_m0903022269E58
 		return ((float)il2cpp_codegen_multiply(L_0, (0.0174532924f)));
 	}
 }
-// Method Definition Index: 64141
+// Method Definition Index: 79699
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_cos_m28B6228E047D552B1312CCFADB8AE95DDD94A6AF_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -11069,7 +11069,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_cos_m28B6228E047D552B1
 		return ((float)L_1);
 	}
 }
-// Method Definition Index: 64085
+// Method Definition Index: 79643
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_abs_m3D9508B36B045BFE7B89C6C69AD34596264E4FE1_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -11082,7 +11082,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_abs_m3D9508B36B045BFE7
 		return L_2;
 	}
 }
-// Method Definition Index: 64064
+// Method Definition Index: 79622
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_clamp_mB7233FC9D6C27522014C4E6D4E056D36CE82C97E_inline (float ___0_valueToClamp, float ___1_lowerBound, float ___2_upperBound, const RuntimeMethod* method) 
 {
 	{
@@ -11097,7 +11097,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_clamp_mB7233FC9D6C2752
 		return L_4;
 	}
 }
-// Method Definition Index: 102890
+// Method Definition Index: 126098
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandOrientationUtility_GetHandAxisDirectionU24BurstManaged_mD456588F704C8E921FD46688A18EED1D76A5E690_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, int32_t ___1_handAxis, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___2_rootRotation, float ___3_handednessMultiplier, const RuntimeMethod* method) 
 {
 	{
@@ -11124,7 +11124,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandOrientationUtility_Get
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:64>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_1 = ___0_result;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_2 = ___2_rootRotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_3 = (*(quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*)L_2);
@@ -11134,13 +11134,13 @@ IL_0014:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_5;
 		L_5 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_3, L_4, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_1 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:65>
 		return;
 	}
 
 IL_003a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:68>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_6 = ___0_result;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_7 = ___2_rootRotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_8 = (*(quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*)L_7);
@@ -11151,13 +11151,13 @@ IL_003a:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_11;
 		L_11 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_8, L_10, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_6 = L_11;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:69>
 		return;
 	}
 
 IL_005c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:72>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_12 = ___0_result;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_13 = ___2_rootRotation;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 L_14 = (*(quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4*)L_13);
@@ -11167,23 +11167,23 @@ IL_005c:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_16;
 		L_16 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_14, L_15, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_12 = L_16;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:73>
 		return;
 	}
 
 IL_0082:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:76>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_17 = ___0_result;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_18;
 		memset((&L_18), 0, sizeof(L_18));
 		float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline((&L_18), (0.0f), (0.0f), (1.0f), NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_17 = L_18;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:79>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:79>
 		return;
 	}
 }
-// Method Definition Index: 102891
+// Method Definition Index: 126099
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_CheckDirectionAlignmentU24BurstManaged_m6254E91337D55E39549F97F50C098F223D8F67EE_inline (int32_t ___0_condition, float ___1_threshold, bool ___2_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___3_handAxisDirection, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_referenceDirection, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -11192,15 +11192,15 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_Che
 	memset((&V_1), 0, sizeof(V_1));
 	float V_2 = 0.0f;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:91>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:91>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_0 = ___3_handAxisDirection;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_1 = (*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_0);
 		V_0 = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:92>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:92>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_2 = ___4_referenceDirection;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_3 = (*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_2);
 		V_1 = L_3;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:93>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:93>
 		bool L_4 = ___2_ignorePositionY;
 		if (!L_4)
 		{
@@ -11208,25 +11208,25 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandOrientationUtility_Che
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:95>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:95>
 		(&V_0)->___y = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:96>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:96>
 		(&V_1)->___y = (0.0f);
 	}
 
 IL_002a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:99>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:99>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_5 = V_1;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_6;
 		L_6 = math_normalize_mF02431EFC9E3212E0245EFF5C13BC9DC34512399_inline(L_5, NULL);
 		V_1 = L_6;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:100>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:100>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_7 = V_0;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_8;
 		L_8 = math_normalize_mF02431EFC9E3212E0245EFF5C13BC9DC34512399_inline(L_7, NULL);
 		V_0 = L_8;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:102>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:102>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_9 = V_0;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_10 = V_1;
 		float L_11;
@@ -11255,7 +11255,7 @@ IL_002a:
 
 IL_0054:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:106>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:106>
 		float L_13 = V_2;
 		float L_14 = ___1_threshold;
 		float L_15;
@@ -11267,7 +11267,7 @@ IL_0054:
 
 IL_0063:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:109>
 		float L_17 = V_2;
 		float L_18;
 		L_18 = math_abs_m3D9508B36B045BFE7B89C6C69AD34596264E4FE1_inline(L_17, NULL);
@@ -11283,7 +11283,7 @@ IL_0063:
 
 IL_008c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:112>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:112>
 		float L_23 = V_2;
 		float L_24 = ___1_threshold;
 		float L_25;
@@ -11295,38 +11295,38 @@ IL_008c:
 
 IL_009c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandOrientationUtility.cs:115>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandOrientationUtility.cs:115>
 		return (bool)0;
 	}
 }
-// Method Definition Index: 102344
+// Method Definition Index: 125552
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHand_get_isTracked_mDFC9D4FDE271E2DC90D5459B1A6EA304F97B7428_inline (XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/XRHand.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/XRHand.cs:52>
 		bool L_0 = __this->___U3CisTrackedU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 102342
+// Method Definition Index: 125550
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 XRHand_get_rootPose_m4F34E7F55AEBFD2FF7491364ADB00B27BF86F1A5_inline (XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/XRHand.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/XRHand.cs:38>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_0 = __this->___m_RootPose;
 		return L_0;
 	}
 }
-// Method Definition Index: 102343
+// Method Definition Index: 125551
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRHand_get_handedness_m87563F81CAF693404C49463EAC73DA29D517F752_inline (XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/XRHand.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/XRHand.cs:45>
 		int32_t L_0 = __this->___m_Handedness;
 		return L_0;
 	}
 }
-// Method Definition Index: 71019
+// Method Definition Index: 86577
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RigidTransform__ctor_m7665CC6FBD784FC7CB02E48B0A4B58008A4BC709_inline (RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* __this, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 ___0_rotation, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_translation, const RuntimeMethod* method) 
 {
 	{
@@ -11340,7 +11340,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void RigidTransform__ctor_m7665CC
 		return;
 	}
 }
-// Method Definition Index: 64936
+// Method Definition Index: 80494
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline (RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD ___0_a, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_dir, const RuntimeMethod* method) 
 {
 	{
@@ -11353,7 +11353,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_3;
 	}
 }
-// Method Definition Index: 64937
+// Method Definition Index: 80495
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E math_transform_m5F6B69A9C0E6E1AF63D8112D8753394891972E44_inline (RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD ___0_a, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_pos, const RuntimeMethod* method) 
 {
 	{
@@ -11370,7 +11370,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_6;
 	}
 }
-// Method Definition Index: 67664
+// Method Definition Index: 83222
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float3_op_Subtraction_mB6036E9849D95650D6E73DA0D179CD7B61E696F2_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_lhs, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -11393,7 +11393,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_12;
 	}
 }
-// Method Definition Index: 64933
+// Method Definition Index: 80491
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD math_inverse_mE8E0E402273F7ECC939F38F6EE83A568BF531CF8_inline (RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD ___0_t, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -11421,7 +11421,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RigidTransform_tDC22CD9569EC04E16
 		return L_9;
 	}
 }
-// Method Definition Index: 102934
+// Method Definition Index: 126142
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UserCondition_CheckConditionBurstedU24BurstManaged_m0E81EBA6AC67AE7B41846D4E54BACC28B1ECBCEA_inline (int32_t ___0_handAxis, int32_t ___1_alignmentCondition, int32_t ___2_referenceDirection, float ___3_tolerance, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___4_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___5_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___6_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_headTransform, bool ___8_ignorePositionY, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -11429,34 +11429,34 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UserCondition_CheckCondition
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:105>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:106>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:107>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:108>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:105>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:106>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:107>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:108>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:109>
 		int32_t L_0 = ___0_handAxis;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_1 = ___5_rootRotation;
 		float L_2 = ___9_handednessMultiplier;
 		XRHandOrientationUtility_GetHandAxisDirection_m22DCBF77C9092CC37C826CBA9CE6F978ABB6EF6B((&V_0), L_0, L_1, L_2, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:111>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:112>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:113>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:114>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:115>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:116>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:117>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:111>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:112>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:113>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:114>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:115>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:116>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:117>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_3 = ___4_rootPosition;
 		int32_t L_4 = ___2_referenceDirection;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___6_originTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_6 = ___7_headTransform;
 		float L_7 = ___9_handednessMultiplier;
 		UserCondition_GetReferenceDirection_mD177EE306D367D6EAEDCBD5185FDA666FA21EA29((&V_1), L_3, L_4, L_5, L_6, L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:119>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:120>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:121>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:122>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:123>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:119>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:120>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:121>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:122>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:123>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:124>
 		int32_t L_8 = ___1_alignmentCondition;
 		float L_9 = ___3_tolerance;
 		bool L_10 = ___8_ignorePositionY;
@@ -11465,7 +11465,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool UserCondition_CheckCondition
 		return L_11;
 	}
 }
-// Method Definition Index: 102935
+// Method Definition Index: 126143
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UserCondition_GetReferenceDirectionU24BurstManaged_m7598FB8518D86DDA1277CE29681F4843ED506CC0_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_handPosition, int32_t ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_headTransform, float ___5_handednessMultiplier, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -11502,7 +11502,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UserCondition_GetReferenceDi
 
 IL_001f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:142>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:142>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_1 = ___3_handTrackingOrigin;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_2 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_1);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_3;
@@ -11511,13 +11511,13 @@ IL_001f:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_4;
 		L_4 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_2, L_3, NULL);
 		V_0 = L_4;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:143>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:143>
 		goto IL_00e1;
 	}
 
 IL_0044:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:146>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:146>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___4_headTransform;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_6 = L_5->___pos;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_7 = ___3_handTrackingOrigin;
@@ -11529,13 +11529,13 @@ IL_0044:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_12;
 		L_12 = float3_op_Subtraction_mB6036E9849D95650D6E73DA0D179CD7B61E696F2_inline(L_6, L_11, NULL);
 		V_0 = L_12;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:147>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:147>
 		goto IL_00e1;
 	}
 
 IL_0064:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:150>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:150>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_13 = ___4_headTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_14 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_13);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_15;
@@ -11544,13 +11544,13 @@ IL_0064:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_16;
 		L_16 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_14, L_15, NULL);
 		V_0 = L_16;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:151>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:151>
 		goto IL_00e1;
 	}
 
 IL_0087:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:154>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:154>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_17 = ___4_headTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_18 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_17);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_19;
@@ -11559,13 +11559,13 @@ IL_0087:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_20;
 		L_20 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_18, L_19, NULL);
 		V_0 = L_20;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:155>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:155>
 		goto IL_00e1;
 	}
 
 IL_00aa:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:158>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:158>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_21 = ___4_headTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_22 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_21);
 		float L_23 = ___5_handednessMultiplier;
@@ -11575,19 +11575,19 @@ IL_00aa:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_25;
 		L_25 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_22, L_24, NULL);
 		V_0 = L_25;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:159>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:159>
 		goto IL_00e1;
 	}
 
 IL_00cb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:162>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:162>
 		float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline((&V_0), (0.0f), (1.0f), (0.0f), NULL);
 	}
 
 IL_00e1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:166>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:166>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_26 = ___0_result;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_27 = ___3_handTrackingOrigin;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_28 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_27);
@@ -11598,11 +11598,11 @@ IL_00e1:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_32;
 		L_32 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_30, L_31, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_26 = L_32;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:167>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:167>
 		return;
 	}
 }
-// Method Definition Index: 102964
+// Method Definition Index: 126172
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditionBurstedU24BurstManaged_mF415DF3978A57CA2A940DE586A021A78D5A2EE75_inline (int32_t ___0_xrHandAxis, int32_t ___1_condition, int32_t ___2_direction, float ___3_threshold, bool ___4_ignorePositionY, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___5_rootPosition, quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* ___6_rootRotation, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___7_originTransform, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___8_targetTransform, float ___9_handednessMultiplier, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -11610,31 +11610,31 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditi
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_1;
 	memset((&V_1), 0, sizeof(V_1));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:285>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:286>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:287>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:288>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:289>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:285>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:286>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:287>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:288>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:289>
 		int32_t L_0 = ___0_xrHandAxis;
 		quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* L_1 = ___6_rootRotation;
 		float L_2 = ___9_handednessMultiplier;
 		XRHandOrientationUtility_GetHandAxisDirection_m22DCBF77C9092CC37C826CBA9CE6F978ABB6EF6B((&V_0), L_0, L_1, L_2, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:291>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:292>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:293>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:294>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:295>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:296>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:291>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:292>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:293>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:294>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:295>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:296>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_3 = ___5_rootPosition;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_4 = ___7_originTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___8_targetTransform;
 		TargetCondition_GetReferenceDirection_m104D8D094C832F78EFF6FDCBC5C5A9033CB2430D((&V_1), L_3, (&___2_direction), L_4, L_5, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:298>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:299>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:300>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:301>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:302>
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:303>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:298>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:299>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:300>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:301>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:302>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:303>
 		int32_t L_6 = ___1_condition;
 		float L_7 = ___3_threshold;
 		bool L_8 = ___4_ignorePositionY;
@@ -11643,14 +11643,14 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool TargetCondition_CheckConditi
 		return L_9;
 	}
 }
-// Method Definition Index: 102965
+// Method Definition Index: 126173
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void TargetCondition_GetReferenceDirectionU24BurstManaged_mD302D609303C01863E6C09627F1D57A6303D92E1_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___0_result, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* ___1_rootPosition, int32_t* ___2_direction, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___3_handTrackingOrigin, RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* ___4_targetTransform, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	int32_t V_1 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:317>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:317>
 		int32_t* L_0 = ___2_direction;
 		int32_t L_1 = *((int32_t*)L_0);
 		V_1 = L_1;
@@ -11681,7 +11681,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void TargetCondition_GetReference
 
 IL_001e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:320>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:320>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_3 = ___4_targetTransform;
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_4 = L_3->___pos;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_5 = ___3_handTrackingOrigin;
@@ -11693,13 +11693,13 @@ IL_001e:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_10;
 		L_10 = float3_op_Subtraction_mB6036E9849D95650D6E73DA0D179CD7B61E696F2_inline(L_4, L_9, NULL);
 		V_0 = L_10;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:321>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:321>
 		goto IL_00bd;
 	}
 
 IL_003e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:324>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:324>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_11 = ___4_targetTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_12 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_11);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_13;
@@ -11708,13 +11708,13 @@ IL_003e:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_14;
 		L_14 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_12, L_13, NULL);
 		V_0 = L_14;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:325>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:325>
 		goto IL_00bd;
 	}
 
 IL_0061:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:328>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:328>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_15 = ___4_targetTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_16 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_15);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_17;
@@ -11723,13 +11723,13 @@ IL_0061:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_18;
 		L_18 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_16, L_17, NULL);
 		V_0 = L_18;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:329>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:329>
 		goto IL_00bd;
 	}
 
 IL_0084:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:332>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:332>
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_19 = ___4_targetTransform;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_20 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_19);
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_21;
@@ -11738,19 +11738,19 @@ IL_0084:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_22;
 		L_22 = math_rotate_m8F74C2AEBBF4623BD2C671543F22101D759315AB_inline(L_20, L_21, NULL);
 		V_0 = L_22;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:333>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:333>
 		goto IL_00bd;
 	}
 
 IL_00a7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:336>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:336>
 		float3__ctor_mC61002CD0EC13D7C37D846D021A78C028FB80DB9_inline((&V_0), (0.0f), (1.0f), (0.0f), NULL);
 	}
 
 IL_00bd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:340>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:340>
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* L_23 = ___0_result;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD* L_24 = ___3_handTrackingOrigin;
 		RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD L_25 = (*(RigidTransform_tDC22CD9569EC04E16791C2AB53DA5ABD34E88FDD*)L_24);
@@ -11761,260 +11761,260 @@ IL_00bd:
 		float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E L_29;
 		L_29 = math_mul_mE9E04B2868E4D4BA5BD873E4F876D550D36C2E99_inline(L_27, L_28, NULL);
 		*(float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E*)L_23 = L_29;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Gestures/XRHandRelativeOrientation.cs:341>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Gestures/XRHandRelativeOrientation.cs:341>
 		return;
 	}
 }
-// Method Definition Index: 102984
+// Method Definition Index: 126192
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_isLeftHandTracked_m6BEF01829C7EBDE073A3E8603E77F560EEDD0483_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:42>
 		bool L_0 = __this->___m_IsLeftHandTracked;
 		return L_0;
 	}
 }
-// Method Definition Index: 102985
+// Method Definition Index: 126193
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_isLeftHandTracked_mBC5E8BB854388902FE4F8D1BB78123C996E06BB7_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:43>
 		bool L_0 = ___0_value;
 		__this->___m_IsLeftHandTracked = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102986
+// Method Definition Index: 126194
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_isRightHandTracked_mBD528FF43970E6BC71D6A9BCB2998672C6FA0394_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:47>
 		bool L_0 = __this->___m_IsRightHandTracked;
 		return L_0;
 	}
 }
-// Method Definition Index: 102987
+// Method Definition Index: 126195
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_isRightHandTracked_m34B7750271F60CCD0A0652E1BE6308C996436EAA_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:48>
 		bool L_0 = ___0_value;
 		__this->___m_IsRightHandTracked = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102988
+// Method Definition Index: 126196
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_areAllLeftJointsValid_m73FC7B6251DBDE83C5910A60BCC3D9DB80DF84B2_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:53>
 		bool L_0 = __this->___m_AreAllLeftJointsValid;
 		return L_0;
 	}
 }
-// Method Definition Index: 102989
+// Method Definition Index: 126197
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_areAllLeftJointsValid_m310B9314FCD7DBC3FE3ECF17C8D64BBE412EFC67_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:54>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllLeftJointsValid = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102990
+// Method Definition Index: 126198
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandCaptureFrame_get_areAllRightJointsValid_m8D4ACB225F4DA36C7BE20942C902AFC16384CC70_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:59>
 		bool L_0 = __this->___m_AreAllRightJointsValid;
 		return L_0;
 	}
 }
-// Method Definition Index: 102991
+// Method Definition Index: 126199
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_areAllRightJointsValid_mA10CF9209D5D932F6DF22872F07C9D9159068407_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:60>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllRightJointsValid = L_0;
 		return;
 	}
 }
-// Method Definition Index: 102992
+// Method Definition Index: 126200
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* XRHandCaptureFrame_get_leftHandJoints_m78BD47309EA84403B23B29514D7CE1DFED42DE18_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:65>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = __this->___m_LeftHandJoints;
 		return L_0;
 	}
 }
-// Method Definition Index: 102993
+// Method Definition Index: 126201
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_leftHandJoints_mCE5B734EEDF1E9A3B6085A74A65C2CF59130155B_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:66>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = ___0_value;
 		__this->___m_LeftHandJoints = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_LeftHandJoints), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102994
+// Method Definition Index: 126202
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* XRHandCaptureFrame_get_rightHandJoints_m8D4FA667AFE7908458A6AA7D56F7AD70F704C877_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:71>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = __this->___m_RightHandJoints;
 		return L_0;
 	}
 }
-// Method Definition Index: 102995
+// Method Definition Index: 126203
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_rightHandJoints_mC248B769D7717CE3AE3DC196862CCB6C167B84AD_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:72>
 		XRHandJointU5BU5D_t194C7684C33D3688873DB8DB9B2A941566857EA1* L_0 = ___0_value;
 		__this->___m_RightHandJoints = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RightHandJoints), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 102996
+// Method Definition Index: 126204
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float XRHandCaptureFrame_get_timestamp_m227CFEE837E9261F7FE2E793AAD6D86FEA9EF0A2_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:81>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:81>
 		float L_0 = __this->___m_Timestamp;
 		return L_0;
 	}
 }
-// Method Definition Index: 102997
+// Method Definition Index: 126205
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureFrame_set_timestamp_mEEF9E4A271C31E6C2B8B53A3B4BAED595BD3CE10_inline (XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureFrame.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureFrame.cs:82>
 		float L_0 = ___0_value;
 		__this->___m_Timestamp = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103010
+// Method Definition Index: 126218
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_areAllLeftJointsValid_m527E2D32D9FA3BE7D06430B223B9D31248283CB5_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:20>
 		bool L_0 = __this->___m_AreAllLeftJointsValid;
 		return L_0;
 	}
 }
-// Method Definition Index: 103011
+// Method Definition Index: 126219
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_areAllLeftJointsValid_m1CC5D1AB4BA037369BED0DDDDC7418A15624CAE0_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:21>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllLeftJointsValid = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103012
+// Method Definition Index: 126220
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_areAllRightJointsValid_m7BC3C309A881F1D887D8C770617F9EED2B1E53E7_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:26>
 		bool L_0 = __this->___m_AreAllRightJointsValid;
 		return L_0;
 	}
 }
-// Method Definition Index: 103013
+// Method Definition Index: 126221
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_areAllRightJointsValid_mC8E70C38A6DFAB321EAD46D832045D97D413F3F5_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:27>
 		bool L_0 = ___0_value;
 		__this->___m_AreAllRightJointsValid = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103014
+// Method Definition Index: 126222
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_isLeftHandTracked_m5D366D58395315E0B7F5A5B36BCE565E63E13221_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:32>
 		bool L_0 = __this->___m_IsLeftHandTracked;
 		return L_0;
 	}
 }
-// Method Definition Index: 103015
+// Method Definition Index: 126223
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_isLeftHandTracked_m7C4FC3E2C67661DAD9BB30A0E6A3B130C973AF0C_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:33>
 		bool L_0 = ___0_value;
 		__this->___m_IsLeftHandTracked = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103016
+// Method Definition Index: 126224
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool XRHandRecordingFrameBuffer_get_isRightHandTracked_mE6F9B3F9E4CDCCC651C51D9F5CCDFEEEB186DAFD_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:38>
 		bool L_0 = __this->___m_IsRightHandTracked;
 		return L_0;
 	}
 }
-// Method Definition Index: 103017
+// Method Definition Index: 126225
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameBuffer_set_isRightHandTracked_m76879B2055EE23D87E07E26E919B9DD187C08972_inline (XRHandRecordingFrameBuffer_tC93007B353C21315C20BAB24BDEE86EF3EC0099A* __this, bool ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/FrameBuffer.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/FrameBuffer.cs:39>
 		bool L_0 = ___0_value;
 		__this->___m_IsRightHandTracked = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103024
+// Method Definition Index: 126232
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingRawFrame__ctor_m559D000F1B864E1217D720F768663B1C95C939FA_inline (XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B* __this, NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF ___0_blob, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:13>
 		NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_0 = ___0_blob;
 		__this->___m_Blob = L_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:14>
 		return;
 	}
 }
-// Method Definition Index: 103023
+// Method Definition Index: 126231
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF XRHandRecordingRawFrame_get_blob_mBDC39317AF56672A3C3169FDCEEA1277F90EEC3F_inline (XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/Impl/RawFrame.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/Impl/RawFrame.cs:9>
 		NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF L_0 = __this->___m_Blob;
 		return L_0;
 	}
 }
-// Method Definition Index: 103065
+// Method Definition Index: 126273
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHandRecordingInitializeArgs_get_subsystem_mDACD03F1B5DC7AFD327ADDA793AB9CB3F2AC7DBF_inline (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___U3CsubsystemU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103076
+// Method Definition Index: 126284
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* XRHandRecordingSaveArgs_get_recordingName_m6FC20026ECE0F8738A49BFB086F68F059E7537AE_inline (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
 		String_t* L_0 = __this->___U3CrecordingNameU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103083
+// Method Definition Index: 126291
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float XRHandRecordingSettings_get_timeLimitInSeconds_m07693E3F24D19AF6BB323714B3B0300592FCC9F0_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -12024,135 +12024,135 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float XRHandRecordingSettings_get
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
 		il2cpp_codegen_runtime_class_init_inline(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var);
 		float L_0 = ((XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_StaticFields*)il2cpp_codegen_static_fields_for(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var))->___U3CtimeLimitInSecondsU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 102493
+// Method Definition Index: 125701
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 XRHandSubsystem_get_leftHand_mD3B931E5129348FEE34C3965A0CF8E62A0CFFB97_inline (XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/XRHandSubsystem.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/XRHandSubsystem.cs:74>
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 L_0 = __this->___m_LeftHand;
 		return L_0;
 	}
 }
-// Method Definition Index: 102495
+// Method Definition Index: 125703
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 XRHandSubsystem_get_rightHand_mDE333FDF35460E1A06BE051AF9C2144B7053ED3C_inline (XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/XRHandSubsystem.cs:97>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/XRHandSubsystem.cs:97>
 		XRHand_t42370E2B19E7613E9C8FFA4A4B749C91FF021471 L_0 = __this->___m_RightHand;
 		return L_0;
 	}
 }
-// Method Definition Index: 103087
+// Method Definition Index: 126295
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_status_mA52842D8D75A40E6602E3C744085250395E6418D_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
 		int32_t L_0 = ___0_value;
 		__this->___U3CstatusU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103089
+// Method Definition Index: 126297
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_elapsedTime_m1D76562BF0B659234A590698C628A79584EE26B6_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
 		float L_0 = ___0_value;
 		__this->___U3CelapsedTimeU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103091
+// Method Definition Index: 126299
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_recordingName_m5F42C44C0AF9CF88A5B1D8A4C19E085446BC380C_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
 		String_t* L_0 = ___0_value;
 		__this->___U3CrecordingNameU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CrecordingNameU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103096
+// Method Definition Index: 126304
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_subsystem_m39E889424DAC3FA4B69712712111F7B228BE11EF_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = ___0_value;
 		__this->___U3CsubsystemU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubsystemU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103093
+// Method Definition Index: 126301
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingStatusChangedEventArgs_set_errorMessage_mC24DFFA83534E92AC78620FE51D3F9865959E953_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
 		String_t* L_0 = ___0_value;
 		__this->___U3CerrorMessageU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CerrorMessageU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103058
+// Method Definition Index: 126266
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_elapsedTime_m9C74741865DB757A34A99E7B9F9580F4F199DB8D_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
 		float L_0 = ___0_value;
 		__this->___U3CelapsedTimeU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103060
+// Method Definition Index: 126268
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_subsystem_mB93BEC8ADCE0DD7D7FA488C1BBBCF17ABEC1CE75_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = ___0_value;
 		__this->___U3CsubsystemU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubsystemU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103062
+// Method Definition Index: 126270
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_updateSuccessFlags_m86F19A2B1D274CAA443C74FD35AC4961260740F1_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
 		int32_t L_0 = ___0_value;
 		__this->___U3CupdateSuccessFlagsU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103064
+// Method Definition Index: 126272
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingFrameCapturedEventArgs_set_frameIndex_m2A1299C436CB64B501872C11DE20ABA37E57F331_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
 		int32_t L_0 = ___0_value;
 		__this->___U3CframeIndexU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103006
+// Method Definition Index: 126214
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandCaptureSequence_set_durationInSeconds_m685CBC1614578A29C081942D345361A12AD630A9_inline (XRHandCaptureSequence_t2502B9E7312D8143A2C53EF4A8CE0987BE2C3237* __this, float ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/XRHandCaptureSequence.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/XRHandCaptureSequence.cs:27>
 		float L_0 = ___0_value;
 		__this->___m_DurationInSeconds = L_0;
 		return;
 	}
 }
-// Method Definition Index: 52159
+// Method Definition Index: 67472
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) 
 {
 	{
@@ -12165,7 +12165,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999E
 		return;
 	}
 }
-// Method Definition Index: 52229
+// Method Definition Index: 67548
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Quaternion__ctor_m868FD60AA65DD5A8AC0C5DEB0608381A8D85FCD8_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* __this, float ___0_x, float ___1_y, float ___2_z, float ___3_w, const RuntimeMethod* method) 
 {
 	{
@@ -12180,65 +12180,65 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Quaternion__ctor_m868FD60AA6
 		return;
 	}
 }
-// Method Definition Index: 103057
+// Method Definition Index: 126265
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float XRHandRecordingFrameCapturedEventArgs_get_elapsedTime_m8418278A637F97BA42A9FC4562C9EBC92ED443CB_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:11>
 		float L_0 = __this->___U3CelapsedTimeU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103059
+// Method Definition Index: 126267
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHandRecordingFrameCapturedEventArgs_get_subsystem_mF52ABF24F088139122DDAFA5B133A107C4FA1F49_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___U3CsubsystemU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103061
+// Method Definition Index: 126269
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRHandRecordingFrameCapturedEventArgs_get_updateSuccessFlags_m5B7D03EB98AEE16E0CB074521C1166F928E81789_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:21>
 		int32_t L_0 = __this->___U3CupdateSuccessFlagsU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103063
+// Method Definition Index: 126271
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRHandRecordingFrameCapturedEventArgs_get_frameIndex_mB1013A2EF060AA0CFEB101BEF309729983F9EB6F_inline (XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingFrameCapturedEventArgs.cs:27>
 		int32_t L_0 = __this->___U3CframeIndexU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103066
+// Method Definition Index: 126274
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingInitializeArgs_set_subsystem_m97755BBA78C25B45DD9CD34F574FDE2CA851CB1A_inline (XRHandRecordingInitializeArgs_tE849605C07D39ABD87AD535FFCC6020244A54F7C* __this, XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingInitializeArgs.cs:16>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = ___0_value;
 		__this->___U3CsubsystemU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubsystemU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103077
+// Method Definition Index: 126285
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingSaveArgs_set_recordingName_m92FAF58FDF28D5CFA64981DC58087F26216D8ECC_inline (XRHandRecordingSaveArgs_t967DFD0BBF37240FB995BCBB3E1364157ACA3D05* __this, String_t* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSaveArgs.cs:17>
 		String_t* L_0 = ___0_value;
 		__this->___U3CrecordingNameU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CrecordingNameU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 103084
+// Method Definition Index: 126292
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingSettings_set_timeLimitInSeconds_m4C1BEC6958B31CB675CB5717D74B69805394BA5E_inline (float ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -12248,68 +12248,68 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void XRHandRecordingSettings_set_
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingSettings.cs:13>
 		float L_0 = ___0_value;
 		il2cpp_codegen_runtime_class_init_inline(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var);
 		((XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_StaticFields*)il2cpp_codegen_static_fields_for(XRHandRecordingSettings_t6330EAD208C2008D238B05505CD67ECD3094EBDE_il2cpp_TypeInfo_var))->___U3CtimeLimitInSecondsU3Ek__BackingField = L_0;
 		return;
 	}
 }
-// Method Definition Index: 103086
+// Method Definition Index: 126294
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRHandRecordingStatusChangedEventArgs_get_status_mD97C9AAAC26DE3515678696C312C49AAFD2F0AEC_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:60>
 		int32_t L_0 = __this->___U3CstatusU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103088
+// Method Definition Index: 126296
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float XRHandRecordingStatusChangedEventArgs_get_elapsedTime_m5D0EBE6D10F9DAA16DF1E119715BA3107F461B77_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:65>
 		float L_0 = __this->___U3CelapsedTimeU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103090
+// Method Definition Index: 126298
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* XRHandRecordingStatusChangedEventArgs_get_recordingName_m41BC76D9DAA2AFEC4A8308F6709FBEC21D3F7714_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:70>
 		String_t* L_0 = __this->___U3CrecordingNameU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103092
+// Method Definition Index: 126300
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* XRHandRecordingStatusChangedEventArgs_get_errorMessage_m51FA64EB72CCDA834CA6F84F67F52BEF15233C6C_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:72>
 		String_t* L_0 = __this->___U3CerrorMessageU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 103095
+// Method Definition Index: 126303
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* XRHandRecordingStatusChangedEventArgs_get_subsystem_mC577E41E73734FEA09482DE6B3453DF0CF35A892_inline (XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.hands@6361f2b63a8e/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
+		//<source_info:./Library/PackageCache/com.unity.xr.hands@3e241be20642/Runtime/Capture/Recording/XRHandRecordingStatusChangedEventArgs.cs:97>
 		XRHandSubsystem_t0EB20D332ADF52A334449A240A3FDD6844EEA92C* L_0 = __this->___U3CsubsystemU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 91804
+// Method Definition Index: 110846
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t FunctionPointer_1_get_Value_m71D7FF781C694A7C4EE28362DFC78D8DDFE9A105_gshared_inline (FunctionPointer_1_tE1DC1EC606FB2242FB50357BBA39BB4AEDECFCB2* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.burst@21aa83e7fd8f/Runtime/FunctionPointer.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.burst@07790c2d06d9/Runtime/FunctionPointer.cs:46>
 		intptr_t L_0 = __this->____ptr;
 		return L_0;
 	}
 }
-// Method Definition Index: 11266
+// Method Definition Index: 11522
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m4407E4C389F22B8CEC282C15D56516658746C383_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12317,7 +12317,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m4407E4C
 		return L_0;
 	}
 }
-// Method Definition Index: 11277
+// Method Definition Index: 11533
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_m1B7E4FE6C5B6BF4DE5B98354163B4D307C84917C_gshared_inline (List_1_tE22B6E306DDA01F674E59C9D38C70B3061C6638A* __this, XRHandCaptureFrame_t224DFB9FF2BA856544F3CCE5DB6CE02918D9F073 ___0_item, const RuntimeMethod* method) 
 {
 	XRHandCaptureFrameU5BU5D_t3EB556AB49AB0D0EF28F537695ECC47024C73EA7* V_0 = NULL;
@@ -12355,7 +12355,7 @@ IL_0034:
 		return;
 	}
 }
-// Method Definition Index: 49896
+// Method Definition Index: 64950
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool NativeArray_1_get_IsCreated_mD24A174276905BA38E8992234D3A387A1BDF2E97_gshared_inline (NativeArray_1_t36BB6836F4E5DC4D944E821BA8F1E03B91E23347* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12363,7 +12363,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool NativeArray_1_get_IsCreated_
 		return (bool)((((int32_t)((((intptr_t)L_0) == ((intptr_t)((uintptr_t)0)))? 1 : 0)) == ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 49935
+// Method Definition Index: 64989
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 Enumerator_get_Current_m0D229D21CE849470620200D6E2DEB3672F3099F3_gshared_inline (Enumerator_t2E027D9CC56D1C869DF0B8ADC33AE52F04DD3037* __this, const RuntimeMethod* method) 
 {
 	Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 V_0;
@@ -12380,7 +12380,7 @@ IL_000a:
 		return L_1;
 	}
 }
-// Method Definition Index: 49933
+// Method Definition Index: 64987
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Enumerator_MoveNext_mFD994AEBF3EAEEF2BEBEAC0A0FBB4854505A381F_gshared_inline (Enumerator_t2E027D9CC56D1C869DF0B8ADC33AE52F04DD3037* __this, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -12423,7 +12423,7 @@ IL_0057:
 		return L_10;
 	}
 }
-// Method Definition Index: 49896
+// Method Definition Index: 64950
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool NativeArray_1_get_IsCreated_mD74FCA194584E6EA7916853B62401EB78240A081_gshared_inline (NativeArray_1_t81F55263465517B73C455D3400CF67B4BADD85CF* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12431,7 +12431,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool NativeArray_1_get_IsCreated_
 		return (bool)((((int32_t)((((intptr_t)L_0) == ((intptr_t)((uintptr_t)0)))? 1 : 0)) == ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 11327
+// Method Definition Index: 11585
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B Enumerator_get_Current_m1D25DFFB651D9115B6FF60727EC8BCCC73F9E45E_gshared_inline (Enumerator_t09BB21E9C467FB276FF3669E1DA7F9DF99954D9A* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12439,7 +12439,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandRecordingRawFrame_t0128B865
 		return L_0;
 	}
 }
-// Method Definition Index: 11285
+// Method Definition Index: 11541
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Clear_m88508DB2B92551FDE3FE2DD3C7D1E43D9D385BE9_gshared_inline (List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -12459,7 +12459,7 @@ IL_003c:
 		return;
 	}
 }
-// Method Definition Index: 11277
+// Method Definition Index: 11533
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_m508DF7AA551B63864C6EDF7B23EBBA0245FA40B1_gshared_inline (List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* __this, XRHandRecordingRawFrame_t0128B86579CF9D72E3B7E110B13970E112B6AB1B ___0_item, const RuntimeMethod* method) 
 {
 	XRHandRecordingRawFrameU5BU5D_tF8DE905B10E6E80FFC127130967B01C3789230D7* V_0 = NULL;
@@ -12497,7 +12497,7 @@ IL_0034:
 		return;
 	}
 }
-// Method Definition Index: 11266
+// Method Definition Index: 11522
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m034048142B456165BB7CDD1982C51C5436E3024C_gshared_inline (List_1_tA815B84BA6DC85FFC02722B565CE082246D617DC* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12505,19 +12505,19 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m0340481
 		return L_0;
 	}
 }
-// Method Definition Index: 882
+// Method Definition Index: 884
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Action_1_Invoke_m82576E247EABE42EAF73B5FA4A73AB54896A854E_gshared_inline (Action_1_t2DA0411EDF9E3FEFF697DDF6C863566921338C1F* __this, XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0 ___0_obj, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, XRHandRecordingStatusChangedEventArgs_t172B8212CE25C66B2BC462443AFE3309FB119BE0, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 882
+// Method Definition Index: 884
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Action_1_Invoke_m8E116A3340BC2764B89D7DFA01586DBF8411CDBB_gshared_inline (Action_1_t7B60C630D15CD21B86B3E04BCD8CD9D47183EF4A* __this, XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623 ___0_obj, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, XRHandRecordingFrameCapturedEventArgs_t44786298FC0F78263023A7801CE48CF558102623, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 3285
+// Method Definition Index: 3344
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_gshared_inline (const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -12527,7 +12527,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD
 		return L_0;
 	}
 }
-// Method Definition Index: 11277
+// Method Definition Index: 11533
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) 
 {
 	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* V_0 = NULL;
@@ -12565,7 +12565,7 @@ IL_0034:
 		return;
 	}
 }
-// Method Definition Index: 68403
+// Method Definition Index: 83961
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float4_get_xyz_mE6EC829F35512C7BC159047FDC134E80F3B37A06_inline (float4_t89D9A294E7A79BD81BFBDD18654508532958555E* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12579,7 +12579,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_3;
 	}
 }
-// Method Definition Index: 64381
+// Method Definition Index: 79939
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E math_cross_m4CA2DAE150C6381B0D05E8AA9E48E88CF6157180_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_x, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_y, const RuntimeMethod* method) 
 {
 	float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E V_0;
@@ -12604,7 +12604,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_7;
 	}
 }
-// Method Definition Index: 67660
+// Method Definition Index: 83218
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float3_op_Multiply_m38F52B61F8E5636955A1A6DF3A75BD0724148350_inline (float ___0_lhs, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -12624,7 +12624,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_9;
 	}
 }
-// Method Definition Index: 67661
+// Method Definition Index: 83219
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float3_op_Addition_mFFCF4F7457594F5EFB0678C0DE90AAD3D3F6947B_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_lhs, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -12647,7 +12647,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_12;
 	}
 }
-// Method Definition Index: 64329
+// Method Definition Index: 79887
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_rsqrt_mC67B3430EAADA7C5347E87B23859C569BC010E72_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -12658,7 +12658,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_rsqrt_mC67B3430EAADA7C
 		return ((float)((1.0f)/L_1));
 	}
 }
-// Method Definition Index: 63919
+// Method Definition Index: 79477
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR uint32_t math_asuint_m503D1ABF19E4BA615FD8AE1BF1A2E103BBED6139_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -12667,7 +12667,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR uint32_t math_asuint_m503D1ABF19E
 		return L_0;
 	}
 }
-// Method Definition Index: 63931
+// Method Definition Index: 79489
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_asfloat_m20D259DAAB46464B59BD8BF5678F9D59800F70A9_inline (uint32_t ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -12676,7 +12676,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_asfloat_m20D259DAAB464
 		return L_0;
 	}
 }
-// Method Definition Index: 63980
+// Method Definition Index: 79538
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_min_m54FD010BEF505D2BA1F79FC793BEB0723C329C3B_inline (float ___0_x, float ___1_y, const RuntimeMethod* method) 
 {
 	{
@@ -12708,7 +12708,7 @@ IL_000e:
 		return L_5;
 	}
 }
-// Method Definition Index: 63998
+// Method Definition Index: 79556
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_max_m4B454A91AE8827997609E74C4C24036BBD3CC496_inline (float ___0_x, float ___1_y, const RuntimeMethod* method) 
 {
 	{
@@ -12740,7 +12740,7 @@ IL_000e:
 		return L_5;
 	}
 }
-// Method Definition Index: 64907
+// Method Definition Index: 80465
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 math_inverse_mAB8FC214DC9438E44EB31D19E3C70D3BDFAAF202_inline (quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 ___0_q, const RuntimeMethod* method) 
 {
 	float4_t89D9A294E7A79BD81BFBDD18654508532958555E V_0;
@@ -12769,7 +12769,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR quaternion_tD6BCBECAF088B9EBAE234
 		return L_10;
 	}
 }
-// Method Definition Index: 67687
+// Method Definition Index: 83245
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float3_op_UnaryNegation_m862876969881839716CBAF9AE074FA4BFDFABDF1_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_val, const RuntimeMethod* method) 
 {
 	{
@@ -12786,7 +12786,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_6;
 	}
 }
-// Method Definition Index: 50037
+// Method Definition Index: 65091
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 UnsafeUtility_ReadArrayElement_TisPose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971_m301777ED547BB82996852096FE791E7F9F37FCC2_gshared_inline (void* ___0_source, int32_t ___1_index, const RuntimeMethod* method) 
 {
 	{
@@ -12797,7 +12797,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87
 		return L_3;
 	}
 }
-// Method Definition Index: 67794
+// Method Definition Index: 83352
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float3_get_yzx_mDF6DE39B69C5DE384F74C0D1EC91AA0388E23535_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E* __this, const RuntimeMethod* method) 
 {
 	{
@@ -12811,7 +12811,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_3;
 	}
 }
-// Method Definition Index: 67658
+// Method Definition Index: 83216
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E float3_op_Multiply_m05E57074FBD5FAB0E72940C9CC019C41915280D7_inline (float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___0_lhs, float3_t4AB5D88249ADB24F69FFD0793E8ED25E1CC3745E ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -12834,7 +12834,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float3_t4AB5D88249ADB24F69FFD0793
 		return L_12;
 	}
 }
-// Method Definition Index: 64321
+// Method Definition Index: 79879
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_sqrt_mEF31DE7BD0179009683C5D7B0C58E6571B30CF4A_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -12852,7 +12852,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_sqrt_mEF31DE7BD0179009
 		return ((float)L_1);
 	}
 }
-// Method Definition Index: 2430
+// Method Definition Index: 2446
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Single_IsNaN_mFE637F6ECA9F7697CE8EFF56427858F4C5EDF75D_inline (float ___0_f, const RuntimeMethod* method) 
 {
 	{
@@ -12862,7 +12862,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Single_IsNaN_mFE637F6ECA9F76
 		return (bool)((((int32_t)((int32_t)(L_1&((int32_t)2147483647LL)))) > ((int32_t)((int32_t)2139095040)))? 1 : 0);
 	}
 }
-// Method Definition Index: 64104
+// Method Definition Index: 79662
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_dot_m20F2285F7227DC308D9CF2DCB8EAAD3E774501D4_inline (float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___0_x, float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___1_y, const RuntimeMethod* method) 
 {
 	{
@@ -12886,7 +12886,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_dot_m20F2285F7227DC308
 		return ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1, L_3)), ((float)il2cpp_codegen_multiply(L_5, L_7)))), ((float)il2cpp_codegen_multiply(L_9, L_11)))), ((float)il2cpp_codegen_multiply(L_13, L_15))));
 	}
 }
-// Method Definition Index: 64229
+// Method Definition Index: 79787
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_rcp_mED2BCEE83560EEE59CE06EBD90332CAFA9C08024_inline (float ___0_x, const RuntimeMethod* method) 
 {
 	{
@@ -12895,7 +12895,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float math_rcp_mED2BCEE83560EEE59
 		return ((float)((1.0f)/L_0));
 	}
 }
-// Method Definition Index: 68082
+// Method Definition Index: 83640
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float4_t89D9A294E7A79BD81BFBDD18654508532958555E float4_op_Multiply_m94C65B5751B7969CD82F15DADB8A6F182BFBD581_inline (float ___0_lhs, float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -12918,7 +12918,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float4_t89D9A294E7A79BD81BFBDD186
 		return L_12;
 	}
 }
-// Method Definition Index: 63604
+// Method Definition Index: 79162
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float4_t89D9A294E7A79BD81BFBDD18654508532958555E math_float4_m16697C284FA0C25A84F3DC3E99F3D4C306B6BFBF_inline (float ___0_x, float ___1_y, float ___2_z, float ___3_w, const RuntimeMethod* method) 
 {
 	{
@@ -12933,7 +12933,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float4_t89D9A294E7A79BD81BFBDD186
 		return L_4;
 	}
 }
-// Method Definition Index: 68080
+// Method Definition Index: 83638
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float4_t89D9A294E7A79BD81BFBDD18654508532958555E float4_op_Multiply_m0E98338FB7DFF55B101EBCD78A8703ADB9C08667_inline (float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___0_lhs, float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -12960,7 +12960,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float4_t89D9A294E7A79BD81BFBDD186
 		return L_16;
 	}
 }
-// Method Definition Index: 64903
+// Method Definition Index: 80461
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4 math_quaternion_m315B4CA2F8475CC33F3C73187F00AC8B64BBF939_inline (float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -12972,7 +12972,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR quaternion_tD6BCBECAF088B9EBAE234
 		return L_1;
 	}
 }
-// Method Definition Index: 1037
+// Method Definition Index: 1040
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t BitConverter_SingleToInt32Bits_mC760C7CFC89725E3CF68DC45BE3A9A42A7E7DA73_inline (float ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -12980,7 +12980,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t BitConverter_SingleToInt3
 		return L_0;
 	}
 }
-// Method Definition Index: 68050
+// Method Definition Index: 83608
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void float4__ctor_mB2F7F2D8BCE8159BEF5A0D6400499E211858ED2D_inline (float4_t89D9A294E7A79BD81BFBDD18654508532958555E* __this, float ___0_x, float ___1_y, float ___2_z, float ___3_w, const RuntimeMethod* method) 
 {
 	{
@@ -13000,7 +13000,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void float4__ctor_mB2F7F2D8BCE815
 		return;
 	}
 }
-// Method Definition Index: 70881
+// Method Definition Index: 86439
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void quaternion__ctor_m2F6A34CCFD1150A326CB4CE108260A8BD8B1D75F_inline (quaternion_tD6BCBECAF088B9EBAE2345EC8534C7A1A4C910D4* __this, float4_t89D9A294E7A79BD81BFBDD18654508532958555E ___0_value, const RuntimeMethod* method) 
 {
 	{

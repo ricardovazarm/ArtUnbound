@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Mount Corcoran
   author: Albert Bierstadt
   year: 1877
-  description: "Museum: National Gallery of Art\nArt Movement: Romanticism (Hudson River School)\nYear: 1877"
+  description: "Museum: National Gallery of Art\nArt Movement: Romanticism\nYear: 1877"
   museum: National Gallery of Art
-  artMovement: Romanticism (Hudson River School)
+  artMovement: Romanticism
   aspectRatio: 1.5925
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

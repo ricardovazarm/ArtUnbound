@@ -16,9 +16,9 @@ MonoBehaviour:
   title: A Sunday on La Grande Jatte
   author: Georges Seurat
   year: 1886
-  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism / Pointillism\nYear: 1886"
+  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism\nYear: 1886"
   museum: Art Institute of Chicago
-  artMovement: Post-Impressionism / Pointillism
+  artMovement: Post-Impressionism
   aspectRatio: 1.4933
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

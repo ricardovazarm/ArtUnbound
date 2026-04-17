@@ -41,6 +41,8 @@ namespace ArtUnbound.UI
         [SerializeField] private Button catalogPageRightButton;
         [SerializeField] private TextMeshProUGUI catalogPageText;
         [SerializeField] private TextMeshProUGUI packNameText; // Shows pack name and price (only visible in Expand mode)
+        [SerializeField] private Button packPurchaseButton; // Button to purchase pack (only visible in Expand mode when pack is not purchased)
+        [SerializeField] private TextMeshProUGUI packPurchaseButtonText; // Text on purchase button showing price
         [SerializeField] private Button filterAllButton;
         [SerializeField] private Button filterInProgressButton;
         [SerializeField] private Button filterCompletedButton;
@@ -235,9 +237,9 @@ namespace ArtUnbound.UI
             this.saveDataService = saveDataService;
             this.saveData = saveDataService.GetCachedData();
 
-            // Hide pack name text by default (only shown in Expand mode)
-            if (packNameText != null)
-                packNameText.gameObject.SetActive(false);
+            // Hide pack purchase button by default (only shown in Expand mode when pack not purchased)
+            if (packPurchaseButton != null)
+                packPurchaseButton.gameObject.SetActive(false);
 
             LoadArtworks();
             UpdateGlobalStats();
@@ -265,6 +267,9 @@ namespace ArtUnbound.UI
 
             if (unlockButton != null)
                 unlockButton.onClick.AddListener(OnUnlockClicked);
+            
+            if (packPurchaseButton != null)
+                packPurchaseButton.onClick.AddListener(OnPackPurchaseClicked);
 
             if (catalogPageLeftButton != null)
                 catalogPageLeftButton.onClick.AddListener(GoToPrevPage);
@@ -308,6 +313,9 @@ namespace ArtUnbound.UI
 
             if (unlockButton != null)
                 unlockButton.onClick.RemoveAllListeners();
+
+            if (packPurchaseButton != null)
+                packPurchaseButton.onClick.RemoveAllListeners();
 
             if (catalogPageLeftButton != null)
                 catalogPageLeftButton.onClick.RemoveAllListeners();
@@ -363,13 +371,27 @@ namespace ArtUnbound.UI
 
         private void ApplyExpandFilter()
         {
-            if (purchaseService == null || purchaseService.PackCatalog == null ||
-                purchaseService.PackCatalog.packs.Count == 0)
+            Debug.Log($"[UnifiedMainMenu] ApplyExpandFilter called. purchaseService null? {purchaseService == null}");
+            
+            if (purchaseService == null)
             {
-                Debug.LogWarning("[UnifiedMainMenu] No pack catalog available for Expand filter.");
+                Debug.LogError("[UnifiedMainMenu] PackPurchaseService is not assigned! Make sure GameBootstrap has PackPurchaseService assigned and calls SetPackPurchaseService().");
+                return;
+            }
+            
+            if (purchaseService.PackCatalog == null)
+            {
+                Debug.LogError("[UnifiedMainMenu] PackCatalog is null! Make sure the PackPurchaseService component has an ArtworkPackCatalog assigned in the Inspector.");
+                return;
+            }
+            
+            if (purchaseService.PackCatalog.packs.Count == 0)
+            {
+                Debug.LogWarning("[UnifiedMainMenu] PackCatalog has no packs! Create ArtworkPackDefinition assets and add them to the catalog.");
                 return;
             }
 
+            Debug.Log($"[UnifiedMainMenu] Switching to Expand mode with {purchaseService.PackCatalog.packs.Count} packs available.");
             currentFilter = FilterType.Expand;
             isExpandMode = true;
             currentPackIndex = 0;
@@ -524,34 +546,64 @@ namespace ArtUnbound.UI
         {
             if (catalogPageText == null) return;
 
-            if (isExpandMode)
-            {
-                var catalog = purchaseService?.PackCatalog;
-                if (catalog != null && catalog.packs.Count > 0)
-                {
-                    var pack = catalog.packs[currentPackIndex];
-                    
-                    // Show pack name and price in dedicated field
-                    if (packNameText != null)
-                    {
-                        packNameText.gameObject.SetActive(true);
-                        string purchased = purchaseService.IsPurchased(pack.packId) ? "" : $" — {pack.price}";
-                        packNameText.text = $"{pack.packName}{purchased}";
-                    }
-                    
-                    // Show only pagination in catalogPageText
-                    catalogPageText.text = catalog.packs.Count > 1
-                        ? $"({currentPackIndex + 1}/{catalog.packs.Count})"
-                        : "";
-                }
-                return;
-            }
-            
-            // Hide pack name field when not in Expand mode
+            // Always show filter/pack name in packNameText
             if (packNameText != null)
-                packNameText.gameObject.SetActive(false);
-
-            catalogPageText.text = totalPages <= 1 ? "" : $"{currentPage + 1} / {totalPages}";
+            {
+                packNameText.gameObject.SetActive(true);
+                
+                if (isExpandMode)
+                {
+                    // Show pack name when in Expand mode
+                    var catalog = purchaseService?.PackCatalog;
+                    if (catalog != null && catalog.packs.Count > 0)
+                    {
+                        var pack = catalog.packs[currentPackIndex];
+                        packNameText.text = pack.packName;
+                        
+                        // Show/hide purchase button based on purchase status
+                        bool isPurchased = purchaseService.IsPurchased(pack.packId);
+                        if (packPurchaseButton != null)
+                        {
+                            packPurchaseButton.gameObject.SetActive(!isPurchased);
+                            if (!isPurchased && packPurchaseButtonText != null)
+                            {
+                                packPurchaseButtonText.text = $"Unlock {pack.price}";
+                            }
+                        }
+                        
+                        // Show only pagination in catalogPageText
+                        catalogPageText.text = catalog.packs.Count > 1
+                            ? $"({currentPackIndex + 1}/{catalog.packs.Count})"
+                            : "";
+                    }
+                }
+                else
+                {
+                    // Show filter name when not in Expand mode
+                    packNameText.text = currentFilter switch
+                    {
+                        FilterType.All => "All",
+                        FilterType.InProgress => "In Progress",
+                        FilterType.Completed => "Completed",
+                        _ => "All"
+                    };
+                    
+                    // Hide purchase button when not in Expand mode
+                    if (packPurchaseButton != null)
+                        packPurchaseButton.gameObject.SetActive(false);
+                    
+                    // Show normal pagination
+                    catalogPageText.text = totalPages <= 1 ? "" : $"{currentPage + 1} / {totalPages}";
+                }
+            }
+            else
+            {
+                // Fallback if packNameText is null - hide purchase button and show normal pagination
+                if (packPurchaseButton != null)
+                    packPurchaseButton.gameObject.SetActive(false);
+                
+                catalogPageText.text = totalPages <= 1 ? "" : $"{currentPage + 1} / {totalPages}";
+            }
         }
 
         private void UpdatePageButtons(int totalPages)
@@ -768,15 +820,26 @@ namespace ArtUnbound.UI
             bool isLocked = pack != null && !(purchaseService?.IsPurchased(pack.packId) ?? false);
             currentUnlockPackId = isLocked ? pack.packId : null;
 
+            Debug.Log($"[UnifiedMainMenu] UpdateUnlockSection for artwork '{selectedArtwork.artworkId}': pack={pack?.packName ?? "none"}, isLocked={isLocked}");
+
             unlockSection.SetActive(isLocked);
 
             if (isLocked && unlockPriceText != null)
-                unlockPriceText.text = $"Unlock — {pack.price}";
+                unlockPriceText.text = $"Unlock {pack.price}";
 
             // Disable/enable play buttons based on lock state
-            if (easyButton != null)   easyButton.interactable   = !isLocked;
+            if (easyButton != null)
+            {
+                easyButton.interactable = !isLocked;
+                Debug.Log($"[UnifiedMainMenu] Easy button interactable set to: {!isLocked}");
+            }
+            else
+            {
+                Debug.LogWarning("[UnifiedMainMenu] Easy button is null! Assign it in the Inspector.");
+            }
+            
             if (normalButton != null) normalButton.interactable = !isLocked;
-            if (hardButton != null)   hardButton.interactable   = !isLocked;
+            if (hardButton != null) hardButton.interactable = !isLocked;
             if (expertButton != null) expertButton.interactable = !isLocked;
         }
 
@@ -803,6 +866,37 @@ namespace ArtUnbound.UI
                 onFailure: () =>
                 {
                     Debug.LogWarning($"[UnifiedMainMenu] Purchase failed for pack: {currentUnlockPackId}");
+                }
+            );
+        }
+
+        private void OnPackPurchaseClicked()
+        {
+            if (purchaseService == null || !isExpandMode) return;
+
+            var catalog = purchaseService.PackCatalog;
+            if (catalog == null || catalog.packs.Count == 0) return;
+
+            var pack = catalog.packs[currentPackIndex];
+            if (purchaseService.IsPurchased(pack.packId)) return; // Already purchased
+
+            PlayButtonClick();
+            purchaseService.PurchasePack(
+                pack.packId,
+                onSuccess: () =>
+                {
+                    // Refresh UI to hide purchase button and show artworks as unlocked
+                    RefreshExpandPage();
+                    
+                    // Update detail panel if an artwork from this pack is selected
+                    if (selectedArtwork != null)
+                    {
+                        UpdateUnlockSection();
+                    }
+                },
+                onFailure: () =>
+                {
+                    Debug.LogWarning($"[UnifiedMainMenu] Purchase failed for pack: {pack.packId}");
                 }
             );
         }

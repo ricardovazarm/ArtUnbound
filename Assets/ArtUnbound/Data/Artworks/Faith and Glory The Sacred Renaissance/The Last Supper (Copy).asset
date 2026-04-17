@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Last Supper (Copy)
   author: Giampietrino and Giovanni Antonio Boltraffio
   year: 1520
-  description: "Museum: Louvre Museum, Paris\nArt Movement: High Renaissance\nYear: 1520"
+  description: "Museum: Louvre Museum, Paris\nArt Movement: Renaissance\nYear: 1520"
   museum: Louvre Museum, Paris
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 2.625
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

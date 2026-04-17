@@ -95,15 +95,9 @@ namespace ArtUnbound.UI
             if (newRecordText != null)
                 newRecordText.gameObject.SetActive(false);
 
-            // Wall detection status (visible on device when console is unavailable)
-            EnsureWallStatusTextExists();
+            // Wall detection status — oculto (era texto de debug)
             if (wallStatusText != null)
-            {
-                wallStatusText.gameObject.SetActive(true);
-                wallStatusText.text = lastWallCount >= 0
-                    ? (lastWallCount > 0 ? $"Paredes detectadas: Sí ({lastWallCount})" : "Paredes detectadas: No")
-                    : "Paredes: —";
-            }
+                wallStatusText.gameObject.SetActive(false);
             
         // Show/hide hang instruction text based on wall detection
         if (hangInstructionText != null)

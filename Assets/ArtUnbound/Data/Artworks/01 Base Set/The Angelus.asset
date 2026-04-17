@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Angelus
   title: The Angelus
-  author: Jean-François Millet
+  author: Jean-Francois Millet
   year: 1859
   description: "Museum: Musée d'Orsay\nArt Movement: Realism\nYear: 1859"
   museum: Musée d'Orsay

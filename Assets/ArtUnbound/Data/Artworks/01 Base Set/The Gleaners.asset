@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Gleaners
   title: The Gleaners
-  author: Jean-François Millet
+  author: Jean-Francois Millet
   year: 1857
   description: "Museum: Musée d'Orsay\nArt Movement: Realism\nYear: 1857"
   museum: Musée d'Orsay

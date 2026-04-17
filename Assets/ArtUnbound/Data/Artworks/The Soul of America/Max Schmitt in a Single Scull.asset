@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Max Schmitt in a Single Scull
   author: Thomas Eakins
   year: 1871
-  description: "Museum: The Met\nArt Movement: American Realism\nYear: 1871"
+  description: "Museum: The Met\nArt Movement: Realism\nYear: 1871"
   museum: The Met
-  artMovement: American Realism
+  artMovement: Realism
   aspectRatio: 1.4289
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

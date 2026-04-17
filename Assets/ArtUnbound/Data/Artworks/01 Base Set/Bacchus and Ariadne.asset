@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Bacchus and Ariadne
   author: Tiziano
   year: 1523
-  description: "Museum: Galería Uffizi, Florencia\nArt Movement: Venetian Renaissance\nYear: 1523"
+  description: "Museum: Galería Uffizi, Florencia\nArt Movement: Renaissance\nYear: 1523"
   museum: Galería Uffizi, Florencia
-  artMovement: Venetian Renaissance
+  artMovement: Renaissance
   aspectRatio: 1.105
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

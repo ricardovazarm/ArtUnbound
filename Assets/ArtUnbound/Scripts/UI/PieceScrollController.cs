@@ -135,6 +135,10 @@ namespace ArtUnbound.UI
                 transform.localRotation = Quaternion.Euler(0f, trayRotationY, 0f);
                 transform.localPosition += new Vector3(trayOffsetX, 0f, 0f);
                 panelController.Show();
+                // Refresh button states now that the panel is active — the first
+                // UpdateButtonStates() call above ran while the panel was still
+                // inactive, so the Canvas hadn't laid out the buttons yet.
+                UpdateButtonStates();
             }
             else
             {

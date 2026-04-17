@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Niagara Falls
   author: Frederic Edwin Church
   year: 1857
-  description: "Museum: National Gallery of Art\nArt Movement: Romanticism (Hudson River School)\nYear: 1857"
+  description: "Museum: National Gallery of Art\nArt Movement: Romanticism\nYear: 1857"
   museum: National Gallery of Art
-  artMovement: Romanticism (Hudson River School)
+  artMovement: Romanticism
   aspectRatio: 2.1547
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Icebergs
   author: Frederic Edwin Church
   year: 1861
-  description: "Museum: Dallas Museum of Art\nArt Movement: Romanticism (Hudson River School)\nYear: 1861"
+  description: "Museum: Dallas Museum of Art\nArt Movement: Romanticism\nYear: 1861"
   museum: Dallas Museum of Art
-  artMovement: Romanticism (Hudson River School)
+  artMovement: Romanticism
   aspectRatio: 1.7467
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

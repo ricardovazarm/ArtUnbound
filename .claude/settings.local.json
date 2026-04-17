@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep:*)",
+      "Skill(update-config)",
+      "Bash(claude mcp:*)",
+      "Bash(C:/Users/rvazq/.local/bin/claude mcp:*)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('mcpServers', d.get\\('projects', {}\\)\\), indent=2\\)\\)\")",
+      "Bash(python:*)",
+      "mcp__unity-mcp__Unity_GetConsoleLogs",
+      "mcp__HzOSDevMCP__get_unity_documentation_index",
+      "mcp__unity-mcp__Unity_ManageGameObject",
+      "mcp__unity-mcp__Unity_RunCommand",
+      "mcp__unity-mcp__Unity_ReadConsole",
+      "Bash(xxd \"C:/Users/rvazq/Documents/Mac/AjoloteStudios/ArtUnbound/Assets/ArtUnbound/Artworks/SourceImages/Monet Gardens Through Time/Rounded Flower Bed \\(Corbeille de fleurs\\).jpg\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:v for k,v in d.items\\(\\) if 'skill' in k.lower\\(\\) or 'command' in k.lower\\(\\)}, indent=2\\)\\)\")",
+      "Skill(gen-thumbnails)",
+      "Skill(create-artwork-definition)",
+      "Bash(grep \"\\\\.asset\\\\.meta$\")"
+    ]
+  }
+}

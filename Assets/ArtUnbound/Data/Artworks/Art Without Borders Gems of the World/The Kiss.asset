@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Kiss
   author: Francesco Hayez
   year: 1907
-  description: "Museum: Pinacoteca di Brera, Milan\nArt Movement: Art Nouveau / Symbolism\nYear: 1907"
+  description: "Museum: Pinacoteca di Brera, Milan\nArt Movement: Symbolism\nYear: 1907"
   museum: Pinacoteca di Brera, Milan
-  artMovement: Art Nouveau / Symbolism
+  artMovement: Symbolism
   aspectRatio: 0.8027
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

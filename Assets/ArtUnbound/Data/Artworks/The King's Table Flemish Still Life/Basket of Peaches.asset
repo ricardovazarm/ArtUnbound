@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Basket of Peaches
   title: Basket of Peaches
-  author: Jean-Baptiste-S. Chardin
+  author: Jean-Baptiste Chardin
   year: 1768
-  description: "Museum: Musée du Louvre\nArt Movement: Rococo / Realism\nYear: 1768"
+  description: "Museum: Musée du Louvre\nArt Movement: Rococo\nYear: 1768"
   museum: Musée du Louvre
-  artMovement: Rococo / Realism
+  artMovement: Rococo
   aspectRatio: 1.2889
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

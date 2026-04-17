@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Ophelia
   author: John Everett Millais
   year: 1851
-  description: "Museum: Tate Britain\nArt Movement: Pre-Raphaelite Brotherhood\nYear: 1851"
+  description: "Museum: Tate Britain\nArt Movement: Pre-Raphaelite\nYear: 1851"
   museum: Tate Britain
-  artMovement: Pre-Raphaelite Brotherhood
+  artMovement: Pre-Raphaelite
   aspectRatio: 1.4701
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

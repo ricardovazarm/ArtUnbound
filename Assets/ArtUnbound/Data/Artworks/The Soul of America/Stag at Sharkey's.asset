@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Stag at Sharkey's
   author: George Bellows
   year: 1909
-  description: "Museum: Cleveland Museum of Art\nArt Movement: American Realism (Ashcan School)\nYear: 1909"
+  description: "Museum: Cleveland Museum of Art\nArt Movement: Realism\nYear: 1909"
   museum: Cleveland Museum of Art
-  artMovement: American Realism (Ashcan School)
+  artMovement: Realism
   aspectRatio: 1.3375
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

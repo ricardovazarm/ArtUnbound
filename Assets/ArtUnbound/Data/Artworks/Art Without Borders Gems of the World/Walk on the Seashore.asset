@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Walk on the Seashore
   author: Joaquin Sorolla
   year: 1909
-  description: "Museum: Museo Sorolla, Madrid\nArt Movement: Spanish Luminism\nYear: 1909"
+  description: "Museum: Museo Sorolla, Madrid\nArt Movement: Realism\nYear: 1909"
   museum: Museo Sorolla, Madrid
-  artMovement: Spanish Luminism
+  artMovement: Realism
   aspectRatio: 0.9874
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

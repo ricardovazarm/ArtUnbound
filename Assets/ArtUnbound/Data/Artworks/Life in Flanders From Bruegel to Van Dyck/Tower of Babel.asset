@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Tower of Babel
   author: Pieter Bruegel the Elder
   year: 1563
-  description: "Museum: Kunsthistorisches Museum\nArt Movement: Northern Renaissance\nYear: 1563"
+  description: "Museum: Kunsthistorisches Museum\nArt Movement: Renaissance\nYear: 1563"
   museum: Kunsthistorisches Museum
-  artMovement: Northern Renaissance
+  artMovement: Renaissance
   aspectRatio: 1.3665
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

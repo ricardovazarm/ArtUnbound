@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Fur Traders on the Missouri
   author: George Caleb Bingham
   year: 1845
-  description: "Museum: The Met\nArt Movement: American Realism (Luminism)\nYear: 1845"
+  description: "Museum: The Met\nArt Movement: Realism\nYear: 1845"
   museum: The Met
-  artMovement: American Realism (Luminism)
+  artMovement: Realism
   aspectRatio: 1.2499
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

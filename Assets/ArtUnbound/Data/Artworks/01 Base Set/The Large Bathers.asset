@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Large Bathers
   title: The Large Bathers
-  author: Paul Cézanne
+  author: Paul Cezanne
   year: 1906
   description: "Museum: Philadelphia Museum\nArt Movement: Post-Impressionism\nYear: 1906"
   museum: Philadelphia Museum

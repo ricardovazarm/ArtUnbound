@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Portrait of Madame Brunet
   title: Portrait of Madame Brunet
-  author: Édouard Manet
+  author: Edouard Manet
   year: 1861
   description: "Museum: The J. Paul Getty Museum\nArt Movement: Realism\nYear: 1861"
   museum: The J. Paul Getty Museum

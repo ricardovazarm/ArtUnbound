@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Garden of Love
   author: Peter Paul Rubens
   year: 1633
-  description: "Museum: Museo del Prado\nArt Movement: Flemish Baroque\nYear: 1633"
+  description: "Museum: Museo del Prado\nArt Movement: Baroque\nYear: 1633"
   museum: Museo del Prado
-  artMovement: Flemish Baroque
+  artMovement: Baroque
   aspectRatio: 1.4485
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

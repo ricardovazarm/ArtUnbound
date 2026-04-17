@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Oxbow
   author: Thomas Cole
   year: 1836
-  description: "Museum: The Met\nArt Movement: Romanticism (Hudson River School)\nYear: 1836"
+  description: "Museum: The Met\nArt Movement: Romanticism\nYear: 1836"
   museum: The Met
-  artMovement: Romanticism (Hudson River School)
+  artMovement: Romanticism
   aspectRatio: 1.4636
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

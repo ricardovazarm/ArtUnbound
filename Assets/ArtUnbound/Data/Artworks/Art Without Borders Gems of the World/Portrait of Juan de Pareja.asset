@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Portrait of Juan de Pareja
   title: Portrait of Juan de Pareja
-  author: Diego Velázquez
+  author: Diego Velazquez
   year: 1650
-  description: "Museum: The Met\nArt Movement: Spanish Baroque\nYear: 1650"
+  description: "Museum: The Met\nArt Movement: Baroque\nYear: 1650"
   museum: The Met
-  artMovement: Spanish Baroque
+  artMovement: Baroque
   aspectRatio: 0.8637
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

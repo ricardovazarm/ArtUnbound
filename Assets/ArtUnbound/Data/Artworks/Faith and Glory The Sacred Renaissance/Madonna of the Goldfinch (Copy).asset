@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Madonna of the Goldfinch (Copy)
   author: Raphael
   year: 1506
-  description: "Museum: Uffizi Gallery\nArt Movement: High Renaissance\nYear: 1506"
+  description: "Museum: Uffizi Gallery\nArt Movement: Renaissance\nYear: 1506"
   museum: Uffizi Gallery
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.7156
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Lady Agnew of Lochnaw
   author: John Singer Sargent
   year: 1892
-  description: "Museum: Scottish National Gallery\nArt Movement: Realism / Sargentism\nYear: 1892"
+  description: "Museum: Scottish National Gallery\nArt Movement: Realism\nYear: 1892"
   museum: Scottish National Gallery
-  artMovement: Realism / Sargentism
+  artMovement: Realism
   aspectRatio: 0.7879
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

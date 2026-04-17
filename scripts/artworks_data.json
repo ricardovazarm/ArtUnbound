@@ -1,0 +1,1610 @@
+[
+  {
+    "collection": "01 Base Set",
+    "title": "A Sunday on La Grande Jatte",
+    "author": "Georges Seurat",
+    "year": 1886,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Almond Blossom",
+    "author": "Vincent van Gogh",
+    "year": 1890,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "At the Moulin Rouge",
+    "author": "Toulouse-Lautrec",
+    "year": 1892,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Bacchus and Ariadne",
+    "author": "Tiziano",
+    "year": 1523,
+    "museum": "Galería Uffizi, Florencia",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Bal du moulin de la Galette",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1876,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Before the Ballet",
+    "author": "Edgar Degas",
+    "year": 1890,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Ginevra de' Benci",
+    "author": "Leonardo da Vinci",
+    "year": 1474,
+    "museum": "National Gallery of Art",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Girl with a Pearl Earring",
+    "author": "Johannes Vermeer",
+    "year": 1665,
+    "museum": "Mauritshuis",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Impression, Sunrise",
+    "author": "Claude Monet",
+    "year": 1872,
+    "museum": "Musée Marmottan Monet",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Judith Slaying Holofernes",
+    "author": "Artemisia Gentileschi",
+    "year": 1612,
+    "museum": "Uffizi Gallery",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Las Meninas",
+    "author": "Diego Velazquez",
+    "year": 1656,
+    "museum": "Museo del Prado",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Liberty Leading the People",
+    "author": "Eugene Delacroix",
+    "year": 1830,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Luncheon of the Boating Party",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1881,
+    "museum": "Phillips Collection",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Madame X",
+    "author": "John Singer Sargent",
+    "year": 1884,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Mona Lisa",
+    "author": "Leonardo da Vinci",
+    "year": 1503,
+    "museum": "Musée du Louvre",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Napoleon Crossing the Alps",
+    "author": "Jacques-Louis David",
+    "year": 1801,
+    "museum": "Château de Malmaison",
+    "artMovement": "Neoclassicism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Niagara Falls",
+    "author": "Frederic Edwin Church",
+    "year": 1857,
+    "museum": "National Gallery of Art",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Ophelia",
+    "author": "John Everett Millais",
+    "year": 1851,
+    "museum": "Tate Britain",
+    "artMovement": "Pre-Raphaelite"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Primavera",
+    "author": "Sandro Botticelli",
+    "year": 1480,
+    "museum": "Uffizi Gallery",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Saturn Devouring His Son",
+    "author": "Francisco de Goya",
+    "year": 1823,
+    "museum": "Museo del Prado",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Anatomy Lesson of Dr. Nicolaes Tulp",
+    "author": "Rembrandt van Rijn",
+    "year": 1632,
+    "museum": "Mauritshuis",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Angelus",
+    "author": "Jean-Francois Millet",
+    "year": 1859,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Annunciation (Copy)",
+    "author": "Fra Angelico",
+    "year": 1434,
+    "museum": "Prado / San Marco",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Basket of Apples",
+    "author": "Paul Cezanne",
+    "year": 1893,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Bedroom",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Birth of Venus",
+    "author": "Sandro Botticelli",
+    "year": 1485,
+    "museum": "Uffizi Gallery",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Creation of Adam",
+    "author": "Michelangelo",
+    "year": 1512,
+    "museum": "Sistine Chapel (Vatican Museums)",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Death of Marat",
+    "author": "Jacques-Louis David",
+    "year": 1793,
+    "museum": "Royal Museums of Fine Arts of Belgium",
+    "artMovement": "Neoclassicism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Garden of Earthly Delights",
+    "author": "Hieronymus Bosch",
+    "year": 1503,
+    "museum": "Museo del Prado",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Gleaners",
+    "author": "Jean-Francois Millet",
+    "year": 1857,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Goldfinch",
+    "author": "Carel Fabritius",
+    "year": 1654,
+    "museum": "Mauritshuis",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Hay Wain",
+    "author": "John Constable",
+    "year": 1821,
+    "museum": "National Gallery (London)",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Kiss (Gustav Klimt)",
+    "author": "Gustav Klimt",
+    "year": 1907,
+    "museum": "Belvedere Museum",
+    "artMovement": "Symbolism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Lady of Shalott",
+    "author": "John William Waterhouse",
+    "year": 1888,
+    "museum": "Tate Britain",
+    "artMovement": "Pre-Raphaelite"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Large Bathers",
+    "author": "Paul Cezanne",
+    "year": 1906,
+    "museum": "Philadelphia Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Little Street",
+    "author": "Johannes Vermeer",
+    "year": 1658,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Milkmaid",
+    "author": "Johannes Vermeer",
+    "year": 1658,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Night Watch",
+    "author": "Rembrandt van Rijn",
+    "year": 1642,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Raft of the Medusa",
+    "author": "Theodore Gericault",
+    "year": 1819,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The School of Athens",
+    "author": "Raphael",
+    "year": 1511,
+    "museum": "Apostolic Palace (Vatican Museums)",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Starry Night",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "Museum of Modern Art (MoMA)",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Third of May 1808",
+    "author": "Francisco de Goya",
+    "year": 1814,
+    "museum": "Museo del Prado",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "View of Toledo",
+    "author": "El Greco",
+    "year": 1599,
+    "museum": "The Met",
+    "artMovement": "Mannerism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Vision After the Sermon",
+    "author": "Paul Gauguin",
+    "year": 1888,
+    "museum": "Scottish National Gallery",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Wanderer above the Sea of Fog",
+    "author": "Caspar David Friedrich",
+    "year": 1818,
+    "museum": "Kunsthalle Hamburg",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Washington Crossing the Delaware",
+    "author": "Emanuel Leutze",
+    "year": 1851,
+    "museum": "The Met",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Whistler's Mother",
+    "author": "James McNeill Whistler",
+    "year": 1871,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Woman with a Parasol",
+    "author": "Claude Monet",
+    "year": 1875,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Flaming June",
+    "author": "Frederic Leighton",
+    "year": 1895,
+    "museum": "Museo de Arte de Ponce, Puerto Rico",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Lady Agnew of Lochnaw",
+    "author": "John Singer Sargent",
+    "year": 1892,
+    "museum": "Scottish National Gallery",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Mada Primavesi",
+    "author": "Gustav Klimt",
+    "year": 1912,
+    "museum": "The Met",
+    "artMovement": "Symbolism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Portrait of Juan de Pareja",
+    "author": "Diego Velazquez",
+    "year": 1650,
+    "museum": "The Met",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Saint Jerome as Scholar",
+    "author": "El Greco",
+    "year": 1610,
+    "museum": "The Met",
+    "artMovement": "Mannerism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Snap the Whip",
+    "author": "Winslow Homer",
+    "year": 1872,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "The Grand Canal, Venice (Canaleto)",
+    "author": "Canaletto",
+    "year": 1730,
+    "museum": "The Met",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "The Horse Fair",
+    "author": "Rosa Bonheur",
+    "year": 1853,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "The Kiss",
+    "author": "Francesco Hayez",
+    "year": 1907,
+    "museum": "Pinacoteca di Brera, Milan",
+    "artMovement": "Symbolism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "View of Vetheuil",
+    "author": "Claude Monet",
+    "year": 1880,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Walk on the Seashore",
+    "author": "Joaquin Sorolla",
+    "year": 1909,
+    "museum": "Museo Sorolla, Madrid",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Bathers at Asnieres (Study)",
+    "author": "Georges Seurat",
+    "year": 1884,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Card Players",
+    "author": "Paul Cezanne",
+    "year": 1895,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Day of the God (Mahana No Atua)",
+    "author": "Paul Gauguin",
+    "year": 1894,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Lake Albano and Castel Gandolfo",
+    "author": "Jean-Baptiste-Camille Corot",
+    "year": 1826,
+    "museum": "The Met",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Mont Sainte-Victoire",
+    "author": "Paul Cezanne",
+    "year": 1904,
+    "museum": "Hermitage Museum, St. Petersburg",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Still Life with Apples and a Pot of Primroses",
+    "author": "Paul Cezanne",
+    "year": 1890,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Still Life with Apples and Pears",
+    "author": "Paul Cezanne",
+    "year": 1891,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "The Brook",
+    "author": "Paul Cezanne",
+    "year": 1900,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "The Seine at La Grande Jatte",
+    "author": "Georges Seurat",
+    "year": 1888,
+    "museum": "RMFAB, Bruselas",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Women of Tahiti",
+    "author": "Paul Gauguin",
+    "year": 1891,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "A Young Girl Reading",
+    "author": "Jean-Honore Fragonard",
+    "year": 1770,
+    "museum": "National Gallery of Art",
+    "artMovement": "Rococo"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "Oath of the Horatii",
+    "author": "Jacques-Louis David",
+    "year": 1784,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Neoclassicism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "Orpheus",
+    "author": "Odilon Redon",
+    "year": 1903,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Symbolism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "Portrait of the Infante Luis de Borbon",
+    "author": "Francisco de Goya",
+    "year": 1783,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Rococo"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "The Burning of the Houses of Lords and Commons",
+    "author": "Joseph Mallord William Turner",
+    "year": 1835,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "The Death of Socrates",
+    "author": "Jacques-Louis David",
+    "year": 1787,
+    "museum": "The Met",
+    "artMovement": "Neoclassicism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "The Swing",
+    "author": "Jean-Honore Fragonard",
+    "year": 1767,
+    "museum": "Wallace Collection",
+    "artMovement": "Rococo"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "The Third-Class Carriage",
+    "author": "Honore Daumier",
+    "year": 1864,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "Vase of Flowers (Pink Background)",
+    "author": "Odilon Redon",
+    "year": 1906,
+    "museum": "The Met",
+    "artMovement": "Symbolism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "Watson and the Shark",
+    "author": "John Singleton Copley",
+    "year": 1778,
+    "museum": "National Gallery of Art",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Adoration of the Magi",
+    "author": "Sandro Botticelli",
+    "year": 1475,
+    "museum": "Uffizi Gallery",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Madonna of the Goldfinch (Copy)",
+    "author": "Raphael",
+    "year": 1506,
+    "museum": "Uffizi Gallery",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Pentecost",
+    "author": "Giotto",
+    "year": 1305,
+    "museum": "National Gallery (London)",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Saint Francis in Ecstasy",
+    "author": "Giovanni Bellini",
+    "year": 1480,
+    "museum": "Frick Collection",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Saint George and the Dragon",
+    "author": "Raphael",
+    "year": 1506,
+    "museum": "National Gallery of Art",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Small Cowper Madonna",
+    "author": "Raphael",
+    "year": 1505,
+    "museum": "National Gallery of Art",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "The Baptism of Christ",
+    "author": "Piero della Francesca",
+    "year": 1450,
+    "museum": "National Gallery (London)",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "The Crucifixion of Saint Andrew",
+    "author": "Caravaggio",
+    "year": 1607,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "The Last Supper (Copy)",
+    "author": "Giampietrino and Giovanni Antonio Boltraffio",
+    "year": 1520,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "The Transfiguration",
+    "author": "Raphael",
+    "year": 1520,
+    "museum": "Vatican Museums",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Virgin and Child with St. Anne",
+    "author": "Leonardo da Vinci",
+    "year": 1503,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "A Dutch Courtyard",
+    "author": "Pieter de Hooch",
+    "year": 1658,
+    "museum": "National Gallery of Art",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "Equestrian Portrait of Charles I",
+    "author": "Anthony van Dyck",
+    "year": 1635,
+    "museum": "National Gallery (London)",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "Glass of Lemonade",
+    "author": "Gerard ter Borch",
+    "year": 1664,
+    "museum": "State Hermitage Museum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "Portrait of a Girl in Blue",
+    "author": "Johannes C. Verspronck",
+    "year": 1641,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "The Banquet of the Guard",
+    "author": "Bartholomeus v. d. Helst",
+    "year": 1648,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "The Garden of Love",
+    "author": "Peter Paul Rubens",
+    "year": 1633,
+    "museum": "Museo del Prado",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "The Merry Family",
+    "author": "Jan Steen",
+    "year": 1668,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "The Threatened Swan",
+    "author": "Jan Asselijn",
+    "year": 1650,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "The Triumph of Death",
+    "author": "Pieter Bruegel the Elder",
+    "year": 1562,
+    "museum": "Museo del Prado",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "The Windmill at Wijk bij Duurstede",
+    "author": "Jacob van Ruisdael",
+    "year": 1670,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "Tower of Babel",
+    "author": "Pieter Bruegel the Elder",
+    "year": 1563,
+    "museum": "Kunsthistorisches Museum",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "Winter Landscape with Skaters",
+    "author": "Hendrick Avercamp",
+    "year": 1608,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "A Bar at the Folies-Bergère",
+    "author": "Edouard Manet",
+    "year": 1882,
+    "museum": "Courtauld Gallery, London",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Portrait of Madame Brunet",
+    "author": "Edouard Manet",
+    "year": 1861,
+    "museum": "The J. Paul Getty Museum",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Reading (La Lecture)",
+    "author": "Berthe Morisot",
+    "year": 1873,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Reclining Young Woman in Spanish Costume",
+    "author": "Edouard Manet",
+    "year": 1862,
+    "museum": "Yale Art Gallery",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "The Banks of the Oise",
+    "author": "Alfred Sisley",
+    "year": 1877,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "The Child's Bath",
+    "author": "Mary Cassatt",
+    "year": 1893,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "The Fifer",
+    "author": "Edouard Manet",
+    "year": 1866,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "The Grand Canal, Venice",
+    "author": "Edouard Manet",
+    "year": 1874,
+    "museum": "Shelburne Museum",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "The Monet Family in Their Garden",
+    "author": "Edouard Manet",
+    "year": 1874,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "The Valley of the Seine, from the Hills of Giverny",
+    "author": "Theodore Robinson",
+    "year": 1892,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Village of Eragny",
+    "author": "Camille Pissarro",
+    "year": 1895,
+    "museum": "Birmingham Museum of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Young Woman with Peonies",
+    "author": "Frederic Bazille",
+    "year": 1870,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Bouquet of Sunflowers",
+    "author": "Claude Monet",
+    "year": 1881,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Bridge over a Pond of Water Lilies",
+    "author": "Claude Monet",
+    "year": 1899,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Flower Beds at Vétheuil",
+    "author": "Claude Monet",
+    "year": 1881,
+    "museum": "Museum of Fine Arts, Boston",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Poplars (Three Pink Autumn Trees)",
+    "author": "Claude Monet",
+    "year": 1891,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Rounded Flower Bed (Corbeille de fleurs)",
+    "author": "Claude Monet",
+    "year": 1876,
+    "museum": "Detroit Institute of Arts",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Snow at Argenteuil",
+    "author": "Claude Monet",
+    "year": 1875,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "The Argenteuil Bridge",
+    "author": "Claude Monet",
+    "year": 1874,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "The Artist's Garden at Vétheuil",
+    "author": "Claude Monet",
+    "year": 1880,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "The Beach at Sainte-Adresse",
+    "author": "Claude Monet",
+    "year": 1867,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "The Houses of Parliament, Sunset",
+    "author": "Claude Monet",
+    "year": 1903,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "The Japanese Footbridge",
+    "author": "Claude Monet",
+    "year": 1899,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Monet Gardens Through Time",
+    "title": "Water Lilies (Agapanthus)",
+    "author": "Claude Monet",
+    "year": 1920,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "A Lady Writing",
+    "author": "Johannes Vermeer",
+    "year": 1665,
+    "museum": "National Gallery of Art",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Aristotle with a Bust of Homer",
+    "author": "Rembrandt van Rijn",
+    "year": 1653,
+    "museum": "The Met",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Christ in the Storm (Copy)",
+    "author": "Rembrandt van Rijn",
+    "year": 1633,
+    "museum": "Stewart Gardner",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Descent from the Cross",
+    "author": "Rembrandt van Rijn",
+    "year": 1634,
+    "museum": "Alte Pinakothek / Rijks",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Isaac and Rebecca, Known as ‘The Jewish Bride’",
+    "author": "Rembrandt van Rijn",
+    "year": 1665,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Self-Portrait (1659)",
+    "author": "Rembrandt van Rijn",
+    "year": 1659,
+    "museum": "National Gallery of Art",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Self-Portrait with Two Circles",
+    "author": "Rembrandt van Rijn",
+    "year": 1665,
+    "museum": "Kenwood House, London",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "The Windmill",
+    "author": "Rembrandt van Rijn",
+    "year": 1645,
+    "museum": "National Gallery of Art",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "View of Houses in Delft",
+    "author": "Johannes Vermeer",
+    "year": 1658,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Woman Holding a Balance",
+    "author": "Johannes Vermeer",
+    "year": 1664,
+    "museum": "National Gallery of Art",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Woman with a Pearl Necklace",
+    "author": "Johannes Vermeer",
+    "year": 1664,
+    "museum": "Gemäldegalerie",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Young Woman with a Water Pitcher",
+    "author": "Johannes Vermeer",
+    "year": 1662,
+    "museum": "The Met",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Dancers Practicing at the Barre",
+    "author": "Edgar Degas",
+    "year": 1877,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Girl with a Hoop",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1885,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Girl with a Watering Can",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1876,
+    "museum": "National Gallery of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "In the Meadow",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1888,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Madame Georges Charpentier",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1878,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Piazza San Marco, Venice",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1881,
+    "museum": "Minneapolis Institute of Art",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Self-Portrait (Degas)",
+    "author": "Edgar Degas",
+    "year": 1855,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "The Skiff (La Yole)",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1875,
+    "museum": "National Gallery (London)",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "The Woman with a Fan",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1880,
+    "museum": "The Hermitage",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Two Sisters (On the Terrace)",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1881,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Basket of Peaches",
+    "author": "Jean-Baptiste Chardin",
+    "year": 1768,
+    "museum": "Musée du Louvre",
+    "artMovement": "Rococo"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Flowers in a Terracotta Vase",
+    "author": "Jan van Huysum",
+    "year": 1736,
+    "museum": "The National Gallery, London",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Serenade",
+    "author": "Judith Leyster",
+    "year": 1629,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with a Glass and Oysters",
+    "author": "Jan Davidsz de Heem",
+    "year": 1640,
+    "museum": "The Met",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with a Silver Jug and a Porcelain Bowl",
+    "author": "Willem Kalf",
+    "year": 1660,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with Flowers on a Marble Tabletop",
+    "author": "Rachel Ruysch",
+    "year": 1716,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with Gilt Cup",
+    "author": "Willem Claesz Heda",
+    "year": 1635,
+    "museum": "Rijksmuseum",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with Ham",
+    "author": "Willem Claesz Heda",
+    "year": 1650,
+    "museum": "National Gallery of Art",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with Musical Instruments, Books and Sculpture",
+    "author": "Evaristo Baschenis",
+    "year": 1650,
+    "museum": "Museum Boijmans Van Beuningen",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "Still Life with Oysters, a Silver Tazza, and Glassware",
+    "author": "Willem Claesz Heda",
+    "year": 1635,
+    "museum": "The Met",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "The King's Table Flemish Still Life",
+    "title": "The Silver Tureen",
+    "author": "Jean-Baptiste Chardin",
+    "year": 1728,
+    "museum": "The Met",
+    "artMovement": "Rococo"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Among the Sierra Nevada",
+    "author": "Albert Bierstadt",
+    "year": 1868,
+    "museum": "Smithsonian",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Breezing Up (A Fair Wind)",
+    "author": "Winslow Homer",
+    "year": 1876,
+    "museum": "National Gallery of Art",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Declaration of Independence",
+    "author": "John Trumbull",
+    "year": 1819,
+    "museum": "Yale Art Gallery",
+    "artMovement": "Neoclassicism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Fur Traders on the Missouri",
+    "author": "George Caleb Bingham",
+    "year": 1845,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Kindred Spirits",
+    "author": "Asher B. Durand",
+    "year": 1849,
+    "museum": "Crystal Bridges",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Max Schmitt in a Single Scull",
+    "author": "Thomas Eakins",
+    "year": 1871,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Mount Corcoran",
+    "author": "Albert Bierstadt",
+    "year": 1877,
+    "museum": "National Gallery of Art",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "Stag at Sharkey's",
+    "author": "George Bellows",
+    "year": 1909,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "The Gross Clinic",
+    "author": "Thomas Eakins",
+    "year": 1875,
+    "museum": "Philadelphia Museum",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "The Icebergs",
+    "author": "Frederic Edwin Church",
+    "year": 1861,
+    "museum": "Dallas Museum of Art",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "The Oxbow",
+    "author": "Thomas Cole",
+    "year": 1836,
+    "museum": "The Met",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "The Soul of America",
+    "title": "The Veteran in a New Field",
+    "author": "Winslow Homer",
+    "year": 1865,
+    "museum": "The Met",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Field with Irises near Arles",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Flowering Plum Orchard",
+    "author": "Vincent van Gogh",
+    "year": 1887,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Gauguin's Chair",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Irises",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Roses",
+    "author": "Vincent van Gogh",
+    "year": 1890,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Shoes",
+    "author": "Vincent van Gogh",
+    "year": 1886,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Still Life with Quinces",
+    "author": "Vincent van Gogh",
+    "year": 1887,
+    "museum": "The Courtauld Gallery",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Sunflowers (1887)",
+    "author": "Vincent van Gogh",
+    "year": 1887,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Sunflowers (Blue background)",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Neue Pinakothek, Munich",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Gardens and Sunflowers",
+    "title": "Wheatfield with Cypresses",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Adeline Ravoux",
+    "author": "Vincent van Gogh",
+    "year": 1890,
+    "museum": "Cleveland Museum of Art",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "First Steps (After Millet)",
+    "author": "Vincent van Gogh",
+    "year": 1890,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "La Mousme",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "National Gallery of Art",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Portrait of Dr. Gachet (Etching)",
+    "author": "Vincent van Gogh",
+    "year": 1890,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Self-Portrait (1887)",
+    "author": "Vincent van Gogh",
+    "year": 1887,
+    "museum": "Art Institute of Chicago",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Self-Portrait (1889)",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "National Gallery of Art",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Self-Portrait as a Painter",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Self-Portrait with a Straw Hat",
+    "author": "Vincent van Gogh",
+    "year": 1887,
+    "museum": "The Met",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "Self-Portrait with Grey Felt Hat",
+    "author": "Vincent van Gogh",
+    "year": 1887,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh The Painter and His Shadows",
+    "title": "The Potato Eaters",
+    "author": "Vincent van Gogh",
+    "year": 1885,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "CaféeTerrace at Night",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Kröller-Müller Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "Landscape from Saint-Remy",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "Ny Carlsberg Glyptotek, Copenhagen",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "Starry Night Over the Rhone",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Musée d'Orsay",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "The Garden of the Asylum at Saint-Rémy",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "Kröller-Müller Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "The Harvest",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "The Langlois Bridge at Arles",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "The Night Cafe",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Yale Art Gallery",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "The Sower",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "The Yellow House",
+    "author": "Vincent van Gogh",
+    "year": 1888,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Van Gogh Under the Sun of Provence",
+    "title": "Wheatfield with Crows",
+    "author": "Vincent van Gogh",
+    "year": 1890,
+    "museum": "Van Gogh Museum",
+    "artMovement": "Post-Impressionism"
+  }
+]

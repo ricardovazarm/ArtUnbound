@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Veteran in a New Field
   author: Winslow Homer
   year: 1865
-  description: "Museum: The Met\nArt Movement: American Realism\nYear: 1865"
+  description: "Museum: The Met\nArt Movement: Realism\nYear: 1865"
   museum: The Met
-  artMovement: American Realism
+  artMovement: Realism
   aspectRatio: 1.578
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

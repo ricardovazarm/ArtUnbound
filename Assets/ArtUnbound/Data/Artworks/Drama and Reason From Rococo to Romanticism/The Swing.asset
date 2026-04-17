@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Swing
   title: The Swing
-  author: Jean-Honoré Fragonard
+  author: Jean-Honore Fragonard
   year: 1767
   description: "Museum: Wallace Collection\nArt Movement: Rococo\nYear: 1767"
   museum: Wallace Collection

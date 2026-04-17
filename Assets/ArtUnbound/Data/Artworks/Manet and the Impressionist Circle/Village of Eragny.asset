@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Village of Eragny
   author: Camille Pissarro
   year: 1895
-  description: "Museum: Birmingham Museum of Art\nArt Movement: Impressionism / Pointillism\nYear: 1895"
+  description: "Museum: Birmingham Museum of Art\nArt Movement: Impressionism\nYear: 1895"
   museum: Birmingham Museum of Art
-  artMovement: Impressionism / Pointillism
+  artMovement: Impressionism
   aspectRatio: 1.2378
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

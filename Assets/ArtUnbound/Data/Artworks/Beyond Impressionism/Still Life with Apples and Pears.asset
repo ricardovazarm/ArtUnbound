@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Still Life with Apples and Pears
   title: Still Life with Apples and Pears
-  author: Paul Cézanne
+  author: Paul Cezanne
   year: 1891
   description: "Museum: The Met\nArt Movement: Post-Impressionism\nYear: 1891"
   museum: The Met

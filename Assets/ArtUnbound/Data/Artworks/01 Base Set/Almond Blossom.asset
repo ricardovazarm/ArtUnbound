@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Almond Blossom
   title: Almond Blossom
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1890
   description: "Museum: Van Gogh Museum\nArt Movement: Post-Impressionism\nYear: 1890\nCredits: Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)"
   museum: Van Gogh Museum

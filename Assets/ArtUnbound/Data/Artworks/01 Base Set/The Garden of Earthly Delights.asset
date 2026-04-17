@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Garden of Earthly Delights
   author: Hieronymus Bosch
   year: 1503
-  description: "Museum: Museo del Prado\nArt Movement: Northern Renaissance\nYear: 1503"
+  description: "Museum: Museo del Prado\nArt Movement: Renaissance\nYear: 1503"
   museum: Museo del Prado
-  artMovement: Northern Renaissance
+  artMovement: Renaissance
   aspectRatio: 1.7566
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

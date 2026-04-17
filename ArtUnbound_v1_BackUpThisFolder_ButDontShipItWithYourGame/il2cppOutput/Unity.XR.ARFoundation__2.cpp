@@ -1212,8 +1212,8 @@ struct List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B_StaticFields
 };
 struct U3CPrivateImplementationDetailsU3E_tBFE99C31626F2829DCB547DDCEDBCD0FAB9FDC27_StaticFields
 {
+	__StaticArrayInitTypeSizeU3D11991_t4C838B241BB5D7CC38E3A6BA4DA280C324B08AFA ___7B05A47F1F700D63C81E0866D2F3E4FB7833020543921091D6D8C49B6B47410A;
 	__StaticArrayInitTypeSizeU3D6859_t15BFB7141B1B7118933A8BDA989916C288A7349A ___D257C865362014F39F0F1B7C6B5FAB277A6C4824A7CC4C5A6D1CA16108976B93;
-	__StaticArrayInitTypeSizeU3D11991_t4C838B241BB5D7CC38E3A6BA4DA280C324B08AFA ___FB91048E3914C56E907AECCA18487BC695BA5B0B06918D952BB395E8FD66172B;
 	__StaticArrayInitTypeSizeU3D24_t48A12045FD3955C736D4AC5379EE6C4C5793DCF0 ___FE78C65211DD0B56A97024FB61111E686EF1FE054AA132BA58E2891AC496F1EE;
 };
 struct String_t_StaticFields
@@ -1980,7 +1980,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98408
+// Method Definition Index: 119549
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy__ctor_m5B18E109FFBC3A6F27A60E81BFB0FFB574660A12 (FixedLengthSwapchainStrategy_tC657C02FE7D09A3F45CE93ABBDE8B2D65C618341* __this, NativeArray_1_t4106F3B25F6591F7AB0D0F9D4E2D58455CF8F3B2 ___0_swapchainDescriptors, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2002,15 +2002,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy__ctor_m5B18
 	XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 V_4;
 	memset((&V_4), 0, sizeof(V_4));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:29>
 		Dictionary_2_t34E1FB910E28885537548E515931C2D115B4A249* L_0 = (Dictionary_2_t34E1FB910E28885537548E515931C2D115B4A249*)il2cpp_codegen_object_new(Dictionary_2_t34E1FB910E28885537548E515931C2D115B4A249_il2cpp_TypeInfo_var);
 		Dictionary_2__ctor_m35380812B6E36E19994C5EC14A42A1EF6D8242EE(L_0, Dictionary_2__ctor_m35380812B6E36E19994C5EC14A42A1EF6D8242EE_RuntimeMethod_var);
 		__this->___m_FrameIndicesByTexturePtr = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_FrameIndicesByTexturePtr), (void*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:33>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:35>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:36>
 		int32_t L_1;
 		L_1 = IL2CPP_NATIVEARRAY_GET_LENGTH(((&___0_swapchainDescriptors))->___m_Length);
 		if (!L_1)
@@ -2032,7 +2032,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy__ctor_m5B18
 
 IL_002c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:37>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:37>
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_4 = (ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var)));
 		ArgumentException__ctor_m8F9D40CE19D19B698A70F9A258640EB52DB39B62(L_4, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral19695DFE40F7CCF44E7C2F601F6E93F4D206313C)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral3E90506F26E84AC8C0220C6A374F69AF76B929DA)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_4, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&FixedLengthSwapchainStrategy__ctor_m5B18E109FFBC3A6F27A60E81BFB0FFB574660A12_RuntimeMethod_var)));
@@ -2040,30 +2040,30 @@ IL_002c:
 
 IL_003c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:39>
 		int32_t L_5;
 		L_5 = IL2CPP_NATIVEARRAY_GET_LENGTH(((&___0_swapchainDescriptors))->___m_Length);
 		V_0 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:40>
 		NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C L_6;
 		L_6 = IL2CPP_NATIVEARRAY_GET_ITEM(NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C, ((&___0_swapchainDescriptors))->___m_Buffer, 0);
 		V_1 = L_6;
 		int32_t L_7;
 		L_7 = IL2CPP_NATIVEARRAY_GET_LENGTH(((&V_1))->___m_Length);
 		__this->___m_NumTexturesPerFrame = L_7;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:41>
 		int32_t L_8 = V_0;
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_9 = (IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107*)(IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107*)SZArrayNew(IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107_il2cpp_TypeInfo_var, (uint32_t)L_8);
 		__this->___m_UpdatableTextures = L_9;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_UpdatableTextures), (void*)L_9);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:43>
 		V_2 = 0;
 		goto IL_0176;
 	}
 
 IL_006d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:45>
 		int32_t L_10 = V_2;
 		NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C L_11;
 		L_11 = IL2CPP_NATIVEARRAY_GET_ITEM(NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C, ((&___0_swapchainDescriptors))->___m_Buffer, L_10);
@@ -2077,8 +2077,8 @@ IL_006d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:46>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:47>
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_14 = (ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var)));
 		ArgumentException__ctor_m8F9D40CE19D19B698A70F9A258640EB52DB39B62(L_14, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralC27EB5E3712BC5CD11E3E122F0EFDC29FF88A1C9)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral3E90506F26E84AC8C0220C6A374F69AF76B929DA)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_14, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&FixedLengthSwapchainStrategy__ctor_m5B18E109FFBC3A6F27A60E81BFB0FFB574660A12_RuntimeMethod_var)));
@@ -2086,7 +2086,7 @@ IL_006d:
 
 IL_0095:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:49>
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_15 = __this->___m_UpdatableTextures;
 		int32_t L_16 = V_2;
 		int32_t L_17 = __this->___m_NumTexturesPerFrame;
@@ -2094,14 +2094,14 @@ IL_0095:
 		NullCheck(L_15);
 		ArrayElementTypeCheck (L_15, L_18);
 		(L_15)->SetAt(static_cast<il2cpp_array_size_t>(L_16), (IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B*)L_18);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:50>
 		V_3 = 0;
 		goto IL_0166;
 	}
 
 IL_00af:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:52>
 		int32_t L_19 = V_2;
 		NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C L_20;
 		L_20 = IL2CPP_NATIVEARRAY_GET_ITEM(NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C, ((&___0_swapchainDescriptors))->___m_Buffer, L_19);
@@ -2120,7 +2120,7 @@ IL_00af:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:53>
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_25 = (ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var)));
 		ArgumentException__ctor_m8F9D40CE19D19B698A70F9A258640EB52DB39B62(L_25, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralDE6563FC776BE7AC692410585E95DBFDE481355F)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral3E90506F26E84AC8C0220C6A374F69AF76B929DA)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_25, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&FixedLengthSwapchainStrategy__ctor_m5B18E109FFBC3A6F27A60E81BFB0FFB574660A12_RuntimeMethod_var)));
@@ -2128,7 +2128,7 @@ IL_00af:
 
 IL_00e5:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:55>
 		Dictionary_2_t34E1FB910E28885537548E515931C2D115B4A249* L_26 = __this->___m_FrameIndicesByTexturePtr;
 		int32_t L_27 = V_2;
 		NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C L_28;
@@ -2149,7 +2149,7 @@ IL_00e5:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:56>
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_33 = (ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var)));
 		ArgumentException__ctor_m8F9D40CE19D19B698A70F9A258640EB52DB39B62(L_33, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral90401EE21EC0A5F19BCDB31B7F5A7CE5C9355B96)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral3E90506F26E84AC8C0220C6A374F69AF76B929DA)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_33, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&FixedLengthSwapchainStrategy__ctor_m5B18E109FFBC3A6F27A60E81BFB0FFB574660A12_RuntimeMethod_var)));
@@ -2157,7 +2157,7 @@ IL_00e5:
 
 IL_011c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:58>
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_34 = __this->___m_UpdatableTextures;
 		int32_t L_35 = V_2;
 		NullCheck(L_34);
@@ -2176,7 +2176,7 @@ IL_011c:
 		NullCheck(L_37);
 		ArrayElementTypeCheck (L_37, L_43);
 		(L_37)->SetAt(static_cast<il2cpp_array_size_t>(L_38), (RuntimeObject*)L_43);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:59>
 		Dictionary_2_t34E1FB910E28885537548E515931C2D115B4A249* L_44 = __this->___m_FrameIndicesByTexturePtr;
 		int32_t L_45 = V_2;
 		NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C L_46;
@@ -2191,14 +2191,14 @@ IL_011c:
 		int32_t L_50 = V_2;
 		NullCheck(L_44);
 		Dictionary_2_Add_m9A3A587436EE018F003D9B806D3062C9CB78CE28(L_44, L_49, L_50, Dictionary_2_Add_m9A3A587436EE018F003D9B806D3062C9CB78CE28_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:50>
 		int32_t L_51 = V_3;
 		V_3 = ((int32_t)il2cpp_codegen_add(L_51, 1));
 	}
 
 IL_0166:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:50>
 		int32_t L_52 = V_3;
 		int32_t L_53 = __this->___m_NumTexturesPerFrame;
 		if ((((int32_t)L_52) < ((int32_t)L_53)))
@@ -2207,14 +2207,14 @@ IL_0166:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:43>
 		int32_t L_54 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_54, 1));
 	}
 
 IL_0176:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:43>
 		int32_t L_55 = V_2;
 		int32_t L_56 = V_0;
 		if ((((int32_t)L_55) < ((int32_t)L_56)))
@@ -2223,11 +2223,11 @@ IL_0176:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:62>
 		return;
 	}
 }
-// Method Definition Index: 98409
+// Method Definition Index: 119550
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool FixedLengthSwapchainStrategy_UnityEngine_XR_ARFoundation_ISwapchainStrategy_TryUpdateTexturesForFrame_m92A5B1D7F8C6F9F2ECEFE3AE55EBBA6E61CBEDFE (FixedLengthSwapchainStrategy_tC657C02FE7D09A3F45CE93ABBDE8B2D65C618341* __this, NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C ___0_descriptors, ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC* ___1_textureInfos, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2246,7 +2246,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool FixedLengthSwapchainStrategy_UnityEngine
 	memset((&V_2), 0, sizeof(V_2));
 	int32_t V_3 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:67>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:67>
 		int32_t L_0;
 		L_0 = IL2CPP_NATIVEARRAY_GET_LENGTH(((&___0_descriptors))->___m_Length);
 		if (L_0)
@@ -2255,20 +2255,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool FixedLengthSwapchainStrategy_UnityEngine
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:69>
 		ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC* L_1 = ___1_textureInfos;
 		il2cpp_codegen_runtime_class_init_inline(ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC_il2cpp_TypeInfo_var);
 		ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC L_2;
 		L_2 = ReadOnlyListSpan_1_Empty_mCCF0865CF452E4895815F1C8882A75DE8BD8E7C0_inline(ReadOnlyListSpan_1_Empty_mCCF0865CF452E4895815F1C8882A75DE8BD8E7C0_RuntimeMethod_var);
 		*(ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC*)L_1 = L_2;
 		Il2CppCodeGenWriteBarrier((void**)&((&(((ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC*)L_1)->___m_Enumerator))->___list), (void*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:70>
 		return (bool)1;
 	}
 
 IL_0016:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:73>
 		Dictionary_2_t34E1FB910E28885537548E515931C2D115B4A249* L_3 = __this->___m_FrameIndicesByTexturePtr;
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_4;
 		L_4 = IL2CPP_NATIVEARRAY_GET_ITEM(XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19, ((&___0_descriptors))->___m_Buffer, 0);
@@ -2284,8 +2284,8 @@ IL_0016:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:74>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:75>
 		InvalidOperationException_t5DDE4D49B7405FAAB1E4576F4715A42A3FAD4BAB* L_7 = (InvalidOperationException_t5DDE4D49B7405FAAB1E4576F4715A42A3FAD4BAB*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&InvalidOperationException_t5DDE4D49B7405FAAB1E4576F4715A42A3FAD4BAB_il2cpp_TypeInfo_var)));
 		InvalidOperationException__ctor_mE4CB6F4712AB6D99A2358FBAE2E052B3EE976162(L_7, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralCB0016D7D942B21FE748047377B138FBF0C96DC4)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_7, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&FixedLengthSwapchainStrategy_UnityEngine_XR_ARFoundation_ISwapchainStrategy_TryUpdateTexturesForFrame_m92A5B1D7F8C6F9F2ECEFE3AE55EBBA6E61CBEDFE_RuntimeMethod_var)));
@@ -2293,7 +2293,7 @@ IL_0016:
 
 IL_0040:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:77>
 		int32_t L_8;
 		L_8 = IL2CPP_NATIVEARRAY_GET_LENGTH(((&___0_descriptors))->___m_Length);
 		int32_t L_9 = __this->___m_NumTexturesPerFrame;
@@ -2303,8 +2303,8 @@ IL_0040:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:78>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:79>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:78>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:79>
 		int32_t L_10 = __this->___m_NumTexturesPerFrame;
 		int32_t L_11 = L_10;
 		RuntimeObject* L_12 = Box(il2cpp_defaults.int32_class, &L_11);
@@ -2321,16 +2321,16 @@ IL_0040:
 
 IL_0076:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:81>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:81>
 		V_1 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:82>
 		V_3 = 0;
 		goto IL_009b;
 	}
 
 IL_007c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:84>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:84>
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_18 = __this->___m_UpdatableTextures;
 		int32_t L_19 = V_0;
 		NullCheck(L_18);
@@ -2352,20 +2352,20 @@ IL_007c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:85>
 		V_1 = (bool)0;
 	}
 
 IL_0097:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:82>
 		int32_t L_28 = V_3;
 		V_3 = ((int32_t)il2cpp_codegen_add(L_28, 1));
 	}
 
 IL_009b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:82>
 		int32_t L_29 = V_3;
 		int32_t L_30 = __this->___m_NumTexturesPerFrame;
 		if ((((int32_t)L_29) < ((int32_t)L_30)))
@@ -2374,7 +2374,7 @@ IL_009b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:88>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:88>
 		ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC* L_31 = ___1_textureInfos;
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_32 = __this->___m_UpdatableTextures;
 		int32_t L_33 = V_0;
@@ -2386,12 +2386,12 @@ IL_009b:
 		ReadOnlyListSpan_1__ctor_m65923A30591E3C0FB284E0F9BE25E510145E8E4D((&L_36), (RuntimeObject*)L_35, ReadOnlyListSpan_1__ctor_m65923A30591E3C0FB284E0F9BE25E510145E8E4D_RuntimeMethod_var);
 		*(ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC*)L_31 = L_36;
 		Il2CppCodeGenWriteBarrier((void**)&((&(((ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC*)L_31)->___m_Enumerator))->___list), (void*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:89>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:89>
 		bool L_37 = V_1;
 		return L_37;
 	}
 }
-// Method Definition Index: 98410
+// Method Definition Index: 119551
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy_DestroyTextures_m645530A120CE72DC9450C209031449E9C287C7DF (FixedLengthSwapchainStrategy_tC657C02FE7D09A3F45CE93ABBDE8B2D65C618341* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2405,7 +2405,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy_DestroyText
 	IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* V_2 = NULL;
 	int32_t V_3 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:94>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:94>
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_0 = __this->___m_UpdatableTextures;
 		V_0 = L_0;
 		V_1 = 0;
@@ -2414,13 +2414,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy_DestroyText
 
 IL_000b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:94>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:94>
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_1 = V_0;
 		int32_t L_2 = V_1;
 		NullCheck(L_1);
 		int32_t L_3 = L_2;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_4 = (L_1)->GetAt(static_cast<il2cpp_array_size_t>(L_3));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:96>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:96>
 		V_2 = L_4;
 		V_3 = 0;
 		goto IL_001f;
@@ -2428,13 +2428,13 @@ IL_000b:
 
 IL_0013:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:96>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:96>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_5 = V_2;
 		int32_t L_6 = V_3;
 		NullCheck(L_5);
 		int32_t L_7 = L_6;
 		RuntimeObject* L_8 = (L_5)->GetAt(static_cast<il2cpp_array_size_t>(L_7));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:98>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:98>
 		NullCheck(L_8);
 		InterfaceActionInvoker0::Invoke(3, IUpdatableTexture_t9004B679575C4A35812DBF4C308360D23B91843B_il2cpp_TypeInfo_var, L_8);
 		int32_t L_9 = V_3;
@@ -2443,7 +2443,7 @@ IL_0013:
 
 IL_001f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:96>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:96>
 		int32_t L_10 = V_3;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_11 = V_2;
 		NullCheck(L_11);
@@ -2459,7 +2459,7 @@ IL_001f:
 
 IL_0029:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:94>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:94>
 		int32_t L_13 = V_1;
 		IUpdatableTextureU5BU5DU5BU5D_tB1622B0971CF107317B39A38647693C01576E107* L_14 = V_0;
 		NullCheck(L_14);
@@ -2469,17 +2469,17 @@ IL_0029:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:101>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:101>
 		return;
 	}
 }
-// Method Definition Index: 98411
+// Method Definition Index: 119552
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy_System_IDisposable_Dispose_mB222417E7E08BB73679B96858BE2914DE32E1AF9 (FixedLengthSwapchainStrategy_tC657C02FE7D09A3F45CE93ABBDE8B2D65C618341* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:105>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:105>
 		FixedLengthSwapchainStrategy_DestroyTextures_m645530A120CE72DC9450C209031449E9C287C7DF(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:106>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/FixedLengthSwapchainStrategy.cs:106>
 		return;
 	}
 }
@@ -2491,7 +2491,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void FixedLengthSwapchainStrategy_System_IDis
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98418
+// Method Definition Index: 119559
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool IUpdatableTexture_System_IEquatableU3CUnityEngine_XR_ARFoundation_IUpdatableTextureU3E_Equals_m558CE3F20D20DEDB698FF6D14BA186DEF8AAF492 (RuntimeObject* __this, RuntimeObject* ___0_other, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2502,9 +2502,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool IUpdatableTexture_System_IEquatableU3CUn
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/IUpdatableTexture.cs:18>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/IUpdatableTexture.cs:19>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/IUpdatableTexture.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/IUpdatableTexture.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/IUpdatableTexture.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/IUpdatableTexture.cs:20>
 		RuntimeObject* L_0 = ___0_other;
 		if (!L_0)
 		{
@@ -2551,7 +2551,7 @@ IL_0028:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98419
+// Method Definition Index: 119560
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NoSwapchainStrategy_UnityEngine_XR_ARFoundation_ISwapchainStrategy_TryUpdateTexturesForFrame_m27EFB0F49D376587920CEE30FB93A58856952956 (NoSwapchainStrategy_t1EA2808155984524E8D481D328975FD88FAB0F42* __this, NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C ___0_textureDescriptors, ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC* ___1_updatableTextures, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2564,7 +2564,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NoSwapchainStrategy_UnityEngine_XR_ARFou
 	bool V_0 = false;
 	int32_t V_1 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:19>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_0 = __this->___m_UpdatableTextures;
 		if (!L_0)
 		{
@@ -2584,23 +2584,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool NoSwapchainStrategy_UnityEngine_XR_ARFou
 
 IL_0019:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:20>
 		NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C L_3 = ___0_textureDescriptors;
 		NoSwapchainStrategy_ResizeTextureInfos_m343B59CAEF545681140A91BEE56B7EB45E25F40F(__this, L_3, NULL);
 	}
 
 IL_0020:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:22>
 		V_0 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:24>
 		V_1 = 0;
 		goto IL_0043;
 	}
 
 IL_0026:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:26>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_4 = __this->___m_UpdatableTextures;
 		int32_t L_5 = V_1;
 		NullCheck(L_4);
@@ -2618,20 +2618,20 @@ IL_0026:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:27>
 		V_0 = (bool)0;
 	}
 
 IL_003f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:24>
 		int32_t L_11 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_add(L_11, 1));
 	}
 
 IL_0043:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:24>
 		int32_t L_12 = V_1;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_13 = __this->___m_UpdatableTextures;
 		NullCheck(L_13);
@@ -2641,7 +2641,7 @@ IL_0043:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:30>
 		ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC* L_14 = ___1_updatableTextures;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_15 = __this->___m_UpdatableTextures;
 		ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC L_16;
@@ -2649,12 +2649,12 @@ IL_0043:
 		ReadOnlyListSpan_1__ctor_m65923A30591E3C0FB284E0F9BE25E510145E8E4D((&L_16), (RuntimeObject*)L_15, ReadOnlyListSpan_1__ctor_m65923A30591E3C0FB284E0F9BE25E510145E8E4D_RuntimeMethod_var);
 		*(ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC*)L_14 = L_16;
 		Il2CppCodeGenWriteBarrier((void**)&((&(((ReadOnlyListSpan_1_tD3E8B23392DCF06A30CAD4F2F820BB9CDD8054AC*)L_14)->___m_Enumerator))->___list), (void*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:31>
 		bool L_17 = V_0;
 		return L_17;
 	}
 }
-// Method Definition Index: 98420
+// Method Definition Index: 119561
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_ResizeTextureInfos_m343B59CAEF545681140A91BEE56B7EB45E25F40F (NoSwapchainStrategy_t1EA2808155984524E8D481D328975FD88FAB0F42* __this, NativeArray_1_t6C2613A1D4A03EFEE59BBADBC529386D1205D01C ___0_descriptors, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2670,14 +2670,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_ResizeTextureInfos_m
 	int32_t V_3 = 0;
 	int32_t V_4 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:36>
 		int32_t L_0;
 		L_0 = IL2CPP_NATIVEARRAY_GET_LENGTH(((&___0_descriptors))->___m_Length);
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_1 = (IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B*)(IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B*)SZArrayNew(IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B_il2cpp_TypeInfo_var, (uint32_t)L_0);
 		V_0 = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:37>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:37>
 		V_1 = 0;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:39>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_2 = __this->___m_UpdatableTextures;
 		if (!L_2)
 		{
@@ -2685,7 +2685,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_ResizeTextureInfos_m
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:41>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_3 = __this->___m_UpdatableTextures;
 		NullCheck(L_3);
 		int32_t L_4;
@@ -2693,14 +2693,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_ResizeTextureInfos_m
 		int32_t L_5;
 		L_5 = Mathf_Min_m888083F74FF5655778F0403BB5E9608BEFDEA8CB_inline(((int32_t)(((RuntimeArray*)L_3)->max_length)), L_4, NULL);
 		V_1 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:42>
 		V_2 = 0;
 		goto IL_003f;
 	}
 
 IL_0030:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:44>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:44>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_6 = V_0;
 		int32_t L_7 = V_2;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_8 = __this->___m_UpdatableTextures;
@@ -2711,14 +2711,14 @@ IL_0030:
 		NullCheck(L_6);
 		ArrayElementTypeCheck (L_6, L_11);
 		(L_6)->SetAt(static_cast<il2cpp_array_size_t>(L_7), (RuntimeObject*)L_11);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:42>
 		int32_t L_12 = V_2;
 		V_2 = ((int32_t)il2cpp_codegen_add(L_12, 1));
 	}
 
 IL_003f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:42>
 		int32_t L_13 = V_2;
 		int32_t L_14 = V_1;
 		if ((((int32_t)L_13) < ((int32_t)L_14)))
@@ -2727,7 +2727,7 @@ IL_003f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:48>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_15 = V_0;
 		NullCheck(L_15);
 		V_3 = ((int32_t)(((RuntimeArray*)L_15)->max_length));
@@ -2736,7 +2736,7 @@ IL_003f:
 
 IL_0049:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:50>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_16 = __this->___m_UpdatableTextures;
 		int32_t L_17 = V_3;
 		NullCheck(L_16);
@@ -2744,14 +2744,14 @@ IL_0049:
 		RuntimeObject* L_19 = (L_16)->GetAt(static_cast<il2cpp_array_size_t>(L_18));
 		NullCheck(L_19);
 		InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_19);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:48>
 		int32_t L_20 = V_3;
 		V_3 = ((int32_t)il2cpp_codegen_add(L_20, 1));
 	}
 
 IL_005a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:48>
 		int32_t L_21 = V_3;
 		int32_t L_22 = V_1;
 		if ((((int32_t)L_21) < ((int32_t)L_22)))
@@ -2762,7 +2762,7 @@ IL_005a:
 
 IL_005e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:55>
 		int32_t L_23 = V_1;
 		V_4 = L_23;
 		goto IL_007b;
@@ -2770,7 +2770,7 @@ IL_005e:
 
 IL_0063:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:57>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_24 = V_0;
 		int32_t L_25 = V_4;
 		int32_t L_26 = V_4;
@@ -2781,14 +2781,14 @@ IL_0063:
 		NullCheck(L_24);
 		ArrayElementTypeCheck (L_24, L_28);
 		(L_24)->SetAt(static_cast<il2cpp_array_size_t>(L_25), (RuntimeObject*)L_28);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:55>
 		int32_t L_29 = V_4;
 		V_4 = ((int32_t)il2cpp_codegen_add(L_29, 1));
 	}
 
 IL_007b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:55>
 		int32_t L_30 = V_4;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_31 = V_0;
 		NullCheck(L_31);
@@ -2798,15 +2798,15 @@ IL_007b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:60>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_32 = V_0;
 		__this->___m_UpdatableTextures = L_32;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_UpdatableTextures), (void*)L_32);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:61>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:61>
 		return;
 	}
 }
-// Method Definition Index: 98421
+// Method Definition Index: 119562
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_DestroyTextures_m0930BA84326F248600459A5FC751F9F9320DA7AA (NoSwapchainStrategy_t1EA2808155984524E8D481D328975FD88FAB0F42* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2818,7 +2818,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_DestroyTextures_m093
 	IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* V_0 = NULL;
 	int32_t V_1 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:65>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_0 = __this->___m_UpdatableTextures;
 		if (L_0)
 		{
@@ -2826,13 +2826,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_DestroyTextures_m093
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:66>
 		return;
 	}
 
 IL_0009:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:68>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_1 = __this->___m_UpdatableTextures;
 		V_0 = L_1;
 		V_1 = 0;
@@ -2841,13 +2841,13 @@ IL_0009:
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:68>
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_2 = V_0;
 		int32_t L_3 = V_1;
 		NullCheck(L_2);
 		int32_t L_4 = L_3;
 		RuntimeObject* L_5 = (L_2)->GetAt(static_cast<il2cpp_array_size_t>(L_4));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:70>
 		NullCheck(L_5);
 		InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_5);
 		int32_t L_6 = V_1;
@@ -2856,7 +2856,7 @@ IL_0014:
 
 IL_0020:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:68>
 		int32_t L_7 = V_1;
 		IUpdatableTextureU5BU5D_tB4FB4410EEDA562651A6AFB89DEB7CA59479037B* L_8 = V_0;
 		NullCheck(L_8);
@@ -2866,21 +2866,21 @@ IL_0020:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:72>
 		return;
 	}
 }
-// Method Definition Index: 98422
+// Method Definition Index: 119563
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy_System_IDisposable_Dispose_mDE54C7EFF9A46CF57427A7BB34C812AB9E69E1DA (NoSwapchainStrategy_t1EA2808155984524E8D481D328975FD88FAB0F42* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:76>
 		NoSwapchainStrategy_DestroyTextures_m0930BA84326F248600459A5FC751F9F9320DA7AA(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/NoSwapchainStrategy.cs:77>
 		return;
 	}
 }
-// Method Definition Index: 98423
+// Method Definition Index: 119564
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy__ctor_mCF7D7C80BF19F092EE99B0CD29D3EFA788D36FE1 (NoSwapchainStrategy_t1EA2808155984524E8D481D328975FD88FAB0F42* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2896,31 +2896,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NoSwapchainStrategy__ctor_mCF7D7C80BF19F
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98424
+// Method Definition Index: 119565
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 UpdatableCubemap_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_descriptor_m8E9B88CDB0BA4BCA2067C8AE40CA051094164BAB (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:9>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		return L_0;
 	}
 }
-// Method Definition Index: 98425
+// Method Definition Index: 119566
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* UpdatableCubemap_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_texture_m3F698992E89268AB2CFAC94873845DCEDFF71E5A (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:12>
 		Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* L_0 = __this->___m_Texture;
 		return L_0;
 	}
 }
-// Method Definition Index: 98426
+// Method Definition Index: 119567
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableCubemap__ctor_m1D2EA5C2129CF380B8099FEFB0171A795E540960 (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:15>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:15>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:17>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		if ((((int32_t)L_0) == ((int32_t)3)))
@@ -2929,7 +2929,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableCubemap__ctor_m1D2EA5C2129CF380
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:18>
 		int32_t L_1;
 		L_1 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		int32_t L_2 = L_1;
@@ -2943,28 +2943,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableCubemap__ctor_m1D2EA5C2129CF380
 
 IL_002c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:20>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_6 = ___0_descriptor;
 		__this->___m_Descriptor = L_6;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:21>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_7 = ___0_descriptor;
 		Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* L_8;
 		L_8 = UpdatableCubemap_CreateTextureFromDescriptor_m6846B6962221AEEE52299D0CEA69CB401EC5F728(L_7, NULL);
 		__this->___m_Texture = L_8;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_8);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:22>
 		return;
 	}
 }
-// Method Definition Index: 98427
+// Method Definition Index: 119568
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* UpdatableCubemap_CreateTextureFromDescriptor_m6846B6962221AEEE52299D0CEA69CB401EC5F728 (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:26>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:27>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:28>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:29>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:30>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_width_m570472F03994BC63F21751414105A2E0C112DBF2_inline((&___0_descriptor), NULL);
 		int32_t L_1;
@@ -2978,11 +2978,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C
 		return L_4;
 	}
 }
-// Method Definition Index: 98428
+// Method Definition Index: 119569
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableCubemap_UnityEngine_XR_ARFoundation_IUpdatableTexture_TryUpdateFromDescriptor_m9A84860DD414C74E56A86F3960E6D9B2CBAE3BAE (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_newDescriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:35>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_1 = ___0_newDescriptor;
 		bool L_2;
@@ -2993,13 +2993,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableCubemap_UnityEngine_XR_ARFounda
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:36>
 		return (bool)1;
 	}
 
 IL_0010:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:38>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_3 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_4 = ___0_newDescriptor;
 		bool L_5;
@@ -3010,58 +3010,58 @@ IL_0010:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:40>
 		Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* L_6 = __this->___m_Texture;
 		intptr_t L_7;
 		L_7 = XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline((&___0_newDescriptor), NULL);
 		NullCheck(L_6);
 		Cubemap_UpdateExternalTexture_m6065B8D7B4B70C31AAA64DD142B96ADFAD74C53E(L_6, L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:41>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_8 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_8;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:42>
 		return (bool)1;
 	}
 
 IL_0039:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:45>
 		Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* L_9 = __this->___m_Texture;
 		UnityObjectUtils_Destroy_mFA9A21EE17656D12F1B126AD9C2CC4EDFD35F157(L_9, (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:46>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_10 = ___0_newDescriptor;
 		Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* L_11;
 		L_11 = UpdatableCubemap_CreateTextureFromDescriptor_m6846B6962221AEEE52299D0CEA69CB401EC5F728(L_10, NULL);
 		__this->___m_Texture = L_11;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_11);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:47>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_12 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_12;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:48>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 98429
+// Method Definition Index: 119570
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableCubemap_DestroyTexture_m173B3CF4E8E616F48BEE6329B86CD73CD9BC3EED (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:53>
 		Cubemap_t4F2DFF70696A5CB5C1695DF8947CC60D718C4A1C* L_0 = __this->___m_Texture;
 		UnityObjectUtils_Destroy_mFA9A21EE17656D12F1B126AD9C2CC4EDFD35F157(L_0, (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:54>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_1 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		il2cpp_codegen_initobj(L_1, sizeof(XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:55>
 		return;
 	}
 }
-// Method Definition Index: 98430
+// Method Definition Index: 119571
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableCubemap_System_IDisposable_Dispose_m93CBBD96AC73B6820FCD60FDCF342E5EEF0976E7 (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:59>
 		UpdatableCubemap_DestroyTexture_m173B3CF4E8E616F48BEE6329B86CD73CD9BC3EED(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableCubemap.cs:60>
 		return;
 	}
 }
@@ -3073,38 +3073,38 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableCubemap_System_IDisposable_Disp
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98431
+// Method Definition Index: 119572
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 UpdatableRenderTexture_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_descriptor_m60EC515B14BD4A0A3A41CF1B978712CB78713B77 (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:13>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		return L_0;
 	}
 }
-// Method Definition Index: 98432
+// Method Definition Index: 119573
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* UpdatableRenderTexture_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_texture_m9DFC9C10FF6715EBBC2C1856E54662CB5BF46593 (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:16>
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_0 = __this->___m_Texture;
 		return L_0;
 	}
 }
-// Method Definition Index: 98433
+// Method Definition Index: 119574
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture__ctor_m4A85C6A1D7B7312C442F18266FA12F0A012B8592 (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:23>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:23>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:29>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = ___0_descriptor;
 		UpdatableRenderTexture_RequestCreateTexture_mBD408EE205EEDDDE099BF41AF8186B50C7C8FE29(__this, L_0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:31>
 		return;
 	}
 }
-// Method Definition Index: 98434
+// Method Definition Index: 119575
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_RequestCreateTexture_mBD408EE205EEDDDE099BF41AF8186B50C7C8FE29 (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_newDescriptor, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3119,7 +3119,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_RequestCreateText
 	}
 	XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* V_0 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:36>
 		bool L_0;
 		L_0 = SubsystemUtils_TryGetLoadedIntegratedSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_mE5C840511603A0A3144D8764F6394D8D2A0447A0((&V_0), SubsystemUtils_TryGetLoadedIntegratedSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_mE5C840511603A0A3144D8764F6394D8D2A0447A0_RuntimeMethod_var);
 		if (L_0)
@@ -3128,16 +3128,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_RequestCreateText
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:38>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral4912B8BFA399C983B66771EA048A65169929756C, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:39>
 		return;
 	}
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:42>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_1 = ___0_newDescriptor;
 		UnityXRRenderTextureDesc_tA6CF93382D5D69117464D7D409B5C0177B367267 L_2;
 		L_2 = UpdatableRenderTexture_ToUnityXRRenderTextureDesc_mDC651296313E7C6F59C0206AA3B8EE31A11E865B(L_1, NULL);
@@ -3150,9 +3150,9 @@ IL_0014:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:44>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:44>
 		__this->___m_IsCreateRequested = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:45>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_5 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_5;
 		return;
@@ -3160,7 +3160,7 @@ IL_0014:
 
 IL_0036:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:49>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_6 = __this->___m_Descriptor;
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_7 = L_6;
 		RuntimeObject* L_8 = Box(XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19_il2cpp_TypeInfo_var, &L_7);
@@ -3168,11 +3168,11 @@ IL_0036:
 		L_9 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteralAEBCD235F115FD78D0A6F187C179E9D170D57846, L_8, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_9, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:52>
 		return;
 	}
 }
-// Method Definition Index: 98435
+// Method Definition Index: 119576
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTexture_TryRetrieveTexture_mF45934EC2ADFF20DF07DD2E238DA80F99499D7E7 (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3186,7 +3186,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTexture_TryRetrieveTextur
 	}
 	XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* V_0 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:56>
 		bool L_0;
 		L_0 = SubsystemUtils_TryGetLoadedIntegratedSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_mE5C840511603A0A3144D8764F6394D8D2A0447A0((&V_0), SubsystemUtils_TryGetLoadedIntegratedSubsystem_TisXRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1_mE5C840511603A0A3144D8764F6394D8D2A0447A0_RuntimeMethod_var);
 		if (L_0)
@@ -3195,16 +3195,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTexture_TryRetrieveTextur
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:58>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteral5691E611847F2E4ED84662301081444D5C4C06FC, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:59>
 		return (bool)0;
 	}
 
 IL_0015:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:62>
 		XRDisplaySubsystem_t4B00B0BF1894A039ACFA8DDC2C2EB9301118C1F1* L_1 = V_0;
 		uint32_t L_2 = __this->___m_RenderTextureId;
 		NullCheck(L_1);
@@ -3212,7 +3212,7 @@ IL_0015:
 		L_3 = XRDisplaySubsystem_GetRenderTexture_mABB964AEAFF9B12DB279EDECAE85A52F6253E5CA(L_1, L_2, NULL);
 		__this->___m_Texture = L_3;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_3);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:63>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:63>
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_4 = __this->___m_Texture;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -3223,22 +3223,22 @@ IL_0015:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:64>
 		__this->___m_IsCreated = (bool)1;
 	}
 
 IL_003c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:66>
 		bool L_6 = __this->___m_IsCreated;
 		return L_6;
 	}
 }
-// Method Definition Index: 98436
+// Method Definition Index: 119577
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTexture_UnityEngine_XR_ARFoundation_IUpdatableTexture_TryUpdateFromDescriptor_m4511F27A797A85FD966CF991346A33600B9B774C (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_newDescriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:71>
 		bool L_0 = __this->___m_IsCreated;
 		if (!L_0)
 		{
@@ -3256,15 +3256,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTexture_UnityEngine_XR_AR
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:73>
 		return (bool)1;
 	}
 
 IL_0018:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:75>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:76>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:77>
 		bool L_4 = __this->___m_IsCreated;
 		if (!L_4)
 		{
@@ -3293,16 +3293,16 @@ IL_0018:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:79>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:79>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_11 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_11;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:80>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:80>
 		return (bool)1;
 	}
 
 IL_004b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:82>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_12 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_13 = ___0_newDescriptor;
 		bool L_14;
@@ -3313,18 +3313,18 @@ IL_004b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:84>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:84>
 		UpdatableRenderTexture_DestroyTexture_m69F29C795B8BD67AB5610DB4FD78CCB72E805ECC(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:85>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_15 = ___0_newDescriptor;
 		UpdatableRenderTexture_RequestCreateTexture_mBD408EE205EEDDDE099BF41AF8186B50C7C8FE29(__this, L_15, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:86>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:86>
 		return (bool)0;
 	}
 
 IL_0068:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:88>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:88>
 		bool L_16 = __this->___m_IsCreated;
 		if (L_16)
 		{
@@ -3339,16 +3339,16 @@ IL_0068:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:90>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:90>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_18 = ___0_newDescriptor;
 		UpdatableRenderTexture_RequestCreateTexture_mBD408EE205EEDDDE099BF41AF8186B50C7C8FE29(__this, L_18, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:91>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:91>
 		return (bool)0;
 	}
 
 IL_0081:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:93>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:93>
 		bool L_19 = __this->___m_IsCreated;
 		if (L_19)
 		{
@@ -3356,7 +3356,7 @@ IL_0081:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:95>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:95>
 		bool L_20;
 		L_20 = UpdatableRenderTexture_TryRetrieveTexture_mF45934EC2ADFF20DF07DD2E238DA80F99499D7E7(__this, NULL);
 		return L_20;
@@ -3364,11 +3364,11 @@ IL_0081:
 
 IL_0090:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:97>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:97>
 		return (bool)0;
 	}
 }
-// Method Definition Index: 98437
+// Method Definition Index: 119578
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UnityXRRenderTextureDesc_tA6CF93382D5D69117464D7D409B5C0177B367267 UpdatableRenderTexture_ToUnityXRRenderTextureDesc_mDC651296313E7C6F59C0206AA3B8EE31A11E865B (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	UnityXRRenderTextureDesc_tA6CF93382D5D69117464D7D409B5C0177B367267 V_0;
@@ -3379,17 +3379,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UnityXRRenderTextureDesc_tA6CF93382D5D6911746
 	UnityXRTextureData_t0B6BEAE3B6786B7D2F2ACA67AC0A9D686F737411 V_3;
 	memset((&V_3), 0, sizeof(V_3));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:109>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:110>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:111>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:112>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:113>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:114>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:115>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:116>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:117>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:118>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:119>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:109>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:110>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:111>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:112>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:113>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:114>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:115>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:116>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:117>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:118>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:119>
 		il2cpp_codegen_initobj((&V_1), sizeof(UnityXRRenderTextureDesc_tA6CF93382D5D69117464D7D409B5C0177B367267));
 		(&V_1)->___shadingRateFormat = 0;
 		UnityXRTextureData_t0B6BEAE3B6786B7D2F2ACA67AC0A9D686F737411* L_0 = (UnityXRTextureData_t0B6BEAE3B6786B7D2F2ACA67AC0A9D686F737411*)(&(&V_1)->___shadingRate);
@@ -3408,7 +3408,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UnityXRRenderTextureDesc_tA6CF93382D5D6911746
 		(&V_1)->___depthFormat = 3;
 		UnityXRRenderTextureDesc_tA6CF93382D5D69117464D7D409B5C0177B367267 L_4 = V_1;
 		V_0 = L_4;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:121>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:121>
 		int32_t L_5;
 		L_5 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		V_2 = L_5;
@@ -3426,38 +3426,38 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR UnityXRRenderTextureDesc_tA6CF93382D5D6911746
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:124>
 		int32_t L_8;
 		L_8 = XRTextureDescriptor_get_format_mA745AA87046D4FE4846C11B8285B980FF6DDDD1A_inline((&___0_descriptor), NULL);
 		int32_t L_9;
 		L_9 = UpdatableRenderTexture_ToUnityXRDepthTextureFormat_m7FB86A71F68BE966F6A5AE8993B74191106DD1EA(L_8, NULL);
 		(&V_0)->___depthFormat = L_9;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:125>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:126>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:127>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:128>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:125>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:126>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:127>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:128>
 		il2cpp_codegen_initobj((&V_3), sizeof(UnityXRTextureData_t0B6BEAE3B6786B7D2F2ACA67AC0A9D686F737411));
 		intptr_t L_10;
 		L_10 = XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline((&___0_descriptor), NULL);
 		(&V_3)->___nativePtr = L_10;
 		UnityXRTextureData_t0B6BEAE3B6786B7D2F2ACA67AC0A9D686F737411 L_11 = V_3;
 		(&V_0)->___depth = L_11;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:129>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:129>
 		goto IL_00d6;
 	}
 
 IL_00a5:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:131>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:131>
 		int32_t L_12;
 		L_12 = XRTextureDescriptor_get_format_mA745AA87046D4FE4846C11B8285B980FF6DDDD1A_inline((&___0_descriptor), NULL);
 		int32_t L_13;
 		L_13 = UpdatableRenderTexture_ToUnityXRRenderTextureFormat_mF42C697942D423B9D9A115A6F1509502895C3CB0(L_12, NULL);
 		(&V_0)->___colorFormat = L_13;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:132>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:133>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:134>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:135>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:132>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:133>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:134>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:135>
 		il2cpp_codegen_initobj((&V_3), sizeof(UnityXRTextureData_t0B6BEAE3B6786B7D2F2ACA67AC0A9D686F737411));
 		intptr_t L_14;
 		L_14 = XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline((&___0_descriptor), NULL);
@@ -3468,12 +3468,12 @@ IL_00a5:
 
 IL_00d6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:139>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:139>
 		UnityXRRenderTextureDesc_tA6CF93382D5D69117464D7D409B5C0177B367267 L_16 = V_0;
 		return L_16;
 	}
 }
-// Method Definition Index: 98438
+// Method Definition Index: 119579
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UpdatableRenderTexture_ToUnityXRDepthTextureFormat_m7FB86A71F68BE966F6A5AE8993B74191106DD1EA (int32_t ___0_textureFormat, const RuntimeMethod* method) 
 {
 	{
@@ -3498,20 +3498,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UpdatableRenderTexture_ToUnityXRDepth
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:147>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:147>
 		return (int32_t)(0);
 	}
 
 IL_0011:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:150>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:150>
 		return (int32_t)(1);
 	}
 
 IL_0013:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:152>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:153>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:152>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:153>
 		int32_t L_3 = ___0_textureFormat;
 		int32_t L_4 = L_3;
 		RuntimeObject* L_5 = Box(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TextureFormat_t87A73E4A3850D3410DC211676FC14B94226C1C1D_il2cpp_TypeInfo_var)), &L_4);
@@ -3522,7 +3522,7 @@ IL_0013:
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_7, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&UpdatableRenderTexture_ToUnityXRDepthTextureFormat_m7FB86A71F68BE966F6A5AE8993B74191106DD1EA_RuntimeMethod_var)));
 	}
 }
-// Method Definition Index: 98439
+// Method Definition Index: 119580
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t UpdatableRenderTexture_ToUnityXRRenderTextureFormat_mF42C697942D423B9D9A115A6F1509502895C3CB0 (int32_t ___0_textureFormat, const RuntimeMethod* method) 
 {
 	{
@@ -3571,32 +3571,32 @@ IL_000e:
 
 IL_001a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:162>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:162>
 		return (int32_t)(0);
 	}
 
 IL_001c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:164>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:164>
 		return (int32_t)(1);
 	}
 
 IL_001e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:166>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:166>
 		return (int32_t)(2);
 	}
 
 IL_0020:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:168>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:168>
 		return (int32_t)(3);
 	}
 
 IL_0022:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:170>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:171>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:170>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:171>
 		int32_t L_5 = ___0_textureFormat;
 		int32_t L_6 = L_5;
 		RuntimeObject* L_7 = Box(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TextureFormat_t87A73E4A3850D3410DC211676FC14B94226C1C1D_il2cpp_TypeInfo_var)), &L_6);
@@ -3607,7 +3607,7 @@ IL_0022:
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_9, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&UpdatableRenderTexture_ToUnityXRRenderTextureFormat_mF42C697942D423B9D9A115A6F1509502895C3CB0_RuntimeMethod_var)));
 	}
 }
-// Method Definition Index: 98440
+// Method Definition Index: 119581
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_DestroyTexture_m69F29C795B8BD67AB5610DB4FD78CCB72E805ECC (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3618,7 +3618,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_DestroyTexture_m6
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:179>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:179>
 		uint32_t L_0 = __this->___m_RenderTextureId;
 		bool L_1;
 		L_1 = UnityXRDisplay_DestroyTexture_m182FC4B81644217AAE33C87DE8A93294DF7315C1(L_0, NULL);
@@ -3628,33 +3628,33 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_DestroyTexture_m6
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:181>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:181>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(_stringLiteralD90D4D52CD1745F290597C2AD3A3C80E37166696, NULL);
 	}
 
 IL_0017:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:186>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:186>
 		__this->___m_IsCreated = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:187>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:187>
 		__this->___m_IsCreateRequested = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:188>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:188>
 		__this->___m_RenderTextureId = 0;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:189>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:189>
 		__this->___m_Texture = (RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)(RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:190>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:190>
 		return;
 	}
 }
-// Method Definition Index: 98441
+// Method Definition Index: 119582
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_System_IDisposable_Dispose_mFD462C788EA47C51A926D35D42CE3597950D0D12 (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:194>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:194>
 		UpdatableRenderTexture_DestroyTexture_m69F29C795B8BD67AB5610DB4FD78CCB72E805ECC(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:195>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTexture.cs:195>
 		return;
 	}
 }
@@ -3666,31 +3666,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTexture_System_IDisposabl
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98442
+// Method Definition Index: 119583
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 UpdatableRenderTextureRef_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_descriptor_m218E1BFBF5C6F1E38B7729823F58DFF9F8CC0397 (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:9>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		return L_0;
 	}
 }
-// Method Definition Index: 98443
+// Method Definition Index: 119584
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* UpdatableRenderTextureRef_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_texture_mF30B17A7665422A51621EE8966CD56BCDAC7077B (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:12>
 		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_0 = __this->___m_Texture;
 		return L_0;
 	}
 }
-// Method Definition Index: 98444
+// Method Definition Index: 119585
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTextureRef__ctor_mAD1424FE8866E0B196BD7AD653E53640C3694FE6 (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:17>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:19>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = ___0_descriptor;
 		bool L_1;
 		L_1 = UpdatableRenderTextureRef_TryUpdateFromDescriptor_m321EE0FFDDF62250CEEF4E2FD47DC933D6E82B0D(__this, L_0, NULL);
@@ -3700,7 +3700,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTextureRef__ctor_mAD1424F
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:20>
 		ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_2 = (ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var)));
 		ArgumentException__ctor_m026938A67AF9D36BB7ED27F80425D7194B514465(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7A4A6E2A7090298F814A9D44C89F8634249BEF07)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&UpdatableRenderTextureRef__ctor_mAD1424FE8866E0B196BD7AD653E53640C3694FE6_RuntimeMethod_var)));
@@ -3708,11 +3708,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTextureRef__ctor_mAD1424F
 
 IL_001a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:21>
 		return;
 	}
 }
-// Method Definition Index: 98445
+// Method Definition Index: 119586
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTextureRef_TryUpdateFromDescriptor_m321EE0FFDDF62250CEEF4E2FD47DC933D6E82B0D (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_newDescriptor, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3732,7 +3732,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTextureRef_TryUpdateFromD
 	intptr_t G_B14_0;
 	memset((&G_B14_0), 0, sizeof(G_B14_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:25>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_newDescriptor), NULL);
 		V_2 = L_0;
@@ -3750,7 +3750,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTextureRef_TryUpdateFromD
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:27>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_3 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		int32_t L_4;
 		L_4 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587(L_3, NULL);
@@ -3760,15 +3760,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableRenderTextureRef_TryUpdateFromD
 		L_7 = String_Format_mA8DBB4C2516B9723C5A41E6CB1E2FAF4BBE96DD8(_stringLiteralA39FBB6C10924A5DCDE17E3D21CA72346095F55C, L_6, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:28>
 		return (bool)0;
 	}
 
 IL_0031:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:31>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:32>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:33>
 		int32_t L_8;
 		L_8 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_newDescriptor), NULL);
 		if ((!(((uint32_t)L_8) == ((uint32_t)6))))
@@ -3797,15 +3797,15 @@ IL_0031:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:34>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:34>
 		return (bool)1;
 	}
 
 IL_0060:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:36>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:37>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:37>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:38>
 		int32_t L_14;
 		L_14 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_newDescriptor), NULL);
 		if ((!(((uint32_t)L_14) == ((uint32_t)7))))
@@ -3834,31 +3834,31 @@ IL_0060:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:39>
 		return (bool)1;
 	}
 
 IL_008f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:45>
 		intptr_t L_20;
 		L_20 = XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline((&___0_newDescriptor), NULL);
 		__this->___m_RenderTexturePtr = L_20;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:46>
 		intptr_t L_21 = __this->___m_RenderTexturePtr;
 		GCHandle_tC44F6F72EE68BD4CFABA24309DA7A179D41127DC L_22;
 		L_22 = GCHandle_FromIntPtr_mA7848A4285D007CADC52B6272DB243C8FDFD5FAC(L_21, NULL);
 		V_0 = L_22;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:47>
 		RuntimeObject* L_23;
 		L_23 = GCHandle_get_Target_m481F9508DA5E384D33CD1F4450060DC56BBD4CD5_inline((&V_0), NULL);
 		__this->___m_Texture = ((RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)CastclassClass((RuntimeObject*)L_23, RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var));
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)((RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)CastclassClass((RuntimeObject*)L_23, RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var)));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:48>
 		GCHandle_Free_m1320A260E487EB1EA6D95F9E54BFFCB5A4EF83A3((&V_0), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:50>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:51>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:51>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:52>
 		int32_t L_24;
 		L_24 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_newDescriptor), NULL);
 		if ((((int32_t)L_24) == ((int32_t)6)))
@@ -3887,16 +3887,16 @@ IL_00d8:
 IL_00e3:
 	{
 		V_1 = G_B14_0;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:54>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:55>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:56>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:57>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:58>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:59>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:60>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:61>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:62>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:63>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:60>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:61>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:63>
 		intptr_t L_29 = V_1;
 		int32_t L_30;
 		L_30 = XRTextureDescriptor_get_width_m570472F03994BC63F21751414105A2E0C112DBF2_inline((&___0_newDescriptor), NULL);
@@ -3916,23 +3916,23 @@ IL_00e3:
 		memset((&L_37), 0, sizeof(L_37));
 		XRTextureDescriptor__ctor_m2FB1D1538997C870AB8282291C6DA87DD5FEBFBA((&L_37), L_29, L_30, L_31, L_32, L_33, L_34, L_35, L_36, NULL);
 		__this->___m_Descriptor = L_37;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:65>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 98446
+// Method Definition Index: 119587
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTextureRef_DestroyTexture_mA8068C29B0DF5F2E7FEFE5A0D90ABB17D78772F8 (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:71>
 		return;
 	}
 }
-// Method Definition Index: 98447
+// Method Definition Index: 119588
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTextureRef_System_IDisposable_Dispose_m7C66B4F8AFE0BBB443EB95CFD4EA81E622E830A5 (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableRenderTextureRef.cs:76>
 		return;
 	}
 }
@@ -3944,31 +3944,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableRenderTextureRef_System_IDispos
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98448
+// Method Definition Index: 119589
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 UpdatableTexture2D_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_descriptor_m36546856094899836D4AD976B97289601BE28433 (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:11>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		return L_0;
 	}
 }
-// Method Definition Index: 98449
+// Method Definition Index: 119590
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* UpdatableTexture2D_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_texture_mA19936ADB1FBFDAA1C1D387098ED0C553E3C4BAB (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:14>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_0 = __this->___m_Texture;
 		return L_0;
 	}
 }
-// Method Definition Index: 98450
+// Method Definition Index: 119591
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture2D__ctor_m20101CCEB719263249B415B26A04AB86154A9911 (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:17>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:19>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		if ((((int32_t)L_0) == ((int32_t)1)))
@@ -3977,7 +3977,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture2D__ctor_m20101CCEB71926
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:20>
 		int32_t L_1;
 		L_1 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		int32_t L_2 = L_1;
@@ -3991,30 +3991,30 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture2D__ctor_m20101CCEB71926
 
 IL_002c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:22>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_6 = ___0_descriptor;
 		__this->___m_Descriptor = L_6;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:23>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:23>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_7 = ___0_descriptor;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_8;
 		L_8 = UpdatableTexture2D_CreateTextureFromDescriptor_m3F5318FB33716DE16466C71DD01B1E2D8611E84F(L_7, NULL);
 		__this->___m_Texture = L_8;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_8);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:24>
 		return;
 	}
 }
-// Method Definition Index: 98451
+// Method Definition Index: 119592
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* UpdatableTexture2D_CreateTextureFromDescriptor_m3F5318FB33716DE16466C71DD01B1E2D8611E84F (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:28>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:29>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:30>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:31>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:32>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:33>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:34>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:34>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_width_m570472F03994BC63F21751414105A2E0C112DBF2_inline((&___0_descriptor), NULL);
 		int32_t L_1;
@@ -4030,11 +4030,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11
 		return L_5;
 	}
 }
-// Method Definition Index: 98452
+// Method Definition Index: 119593
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableTexture2D_UnityEngine_XR_ARFoundation_IUpdatableTexture_TryUpdateFromDescriptor_m13BFAC516E07C1F3083763D7F0D4A9C225F4D261 (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_newDescriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:40>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_1 = ___0_newDescriptor;
 		bool L_2;
@@ -4045,13 +4045,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableTexture2D_UnityEngine_XR_ARFoun
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:41>
 		return (bool)1;
 	}
 
 IL_0010:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:43>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_3 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_4 = ___0_newDescriptor;
 		bool L_5;
@@ -4062,70 +4062,70 @@ IL_0010:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:45>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_6 = __this->___m_Texture;
 		intptr_t L_7;
 		L_7 = XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline((&___0_newDescriptor), NULL);
 		NullCheck(L_6);
 		Texture2D_UpdateExternalTexture_m73D80FDE0859F0E36D320A69317E04A3A2AD9986(L_6, L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:46>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_8 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_8;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:47>
 		return (bool)1;
 	}
 
 IL_0039:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:50>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_9 = __this->___m_Texture;
 		UnityObjectUtils_Destroy_mFA9A21EE17656D12F1B126AD9C2CC4EDFD35F157(L_9, (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:51>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:51>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_10 = ___0_newDescriptor;
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_11;
 		L_11 = UpdatableTexture2D_CreateTextureFromDescriptor_m3F5318FB33716DE16466C71DD01B1E2D8611E84F(L_10, NULL);
 		__this->___m_Texture = L_11;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_11);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:64>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_12 = __this->___m_Texture;
 		NullCheck(L_12);
 		Texture_set_wrapMode_m1F74A690E3883EC9C5C371D502D09642F15D0F7E(L_12, 1, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:65>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_13 = __this->___m_Texture;
 		NullCheck(L_13);
 		Texture_set_filterMode_mE423E58C0C16D059EA62BA87AD70F44AEA50CCC9(L_13, 1, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:66>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_14 = __this->___m_Texture;
 		NullCheck(L_14);
 		Object_set_hideFlags_mACB8BFC903FB3B01BBD427753E791BF28B5E33D4(L_14, ((int32_t)61), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:68>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_15 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_15;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:69>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 98453
+// Method Definition Index: 119594
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture2D_DestroyTexture_mAEEC1AB236A29CB3244EDD1290A81FD6E9F031D6 (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:74>
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_0 = __this->___m_Texture;
 		UnityObjectUtils_Destroy_mFA9A21EE17656D12F1B126AD9C2CC4EDFD35F157(L_0, (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:75>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_1 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		il2cpp_codegen_initobj(L_1, sizeof(XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:76>
 		return;
 	}
 }
-// Method Definition Index: 98454
+// Method Definition Index: 119595
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture2D_System_IDisposable_Dispose_m7CC91DF98C85A29D4DBD486CB93A788F89124020 (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:80>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:80>
 		UpdatableTexture2D_DestroyTexture_mAEEC1AB236A29CB3244EDD1290A81FD6E9F031D6(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:81>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture2D.cs:81>
 		return;
 	}
 }
@@ -4137,31 +4137,31 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture2D_System_IDisposable_Di
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98455
+// Method Definition Index: 119596
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 UpdatableTexture3D_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_descriptor_m4494A0E6402B711C620FFD4904C0A2C4E927AD5A (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:9>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		return L_0;
 	}
 }
-// Method Definition Index: 98456
+// Method Definition Index: 119597
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* UpdatableTexture3D_UnityEngine_XR_ARFoundation_IUpdatableTexture_get_texture_mFA5049CB9BDFF214B02C87CD930E545F7C81E68F (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:12>
 		Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* L_0 = __this->___m_Texture;
 		return L_0;
 	}
 }
-// Method Definition Index: 98457
+// Method Definition Index: 119598
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture3D__ctor_m99D8638F92064D0D5849D98BB58DED6DF4448D39 (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:15>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:15>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:17>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		if ((((int32_t)L_0) == ((int32_t)2)))
@@ -4170,7 +4170,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture3D__ctor_m99D8638F92064D
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:18>
 		int32_t L_1;
 		L_1 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		int32_t L_2 = L_1;
@@ -4184,30 +4184,30 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture3D__ctor_m99D8638F92064D
 
 IL_002c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:20>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_6 = ___0_descriptor;
 		__this->___m_Descriptor = L_6;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:21>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_7 = ___0_descriptor;
 		Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* L_8;
 		L_8 = UpdatableTexture3D_CreateTextureFromDescriptor_m2F262A2885ED262C9732091CD8623351A19F7982(L_7, NULL);
 		__this->___m_Texture = L_8;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_8);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:22>
 		return;
 	}
 }
-// Method Definition Index: 98458
+// Method Definition Index: 119599
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* UpdatableTexture3D_CreateTextureFromDescriptor_m2F262A2885ED262C9732091CD8623351A19F7982 (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:26>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:27>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:28>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:29>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:30>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:31>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:28>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:32>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_width_m570472F03994BC63F21751414105A2E0C112DBF2_inline((&___0_descriptor), NULL);
 		int32_t L_1;
@@ -4225,11 +4225,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Texture3D_tDC30A0F19B6055086859D1ABC098D6E676
 		return L_6;
 	}
 }
-// Method Definition Index: 98459
+// Method Definition Index: 119600
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableTexture3D_UnityEngine_XR_ARFoundation_IUpdatableTexture_TryUpdateFromDescriptor_mC3E61B98B6A443342148E527C79254024C54B8BD (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* __this, XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_newDescriptor, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:37>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:37>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_0 = __this->___m_Descriptor;
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_1 = ___0_newDescriptor;
 		bool L_2;
@@ -4240,13 +4240,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool UpdatableTexture3D_UnityEngine_XR_ARFoun
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:38>
 		return (bool)1;
 	}
 
 IL_0010:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:40>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_3 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_4 = ___0_newDescriptor;
 		bool L_5;
@@ -4257,58 +4257,58 @@ IL_0010:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:42>
 		Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* L_6 = __this->___m_Texture;
 		intptr_t L_7;
 		L_7 = XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline((&___0_newDescriptor), NULL);
 		NullCheck(L_6);
 		Texture3D_UpdateExternalTexture_mDF4E8A634EC749B99E5AC5616F776BF42188A607(L_6, L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:43>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_8 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_8;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:44>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:44>
 		return (bool)1;
 	}
 
 IL_0039:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:47>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:47>
 		Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* L_9 = __this->___m_Texture;
 		UnityObjectUtils_Destroy_mFA9A21EE17656D12F1B126AD9C2CC4EDFD35F157(L_9, (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:48>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_10 = ___0_newDescriptor;
 		Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* L_11;
 		L_11 = UpdatableTexture3D_CreateTextureFromDescriptor_m2F262A2885ED262C9732091CD8623351A19F7982(L_10, NULL);
 		__this->___m_Texture = L_11;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Texture), (void*)L_11);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:49>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_12 = ___0_newDescriptor;
 		__this->___m_Descriptor = L_12;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:50>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 98460
+// Method Definition Index: 119601
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture3D_DestroyTexture_mE83E97F990ACE983C1E917A0930FC32DA73B97A6 (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:55>
 		Texture3D_tDC30A0F19B6055086859D1ABC098D6E6762000E1* L_0 = __this->___m_Texture;
 		UnityObjectUtils_Destroy_mFA9A21EE17656D12F1B126AD9C2CC4EDFD35F157(L_0, (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:56>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* L_1 = (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19*)(&__this->___m_Descriptor);
 		il2cpp_codegen_initobj(L_1, sizeof(XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19));
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:57>
 		return;
 	}
 }
-// Method Definition Index: 98461
+// Method Definition Index: 119602
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture3D_System_IDisposable_Dispose_m55F9FCF48E9F5153014CA41091C67C66C081625C (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:61>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:61>
 		UpdatableTexture3D_DestroyTexture_mE83E97F990ACE983C1E917A0930FC32DA73B97A6(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTexture3D.cs:62>
 		return;
 	}
 }
@@ -4320,7 +4320,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatableTexture3D_System_IDisposable_Di
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98462
+// Method Definition Index: 119603
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* UpdatableTextureFactory_Create_m03A2D163708779A2EA46A9BC809BDAD7DE021C70 (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 ___0_descriptor, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4336,15 +4336,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* UpdatableTextureFactory_Create
 	RuntimeObject* V_0 = NULL;
 	int32_t V_1 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:10>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:11>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:12>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:13>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:14>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:15>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:16>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:17>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:10>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:15>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:18>
 		int32_t L_0;
 		L_0 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		V_1 = L_0;
@@ -4387,7 +4387,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* UpdatableTextureFactory_Create
 
 IL_002e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:12>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_2 = ___0_descriptor;
 		UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4* L_3 = (UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4*)il2cpp_codegen_object_new(UpdatableTexture2D_tE263BF1B4FC1B3108ACBD8D36E8FB4D9EAA21FE4_il2cpp_TypeInfo_var);
 		UpdatableTexture2D__ctor_m20101CCEB719263249B415B26A04AB86154A9911(L_3, L_2, NULL);
@@ -4397,7 +4397,7 @@ IL_002e:
 
 IL_0037:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:13>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_4 = ___0_descriptor;
 		UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB* L_5 = (UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB*)il2cpp_codegen_object_new(UpdatableTexture3D_tEE92637F4646F130B8748199CF9AA37F6CE0BCCB_il2cpp_TypeInfo_var);
 		UpdatableTexture3D__ctor_m99D8638F92064D0D5849D98BB58DED6DF4448D39(L_5, L_4, NULL);
@@ -4407,7 +4407,7 @@ IL_0037:
 
 IL_0040:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:14>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_6 = ___0_descriptor;
 		UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B* L_7 = (UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B*)il2cpp_codegen_object_new(UpdatableCubemap_tE26FA12BD68D6F594E625CA2DC5C07468BAB0C2B_il2cpp_TypeInfo_var);
 		UpdatableCubemap__ctor_m1D2EA5C2129CF380B8099FEFB0171A795E540960(L_7, L_6, NULL);
@@ -4417,7 +4417,7 @@ IL_0040:
 
 IL_0049:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:15>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:15>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_8 = ___0_descriptor;
 		UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757* L_9 = (UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757*)il2cpp_codegen_object_new(UpdatableRenderTexture_t3436B3F22BFC3C7A6DBF50429E1C99C52C16D757_il2cpp_TypeInfo_var);
 		UpdatableRenderTexture__ctor_m4A85C6A1D7B7312C442F18266FA12F0A012B8592(L_9, L_8, NULL);
@@ -4427,7 +4427,7 @@ IL_0049:
 
 IL_0052:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:16>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:16>
 		XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19 L_10 = ___0_descriptor;
 		UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7* L_11 = (UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7*)il2cpp_codegen_object_new(UpdatableRenderTextureRef_t5E5CE910D82FB1FFBB57535D87E0E27E84332FD7_il2cpp_TypeInfo_var);
 		UpdatableRenderTextureRef__ctor_mAD1424FE8866E0B196BD7AD653E53640C3694FE6(L_11, L_10, NULL);
@@ -4437,7 +4437,7 @@ IL_0052:
 
 IL_005b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/Textures/UpdatableTextureFactory.cs:17>
 		int32_t L_12;
 		L_12 = XRTextureDescriptor_get_textureType_mFF8AB17FA0F69B07F4DEE4C06C776662AF2F2587((&___0_descriptor), NULL);
 		int32_t L_13 = L_12;
@@ -4463,27 +4463,27 @@ IL_0077:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98463
+// Method Definition Index: 119604
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tE6BB71ABF15905EFA2BE92C38A2716547AEADB19* ToolButton_get_buttonHighlights_mC1F0475431AEEC1E84199C35A735DAF0568772FA (ToolButton_t8687C02925565402F7BCC5EBAC36141291E63661* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:25>
 		List_1_tE6BB71ABF15905EFA2BE92C38A2716547AEADB19* L_0 = __this->___m_buttonHighlights;
 		return L_0;
 	}
 }
-// Method Definition Index: 98464
+// Method Definition Index: 119605
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_set_buttonHighlights_m7A153CD59D08BB7368394D34ABD1F5A2F035BB3D (ToolButton_t8687C02925565402F7BCC5EBAC36141291E63661* __this, List_1_tE6BB71ABF15905EFA2BE92C38A2716547AEADB19* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:26>
 		List_1_tE6BB71ABF15905EFA2BE92C38A2716547AEADB19* L_0 = ___0_value;
 		__this->___m_buttonHighlights = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_buttonHighlights), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 98465
+// Method Definition Index: 119606
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_Start_m3166B8812FBAF5A30470ED482A8E2FE5928F0583 (ToolButton_t8687C02925565402F7BCC5EBAC36141291E63661* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4493,16 +4493,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_Start_m3166B8812FBAF5A30470ED
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:31>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_0;
 		L_0 = Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79(__this, Component_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mE74EE63C85A63FC34DCFC631BC229207B420BC79_RuntimeMethod_var);
 		__this->___m_Image = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Image), (void*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:32>
 		return;
 	}
 }
-// Method Definition Index: 98466
+// Method Definition Index: 119607
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_HighlightButton_m6909154958F4992A8643F61958D685D311CDEF67 (ToolButton_t8687C02925565402F7BCC5EBAC36141291E63661* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4517,7 +4517,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_HighlightButton_m6909154958F4
 	Enumerator_t15AF13FA75565F9629796CC258747D11849767F6 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:39>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_0 = __this->___m_Image;
 		NullCheck(L_0);
 		bool L_1;
@@ -4528,7 +4528,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_HighlightButton_m6909154958F4
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:41>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_2 = __this->___m_Image;
 		NullCheck(L_2);
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_2, (bool)0, NULL);
@@ -4537,7 +4537,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton_HighlightButton_m6909154958F4
 
 IL_001a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:45>
 		List_1_tE6BB71ABF15905EFA2BE92C38A2716547AEADB19* L_3 = __this->___m_buttonHighlights;
 		NullCheck(L_3);
 		Enumerator_t15AF13FA75565F9629796CC258747D11849767F6 L_4;
@@ -4562,17 +4562,17 @@ FINALLY_0040:
 
 IL_0028_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:45>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:45>
 				Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_5;
 				L_5 = Enumerator_get_Current_mC846CF3F39E06E087C213979336CCD0B7CEC2912_inline((&V_0), Enumerator_get_Current_mC846CF3F39E06E087C213979336CCD0B7CEC2912_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:47>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:47>
 				NullCheck(L_5);
 				Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_5, (bool)0, NULL);
 			}
 
 IL_0035_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:45>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:45>
 				bool L_6;
 				L_6 = Enumerator_MoveNext_mEBF1AD15094FDCFB5E08A44EA323DA7A924C782C((&V_0), Enumerator_MoveNext_mEBF1AD15094FDCFB5E08A44EA323DA7A924C782C_RuntimeMethod_var);
 				if (L_6)
@@ -4592,15 +4592,15 @@ IL_0035_1:
 
 IL_004e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:49>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:49>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_7 = __this->___m_Image;
 		NullCheck(L_7);
 		Behaviour_set_enabled_mF1DCFE60EB09E0529FE9476CA804A3AA2D72B16A(L_7, (bool)1, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/ToolButton.cs:51>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/ToolButton.cs:51>
 		return;
 	}
 }
-// Method Definition Index: 98467
+// Method Definition Index: 119608
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton__ctor_m32DBB315DF184CBC20B4A4F6DC87E9F4A2C29A41 (ToolButton_t8687C02925565402F7BCC5EBAC36141291E63661* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4616,60 +4616,60 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ToolButton__ctor_m32DBB315DF184CBC20B4A4
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98482
+// Method Definition Index: 119623
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0 = __this->___U3CtrackableU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 98483
+// Method Definition Index: 119624
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableEntry_set_trackable_m7013521D33294FE7395353CD22DF5CE504E0F6AE (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0 = ___0_value;
 		__this->___U3CtrackableU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CtrackableU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 98484
+// Method Definition Index: 119625
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* TrackableEntry_get_childKeys_mC0C2B02DAF0D231FA6686B852C23140B3B84CEBB (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:9>
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_0 = __this->___U3CchildKeysU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 98485
+// Method Definition Index: 119626
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 TrackableEntry_get_parentKey_mAEB0DBEB51A31858F709A7811FFB9AA4CD0A3194 (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_0 = __this->___U3CparentKeyU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 98486
+// Method Definition Index: 119627
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableEntry_set_parentKey_mB2D4160F0EB38D8751B799AEF010756F9BC5FD22 (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_0 = ___0_value;
 		__this->___U3CparentKeyU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)&((&(((&__this->___U3CparentKeyU3Ek__BackingField))->___value))->___U3CtrackableTypeU3Ek__BackingField), (void*)NULL);
 		return;
 	}
 }
-// Method Definition Index: 98487
+// Method Definition Index: 119628
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* TrackableEntry_get_trackableType_m2F4C2D0AD4D1994F8C93077DD829C13DC294562C (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:12>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0;
 		L_0 = TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B_inline(__this, NULL);
 		NullCheck(L_0);
@@ -4678,11 +4678,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* TrackableEntry_get_trackableType_m2F4
 		return L_1;
 	}
 }
-// Method Definition Index: 98488
+// Method Definition Index: 119629
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B TrackableEntry_get_key_mFBAF9D608680F89D585953F600A0E239248DDE94 (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:13>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0;
 		L_0 = TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B_inline(__this, NULL);
 		NullCheck(L_0);
@@ -4696,7 +4696,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableKey_t5E448EF061013AFD452918EC5232225
 		return L_3;
 	}
 }
-// Method Definition Index: 98489
+// Method Definition Index: 119630
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableEntry__ctor_m270484FEE9D394AA1A7C84BC4E8FBAA2FC91A66C (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* ___0_trackable, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4709,25 +4709,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableEntry__ctor_m270484FEE9D394AA1A
 	Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:15>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:15>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:17>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0 = ___0_trackable;
 		TrackableEntry_set_trackable_m7013521D33294FE7395353CD22DF5CE504E0F6AE_inline(__this, L_0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:18>
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_1 = (List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B*)il2cpp_codegen_object_new(List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B_il2cpp_TypeInfo_var);
 		List_1__ctor_m3FCC877E668C31F0CB0ABDC02ECC387EACD9770B(L_1, List_1__ctor_m3FCC877E668C31F0CB0ABDC02ECC387EACD9770B_RuntimeMethod_var);
 		__this->___U3CchildKeysU3Ek__BackingField = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CchildKeysU3Ek__BackingField), (void*)L_1);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:19>
 		il2cpp_codegen_initobj((&V_0), sizeof(Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057));
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_2 = V_0;
 		TrackableEntry_set_parentKey_mB2D4160F0EB38D8751B799AEF010756F9BC5FD22_inline(__this, L_2, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:20>
 		return;
 	}
 }
-// Method Definition Index: 98490
+// Method Definition Index: 119631
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableEntry_Reset_mA6DAD7A58C73C108E7F558A377A1C112A0DE780C (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4739,18 +4739,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableEntry_Reset_mA6DAD7A58C73C108E7
 	Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:24>
 		TrackableEntry_set_trackable_m7013521D33294FE7395353CD22DF5CE504E0F6AE_inline(__this, (ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0*)NULL, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:25>
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_0;
 		L_0 = TrackableEntry_get_childKeys_mC0C2B02DAF0D231FA6686B852C23140B3B84CEBB_inline(__this, NULL);
 		NullCheck(L_0);
 		List_1_Clear_mC71903175591C21EFBF3A3C270245C5FC181F4E6_inline(L_0, List_1_Clear_mC71903175591C21EFBF3A3C270245C5FC181F4E6_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:26>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:26>
 		il2cpp_codegen_initobj((&V_0), sizeof(Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057));
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_1 = V_0;
 		TrackableEntry_set_parentKey_mB2D4160F0EB38D8751B799AEF010756F9BC5FD22_inline(__this, L_1, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:27>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:27>
 		return;
 	}
 }
@@ -4816,11 +4816,11 @@ IL2CPP_EXTERN_C void TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B_mars
 IL2CPP_EXTERN_C void TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B_marshal_com_cleanup(TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B_marshaled_com& marshaled)
 {
 }
-// Method Definition Index: 98491
+// Method Definition Index: 119632
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257 (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:8>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:8>
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_0 = __this->___U3CtrackableIdU3Ek__BackingField;
 		return L_0;
 	}
@@ -4834,11 +4834,11 @@ IL2CPP_EXTERN_C  TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 Trackable
 	_returnValue = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 98492
+// Method Definition Index: 119633
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982 (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:9>
 		Type_t* L_0 = __this->___U3CtrackableTypeU3Ek__BackingField;
 		return L_0;
 	}
@@ -4852,18 +4852,18 @@ IL2CPP_EXTERN_C  Type_t* TrackableKey_get_trackableType_mC3BD3E68275F501826AC584
 	_returnValue = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 98493
+// Method Definition Index: 119634
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableKey__ctor_m5B54AB84CC3A385E5831AB84FBF488D49F37431C (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 ___0_id, Type_t* ___1_type, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:13>
 		Type_t* L_0 = ___1_type;
 		__this->___U3CtrackableTypeU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CtrackableTypeU3Ek__BackingField), (void*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:14>
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1 = ___0_id;
 		__this->___U3CtrackableIdU3Ek__BackingField = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:15>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:15>
 		return;
 	}
 }
@@ -4874,22 +4874,22 @@ IL2CPP_EXTERN_C  void TrackableKey__ctor_m5B54AB84CC3A385E5831AB84FBF488D49F3743
 	_thisAdjusted = reinterpret_cast<TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B*>(__this + _offset);
 	TrackableKey__ctor_m5B54AB84CC3A385E5831AB84FBF488D49F37431C(_thisAdjusted, ___0_id, ___1_type, method);
 }
-// Method Definition Index: 98494
+// Method Definition Index: 119635
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableKey_Deconstruct_m2BA650CCE8795382EA409F56ED51B298606A081A (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7* ___0_id, Type_t** ___1_type, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:19>
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7* L_0 = ___0_id;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1;
 		L_1 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline(__this, NULL);
 		*(TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7*)L_0 = L_1;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:20>
 		Type_t** L_2 = ___1_type;
 		Type_t* L_3;
 		L_3 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline(__this, NULL);
 		*((RuntimeObject**)L_2) = (RuntimeObject*)L_3;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_2, (void*)(RuntimeObject*)L_3);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:21>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:21>
 		return;
 	}
 }
@@ -4900,7 +4900,7 @@ IL2CPP_EXTERN_C  void TrackableKey_Deconstruct_m2BA650CCE8795382EA409F56ED51B298
 	_thisAdjusted = reinterpret_cast<TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B*>(__this + _offset);
 	TrackableKey_Deconstruct_m2BA650CCE8795382EA409F56ED51B298606A081A(_thisAdjusted, ___0_id, ___1_type, method);
 }
-// Method Definition Index: 98495
+// Method Definition Index: 119636
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableKey_Equals_mA01D152A2B7D60DC86B4E43C92385D1477FEBF41 (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B ___0_other, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4912,7 +4912,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableKey_Equals_mA01D152A2B7D60DC86B
 	TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:25>
 		Type_t* L_0;
 		L_0 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline(__this, NULL);
 		Type_t* L_1;
@@ -4951,7 +4951,7 @@ IL2CPP_EXTERN_C  bool TrackableKey_Equals_mA01D152A2B7D60DC86B4E43C92385D1477FEB
 	_returnValue = TrackableKey_Equals_mA01D152A2B7D60DC86B4E43C92385D1477FEBF41(_thisAdjusted, ___0_other, method);
 	return _returnValue;
 }
-// Method Definition Index: 98496
+// Method Definition Index: 119637
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableKey_Equals_m9E64C911D18A2C6B528871ED97D030F5108AF68B (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4963,7 +4963,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableKey_Equals_m9E64C911D18A2C6B528
 	TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:30>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:30>
 		RuntimeObject* L_0 = ___0_obj;
 		if (!((RuntimeObject*)IsInstSealed((RuntimeObject*)L_0, TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B_il2cpp_TypeInfo_var)))
 		{
@@ -4993,7 +4993,7 @@ IL2CPP_EXTERN_C  bool TrackableKey_Equals_m9E64C911D18A2C6B528871ED97D030F5108AF
 	_returnValue = TrackableKey_Equals_m9E64C911D18A2C6B528871ED97D030F5108AF68B(_thisAdjusted, ___0_obj, method);
 	return _returnValue;
 }
-// Method Definition Index: 98497
+// Method Definition Index: 119638
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TrackableKey_GetHashCode_m38E53342EFF41C2D31AAC31F14CCDDFE6D79C825 (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5004,7 +5004,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TrackableKey_GetHashCode_m38E53342EFF
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:35>
 		Type_t* L_0;
 		L_0 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline(__this, NULL);
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1;
@@ -5024,7 +5024,7 @@ IL2CPP_EXTERN_C  int32_t TrackableKey_GetHashCode_m38E53342EFF41C2D31AAC31F14CCD
 	_returnValue = TrackableKey_GetHashCode_m38E53342EFF41C2D31AAC31F14CCDDFE6D79C825(_thisAdjusted, method);
 	return _returnValue;
 }
-// Method Definition Index: 98498
+// Method Definition Index: 119639
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TrackableKey_ToString_m66B1F88B7E747FF8F79C2BE9D5D44383C7452B6D (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5037,7 +5037,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TrackableKey_ToString_m66B1F88B7E74
 	TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:40>
 		Type_t* L_0;
 		L_0 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline(__this, NULL);
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1;
@@ -5068,7 +5068,7 @@ IL2CPP_EXTERN_C  String_t* TrackableKey_ToString_m66B1F88B7E747FF8F79C2BE9D5D443
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98499
+// Method Definition Index: 119640
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ListTrackableEntryExtensions_TryFindEntryOfType_m2D227176CFB21E5B5A0F9A0227C951747FC0CCA6 (List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* ___0_list, Type_t* ___1_type, TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5** ___2_entry, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5085,7 +5085,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ListTrackableEntryExtensions_TryFindEntr
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_1 = NULL;
 	bool V_2 = false;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:14>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:14>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_0 = ___0_list;
 		NullCheck(L_0);
 		Enumerator_t4022599DA712370A28ABAC4738711AD572D4538B L_1;
@@ -5110,11 +5110,11 @@ FINALLY_0031:
 
 IL_0009_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:14>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:14>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_2;
 				L_2 = Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_inline((&V_0), Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:16>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:16>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_3 = V_1;
 				NullCheck(L_3);
 				Type_t* L_4;
@@ -5129,19 +5129,19 @@ IL_0009_1:
 				}
 			}
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:18>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:18>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5** L_7 = ___2_entry;
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_8 = V_1;
 				*((RuntimeObject**)L_7) = (RuntimeObject*)L_8;
 				Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_7, (void*)(RuntimeObject*)L_8);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:19>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:19>
 				V_2 = (bool)1;
 				goto IL_0044;
 			}
 
 IL_0026_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:14>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:14>
 				bool L_9;
 				L_9 = Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA((&V_0), Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA_RuntimeMethod_var);
 				if (L_9)
@@ -5161,17 +5161,17 @@ IL_0026_1:
 
 IL_003f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:23>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:23>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5** L_10 = ___2_entry;
 		*((RuntimeObject**)L_10) = (RuntimeObject*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_10, (void*)(RuntimeObject*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:24>
 		return (bool)0;
 	}
 
 IL_0044:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:25>
 		bool L_11 = V_2;
 		return L_11;
 	}
@@ -5184,7 +5184,7 @@ IL_0044:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98500
+// Method Definition Index: 119641
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* TrackableSpawner_get_instance_m25A40C6B09DC553803144283DBE8086F27EEB1B8 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5194,7 +5194,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableSpawner_tD75278064758420D002C75B533F
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:34>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:34>
 		TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* L_0 = ((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance;
 		if (L_0)
 		{
@@ -5210,12 +5210,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableSpawner_tD75278064758420D002C75B533F
 
 IL_0011:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:35>
 		TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* L_2 = ((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance;
 		return L_2;
 	}
 }
-// Method Definition Index: 98501
+// Method Definition Index: 119642
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner__ctor_m91DF4604E178CFB03480F055B8DD19FD7DC3308D (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5277,26 +5277,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner__ctor_m91DF4604E178CFB0
 	Func_1_tBA5C81AEBF979B6D280F7BE752E9C23DF6532E91* G_B11_2 = NULL;
 	TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* G_B11_3 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:46>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_0 = (Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739*)il2cpp_codegen_object_new(Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739_il2cpp_TypeInfo_var);
 		Dictionary_2__ctor_mDD9D97DA8EBAF0A8520590162B666DCD38FED739(L_0, Dictionary_2__ctor_mDD9D97DA8EBAF0A8520590162B666DCD38FED739_RuntimeMethod_var);
 		__this->___m_EntriesByTrackableId = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_EntriesByTrackableId), (void*)L_0);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:48>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:48>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_1 = (Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739*)il2cpp_codegen_object_new(Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739_il2cpp_TypeInfo_var);
 		Dictionary_2__ctor_mDD9D97DA8EBAF0A8520590162B666DCD38FED739(L_1, Dictionary_2__ctor_mDD9D97DA8EBAF0A8520590162B666DCD38FED739_RuntimeMethod_var);
 		__this->___m_OrphanedEntriesByMissingParentIds = L_1;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_OrphanedEntriesByMissingParentIds), (void*)L_1);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:50>
 		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:52>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:53>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:54>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:55>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:56>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:57>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:58>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:59>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:52>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:59>
 		il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_il2cpp_TypeInfo_var);
 		Func_1_tDABAEF713E6102A3008BD530BC27A400F28C78EB* L_2 = ((U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_il2cpp_TypeInfo_var))->___U3CU3E9__9_0;
 		Func_1_tDABAEF713E6102A3008BD530BC27A400F28C78EB* L_3 = L_2;
@@ -5360,14 +5360,14 @@ IL_005c:
 		NullCheck(G_B4_3);
 		G_B4_3->___m_EntryListPool = L_12;
 		Il2CppCodeGenWriteBarrier((void**)(&G_B4_3->___m_EntryListPool), (void*)L_12);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:61>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:62>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:63>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:64>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:65>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:66>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:67>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:61>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:63>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:67>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:68>
 		il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_il2cpp_TypeInfo_var);
 		Func_1_tDABAEF713E6102A3008BD530BC27A400F28C78EB* L_13 = ((U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_il2cpp_TypeInfo_var))->___U3CU3E9__9_2;
 		Func_1_tDABAEF713E6102A3008BD530BC27A400F28C78EB* L_14 = L_13;
@@ -5431,14 +5431,14 @@ IL_00ae:
 		NullCheck(G_B8_3);
 		G_B8_3->___m_OrphanPool = L_23;
 		Il2CppCodeGenWriteBarrier((void**)(&G_B8_3->___m_OrphanPool), (void*)L_23);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:70>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:71>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:72>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:73>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:74>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:75>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:76>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:77>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:70>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:72>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:74>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:75>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:76>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:77>
 		il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_il2cpp_TypeInfo_var);
 		Func_1_tBA5C81AEBF979B6D280F7BE752E9C23DF6532E91* L_24 = ((U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510_il2cpp_TypeInfo_var))->___U3CU3E9__9_4;
 		Func_1_tBA5C81AEBF979B6D280F7BE752E9C23DF6532E91* L_25 = L_24;
@@ -5502,11 +5502,11 @@ IL_0100:
 		NullCheck(G_B12_3);
 		G_B12_3->___m_EntryPool = L_34;
 		Il2CppCodeGenWriteBarrier((void**)(&G_B12_3->___m_EntryPool), (void*)L_34);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:78>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:78>
 		return;
 	}
 }
-// Method Definition Index: 98502
+// Method Definition Index: 119643
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResetInstance_m26E50BDCBC496CA463E80DCD73F39E66D7234A84 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5518,7 +5518,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResetInstance_m26E50BDC
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:83>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:83>
 		TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* L_0 = ((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance;
 		if (!L_0)
 		{
@@ -5526,19 +5526,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResetInstance_m26E50BDC
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:85>
 		TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* L_1 = ((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance;
 		NullCheck(L_1);
 		ObjectPool_1_t5D8ECCDFC3AC9CFAD25CED9AF5E29FC0852AD39A* L_2 = L_1->___m_EntryPool;
 		NullCheck(L_2);
 		ObjectPool_1_Dispose_m2F757F8E5C6B77D8FB5D06CC813A42C751CA5E6E(L_2, ObjectPool_1_Dispose_m2F757F8E5C6B77D8FB5D06CC813A42C751CA5E6E_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:86>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:86>
 		TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* L_3 = ((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance;
 		NullCheck(L_3);
 		ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_4 = L_3->___m_EntryListPool;
 		NullCheck(L_4);
 		ObjectPool_1_Dispose_m43648C75E76D47A6C49DAE86FE7A7407441A2C95(L_4, ObjectPool_1_Dispose_m43648C75E76D47A6C49DAE86FE7A7407441A2C95_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:87>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:87>
 		TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* L_5 = ((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance;
 		NullCheck(L_5);
 		ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_6 = L_5->___m_OrphanPool;
@@ -5548,14 +5548,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResetInstance_m26E50BDC
 
 IL_0034:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:89>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:89>
 		((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance = (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&((TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_StaticFields*)il2cpp_codegen_static_fields_for(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8_il2cpp_TypeInfo_var))->___s_Instance), (void*)(TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:90>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:90>
 		return;
 	}
 }
-// Method Definition Index: 98506
+// Method Definition Index: 119647
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* TrackableSpawner_RegisterCreatedTrackable_m7529E9B30FCF63A3EAFD364D76902D72879FE2CD (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* ___0_trackable, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5571,7 +5571,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474
 	List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* V_0 = NULL;
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_1 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:176>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:176>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_0 = __this->___m_EntriesByTrackableId;
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_1 = ___0_trackable;
 		NullCheck(L_1);
@@ -5586,13 +5586,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:178>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:178>
 		ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_4 = __this->___m_EntryListPool;
 		NullCheck(L_4);
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_5;
 		L_5 = ObjectPool_1_Get_m92ABD5CE79D1D528CBACBDFCB783D3AC669AC990_inline(L_4, ObjectPool_1_Get_m92ABD5CE79D1D528CBACBDFCB783D3AC669AC990_RuntimeMethod_var);
 		V_0 = L_5;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:179>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:179>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_6 = __this->___m_EntriesByTrackableId;
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_7 = ___0_trackable;
 		NullCheck(L_7);
@@ -5605,28 +5605,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474
 
 IL_0033:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:184>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:184>
 		ObjectPool_1_t5D8ECCDFC3AC9CFAD25CED9AF5E29FC0852AD39A* L_10 = __this->___m_EntryPool;
 		NullCheck(L_10);
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_11;
 		L_11 = ObjectPool_1_Get_m121D9803F90097F53852FC5DFD0E24A2730E82D1_inline(L_10, ObjectPool_1_Get_m121D9803F90097F53852FC5DFD0E24A2730E82D1_RuntimeMethod_var);
 		V_1 = L_11;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:185>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:185>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_12 = V_1;
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_13 = ___0_trackable;
 		NullCheck(L_12);
 		TrackableEntry_set_trackable_m7013521D33294FE7395353CD22DF5CE504E0F6AE_inline(L_12, L_13, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:186>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:186>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_14 = V_0;
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_15 = V_1;
 		NullCheck(L_14);
 		List_1_Add_mB821D11D772365F8E227AC2F53754921E1703E13_inline(L_14, L_15, List_1_Add_mB821D11D772365F8E227AC2F53754921E1703E13_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:187>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:187>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_16 = V_1;
 		return L_16;
 	}
 }
-// Method Definition Index: 98507
+// Method Definition Index: 119648
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_PopulateParent_m5BA222DB83B3DC546169FCFA8A5D811BD8E4C400 (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* ___0_entry, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5643,7 +5643,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_PopulateParent_m5BA222D
 	ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* V_2 = NULL;
 	ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* V_3 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:192>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:192>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_0 = ___0_entry;
 		NullCheck(L_0);
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_1;
@@ -5652,7 +5652,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_PopulateParent_m5BA222D
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_2;
 		L_2 = VirtualFuncInvoker0< TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 >::Invoke(13, L_1);
 		V_0 = L_2;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:193>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:193>
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_3 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7_il2cpp_TypeInfo_var);
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_4;
@@ -5665,13 +5665,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_PopulateParent_m5BA222D
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:194>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:194>
 		return;
 	}
 
 IL_001a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:196>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:196>
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_6 = V_0;
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_7 = ___0_entry;
 		NullCheck(L_7);
@@ -5683,7 +5683,7 @@ IL_001a:
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_10;
 		L_10 = TrackableSpawner_FindClosestEntryOrNull_m01D0531E38CAF8F39243D0B0096E8F4D14B2A190(__this, L_9, NULL);
 		V_1 = L_10;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:197>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:197>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_11 = V_1;
 		if (L_11)
 		{
@@ -5691,7 +5691,7 @@ IL_001a:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:199>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:199>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_12 = ___0_entry;
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_13 = ___0_entry;
 		NullCheck(L_13);
@@ -5701,25 +5701,25 @@ IL_001a:
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_15;
 		L_15 = VirtualFuncInvoker0< TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 >::Invoke(13, L_14);
 		TrackableSpawner_MarkAsOrphan_m865E8BFEE211F4E3C5C5B061A50997E28ED3A03C(__this, L_12, L_15, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:200>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:200>
 		return;
 	}
 
 IL_0043:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:203>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:203>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_16 = ___0_entry;
 		NullCheck(L_16);
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_17;
 		L_17 = TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B_inline(L_16, NULL);
 		V_2 = L_17;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:204>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:204>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_18 = V_1;
 		NullCheck(L_18);
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_19;
 		L_19 = TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B_inline(L_18, NULL);
 		V_3 = L_19;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:205>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:205>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_20 = V_2;
 		NullCheck(L_20);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
@@ -5730,7 +5730,7 @@ IL_0043:
 		L_23 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_22, NULL);
 		NullCheck(L_21);
 		Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_21, L_23, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:206>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:206>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_24 = ___0_entry;
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_25 = V_3;
 		NullCheck(L_25);
@@ -5748,7 +5748,7 @@ IL_0043:
 		Nullable_1__ctor_m6BD2763A93F67D3BD0C28D27F46F7FC6E1643137((&L_30), L_29, Nullable_1__ctor_m6BD2763A93F67D3BD0C28D27F46F7FC6E1643137_RuntimeMethod_var);
 		NullCheck(L_24);
 		TrackableEntry_set_parentKey_mB2D4160F0EB38D8751B799AEF010756F9BC5FD22_inline(L_24, L_30, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:207>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:207>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_31 = V_1;
 		NullCheck(L_31);
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_32;
@@ -5766,11 +5766,11 @@ IL_0043:
 		TrackableKey__ctor_m5B54AB84CC3A385E5831AB84FBF488D49F37431C((&L_37), L_34, L_36, NULL);
 		NullCheck(L_32);
 		List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_inline(L_32, L_37, List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:208>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:208>
 		return;
 	}
 }
-// Method Definition Index: 98508
+// Method Definition Index: 119649
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* TrackableSpawner_FindClosestEntryOrNull_m01D0531E38CAF8F39243D0B0096E8F4D14B2A190 (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B ___0_key, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5783,7 +5783,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474
 	List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* V_0 = NULL;
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_1 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:218>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:218>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_0 = __this->___m_EntriesByTrackableId;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1;
 		L_1 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline((&___0_key), NULL);
@@ -5796,19 +5796,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:219>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:219>
 		return (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5*)NULL;
 	}
 
 IL_0018:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:221>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:221>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_3 = V_0;
 		Type_t* L_4;
 		L_4 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline((&___0_key), NULL);
 		bool L_5;
 		L_5 = ListTrackableEntryExtensions_TryFindEntryOfType_m2D227176CFB21E5B5A0F9A0227C951747FC0CCA6(L_3, L_4, (&V_1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:222>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:222>
 		if (L_5)
 		{
 			goto IL_0031;
@@ -5828,7 +5828,7 @@ IL_0031:
 		return L_8;
 	}
 }
-// Method Definition Index: 98509
+// Method Definition Index: 119650
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_MarkAsOrphan_m865E8BFEE211F4E3C5C5B061A50997E28ED3A03C (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* ___0_entry, TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 ___1_missingParentId, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5842,7 +5842,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_MarkAsOrphan_m865E8BFEE
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:227>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:227>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_0 = __this->___m_OrphanedEntriesByMissingParentIds;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1 = ___1_missingParentId;
 		NullCheck(L_0);
@@ -5854,7 +5854,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_MarkAsOrphan_m865E8BFEE
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:228>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:228>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_3 = __this->___m_OrphanedEntriesByMissingParentIds;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_4 = ___1_missingParentId;
 		ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_5 = __this->___m_OrphanPool;
@@ -5867,7 +5867,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_MarkAsOrphan_m865E8BFEE
 
 IL_0025:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:230>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:230>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_7 = __this->___m_OrphanedEntriesByMissingParentIds;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_8 = ___1_missingParentId;
 		NullCheck(L_7);
@@ -5876,11 +5876,11 @@ IL_0025:
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_10 = ___0_entry;
 		NullCheck(L_9);
 		List_1_Add_mB821D11D772365F8E227AC2F53754921E1703E13_inline(L_9, L_10, List_1_Add_mB821D11D772365F8E227AC2F53754921E1703E13_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:231>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:231>
 		return;
 	}
 }
-// Method Definition Index: 98510
+// Method Definition Index: 119651
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResolveOrphans_m5597D8ABF711B2141D5B2AEAF4943423EBB13EF8 (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* ___0_parentEntry, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5904,7 +5904,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResolveOrphans_m5597D8A
 	memset((&V_2), 0, sizeof(V_2));
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_3 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:242>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:242>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_0 = ___0_parentEntry;
 		NullCheck(L_0);
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_1;
@@ -5913,7 +5913,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResolveOrphans_m5597D8A
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_2;
 		L_2 = VirtualFuncInvoker0< TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 >::Invoke(9, L_1);
 		V_0 = L_2;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:243>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:243>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_3 = __this->___m_OrphanedEntriesByMissingParentIds;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_4 = V_0;
 		NullCheck(L_3);
@@ -5925,13 +5925,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_ResolveOrphans_m5597D8A
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:244>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:244>
 		return;
 	}
 
 IL_001d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:246>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:246>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_6 = V_1;
 		NullCheck(L_6);
 		Enumerator_t4022599DA712370A28ABAC4738711AD572D4538B L_7;
@@ -5956,11 +5956,11 @@ FINALLY_0076:
 
 IL_0026_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:246>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:246>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_8;
 				L_8 = Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_inline((&V_2), Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_RuntimeMethod_var);
 				V_3 = L_8;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:248>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:248>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_9 = V_3;
 				NullCheck(L_9);
 				ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_10;
@@ -5977,7 +5977,7 @@ IL_0026_1:
 				L_14 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_13, NULL);
 				NullCheck(L_11);
 				Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_11, L_14, NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:249>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:249>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_15 = ___0_parentEntry;
 				NullCheck(L_15);
 				List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_16;
@@ -5988,7 +5988,7 @@ IL_0026_1:
 				L_18 = TrackableEntry_get_key_mFBAF9D608680F89D585953F600A0E239248DDE94(L_17, NULL);
 				NullCheck(L_16);
 				List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_inline(L_16, L_18, List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:250>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:250>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_19 = V_3;
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_20 = ___0_parentEntry;
 				NullCheck(L_20);
@@ -6003,7 +6003,7 @@ IL_0026_1:
 
 IL_006b_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:246>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:246>
 				bool L_23;
 				L_23 = Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA((&V_2), Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA_RuntimeMethod_var);
 				if (L_23)
@@ -6023,22 +6023,22 @@ IL_006b_1:
 
 IL_0084:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:253>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:253>
 		ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_24 = __this->___m_OrphanPool;
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_25 = V_1;
 		NullCheck(L_24);
 		ObjectPool_1_Release_m2DF70BC487DC11D881E95C394C8CBCC2434754D2_inline(L_24, L_25, ObjectPool_1_Release_m2DF70BC487DC11D881E95C394C8CBCC2434754D2_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:254>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:254>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_26 = __this->___m_OrphanedEntriesByMissingParentIds;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_27 = V_0;
 		NullCheck(L_26);
 		bool L_28;
 		L_28 = Dictionary_2_Remove_m9D77748660B475C81AC9881FDA4BD5A43A76A776(L_26, L_27, Dictionary_2_Remove_m9D77748660B475C81AC9881FDA4BD5A43A76A776_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:255>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:255>
 		return;
 	}
 }
-// Method Definition Index: 98511
+// Method Definition Index: 119652
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_CreatePlaceholderParentsForRemainingOrphans_m89E4FC4507315BED4DF015884B11072FFB6C9D5A (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6086,7 +6086,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_CreatePlaceholderParent
 	memset((&V_10), 0, sizeof(V_10));
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_11 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:259>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:259>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_0 = __this->___m_OrphanedEntriesByMissingParentIds;
 		NullCheck(L_0);
 		Enumerator_tC8A666F228802D12BD666E9116BF3694BB68BC01 L_1;
@@ -6111,7 +6111,7 @@ FINALLY_0130:
 
 IL_0011_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:259>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:259>
 				KeyValuePair_2_t0F3566FAB4E5A0A9E70BAFBCFD007852EC386E8E L_2;
 				L_2 = Enumerator_get_Current_mBD99569EF36A9E384AFBF811FE899973C81473A3_inline((&V_0), Enumerator_get_Current_mBD99569EF36A9E384AFBF811FE899973C81473A3_RuntimeMethod_var);
 				V_3 = L_2;
@@ -6120,7 +6120,7 @@ IL_0011_1:
 				V_1 = L_3;
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_4 = V_5;
 				V_2 = L_4;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:261>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:261>
 				TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_5 = V_1;
 				TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_6 = L_5;
 				RuntimeObject* L_7 = Box(TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7_il2cpp_TypeInfo_var, &L_6);
@@ -6129,18 +6129,18 @@ IL_0011_1:
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)il2cpp_codegen_object_new(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F_il2cpp_TypeInfo_var);
 				GameObject__ctor_m37D512B05D292F954792225E6C6EEE95293A9B88(L_9, L_8, NULL);
 				V_6 = L_9;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:262>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:262>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = V_6;
 				NullCheck(L_10);
 				ARNullTrackable_t088D909463E27A001BB3A89F98E38875DD5018DF* L_11;
 				L_11 = GameObject_AddComponent_TisARNullTrackable_t088D909463E27A001BB3A89F98E38875DD5018DF_mD0C371694D0842242CA88F95AE5BE5AD5F1A5A70(L_10, GameObject_AddComponent_TisARNullTrackable_t088D909463E27A001BB3A89F98E38875DD5018DF_mD0C371694D0842242CA88F95AE5BE5AD5F1A5A70_RuntimeMethod_var);
 				V_7 = L_11;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:263>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:263>
 				ARNullTrackable_t088D909463E27A001BB3A89F98E38875DD5018DF* L_12 = V_7;
 				TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_13 = V_1;
 				NullCheck(L_12);
 				L_12->___trackableIdInternal = L_13;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:264>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:264>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = V_6;
 				NullCheck(L_14);
 				Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
@@ -6151,35 +6151,35 @@ IL_0011_1:
 				L_17 = XROrigin_get_TrackablesParent_m6F7933DF03A5376C31D328F865F77D28EEC18E9C_inline(L_16, NULL);
 				NullCheck(L_15);
 				Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_15, L_17, NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:266>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:266>
 				ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_18 = __this->___m_EntryListPool;
 				NullCheck(L_18);
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_19;
 				L_19 = ObjectPool_1_Get_m92ABD5CE79D1D528CBACBDFCB783D3AC669AC990_inline(L_18, ObjectPool_1_Get_m92ABD5CE79D1D528CBACBDFCB783D3AC669AC990_RuntimeMethod_var);
 				V_8 = L_19;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:267>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:267>
 				ObjectPool_1_t5D8ECCDFC3AC9CFAD25CED9AF5E29FC0852AD39A* L_20 = __this->___m_EntryPool;
 				NullCheck(L_20);
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_21;
 				L_21 = ObjectPool_1_Get_m121D9803F90097F53852FC5DFD0E24A2730E82D1_inline(L_20, ObjectPool_1_Get_m121D9803F90097F53852FC5DFD0E24A2730E82D1_RuntimeMethod_var);
 				V_9 = L_21;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:268>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:268>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_22 = V_9;
 				ARNullTrackable_t088D909463E27A001BB3A89F98E38875DD5018DF* L_23 = V_7;
 				NullCheck(L_22);
 				TrackableEntry_set_trackable_m7013521D33294FE7395353CD22DF5CE504E0F6AE_inline(L_22, L_23, NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:269>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:269>
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_24 = V_8;
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_25 = V_9;
 				NullCheck(L_24);
 				List_1_Add_mB821D11D772365F8E227AC2F53754921E1703E13_inline(L_24, L_25, List_1_Add_mB821D11D772365F8E227AC2F53754921E1703E13_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:270>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:270>
 				Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_26 = __this->___m_EntriesByTrackableId;
 				TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_27 = V_1;
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_28 = V_8;
 				NullCheck(L_26);
 				Dictionary_2_Add_m0457E0F3E140DD81FC08EDD0842C186AB3C2F981(L_26, L_27, L_28, Dictionary_2_Add_m0457E0F3E140DD81FC08EDD0842C186AB3C2F981_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:272>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:272>
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_29 = V_2;
 				NullCheck(L_29);
 				Enumerator_t4022599DA712370A28ABAC4738711AD572D4538B L_30;
@@ -6204,11 +6204,11 @@ FINALLY_0108_1:
 
 IL_00ad_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:272>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:272>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_31;
 						L_31 = Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_inline((&V_10), Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_RuntimeMethod_var);
 						V_11 = L_31;
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:274>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:274>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_32 = V_11;
 						NullCheck(L_32);
 						ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_33;
@@ -6222,7 +6222,7 @@ IL_00ad_2:
 						L_36 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_35, NULL);
 						NullCheck(L_34);
 						Transform_SetParent_m6677538B60246D958DD91F931C50F969CCBB5250(L_34, L_36, NULL);
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:275>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:275>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_37 = V_9;
 						NullCheck(L_37);
 						List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_38;
@@ -6233,7 +6233,7 @@ IL_00ad_2:
 						L_40 = TrackableEntry_get_key_mFBAF9D608680F89D585953F600A0E239248DDE94(L_39, NULL);
 						NullCheck(L_38);
 						List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_inline(L_38, L_40, List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_RuntimeMethod_var);
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:276>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:276>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_41 = V_11;
 						TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_42 = V_1;
 						RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_43 = { reinterpret_cast<intptr_t> (ARNullTrackable_t088D909463E27A001BB3A89F98E38875DD5018DF_0_0_0_var) };
@@ -6252,7 +6252,7 @@ IL_00ad_2:
 
 IL_00fd_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:272>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:272>
 						bool L_47;
 						L_47 = Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA((&V_10), Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA_RuntimeMethod_var);
 						if (L_47)
@@ -6272,7 +6272,7 @@ IL_00fd_2:
 
 IL_0116_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:279>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:279>
 				ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_48 = __this->___m_OrphanPool;
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_49 = V_2;
 				NullCheck(L_48);
@@ -6281,7 +6281,7 @@ IL_0116_1:
 
 IL_0122_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:259>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:259>
 				bool L_50;
 				L_50 = Enumerator_MoveNext_m1A42297D40478F3AB83BB40CA22823585CF24ECA((&V_0), Enumerator_MoveNext_m1A42297D40478F3AB83BB40CA22823585CF24ECA_RuntimeMethod_var);
 				if (L_50)
@@ -6301,15 +6301,15 @@ IL_0122_1:
 
 IL_013e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:282>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:282>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_51 = __this->___m_OrphanedEntriesByMissingParentIds;
 		NullCheck(L_51);
 		Dictionary_2_Clear_mB442DA939E3AB1F2636881737DCE5A51EDE352CA(L_51, Dictionary_2_Clear_mB442DA939E3AB1F2636881737DCE5A51EDE352CA_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:283>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:283>
 		return;
 	}
 }
-// Method Definition Index: 98512
+// Method Definition Index: 119653
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_OnTrackableDestroyed_mE32E34AA0D47938B6FBDEB80293F81DD1335402D (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B ___0_key, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6341,8 +6341,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_OnTrackableDestroyed_mE
 	Type_t* V_8 = NULL;
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_9 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:287>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:288>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:287>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:288>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_0 = __this->___m_EntriesByTrackableId;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_1;
 		L_1 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline((&___0_key), NULL);
@@ -6368,13 +6368,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_OnTrackableDestroyed_mE
 
 IL_0027:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:289>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:289>
 		return;
 	}
 
 IL_0028:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:291>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:291>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_6 = V_1;
 		NullCheck(L_6);
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_7;
@@ -6388,7 +6388,7 @@ IL_0028:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:293>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:293>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_9 = V_1;
 		NullCheck(L_9);
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_10;
@@ -6402,7 +6402,7 @@ IL_0028:
 		V_3 = L_12;
 		Type_t* L_13 = V_8;
 		V_4 = L_13;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:296>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:296>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_14 = __this->___m_EntriesByTrackableId;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_15 = V_3;
 		NullCheck(L_14);
@@ -6414,12 +6414,12 @@ IL_0028:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:298>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:298>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_17 = V_5;
 		Type_t* L_18 = V_4;
 		bool L_19;
 		L_19 = ListTrackableEntryExtensions_TryFindEntryOfType_m2D227176CFB21E5B5A0F9A0227C951747FC0CCA6(L_17, L_18, (&V_9), NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:300>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:300>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_20 = V_9;
 		NullCheck(L_20);
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_21;
@@ -6432,18 +6432,18 @@ IL_0028:
 
 IL_0084:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:307>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:307>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_24 = V_0;
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_25 = V_1;
 		NullCheck(L_24);
 		bool L_26;
 		L_26 = List_1_Remove_m2C7E168FB7DFCECAE643CCBD0C56FE4E97CF852E(L_24, L_25, List_1_Remove_m2C7E168FB7DFCECAE643CCBD0C56FE4E97CF852E_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:308>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:308>
 		ObjectPool_1_t5D8ECCDFC3AC9CFAD25CED9AF5E29FC0852AD39A* L_27 = __this->___m_EntryPool;
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_28 = V_1;
 		NullCheck(L_27);
 		ObjectPool_1_Release_m36F5CE00B312EAD60413E7ABC8E4760E9792201F_inline(L_27, L_28, ObjectPool_1_Release_m36F5CE00B312EAD60413E7ABC8E4760E9792201F_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:309>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:309>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_29 = V_0;
 		NullCheck(L_29);
 		int32_t L_30;
@@ -6454,14 +6454,14 @@ IL_0084:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:311>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:311>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_31 = __this->___m_EntriesByTrackableId;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_32;
 		L_32 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline((&___0_key), NULL);
 		NullCheck(L_31);
 		bool L_33;
 		L_33 = Dictionary_2_Remove_m9D77748660B475C81AC9881FDA4BD5A43A76A776(L_31, L_32, Dictionary_2_Remove_m9D77748660B475C81AC9881FDA4BD5A43A76A776_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:312>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:312>
 		ObjectPool_1_tADB7F1220A892C1E7CED34372F51F63AE594ABBE* L_34 = __this->___m_EntryListPool;
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_35 = V_0;
 		NullCheck(L_34);
@@ -6470,11 +6470,11 @@ IL_0084:
 
 IL_00bf:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:314>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:314>
 		return;
 	}
 }
-// Method Definition Index: 98514
+// Method Definition Index: 119655
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_SetPose_m1062AE595CAD5314189A0CDFD9366F6C6178C854 (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* ___0_entry, Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 ___1_sessionPose, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6498,7 +6498,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_SetPose_m1062AE595CAD53
 	memset((&V_4), 0, sizeof(V_4));
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_5 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:340>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:340>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_0 = ___0_entry;
 		NullCheck(L_0);
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_1;
@@ -6526,23 +6526,23 @@ FINALLY_005d:
 
 IL_000e_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:340>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:340>
 				TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B L_3;
 				L_3 = Enumerator_get_Current_mABA94F780DD0317DA28599D671EFE8BA022559C0_inline((&V_1), Enumerator_get_Current_mABA94F780DD0317DA28599D671EFE8BA022559C0_RuntimeMethod_var);
 				V_2 = L_3;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:342>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:342>
 				Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_4 = __this->___m_EntriesByTrackableId;
 				TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_5;
 				L_5 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline((&V_2), NULL);
 				NullCheck(L_4);
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_6;
 				L_6 = Dictionary_2_get_Item_mF51C29D0B22124055B66510446CC37C723681C2F(L_4, L_5, Dictionary_2_get_Item_mF51C29D0B22124055B66510446CC37C723681C2F_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:343>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:343>
 				Type_t* L_7;
 				L_7 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline((&V_2), NULL);
 				bool L_8;
 				L_8 = ListTrackableEntryExtensions_TryFindEntryOfType_m2D227176CFB21E5B5A0F9A0227C951747FC0CCA6(L_6, L_7, (&V_3), NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:345>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:345>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_9 = V_3;
 				NullCheck(L_9);
 				ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_10;
@@ -6560,7 +6560,7 @@ IL_000e_1:
 
 IL_0052_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:340>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:340>
 				bool L_14;
 				L_14 = Enumerator_MoveNext_mF266C66AB0D1953727A2C96DE945D4C32B4C1ECB((&V_1), Enumerator_MoveNext_mF266C66AB0D1953727A2C96DE945D4C32B4C1ECB_RuntimeMethod_var);
 				if (L_14)
@@ -6580,12 +6580,12 @@ IL_0052_1:
 
 IL_006b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:348>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:348>
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_15 = ___1_sessionPose;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_16;
 		L_16 = TrackableSpawner_GetWorldspacePose_mE40AF60937767CCC837324875751FA7C29F7501F(__this, L_15, NULL);
 		V_0 = L_16;
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:349>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:349>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_17 = ___0_entry;
 		NullCheck(L_17);
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_18;
@@ -6599,7 +6599,7 @@ IL_006b:
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_23 = L_22.___rotation;
 		NullCheck(L_19);
 		Transform_SetPositionAndRotation_m418859BF59086EEAA084FFD6F258A43FAB408F5A(L_19, L_21, L_23, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:351>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:351>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_24 = ___0_entry;
 		NullCheck(L_24);
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_25;
@@ -6627,23 +6627,23 @@ FINALLY_00ee:
 
 IL_009d_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:351>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:351>
 				TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B L_27;
 				L_27 = Enumerator_get_Current_mABA94F780DD0317DA28599D671EFE8BA022559C0_inline((&V_1), Enumerator_get_Current_mABA94F780DD0317DA28599D671EFE8BA022559C0_RuntimeMethod_var);
 				V_4 = L_27;
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:353>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:353>
 				Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_28 = __this->___m_EntriesByTrackableId;
 				TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_29;
 				L_29 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline((&V_4), NULL);
 				NullCheck(L_28);
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_30;
 				L_30 = Dictionary_2_get_Item_mF51C29D0B22124055B66510446CC37C723681C2F(L_28, L_29, Dictionary_2_get_Item_mF51C29D0B22124055B66510446CC37C723681C2F_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:354>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:354>
 				Type_t* L_31;
 				L_31 = TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline((&V_4), NULL);
 				bool L_32;
 				L_32 = ListTrackableEntryExtensions_TryFindEntryOfType_m2D227176CFB21E5B5A0F9A0227C951747FC0CCA6(L_30, L_31, (&V_5), NULL);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:355>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:355>
 				TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_33 = V_5;
 				NullCheck(L_33);
 				ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_34;
@@ -6664,7 +6664,7 @@ IL_009d_1:
 
 IL_00e3_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:351>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:351>
 				bool L_39;
 				L_39 = Enumerator_MoveNext_mF266C66AB0D1953727A2C96DE945D4C32B4C1ECB((&V_1), Enumerator_MoveNext_mF266C66AB0D1953727A2C96DE945D4C32B4C1ECB_RuntimeMethod_var);
 				if (L_39)
@@ -6684,11 +6684,11 @@ IL_00e3_1:
 
 IL_00fc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:357>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:357>
 		return;
 	}
 }
-// Method Definition Index: 98515
+// Method Definition Index: 119656
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_OnTrackablesParentTransformChanged_m576CAEE2854C63FCBBF1BBFB097FBA069DFDE79A (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, ARTrackablesParentTransformChangedEventArgs_tB5D30F800FD3203F736546CCEE71A73328457BA5 ___0_eventArgs, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6714,11 +6714,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_OnTrackablesParentTrans
 	Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 V_3;
 	memset((&V_3), 0, sizeof(V_3));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:361>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:361>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_0;
 		L_0 = ARTrackablesParentTransformChangedEventArgs_get_Origin_m91D7C3638FBF94D468AD4467ABB2EC9500753F25_inline((&___0_eventArgs), NULL);
 		TrackableSpawner_SetOrigin_mC59D54BD5349F31A5AAB70672E6BC28A84977292(__this, L_0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:363>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:363>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_1 = __this->___m_EntriesByTrackableId;
 		NullCheck(L_1);
 		ValueCollection_t945124402ACAA0C938C61979A25EA72BF2C038F9* L_2;
@@ -6746,10 +6746,10 @@ FINALLY_00bd:
 
 IL_0023_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:363>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:363>
 				List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_4;
 				L_4 = Enumerator_get_Current_mB3DC3BB0D997738AFF1E48F8A44573BD4AB94B54_inline((&V_0), Enumerator_get_Current_mB3DC3BB0D997738AFF1E48F8A44573BD4AB94B54_RuntimeMethod_var);
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:365>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:365>
 				NullCheck(L_4);
 				Enumerator_t4022599DA712370A28ABAC4738711AD572D4538B L_5;
 				L_5 = List_1_GetEnumerator_m99355E613D5DCEE2CDDF87DFF158620739CC8253(L_4, List_1_GetEnumerator_m99355E613D5DCEE2CDDF87DFF158620739CC8253_RuntimeMethod_var);
@@ -6773,11 +6773,11 @@ FINALLY_00a1_1:
 
 IL_0032_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:365>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:365>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_6;
 						L_6 = Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_inline((&V_1), Enumerator_get_Current_mB61C8602640535EFE0BEC989B7BB92517C164CE1_RuntimeMethod_var);
 						V_2 = L_6;
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:367>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:367>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_7 = V_2;
 						NullCheck(L_7);
 						ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_8;
@@ -6796,7 +6796,7 @@ IL_0032_2:
 						}
 					}
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:368>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:368>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_12 = V_2;
 						NullCheck(L_12);
 						ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_13;
@@ -6812,7 +6812,7 @@ IL_0032_2:
 
 IL_0068_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:370>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:370>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_16 = V_2;
 						NullCheck(L_16);
 						ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_17;
@@ -6823,7 +6823,7 @@ IL_0068_2:
 						Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_19;
 						L_19 = TrackableSpawner_GetWorldspacePose_mE40AF60937767CCC837324875751FA7C29F7501F(__this, L_18, NULL);
 						V_3 = L_19;
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:371>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:371>
 						TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_20 = V_2;
 						NullCheck(L_20);
 						ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_21;
@@ -6841,7 +6841,7 @@ IL_0068_2:
 
 IL_0096_2:
 					{
-						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:365>
+						//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:365>
 						bool L_27;
 						L_27 = Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA((&V_1), Enumerator_MoveNext_mC1A71554A805EA322E3B1509859BE94EBCCE5DAA_RuntimeMethod_var);
 						if (L_27)
@@ -6861,7 +6861,7 @@ IL_0096_2:
 
 IL_00af_1:
 			{
-				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:363>
+				//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:363>
 				bool L_28;
 				L_28 = Enumerator_MoveNext_m503E938790543FB5E27EFB25549FE31904C5F1FD((&V_0), Enumerator_MoveNext_m503E938790543FB5E27EFB25549FE31904C5F1FD_RuntimeMethod_var);
 				if (L_28)
@@ -6881,11 +6881,11 @@ IL_00af_1:
 
 IL_00cb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:374>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:374>
 		return;
 	}
 }
-// Method Definition Index: 98516
+// Method Definition Index: 119657
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_SetOrigin_mC59D54BD5349F31A5AAB70672E6BC28A84977292 (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* ___0_origin, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6897,7 +6897,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_SetOrigin_mC59D54BD5349
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:379>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:379>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_0 = __this->___m_Origin;
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_1 = ___0_origin;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
@@ -6909,13 +6909,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackableSpawner_SetOrigin_mC59D54BD5349
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:380>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:380>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:382>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:382>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_3 = __this->___m_Origin;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4;
@@ -6926,7 +6926,7 @@ IL_000f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:383>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:383>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_5 = __this->___m_Origin;
 		Action_1_t941F5236BDA57C5BC0EE651FF51B247342AFE701* L_6 = (Action_1_t941F5236BDA57C5BC0EE651FF51B247342AFE701*)il2cpp_codegen_object_new(Action_1_t941F5236BDA57C5BC0EE651FF51B247342AFE701_il2cpp_TypeInfo_var);
 		Action_1__ctor_mE574CE17842BA65F1C1FFDED2ADD6BA0FFBF48B5(L_6, __this, (intptr_t)((void*)TrackableSpawner_OnTrackablesParentTransformChanged_m576CAEE2854C63FCBBF1BBFB097FBA069DFDE79A_RuntimeMethod_var), NULL);
@@ -6936,21 +6936,21 @@ IL_000f:
 
 IL_0034:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:385>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:385>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_7 = ___0_origin;
 		__this->___m_Origin = L_7;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Origin), (void*)L_7);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:386>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:386>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_8 = __this->___m_Origin;
 		Action_1_t941F5236BDA57C5BC0EE651FF51B247342AFE701* L_9 = (Action_1_t941F5236BDA57C5BC0EE651FF51B247342AFE701*)il2cpp_codegen_object_new(Action_1_t941F5236BDA57C5BC0EE651FF51B247342AFE701_il2cpp_TypeInfo_var);
 		Action_1__ctor_mE574CE17842BA65F1C1FFDED2ADD6BA0FFBF48B5(L_9, __this, (intptr_t)((void*)TrackableSpawner_OnTrackablesParentTransformChanged_m576CAEE2854C63FCBBF1BBFB097FBA069DFDE79A_RuntimeMethod_var), NULL);
 		NullCheck(L_8);
 		XROrigin_add_TrackablesParentTransformChanged_m04D2A05E3000931435B7F4CAC332E0EC2693B1EF(L_8, L_9, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:387>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:387>
 		return;
 	}
 }
-// Method Definition Index: 98517
+// Method Definition Index: 119658
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableSpawner_TryGetTrackableByKey_mB6BD5B52EB51180EA4C52222CC258900DD0FBEF6 (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B ___0_key, ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0** ___1_trackable, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -6962,12 +6962,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableSpawner_TryGetTrackableByKey_mB
 	List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* V_0 = NULL;
 	TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* V_1 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:391>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:391>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0** L_0 = ___1_trackable;
 		*((RuntimeObject**)L_0) = (RuntimeObject*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_0, (void*)(RuntimeObject*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:392>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:393>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:392>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:393>
 		Dictionary_2_tE8E66DC1159FA14A3DAAE3F49280A03069F81739* L_1 = __this->___m_EntriesByTrackableId;
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_2;
 		L_2 = TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline((&___0_key), NULL);
@@ -6993,13 +6993,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TrackableSpawner_TryGetTrackableByKey_mB
 
 IL_002a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:394>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:394>
 		return (bool)0;
 	}
 
 IL_002c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:396>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:396>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0** L_7 = ___1_trackable;
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_8 = V_1;
 		NullCheck(L_8);
@@ -7007,15 +7007,15 @@ IL_002c:
 		L_9 = TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B_inline(L_8, NULL);
 		*((RuntimeObject**)L_7) = (RuntimeObject*)L_9;
 		Il2CppCodeGenWriteBarrier((void**)(RuntimeObject**)L_7, (void*)(RuntimeObject*)L_9);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:397>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:397>
 		return (bool)1;
 	}
 }
-// Method Definition Index: 98518
+// Method Definition Index: 119659
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 TrackableSpawner_GetWorldspacePose_mE40AF60937767CCC837324875751FA7C29F7501F (TrackableSpawner_tD75278064758420D002C75B533FA81BA908494D8* __this, Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 ___0_sessionRelativePose, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:402>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:402>
 		XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* L_0 = __this->___m_Origin;
 		NullCheck(L_0);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_1;
@@ -7026,7 +7026,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 		return L_3;
 	}
 }
-// Method Definition Index: 98519
+// Method Definition Index: 119660
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TrackableSpawner_GenerateTrackableName_m855A5BCC16BC450785E43319BB0B2BC4F59566AA (String_t* ___0_prefix, TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 ___1_trackableId, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7037,7 +7037,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TrackableSpawner_GenerateTrackableN
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:407>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:407>
 		String_t* L_0 = ___0_prefix;
 		il2cpp_codegen_runtime_class_init_inline(TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7_il2cpp_TypeInfo_var);
 		String_t* L_1;
@@ -7055,7 +7055,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* TrackableSpawner_GenerateTrackableN
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98520
+// Method Definition Index: 119661
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__cctor_m38BB3F5C9BA4F003D7FB11C594BD36BD63A67225 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7072,7 +7072,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__cctor_m38BB3F5C9BA4F003D7FB11C5
 		return;
 	}
 }
-// Method Definition Index: 98521
+// Method Definition Index: 119662
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_m42CE1393FB9BA09C6EA37B7D33343AB309AA07FE (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, const RuntimeMethod* method) 
 {
 	{
@@ -7080,7 +7080,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_m42CE1393FB9BA09C6EA37B7D3
 		return;
 	}
 }
-// Method Definition Index: 98522
+// Method Definition Index: 119663
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* U3CU3Ec_U3C_ctorU3Eb__9_0_m489C73E3A8170C58262E51684B04D8503E418B2C (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7091,13 +7091,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F902
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:53>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:53>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_0 = (List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B*)il2cpp_codegen_object_new(List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B_il2cpp_TypeInfo_var);
 		List_1__ctor_mDE9FB8F4E9545FD8598A4DD56E887A2F91A18BAF(L_0, 1, List_1__ctor_mDE9FB8F4E9545FD8598A4DD56E887A2F91A18BAF_RuntimeMethod_var);
 		return L_0;
 	}
 }
-// Method Definition Index: 98523
+// Method Definition Index: 119664
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3C_ctorU3Eb__9_1_m42D4E7187B150247BB2D51D7FC0471F53ED04455 (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* ___0_list, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7107,14 +7107,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3C_ctorU3Eb__9_1_m42D4E7187B150
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:55>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:55>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_0 = ___0_list;
 		NullCheck(L_0);
 		List_1_Clear_m94752DACD7F9D2459F2BE6B513CF1103CBAB2BFB_inline(L_0, List_1_Clear_m94752DACD7F9D2459F2BE6B513CF1103CBAB2BFB_RuntimeMethod_var);
 		return;
 	}
 }
-// Method Definition Index: 98524
+// Method Definition Index: 119665
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* U3CU3Ec_U3C_ctorU3Eb__9_2_m930A2EDA21E12B8AB7888780560204691C389F75 (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7125,13 +7125,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F902
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:62>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_0 = (List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B*)il2cpp_codegen_object_new(List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B_il2cpp_TypeInfo_var);
 		List_1__ctor_mE660317020B6968E51C91F0DDA90A430D99076AD(L_0, List_1__ctor_mE660317020B6968E51C91F0DDA90A430D99076AD_RuntimeMethod_var);
 		return L_0;
 	}
 }
-// Method Definition Index: 98525
+// Method Definition Index: 119666
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3C_ctorU3Eb__9_3_m61A37B9F8023A577BFFC2A2629E384CA8C73FC39 (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* ___0_list, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7141,14 +7141,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3C_ctorU3Eb__9_3_m61A37B9F8023A
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:64>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:64>
 		List_1_t0E6B8CCE43B3EFEC1891800C84AFF0221F90231B* L_0 = ___0_list;
 		NullCheck(L_0);
 		List_1_Clear_m94752DACD7F9D2459F2BE6B513CF1103CBAB2BFB_inline(L_0, List_1_Clear_m94752DACD7F9D2459F2BE6B513CF1103CBAB2BFB_RuntimeMethod_var);
 		return;
 	}
 }
-// Method Definition Index: 98526
+// Method Definition Index: 119667
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* U3CU3Ec_U3C_ctorU3Eb__9_4_m203D013C3D921CBCA17A1041114E362EF9A8523C (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7158,17 +7158,17 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:71>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_0 = (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5*)il2cpp_codegen_object_new(TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5_il2cpp_TypeInfo_var);
 		TrackableEntry__ctor_m270484FEE9D394AA1A7C84BC4E8FBAA2FC91A66C(L_0, (ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0*)NULL, NULL);
 		return L_0;
 	}
 }
-// Method Definition Index: 98527
+// Method Definition Index: 119668
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3C_ctorU3Eb__9_5_m4ED1950D39D4761EF99EDABF2AA7E8CBD52DC21A (U3CU3Ec_tD97E61C30D79A5CCD618560620526FC701233510* __this, TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* ___0_entry, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:73>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableSpawner.cs:73>
 		TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* L_0 = ___0_entry;
 		NullCheck(L_0);
 		TrackableEntry_Reset_mA6DAD7A58C73C108E7F558A377A1C112A0DE780C(L_0, NULL);
@@ -7191,7 +7191,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3C_ctorU3Eb__9_5_m4ED1950D39D47
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98528
+// Method Definition Index: 119669
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t TrackingModeExtensions_ToFeature_m683FFDDC9DDC2DA86001B1CCF0C12D8961639041 (int32_t ___0_self, const RuntimeMethod* method) 
 {
 	{
@@ -7214,28 +7214,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t TrackingModeExtensions_ToFeature_m68
 
 IL_000a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:41>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:41>
 		return (uint64_t)(((int64_t)4));
 	}
 
 IL_000d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:42>
 		return (uint64_t)(((int64_t)8));
 	}
 
 IL_0010:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:43>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:43>
 		return (uint64_t)(((int64_t)0));
 	}
 }
-// Method Definition Index: 98529
+// Method Definition Index: 119670
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TrackingModeExtensions_ToTrackingMode_m4896FC7865A6619FB20F1028CF585126F4B3D6A2 (uint64_t ___0_self, const RuntimeMethod* method) 
 {
 	uint64_t V_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:54>
 		uint64_t L_0 = ___0_self;
 		uint64_t L_1;
 		L_1 = FeatureExtensions_TrackingModes_m98FFB5EE942CA939B0F4F06A425673A4081287B7(L_0, NULL);
@@ -7259,19 +7259,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t TrackingModeExtensions_ToTrackingMode
 
 IL_0013:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:56>
 		return (int32_t)(1);
 	}
 
 IL_0015:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:57>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:57>
 		return (int32_t)(2);
 	}
 
 IL_0017:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackingMode.cs:58>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackingMode.cs:58>
 		return (int32_t)(0);
 	}
 }
@@ -7283,7 +7283,7 @@ IL_0017:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98530
+// Method Definition Index: 119671
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00 TransformExtensions_TransformRay_m34136D03EFA2C12718B4F8EC879C293E405D7AB5 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00 ___1_ray, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7293,7 +7293,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:19>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:19>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7304,7 +7304,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:20>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:20>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_2 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7DCC6569C2F6EC43635C15A4446068D2FE1897D5)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_TransformRay_m34136D03EFA2C12718B4F8EC879C293E405D7AB5_RuntimeMethod_var)));
@@ -7312,9 +7312,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:22>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:23>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:24>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:23>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:24>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = ___0_transform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Ray_get_origin_m97604A8F180316A410DCD77B7D74D04522FA1BA6_inline((&___1_ray), NULL);
@@ -7333,7 +7333,7 @@ IL_0014:
 		return L_9;
 	}
 }
-// Method Definition Index: 98531
+// Method Definition Index: 119672
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00 TransformExtensions_InverseTransformRay_m3417C7D5AFC5CC8B2ADC0F6DCA4BFF3C7E539B3C (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00 ___1_ray, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7343,7 +7343,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:35>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7354,7 +7354,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:36>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:36>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_2 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7DCC6569C2F6EC43635C15A4446068D2FE1897D5)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_InverseTransformRay_m3417C7D5AFC5CC8B2ADC0F6DCA4BFF3C7E539B3C_RuntimeMethod_var)));
@@ -7362,9 +7362,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:38>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:39>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:40>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:38>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:40>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = ___0_transform;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
 		L_4 = Ray_get_origin_m97604A8F180316A410DCD77B7D74D04522FA1BA6_inline((&___1_ray), NULL);
@@ -7383,7 +7383,7 @@ IL_0014:
 		return L_9;
 	}
 }
-// Method Definition Index: 98532
+// Method Definition Index: 119673
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 TransformExtensions_TransformPose_m657A2F269CFE7ABD9E77029577861EA464E2364C (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 ___1_pose, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7393,7 +7393,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:51>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:51>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971_il2cpp_TypeInfo_var);
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_1;
@@ -7401,7 +7401,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 		return L_1;
 	}
 }
-// Method Definition Index: 98533
+// Method Definition Index: 119674
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 TransformExtensions_InverseTransformPose_m3705FF36F67498108EBA26FA116491ED4ECBB1DE (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 ___1_pose, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7413,7 +7413,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 	Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:62>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:62>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7424,7 +7424,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:63>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:63>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_2 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7DCC6569C2F6EC43635C15A4446068D2FE1897D5)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_InverseTransformPose_m3705FF36F67498108EBA26FA116491ED4ECBB1DE_RuntimeMethod_var)));
@@ -7432,11 +7432,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE797
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:65>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:66>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:67>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:68>
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:69>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:65>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:66>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:67>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:68>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:69>
 		il2cpp_codegen_initobj((&V_0), sizeof(Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971));
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = ___0_transform;
 		Pose_t06BA69EAA6E9FAF60056D519A87D25F54AFE7971 L_4 = ___1_pose;
@@ -7460,7 +7460,7 @@ IL_0014:
 		return L_13;
 	}
 }
-// Method Definition Index: 98534
+// Method Definition Index: 119675
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_TransformPointList_m7C213FB0F243A84C8ADA345E7D0600CCBC1A066E (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* ___1_points, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7474,7 +7474,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_TransformPointList_m
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:79>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:79>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7485,7 +7485,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_TransformPointList_m
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:80>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:80>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_2 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7DCC6569C2F6EC43635C15A4446068D2FE1897D5)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_TransformPointList_m7C213FB0F243A84C8ADA345E7D0600CCBC1A066E_RuntimeMethod_var)));
@@ -7493,7 +7493,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_TransformPointList_m
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:82>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:82>
 		List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* L_3 = ___1_points;
 		if (L_3)
 		{
@@ -7501,7 +7501,7 @@ IL_0014:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:83>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:83>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_4 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_4, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral17A7BA088490CA1D9307C4F7F07BDC92703EDF51)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_4, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_TransformPointList_m7C213FB0F243A84C8ADA345E7D0600CCBC1A066E_RuntimeMethod_var)));
@@ -7509,14 +7509,14 @@ IL_0014:
 
 IL_0022:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:85>
 		V_0 = 0;
 		goto IL_003e;
 	}
 
 IL_0026:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:87>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:87>
 		List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* L_5 = ___1_points;
 		int32_t L_6 = V_0;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = ___0_transform;
@@ -7530,14 +7530,14 @@ IL_0026:
 		L_11 = Transform_TransformPoint_m05BFF013DB830D7BFE44A007703694AE1062EE44(L_7, L_10, NULL);
 		NullCheck(L_5);
 		List_1_set_Item_m35C8C18BF5DF9A5C8867BF0C872BC39275A41A9C(L_5, L_6, L_11, List_1_set_Item_m35C8C18BF5DF9A5C8867BF0C872BC39275A41A9C_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:85>
 		int32_t L_12 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_12, 1));
 	}
 
 IL_003e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:85>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:85>
 		int32_t L_13 = V_0;
 		List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* L_14 = ___1_points;
 		NullCheck(L_14);
@@ -7549,11 +7549,11 @@ IL_003e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:89>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:89>
 		return;
 	}
 }
-// Method Definition Index: 98535
+// Method Definition Index: 119676
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_InverseTransformPointList_m62F86C3FA0F4DCB23357FBCB9E6254A72F502A78 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* ___1_points, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7567,7 +7567,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_InverseTransformPoin
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:98>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:98>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7578,7 +7578,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_InverseTransformPoin
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:99>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:99>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_2 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7DCC6569C2F6EC43635C15A4446068D2FE1897D5)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_InverseTransformPointList_m62F86C3FA0F4DCB23357FBCB9E6254A72F502A78_RuntimeMethod_var)));
@@ -7586,7 +7586,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_InverseTransformPoin
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:101>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:101>
 		List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* L_3 = ___1_points;
 		if (L_3)
 		{
@@ -7594,7 +7594,7 @@ IL_0014:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:102>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:102>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_4 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_4, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral17A7BA088490CA1D9307C4F7F07BDC92703EDF51)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_4, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_InverseTransformPointList_m62F86C3FA0F4DCB23357FBCB9E6254A72F502A78_RuntimeMethod_var)));
@@ -7602,14 +7602,14 @@ IL_0014:
 
 IL_0022:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:104>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:104>
 		V_0 = 0;
 		goto IL_003e;
 	}
 
 IL_0026:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:106>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:106>
 		List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* L_5 = ___1_points;
 		int32_t L_6 = V_0;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_7 = ___0_transform;
@@ -7623,14 +7623,14 @@ IL_0026:
 		L_11 = Transform_InverseTransformPoint_m18CD395144D9C78F30E15A5B82B6670E792DBA5D(L_7, L_10, NULL);
 		NullCheck(L_5);
 		List_1_set_Item_m35C8C18BF5DF9A5C8867BF0C872BC39275A41A9C(L_5, L_6, L_11, List_1_set_Item_m35C8C18BF5DF9A5C8867BF0C872BC39275A41A9C_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:104>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:104>
 		int32_t L_12 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_12, 1));
 	}
 
 IL_003e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:104>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:104>
 		int32_t L_13 = V_0;
 		List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* L_14 = ___1_points;
 		NullCheck(L_14);
@@ -7642,11 +7642,11 @@ IL_003e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:108>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:108>
 		return;
 	}
 }
-// Method Definition Index: 98536
+// Method Definition Index: 119677
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_SetLayerRecursively_m8A1487644AED6A3BE7873728671CB6EE9304EF8C (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_transform, int32_t ___1_layer, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -7657,7 +7657,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_SetLayerRecursively_
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:117>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:117>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_transform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7668,7 +7668,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_SetLayerRecursively_
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:118>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:118>
 		ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129* L_2 = (ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentNullException_t327031E412FAB2351B0022DD5DAD47E67E597129_il2cpp_TypeInfo_var)));
 		ArgumentNullException__ctor_m444AE141157E333844FC1A9500224C2F9FD24F4B(L_2, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral7DCC6569C2F6EC43635C15A4446068D2FE1897D5)), NULL);
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_2, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&TransformExtensions_SetLayerRecursively_m8A1487644AED6A3BE7873728671CB6EE9304EF8C_RuntimeMethod_var)));
@@ -7676,7 +7676,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TransformExtensions_SetLayerRecursively_
 
 IL_0014:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:121>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:121>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_3 = ___0_transform;
 		NullCheck(L_3);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
@@ -7684,30 +7684,30 @@ IL_0014:
 		int32_t L_5 = ___1_layer;
 		NullCheck(L_4);
 		GameObject_set_layer_m6E1AF478A2CC86BD222B96317BEB78B7D89B18D0(L_4, L_5, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:124>
 		V_0 = 0;
 		goto IL_0035;
 	}
 
 IL_0024:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:126>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:126>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = ___0_transform;
 		int32_t L_7 = V_0;
 		NullCheck(L_6);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8;
 		L_8 = Transform_GetChild_mE686DF0C7AAC1F7AEF356967B1C04D8B8E240EAF(L_6, L_7, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:127>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:127>
 		int32_t L_9 = ___1_layer;
 		TransformExtensions_SetLayerRecursively_m8A1487644AED6A3BE7873728671CB6EE9304EF8C(L_8, L_9, NULL);
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:124>
 		int32_t L_10 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_10, 1));
 	}
 
 IL_0035:
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:124>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:124>
 		int32_t L_11 = V_0;
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12 = ___0_transform;
 		NullCheck(L_12);
@@ -7719,7 +7719,7 @@ IL_0035:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TransformExtensions.cs:129>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TransformExtensions.cs:129>
 		return;
 	}
 }
@@ -7758,16 +7758,16 @@ IL_0035:
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 101308
+// Method Definition Index: 122449
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR intptr_t XRTextureDescriptor_get_nativeTexture_m1E27C0E1DC11DDC6139178509EE91B8DF54DBAD4_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:18>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:18>
 		intptr_t L_0 = __this->___m_NativeTexture;
 		return L_0;
 	}
 }
-// Method Definition Index: 3910
+// Method Definition Index: 3978
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool IntPtr_op_Equality_m7D9CDCDE9DC2A0C2C614633F4921E90187FAB271_inline (intptr_t ___0_value1, intptr_t ___1_value2, const RuntimeMethod* method) 
 {
 	{
@@ -7776,7 +7776,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool IntPtr_op_Equality_m7D9CDCDE
 		return (bool)((((intptr_t)L_0) == ((intptr_t)L_1))? 1 : 0);
 	}
 }
-// Method Definition Index: 52280
+// Method Definition Index: 67606
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Mathf_Min_m888083F74FF5655778F0403BB5E9608BEFDEA8CB_inline (int32_t ___0_a, int32_t ___1_b, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -7813,61 +7813,61 @@ IL_000c:
 		return L_4;
 	}
 }
-// Method Definition Index: 101309
+// Method Definition Index: 122450
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRTextureDescriptor_get_width_m570472F03994BC63F21751414105A2E0C112DBF2_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:25>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:25>
 		int32_t L_0 = __this->___m_Width;
 		return L_0;
 	}
 }
-// Method Definition Index: 101312
+// Method Definition Index: 122453
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRTextureDescriptor_get_format_mA745AA87046D4FE4846C11B8285B980FF6DDDD1A_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:46>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:46>
 		int32_t L_0 = __this->___m_Format;
 		return L_0;
 	}
 }
-// Method Definition Index: 101311
+// Method Definition Index: 122452
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRTextureDescriptor_get_mipmapCount_m4B2ED0D6EBE06AD86E356203B4AB5DE3807C1D31_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:39>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:39>
 		int32_t L_0 = __this->___m_MipmapCount;
 		return L_0;
 	}
 }
-// Method Definition Index: 101313
+// Method Definition Index: 122454
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRTextureDescriptor_get_propertyNameId_mF5A620F0DAEE746BDD293DB7F02909FB5404DCC1_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:56>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:56>
 		int32_t L_0 = __this->___m_PropertyNameId;
 		return L_0;
 	}
 }
-// Method Definition Index: 101310
+// Method Definition Index: 122451
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRTextureDescriptor_get_height_mC0B37241C24FA883E2594B9411080EDF654E3E01_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:32>
 		int32_t L_0 = __this->___m_Height;
 		return L_0;
 	}
 }
-// Method Definition Index: 101315
+// Method Definition Index: 122456
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t XRTextureDescriptor_get_depth_m5885EBF7D767C918B1483D63D1B11EE60D939E7D_inline (XRTextureDescriptor_t699023EDE6E2593F61CE969A68B5E56CD04CFA19* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:71>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARSubsystems/Textures/XRTextureDescriptor.cs:71>
 		int32_t L_0 = __this->___m_Depth;
 		return L_0;
 	}
 }
-// Method Definition Index: 8116
+// Method Definition Index: 8241
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* GCHandle_get_Target_m481F9508DA5E384D33CD1F4450060DC56BBD4CD5_inline (GCHandle_tC44F6F72EE68BD4CFABA24309DA7A179D41127DC* __this, const RuntimeMethod* method) 
 {
 	{
@@ -7909,65 +7909,65 @@ IL_002c:
 		return L_7;
 	}
 }
-// Method Definition Index: 98482
+// Method Definition Index: 119623
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* TrackableEntry_get_trackable_m089EC3F21809C1089F181A2DDEF2FABFEB6FEF8B_inline (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0 = __this->___U3CtrackableU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 98483
+// Method Definition Index: 119624
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void TrackableEntry_set_trackable_m7013521D33294FE7395353CD22DF5CE504E0F6AE_inline (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:8>
 		ARTrackable_t1D98417758C08E98A333CDEC0C2C1688CE10B2E0* L_0 = ___0_value;
 		__this->___U3CtrackableU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CtrackableU3Ek__BackingField), (void*)L_0);
 		return;
 	}
 }
-// Method Definition Index: 98486
+// Method Definition Index: 119627
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void TrackableEntry_set_parentKey_mB2D4160F0EB38D8751B799AEF010756F9BC5FD22_inline (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 ___0_value, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_0 = ___0_value;
 		__this->___U3CparentKeyU3Ek__BackingField = L_0;
 		Il2CppCodeGenWriteBarrier((void**)&((&(((&__this->___U3CparentKeyU3Ek__BackingField))->___value))->___U3CtrackableTypeU3Ek__BackingField), (void*)NULL);
 		return;
 	}
 }
-// Method Definition Index: 98484
+// Method Definition Index: 119625
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* TrackableEntry_get_childKeys_mC0C2B02DAF0D231FA6686B852C23140B3B84CEBB_inline (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:9>
 		List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* L_0 = __this->___U3CchildKeysU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 98491
+// Method Definition Index: 119632
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 TrackableKey_get_trackableId_m1916968898A53C47634D16A923893857596B3257_inline (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:8>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:8>
 		TrackableId_t49EAE8AA4B9584E314518723DC22B66496D47AD7 L_0 = __this->___U3CtrackableIdU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 98492
+// Method Definition Index: 119633
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Type_t* TrackableKey_get_trackableType_mC3BD3E68275F501826AC584378D1105B99B32982_inline (TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableKey.cs:9>
 		Type_t* L_0 = __this->___U3CtrackableTypeU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 106828
+// Method Definition Index: 131482
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* XROrigin_get_TrackablesParent_m6F7933DF03A5376C31D328F865F77D28EEC18E9C_inline (XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* __this, const RuntimeMethod* method) 
 {
 	{
@@ -7976,16 +7976,16 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A
 		return L_0;
 	}
 }
-// Method Definition Index: 98485
+// Method Definition Index: 119626
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 TrackableEntry_get_parentKey_mAEB0DBEB51A31858F709A7811FFB9AA4CD0A3194_inline (TrackableEntry_t7D1AD6C6EACF16F18BBAB5A83B474205B2FBBCA5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@f2cbfcba674a/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
+		//<source_info:./Library/PackageCache/com.unity.xr.arfoundation@7ee87c4f5245/Runtime/ARFoundation/TrackableSpawner/TrackableEntry.cs:10>
 		Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057 L_0 = __this->___U3CparentKeyU3Ek__BackingField;
 		return L_0;
 	}
 }
-// Method Definition Index: 106574
+// Method Definition Index: 131228
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XROrigin_t5E534A6D886991AF3C1C64127E19A3A510009CFE* ARTrackablesParentTransformChangedEventArgs_get_Origin_m91D7C3638FBF94D468AD4467ABB2EC9500753F25_inline (ARTrackablesParentTransformChangedEventArgs_tB5D30F800FD3203F736546CCEE71A73328457BA5* __this, const RuntimeMethod* method) 
 {
 	{
@@ -7994,7 +7994,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XROrigin_t5E534A6D886991AF3C1C641
 		return L_0;
 	}
 }
-// Method Definition Index: 106575
+// Method Definition Index: 131229
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ARTrackablesParentTransformChangedEventArgs_get_TrackablesParent_m89F1B7B428A07F5142AEC2BF32A83B35B52C0425_inline (ARTrackablesParentTransformChangedEventArgs_tB5D30F800FD3203F736546CCEE71A73328457BA5* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8003,7 +8003,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A
 		return L_0;
 	}
 }
-// Method Definition Index: 50566
+// Method Definition Index: 65655
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Ray_get_origin_m97604A8F180316A410DCD77B7D74D04522FA1BA6_inline (Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8011,7 +8011,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 50568
+// Method Definition Index: 65657
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Ray_get_direction_m21C2D22D3BD4A683BD4DC191AB22DD05F5EC2086_inline (Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8019,7 +8019,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 50565
+// Method Definition Index: 65654
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Ray__ctor_mE298992FD10A3894C38373198385F345C58BD64C_inline (Ray_t2B1742D7958DC05BDC3EFC7461D3593E1430DC00* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_origin, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_direction, const RuntimeMethod* method) 
 {
 	{
@@ -8032,7 +8032,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Ray__ctor_mE298992FD10A3894C
 		return;
 	}
 }
-// Method Definition Index: 52214
+// Method Definition Index: 67530
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Inverse_mD9C060AC626A7B406F4984AC98F8358DC89EF512_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_rotation, const RuntimeMethod* method) 
 {
 	{
@@ -8041,7 +8041,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E
 		return L_0;
 	}
 }
-// Method Definition Index: 52231
+// Method Definition Index: 67550
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_op_Multiply_mCB375FCCC12A2EC8F9EB824A1BFB4453B58C2012_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_lhs, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_rhs, const RuntimeMethod* method) 
 {
 	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
@@ -8120,7 +8120,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E
 		return L_64;
 	}
 }
-// Method Definition Index: 106951
+// Method Definition Index: 131605
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ReadOnlyListSpan_1_tDE5CC2BFB3C45E10710F512D70A46062F33282B4 ReadOnlyListSpan_1_Empty_mDE57A69A8EBA26F02A9C607D24023457DE915419_gshared_inline (const RuntimeMethod* method) 
 {
 	{
@@ -8130,7 +8130,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ReadOnlyListSpan_1_tDE5CC2BFB3C45
 		return L_0;
 	}
 }
-// Method Definition Index: 11327
+// Method Definition Index: 11585
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Enumerator_get_Current_m6330F15D18EE4F547C05DF9BF83C5EB710376027_gshared_inline (Enumerator_t9473BAB568A27E2339D48C1F91319E0F6D244D7A* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8138,7 +8138,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Enumerator_get_Cur
 		return L_0;
 	}
 }
-// Method Definition Index: 11285
+// Method Definition Index: 11541
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Clear_mC71903175591C21EFBF3A3C270245C5FC181F4E6_gshared_inline (List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -8168,7 +8168,7 @@ IL_003c:
 		return;
 	}
 }
-// Method Definition Index: 53787
+// Method Definition Index: 69249
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* ObjectPool_1_Get_m239BB169D8FEF3A2694E9A961C473D3807D67D89_gshared_inline (ObjectPool_1_t13378E8CD14858BB05EA28BAB9CC49EDB91BA259* __this, const RuntimeMethod* method) 
 {
 	RuntimeObject* V_0 = NULL;
@@ -8277,7 +8277,7 @@ IL_00a2:
 		return L_22;
 	}
 }
-// Method Definition Index: 11277
+// Method Definition Index: 11533
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) 
 {
 	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* V_0 = NULL;
@@ -8315,7 +8315,7 @@ IL_0034:
 		return;
 	}
 }
-// Method Definition Index: 11277
+// Method Definition Index: 11533
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mA7241EC2B1CD8472694774CA6BE750D92E370C0B_gshared_inline (List_1_tBCEA0140763722181BEE2625C60EFCCED7B1A81B* __this, TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B ___0_item, const RuntimeMethod* method) 
 {
 	TrackableKeyU5BU5D_t53CCCB5B373E040573C0FF1CF1859279EE0AA858* V_0 = NULL;
@@ -8353,7 +8353,7 @@ IL_0034:
 		return;
 	}
 }
-// Method Definition Index: 53789
+// Method Definition Index: 69251
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ObjectPool_1_Release_m71F1CADB7AD9CC20BD824583A3675A4260965DB5_gshared_inline (ObjectPool_1_t13378E8CD14858BB05EA28BAB9CC49EDB91BA259* __this, RuntimeObject* ___0_element, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -8457,7 +8457,7 @@ IL_007a:
 		return;
 	}
 }
-// Method Definition Index: 11172
+// Method Definition Index: 11428
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR KeyValuePair_2_t53ED52B6CCF9EE67874B20217661A725F4B0AC33 Enumerator_get_Current_m90AD17379FB2CE2695C0B99AEA7938D0EF2DF89F_gshared_inline (Enumerator_tBB025BB555B121BA20A6CE8CD9BE4A484E91D80B* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8465,7 +8465,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR KeyValuePair_2_t53ED52B6CCF9EE678
 		return L_0;
 	}
 }
-// Method Definition Index: 2194
+// Method Definition Index: 2208
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_m9F2577C875BC474E53A46D43383B8B81558B0FD4_gshared_inline (Nullable_1_tAD4901B92D3A2518631E5105F5626E4C54BD2057* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8473,7 +8473,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_m9F2
 		return L_0;
 	}
 }
-// Method Definition Index: 11266
+// Method Definition Index: 11522
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m4407E4C389F22B8CEC282C15D56516658746C383_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8481,7 +8481,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m4407E4C
 		return L_0;
 	}
 }
-// Method Definition Index: 11327
+// Method Definition Index: 11585
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TrackableKey_t5E448EF061013AFD452918EC5232225B4590EB9B Enumerator_get_Current_mABA94F780DD0317DA28599D671EFE8BA022559C0_gshared_inline (Enumerator_tE67543AE58C41ADF12D2FCF3220D69E04749A76C* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8489,7 +8489,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TrackableKey_t5E448EF061013AFD452
 		return L_0;
 	}
 }
-// Method Definition Index: 11216
+// Method Definition Index: 11472
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Enumerator_get_Current_mB09BFC0DC3E5F04A722D828E5503CDF23B6FE19C_gshared_inline (Enumerator_tA24C061AD65BF86E07CBE0D26B1F976151D2733D* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8497,7 +8497,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Enumerator_get_Cur
 		return L_0;
 	}
 }
-// Method Definition Index: 11285
+// Method Definition Index: 11541
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Clear_m16C1F2C61FED5955F10EB36BC1CB2DF34B128994_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, const RuntimeMethod* method) 
 {
 	int32_t V_0 = 0;
@@ -8527,7 +8527,7 @@ IL_003c:
 		return;
 	}
 }
-// Method Definition Index: 11266
+// Method Definition Index: 11522
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m46EEFFA770BE665EA0CB3A5332E941DA4B3C1D37_gshared_inline (List_1_t77B94703E05C519A9010DD0614F757F974E1CD8B* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8535,7 +8535,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m46EEFFA
 		return L_0;
 	}
 }
-// Method Definition Index: 8112
+// Method Definition Index: 8237
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GCHandle_get_IsAllocated_m241908103D8D867E11CCAB73C918729825E86843_inline (GCHandle_tC44F6F72EE68BD4CFABA24309DA7A179D41127DC* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8545,7 +8545,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GCHandle_get_IsAllocated_m24
 		return L_1;
 	}
 }
-// Method Definition Index: 8115
+// Method Definition Index: 8240
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GCHandle_CanDereferenceHandle_mAAAC42D1268CEF3FDD040A3D1574773D08140579_inline (intptr_t ___0_handle, const RuntimeMethod* method) 
 {
 	{
@@ -8553,7 +8553,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GCHandle_CanDereferenceHandl
 		return (bool)((((intptr_t)((intptr_t)(L_0&((intptr_t)1)))) == ((intptr_t)((intptr_t)0)))? 1 : 0);
 	}
 }
-// Method Definition Index: 8113
+// Method Definition Index: 8238
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* GCHandle_GetRef_mAC7E58E62417209DC41C99F66BA70F0C3AA18DA8_inline (intptr_t ___0_handle, const RuntimeMethod* method) 
 {
 	{
@@ -8566,7 +8566,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* GCHandle_GetRef_mA
 		return L_3;
 	}
 }
-// Method Definition Index: 52172
+// Method Definition Index: 67486
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3_Normalize_mC749B887A4C74BA0A2E13E6377F17CCAEB0AADA8_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -8608,13 +8608,13 @@ IL_0065:
 		return;
 	}
 }
-// Method Definition Index: 898
+// Method Definition Index: 900
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Func_1_Invoke_m1412272198DFA4066C83206E5B43353AF10A2EEE_gshared_inline (Func_1_tD5C081AE11746B200C711DD48DBEB00E3A9276D4* __this, const RuntimeMethod* method) 
 {
 	typedef RuntimeObject* (*FunctionPointerType) (RuntimeObject*, const RuntimeMethod*);
 	return ((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 53783
+// Method Definition Index: 69245
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ObjectPool_1_get_CountAll_mF3CDC0B64D5037106573C6CEE921EAF0A8B3C8EB_gshared_inline (ObjectPool_1_t13378E8CD14858BB05EA28BAB9CC49EDB91BA259* __this, const RuntimeMethod* method) 
 {
 	{
@@ -8622,7 +8622,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ObjectPool_1_get_CountAll
 		return L_0;
 	}
 }
-// Method Definition Index: 53784
+// Method Definition Index: 69246
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ObjectPool_1_set_CountAll_mED1939CDEBB184383799328A0C1AEC9E1D2960D9_gshared_inline (ObjectPool_1_t13378E8CD14858BB05EA28BAB9CC49EDB91BA259* __this, int32_t ___0_value, const RuntimeMethod* method) 
 {
 	{
@@ -8631,13 +8631,13 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void ObjectPool_1_set_CountAll_mE
 		return;
 	}
 }
-// Method Definition Index: 882
+// Method Definition Index: 884
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Action_1_Invoke_mF2422B2DD29F74CE66F791C3F68E288EC7C3DB9E_gshared_inline (Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, RuntimeObject*, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 3911
+// Method Definition Index: 3979
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool IntPtr_op_Inequality_m90EFC9C4CAD9A33E309F2DDF98EE4E1DD253637B_inline (intptr_t ___0_value1, intptr_t ___1_value2, const RuntimeMethod* method) 
 {
 	{
@@ -8646,7 +8646,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool IntPtr_op_Inequality_m90EFC9
 		return (bool)((((int32_t)((((intptr_t)L_0) == ((intptr_t)L_1))? 1 : 0)) == ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 52183
+// Method Definition Index: 67498
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;

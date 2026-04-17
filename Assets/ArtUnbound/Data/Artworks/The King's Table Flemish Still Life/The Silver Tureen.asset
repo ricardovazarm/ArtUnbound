@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Silver Tureen
   title: The Silver Tureen
-  author: Jean-Baptiste-S. Chardin
+  author: Jean-Baptiste Chardin
   year: 1728
-  description: "Museum: The Met\nArt Movement: Rococo / Realism\nYear: 1728"
+  description: "Museum: The Met\nArt Movement: Rococo\nYear: 1728"
   museum: The Met
-  artMovement: Rococo / Realism
+  artMovement: Rococo
   aspectRatio: 1.4139
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

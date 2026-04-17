@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Transfiguration
   author: Raphael
   year: 1520
-  description: "Museum: Vatican Museums\nArt Movement: High Renaissance\nYear: 1520"
+  description: "Museum: Vatican Museums\nArt Movement: Renaissance\nYear: 1520"
   museum: Vatican Museums
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.6636
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

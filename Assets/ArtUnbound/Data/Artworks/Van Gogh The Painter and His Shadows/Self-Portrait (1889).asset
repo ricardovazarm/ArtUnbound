@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Self-Portrait (1889)
   title: Self-Portrait (1889)
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1889
   description: "Museum: National Gallery of Art\nArt Movement: Post-Impressionism\nYear: 1889"
   museum: National Gallery of Art

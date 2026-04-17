@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Self-Portrait (1887)
   title: Self-Portrait (1887)
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1887
   description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism\nYear: 1887"
   museum: Art Institute of Chicago

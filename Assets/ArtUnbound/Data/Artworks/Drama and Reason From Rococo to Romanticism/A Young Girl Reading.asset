@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: A Young Girl Reading
   title: A Young Girl Reading
-  author: J.H. Fragonard
+  author: Jean-Honore Fragonard
   year: 1770
   description: "Museum: National Gallery of Art\nArt Movement: Rococo\nYear: 1770"
   museum: National Gallery of Art

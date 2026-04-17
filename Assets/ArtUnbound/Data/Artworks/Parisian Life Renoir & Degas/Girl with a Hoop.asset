@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Girl with a Hoop
   title: Girl with a Hoop
-  author: Auguste Renoir
+  author: Pierre-Auguste Renoir
   year: 1885
   description: "Museum: National Gallery of Art\nArt Movement: Impressionism\nYear: 1885"
   museum: National Gallery of Art

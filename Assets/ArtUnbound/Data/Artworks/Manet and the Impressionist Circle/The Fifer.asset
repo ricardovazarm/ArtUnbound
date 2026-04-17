@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Fifer
   title: The Fifer
-  author: Édouard Manet
+  author: Edouard Manet
   year: 1866
   description: "Museum: Musée d'Orsay\nArt Movement: Realism\nYear: 1866"
   museum: Musée d'Orsay

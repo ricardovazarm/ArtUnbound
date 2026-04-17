@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Day of the God (Mahana No Atua)
   author: Paul Gauguin
   year: 1894
-  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism / Primitivism\nYear: 1894"
+  description: "Museum: Art Institute of Chicago\nArt Movement: Post-Impressionism\nYear: 1894"
   museum: Art Institute of Chicago
-  artMovement: Post-Impressionism / Primitivism
+  artMovement: Post-Impressionism
   aspectRatio: 1.3405
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

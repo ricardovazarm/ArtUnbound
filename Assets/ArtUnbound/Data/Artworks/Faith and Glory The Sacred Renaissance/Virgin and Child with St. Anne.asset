@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Virgin and Child with St. Anne
   author: Leonardo da Vinci
   year: 1503
-  description: "Museum: Louvre Museum, Paris\nArt Movement: High Renaissance\nYear: 1503"
+  description: "Museum: Louvre Museum, Paris\nArt Movement: Renaissance\nYear: 1503"
   museum: Louvre Museum, Paris
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.7748
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Creation of Adam
   author: Michelangelo
   year: 1512
-  description: "Museum: Sistine Chapel (Vatican Museums)\nArt Movement: High Renaissance\nYear: 1512"
+  description: "Museum: Sistine Chapel (Vatican Museums)\nArt Movement: Renaissance\nYear: 1512"
   museum: Sistine Chapel (Vatican Museums)
-  artMovement: High Renaissance
+  artMovement: Renaissance
   aspectRatio: 2.1479
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Kiss (Gustav Klimt)
   author: Gustav Klimt
   year: 1907
-  description: "Museum: Belvedere Museum\nArt Movement: Art Nouveau / Symbolism\nYear: 1907"
+  description: "Museum: Belvedere Museum\nArt Movement: Symbolism\nYear: 1907"
   museum: Belvedere Museum
-  artMovement: Art Nouveau / Symbolism
+  artMovement: Symbolism
   aspectRatio: 0.9966
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

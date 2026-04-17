@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Harvest
   title: The Harvest
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1888
   description: "Museum: Van Gogh Museum\nArt Movement: Post-Impressionism\nYear: 1888\nCredits: Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)"
   museum: Van Gogh Museum

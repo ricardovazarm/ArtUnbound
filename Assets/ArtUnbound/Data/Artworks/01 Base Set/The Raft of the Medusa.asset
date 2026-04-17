@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Raft of the Medusa
   title: The Raft of the Medusa
-  author: Théodore Géricault
+  author: Theodore Gericault
   year: 1819
   description: "Museum: Louvre Museum, Paris\nArt Movement: Romanticism\nYear: 1819"
   museum: Louvre Museum, Paris

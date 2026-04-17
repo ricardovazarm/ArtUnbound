@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Gross Clinic
   author: Thomas Eakins
   year: 1875
-  description: "Museum: Philadelphia Museum\nArt Movement: American Realism\nYear: 1875"
+  description: "Museum: Philadelphia Museum\nArt Movement: Realism\nYear: 1875"
   museum: Philadelphia Museum
-  artMovement: American Realism
+  artMovement: Realism
   aspectRatio: 0.8064
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

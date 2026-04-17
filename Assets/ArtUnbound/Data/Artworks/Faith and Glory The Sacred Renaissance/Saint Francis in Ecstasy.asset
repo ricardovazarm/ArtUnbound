@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Saint Francis in Ecstasy
   author: Giovanni Bellini
   year: 1480
-  description: "Museum: Frick Collection\nArt Movement: Italian Renaissance\nYear: 1480"
+  description: "Museum: Frick Collection\nArt Movement: Renaissance\nYear: 1480"
   museum: Frick Collection
-  artMovement: Italian Renaissance
+  artMovement: Renaissance
   aspectRatio: 1.1398
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

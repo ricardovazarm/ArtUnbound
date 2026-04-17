@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Lake Albano and Castel Gandolfo
   author: Jean-Baptiste-Camille Corot
   year: 1826
-  description: "Museum: The Met\nArt Movement: Romanticism / Barbizon School\nYear: 1826"
+  description: "Museum: The Met\nArt Movement: Romanticism\nYear: 1826"
   museum: The Met
-  artMovement: Romanticism / Barbizon School
+  artMovement: Romanticism
   aspectRatio: 1.6818
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

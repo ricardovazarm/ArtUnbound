@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Still Life with Apples and a Pot of Primroses
   title: Still Life with Apples and a Pot of Primroses
-  author: Paul Cézanne
+  author: Paul Cezanne
   year: 1890
   description: "Museum: The Met\nArt Movement: Post-Impressionism\nYear: 1890"
   museum: The Met

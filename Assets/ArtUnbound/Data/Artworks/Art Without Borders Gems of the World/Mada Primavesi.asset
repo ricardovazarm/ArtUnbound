@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Mada Primavesi
   author: Gustav Klimt
   year: 1912
-  description: "Museum: The Met\nArt Movement: Art Nouveau / Symbolism\nYear: 1912"
+  description: "Museum: The Met\nArt Movement: Symbolism\nYear: 1912"
   museum: The Met
-  artMovement: Art Nouveau / Symbolism
+  artMovement: Symbolism
   aspectRatio: 0.7418
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

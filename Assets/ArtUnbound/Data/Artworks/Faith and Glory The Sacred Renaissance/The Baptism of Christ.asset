@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Baptism of Christ
   author: Piero della Francesca
   year: 1450
-  description: "Museum: National Gallery (London)\nArt Movement: Italian Renaissance\nYear: 1450"
+  description: "Museum: National Gallery (London)\nArt Movement: Renaissance\nYear: 1450"
   museum: National Gallery (London)
-  artMovement: Italian Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.6846
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

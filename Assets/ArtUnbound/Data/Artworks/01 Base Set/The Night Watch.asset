@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Night Watch
   author: Rembrandt van Rijn
   year: 1642
-  description: "Museum: Rijksmuseum\nArt Movement: Dutch Golden Age / Baroque\nYear: 1642"
+  description: "Museum: Rijksmuseum\nArt Movement: Dutch Golden Age\nYear: 1642"
   museum: Rijksmuseum
-  artMovement: Dutch Golden Age / Baroque
+  artMovement: Dutch Golden Age
   aspectRatio: 1.2045
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

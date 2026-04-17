@@ -2,6 +2,43 @@
   "report": {
     "modules": [
       {
+        "name": "AI",
+        "dependencies": [
+          {
+            "name": "NavMeshAgent",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "NavMeshData",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "NavMeshObstacle",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "NavMeshProjectSettings",
+            "scenes": [],
+            "dependencyType": 1,
+            "icon": null
+          },
+          {
+            "name": "NavMeshSettings",
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
+            "dependencyType": 1,
+            "icon": null
+          }
+        ]
+      },
+      {
         "name": "AndroidJNI",
         "dependencies": []
       },
@@ -42,6 +79,12 @@
           },
           {
             "name": "AnimatorOverrideController",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "Avatar",
             "scenes": [],
             "dependencyType": 0,
             "icon": null
@@ -165,7 +208,9 @@
           },
           {
             "name": "ComputeShader",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -405,7 +450,9 @@
           },
           {
             "name": "RenderTexture",
-            "scenes": [],
+            "scenes": [
+              "Assets/ArtUnbound/Scenes/Main.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -479,9 +526,7 @@
           },
           {
             "name": "SpriteRenderer",
-            "scenes": [
-              "Assets/ArtUnbound/Scenes/Main.unity"
-            ],
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },
@@ -532,6 +577,12 @@
             "scenes": [],
             "dependencyType": 1,
             "icon": null
+          },
+          {
+            "name": "Required by AI Module",
+            "scenes": [],
+            "dependencyType": 2,
+            "icon": "package/com.unity.modules.ai"
           },
           {
             "name": "Required by AndroidJNI Module",
@@ -592,6 +643,12 @@
             "scenes": [],
             "dependencyType": 2,
             "icon": "package/com.unity.modules.identifiers"
+          },
+          {
+            "name": "Required by ImageConversion Module",
+            "scenes": [],
+            "dependencyType": 2,
+            "icon": "package/com.unity.modules.imageconversion"
           },
           {
             "name": "Required by Input Module",
@@ -842,6 +899,10 @@
         ]
       },
       {
+        "name": "ImageConversion",
+        "dependencies": []
+      },
+      {
         "name": "Input",
         "dependencies": [
           {
@@ -883,12 +944,6 @@
             "scenes": [],
             "dependencyType": 2,
             "icon": "package/com.unity.modules.inputforui"
-          },
-          {
-            "name": "Required by TextCoreTextEngine Module",
-            "scenes": [],
-            "dependencyType": 2,
-            "icon": "package/com.unity.modules.textcoretextengine"
           },
           {
             "name": "Required by UIElements Module",
@@ -1035,6 +1090,24 @@
             "icon": null
           },
           {
+            "name": "ConfigurableJoint",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "FixedJoint",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "Joint",
+            "scenes": [],
+            "dependencyType": 1,
+            "icon": null
+          },
+          {
             "name": "MeshCollider",
             "scenes": [
               "Assets/ArtUnbound/Scenes/Main.unity"
@@ -1046,6 +1119,12 @@
             "name": "PhysicsManager",
             "scenes": [],
             "dependencyType": 1,
+            "icon": null
+          },
+          {
+            "name": "PhysicsMaterial",
+            "scenes": [],
+            "dependencyType": 0,
             "icon": null
           },
           {
@@ -1138,6 +1217,12 @@
         "name": "SharedInternals",
         "dependencies": [
           {
+            "name": "Required by AI Module",
+            "scenes": [],
+            "dependencyType": 2,
+            "icon": "package/com.unity.modules.ai"
+          },
+          {
             "name": "Required by AndroidJNI Module",
             "scenes": [],
             "dependencyType": 2,
@@ -1202,6 +1287,12 @@
             "scenes": [],
             "dependencyType": 2,
             "icon": "package/com.unity.modules.identifiers"
+          },
+          {
+            "name": "Required by ImageConversion Module",
+            "scenes": [],
+            "dependencyType": 2,
+            "icon": "package/com.unity.modules.imageconversion"
           },
           {
             "name": "Required by Input Module",
@@ -1478,6 +1569,12 @@
             "scenes": [
               "Assets/ArtUnbound/Scenes/Main.unity"
             ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "TextMesh",
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },

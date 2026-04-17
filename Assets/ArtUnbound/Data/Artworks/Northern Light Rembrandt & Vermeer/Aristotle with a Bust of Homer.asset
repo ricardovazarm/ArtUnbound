@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Aristotle with a Bust of Homer
   author: Rembrandt van Rijn
   year: 1653
-  description: "Museum: The Met\nArt Movement: Dutch Golden Age / Baroque\nYear: 1653"
+  description: "Museum: The Met\nArt Movement: Dutch Golden Age\nYear: 1653"
   museum: The Met
-  artMovement: Dutch Golden Age / Baroque
+  artMovement: Dutch Golden Age
   aspectRatio: 0.948
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

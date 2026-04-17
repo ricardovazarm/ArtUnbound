@@ -16,9 +16,9 @@ MonoBehaviour:
   title: A Bar at the Folies-Bergère
   author: Edouard Manet
   year: 1882
-  description: "Museum: Courtauld Gallery, London\nArt Movement: Impressionism / Realism\nYear: 1882"
+  description: "Museum: Courtauld Gallery, London\nArt Movement: Impressionism\nYear: 1882"
   museum: Courtauld Gallery, London
-  artMovement: Impressionism / Realism
+  artMovement: Impressionism
   aspectRatio: 1.3392
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

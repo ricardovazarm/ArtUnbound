@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Adoration of the Magi
   author: Sandro Botticelli
   year: 1475
-  description: "Museum: Uffizi Gallery\nArt Movement: Italian Renaissance\nYear: 1475"
+  description: "Museum: Uffizi Gallery\nArt Movement: Renaissance\nYear: 1475"
   museum: Uffizi Gallery
-  artMovement: Italian Renaissance
+  artMovement: Renaissance
   aspectRatio: 1.2268
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

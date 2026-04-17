@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Madame X
   author: John Singer Sargent
   year: 1884
-  description: "Museum: The Met\nArt Movement: Realism / Academic\nYear: 1884"
+  description: "Museum: The Met\nArt Movement: Realism\nYear: 1884"
   museum: The Met
-  artMovement: Realism / Academic
+  artMovement: Realism
   aspectRatio: 0.584
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

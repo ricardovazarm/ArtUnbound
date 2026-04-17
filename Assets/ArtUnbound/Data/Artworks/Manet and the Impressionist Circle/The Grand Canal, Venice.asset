@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: The Grand Canal, Venice
   title: The Grand Canal, Venice
-  author: Édouard Manet
+  author: Edouard Manet
   year: 1874
   description: "Museum: Shelburne Museum\nArt Movement: Impressionism\nYear: 1874"
   museum: Shelburne Museum

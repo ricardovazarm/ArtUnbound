@@ -16,9 +16,9 @@ MonoBehaviour:
   title: The Grand Canal, Venice (Canaleto)
   author: Canaletto
   year: 1730
-  description: "Museum: The Met\nArt Movement: Baroque (Veduta)\nYear: 1730"
+  description: "Museum: The Met\nArt Movement: Baroque\nYear: 1730"
   museum: The Met
-  artMovement: Baroque (Veduta)
+  artMovement: Baroque
   aspectRatio: 1.6372
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

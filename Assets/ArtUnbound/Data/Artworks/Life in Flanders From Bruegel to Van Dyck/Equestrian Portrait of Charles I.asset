@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Equestrian Portrait of Charles I
   author: Anthony van Dyck
   year: 1635
-  description: "Museum: National Gallery (London)\nArt Movement: Flemish Baroque\nYear: 1635"
+  description: "Museum: National Gallery (London)\nArt Movement: Baroque\nYear: 1635"
   museum: National Gallery (London)
-  artMovement: Flemish Baroque
+  artMovement: Baroque
   aspectRatio: 0.7925
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

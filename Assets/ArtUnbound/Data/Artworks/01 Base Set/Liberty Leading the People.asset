@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Liberty Leading the People
   title: Liberty Leading the People
-  author: Eugène Delacroix
+  author: Eugene Delacroix
   year: 1830
   description: "Museum: Louvre Museum, Paris\nArt Movement: Romanticism\nYear: 1830"
   museum: Louvre Museum, Paris

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Kindred Spirits
   author: Asher B. Durand
   year: 1849
-  description: "Museum: Crystal Bridges\nArt Movement: Romanticism (Hudson River School)\nYear: 1849"
+  description: "Museum: Crystal Bridges\nArt Movement: Romanticism\nYear: 1849"
   museum: Crystal Bridges
-  artMovement: Romanticism (Hudson River School)
+  artMovement: Romanticism
   aspectRatio: 0.8133
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

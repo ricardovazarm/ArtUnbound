@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Mont Sainte-Victoire
   title: Mont Sainte-Victoire
-  author: Paul Cézanne
+  author: Paul Cezanne
   year: 1904
   description: "Museum: Hermitage Museum, St. Petersburg\nArt Movement: Post-Impressionism\nYear: 1904"
   museum: Hermitage Museum, St. Petersburg

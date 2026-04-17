@@ -3110,7 +3110,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_IsEqualUsingDot_m
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 83858
+// Method Definition Index: 99422
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextMeshProUGUI_GenerateTextMesh_m542C2DC0CA489C10BB3371B0114CD9ACED4E97D3 (TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3617,7 +3617,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextMeshProUGUI_GenerateTextMesh_m542C2D
 	Action_1_tB93AB717F9D419A1BEC832FF76E74EAA32184CC1* G_B884_0 = NULL;
 	Action_1_tB93AB717F9D419A1BEC832FF76E74EAA32184CC1* G_B883_0 = NULL;
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2537>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2537>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_0 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontAsset;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -3640,7 +3640,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TextMeshProUGUI_GenerateTextMesh_m542C2D
 
 IL_001b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2539>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2539>
 		int32_t L_4;
 		L_4 = Object_GetInstanceID_m554FF4073C9465F3835574CC084E68AAEEC6CC6A(__this, NULL);
 		V_65 = L_4;
@@ -3650,15 +3650,15 @@ IL_001b:
 		L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral205DE2CB7E86A79B6B3940AFB5A0EC8F490142CE, L_5, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(L_6, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2540>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2540>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsAutoSizePointSizeSet = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2542>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2542>
 		return;
 	}
 
 IL_0041:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2546>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2546>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_7 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		if (!L_7)
 		{
@@ -3666,7 +3666,7 @@ IL_0041:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2547>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2547>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_8 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_8);
 		TMP_TextInfo_Clear_m288FFE54C6744C369E9B2BA903A634F461721D70(L_8, NULL);
@@ -3674,7 +3674,7 @@ IL_0041:
 
 IL_0054:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2550>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2550>
 		TextProcessingElementU5BU5D_tC3E97D1672C8DB6E1F91DB2C0987D0ED9A2E7113* L_9 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextProcessingArray;
 		if (!L_9)
 		{
@@ -3701,34 +3701,34 @@ IL_0054:
 
 IL_0078:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2553>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2553>
 		VirtualActionInvoker0::Invoke(129, __this);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2555>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2555>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_preferredWidth = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2556>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2556>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_preferredHeight = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2559>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2559>
 		il2cpp_codegen_runtime_class_init_inline(TMPro_EventManager_t0234DB5BF625FC164B395C5C3B6F2CB8C89A3BA9_il2cpp_TypeInfo_var);
 		TMPro_EventManager_ON_TEXT_CHANGED_mC933ED67F225E90E2F7B5F0D176D62D3A560BFAE(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2560>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2560>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsAutoSizePointSizeSet = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2562>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2562>
 		return;
 	}
 
 IL_00a2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2565>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2565>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_13 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontAsset;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset = L_13;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset), (void*)L_13);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2566>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2566>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_14 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_sharedMaterial;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial = L_14;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial), (void*)L_14);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2567>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2567>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2568>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2568>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_15 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex;
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_16 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
@@ -3738,11 +3738,11 @@ IL_00a2:
 		memset((&L_19), 0, sizeof(L_19));
 		MaterialReference__ctor_m022ED9858AAD1DCEC25CBC4C304797F4539D87E7((&L_19), L_15, L_16, (TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39*)NULL, L_17, L_18, NULL);
 		TMP_TextProcessingStack_1_SetDefault_m7CE06332FBA28EFF7BD420B215587317648C1EB8((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_materialReferenceStack), L_19, TMP_TextProcessingStack_1_SetDefault_m7CE06332FBA28EFF7BD420B215587317648C1EB8_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2570>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2570>
 		TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39* L_20 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteAsset;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentSpriteAsset = L_20;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentSpriteAsset), (void*)L_20);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2573>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2573>
 		TMP_SpriteAnimator_t2E0F016A61CA343E3222FF51E7CF0E53F9F256E4* L_21 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteAnimator;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_22;
@@ -3753,7 +3753,7 @@ IL_00a2:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2574>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2574>
 		TMP_SpriteAnimator_t2E0F016A61CA343E3222FF51E7CF0E53F9F256E4* L_23 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteAnimator;
 		NullCheck(L_23);
 		TMP_SpriteAnimator_StopAllAnimations_m0531CA658CF1A4E5A18BC73234FE5CC8318F64F1(L_23, NULL);
@@ -3761,10 +3761,10 @@ IL_00a2:
 
 IL_010e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2577>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2577>
 		int32_t L_24 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_totalCharacterCount;
 		V_0 = L_24;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2581>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2581>
 		bool L_25 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isOrthographic;
 		if (L_25)
 		{
@@ -3784,7 +3784,7 @@ IL_0124:
 IL_0129:
 	{
 		V_1 = G_B14_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2582>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2582>
 		float L_26 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_27 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontAsset;
 		NullCheck(L_27);
@@ -3798,30 +3798,30 @@ IL_0129:
 		L_32 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD(L_31, NULL);
 		float L_33 = V_1;
 		V_2 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_26/L_29)), L_32)), L_33));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2583>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2583>
 		float L_34 = V_2;
 		V_3 = L_34;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2584>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2584>
 		float L_35 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_36 = V_1;
 		V_4 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_35, (0.00999999978f))), L_36));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2585>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2585>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontScaleMultiplier = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2587>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2587>
 		float L_37 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize = L_37;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2588>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2588>
 		TMP_TextProcessingStack_1_t138EC06BE7F101AA0A3C8D2DC951E55AACE085E9* L_38 = (TMP_TextProcessingStack_1_t138EC06BE7F101AA0A3C8D2DC951E55AACE085E9*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_sizeStack);
 		float L_39 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		TMP_TextProcessingStack_1_SetDefault_mE117EC83B0E0DD13A62A2ACAE4FD90DDDE520C24(L_38, L_39, TMP_TextProcessingStack_1_SetDefault_mE117EC83B0E0DD13A62A2ACAE4FD90DDDE520C24_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2589>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2589>
 		V_5 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2591>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2591>
 		V_6 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2593>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2593>
 		int32_t L_40 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontStyle;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontStyleInternal = L_40;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2594>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2594>
 		int32_t L_41 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontStyleInternal;
 		if ((((int32_t)((int32_t)((int32_t)L_41&1))) == ((int32_t)1)))
 		{
@@ -3847,84 +3847,84 @@ IL_01be:
 	{
 		NullCheck(G_B17_1);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)G_B17_1)->___m_FontWeightInternal = G_B17_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2595>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2595>
 		TMP_TextProcessingStack_1_tA5C8CED87DD9E73F6359E23B334FFB5B6F813FD4* L_43 = (TMP_TextProcessingStack_1_tA5C8CED87DD9E73F6359E23B334FFB5B6F813FD4*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontWeightStack);
 		int32_t L_44 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontWeightInternal;
 		TMP_TextProcessingStack_1_SetDefault_mD74F2EC88853554B15ED9D90188D88B23C2F52A3(L_43, L_44, TMP_TextProcessingStack_1_SetDefault_mD74F2EC88853554B15ED9D90188D88B23C2F52A3_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2596>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2596>
 		TMP_FontStyleStack_t52885F172FADBC21346C835B5302167BDA8020DC* L_45 = (TMP_FontStyleStack_t52885F172FADBC21346C835B5302167BDA8020DC*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontStyleStack);
 		TMP_FontStyleStack_Clear_m49B787473D053AE4AB61D0A89BE3022B6D39B15D(L_45, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2598>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2598>
 		int32_t L_46 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_HorizontalAlignment;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineJustification = L_46;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2599>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2599>
 		TMP_TextProcessingStack_1_t243EA1B5D7FD2295D6533B953F0BBE8F52EFB8A0* L_47 = (TMP_TextProcessingStack_1_t243EA1B5D7FD2295D6533B953F0BBE8F52EFB8A0*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineJustificationStack);
 		int32_t L_48 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineJustification;
 		TMP_TextProcessingStack_1_SetDefault_m698E3FC65D297F210EA10D014AE2D836708A420C(L_47, L_48, TMP_TextProcessingStack_1_SetDefault_m698E3FC65D297F210EA10D014AE2D836708A420C_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2601>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2601>
 		V_7 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2603>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2603>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffset = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2604>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2604>
 		TMP_TextProcessingStack_1_t138EC06BE7F101AA0A3C8D2DC951E55AACE085E9* L_49 = (TMP_TextProcessingStack_1_t138EC06BE7F101AA0A3C8D2DC951E55AACE085E9*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffsetStack);
 		TMP_TextProcessingStack_1_Clear_m3763CBE15B699BDEAB58FD4D6FEA4BF708F9B60D(L_49, TMP_TextProcessingStack_1_Clear_m3763CBE15B699BDEAB58FD4D6FEA4BF708F9B60D_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2607>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2607>
 		V_8 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2608>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2608>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_50;
 		L_50 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_9 = L_50;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2609>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2609>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_51;
 		L_51 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_10 = L_51;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2612>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2612>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2613>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2613>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_52;
 		L_52 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_12 = L_52;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2614>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2614>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_53;
 		L_53 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_13 = L_53;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2617>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2617>
 		V_14 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2618>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2618>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_54;
 		L_54 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_15 = L_54;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2619>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2619>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_55;
 		L_55 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_16 = L_55;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2621>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2621>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_56 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontColor;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_57;
 		L_57 = Color32_op_Implicit_m79AF5E0BDE9CE041CAC4D89CBFA66E71C6DD1B70_inline(L_56, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontColor32 = L_57;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2622>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2622>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_58 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontColor32;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor = L_58;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2623>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2623>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_59 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_underlineColor = L_59;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2624>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2624>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_60 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_strikethroughColor = L_60;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2626>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2626>
 		TMP_TextProcessingStack_1_tF2CD5BE59E5EB22EA9E3EE3043A004EA918C4BB3* L_61 = (TMP_TextProcessingStack_1_tF2CD5BE59E5EB22EA9E3EE3043A004EA918C4BB3*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_colorStack);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_62 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		TMP_TextProcessingStack_1_SetDefault_m7036F607A98F61A71185CAD716D4FA1B1C817A5F(L_61, L_62, TMP_TextProcessingStack_1_SetDefault_m7036F607A98F61A71185CAD716D4FA1B1C817A5F_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2627>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2627>
 		TMP_TextProcessingStack_1_tF2CD5BE59E5EB22EA9E3EE3043A004EA918C4BB3* L_63 = (TMP_TextProcessingStack_1_tF2CD5BE59E5EB22EA9E3EE3043A004EA918C4BB3*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_underlineColorStack);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_64 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		TMP_TextProcessingStack_1_SetDefault_m7036F607A98F61A71185CAD716D4FA1B1C817A5F(L_63, L_64, TMP_TextProcessingStack_1_SetDefault_m7036F607A98F61A71185CAD716D4FA1B1C817A5F_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2628>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2628>
 		TMP_TextProcessingStack_1_tF2CD5BE59E5EB22EA9E3EE3043A004EA918C4BB3* L_65 = (TMP_TextProcessingStack_1_tF2CD5BE59E5EB22EA9E3EE3043A004EA918C4BB3*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_strikethroughColorStack);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_66 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		TMP_TextProcessingStack_1_SetDefault_m7036F607A98F61A71185CAD716D4FA1B1C817A5F(L_65, L_66, TMP_TextProcessingStack_1_SetDefault_m7036F607A98F61A71185CAD716D4FA1B1C817A5F_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2629>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2629>
 		TMP_TextProcessingStack_1_t57AECDCC936A7FF1D6CF66CA11560B28A675648D* L_67 = (TMP_TextProcessingStack_1_t57AECDCC936A7FF1D6CF66CA11560B28A675648D*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_HighlightStateStack);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_68 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		il2cpp_codegen_runtime_class_init_inline(TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6_il2cpp_TypeInfo_var);
@@ -3934,37 +3934,37 @@ IL_01be:
 		memset((&L_70), 0, sizeof(L_70));
 		HighlightState__ctor_m25791146FF94DD76C2FAAAF47C1735C01D9F47B2((&L_70), L_68, L_69, NULL);
 		TMP_TextProcessingStack_1_SetDefault_m697D0294F53275DE9999CE525CCF61209A4FCFC4(L_67, L_70, TMP_TextProcessingStack_1_SetDefault_m697D0294F53275DE9999CE525CCF61209A4FCFC4_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2631>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2631>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_colorGradientPreset = (TMP_ColorGradient_t17B51752B4E9499A1FF7D875DCEC1D15A0F4AEBB*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_colorGradientPreset), (void*)(TMP_ColorGradient_t17B51752B4E9499A1FF7D875DCEC1D15A0F4AEBB*)NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2632>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2632>
 		TMP_TextProcessingStack_1_tC8FAEB17246D3B171EFD11165A5761AE39B40D0C* L_71 = (TMP_TextProcessingStack_1_tC8FAEB17246D3B171EFD11165A5761AE39B40D0C*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_colorGradientStack);
 		TMP_TextProcessingStack_1_SetDefault_mC334C7D21FC5F30EAA55F85FB34687D759167AA2(L_71, (TMP_ColorGradient_t17B51752B4E9499A1FF7D875DCEC1D15A0F4AEBB*)NULL, TMP_TextProcessingStack_1_SetDefault_mC334C7D21FC5F30EAA55F85FB34687D759167AA2_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2634>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2634>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_72 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_72);
 		uint8_t L_73 = L_72->___italicStyle;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ItalicAngle = L_73;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2635>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2635>
 		TMP_TextProcessingStack_1_tFBA719426D68CE1F2B5849D97AF5E5D65846290C* L_74 = (TMP_TextProcessingStack_1_tFBA719426D68CE1F2B5849D97AF5E5D65846290C*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ItalicAngleStack);
 		int32_t L_75 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ItalicAngle;
 		TMP_TextProcessingStack_1_SetDefault_m9CBD96A57980313DBBDDBE95432C5CC2419E2A8C(L_74, L_75, TMP_TextProcessingStack_1_SetDefault_m9CBD96A57980313DBBDDBE95432C5CC2419E2A8C_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2641>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2641>
 		TMP_TextProcessingStack_1_tFBA719426D68CE1F2B5849D97AF5E5D65846290C* L_76 = (TMP_TextProcessingStack_1_tFBA719426D68CE1F2B5849D97AF5E5D65846290C*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_actionStack);
 		TMP_TextProcessingStack_1_Clear_mF21F020170BA01428CDDB51FD040A0F4A1926235(L_76, TMP_TextProcessingStack_1_Clear_mF21F020170BA01428CDDB51FD040A0F4A1926235_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2643>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2643>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_77;
 		L_77 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FXScale = L_77;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2644>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2644>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_78;
 		L_78 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FXRotation = L_78;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2646>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2646>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2647>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2647>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineHeight = (-32767.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2648>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2648>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_79 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_79);
 		FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756* L_80 = (FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756*)(&((TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969*)L_79)->___m_FaceInfo);
@@ -3981,78 +3981,78 @@ IL_01be:
 		float L_87;
 		L_87 = FaceInfo_get_descentLine_m811A243C9B328B0C546BF9927A010A05DF172BD3(L_86, NULL);
 		V_17 = ((float)il2cpp_codegen_subtract(L_81, ((float)il2cpp_codegen_subtract(L_84, L_87))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2650>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2650>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cSpacing = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2651>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2651>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2652>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2652>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2654>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2654>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_LineIndent = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2655>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2655>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_Indent = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2656>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2656>
 		TMP_TextProcessingStack_1_t138EC06BE7F101AA0A3C8D2DC951E55AACE085E9* L_88 = (TMP_TextProcessingStack_1_t138EC06BE7F101AA0A3C8D2DC951E55AACE085E9*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_indentStack);
 		TMP_TextProcessingStack_1_SetDefault_mE117EC83B0E0DD13A62A2ACAE4FD90DDDE520C24(L_88, (0.0f), TMP_TextProcessingStack_1_SetDefault_mE117EC83B0E0DD13A62A2ACAE4FD90DDDE520C24_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2657>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2657>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_NoParsing = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2660>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2660>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2663>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2663>
 		int32_t L_89 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstVisibleCharacter;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine = L_89;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2664>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2664>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lastCharacterOfLine = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2665>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2665>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstVisibleCharacterOfLine = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2666>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2666>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lastVisibleCharacterOfLine = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2667>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2667>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_90 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargeNegativeFloat;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender = L_90;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2668>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2668>
 		float L_91 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender = L_91;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2669>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2669>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2670>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2670>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_startOfLineAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2671>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2671>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_startOfLineDescender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2672>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2672>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleCharacterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2673>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2673>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleSpaceCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2674>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2674>
 		V_18 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2675>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2675>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsDrivenLineSpacing = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2676>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2676>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex = (-1);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2677>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2677>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_LastBaseGlyphIndex = ((int32_t)-2147483648LL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2679>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2679>
 		List_1_t3A076A19AF26E22A128C32B5C19804DDD2877607* L_92 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ActiveFontFeatures;
 		NullCheck(L_92);
 		bool L_93;
 		L_93 = List_1_Contains_mCFB3272A9B6EB019803647AD25B7F5265CB08D00(L_92, ((int32_t)1801810542), List_1_Contains_mCFB3272A9B6EB019803647AD25B7F5265CB08D00_RuntimeMethod_var);
 		V_19 = L_93;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2680>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2680>
 		List_1_t3A076A19AF26E22A128C32B5C19804DDD2877607* L_94 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ActiveFontFeatures;
 		NullCheck(L_94);
 		bool L_95;
 		L_95 = List_1_Contains_mCFB3272A9B6EB019803647AD25B7F5265CB08D00(L_94, ((int32_t)1835102827), List_1_Contains_mCFB3272A9B6EB019803647AD25B7F5265CB08D00_RuntimeMethod_var);
 		V_20 = L_95;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2681>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2681>
 		List_1_t3A076A19AF26E22A128C32B5C19804DDD2877607* L_96 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ActiveFontFeatures;
 		NullCheck(L_96);
 		bool L_97;
 		L_97 = List_1_Contains_mCFB3272A9B6EB019803647AD25B7F5265CB08D00(L_96, ((int32_t)1835756907), List_1_Contains_mCFB3272A9B6EB019803647AD25B7F5265CB08D00_RuntimeMethod_var);
 		V_21 = L_97;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2683>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2683>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2684>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2684>
 		int32_t L_98 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageToDisplay;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_99 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_99);
@@ -4061,14 +4061,14 @@ IL_01be:
 		int32_t L_101;
 		L_101 = Mathf_Clamp_m4DC36EEFDBE5F07C16249DA568023C5ECCFF0E7B_inline(((int32_t)il2cpp_codegen_subtract(L_98, 1)), 0, ((int32_t)il2cpp_codegen_subtract(((int32_t)(((RuntimeArray*)L_100)->max_length)), 1)), NULL);
 		V_22 = L_101;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2685>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2685>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_102 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_102);
 		TMP_TextInfo_ClearPageInfo_mD479D3067FC68407924FF28A468D68EA8B0680AE(L_102, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2687>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2687>
 		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3 L_103 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_margin;
 		V_23 = L_103;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2688>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2688>
 		float L_104 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginWidth;
 		if ((((float)L_104) > ((float)(0.0f))))
 		{
@@ -4089,7 +4089,7 @@ IL_04c5:
 IL_04cb:
 	{
 		V_24 = G_B20_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2689>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2689>
 		float L_106 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginHeight;
 		if ((((float)L_106) > ((float)(0.0f))))
 		{
@@ -4110,84 +4110,84 @@ IL_04e1:
 IL_04e7:
 	{
 		V_25 = G_B23_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2690>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2690>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginLeft = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2691>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2691>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginRight = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2692>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2692>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_width = (-1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2693>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2693>
 		float L_108 = V_24;
 		float L_109 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginLeft;
 		float L_110 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginRight;
 		V_26 = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_108, (9.99999975E-05f))), L_109)), L_110));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2696>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2696>
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_111 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_112 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveVector2;
 		L_111->___min = L_112;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2697>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2697>
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_113 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_114 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargeNegativeVector2;
 		L_113->___max = L_114;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2700>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2700>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_115 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_115);
 		TMP_TextInfo_ClearLineInfo_m055901C815B31D3996CA828A79D73DAE576A1037(L_115, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2703>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2703>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxCapHeight = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2704>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2704>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2705>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2705>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementDescender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2706>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2706>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_PageAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2707>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2707>
 		V_27 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2708>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2708>
 		V_28 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2709>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2709>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNewPage = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2712>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2712>
 		V_29 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2713>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2713>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNonBreakingSpace = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2714>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2714>
 		V_30 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2715>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2715>
 		V_31 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2717>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2717>
 		CharacterSubstitution__ctor_m5727A2342B980E68CA8CA895437F82280B5E4378((&V_32), (-1), 0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2718>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2718>
 		V_33 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2721>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2721>
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedWordWrapState), (-1), (-1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2722>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2722>
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLineState), (-1), (-1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2723>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2723>
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState), (-1), (-1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2724>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2724>
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), (-1), (-1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2725>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2725>
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedSoftLineBreakState), (-1), (-1), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2727>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2727>
 		TMP_TextProcessingStack_1_Clear_mB6D2711ABE083BD5136541A63C96408BCF802D74((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_Clear_mB6D2711ABE083BD5136541A63C96408BCF802D74_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2730>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2730>
 		V_34 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2735>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2735>
 		V_66 = 0;
 		goto IL_3ff4;
 	}
 
 IL_05fc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2737>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2737>
 		TextProcessingElementU5BU5D_tC3E97D1672C8DB6E1F91DB2C0987D0ED9A2E7113* L_116 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextProcessingArray;
 		int32_t L_117 = V_66;
 		NullCheck(L_116);
 		uint32_t L_118 = ((L_116)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_117)))->___unicode;
 		V_6 = L_118;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2739>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2739>
 		int32_t L_119 = V_34;
 		if ((((int32_t)L_119) <= ((int32_t)5)))
 		{
@@ -4195,7 +4195,7 @@ IL_05fc:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2741>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2741>
 		String_t* L_120;
 		L_120 = UInt32_ToString_mB6FA6D2459C82ADCF285C55363491D9669A80154((&V_6), NULL);
 		String_t* L_121;
@@ -4204,16 +4204,16 @@ IL_05fc:
 		L_122 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(_stringLiteral41BB69D2BDF9A4541A716BE07E74D1ED0DEADD05, L_120, _stringLiteral94B946B03625197025E6D70053ADE0256BC25DD1, L_121, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_122, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2742>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2742>
 		int32_t L_123 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = L_123;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2743>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2743>
 		(&V_32)->___unicode = 3;
 	}
 
 IL_064c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2747>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2747>
 		uint32_t L_124 = V_6;
 		if ((((int32_t)L_124) == ((int32_t)((int32_t)26))))
 		{
@@ -4221,7 +4221,7 @@ IL_064c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2752>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2752>
 		bool L_125 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRichText;
 		if (!L_125)
 		{
@@ -4236,11 +4236,11 @@ IL_064c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2756>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2756>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextLayoutPhase = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2757>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2757>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2761>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2761>
 		TextProcessingElementU5BU5D_tC3E97D1672C8DB6E1F91DB2C0987D0ED9A2E7113* L_127 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextProcessingArray;
 		int32_t L_128 = V_66;
 		bool L_129;
@@ -4251,10 +4251,10 @@ IL_064c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2763>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2763>
 		int32_t L_130 = V_95;
 		V_66 = L_130;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2766>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2766>
 		int32_t L_131 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (L_131)
 		{
@@ -4262,13 +4262,13 @@ IL_064c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2769>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2769>
 		goto IL_3fee;
 	}
 
 IL_0696:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2776>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2776>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_132 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_132);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_133 = L_132->___characterInfo;
@@ -4276,7 +4276,7 @@ IL_0696:
 		NullCheck(L_133);
 		int32_t L_135 = ((L_133)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_134)))->___elementType;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType = L_135;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2777>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2777>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_136 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_136);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_137 = L_136->___characterInfo;
@@ -4284,7 +4284,7 @@ IL_0696:
 		NullCheck(L_137);
 		int32_t L_139 = ((L_137)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_138)))->___materialReferenceIndex;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex = L_139;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2778>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2778>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_140 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_140);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_141 = L_140->___characterInfo;
@@ -4297,10 +4297,10 @@ IL_0696:
 
 IL_06f9:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2782>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2782>
 		int32_t L_144 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex;
 		V_67 = L_144;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2783>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2783>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_145 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_145);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_146 = L_145->___characterInfo;
@@ -4308,11 +4308,11 @@ IL_06f9:
 		NullCheck(L_146);
 		bool L_148 = ((L_146)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_147)))->___isUsingAlternateTypeface;
 		V_68 = L_148;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2785>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2785>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextLayoutPhase = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2789>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2789>
 		V_69 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2791>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2791>
 		CharacterSubstitution_t1F95CD37050627A0EFDC0F0F25FD04EA70015403 L_149 = V_32;
 		int32_t L_150 = L_149.___index;
 		int32_t L_151 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
@@ -4322,13 +4322,13 @@ IL_06f9:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2793>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2793>
 		CharacterSubstitution_t1F95CD37050627A0EFDC0F0F25FD04EA70015403 L_152 = V_32;
 		uint32_t L_153 = L_152.___unicode;
 		V_6 = L_153;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2794>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2794>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2795>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2795>
 		V_69 = (bool)1;
 		uint32_t L_154 = V_6;
 		if ((((int32_t)L_154) == ((int32_t)3)))
@@ -4356,7 +4356,7 @@ IL_06f9:
 
 IL_0769:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2800>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2800>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_157 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_157);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_158 = L_157->___characterInfo;
@@ -4371,15 +4371,15 @@ IL_0769:
 		L_162 = Dictionary_2_get_Item_m43EA32FD1DAA3D907704A2F5B20845722C30849E(L_161, 3, Dictionary_2_get_Item_m43EA32FD1DAA3D907704A2F5B20845722C30849E_RuntimeMethod_var);
 		((L_158)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_159)))->___textElement = L_162;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_158)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_159)))->___textElement), (void*)L_162);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2801>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2801>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextTruncated = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2802>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2802>
 		goto IL_0892;
 	}
 
 IL_07a1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2807>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2807>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_163 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_163);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_164 = L_163->___characterInfo;
@@ -4389,14 +4389,14 @@ IL_07a1:
 		TMP_Character_t7D37A55EF1A9FF6D0BFE6D50E86A00F80E7FAF35* L_167 = L_166->___character;
 		((L_164)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_165)))->___textElement = L_167;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_164)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_165)))->___textElement), (void*)L_167);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2808>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2808>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_168 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_168);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_169 = L_168->___characterInfo;
 		int32_t L_170 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_169);
 		((L_169)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_170)))->___elementType = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2809>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2809>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_171 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_171);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_172 = L_171->___characterInfo;
@@ -4406,7 +4406,7 @@ IL_07a1:
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_175 = L_174->___fontAsset;
 		((L_172)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_173)))->___fontAsset = L_175;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_172)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_173)))->___fontAsset), (void*)L_175);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2810>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2810>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_176 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_176);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_177 = L_176->___characterInfo;
@@ -4416,7 +4416,7 @@ IL_07a1:
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_180 = L_179->___material;
 		((L_177)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_178)))->___material = L_180;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_177)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_178)))->___material), (void*)L_180);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2811>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2811>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_181 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_181);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_182 = L_181->___characterInfo;
@@ -4425,7 +4425,7 @@ IL_07a1:
 		SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777* L_184 = (SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_Ellipsis);
 		int32_t L_185 = L_184->___materialIndex;
 		((L_182)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_183)))->___materialReferenceIndex = L_185;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2814>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2814>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		MaterialReferenceU5BU5D_t7491D335AB3E3E13CE9C0F5E931F396F6A02E1F2* L_186 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_materialReferences;
 		SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777* L_187 = (SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_Underline);
@@ -4435,18 +4435,18 @@ IL_07a1:
 		int32_t* L_190 = L_189;
 		int32_t L_191 = *((int32_t*)L_190);
 		*((int32_t*)L_190) = (int32_t)((int32_t)il2cpp_codegen_add(L_191, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2817>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2817>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextTruncated = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2820>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2820>
 		int32_t L_192 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = ((int32_t)il2cpp_codegen_add(L_192, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2821>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2821>
 		(&V_32)->___unicode = 3;
 	}
 
 IL_0892:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2830>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2830>
 		int32_t L_193 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		int32_t L_194 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstVisibleCharacter;
 		if ((((int32_t)L_193) >= ((int32_t)L_194)))
@@ -4462,39 +4462,39 @@ IL_0892:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2832>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2832>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_196 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_196);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_197 = L_196->___characterInfo;
 		int32_t L_198 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_197);
 		((L_197)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_198)))->___isVisible = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2833>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2833>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_199 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_199);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_200 = L_199->___characterInfo;
 		int32_t L_201 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_200);
 		((L_200)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_201)))->___character = ((int32_t)8203);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2834>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2834>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_202 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_202);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_203 = L_202->___characterInfo;
 		int32_t L_204 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_203);
 		((L_203)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_204)))->___lineNumber = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2835>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2835>
 		int32_t L_205 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_add(L_205, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2836>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2836>
 		goto IL_3fee;
 	}
 
 IL_0910:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2844>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2844>
 		V_70 = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2846>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2846>
 		int32_t L_206 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (L_206)
 		{
@@ -4502,7 +4502,7 @@ IL_0910:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2848>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2848>
 		int32_t L_207 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontStyleInternal;
 		if ((!(((uint32_t)((int32_t)((int32_t)L_207&((int32_t)16)))) == ((uint32_t)((int32_t)16)))))
 		{
@@ -4510,7 +4510,7 @@ IL_0910:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2851>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2851>
 		uint32_t L_208 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_209;
@@ -4521,7 +4521,7 @@ IL_0910:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2852>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2852>
 		uint32_t L_210 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		Il2CppChar L_211;
@@ -4532,7 +4532,7 @@ IL_0910:
 
 IL_0942:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2855>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2855>
 		int32_t L_212 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontStyleInternal;
 		if ((!(((uint32_t)((int32_t)((int32_t)L_212&8))) == ((uint32_t)8))))
 		{
@@ -4540,7 +4540,7 @@ IL_0942:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2858>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2858>
 		uint32_t L_213 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_214;
@@ -4551,7 +4551,7 @@ IL_0942:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2859>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2859>
 		uint32_t L_215 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		Il2CppChar L_216;
@@ -4562,7 +4562,7 @@ IL_0942:
 
 IL_0963:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2861>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2861>
 		int32_t L_217 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontStyleInternal;
 		if ((!(((uint32_t)((int32_t)((int32_t)L_217&((int32_t)32)))) == ((uint32_t)((int32_t)32)))))
 		{
@@ -4570,7 +4570,7 @@ IL_0963:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2863>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2863>
 		uint32_t L_218 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_219;
@@ -4581,9 +4581,9 @@ IL_0963:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2865>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2865>
 		V_70 = (0.800000012f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2866>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2866>
 		uint32_t L_220 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		Il2CppChar L_221;
@@ -4593,18 +4593,18 @@ IL_0963:
 
 IL_098b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2877>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2877>
 		V_71 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2878>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2878>
 		V_72 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2879>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2879>
 		V_73 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2881>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2881>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_222 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_222);
 		FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756 L_223 = ((TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969*)L_222)->___m_FaceInfo;
 		V_74 = L_223;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2883>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2883>
 		int32_t L_224 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if ((!(((uint32_t)L_224) == ((uint32_t)1))))
 		{
@@ -4612,7 +4612,7 @@ IL_098b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2886>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2886>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_225;
 		L_225 = TMP_Text_get_textInfo_mA24C606B8EA51436E4AA3B9D6DCDFA7A8995E10E(__this, NULL);
 		NullCheck(L_225);
@@ -4621,7 +4621,7 @@ IL_098b:
 		NullCheck(L_226);
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_228 = ((L_226)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_227)))->___textElement;
 		V_96 = ((TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E*)CastclassClass((RuntimeObject*)L_228, TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E_il2cpp_TypeInfo_var));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2887>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2887>
 		TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E* L_229 = V_96;
 		if (!L_229)
 		{
@@ -4629,20 +4629,20 @@ IL_098b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2893>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2893>
 		TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E* L_230 = V_96;
 		NullCheck(L_230);
 		TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969* L_231;
 		L_231 = TMP_TextElement_get_textAsset_m3FFA01E6D0068D1F8F578CBF2590A752683A61EA_inline(L_230, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentSpriteAsset = ((TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39*)IsInstClass((RuntimeObject*)L_231, TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39_il2cpp_TypeInfo_var));
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentSpriteAsset), (void*)((TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39*)IsInstClass((RuntimeObject*)L_231, TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39_il2cpp_TypeInfo_var)));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2894>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2894>
 		TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E* L_232 = V_96;
 		NullCheck(L_232);
 		uint32_t L_233;
 		L_233 = TMP_TextElement_get_glyphIndex_m149D0BB0350CFC7D3C46CA011669295DC8CF8E9E_inline(L_232, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteIndex = L_233;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2897>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2897>
 		uint32_t L_234 = V_6;
 		if ((!(((uint32_t)L_234) == ((uint32_t)((int32_t)60)))))
 		{
@@ -4650,7 +4650,7 @@ IL_098b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2898>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2898>
 		int32_t L_235 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteIndex;
 		V_6 = ((int32_t)il2cpp_codegen_add(((int32_t)57344), L_235));
 		goto IL_0a22;
@@ -4658,7 +4658,7 @@ IL_098b:
 
 IL_0a17:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2900>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2900>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_236 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___s_colorWhite;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteColor = L_236;
@@ -4666,7 +4666,7 @@ IL_0a17:
 
 IL_0a22:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2902>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2902>
 		float L_237 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		float L_238;
 		L_238 = FaceInfo_get_pointSize_mDCB57F74233408806DF4F658751ECEE9A66C003E((&V_74), NULL);
@@ -4674,12 +4674,12 @@ IL_0a22:
 		L_239 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD((&V_74), NULL);
 		float L_240 = V_1;
 		V_97 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_237/L_238)), L_239)), L_240));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2903>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2903>
 		TMP_SpriteAsset_t81F779E6F705CE190DC0D1F93A954CB8B1774B39* L_241 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentSpriteAsset;
 		NullCheck(L_241);
 		FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756 L_242 = ((TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969*)L_241)->___m_FaceInfo;
 		V_98 = L_242;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2906>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2906>
 		float L_243;
 		L_243 = FaceInfo_get_pointSize_mDCB57F74233408806DF4F658751ECEE9A66C003E((&V_98), NULL);
 		if ((!(((float)L_243) > ((float)(0.0f)))))
@@ -4688,7 +4688,7 @@ IL_0a22:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2908>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2908>
 		float L_244 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		float L_245;
 		L_245 = FaceInfo_get_pointSize_mDCB57F74233408806DF4F658751ECEE9A66C003E((&V_98), NULL);
@@ -4696,7 +4696,7 @@ IL_0a22:
 		L_246 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD((&V_98), NULL);
 		float L_247 = V_1;
 		V_99 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_244/L_245)), L_246)), L_247));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2909>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2909>
 		TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E* L_248 = V_96;
 		NullCheck(L_248);
 		float L_249 = ((TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5*)L_248)->___m_Scale;
@@ -4708,11 +4708,11 @@ IL_0a22:
 		L_252 = Glyph_get_scale_m3ED738CBB032247526DB38161E180759B2D06F29(L_251, NULL);
 		float L_253 = V_99;
 		V_3 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_249, L_252)), L_253));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2910>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2910>
 		float L_254;
 		L_254 = FaceInfo_get_ascentLine_m193755D649428EC24A7E433A1728F11DA7547ABD((&V_98), NULL);
 		V_72 = L_254;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2911>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2911>
 		float L_255;
 		L_255 = FaceInfo_get_baseline_m934B597D3E0080FEF98CBDD091C457B497179C3A((&V_98), NULL);
 		float L_256 = V_97;
@@ -4720,7 +4720,7 @@ IL_0a22:
 		float L_258;
 		L_258 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD((&V_98), NULL);
 		V_71 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_255, L_256)), L_257)), L_258));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2912>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2912>
 		float L_259;
 		L_259 = FaceInfo_get_descentLine_m811A243C9B328B0C546BF9927A010A05DF172BD3((&V_98), NULL);
 		V_73 = L_259;
@@ -4729,7 +4729,7 @@ IL_0a22:
 
 IL_0abb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2916>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2916>
 		float L_260 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		float L_261;
 		L_261 = FaceInfo_get_pointSize_mDCB57F74233408806DF4F658751ECEE9A66C003E((&V_74), NULL);
@@ -4737,7 +4737,7 @@ IL_0abb:
 		L_262 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD((&V_74), NULL);
 		float L_263 = V_1;
 		V_100 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_260/L_261)), L_262)), L_263));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2917>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2917>
 		float L_264;
 		L_264 = FaceInfo_get_ascentLine_m193755D649428EC24A7E433A1728F11DA7547ABD((&V_74), NULL);
 		TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E* L_265 = V_96;
@@ -4760,7 +4760,7 @@ IL_0abb:
 		L_273 = Glyph_get_scale_m3ED738CBB032247526DB38161E180759B2D06F29(L_272, NULL);
 		float L_274 = V_100;
 		V_3 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_264/L_268)), L_270)), L_273)), L_274));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2918>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2918>
 		float L_275 = V_3;
 		if ((!(((float)L_275) == ((float)(0.0f)))))
 		{
@@ -4782,12 +4782,12 @@ IL_0b1a:
 IL_0b1e:
 	{
 		V_101 = G_B63_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2919>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2919>
 		float L_278;
 		L_278 = FaceInfo_get_ascentLine_m193755D649428EC24A7E433A1728F11DA7547ABD((&V_74), NULL);
 		float L_279 = V_101;
 		V_72 = ((float)il2cpp_codegen_multiply(L_278, L_279));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2920>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2920>
 		float L_280;
 		L_280 = FaceInfo_get_baseline_m934B597D3E0080FEF98CBDD091C457B497179C3A((&V_74), NULL);
 		float L_281 = V_97;
@@ -4795,7 +4795,7 @@ IL_0b1e:
 		float L_283;
 		L_283 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD((&V_74), NULL);
 		V_71 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_280, L_281)), L_282)), L_283));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2921>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2921>
 		float L_284;
 		L_284 = FaceInfo_get_descentLine_m811A243C9B328B0C546BF9927A010A05DF172BD3((&V_74), NULL);
 		float L_285 = V_101;
@@ -4804,18 +4804,18 @@ IL_0b1e:
 
 IL_0b53:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2924>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2924>
 		TMP_SpriteCharacter_t98295D0A81320909AC4AD5F2602DD69EACBB449E* L_286 = V_96;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement = L_286;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement), (void*)L_286);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2926>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2926>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_287 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_287);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_288 = L_287->___characterInfo;
 		int32_t L_289 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_288);
 		((L_288)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_289)))->___elementType = 1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2927>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2927>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_290 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_290);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_291 = L_290->___characterInfo;
@@ -4823,7 +4823,7 @@ IL_0b53:
 		NullCheck(L_291);
 		float L_293 = V_3;
 		((L_291)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_292)))->___scale = L_293;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2928>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2928>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_294 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_294);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_295 = L_294->___characterInfo;
@@ -4832,7 +4832,7 @@ IL_0b53:
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_297 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		((L_295)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_296)))->___fontAsset = L_297;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_295)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_296)))->___fontAsset), (void*)L_297);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2929>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2929>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_298 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_298);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_299 = L_298->___characterInfo;
@@ -4840,17 +4840,17 @@ IL_0b53:
 		NullCheck(L_299);
 		int32_t L_301 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex;
 		((L_299)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_300)))->___materialReferenceIndex = L_301;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2931>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2931>
 		int32_t L_302 = V_67;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex = L_302;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2933>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2933>
 		V_7 = (0.0f);
 		goto IL_0dcb;
 	}
 
 IL_0be9:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2935>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2935>
 		int32_t L_303 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (L_303)
 		{
@@ -4858,7 +4858,7 @@ IL_0be9:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2937>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2937>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_304 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_304);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_305 = L_304->___characterInfo;
@@ -4867,7 +4867,7 @@ IL_0be9:
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_307 = ((L_305)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_306)))->___textElement;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement = L_307;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement), (void*)L_307);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2938>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2938>
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_308 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement;
 		if (!L_308)
 		{
@@ -4875,7 +4875,7 @@ IL_0be9:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2944>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2944>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_309 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_309);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_310 = L_309->___characterInfo;
@@ -4884,7 +4884,7 @@ IL_0be9:
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_312 = ((L_310)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_311)))->___fontAsset;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset = L_312;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset), (void*)L_312);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2945>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2945>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_313 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_313);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_314 = L_313->___characterInfo;
@@ -4893,7 +4893,7 @@ IL_0be9:
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_316 = ((L_314)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_315)))->___material;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial = L_316;
 		Il2CppCodeGenWriteBarrier((void**)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial), (void*)L_316);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2946>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2946>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_317 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_317);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_318 = L_317->___characterInfo;
@@ -4901,7 +4901,7 @@ IL_0be9:
 		NullCheck(L_318);
 		int32_t L_320 = ((L_318)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_319)))->___materialReferenceIndex;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex = L_320;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2950>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2950>
 		bool L_321 = V_69;
 		if (!L_321)
 		{
@@ -4927,7 +4927,7 @@ IL_0be9:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2951>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2951>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_327 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_327);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_328 = L_327->___characterInfo;
@@ -4946,7 +4946,7 @@ IL_0be9:
 
 IL_0ce1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2953>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2953>
 		float L_335 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		float L_336 = V_70;
 		float L_337;
@@ -4959,7 +4959,7 @@ IL_0ce1:
 
 IL_0cfe:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2956>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2956>
 		bool L_340 = V_69;
 		if (!L_340)
 		{
@@ -4974,20 +4974,20 @@ IL_0cfe:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2958>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2958>
 		V_72 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2959>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2959>
 		V_73 = (0.0f);
 		goto IL_0d2d;
 	}
 
 IL_0d1b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2963>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2963>
 		float L_342;
 		L_342 = FaceInfo_get_ascentLine_m193755D649428EC24A7E433A1728F11DA7547ABD((&V_74), NULL);
 		V_72 = L_342;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2964>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2964>
 		float L_343;
 		L_343 = FaceInfo_get_descentLine_m811A243C9B328B0C546BF9927A010A05DF172BD3((&V_74), NULL);
 		V_73 = L_343;
@@ -4995,7 +4995,7 @@ IL_0d1b:
 
 IL_0d2d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2967>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2967>
 		float L_344 = V_103;
 		float L_345 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontScaleMultiplier;
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_346 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement;
@@ -5008,7 +5008,7 @@ IL_0d2d:
 		float L_350;
 		L_350 = Glyph_get_scale_m3ED738CBB032247526DB38161E180759B2D06F29(L_349, NULL);
 		V_3 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_344, L_345)), L_347)), L_350));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2968>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2968>
 		float L_351;
 		L_351 = FaceInfo_get_baseline_m934B597D3E0080FEF98CBDD091C457B497179C3A((&V_74), NULL);
 		float L_352 = V_103;
@@ -5016,14 +5016,14 @@ IL_0d2d:
 		float L_354;
 		L_354 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD((&V_74), NULL);
 		V_71 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_351, L_352)), L_353)), L_354));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2970>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2970>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_355 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_355);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_356 = L_355->___characterInfo;
 		int32_t L_357 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_356);
 		((L_356)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_357)))->___elementType = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2971>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2971>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_358 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_358);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_359 = L_358->___characterInfo;
@@ -5031,7 +5031,7 @@ IL_0d2d:
 		NullCheck(L_359);
 		float L_361 = V_3;
 		((L_359)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_360)))->___scale = L_361;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2973>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2973>
 		int32_t L_362 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterialIndex;
 		if (!L_362)
 		{
@@ -5064,10 +5064,10 @@ IL_0dc9:
 
 IL_0dcb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2981>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2981>
 		float L_369 = V_3;
 		V_75 = L_369;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2982>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2982>
 		uint32_t L_370 = V_6;
 		if ((((int32_t)L_370) == ((int32_t)((int32_t)173))))
 		{
@@ -5084,13 +5084,13 @@ IL_0dcb:
 
 IL_0ddc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2983>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2983>
 		V_3 = (0.0f);
 	}
 
 IL_0de2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2988>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2988>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_372 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_372);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_373 = L_372->___characterInfo;
@@ -5098,7 +5098,7 @@ IL_0de2:
 		NullCheck(L_373);
 		uint32_t L_375 = V_6;
 		((L_373)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_374)))->___character = ((int32_t)(uint16_t)L_375);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2989>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2989>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_376 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_376);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_377 = L_376->___characterInfo;
@@ -5106,7 +5106,7 @@ IL_0de2:
 		NullCheck(L_377);
 		float L_379 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		((L_377)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_378)))->___pointSize = L_379;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2990>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2990>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_380 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_380);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_381 = L_380->___characterInfo;
@@ -5114,7 +5114,7 @@ IL_0de2:
 		NullCheck(L_381);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_383 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		((L_381)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_382)))->___color = L_383;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2991>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2991>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_384 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_384);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_385 = L_384->___characterInfo;
@@ -5122,7 +5122,7 @@ IL_0de2:
 		NullCheck(L_385);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_387 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_underlineColor;
 		((L_385)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_386)))->___underlineColor = L_387;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2992>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2992>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_388 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_388);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_389 = L_388->___characterInfo;
@@ -5130,7 +5130,7 @@ IL_0de2:
 		NullCheck(L_389);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_391 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_strikethroughColor;
 		((L_389)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_390)))->___strikethroughColor = L_391;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2993>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2993>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_392 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_392);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_393 = L_392->___characterInfo;
@@ -5138,7 +5138,7 @@ IL_0de2:
 		NullCheck(L_393);
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_395 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_HighlightState;
 		((L_393)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_394)))->___highlightState = L_395;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2994>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2994>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_396 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_396);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_397 = L_396->___characterInfo;
@@ -5146,7 +5146,7 @@ IL_0de2:
 		NullCheck(L_397);
 		int32_t L_399 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FontStyleInternal;
 		((L_397)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_398)))->___style = L_399;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2997>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2997>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_400 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_400);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_401 = L_400->___characterInfo;
@@ -5154,7 +5154,7 @@ IL_0de2:
 		NullCheck(L_401);
 		Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* L_403 = ((L_401)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_402)))->___alternativeGlyph;
 		V_76 = L_403;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2998>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2998>
 		Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* L_404 = V_76;
 		if (!L_404)
 		{
@@ -5184,7 +5184,7 @@ IL_0ef0:
 IL_0f00:
 	{
 		V_77 = G_B86_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3001>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3001>
 		uint32_t L_410 = V_6;
 		if ((!(((uint32_t)L_410) <= ((uint32_t)((int32_t)65535)))))
 		{
@@ -5208,12 +5208,12 @@ IL_0f15:
 IL_0f16:
 	{
 		V_78 = (bool)G_B89_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3005>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3005>
 		il2cpp_codegen_initobj((&V_79), sizeof(GlyphValueRecord_t780927A39D46924E0D546A2AE5DDF1BB2B5A9C8E));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3006>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3006>
 		float L_413 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterSpacing;
 		V_80 = L_413;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3007>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3007>
 		bool L_414 = V_19;
 		if (!L_414)
 		{
@@ -5228,12 +5228,12 @@ IL_0f16:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3012>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3012>
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_416 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement;
 		NullCheck(L_416);
 		uint32_t L_417 = L_416->___m_GlyphIndex;
 		V_105 = L_417;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3014>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3014>
 		int32_t L_418 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		int32_t L_419 = V_0;
 		if ((((int32_t)L_418) >= ((int32_t)((int32_t)il2cpp_codegen_subtract(L_419, 1)))))
@@ -5254,7 +5254,7 @@ IL_0f16:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3016>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3016>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_424 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_424);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_425 = L_424->___characterInfo;
@@ -5263,10 +5263,10 @@ IL_0f16:
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_427 = ((L_425)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_add(L_426, 1)))))->___textElement;
 		NullCheck(L_427);
 		uint32_t L_428 = L_427->___m_GlyphIndex;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3017>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3017>
 		uint32_t L_429 = V_105;
 		V_106 = ((int32_t)(((int32_t)((int32_t)L_428<<((int32_t)16)))|(int32_t)L_429));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3019>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3019>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_430 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_430);
 		TMP_FontFeatureTable_t726A09E64FDF682A8FFE294BB6CFE7747F6C40EA* L_431 = L_430->___m_FontFeatureTable;
@@ -5282,14 +5282,14 @@ IL_0f16:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3021>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3021>
 		GlyphAdjustmentRecord_tC7A1B2E0AC7C4ED9CDB8E95E48790A46B6F315F7 L_435;
 		L_435 = GlyphPairAdjustmentRecord_get_firstAdjustmentRecord_m867469548F17B298F893B78EE2F93D34E4A6C39C((&V_104), NULL);
 		V_107 = L_435;
 		GlyphValueRecord_t780927A39D46924E0D546A2AE5DDF1BB2B5A9C8E L_436;
 		L_436 = GlyphAdjustmentRecord_get_glyphValueRecord_m83866DCE07A22F903D4BA417476E64114625BDD7((&V_107), NULL);
 		V_79 = L_436;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3022>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3022>
 		int32_t L_437;
 		L_437 = GlyphPairAdjustmentRecord_get_featureLookupFlags_m08DA76766FDE949068B881DBEA29955C9C43E8A9((&V_104), NULL);
 		if ((((int32_t)((int32_t)((int32_t)L_437&((int32_t)256)))) == ((int32_t)((int32_t)256))))
@@ -5315,7 +5315,7 @@ IL_0fe8:
 
 IL_0fea:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3026>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3026>
 		int32_t L_439 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		if ((((int32_t)L_439) < ((int32_t)1)))
 		{
@@ -5323,7 +5323,7 @@ IL_0fea:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3028>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3028>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_440 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_440);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_441 = L_440->___characterInfo;
@@ -5333,11 +5333,11 @@ IL_0fea:
 		NullCheck(L_443);
 		uint32_t L_444 = L_443->___m_GlyphIndex;
 		V_108 = L_444;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3029>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3029>
 		uint32_t L_445 = V_105;
 		uint32_t L_446 = V_108;
 		V_109 = ((int32_t)(((int32_t)((int32_t)L_445<<((int32_t)16)))|(int32_t)L_446));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3031>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3031>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_447;
 		L_447 = TMP_Text_get_textInfo_mA24C606B8EA51436E4AA3B9D6DCDFA7A8995E10E(__this, NULL);
 		NullCheck(L_447);
@@ -5366,7 +5366,7 @@ IL_0fea:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3033>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3033>
 		GlyphValueRecord_t780927A39D46924E0D546A2AE5DDF1BB2B5A9C8E L_456 = V_79;
 		GlyphAdjustmentRecord_tC7A1B2E0AC7C4ED9CDB8E95E48790A46B6F315F7 L_457;
 		L_457 = GlyphPairAdjustmentRecord_get_secondAdjustmentRecord_mFDFECB1F7A38E22BD2388FFE9C71E732F6B44D91((&V_104), NULL);
@@ -5376,7 +5376,7 @@ IL_0fea:
 		GlyphValueRecord_t780927A39D46924E0D546A2AE5DDF1BB2B5A9C8E L_459;
 		L_459 = GlyphValueRecord_op_Addition_mF26165B4CE61A5409AEFF24B0D1727804E13602B(L_456, L_458, NULL);
 		V_79 = L_459;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3034>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3034>
 		int32_t L_460;
 		L_460 = GlyphPairAdjustmentRecord_get_featureLookupFlags_m08DA76766FDE949068B881DBEA29955C9C43E8A9((&V_104), NULL);
 		if ((((int32_t)((int32_t)((int32_t)L_460&((int32_t)256)))) == ((int32_t)((int32_t)256))))
@@ -5402,7 +5402,7 @@ IL_1094:
 
 IL_1096:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3041>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3041>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_462 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_462);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_463 = L_462->___characterInfo;
@@ -5411,13 +5411,13 @@ IL_1096:
 		float L_465;
 		L_465 = GlyphValueRecord_get_xAdvance_m6C392027FA91E0705C1585C5EF40D984AAA0013E((&V_79), NULL);
 		((L_463)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_464)))->___adjustedHorizontalAdvance = L_465;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3047>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3047>
 		uint32_t L_466 = V_6;
 		il2cpp_codegen_runtime_class_init_inline(TMP_TextParsingUtilities_tF6AF6ED06ADFB8C71F4C1D713D677D821A1AB6FA_il2cpp_TypeInfo_var);
 		bool L_467;
 		L_467 = TMP_TextParsingUtilities_IsBaseGlyph_mB834269DBBAA4556C0082CC35C415408504FB667(L_466, NULL);
 		V_81 = L_467;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3049>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3049>
 		bool L_468 = V_81;
 		if (!L_468)
 		{
@@ -5425,14 +5425,14 @@ IL_1096:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3050>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3050>
 		int32_t L_469 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_LastBaseGlyphIndex = L_469;
 	}
 
 IL_10d1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3052>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3052>
 		int32_t L_470 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		if ((((int32_t)L_470) <= ((int32_t)0)))
 		{
@@ -5447,7 +5447,7 @@ IL_10d1:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3055>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3055>
 		bool L_472 = V_20;
 		if (!L_472)
 		{
@@ -5470,7 +5470,7 @@ IL_10d1:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3057>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3057>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_476 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_476);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_477 = L_476->___characterInfo;
@@ -5480,20 +5480,20 @@ IL_10d1:
 		NullCheck(L_479);
 		Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* L_480;
 		L_480 = TMP_TextElement_get_glyph_mB86D5107DDF4ADB051309056E876FEAE843E3D07_inline(L_479, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3058>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3058>
 		NullCheck(L_480);
 		uint32_t L_481;
 		L_481 = Glyph_get_index_mCFBBCF85E7F3434B7A595EEE3411EFFB78E5675B(L_480, NULL);
 		V_110 = L_481;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3059>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3059>
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_482 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement;
 		NullCheck(L_482);
 		uint32_t L_483;
 		L_483 = TMP_TextElement_get_glyphIndex_m149D0BB0350CFC7D3C46CA011669295DC8CF8E9E_inline(L_482, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3060>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3060>
 		uint32_t L_484 = V_110;
 		V_111 = ((int32_t)(((int32_t)((int32_t)L_483<<((int32_t)16)))|(int32_t)L_484));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3062>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3062>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_485 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_485);
 		TMP_FontFeatureTable_t726A09E64FDF682A8FFE294BB6CFE7747F6C40EA* L_486;
@@ -5510,7 +5510,7 @@ IL_10d1:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3064>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3064>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_490 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_490);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_491 = L_490->___characterInfo;
@@ -5520,7 +5520,7 @@ IL_10d1:
 		float L_494 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_495 = V_3;
 		V_113 = ((float)(((float)il2cpp_codegen_subtract(L_493, L_494))/L_495));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3066>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3066>
 		float L_496 = V_113;
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_497;
 		L_497 = MarkToBaseAdjustmentRecord_get_baseGlyphAnchorPoint_mFECF1D5AFAC10D1DBB0C5147325AE5D6D9083E31_inline((&V_112), NULL);
@@ -5533,7 +5533,7 @@ IL_10d1:
 		float L_500;
 		L_500 = MarkPositionAdjustment_get_xPositionAdjustment_m20DA20230B832D18BD7AE7A715981046917833F3_inline((&V_115), NULL);
 		GlyphValueRecord_set_xPlacement_m79F92029922BDE50ED63A6A03EBE478869F1CCFC((&V_79), ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_496, L_498)), L_500)), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3067>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3067>
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_501;
 		L_501 = MarkToBaseAdjustmentRecord_get_baseGlyphAnchorPoint_mFECF1D5AFAC10D1DBB0C5147325AE5D6D9083E31_inline((&V_112), NULL);
 		V_114 = L_501;
@@ -5545,16 +5545,16 @@ IL_10d1:
 		float L_504;
 		L_504 = MarkPositionAdjustment_get_yPositionAdjustment_m0D9AA5E5D5AFFF371CBFE74D2133B47364CD238A_inline((&V_115), NULL);
 		GlyphValueRecord_set_yPlacement_m04DA300FAB827A708CB291DA3B2EA3128279CA2B((&V_79), ((float)il2cpp_codegen_subtract(L_502, L_504)), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3069>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3069>
 		V_80 = (0.0f);
 		goto IL_141a;
 	}
 
 IL_11eb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3075>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3075>
 		V_116 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3078>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3078>
 		bool L_505 = V_21;
 		if (!L_505)
 		{
@@ -5562,7 +5562,7 @@ IL_11eb:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3080>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3080>
 		int32_t L_506 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		V_117 = ((int32_t)il2cpp_codegen_subtract(L_506, 1));
 		goto IL_1312;
@@ -5570,7 +5570,7 @@ IL_11eb:
 
 IL_1204:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3083>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3083>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_507 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_507);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_508 = L_507->___characterInfo;
@@ -5580,20 +5580,20 @@ IL_1204:
 		NullCheck(L_510);
 		Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* L_511;
 		L_511 = TMP_TextElement_get_glyph_mB86D5107DDF4ADB051309056E876FEAE843E3D07_inline(L_510, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3084>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3084>
 		NullCheck(L_511);
 		uint32_t L_512;
 		L_512 = Glyph_get_index_mCFBBCF85E7F3434B7A595EEE3411EFFB78E5675B(L_511, NULL);
 		V_118 = L_512;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3085>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3085>
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_513 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement;
 		NullCheck(L_513);
 		uint32_t L_514;
 		L_514 = TMP_TextElement_get_glyphIndex_m149D0BB0350CFC7D3C46CA011669295DC8CF8E9E_inline(L_513, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3086>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3086>
 		uint32_t L_515 = V_118;
 		V_119 = ((int32_t)(((int32_t)((int32_t)L_514<<((int32_t)16)))|(int32_t)L_515));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3088>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3088>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_516 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_516);
 		TMP_FontFeatureTable_t726A09E64FDF682A8FFE294BB6CFE7747F6C40EA* L_517;
@@ -5610,7 +5610,7 @@ IL_1204:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3090>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3090>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_521 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_521);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_522 = L_521->___characterInfo;
@@ -5620,12 +5620,12 @@ IL_1204:
 		float L_525 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_526 = V_3;
 		V_121 = ((float)(((float)il2cpp_codegen_subtract(L_524, L_525))/L_526));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3091>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3091>
 		float L_527 = V_71;
 		float L_528 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		float L_529 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffset;
 		V_122 = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_subtract(L_527, L_528)), L_529));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3092>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3092>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_530 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_530);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_531 = L_530->___characterInfo;
@@ -5635,7 +5635,7 @@ IL_1204:
 		float L_534 = V_122;
 		float L_535 = V_3;
 		V_123 = ((float)(((float)il2cpp_codegen_subtract(L_533, L_534))/L_535));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3094>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3094>
 		float L_536 = V_121;
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_537;
 		L_537 = MarkToMarkAdjustmentRecord_get_baseMarkGlyphAnchorPoint_mA5B70EE56DD3ACAA43B0B8F517F99D6EBE8B6D4F_inline((&V_120), NULL);
@@ -5648,7 +5648,7 @@ IL_1204:
 		float L_540;
 		L_540 = MarkPositionAdjustment_get_xPositionAdjustment_m20DA20230B832D18BD7AE7A715981046917833F3_inline((&V_115), NULL);
 		GlyphValueRecord_set_xPlacement_m79F92029922BDE50ED63A6A03EBE478869F1CCFC((&V_79), ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_536, L_538)), L_540)), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3095>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3095>
 		float L_541 = V_123;
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_542;
 		L_542 = MarkToMarkAdjustmentRecord_get_baseMarkGlyphAnchorPoint_mA5B70EE56DD3ACAA43B0B8F517F99D6EBE8B6D4F_inline((&V_120), NULL);
@@ -5661,24 +5661,24 @@ IL_1204:
 		float L_545;
 		L_545 = MarkPositionAdjustment_get_yPositionAdjustment_m0D9AA5E5D5AFFF371CBFE74D2133B47364CD238A_inline((&V_115), NULL);
 		GlyphValueRecord_set_yPlacement_m04DA300FAB827A708CB291DA3B2EA3128279CA2B((&V_79), ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_541, L_543)), L_545)), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3097>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3097>
 		V_80 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3098>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3098>
 		V_116 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3099>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3099>
 		goto IL_1324;
 	}
 
 IL_130c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3080>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3080>
 		int32_t L_546 = V_117;
 		V_117 = ((int32_t)il2cpp_codegen_subtract(L_546, 1));
 	}
 
 IL_1312:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3080>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3080>
 		int32_t L_547 = V_117;
 		if ((((int32_t)L_547) < ((int32_t)0)))
 		{
@@ -5696,7 +5696,7 @@ IL_1312:
 
 IL_1324:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3105>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3105>
 		bool L_550 = V_20;
 		if (!L_550)
 		{
@@ -5718,7 +5718,7 @@ IL_1324:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3108>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3108>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_553 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_553);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_554 = L_553->___characterInfo;
@@ -5728,20 +5728,20 @@ IL_1324:
 		NullCheck(L_556);
 		Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* L_557;
 		L_557 = TMP_TextElement_get_glyph_mB86D5107DDF4ADB051309056E876FEAE843E3D07_inline(L_556, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3109>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3109>
 		NullCheck(L_557);
 		uint32_t L_558;
 		L_558 = Glyph_get_index_mCFBBCF85E7F3434B7A595EEE3411EFFB78E5675B(L_557, NULL);
 		V_124 = L_558;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3110>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3110>
 		TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* L_559 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_cached_TextElement;
 		NullCheck(L_559);
 		uint32_t L_560;
 		L_560 = TMP_TextElement_get_glyphIndex_m149D0BB0350CFC7D3C46CA011669295DC8CF8E9E_inline(L_559, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3111>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3111>
 		uint32_t L_561 = V_124;
 		V_125 = ((int32_t)(((int32_t)((int32_t)L_560<<((int32_t)16)))|(int32_t)L_561));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3113>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3113>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_562 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_562);
 		TMP_FontFeatureTable_t726A09E64FDF682A8FFE294BB6CFE7747F6C40EA* L_563;
@@ -5758,7 +5758,7 @@ IL_1324:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3115>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3115>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_567 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_567);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_568 = L_567->___characterInfo;
@@ -5768,7 +5768,7 @@ IL_1324:
 		float L_571 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_572 = V_3;
 		V_127 = ((float)(((float)il2cpp_codegen_subtract(L_570, L_571))/L_572));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3117>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3117>
 		float L_573 = V_127;
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_574;
 		L_574 = MarkToBaseAdjustmentRecord_get_baseGlyphAnchorPoint_mFECF1D5AFAC10D1DBB0C5147325AE5D6D9083E31_inline((&V_126), NULL);
@@ -5781,7 +5781,7 @@ IL_1324:
 		float L_577;
 		L_577 = MarkPositionAdjustment_get_xPositionAdjustment_m20DA20230B832D18BD7AE7A715981046917833F3_inline((&V_115), NULL);
 		GlyphValueRecord_set_xPlacement_m79F92029922BDE50ED63A6A03EBE478869F1CCFC((&V_79), ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_573, L_575)), L_577)), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3118>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3118>
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_578;
 		L_578 = MarkToBaseAdjustmentRecord_get_baseGlyphAnchorPoint_mFECF1D5AFAC10D1DBB0C5147325AE5D6D9083E31_inline((&V_126), NULL);
 		V_114 = L_578;
@@ -5793,23 +5793,23 @@ IL_1324:
 		float L_581;
 		L_581 = MarkPositionAdjustment_get_yPositionAdjustment_m0D9AA5E5D5AFFF371CBFE74D2133B47364CD238A_inline((&V_115), NULL);
 		GlyphValueRecord_set_yPlacement_m04DA300FAB827A708CB291DA3B2EA3128279CA2B((&V_79), ((float)il2cpp_codegen_subtract(L_579, L_581)), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3120>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3120>
 		V_80 = (0.0f);
 	}
 
 IL_141a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3127>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3127>
 		float L_582 = V_72;
 		float L_583;
 		L_583 = GlyphValueRecord_get_yPlacement_mB6303F8800305F6F96ECCD0CD9AA70A1A30A15DA((&V_79), NULL);
 		V_72 = ((float)il2cpp_codegen_add(L_582, L_583));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3128>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3128>
 		float L_584 = V_73;
 		float L_585;
 		L_585 = GlyphValueRecord_get_yPlacement_mB6303F8800305F6F96ECCD0CD9AA70A1A30A15DA((&V_79), NULL);
 		V_73 = ((float)il2cpp_codegen_add(L_584, L_585));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3134>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3134>
 		bool L_586 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (!L_586)
 		{
@@ -5817,7 +5817,7 @@ IL_141a:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3136>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3136>
 		float L_587 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_588;
 		L_588 = GlyphMetrics_get_horizontalAdvance_m110E66C340A19E672FB1C26DFB875AB6900AFFF1((&V_77), NULL);
@@ -5825,7 +5825,7 @@ IL_141a:
 		float L_590 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		float L_591 = V_3;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_subtract(L_587, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_588, ((float)il2cpp_codegen_subtract((1.0f), L_589)))), L_590)), L_591))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3138>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3138>
 		bool L_592 = V_78;
 		if (L_592)
 		{
@@ -5842,7 +5842,7 @@ IL_141a:
 
 IL_1471:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3139>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3139>
 		float L_594 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_595 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_wordSpacing;
 		float L_596 = V_4;
@@ -5851,9 +5851,9 @@ IL_1471:
 
 IL_1487:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3146>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3146>
 		V_82 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3147>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3147>
 		float L_597 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing;
 		if ((((float)L_597) == ((float)(0.0f))))
 		{
@@ -5861,7 +5861,7 @@ IL_1487:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3149>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3149>
 		bool L_598 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_duoSpace;
 		if (!L_598)
 		{
@@ -5892,7 +5892,7 @@ IL_1487:
 
 IL_14b8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3150>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3150>
 		float L_602 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing;
 		float L_603;
 		L_603 = GlyphMetrics_get_width_m0F9F391E3A98984167E8001D4101BE1CE9354D13((&V_77), NULL);
@@ -5907,7 +5907,7 @@ IL_14b8:
 
 IL_14f4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3152>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3152>
 		float L_608 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing;
 		float L_609;
 		L_609 = GlyphMetrics_get_width_m0F9F391E3A98984167E8001D4101BE1CE9354D13((&V_77), NULL);
@@ -5921,7 +5921,7 @@ IL_14f4:
 
 IL_152e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3154>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3154>
 		float L_614 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_615 = V_82;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_add(L_614, L_615));
@@ -5929,11 +5929,11 @@ IL_152e:
 
 IL_153d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3161>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3161>
 		V_83 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3162>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3162>
 		V_84 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3164>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3164>
 		int32_t L_616 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (L_616)
 		{
@@ -5941,7 +5941,7 @@ IL_153d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3166>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3166>
 		bool L_617 = V_68;
 		if (L_617)
 		{
@@ -5962,7 +5962,7 @@ IL_1567:
 IL_1568:
 	{
 		V_128 = (bool)G_B142_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3167>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3167>
 		bool L_619 = V_128;
 		if (L_619)
 		{
@@ -5985,7 +5985,7 @@ IL_1575:
 IL_1580:
 	{
 		V_83 = G_B145_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3169>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3169>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_622 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_623;
@@ -6020,7 +6020,7 @@ IL_1580:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3171>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3171>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_630 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial;
 		il2cpp_codegen_runtime_class_init_inline(ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var);
 		int32_t L_631 = ((ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_StaticFields*)il2cpp_codegen_static_fields_for(ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var))->___ID_GradientScale;
@@ -6028,14 +6028,14 @@ IL_1580:
 		float L_632;
 		L_632 = Material_GetFloat_m52462F4AEDE20758BFB592B11DE83A79D2774932(L_630, L_631, NULL);
 		V_129 = L_632;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3172>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3172>
 		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_633 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentMaterial;
 		int32_t L_634 = ((ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_StaticFields*)il2cpp_codegen_static_fields_for(ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var))->___ID_ScaleRatio_A;
 		NullCheck(L_633);
 		float L_635;
 		L_635 = Material_GetFloat_m52462F4AEDE20758BFB592B11DE83A79D2774932(L_633, L_634, NULL);
 		V_130 = L_635;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3173>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3173>
 		bool L_636 = V_128;
 		if (L_636)
 		{
@@ -6060,11 +6060,11 @@ IL_15ec:
 
 IL_15f7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3175>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3175>
 		float L_641 = V_129;
 		float L_642 = V_130;
 		V_84 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(G_B151_0, (0.25f))), L_641)), L_642));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3178>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3178>
 		float L_643 = V_84;
 		float L_644 = V_7;
 		float L_645 = V_129;
@@ -6074,7 +6074,7 @@ IL_15f7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3179>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3179>
 		float L_646 = V_129;
 		float L_647 = V_84;
 		V_7 = ((float)il2cpp_codegen_subtract(L_646, L_647));
@@ -6082,7 +6082,7 @@ IL_15f7:
 
 IL_1615:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3189>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3189>
 		float L_648 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_649;
 		L_649 = GlyphMetrics_get_horizontalBearingX_m9C39B5E6D27FF34B706649AE47EE9390B5D76D6F((&V_77), NULL);
@@ -6096,7 +6096,7 @@ IL_1615:
 		float L_656 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_657 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		(&V_85)->___x = ((float)il2cpp_codegen_add(L_648, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_multiply(L_649, L_651)), L_652)), L_653)), L_654)), L_655)), ((float)il2cpp_codegen_subtract((1.0f), L_656)))), L_657))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3190>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3190>
 		float L_658 = V_71;
 		float L_659;
 		L_659 = GlyphMetrics_get_horizontalBearingY_mD316BDD38A32258256994D6A2BCF0FC051D9B223((&V_77), NULL);
@@ -6107,13 +6107,13 @@ IL_1615:
 		float L_663 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		float L_664 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffset;
 		(&V_85)->___y = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_658, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_659, L_660)), L_661)), L_662)))), L_663)), L_664));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3191>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3191>
 		(&V_85)->___z = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3194>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3194>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_665 = V_85;
 		float L_666 = L_665.___x;
 		(&V_86)->___x = L_666;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3195>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3195>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_667 = V_85;
 		float L_668 = L_667.___y;
 		float L_669;
@@ -6121,9 +6121,9 @@ IL_1615:
 		float L_670 = V_7;
 		float L_671 = V_3;
 		(&V_86)->___y = ((float)il2cpp_codegen_subtract(L_668, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(L_669, ((float)il2cpp_codegen_multiply(L_670, (2.0f))))), L_671))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3196>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3196>
 		(&V_86)->___z = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3199>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3199>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_672 = V_86;
 		float L_673 = L_672.___x;
 		float L_674;
@@ -6136,23 +6136,23 @@ IL_1615:
 		float L_680 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_681 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		(&V_87)->___x = ((float)il2cpp_codegen_add(L_673, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_674, L_676)), ((float)il2cpp_codegen_multiply(L_677, (2.0f))))), ((float)il2cpp_codegen_multiply(L_678, (2.0f))))), L_679)), ((float)il2cpp_codegen_subtract((1.0f), L_680)))), L_681))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3200>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3200>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_682 = V_85;
 		float L_683 = L_682.___y;
 		(&V_87)->___y = L_683;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3201>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3201>
 		(&V_87)->___z = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3204>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3204>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_684 = V_87;
 		float L_685 = L_684.___x;
 		(&V_88)->___x = L_685;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3205>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3205>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_686 = V_86;
 		float L_687 = L_686.___y;
 		(&V_88)->___y = L_687;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3206>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3206>
 		(&V_88)->___z = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3214>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3214>
 		int32_t L_688 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (L_688)
 		{
@@ -6174,10 +6174,10 @@ IL_1615:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3217>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3217>
 		int32_t L_691 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ItalicAngle;
 		V_131 = ((float)il2cpp_codegen_multiply(((float)L_691), (0.00999999978f)));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3218>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3218>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_692 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_692);
 		FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756* L_693 = (FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756*)(&((TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969*)L_692)->___m_FaceInfo);
@@ -6196,7 +6196,7 @@ IL_1615:
 		float L_702;
 		L_702 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD(L_701, NULL);
 		V_132 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(((float)il2cpp_codegen_subtract(L_694, ((float)il2cpp_codegen_add(L_697, L_698))))/(2.0f))), L_699)), L_702));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3219>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3219>
 		float L_703 = V_131;
 		float L_704;
 		L_704 = GlyphMetrics_get_horizontalBearingY_mD316BDD38A32258256994D6A2BCF0FC051D9B223((&V_77), NULL);
@@ -6205,7 +6205,7 @@ IL_1615:
 		float L_707 = V_132;
 		float L_708 = V_3;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_133), ((float)il2cpp_codegen_multiply(L_703, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_704, L_705)), L_706)), L_707)), L_708)))), (0.0f), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3220>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3220>
 		float L_709 = V_131;
 		float L_710;
 		L_710 = GlyphMetrics_get_horizontalBearingY_mD316BDD38A32258256994D6A2BCF0FC051D9B223((&V_77), NULL);
@@ -6216,25 +6216,25 @@ IL_1615:
 		float L_714 = V_132;
 		float L_715 = V_3;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_134), ((float)il2cpp_codegen_multiply(L_709, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_subtract(L_710, L_711)), L_712)), L_713)), L_714)), L_715)))), (0.0f), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3222>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3222>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_716 = V_85;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_717 = V_133;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_718;
 		L_718 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_716, L_717, NULL);
 		V_85 = L_718;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3223>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3223>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_719 = V_86;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_720 = V_134;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_721;
 		L_721 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_719, L_720, NULL);
 		V_86 = L_721;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3224>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3224>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_722 = V_87;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_723 = V_133;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_724;
 		L_724 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_722, L_723, NULL);
 		V_87 = L_724;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3225>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3225>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_725 = V_88;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_726 = V_134;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_727;
@@ -6244,7 +6244,7 @@ IL_1615:
 
 IL_1850:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3232>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3232>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_728 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FXRotation;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_729;
 		L_729 = Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline(NULL);
@@ -6256,12 +6256,12 @@ IL_1850:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3234>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3234>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_731 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_FXRotation;
 		Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6 L_732;
 		L_732 = Matrix4x4_Rotate_m015442530DFF5651458BBFDFB3CBC9180FC09D9E_inline(L_731, NULL);
 		V_135 = L_732;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3235>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3235>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_733 = V_87;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_734 = V_86;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_735;
@@ -6269,7 +6269,7 @@ IL_1850:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_736;
 		L_736 = Vector3_op_Division_mCC6BB24E372AB96B8380D1678446EF6A8BAE13BB_inline(L_735, (2.0f), NULL);
 		V_136 = L_736;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3237>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3237>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_737 = V_85;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_738 = V_136;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_739;
@@ -6280,7 +6280,7 @@ IL_1850:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_742;
 		L_742 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_740, L_741, NULL);
 		V_85 = L_742;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3238>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3238>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_743 = V_86;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_744 = V_136;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_745;
@@ -6291,7 +6291,7 @@ IL_1850:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_748;
 		L_748 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_746, L_747, NULL);
 		V_86 = L_748;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3239>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3239>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_749 = V_87;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_750 = V_136;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_751;
@@ -6302,7 +6302,7 @@ IL_1850:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_754;
 		L_754 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_752, L_753, NULL);
 		V_87 = L_754;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3240>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3240>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_755 = V_88;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_756 = V_136;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_757;
@@ -6317,7 +6317,7 @@ IL_1850:
 
 IL_18eb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3246>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3246>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_761 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_761);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_762 = L_761->___characterInfo;
@@ -6325,7 +6325,7 @@ IL_18eb:
 		NullCheck(L_762);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_764 = V_86;
 		((L_762)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_763)))->___bottomLeft = L_764;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3247>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3247>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_765 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_765);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_766 = L_765->___characterInfo;
@@ -6333,7 +6333,7 @@ IL_18eb:
 		NullCheck(L_766);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_768 = V_85;
 		((L_766)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_767)))->___topLeft = L_768;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3248>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3248>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_769 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_769);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_770 = L_769->___characterInfo;
@@ -6341,7 +6341,7 @@ IL_18eb:
 		NullCheck(L_770);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_772 = V_87;
 		((L_770)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_771)))->___topRight = L_772;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3249>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3249>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_773 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_773);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_774 = L_773->___characterInfo;
@@ -6349,7 +6349,7 @@ IL_18eb:
 		NullCheck(L_774);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_776 = V_88;
 		((L_774)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_775)))->___bottomRight = L_776;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3251>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3251>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_777 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_777);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_778 = L_777->___characterInfo;
@@ -6360,7 +6360,7 @@ IL_18eb:
 		L_781 = GlyphValueRecord_get_xPlacement_m5E2B8B05A5DF57B2DC4B3795E71330CDDE1761C8((&V_79), NULL);
 		float L_782 = V_3;
 		((L_778)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_779)))->___origin = ((float)il2cpp_codegen_add(L_780, ((float)il2cpp_codegen_multiply(L_781, L_782))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3252>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3252>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_783 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_783);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_784 = L_783->___characterInfo;
@@ -6373,7 +6373,7 @@ IL_18eb:
 		L_789 = GlyphValueRecord_get_yPlacement_mB6303F8800305F6F96ECCD0CD9AA70A1A30A15DA((&V_79), NULL);
 		float L_790 = V_3;
 		((L_784)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_785)))->___baseLine = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_subtract(L_786, L_787)), L_788)), ((float)il2cpp_codegen_multiply(L_789, L_790))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3253>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3253>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_791 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_791);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_792 = L_791->___characterInfo;
@@ -6388,9 +6388,9 @@ IL_18eb:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_800 = V_86;
 		float L_801 = L_800.___y;
 		((L_792)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_793)))->___aspectRatio = ((float)(((float)il2cpp_codegen_subtract(L_795, L_797))/((float)il2cpp_codegen_subtract(L_799, L_801))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3260>
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3261>
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3262>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3260>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3261>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3262>
 		int32_t L_802 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (!L_802)
 		{
@@ -6417,9 +6417,9 @@ IL_1a0e:
 IL_1a1c:
 	{
 		V_89 = G_B162_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3265>
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3266>
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3267>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3265>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3266>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3267>
 		int32_t L_810 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (!L_810)
 		{
@@ -6446,17 +6446,17 @@ IL_1a33:
 IL_1a41:
 	{
 		V_90 = G_B165_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3269>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3269>
 		float L_818 = V_89;
 		V_91 = L_818;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3270>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3270>
 		float L_819 = V_90;
 		V_92 = L_819;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3273>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3273>
 		int32_t L_820 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		int32_t L_821 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine;
 		V_93 = (bool)((((int32_t)L_820) == ((int32_t)L_821))? 1 : 0);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3274>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3274>
 		bool L_822 = V_93;
 		if (L_822)
 		{
@@ -6473,7 +6473,7 @@ IL_1a41:
 
 IL_1a63:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3277>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3277>
 		float L_824 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffset;
 		if ((((float)L_824) == ((float)(0.0f))))
 		{
@@ -6481,7 +6481,7 @@ IL_1a63:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3279>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3279>
 		float L_825 = V_89;
 		float L_826 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffset;
 		float L_827 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontScaleMultiplier;
@@ -6489,7 +6489,7 @@ IL_1a63:
 		float L_829;
 		L_829 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_subtract(L_825, L_826))/L_827)), L_828, NULL);
 		V_91 = L_829;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3280>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3280>
 		float L_830 = V_90;
 		float L_831 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_baselineOffset;
 		float L_832 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontScaleMultiplier;
@@ -6501,13 +6501,13 @@ IL_1a63:
 
 IL_1aa2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3283>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3283>
 		float L_835 = V_91;
 		float L_836 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender;
 		float L_837;
 		L_837 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_835, L_836, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender = L_837;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3284>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3284>
 		float L_838 = V_92;
 		float L_839 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_840;
@@ -6517,7 +6517,7 @@ IL_1aa2:
 
 IL_1ac8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3288>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3288>
 		bool L_841 = V_93;
 		if (L_841)
 		{
@@ -6534,7 +6534,7 @@ IL_1ac8:
 
 IL_1ad3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3290>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3290>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_843 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_843);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_844 = L_843->___characterInfo;
@@ -6542,7 +6542,7 @@ IL_1ad3:
 		NullCheck(L_844);
 		float L_846 = V_91;
 		((L_844)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_845)))->___adjustedAscender = L_846;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3291>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3291>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_847 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_847);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_848 = L_847->___characterInfo;
@@ -6550,7 +6550,7 @@ IL_1ad3:
 		NullCheck(L_848);
 		float L_850 = V_92;
 		((L_848)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_849)))->___adjustedDescender = L_850;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3293>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3293>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_851 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_851);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_852 = L_851->___characterInfo;
@@ -6563,7 +6563,7 @@ IL_1ad3:
 		((L_852)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_853)))->___ascender = L_856;
 		float L_857 = V_137;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementAscender = L_857;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3294>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3294>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_858 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_858);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_859 = L_858->___characterInfo;
@@ -6581,7 +6581,7 @@ IL_1ad3:
 
 IL_1b70:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3298>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3298>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_865 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_865);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_866 = L_865->___characterInfo;
@@ -6589,7 +6589,7 @@ IL_1b70:
 		NullCheck(L_866);
 		float L_868 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender;
 		((L_866)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_867)))->___adjustedAscender = L_868;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3299>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3299>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_869 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_869);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_870 = L_869->___characterInfo;
@@ -6597,7 +6597,7 @@ IL_1b70:
 		NullCheck(L_870);
 		float L_872 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		((L_870)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_871)))->___adjustedDescender = L_872;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3301>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3301>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_873 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_873);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_874 = L_873->___characterInfo;
@@ -6610,7 +6610,7 @@ IL_1b70:
 		((L_874)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_875)))->___ascender = L_878;
 		float L_879 = V_137;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementAscender = L_879;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3302>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3302>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_880 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_880);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_881 = L_880->___characterInfo;
@@ -6627,7 +6627,7 @@ IL_1b70:
 
 IL_1c18:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3306>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3306>
 		int32_t L_887 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		if (!L_887)
 		{
@@ -6644,7 +6644,7 @@ IL_1c18:
 
 IL_1c28:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3308>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3308>
 		bool L_889 = V_93;
 		if (L_889)
 		{
@@ -6661,10 +6661,10 @@ IL_1c28:
 
 IL_1c30:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3310>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3310>
 		float L_891 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender = L_891;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3311>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3311>
 		float L_892 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxCapHeight;
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_893 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_893);
@@ -6680,7 +6680,7 @@ IL_1c30:
 
 IL_1c62:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3316>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3316>
 		float L_899 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		if ((!(((float)L_899) == ((float)(0.0f)))))
 		{
@@ -6688,7 +6688,7 @@ IL_1c62:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3318>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3318>
 		bool L_900 = V_93;
 		if (L_900)
 		{
@@ -6705,7 +6705,7 @@ IL_1c62:
 
 IL_1c77:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3319>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3319>
 		float L_902 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_PageAscender;
 		float L_903 = V_89;
 		if ((((float)L_902) > ((float)L_903)))
@@ -6737,14 +6737,14 @@ IL_1c8c:
 
 IL_1c91:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3326>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3326>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_906 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_906);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_907 = L_906->___characterInfo;
 		int32_t L_908 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_907);
 		((L_907)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_908)))->___isVisible = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3328>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3328>
 		int32_t L_909 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineJustification;
 		if ((((int32_t)((int32_t)((int32_t)L_909&((int32_t)16)))) == ((int32_t)((int32_t)16))))
 		{
@@ -6765,7 +6765,7 @@ IL_1cc7:
 IL_1cc8:
 	{
 		V_94 = (bool)G_B189_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3332>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3332>
 		uint32_t L_911 = V_6;
 		if ((((int32_t)L_911) == ((int32_t)((int32_t)9))))
 		{
@@ -6860,20 +6860,20 @@ IL_1d17:
 
 IL_1d23:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3336>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3336>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_923 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_923);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_924 = L_923->___characterInfo;
 		int32_t L_925 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_924);
 		((L_924)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_925)))->___isVisible = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3373>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3373>
 		float L_926 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginLeft;
 		V_138 = L_926;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3374>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3374>
 		float L_927 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginRight;
 		V_139 = L_927;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3377>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3377>
 		bool L_928 = V_69;
 		if (!L_928)
 		{
@@ -6881,7 +6881,7 @@ IL_1d23:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3379>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3379>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_929 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_929);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_930 = L_929->___lineInfo;
@@ -6889,7 +6889,7 @@ IL_1d23:
 		NullCheck(L_930);
 		float L_932 = ((L_930)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_931)))->___marginLeft;
 		V_138 = L_932;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3380>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3380>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_933 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_933);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_934 = L_933->___lineInfo;
@@ -6901,7 +6901,7 @@ IL_1d23:
 
 IL_1d8d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3383>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3383>
 		float L_937 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_width;
 		if ((!(((float)L_937) == ((float)(-1.0f)))))
 		{
@@ -6930,7 +6930,7 @@ IL_1daa:
 IL_1dc3:
 	{
 		V_26 = G_B206_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3386>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3386>
 		float L_946 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_947;
 		L_947 = fabsf(L_946);
@@ -6989,7 +6989,7 @@ IL_1e06:
 IL_1e08:
 	{
 		V_140 = ((float)il2cpp_codegen_add(G_B212_2, ((float)il2cpp_codegen_multiply(G_B212_1, G_B212_0))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3387>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3387>
 		float L_955 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender;
 		float L_956 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_957 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
@@ -7029,10 +7029,10 @@ IL_1e3c:
 IL_1e49:
 	{
 		V_141 = ((float)il2cpp_codegen_add(G_B216_1, G_B216_0));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3389>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3389>
 		int32_t L_962 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		V_142 = L_962;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3393>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3393>
 		float L_963 = V_141;
 		float L_964 = V_25;
 		if ((!(((float)L_963) > ((float)((float)il2cpp_codegen_add(L_964, (9.99999975E-05f)))))))
@@ -7041,7 +7041,7 @@ IL_1e49:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3398>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3398>
 		int32_t L_965 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex;
 		if ((!(((uint32_t)L_965) == ((uint32_t)(-1)))))
 		{
@@ -7049,14 +7049,14 @@ IL_1e49:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3399>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3399>
 		int32_t L_966 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex = L_966;
 	}
 
 IL_1e78:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3402>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3402>
 		bool L_967 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_enableAutoSizing;
 		if (!L_967)
 		{
@@ -7064,7 +7064,7 @@ IL_1e78:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3406>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3406>
 		float L_968 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingDelta;
 		float L_969 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingMax;
 		if ((!(((float)L_968) > ((float)L_969))))
@@ -7088,12 +7088,12 @@ IL_1e78:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3408>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3408>
 		float L_973 = V_25;
 		float L_974 = V_141;
 		int32_t L_975 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		V_143 = ((float)(((float)il2cpp_codegen_subtract(L_973, L_974))/((float)L_975)));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3410>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3410>
 		float L_976 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingDelta;
 		float L_977 = V_143;
 		float L_978 = V_2;
@@ -7101,13 +7101,13 @@ IL_1e78:
 		float L_980;
 		L_980 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)il2cpp_codegen_add(L_976, ((float)(L_977/L_978)))), L_979, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingDelta = L_980;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3417>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3417>
 		return;
 	}
 
 IL_1ed8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3424>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3424>
 		float L_981 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_982 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		if ((!(((float)L_981) > ((float)L_982))))
@@ -7124,32 +7124,32 @@ IL_1ed8:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3426>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3426>
 		float L_985 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxFontSize = L_985;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3428>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3428>
 		float L_986 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_987 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_minFontSize;
 		float L_988;
 		L_988 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_subtract(L_986, L_987))/(2.0f))), (0.0500000007f), NULL);
 		V_144 = L_988;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3429>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3429>
 		float L_989 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_990 = V_144;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = ((float)il2cpp_codegen_subtract(L_989, L_990));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3430>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3430>
 		float L_991 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_992 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		float L_993;
 		L_993 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_991, (20.0f))), (0.5f)))))/(20.0f))), L_992, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = L_993;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3437>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3437>
 		return;
 	}
 
 IL_1f5a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3443>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3443>
 		int32_t L_994 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		V_146 = L_994;
 		int32_t L_995 = V_146;
@@ -7191,23 +7191,23 @@ IL_1f5a:
 
 IL_1f8a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3452>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3452>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_996;
 		L_996 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), NULL);
 		V_66 = L_996;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3454>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3454>
 		int32_t L_997 = V_142;
 		(&V_32)->___index = L_997;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3455>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3455>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3458>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3458>
 		goto IL_3fee;
 	}
 
 IL_1fad:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3461>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3461>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_998;
 		L_998 = TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_inline((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_RuntimeMethod_var);
@@ -7217,57 +7217,57 @@ IL_1fad:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3463>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3463>
 		V_66 = (-1);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3464>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3464>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3465>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3465>
 		(&V_32)->___index = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3466>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3466>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3467>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3467>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3470>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3470>
 		goto IL_3fee;
 	}
 
 IL_1fdf:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3473>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3473>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		WordWrapState_t80F67D8CAA9B1A0A3D5266521E23A9F3100EDD0A L_999;
 		L_999 = TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7_RuntimeMethod_var);
 		V_145 = L_999;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3474>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3474>
 		int32_t L_1000;
 		L_1000 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&V_145), NULL);
 		V_66 = L_1000;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3476>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3476>
 		int32_t L_1001 = V_66;
 		V_66 = ((int32_t)il2cpp_codegen_subtract(L_1001, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3477>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3477>
 		int32_t L_1002 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_subtract(L_1002, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3478>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3478>
 		int32_t L_1003 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = L_1003;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3479>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3479>
 		(&V_32)->___unicode = ((int32_t)8230);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3481>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3481>
 		int32_t L_1004 = V_34;
 		V_34 = ((int32_t)il2cpp_codegen_add(L_1004, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3484>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3484>
 		goto IL_3fee;
 	}
 
 IL_202d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3487>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3487>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1005;
 		L_1005 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), NULL);
 		V_66 = L_1005;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3489>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3489>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1006 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1007;
@@ -7278,44 +7278,44 @@ IL_202d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3491>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3491>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1008 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		String_t* L_1009;
 		L_1009 = VirtualFuncInvoker0< String_t* >::Invoke(65, __this);
 		NullCheck(L_1008);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_1008, L_1009);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3492>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3492>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1010 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1011 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_inputSource;
 		NullCheck(L_1010);
 		L_1010->___m_inputSource = L_1011;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3493>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3493>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1012 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1013 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_1012);
 		TMP_Text_set_firstVisibleCharacter_m343804C8FF610EB13CCB14E8D54C889BC356AD53(L_1012, L_1013, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3494>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3494>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1014 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		NullCheck(L_1014);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_1014, (bool)0, (bool)0);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3496>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3496>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextTruncated = (bool)1;
 	}
 
 IL_208f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3500>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3500>
 		int32_t L_1015 = V_142;
 		(&V_32)->___index = L_1015;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3501>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3501>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3504>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3504>
 		goto IL_3fee;
 	}
 
 IL_20a5:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3508>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3508>
 		int32_t L_1016 = V_66;
 		if ((((int32_t)L_1016) < ((int32_t)0)))
 		{
@@ -7332,21 +7332,21 @@ IL_20a5:
 
 IL_20ae:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3510>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3510>
 		V_66 = (-1);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3511>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3511>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3512>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3512>
 		(&V_32)->___index = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3513>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3513>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3516>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3516>
 		goto IL_3fee;
 	}
 
 IL_20cd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3518>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3518>
 		float L_1018 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender;
 		float L_1019 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_1020 = V_25;
@@ -7356,62 +7356,62 @@ IL_20cd:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3522>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3522>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1021;
 		L_1021 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLineState), NULL);
 		V_66 = L_1021;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3524>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3524>
 		int32_t L_1022 = V_142;
 		(&V_32)->___index = L_1022;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3525>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3525>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3528>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3528>
 		goto IL_3fee;
 	}
 
 IL_2107:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3532>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3532>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1023;
 		L_1023 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLineState), NULL);
 		V_66 = L_1023;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3534>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3534>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNewPage = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3535>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3535>
 		int32_t L_1024 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine = L_1024;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3536>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3536>
 		float L_1025 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargeNegativeFloat;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender = L_1025;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3537>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3537>
 		float L_1026 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender = L_1026;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3538>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3538>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_startOfLineAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3540>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3540>
 		float L_1027 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_Indent;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_add((0.0f), L_1027));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3541>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3541>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3542>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3542>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3543>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3543>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_PageAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3544>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3544>
 		int32_t L_1028 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber = ((int32_t)il2cpp_codegen_add(L_1028, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3545>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3545>
 		int32_t L_1029 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber = ((int32_t)il2cpp_codegen_add(L_1029, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3550>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3550>
 		goto IL_3fee;
 	}
 
 IL_219c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3560>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3560>
 		bool L_1030 = V_81;
 		if (!L_1030)
 		{
@@ -7453,7 +7453,7 @@ IL_21b7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3565>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3565>
 		int32_t L_1034 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextWrappingMode;
 		if (!L_1034)
 		{
@@ -7476,14 +7476,14 @@ IL_21b7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3568>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3568>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1038;
 		L_1038 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedWordWrapState), NULL);
 		V_66 = L_1038;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3571>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3571>
 		V_147 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3572>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3572>
 		float L_1039 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineHeight;
 		if ((!(((float)L_1039) == ((float)(-32767.0f)))))
 		{
@@ -7491,7 +7491,7 @@ IL_21b7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3574>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3574>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1040 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1040);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1041 = L_1040->___characterInfo;
@@ -7499,7 +7499,7 @@ IL_21b7:
 		NullCheck(L_1041);
 		float L_1043 = ((L_1041)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1042)))->___adjustedAscender;
 		V_150 = L_1043;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3575>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3575>
 		float L_1044 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		if ((!(((float)L_1044) > ((float)(0.0f)))))
 		{
@@ -7542,18 +7542,18 @@ IL_224c:
 
 IL_2270:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3579>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3579>
 		float L_1055 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineHeight;
 		float L_1056 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacing;
 		float L_1057 = V_4;
 		V_147 = ((float)il2cpp_codegen_add(L_1055, ((float)il2cpp_codegen_multiply(L_1056, L_1057))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3580>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3580>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsDrivenLineSpacing = (bool)1;
 	}
 
 IL_2289:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3584>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3584>
 		float L_1058 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender;
 		float L_1059 = V_147;
 		float L_1060 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
@@ -7564,7 +7564,7 @@ IL_2289:
 		NullCheck(L_1062);
 		float L_1064 = ((L_1062)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1063)))->___adjustedDescender;
 		V_148 = ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_1058, L_1059)), L_1060)), L_1064));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3588>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3588>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1065 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1065);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1066 = L_1065->___characterInfo;
@@ -7584,7 +7584,7 @@ IL_2289:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3591>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3591>
 		int32_t L_1070 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if (!L_1070)
 		{
@@ -7602,26 +7602,26 @@ IL_2289:
 
 IL_22f3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3593>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3593>
 		int32_t L_1073 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = ((int32_t)il2cpp_codegen_subtract(L_1073, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3594>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3594>
 		(&V_32)->___unicode = ((int32_t)45);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3596>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3596>
 		int32_t L_1074 = V_66;
 		V_66 = ((int32_t)il2cpp_codegen_subtract(L_1074, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3597>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3597>
 		int32_t L_1075 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_subtract(L_1075, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3600>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3600>
 		goto IL_3fee;
 	}
 
 IL_2324:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3604>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3604>
 		V_33 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3607>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3607>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1076 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1076);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1077 = L_1076->___characterInfo;
@@ -7634,15 +7634,15 @@ IL_2324:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3609>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3609>
 		V_33 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3612>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3612>
 		goto IL_3fee;
 	}
 
 IL_2351:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3617>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3617>
 		bool L_1080 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_enableAutoSizing;
 		bool L_1081 = V_29;
 		if (!((int32_t)((int32_t)L_1080&(int32_t)L_1081)))
@@ -7651,7 +7651,7 @@ IL_2351:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3621>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3621>
 		float L_1082 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1083 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		if ((!(((float)L_1082) < ((float)((float)(L_1083/(100.0f)))))))
@@ -7668,10 +7668,10 @@ IL_2351:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3623>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3623>
 		float L_1086 = V_140;
 		V_151 = L_1086;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3626>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3626>
 		float L_1087 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		if ((!(((float)L_1087) > ((float)(0.0f)))))
 		{
@@ -7679,7 +7679,7 @@ IL_2351:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3627>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3627>
 		float L_1088 = V_151;
 		float L_1089 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		V_151 = ((float)(L_1088/((float)il2cpp_codegen_subtract((1.0f), L_1089))));
@@ -7687,7 +7687,7 @@ IL_2351:
 
 IL_23a3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3629>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3629>
 		float L_1090 = V_140;
 		float L_1091 = V_26;
 		bool L_1092 = V_94;
@@ -7717,24 +7717,24 @@ IL_23b8:
 IL_23bd:
 	{
 		V_152 = ((float)il2cpp_codegen_subtract(G_B272_2, ((float)il2cpp_codegen_multiply(G_B272_1, G_B272_0))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3630>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3630>
 		float L_1093 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1094 = V_152;
 		float L_1095 = V_151;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = ((float)il2cpp_codegen_add(L_1093, ((float)(L_1094/L_1095))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3631>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3631>
 		float L_1096 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1097 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		float L_1098;
 		L_1098 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_1096, ((float)(L_1097/(100.0f))), NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = L_1098;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3638>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3638>
 		return;
 	}
 
 IL_23f1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3644>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3644>
 		float L_1099 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1100 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		if ((!(((float)L_1099) > ((float)L_1100))))
@@ -7751,36 +7751,36 @@ IL_23f1:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3646>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3646>
 		float L_1103 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxFontSize = L_1103;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3648>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3648>
 		float L_1104 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1105 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_minFontSize;
 		float L_1106;
 		L_1106 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_subtract(L_1104, L_1105))/(2.0f))), (0.0500000007f), NULL);
 		V_153 = L_1106;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3649>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3649>
 		float L_1107 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1108 = V_153;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = ((float)il2cpp_codegen_subtract(L_1107, L_1108));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3650>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3650>
 		float L_1109 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1110 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		float L_1111;
 		L_1111 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1109, (20.0f))), (0.5f)))))/(20.0f))), L_1110, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = L_1111;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3657>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3657>
 		return;
 	}
 
 IL_2473:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3664>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3664>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1112 = (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedSoftLineBreakState)->___previous_WordBreak;
 		V_149 = L_1112;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3665>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3665>
 		bool L_1113 = V_29;
 		if (!L_1113)
 		{
@@ -7795,7 +7795,7 @@ IL_2473:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3667>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3667>
 		int32_t L_1115 = V_149;
 		int32_t L_1116 = V_31;
 		if ((((int32_t)L_1115) == ((int32_t)L_1116)))
@@ -7804,15 +7804,15 @@ IL_2473:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3669>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3669>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1117;
 		L_1117 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedSoftLineBreakState), NULL);
 		V_66 = L_1117;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3670>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3670>
 		int32_t L_1118 = V_149;
 		V_31 = L_1118;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3673>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3673>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1119 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1119);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1120 = L_1119->___characterInfo;
@@ -7825,24 +7825,24 @@ IL_2473:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3675>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3675>
 		int32_t L_1123 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = ((int32_t)il2cpp_codegen_subtract(L_1123, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3676>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3676>
 		(&V_32)->___unicode = ((int32_t)45);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3678>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3678>
 		int32_t L_1124 = V_66;
 		V_66 = ((int32_t)il2cpp_codegen_subtract(L_1124, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3679>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3679>
 		int32_t L_1125 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_subtract(L_1125, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3682>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3682>
 		goto IL_3fee;
 	}
 
 IL_24f4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3688>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3688>
 		float L_1126 = V_148;
 		float L_1127 = V_25;
 		if ((!(((float)L_1126) > ((float)((float)il2cpp_codegen_add(L_1127, (9.99999975E-05f)))))))
@@ -7851,7 +7851,7 @@ IL_24f4:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3693>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3693>
 		int32_t L_1128 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex;
 		if ((!(((uint32_t)L_1128) == ((uint32_t)(-1)))))
 		{
@@ -7859,14 +7859,14 @@ IL_24f4:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3694>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3694>
 		int32_t L_1129 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex = L_1129;
 	}
 
 IL_2518:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3697>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3697>
 		bool L_1130 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_enableAutoSizing;
 		if (!L_1130)
 		{
@@ -7874,7 +7874,7 @@ IL_2518:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3701>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3701>
 		float L_1131 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingDelta;
 		float L_1132 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingMax;
 		if ((!(((float)L_1131) > ((float)L_1132))))
@@ -7891,12 +7891,12 @@ IL_2518:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3703>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3703>
 		float L_1135 = V_25;
 		float L_1136 = V_148;
 		int32_t L_1137 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		V_154 = ((float)(((float)il2cpp_codegen_subtract(L_1135, L_1136))/((float)((int32_t)il2cpp_codegen_add(L_1137, 1)))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3705>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3705>
 		float L_1138 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingDelta;
 		float L_1139 = V_154;
 		float L_1140 = V_2;
@@ -7904,13 +7904,13 @@ IL_2518:
 		float L_1142;
 		L_1142 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)il2cpp_codegen_add(L_1138, ((float)(L_1139/L_1140)))), L_1141, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacingDelta = L_1142;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3713>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3713>
 		return;
 	}
 
 IL_256d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3719>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3719>
 		float L_1143 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1144 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		if ((!(((float)L_1143) < ((float)((float)(L_1144/(100.0f)))))))
@@ -7927,10 +7927,10 @@ IL_256d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3721>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3721>
 		float L_1147 = V_140;
 		V_155 = L_1147;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3724>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3724>
 		float L_1148 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		if ((!(((float)L_1148) > ((float)(0.0f)))))
 		{
@@ -7938,7 +7938,7 @@ IL_256d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3725>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3725>
 		float L_1149 = V_155;
 		float L_1150 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		V_155 = ((float)(L_1149/((float)il2cpp_codegen_subtract((1.0f), L_1150))));
@@ -7946,7 +7946,7 @@ IL_256d:
 
 IL_25b1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3727>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3727>
 		float L_1151 = V_140;
 		float L_1152 = V_26;
 		bool L_1153 = V_94;
@@ -7976,24 +7976,24 @@ IL_25c6:
 IL_25cb:
 	{
 		V_156 = ((float)il2cpp_codegen_subtract(G_B295_2, ((float)il2cpp_codegen_multiply(G_B295_1, G_B295_0))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3728>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3728>
 		float L_1154 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1155 = V_156;
 		float L_1156 = V_155;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = ((float)il2cpp_codegen_add(L_1154, ((float)(L_1155/L_1156))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3729>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3729>
 		float L_1157 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1158 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		float L_1159;
 		L_1159 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_1157, ((float)(L_1158/(100.0f))), NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = L_1159;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3737>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3737>
 		return;
 	}
 
 IL_25ff:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3743>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3743>
 		float L_1160 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1161 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		if ((!(((float)L_1160) > ((float)L_1161))))
@@ -8010,32 +8010,32 @@ IL_25ff:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3745>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3745>
 		float L_1164 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxFontSize = L_1164;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3747>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3747>
 		float L_1165 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1166 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_minFontSize;
 		float L_1167;
 		L_1167 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_subtract(L_1165, L_1166))/(2.0f))), (0.0500000007f), NULL);
 		V_157 = L_1167;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3748>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3748>
 		float L_1168 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1169 = V_157;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = ((float)il2cpp_codegen_subtract(L_1168, L_1169));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3749>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3749>
 		float L_1170 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1171 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		float L_1172;
 		L_1172 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1170, (20.0f))), (0.5f)))))/(20.0f))), L_1171, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = L_1172;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3757>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3757>
 		return;
 	}
 
 IL_2681:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3763>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3763>
 		int32_t L_1173 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		V_146 = L_1173;
 		int32_t L_1174 = V_146;
@@ -8077,7 +8077,7 @@ IL_2681:
 
 IL_26b1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3768>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3768>
 		int32_t L_1175 = V_66;
 		float L_1176 = V_2;
 		float L_1177 = V_3;
@@ -8087,33 +8087,33 @@ IL_26b1:
 		float L_1181 = V_26;
 		float L_1182 = V_17;
 		TMP_Text_InsertNewLine_m3C525A59DCC1B7DADC9402946B20B082EC3DC594(__this, L_1175, L_1176, L_1177, L_1178, L_1179, L_1180, L_1181, L_1182, (&V_28), (&V_27), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3769>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3769>
 		V_18 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3770>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3770>
 		V_29 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3774>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3774>
 		goto IL_3fee;
 	}
 
 IL_26d4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3777>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3777>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1183;
 		L_1183 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), NULL);
 		V_66 = L_1183;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3779>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3779>
 		int32_t L_1184 = V_142;
 		(&V_32)->___index = L_1184;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3780>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3780>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3784>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3784>
 		goto IL_3fee;
 	}
 
 IL_26f7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3787>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3787>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1185;
 		L_1185 = TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_inline((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_RuntimeMethod_var);
@@ -8123,52 +8123,52 @@ IL_26f7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3789>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3789>
 		V_66 = (-1);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3790>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3790>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3791>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3791>
 		(&V_32)->___index = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3792>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3792>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3793>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3793>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3797>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3797>
 		goto IL_3fee;
 	}
 
 IL_2729:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3800>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3800>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		WordWrapState_t80F67D8CAA9B1A0A3D5266521E23A9F3100EDD0A L_1186;
 		L_1186 = TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7_RuntimeMethod_var);
 		V_158 = L_1186;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3801>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3801>
 		int32_t L_1187;
 		L_1187 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&V_158), NULL);
 		V_66 = L_1187;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3803>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3803>
 		int32_t L_1188 = V_66;
 		V_66 = ((int32_t)il2cpp_codegen_subtract(L_1188, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3804>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3804>
 		int32_t L_1189 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_subtract(L_1189, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3805>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3805>
 		int32_t L_1190 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = L_1190;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3806>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3806>
 		(&V_32)->___unicode = ((int32_t)8230);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3808>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3808>
 		int32_t L_1191 = V_34;
 		V_34 = ((int32_t)il2cpp_codegen_add(L_1191, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3812>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3812>
 		goto IL_3fee;
 	}
 
 IL_2777:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3815>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3815>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1192 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1193;
@@ -8179,46 +8179,46 @@ IL_2777:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3817>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3817>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1194 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		String_t* L_1195;
 		L_1195 = VirtualFuncInvoker0< String_t* >::Invoke(65, __this);
 		NullCheck(L_1194);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_1194, L_1195);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3818>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3818>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1196 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1197 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_inputSource;
 		NullCheck(L_1196);
 		L_1196->___m_inputSource = L_1197;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3819>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3819>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1198 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1199 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_1198);
 		TMP_Text_set_firstVisibleCharacter_m343804C8FF610EB13CCB14E8D54C889BC356AD53(L_1198, L_1199, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3820>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3820>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1200 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		NullCheck(L_1200);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_1200, (bool)0, (bool)0);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3822>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3822>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextTruncated = (bool)1;
 	}
 
 IL_27cc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3826>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3826>
 		int32_t L_1201 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = L_1201;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3827>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3827>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3831>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3831>
 		goto IL_3fee;
 	}
 
 IL_27e6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3835>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3835>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNewPage = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3837>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3837>
 		int32_t L_1202 = V_66;
 		float L_1203 = V_2;
 		float L_1204 = V_3;
@@ -8228,28 +8228,28 @@ IL_27e6:
 		float L_1208 = V_26;
 		float L_1209 = V_17;
 		TMP_Text_InsertNewLine_m3C525A59DCC1B7DADC9402946B20B082EC3DC594(__this, L_1202, L_1203, L_1204, L_1205, L_1206, L_1207, L_1208, L_1209, (&V_28), (&V_27), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3839>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3839>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_startOfLineAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3840>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3840>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3841>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3841>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3842>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3842>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_PageAscender = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3843>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3843>
 		int32_t L_1210 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber = ((int32_t)il2cpp_codegen_add(L_1210, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3845>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3845>
 		V_18 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3846>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3846>
 		V_29 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3850>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3850>
 		goto IL_3fee;
 	}
 
 IL_284a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3881>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3881>
 		int32_t L_1211 = V_66;
 		float L_1212 = V_2;
 		float L_1213 = V_3;
@@ -8259,17 +8259,17 @@ IL_284a:
 		float L_1217 = V_26;
 		float L_1218 = V_17;
 		TMP_Text_InsertNewLine_m3C525A59DCC1B7DADC9402946B20B082EC3DC594(__this, L_1211, L_1212, L_1213, L_1214, L_1215, L_1216, L_1217, L_1218, (&V_28), (&V_27), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3882>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3882>
 		V_18 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3883>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3883>
 		V_29 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3886>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3886>
 		goto IL_3fee;
 	}
 
 IL_286d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3891>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3891>
 		bool L_1219 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_enableAutoSizing;
 		if (!L_1219)
 		{
@@ -8285,7 +8285,7 @@ IL_286d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3895>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3895>
 		float L_1222 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1223 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		if ((!(((float)L_1222) < ((float)((float)(L_1223/(100.0f)))))))
@@ -8294,10 +8294,10 @@ IL_286d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3897>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3897>
 		float L_1224 = V_140;
 		V_159 = L_1224;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3900>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3900>
 		float L_1225 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		if ((!(((float)L_1225) > ((float)(0.0f)))))
 		{
@@ -8305,7 +8305,7 @@ IL_286d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3901>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3901>
 		float L_1226 = V_159;
 		float L_1227 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		V_159 = ((float)(L_1226/((float)il2cpp_codegen_subtract((1.0f), L_1227))));
@@ -8313,7 +8313,7 @@ IL_286d:
 
 IL_28bf:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3903>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3903>
 		float L_1228 = V_140;
 		float L_1229 = V_26;
 		bool L_1230 = V_94;
@@ -8343,24 +8343,24 @@ IL_28d4:
 IL_28d9:
 	{
 		V_160 = ((float)il2cpp_codegen_subtract(G_B319_2, ((float)il2cpp_codegen_multiply(G_B319_1, G_B319_0))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3904>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3904>
 		float L_1231 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1232 = V_160;
 		float L_1233 = V_159;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = ((float)il2cpp_codegen_add(L_1231, ((float)(L_1232/L_1233))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3905>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3905>
 		float L_1234 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1235 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		float L_1236;
 		L_1236 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_1234, ((float)(L_1235/(100.0f))), NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = L_1236;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3912>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3912>
 		return;
 	}
 
 IL_290d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3918>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3918>
 		float L_1237 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1238 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		if ((!(((float)L_1237) > ((float)L_1238))))
@@ -8369,32 +8369,32 @@ IL_290d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3924>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3924>
 		float L_1239 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxFontSize = L_1239;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3926>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3926>
 		float L_1240 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1241 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_minFontSize;
 		float L_1242;
 		L_1242 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_subtract(L_1240, L_1241))/(2.0f))), (0.0500000007f), NULL);
 		V_161 = L_1242;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3927>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3927>
 		float L_1243 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1244 = V_161;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = ((float)il2cpp_codegen_subtract(L_1243, L_1244));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3928>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3928>
 		float L_1245 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_1246 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMin;
 		float L_1247;
 		L_1247 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1245, (20.0f))), (0.5f)))))/(20.0f))), L_1246, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = L_1247;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3935>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3935>
 		return;
 	}
 
 IL_2981:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3942>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3942>
 		int32_t L_1248 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		V_146 = L_1248;
 		int32_t L_1249 = V_146;
@@ -8436,23 +8436,23 @@ IL_2981:
 
 IL_29b1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3951>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3951>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1250;
 		L_1250 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedWordWrapState), NULL);
 		V_66 = L_1250;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3953>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3953>
 		int32_t L_1251 = V_142;
 		(&V_32)->___index = L_1251;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3954>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3954>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3957>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3957>
 		goto IL_3fee;
 	}
 
 IL_29d4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3960>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3960>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1252;
 		L_1252 = TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_inline((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_RuntimeMethod_var);
@@ -8462,57 +8462,57 @@ IL_29d4:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3962>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3962>
 		V_66 = (-1);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3963>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3963>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3964>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3964>
 		(&V_32)->___index = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3965>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3965>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3966>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3966>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3969>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3969>
 		goto IL_3fee;
 	}
 
 IL_2a06:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3972>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3972>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		WordWrapState_t80F67D8CAA9B1A0A3D5266521E23A9F3100EDD0A L_1253;
 		L_1253 = TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7_RuntimeMethod_var);
 		V_162 = L_1253;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3973>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3973>
 		int32_t L_1254;
 		L_1254 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&V_162), NULL);
 		V_66 = L_1254;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3975>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3975>
 		int32_t L_1255 = V_66;
 		V_66 = ((int32_t)il2cpp_codegen_subtract(L_1255, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3976>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3976>
 		int32_t L_1256 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_subtract(L_1256, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3977>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3977>
 		int32_t L_1257 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = L_1257;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3978>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3978>
 		(&V_32)->___unicode = ((int32_t)8230);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3980>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3980>
 		int32_t L_1258 = V_34;
 		V_34 = ((int32_t)il2cpp_codegen_add(L_1258, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3983>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3983>
 		goto IL_3fee;
 	}
 
 IL_2a54:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3986>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3986>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1259;
 		L_1259 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedWordWrapState), NULL);
 		V_66 = L_1259;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3988>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3988>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1260 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1261;
@@ -8523,44 +8523,44 @@ IL_2a54:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3990>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3990>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1262 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		String_t* L_1263;
 		L_1263 = VirtualFuncInvoker0< String_t* >::Invoke(65, __this);
 		NullCheck(L_1262);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_1262, L_1263);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3991>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3991>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1264 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1265 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_inputSource;
 		NullCheck(L_1264);
 		L_1264->___m_inputSource = L_1265;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3992>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3992>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1266 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1267 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_1266);
 		TMP_Text_set_firstVisibleCharacter_m343804C8FF610EB13CCB14E8D54C889BC356AD53(L_1266, L_1267, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3993>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3993>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1268 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		NullCheck(L_1268);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_1268, (bool)0, (bool)0);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3995>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3995>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextTruncated = (bool)1;
 	}
 
 IL_2ab6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:3999>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:3999>
 		int32_t L_1269 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		(&V_32)->___index = L_1269;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4000>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4000>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4003>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4003>
 		goto IL_3fee;
 	}
 
 IL_2ad0:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4014>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4014>
 		bool L_1270 = V_78;
 		if (!L_1270)
 		{
@@ -8568,17 +8568,17 @@ IL_2ad0:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4016>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4016>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1271 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1271);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1272 = L_1271->___characterInfo;
 		int32_t L_1273 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_1272);
 		((L_1272)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1273)))->___isVisible = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4017>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4017>
 		int32_t L_1274 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lastVisibleCharacterOfLine = L_1274;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4018>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4018>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1275 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1275);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1276 = L_1275->___lineInfo;
@@ -8592,7 +8592,7 @@ IL_2ad0:
 		*((int32_t*)L_1279) = (int32_t)L_1281;
 		int32_t L_1282 = V_65;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleSpaceCount = L_1282;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4019>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4019>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1283 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1283);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1284 = L_1283->___lineInfo;
@@ -8600,7 +8600,7 @@ IL_2ad0:
 		NullCheck(L_1284);
 		float L_1286 = V_138;
 		((L_1284)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1285)))->___marginLeft = L_1286;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4020>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4020>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1287 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1287);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1288 = L_1287->___lineInfo;
@@ -8608,14 +8608,14 @@ IL_2ad0:
 		NullCheck(L_1288);
 		float L_1290 = V_139;
 		((L_1288)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1289)))->___marginRight = L_1290;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4021>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4021>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1291 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1292 = L_1291;
 		NullCheck(L_1292);
 		int32_t L_1293 = L_1292->___spaceCount;
 		NullCheck(L_1292);
 		L_1292->___spaceCount = ((int32_t)il2cpp_codegen_add(L_1293, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4023>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4023>
 		uint32_t L_1294 = V_6;
 		if ((!(((uint32_t)L_1294) == ((uint32_t)((int32_t)160)))))
 		{
@@ -8623,7 +8623,7 @@ IL_2ad0:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4024>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4024>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1295 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1295);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1296 = L_1295->___lineInfo;
@@ -8638,7 +8638,7 @@ IL_2ad0:
 
 IL_2ba8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4026>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4026>
 		uint32_t L_1301 = V_6;
 		if ((!(((uint32_t)L_1301) == ((uint32_t)((int32_t)173)))))
 		{
@@ -8646,7 +8646,7 @@ IL_2ba8:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4028>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4028>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1302 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1302);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1303 = L_1302->___characterInfo;
@@ -8658,7 +8658,7 @@ IL_2ba8:
 
 IL_2bd2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4034>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4034>
 		bool L_1305 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overrideHtmlColors;
 		if (!L_1305)
 		{
@@ -8666,7 +8666,7 @@ IL_2bd2:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4035>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4035>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_1306 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontColor32;
 		V_163 = L_1306;
 		goto IL_2bec;
@@ -8674,14 +8674,14 @@ IL_2bd2:
 
 IL_2be4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4037>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4037>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_1307 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_htmlColor;
 		V_163 = L_1307;
 	}
 
 IL_2bec:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4041>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4041>
 		int32_t L_1308 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if (L_1308)
 		{
@@ -8689,7 +8689,7 @@ IL_2bec:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4044>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4044>
 		float L_1309 = V_7;
 		float L_1310 = V_84;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_1311 = V_163;
@@ -8699,7 +8699,7 @@ IL_2bec:
 
 IL_2c02:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4046>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4046>
 		int32_t L_1312 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textElementType;
 		if ((!(((uint32_t)L_1312) == ((uint32_t)1))))
 		{
@@ -8707,14 +8707,14 @@ IL_2c02:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4048>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4048>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_1313 = V_163;
 		VirtualActionInvoker1< Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(121, __this, L_1313);
 	}
 
 IL_2c13:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4052>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4052>
 		bool L_1314 = V_18;
 		if (!L_1314)
 		{
@@ -8722,22 +8722,22 @@ IL_2c13:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4054>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4054>
 		V_18 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4055>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4055>
 		int32_t L_1315 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstVisibleCharacterOfLine = L_1315;
 	}
 
 IL_2c26:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4058>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4058>
 		int32_t L_1316 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleCharacterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleCharacterCount = ((int32_t)il2cpp_codegen_add(L_1316, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4059>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4059>
 		int32_t L_1317 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lastVisibleCharacterOfLine = L_1317;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4060>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4060>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1318 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1318);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1319 = L_1318->___lineInfo;
@@ -8745,7 +8745,7 @@ IL_2c26:
 		NullCheck(L_1319);
 		float L_1321 = V_138;
 		((L_1319)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1320)))->___marginLeft = L_1321;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4061>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4061>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1322 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1322);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1323 = L_1322->___lineInfo;
@@ -8758,7 +8758,7 @@ IL_2c26:
 
 IL_2c7f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4072>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4072>
 		int32_t L_1326 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if ((!(((uint32_t)L_1326) == ((uint32_t)6))))
 		{
@@ -8782,7 +8782,7 @@ IL_2c7f:
 
 IL_2c9a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4074>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4074>
 		float L_1329 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender;
 		float L_1330 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_1331 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
@@ -8821,10 +8821,10 @@ IL_2cca:
 
 IL_2cd7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4076>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4076>
 		int32_t L_1336 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		V_164 = L_1336;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4078>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4078>
 		float L_1337 = V_25;
 		if ((!(((float)((float)il2cpp_codegen_add(G_B353_1, G_B353_0))) > ((float)((float)il2cpp_codegen_add(L_1337, (9.99999975E-05f)))))))
 		{
@@ -8832,7 +8832,7 @@ IL_2cd7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4081>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4081>
 		int32_t L_1338 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex;
 		if ((!(((uint32_t)L_1338) == ((uint32_t)(-1)))))
 		{
@@ -8840,19 +8840,19 @@ IL_2cd7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4082>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4082>
 		int32_t L_1339 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstOverflowCharacterIndex = L_1339;
 	}
 
 IL_2d02:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4084>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4084>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1340;
 		L_1340 = TMP_Text_RestoreWordWrappingState_mB126C83C447A92E11F6AC19C2BBBD923C74D8FCA(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), NULL);
 		V_66 = L_1340;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4086>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4086>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1341 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1342;
@@ -8863,44 +8863,44 @@ IL_2d02:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4088>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4088>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1343 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		String_t* L_1344;
 		L_1344 = VirtualFuncInvoker0< String_t* >::Invoke(65, __this);
 		NullCheck(L_1343);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_1343, L_1344);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4089>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4089>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1345 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1346 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_inputSource;
 		NullCheck(L_1345);
 		L_1345->___m_inputSource = L_1346;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4090>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4090>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1347 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		int32_t L_1348 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_1347);
 		TMP_Text_set_firstVisibleCharacter_m343804C8FF610EB13CCB14E8D54C889BC356AD53(L_1347, L_1348, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4091>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4091>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_1349 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_linkedTextComponent;
 		NullCheck(L_1349);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_1349, (bool)0, (bool)0);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4093>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4093>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isTextTruncated = (bool)1;
 	}
 
 IL_2d64:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4097>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4097>
 		int32_t L_1350 = V_164;
 		(&V_32)->___index = L_1350;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4098>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4098>
 		(&V_32)->___unicode = 3;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4100>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4100>
 		goto IL_3fee;
 	}
 
 IL_2d7a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4106>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4106>
 		uint32_t L_1351 = V_6;
 		if ((((int32_t)L_1351) == ((int32_t)((int32_t)10))))
 		{
@@ -8976,7 +8976,7 @@ IL_2db4:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4108>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4108>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1362 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1362);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1363 = L_1362->___lineInfo;
@@ -8986,7 +8986,7 @@ IL_2db4:
 		int32_t* L_1366 = L_1365;
 		int32_t L_1367 = *((int32_t*)L_1366);
 		*((int32_t*)L_1366) = (int32_t)((int32_t)il2cpp_codegen_add(L_1367, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4109>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4109>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1368 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1369 = L_1368;
 		NullCheck(L_1369);
@@ -8997,7 +8997,7 @@ IL_2db4:
 
 IL_2e02:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4113>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4113>
 		uint32_t L_1371 = V_6;
 		if ((!(((uint32_t)L_1371) == ((uint32_t)((int32_t)160)))))
 		{
@@ -9005,7 +9005,7 @@ IL_2e02:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4114>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4114>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1372 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1372);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1373 = L_1372->___lineInfo;
@@ -9019,7 +9019,7 @@ IL_2e02:
 
 IL_2e2b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4123>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4123>
 		int32_t L_1378 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if ((!(((uint32_t)L_1378) == ((uint32_t)1))))
 		{
@@ -9043,7 +9043,7 @@ IL_2e2b:
 
 IL_2e44:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4125>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4125>
 		float L_1381 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontSize;
 		SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777* L_1382 = (SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_Ellipsis);
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_1383 = L_1382->___fontAsset;
@@ -9058,7 +9058,7 @@ IL_2e44:
 		float L_1389;
 		L_1389 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD(L_1388, NULL);
 		float L_1390 = V_1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4126>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4126>
 		float L_1391 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontScaleMultiplier;
 		SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777* L_1392 = (SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_Ellipsis);
 		TMP_Character_t7D37A55EF1A9FF6D0BFE6D50E86A00F80E7FAF35* L_1393 = L_1392->___character;
@@ -9072,13 +9072,13 @@ IL_2e44:
 		float L_1398;
 		L_1398 = Glyph_get_scale_m3ED738CBB032247526DB38161E180759B2D06F29(L_1397, NULL);
 		V_165 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_1381/L_1385)), L_1389)), L_1390)), L_1391)), L_1394)), L_1398));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4127>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4127>
 		float L_1399 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginLeft;
 		V_166 = L_1399;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4128>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4128>
 		float L_1400 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_marginRight;
 		V_167 = L_1400;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4131>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4131>
 		uint32_t L_1401 = V_6;
 		if ((!(((uint32_t)L_1401) == ((uint32_t)((int32_t)10)))))
 		{
@@ -9094,7 +9094,7 @@ IL_2e44:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4133>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4133>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1404 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1404);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1405 = L_1404->___characterInfo;
@@ -9114,7 +9114,7 @@ IL_2e44:
 		float L_1415;
 		L_1415 = FaceInfo_get_scale_mC475A572AD4956B47D8B9F8D90DC69BBBB102FCD(L_1414, NULL);
 		float L_1416 = V_1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4134>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4134>
 		float L_1417 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontScaleMultiplier;
 		SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777* L_1418 = (SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_Ellipsis);
 		TMP_Character_t7D37A55EF1A9FF6D0BFE6D50E86A00F80E7FAF35* L_1419 = L_1418->___character;
@@ -9128,7 +9128,7 @@ IL_2e44:
 		float L_1424;
 		L_1424 = Glyph_get_scale_m3ED738CBB032247526DB38161E180759B2D06F29(L_1423, NULL);
 		V_165 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)(L_1407/L_1411)), L_1415)), L_1416)), L_1417)), L_1420)), L_1424));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4135>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4135>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1425 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1425);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1426 = L_1425->___lineInfo;
@@ -9136,7 +9136,7 @@ IL_2e44:
 		NullCheck(L_1426);
 		float L_1428 = ((L_1426)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1427)))->___marginLeft;
 		V_166 = L_1428;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4136>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4136>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1429 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1429);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1430 = L_1429->___lineInfo;
@@ -9148,7 +9148,7 @@ IL_2e44:
 
 IL_2f87:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4139>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4139>
 		float L_1433 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxTextAscender;
 		float L_1434 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_1435 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
@@ -9188,7 +9188,7 @@ IL_2fb7:
 IL_2fc4:
 	{
 		V_168 = ((float)il2cpp_codegen_add(G_B382_1, G_B382_0));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4140>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4140>
 		float L_1440 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1441;
 		L_1441 = fabsf(L_1440);
@@ -9227,7 +9227,7 @@ IL_2fff:
 		float L_1448 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1449 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		float L_1450 = V_165;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4141>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4141>
 		float L_1451 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_width;
 		if ((!(((float)L_1451) == ((float)(-1.0f)))))
 		{
@@ -9260,7 +9260,7 @@ IL_3034:
 IL_304d:
 	{
 		V_169 = G_B388_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4143>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4143>
 		float L_1460 = V_169;
 		bool L_1461 = V_94;
 		if (L_1461)
@@ -9302,19 +9302,19 @@ IL_3061:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4145>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4145>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1464 = V_66;
 		int32_t L_1465 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState), L_1464, L_1465, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4146>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4146>
 		WordWrapState_t80F67D8CAA9B1A0A3D5266521E23A9F3100EDD0A L_1466 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState;
 		TMP_TextProcessingStack_1_Push_m63F37445718C865947D1BCBD1E67978F717F2E2A((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), L_1466, TMP_TextProcessingStack_1_Push_m63F37445718C865947D1BCBD1E67978F717F2E2A_RuntimeMethod_var);
 	}
 
 IL_3092:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4154>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4154>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1467 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1467);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1468 = L_1467->___characterInfo;
@@ -9322,7 +9322,7 @@ IL_3092:
 		NullCheck(L_1468);
 		int32_t L_1470 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		((L_1468)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1469)))->___lineNumber = L_1470;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4155>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4155>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1471 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1471);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1472 = L_1471->___characterInfo;
@@ -9330,7 +9330,7 @@ IL_3092:
 		NullCheck(L_1472);
 		int32_t L_1474 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber;
 		((L_1472)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1473)))->___pageNumber = L_1474;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4157>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4157>
 		uint32_t L_1475 = V_6;
 		if ((((int32_t)L_1475) == ((int32_t)((int32_t)10))))
 		{
@@ -9375,7 +9375,7 @@ IL_30ea:
 
 IL_3108:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4158>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4158>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1483 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1483);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1484 = L_1483->___lineInfo;
@@ -9387,7 +9387,7 @@ IL_3108:
 
 IL_3129:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4165>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4165>
 		uint32_t L_1487 = V_6;
 		if ((!(((uint32_t)L_1487) == ((uint32_t)((int32_t)9)))))
 		{
@@ -9395,7 +9395,7 @@ IL_3129:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4167>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4167>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_1488 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_1488);
 		FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756* L_1489 = (FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756*)(&((TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969*)L_1488)->___m_FaceInfo);
@@ -9406,7 +9406,7 @@ IL_3129:
 		uint8_t L_1492 = L_1491->___tabSize;
 		float L_1493 = V_3;
 		V_170 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_1490, ((float)L_1492))), L_1493));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4169>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4169>
 		bool L_1494 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (!L_1494)
 		{
@@ -9414,14 +9414,14 @@ IL_3129:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4171>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4171>
 		float L_1495 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1496 = V_170;
 		float L_1497;
 		L_1497 = floorf(((float)(L_1495/L_1496)));
 		float L_1498 = V_170;
 		V_171 = ((float)il2cpp_codegen_multiply(L_1497, L_1498));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4172>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4172>
 		float L_1499 = V_171;
 		float L_1500 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		if ((((float)L_1499) < ((float)L_1500)))
@@ -9455,14 +9455,14 @@ IL_3186:
 
 IL_3190:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4176>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4176>
 		float L_1504 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1505 = V_170;
 		float L_1506;
 		L_1506 = ceilf(((float)(L_1504/L_1505)));
 		float L_1507 = V_170;
 		V_172 = ((float)il2cpp_codegen_multiply(L_1506, L_1507));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4177>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4177>
 		float L_1508 = V_172;
 		float L_1509 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		if ((((float)L_1508) > ((float)L_1509)))
@@ -9496,7 +9496,7 @@ IL_31bb:
 
 IL_31c5:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4180>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4180>
 		float L_1513 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing;
 		if ((((float)L_1513) == ((float)(0.0f))))
 		{
@@ -9504,7 +9504,7 @@ IL_31c5:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4183>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4183>
 		bool L_1514 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_duoSpace;
 		if (!L_1514)
 		{
@@ -9535,7 +9535,7 @@ IL_31c5:
 
 IL_31ef:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4184>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4184>
 		float L_1518 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing;
 		float L_1519 = V_82;
 		V_173 = ((float)il2cpp_codegen_subtract(((float)(L_1518/(2.0f))), L_1519));
@@ -9544,7 +9544,7 @@ IL_31ef:
 
 IL_3202:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4186>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4186>
 		float L_1520 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_monoSpacing;
 		float L_1521 = V_82;
 		V_173 = ((float)il2cpp_codegen_subtract(L_1520, L_1521));
@@ -9552,7 +9552,7 @@ IL_3202:
 
 IL_320d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4188>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4188>
 		float L_1522 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1523 = V_173;
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_1524 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
@@ -9564,7 +9564,7 @@ IL_320d:
 		float L_1529 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1530 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_add(L_1522, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_1523, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(L_1525, L_1526)), L_1527)))), L_1528)), ((float)il2cpp_codegen_subtract((1.0f), L_1529)))), L_1530))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4190>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4190>
 		bool L_1531 = V_78;
 		if (L_1531)
 		{
@@ -9581,7 +9581,7 @@ IL_320d:
 
 IL_3259:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4191>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4191>
 		float L_1533 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1534 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_wordSpacing;
 		float L_1535 = V_4;
@@ -9591,7 +9591,7 @@ IL_3259:
 
 IL_3274:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4193>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4193>
 		bool L_1536 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (!L_1536)
 		{
@@ -9599,7 +9599,7 @@ IL_3274:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4195>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4195>
 		float L_1537 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1538;
 		L_1538 = GlyphValueRecord_get_xAdvance_m6C392027FA91E0705C1585C5EF40D984AAA0013E((&V_79), NULL);
@@ -9614,7 +9614,7 @@ IL_3274:
 		float L_1546 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1547 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_subtract(L_1537, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1538, L_1539)), ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_1541, L_1542)), L_1543)), L_1544)))), L_1545)), ((float)il2cpp_codegen_subtract((1.0f), L_1546)))), L_1547))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4197>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4197>
 		bool L_1548 = V_78;
 		if (L_1548)
 		{
@@ -9631,7 +9631,7 @@ IL_3274:
 
 IL_32d2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4198>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4198>
 		float L_1550 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1551 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_wordSpacing;
 		float L_1552 = V_4;
@@ -9641,7 +9641,7 @@ IL_32d2:
 
 IL_32ea:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4202>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4202>
 		float L_1553 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1554;
 		L_1554 = GlyphMetrics_get_horizontalAdvance_m110E66C340A19E672FB1C26DFB875AB6900AFFF1((&V_77), NULL);
@@ -9660,7 +9660,7 @@ IL_32ea:
 		float L_1565 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1566 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_add(L_1553, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1554, L_1556)), L_1557)), L_1558)), ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_1560, L_1561)), L_1562)), L_1563)))), L_1564)), ((float)il2cpp_codegen_subtract((1.0f), L_1565)))), L_1566))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4204>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4204>
 		bool L_1567 = V_78;
 		if (L_1567)
 		{
@@ -9677,7 +9677,7 @@ IL_32ea:
 
 IL_3351:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4205>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4205>
 		float L_1569 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		float L_1570 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_wordSpacing;
 		float L_1571 = V_4;
@@ -9686,7 +9686,7 @@ IL_3351:
 
 IL_3367:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4209>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4209>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1572 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1572);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1573 = L_1572->___characterInfo;
@@ -9694,7 +9694,7 @@ IL_3367:
 		NullCheck(L_1573);
 		float L_1575 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance;
 		((L_1573)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1574)))->___xAdvance = L_1575;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4216>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4216>
 		uint32_t L_1576 = V_6;
 		if ((!(((uint32_t)L_1576) == ((uint32_t)((int32_t)13)))))
 		{
@@ -9702,14 +9702,14 @@ IL_3367:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4219>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4219>
 		float L_1577 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_Indent;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_add((0.0f), L_1577));
 	}
 
 IL_33a0:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4228>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4228>
 		int32_t L_1578 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if ((!(((uint32_t)L_1578) == ((uint32_t)5))))
 		{
@@ -9752,7 +9752,7 @@ IL_33a0:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4231>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4231>
 		int32_t L_1584 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1585 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1585);
@@ -9764,7 +9764,7 @@ IL_33a0:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4232>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4232>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1587 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1587);
 		TMP_PageInfoU5BU5D_tE3DAAA8E2E9147F97C424A9034F677A516E8DAF9** L_1588 = (TMP_PageInfoU5BU5D_tE3DAAA8E2E9147F97C424A9034F677A516E8DAF9**)(&L_1587->___pageInfo);
@@ -9775,7 +9775,7 @@ IL_33a0:
 
 IL_340f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4234>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4234>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1590 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1590);
 		TMP_PageInfoU5BU5D_tE3DAAA8E2E9147F97C424A9034F677A516E8DAF9* L_1591 = L_1590->___pageInfo;
@@ -9783,9 +9783,9 @@ IL_340f:
 		NullCheck(L_1591);
 		float L_1593 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_PageAscender;
 		((L_1591)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1592)))->___ascender = L_1593;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4235>
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4236>
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4237>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4235>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4236>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4237>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1594 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1594);
 		TMP_PageInfoU5BU5D_tE3DAAA8E2E9147F97C424A9034F677A516E8DAF9* L_1595 = L_1594->___pageInfo;
@@ -9827,7 +9827,7 @@ IL_3486:
 IL_348c:
 	{
 		G_B440_1->___descender = G_B440_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4239>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4239>
 		bool L_1607 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNewPage;
 		if (!L_1607)
 		{
@@ -9835,9 +9835,9 @@ IL_348c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4241>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4241>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNewPage = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4242>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4242>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1608 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1608);
 		TMP_PageInfoU5BU5D_tE3DAAA8E2E9147F97C424A9034F677A516E8DAF9* L_1609 = L_1608->___pageInfo;
@@ -9849,7 +9849,7 @@ IL_348c:
 
 IL_34c1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4246>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4246>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1612 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1612);
 		TMP_PageInfoU5BU5D_tE3DAAA8E2E9147F97C424A9034F677A516E8DAF9* L_1613 = L_1612->___pageInfo;
@@ -9861,7 +9861,7 @@ IL_34c1:
 
 IL_34e2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4254>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4254>
 		uint32_t L_1616 = V_6;
 		if ((((int32_t)L_1616) == ((int32_t)((int32_t)10))))
 		{
@@ -9915,11 +9915,11 @@ IL_34e2:
 
 IL_351e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4259>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4259>
 		float L_1625 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender;
 		float L_1626 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_startOfLineAscender;
 		V_174 = ((float)il2cpp_codegen_subtract(L_1625, L_1626));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4260>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4260>
 		float L_1627 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		if ((!(((float)L_1627) > ((float)(0.0f)))))
 		{
@@ -9951,20 +9951,20 @@ IL_351e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4263>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4263>
 		int32_t L_1632 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine;
 		int32_t L_1633 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		float L_1634 = V_174;
 		TMP_Text_AdjustLineOffset_m52F6B152C307D094A146CA506C23704DD425218D(__this, L_1632, L_1633, L_1634, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4264>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4264>
 		float L_1635 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementDescender;
 		float L_1636 = V_174;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementDescender = ((float)il2cpp_codegen_subtract(L_1635, L_1636));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4265>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4265>
 		float L_1637 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		float L_1638 = V_174;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset = ((float)il2cpp_codegen_add(L_1637, L_1638));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4268>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4268>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1639 = (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState)->___lineNumber;
 		int32_t L_1640 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
@@ -9974,7 +9974,7 @@ IL_351e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4270>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4270>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		WordWrapState_t80F67D8CAA9B1A0A3D5266521E23A9F3100EDD0A L_1641;
 		L_1641 = TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), TMP_TextProcessingStack_1_Pop_m86F5023CF5AFB9A7D810221367C63FA084F0EBE7_RuntimeMethod_var);
@@ -10049,36 +10049,36 @@ IL_351e:
 		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
 		Il2CppCodeGenWriteBarrier((void**)&(((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState))->___currentMaterial), (void*)NULL);
 		#endif
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4271>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4271>
 		float* L_1642 = (float*)(&(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState)->___startOfLineAscender);
 		float* L_1643 = L_1642;
 		float L_1644 = *((float*)L_1643);
 		float L_1645 = V_174;
 		*((float*)L_1643) = (float)((float)il2cpp_codegen_add(L_1644, L_1645));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4272>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4272>
 		float* L_1646 = (float*)(&(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState)->___lineOffset);
 		float* L_1647 = L_1646;
 		float L_1648 = *((float*)L_1647);
 		float L_1649 = V_174;
 		*((float*)L_1647) = (float)((float)il2cpp_codegen_add(L_1648, L_1649));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4273>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4273>
 		WordWrapState_t80F67D8CAA9B1A0A3D5266521E23A9F3100EDD0A L_1650 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedEllipsisState;
 		TMP_TextProcessingStack_1_Push_m63F37445718C865947D1BCBD1E67978F717F2E2A((&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_EllipsisInsertionCandidateStack), L_1650, TMP_TextProcessingStack_1_Push_m63F37445718C865947D1BCBD1E67978F717F2E2A_RuntimeMethod_var);
 	}
 
 IL_35e6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4276>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4276>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNewPage = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4279>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4279>
 		float L_1651 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender;
 		float L_1652 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		V_175 = ((float)il2cpp_codegen_subtract(L_1651, L_1652));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4280>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4280>
 		float L_1653 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_1654 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		V_176 = ((float)il2cpp_codegen_subtract(L_1653, L_1654));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4283>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4283>
 		float L_1655 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementDescender;
 		float L_1656 = V_176;
 		if ((((float)L_1655) < ((float)L_1656)))
@@ -10106,7 +10106,7 @@ IL_3620:
 	{
 		NullCheck(G_B459_1);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)G_B459_1)->___m_ElementDescender = G_B459_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4284>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4284>
 		bool L_1659 = V_28;
 		if (L_1659)
 		{
@@ -10114,14 +10114,14 @@ IL_3620:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4285>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4285>
 		float L_1660 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_ElementDescender;
 		V_27 = L_1660;
 	}
 
 IL_3631:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4287>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4287>
 		bool L_1661 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_useMaxVisibleDescender;
 		if (!L_1661)
 		{
@@ -10147,13 +10147,13 @@ IL_3631:
 
 IL_3655:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4288>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4288>
 		V_28 = (bool)1;
 	}
 
 IL_3658:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4291>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4291>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1666 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1666);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1667 = L_1666->___lineInfo;
@@ -10161,7 +10161,7 @@ IL_3658:
 		NullCheck(L_1667);
 		int32_t L_1669 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine;
 		((L_1667)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1668)))->___firstCharacterIndex = L_1669;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4292>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4292>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1670 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1670);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1671 = L_1670->___lineInfo;
@@ -10202,7 +10202,7 @@ IL_36ac:
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)G_B468_1)->___m_firstVisibleCharacterOfLine = L_1677;
 		int32_t L_1678 = V_65;
 		G_B468_2->___firstVisibleCharacterIndex = L_1678;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4293>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4293>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1679 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1679);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1680 = L_1679->___lineInfo;
@@ -10214,7 +10214,7 @@ IL_36ac:
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lastCharacterOfLine = L_1683;
 		int32_t L_1684 = V_65;
 		((L_1680)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1681)))->___lastCharacterIndex = L_1684;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4294>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4294>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1685 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1685);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1686 = L_1685->___lineInfo;
@@ -10255,7 +10255,7 @@ IL_371a:
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)G_B471_1)->___m_lastVisibleCharacterOfLine = L_1692;
 		int32_t L_1693 = V_65;
 		G_B471_2->___lastVisibleCharacterIndex = L_1693;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4296>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4296>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1694 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1694);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1695 = L_1694->___lineInfo;
@@ -10274,7 +10274,7 @@ IL_371a:
 		NullCheck(L_1702);
 		int32_t L_1704 = ((L_1702)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1703)))->___firstCharacterIndex;
 		((L_1695)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1696)))->___characterCount = ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_subtract(L_1700, L_1704)), 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4297>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4297>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1705 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1705);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1706 = L_1705->___lineInfo;
@@ -10282,7 +10282,7 @@ IL_371a:
 		NullCheck(L_1706);
 		int32_t L_1708 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleCharacterCount;
 		((L_1706)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1707)))->___visibleCharacterCount = L_1708;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4298>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4298>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1709 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1709);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1710 = L_1709->___lineInfo;
@@ -10302,7 +10302,7 @@ IL_371a:
 		int32_t L_1719 = ((L_1717)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1718)))->___firstCharacterIndex;
 		int32_t L_1720 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleCharacterCount;
 		((L_1710)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1711)))->___visibleSpaceCount = ((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_subtract(((int32_t)il2cpp_codegen_add(L_1715, 1)), L_1719)), L_1720));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4299>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4299>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1721 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1721);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1722 = L_1721->___lineInfo;
@@ -10321,7 +10321,7 @@ IL_371a:
 		memset((&L_1731), 0, sizeof(L_1731));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_1731), L_1729, L_1730, NULL);
 		L_1724->___min = L_1731;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4300>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4300>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1732 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1732);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1733 = L_1732->___lineInfo;
@@ -10340,7 +10340,7 @@ IL_371a:
 		memset((&L_1742), 0, sizeof(L_1742));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_1742), L_1740, L_1741, NULL);
 		L_1735->___max = L_1742;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4301>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4301>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1743 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1743);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1744 = L_1743->___lineInfo;
@@ -10357,7 +10357,7 @@ IL_371a:
 		float L_1752 = V_7;
 		float L_1753 = V_3;
 		((L_1744)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1745)))->___length = ((float)il2cpp_codegen_subtract(L_1751, ((float)il2cpp_codegen_multiply(L_1752, L_1753))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4302>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4302>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1754 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1754);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1755 = L_1754->___lineInfo;
@@ -10365,7 +10365,7 @@ IL_371a:
 		NullCheck(L_1755);
 		float L_1757 = V_26;
 		((L_1755)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1756)))->___width = L_1757;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4304>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4304>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1758 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1758);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1759 = L_1758->___lineInfo;
@@ -10378,7 +10378,7 @@ IL_371a:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4305>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4305>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1762 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1762);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1763 = L_1762->___lineInfo;
@@ -10390,7 +10390,7 @@ IL_371a:
 
 IL_3928:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4307>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4307>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_1766 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_currentFontAsset;
 		NullCheck(L_1766);
 		float L_1767 = L_1766->___normalSpacingOffset;
@@ -10401,7 +10401,7 @@ IL_3928:
 		float L_1772 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_1773 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		V_177 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(L_1767, L_1768)), L_1769)), L_1770)), L_1771)), ((float)il2cpp_codegen_subtract((1.0f), L_1772)))), L_1773));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4308>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4308>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1774 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1774);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1775 = L_1774->___characterInfo;
@@ -10414,7 +10414,7 @@ IL_3928:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4309>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4309>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1778 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1778);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1779 = L_1778->___lineInfo;
@@ -10460,7 +10460,7 @@ IL_39b6:
 
 IL_39be:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4311>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4311>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1788 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1788);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1789 = L_1788->___lineInfo;
@@ -10505,7 +10505,7 @@ IL_39fe:
 
 IL_3a04:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4313>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4313>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1798 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1798);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1799 = L_1798->___lineInfo;
@@ -10513,7 +10513,7 @@ IL_3a04:
 		NullCheck(L_1799);
 		float L_1801 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		((L_1799)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1800)))->___baseline = ((float)il2cpp_codegen_subtract((0.0f), L_1801));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4314>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4314>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1802 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1802);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1803 = L_1802->___lineInfo;
@@ -10521,7 +10521,7 @@ IL_3a04:
 		NullCheck(L_1803);
 		float L_1805 = V_175;
 		((L_1803)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1804)))->___ascender = L_1805;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4315>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4315>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1806 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1806);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1807 = L_1806->___lineInfo;
@@ -10529,7 +10529,7 @@ IL_3a04:
 		NullCheck(L_1807);
 		float L_1809 = V_176;
 		((L_1807)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1808)))->___descender = L_1809;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4316>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4316>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1810 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1810);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_1811 = L_1810->___lineInfo;
@@ -10540,7 +10540,7 @@ IL_3a04:
 		float L_1815 = V_17;
 		float L_1816 = V_2;
 		((L_1811)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1812)))->___lineHeight = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_subtract(L_1813, L_1814)), ((float)il2cpp_codegen_multiply(L_1815, L_1816))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4319>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4319>
 		uint32_t L_1817 = V_6;
 		if ((((int32_t)L_1817) == ((int32_t)((int32_t)10))))
 		{
@@ -10579,28 +10579,28 @@ IL_3a04:
 
 IL_3ab6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4322>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4322>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1823 = V_66;
 		int32_t L_1824 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLineState), L_1823, L_1824, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4324>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4324>
 		int32_t L_1825 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber = ((int32_t)il2cpp_codegen_add(L_1825, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4325>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4325>
 		V_18 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4326>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4326>
 		V_30 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4327>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4327>
 		V_29 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4329>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4329>
 		int32_t L_1826 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_firstCharacterOfLine = ((int32_t)il2cpp_codegen_add(L_1826, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4330>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4330>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleCharacterCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4331>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4331>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineVisibleSpaceCount = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4334>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4334>
 		int32_t L_1827 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1828 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1828);
@@ -10612,14 +10612,14 @@ IL_3ab6:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4335>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4335>
 		int32_t L_1830 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineNumber;
 		TMP_Text_ResizeLineExtents_mD9792BED7C93557CF2A93C604497729729CCBC66(__this, L_1830, NULL);
 	}
 
 IL_3b1d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4337>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4337>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1831 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1831);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1832 = L_1831->___characterInfo;
@@ -10627,7 +10627,7 @@ IL_3b1d:
 		NullCheck(L_1832);
 		float L_1834 = ((L_1832)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_1833)))->___adjustedAscender;
 		V_178 = L_1834;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4340>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4340>
 		float L_1835 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineHeight;
 		if ((!(((float)L_1835) == ((float)(-32767.0f)))))
 		{
@@ -10635,7 +10635,7 @@ IL_3b1d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4342>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4342>
 		float L_1836 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender;
 		float L_1837 = V_178;
 		float L_1838 = V_17;
@@ -10682,18 +10682,18 @@ IL_3b84:
 	{
 		float L_1845 = V_4;
 		V_179 = ((float)il2cpp_codegen_add(G_B494_2, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(G_B494_1, G_B494_0)), L_1845))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4343>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4343>
 		float L_1846 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		float L_1847 = V_179;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset = ((float)il2cpp_codegen_add(L_1846, L_1847));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4344>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4344>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsDrivenLineSpacing = (bool)0;
 		goto IL_3be4;
 	}
 
 IL_3ba3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4348>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4348>
 		float L_1848 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineOffset;
 		float L_1849 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineHeight;
 		float L_1850 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_lineSpacing;
@@ -10750,44 +10750,44 @@ IL_3bd2:
 		float L_1854 = V_4;
 		NullCheck(G_B499_4);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)G_B499_4)->___m_lineOffset = ((float)il2cpp_codegen_add(G_B499_3, ((float)il2cpp_codegen_add(G_B499_2, ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(G_B499_1, G_B499_0)), L_1854))))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4349>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4349>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsDrivenLineSpacing = (bool)1;
 	}
 
 IL_3be4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4352>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4352>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_1855 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargeNegativeFloat;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineAscender = L_1855;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4353>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4353>
 		float L_1856 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxLineDescender = L_1856;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4354>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4354>
 		float L_1857 = V_178;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_startOfLineAscender = L_1857;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4356>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4356>
 		float L_1858 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_LineIndent;
 		float L_1859 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___tag_Indent;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_xAdvance = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add((0.0f), L_1858)), L_1859));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4358>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4358>
 		int32_t L_1860 = V_66;
 		int32_t L_1861 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedWordWrapState), L_1860, L_1861, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4359>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4359>
 		int32_t L_1862 = V_66;
 		int32_t L_1863 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), L_1862, L_1863, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4361>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4361>
 		int32_t L_1864 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_add(L_1864, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4365>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4365>
 		goto IL_3fee;
 	}
 
 IL_3c54:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4369>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4369>
 		uint32_t L_1865 = V_6;
 		if ((!(((uint32_t)L_1865) == ((uint32_t)3))))
 		{
@@ -10795,7 +10795,7 @@ IL_3c54:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4370>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4370>
 		TextProcessingElementU5BU5D_tC3E97D1672C8DB6E1F91DB2C0987D0ED9A2E7113* L_1866 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextProcessingArray;
 		NullCheck(L_1866);
 		V_66 = ((int32_t)(((RuntimeArray*)L_1866)->max_length));
@@ -10803,7 +10803,7 @@ IL_3c54:
 
 IL_3c63:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4381>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4381>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_1867 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_1867);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_1868 = L_1867->___characterInfo;
@@ -10816,7 +10816,7 @@ IL_3c63:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4383>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4383>
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1871 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_1872 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_1871->___min);
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1873 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
@@ -10832,7 +10832,7 @@ IL_3c63:
 		float L_1881;
 		L_1881 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_1875, L_1880, NULL);
 		L_1872->___x = L_1881;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4384>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4384>
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1882 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_1883 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_1882->___min);
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1884 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
@@ -10848,7 +10848,7 @@ IL_3c63:
 		float L_1892;
 		L_1892 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_1886, L_1891, NULL);
 		L_1883->___y = L_1892;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4386>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4386>
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1893 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_1894 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_1893->___max);
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1895 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
@@ -10864,7 +10864,7 @@ IL_3c63:
 		float L_1903;
 		L_1903 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_1897, L_1902, NULL);
 		L_1894->___x = L_1903;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4387>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4387>
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1904 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_1905 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_1904->___max);
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8* L_1906 = (Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_meshExtents);
@@ -10884,7 +10884,7 @@ IL_3c63:
 
 IL_3d97:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4398>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4398>
 		int32_t L_1915 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextWrappingMode;
 		if (!L_1915)
 		{
@@ -10924,11 +10924,11 @@ IL_3da8:
 
 IL_3dc6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4402>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4402>
 		V_180 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4403>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4403>
 		V_181 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4404>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4404>
 		int32_t L_1920 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		int32_t L_1921 = V_0;
 		if ((((int32_t)((int32_t)il2cpp_codegen_add(L_1920, 1))) < ((int32_t)L_1921)))
@@ -10955,7 +10955,7 @@ IL_3dda:
 IL_3df7:
 	{
 		V_182 = G_B513_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4406>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4406>
 		bool L_1926 = V_78;
 		if (L_1926)
 		{
@@ -11029,7 +11029,7 @@ IL_3e18:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4409>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4409>
 		uint32_t L_1937 = V_6;
 		if ((!(((uint32_t)L_1937) == ((uint32_t)((int32_t)45)))))
 		{
@@ -11074,11 +11074,11 @@ IL_3e18:
 
 IL_3eba:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4411>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4411>
 		V_29 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4412>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4412>
 		V_180 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4415>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4415>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedSoftLineBreakState)->___previous_WordBreak = (-1);
 		goto IL_3f9f;
@@ -11086,7 +11086,7 @@ IL_3eba:
 
 IL_3ed0:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4419>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4419>
 		bool L_1949 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNonBreakingSpace;
 		if (L_1949)
 		{
@@ -11127,7 +11127,7 @@ IL_3ee8:
 
 IL_3ef1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4421>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4421>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Settings_t5875BC616C98A30032C6B733CF7FC90A0EE48062_il2cpp_TypeInfo_var);
 		LineBreakingTable_t8F7C67DC8CF3D46115EB50409E5C0E32B5ADC531* L_1955;
 		L_1955 = TMP_Settings_get_linebreakingRules_m9128A20C31E5CBB0D06E0A1537E40617640FCBB2(NULL);
@@ -11137,7 +11137,7 @@ IL_3ef1:
 		NullCheck(L_1956);
 		bool L_1958;
 		L_1958 = HashSet_1_Contains_m02385B663B65E53485251FFFD116D0F26BA172B9(L_1956, L_1957, HashSet_1_Contains_m02385B663B65E53485251FFFD116D0F26BA172B9_RuntimeMethod_var);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4422>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4422>
 		int32_t L_1959 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		int32_t L_1960 = V_0;
 		if ((((int32_t)L_1959) >= ((int32_t)((int32_t)il2cpp_codegen_subtract(L_1960, 1)))))
@@ -11171,14 +11171,14 @@ IL_3f20:
 IL_3f21:
 	{
 		V_183 = (bool)G_B535_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4424>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4424>
 		if (G_B535_1)
 		{
 			goto IL_3f3f;
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4426>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4426>
 		bool L_1965 = V_183;
 		if (L_1965)
 		{
@@ -11186,15 +11186,15 @@ IL_3f21:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4428>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4428>
 		V_29 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4429>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4429>
 		V_180 = (bool)1;
 	}
 
 IL_3f2f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4432>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4432>
 		bool L_1966 = V_29;
 		if (!L_1966)
 		{
@@ -11202,7 +11202,7 @@ IL_3f2f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4435>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4435>
 		bool L_1967 = V_78;
 		if (!L_1967)
 		{
@@ -11210,20 +11210,20 @@ IL_3f2f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4436>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4436>
 		V_181 = (bool)1;
 	}
 
 IL_3f3a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4438>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4438>
 		V_180 = (bool)1;
 		goto IL_3f9f;
 	}
 
 IL_3f3f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4443>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4443>
 		bool L_1968 = V_29;
 		bool L_1969 = V_93;
 		if (!((int32_t)((int32_t)L_1968&(int32_t)L_1969)))
@@ -11232,7 +11232,7 @@ IL_3f3f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4446>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4446>
 		bool L_1970 = V_78;
 		if (!L_1970)
 		{
@@ -11240,20 +11240,20 @@ IL_3f3f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4447>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4447>
 		V_181 = (bool)1;
 	}
 
 IL_3f4d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4449>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4449>
 		V_180 = (bool)1;
 		goto IL_3f9f;
 	}
 
 IL_3f52:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4454>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4454>
 		bool L_1971 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isNonBreakingSpace;
 		if (L_1971)
 		{
@@ -11286,14 +11286,14 @@ IL_3f52:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4456>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4456>
 		V_180 = (bool)1;
 		goto IL_3f9f;
 	}
 
 IL_3f7b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4458>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4458>
 		bool L_1978 = V_29;
 		if (!L_1978)
 		{
@@ -11301,7 +11301,7 @@ IL_3f7b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4461>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4461>
 		bool L_1979 = V_78;
 		if (!L_1979)
 		{
@@ -11334,19 +11334,19 @@ IL_3f8c:
 
 IL_3f99:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4462>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4462>
 		V_181 = (bool)1;
 	}
 
 IL_3f9c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4464>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4464>
 		V_180 = (bool)1;
 	}
 
 IL_3f9f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4468>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4468>
 		bool L_1983 = V_180;
 		if (!L_1983)
 		{
@@ -11354,7 +11354,7 @@ IL_3f9f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4469>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4469>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1984 = V_66;
 		int32_t L_1985 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
@@ -11363,7 +11363,7 @@ IL_3f9f:
 
 IL_3fb6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4472>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4472>
 		bool L_1986 = V_181;
 		if (!L_1986)
 		{
@@ -11371,7 +11371,7 @@ IL_3fb6:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4473>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4473>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1987 = V_66;
 		int32_t L_1988 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
@@ -11380,26 +11380,26 @@ IL_3fb6:
 
 IL_3fcd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4480>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4480>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		int32_t L_1989 = V_66;
 		int32_t L_1990 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		TMP_Text_SaveWordWrappingState_m89FFAEE3796170C90F8EDBA696E4A14884A56650(__this, (&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_SavedLastValidState), L_1989, L_1990, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4482>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4482>
 		int32_t L_1991 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount = ((int32_t)il2cpp_codegen_add(L_1991, 1));
 	}
 
 IL_3fee:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2735>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2735>
 		int32_t L_1992 = V_66;
 		V_66 = ((int32_t)il2cpp_codegen_add(L_1992, 1));
 	}
 
 IL_3ff4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:2735>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:2735>
 		int32_t L_1993 = V_66;
 		TextProcessingElementU5BU5D_tC3E97D1672C8DB6E1F91DB2C0987D0ED9A2E7113* L_1994 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_TextProcessingArray;
 		NullCheck(L_1994);
@@ -11421,11 +11421,11 @@ IL_3ff4:
 
 IL_4017:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4487>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4487>
 		float L_1998 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxFontSize;
 		float L_1999 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_minFontSize;
 		V_5 = ((float)il2cpp_codegen_subtract(L_1998, L_1999));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4488>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4488>
 		bool L_2000 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_enableAutoSizing;
 		if (!L_2000)
 		{
@@ -11456,7 +11456,7 @@ IL_4017:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4491>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4491>
 		float L_2006 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_2007 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthMaxAdj;
 		if ((!(((float)L_2006) < ((float)((float)(L_2007/(100.0f)))))))
@@ -11465,40 +11465,40 @@ IL_4017:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4492>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4492>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta = (0.0f);
 	}
 
 IL_407e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4494>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4494>
 		float L_2008 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_minFontSize = L_2008;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4496>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4496>
 		float L_2009 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxFontSize;
 		float L_2010 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_2011;
 		L_2011 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(((float)(((float)il2cpp_codegen_subtract(L_2009, L_2010))/(2.0f))), (0.0500000007f), NULL);
 		V_184 = L_2011;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4497>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4497>
 		float L_2012 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_2013 = V_184;
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = ((float)il2cpp_codegen_add(L_2012, L_2013));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4498>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4498>
 		float L_2014 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize;
 		float L_2015 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSizeMax;
 		float L_2016;
 		L_2016 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(((float)(((float)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_2014, (20.0f))), (0.5f)))))/(20.0f))), L_2015, NULL);
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_fontSize = L_2016;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4503>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4503>
 		return;
 	}
 
 IL_40e4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4507>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4507>
 		((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_IsAutoSizePointSizeSet = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4509>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4509>
 		int32_t L_2017 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_AutoSizeIterationCount;
 		int32_t L_2018 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_AutoSizeMaxIterationCount;
 		if ((((int32_t)L_2017) < ((int32_t)L_2018)))
@@ -11507,7 +11507,7 @@ IL_40e4:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4510>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4510>
 		int32_t* L_2019 = (int32_t*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_AutoSizeIterationCount);
 		String_t* L_2020;
 		L_2020 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5(L_2019, NULL);
@@ -11522,7 +11522,7 @@ IL_40e4:
 
 IL_4123:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4513>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4513>
 		int32_t L_2024 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		if (!L_2024)
 		{
@@ -11546,18 +11546,18 @@ IL_4123:
 
 IL_4139:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4515>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4515>
 		VirtualActionInvoker0::Invoke(129, __this);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4518>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4518>
 		il2cpp_codegen_runtime_class_init_inline(TMPro_EventManager_t0234DB5BF625FC164B395C5C3B6F2CB8C89A3BA9_il2cpp_TypeInfo_var);
 		TMPro_EventManager_ON_TEXT_CHANGED_mC933ED67F225E90E2F7B5F0D176D62D3A560BFAE(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4521>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4521>
 		return;
 	}
 
 IL_4146:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4529>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4529>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		MaterialReferenceU5BU5D_t7491D335AB3E3E13CE9C0F5E931F396F6A02E1F2* L_2027 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___m_materialReferences;
 		SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777* L_2028 = (SpecialCharacter_t6C1DBE8C490706D1620899BAB7F0B8091AD26777*)(&((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_Underline);
@@ -11565,21 +11565,21 @@ IL_4146:
 		NullCheck(L_2027);
 		int32_t L_2030 = ((L_2027)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2029)))->___referenceCount;
 		V_35 = ((int32_t)il2cpp_codegen_multiply(L_2030, 4));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4532>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4532>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_2031 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_2031);
 		TMP_MeshInfoU5BU5D_t3549EA3B9F542558E0DB1EDFAB98C612FE4231D7* L_2032 = L_2031->___meshInfo;
 		NullCheck(L_2032);
 		il2cpp_codegen_runtime_class_init_inline(TMP_MeshInfo_t320C52212E9D672EBB5F5C18C3E0700AA33DD76B_il2cpp_TypeInfo_var);
 		TMP_MeshInfo_Clear_m28C815908490A64459F38D5EC110C6823B813888(((L_2032)->GetAddressAt(static_cast<il2cpp_array_size_t>(0))), (bool)0, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4536>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4536>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2033;
 		L_2033 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_36 = L_2033;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4537>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4537>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2034 = __this->___m_RectTransformCorners;
 		V_37 = L_2034;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4540>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4540>
 		int32_t L_2035 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_VerticalAlignment;
 		V_185 = L_2035;
 		int32_t L_2036 = V_185;
@@ -11641,7 +11641,7 @@ IL_41c1:
 
 IL_41ea:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4544>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4544>
 		int32_t L_2043 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if ((((int32_t)L_2043) == ((int32_t)5)))
 		{
@@ -11649,7 +11649,7 @@ IL_41ea:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4545>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4545>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2044 = V_37;
 		NullCheck(L_2044);
 		int32_t L_2045 = 1;
@@ -11670,7 +11670,7 @@ IL_41ea:
 
 IL_4232:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4547>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4547>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2054 = V_37;
 		NullCheck(L_2054);
 		int32_t L_2055 = 1;
@@ -11691,13 +11691,13 @@ IL_4232:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2066;
 		L_2066 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_2056, L_2065, NULL);
 		V_36 = L_2066;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4548>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4548>
 		goto IL_4535;
 	}
 
 IL_4282:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4552>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4552>
 		int32_t L_2067 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if ((((int32_t)L_2067) == ((int32_t)5)))
 		{
@@ -11705,7 +11705,7 @@ IL_4282:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4553>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4553>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2068 = V_37;
 		NullCheck(L_2068);
 		int32_t L_2069 = 0;
@@ -11737,7 +11737,7 @@ IL_4282:
 
 IL_42f2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4555>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4555>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2086 = V_37;
 		NullCheck(L_2086);
 		int32_t L_2087 = 0;
@@ -11774,13 +11774,13 @@ IL_42f2:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2109;
 		L_2109 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_2093, L_2108, NULL);
 		V_36 = L_2109;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4556>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4556>
 		goto IL_4535;
 	}
 
 IL_437f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4560>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4560>
 		int32_t L_2110 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_overflowMode;
 		if ((((int32_t)L_2110) == ((int32_t)5)))
 		{
@@ -11788,7 +11788,7 @@ IL_437f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4561>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4561>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2111 = V_37;
 		NullCheck(L_2111);
 		int32_t L_2112 = 0;
@@ -11809,7 +11809,7 @@ IL_437f:
 
 IL_43c3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4563>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4563>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2121 = V_37;
 		NullCheck(L_2121);
 		int32_t L_2122 = 0;
@@ -11830,13 +11830,13 @@ IL_43c3:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2133;
 		L_2133 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_2123, L_2132, NULL);
 		V_36 = L_2133;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4564>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4564>
 		goto IL_4535;
 	}
 
 IL_4413:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4568>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4568>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2134 = V_37;
 		NullCheck(L_2134);
 		int32_t L_2135 = 0;
@@ -11857,13 +11857,13 @@ IL_4413:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2145;
 		L_2145 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_2141, L_2144, NULL);
 		V_36 = L_2145;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4569>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4569>
 		goto IL_4535;
 	}
 
 IL_445a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4573>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4573>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2146 = V_37;
 		NullCheck(L_2146);
 		int32_t L_2147 = 0;
@@ -11894,13 +11894,13 @@ IL_445a:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2167;
 		L_2167 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_2153, L_2166, NULL);
 		V_36 = L_2167;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4574>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4574>
 		goto IL_4535;
 	}
 
 IL_44d6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4578>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4578>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_2168 = V_37;
 		NullCheck(L_2168);
 		int32_t L_2169 = 0;
@@ -11930,29 +11930,29 @@ IL_44d6:
 
 IL_4535:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4584>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4584>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2185;
 		L_2185 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_38 = L_2185;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4585>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4585>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2186;
 		L_2186 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		V_39 = L_2186;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4589>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4589>
 		V_40 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4590>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4590>
 		V_41 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4591>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4591>
 		V_42 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4592>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4592>
 		V_43 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4594>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4594>
 		V_44 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4595>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4595>
 		V_45 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4596>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4596>
 		V_46 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4600>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4600>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_2187 = __this->___m_canvas;
 		NullCheck(L_2187);
 		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_2188;
@@ -11978,7 +11978,7 @@ IL_456e:
 IL_456f:
 	{
 		V_47 = (bool)G_B602_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4601>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4601>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2190;
 		L_2190 = TMP_Text_get_transform_m6BD41E08BFCFCE722DFCE4627626AD60CA99CCA8(__this, NULL);
 		NullCheck(L_2190);
@@ -11990,31 +11990,31 @@ IL_456f:
 		__this->___m_previousLossyScaleY = L_2193;
 		float L_2194 = V_137;
 		V_48 = L_2194;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4602>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4602>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_2195 = __this->___m_canvas;
 		NullCheck(L_2195);
 		int32_t L_2196;
 		L_2196 = Canvas_get_renderMode_m1BEF259548C6CAD27E4466F31D20752D246688CC(L_2195, NULL);
 		V_49 = L_2196;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4603>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4603>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_2197 = __this->___m_canvas;
 		NullCheck(L_2197);
 		float L_2198;
 		L_2198 = Canvas_get_scaleFactor_m6B8D694A68376EE5E13D9B0B0F037E2E90C99921(L_2197, NULL);
 		V_50 = L_2198;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4605>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4605>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2199;
 		L_2199 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_2200;
 		L_2200 = Color32_op_Implicit_m79AF5E0BDE9CE041CAC4D89CBFA66E71C6DD1B70_inline(L_2199, NULL);
 		V_51 = L_2200;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4606>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4606>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2201;
 		L_2201 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_2202;
 		L_2202 = Color32_op_Implicit_m79AF5E0BDE9CE041CAC4D89CBFA66E71C6DD1B70_inline(L_2201, NULL);
 		V_52 = L_2202;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4607>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4607>
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_2203;
 		memset((&L_2203), 0, sizeof(L_2203));
 		Color32__ctor_mC9C6B443F0C7CA3F8B174158B2AF6F05E18EAC4E_inline((&L_2203), (uint8_t)((int32_t)255), (uint8_t)((int32_t)255), (uint8_t)0, (uint8_t)((int32_t)64), NULL);
@@ -12022,65 +12022,65 @@ IL_456f:
 		TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6 L_2204;
 		L_2204 = TMP_Offset_get_zero_m8D8E8D2E46EAB0DFFED647AC5EEB41A5B2AA2339_inline(NULL);
 		HighlightState__ctor_m25791146FF94DD76C2FAAAF47C1735C01D9F47B2((&V_53), L_2203, L_2204, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4608>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4608>
 		V_54 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4609>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4609>
 		V_55 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4610>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4610>
 		V_56 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4611>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4611>
 		V_57 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4612>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4612>
 		V_58 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4613>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4613>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_2205 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		V_59 = L_2205;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4614>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4614>
 		V_60 = 0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4616>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4616>
 		V_61 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4617>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4617>
 		V_62 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4618>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4618>
 		V_63 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4620>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4620>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_2206 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_2206);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2207 = L_2206->___characterInfo;
 		V_64 = L_2207;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4622>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4622>
 		V_186 = 0;
 		goto IL_70db;
 	}
 
 IL_4635:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4624>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4624>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2208 = V_64;
 		int32_t L_2209 = V_186;
 		NullCheck(L_2208);
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_2210 = ((L_2208)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2209)))->___fontAsset;
 		V_187 = L_2210;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4626>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4626>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2211 = V_64;
 		int32_t L_2212 = V_186;
 		NullCheck(L_2211);
 		Il2CppChar L_2213 = ((L_2211)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2212)))->___character;
 		V_188 = L_2213;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4627>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4627>
 		Il2CppChar L_2214 = V_188;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_2215;
 		L_2215 = Char_IsWhiteSpace_m02AEC6EA19513CAFC6882CFCA54C45794D2B5924(L_2214, NULL);
 		V_189 = L_2215;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4629>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4629>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2216 = V_64;
 		int32_t L_2217 = V_186;
 		NullCheck(L_2216);
 		int32_t L_2218 = ((L_2216)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2217)))->___lineNumber;
 		V_190 = L_2218;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4630>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4630>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_2219 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_2219);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_2220 = L_2219->___lineInfo;
@@ -12089,10 +12089,10 @@ IL_4635:
 		int32_t L_2222 = L_2221;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2223 = (L_2220)->GetAt(static_cast<il2cpp_array_size_t>(L_2222));
 		V_191 = L_2223;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4631>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4631>
 		int32_t L_2224 = V_190;
 		V_41 = ((int32_t)il2cpp_codegen_add(L_2224, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4633>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4633>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2225 = V_191;
 		int32_t L_2226 = L_2225.___alignment;
 		V_192 = L_2226;
@@ -12156,7 +12156,7 @@ IL_46bc:
 
 IL_46d3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4640>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4640>
 		bool L_2232 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (L_2232)
 		{
@@ -12164,7 +12164,7 @@ IL_46d3:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4641>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4641>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2233 = V_191;
 		float L_2234 = L_2233.___marginLeft;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), ((float)il2cpp_codegen_add((0.0f), L_2234)), (0.0f), (0.0f), NULL);
@@ -12173,17 +12173,17 @@ IL_46d3:
 
 IL_46fe:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4643>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4643>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2235 = V_191;
 		float L_2236 = L_2235.___maxAdvance;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), ((float)il2cpp_codegen_subtract((0.0f), L_2236)), (0.0f), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4644>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4644>
 		goto IL_4a87;
 	}
 
 IL_4721:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4647>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4647>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2237 = V_191;
 		float L_2238 = L_2237.___marginLeft;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2239 = V_191;
@@ -12191,13 +12191,13 @@ IL_4721:
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2241 = V_191;
 		float L_2242 = L_2241.___maxAdvance;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2238, ((float)(L_2240/(2.0f))))), ((float)(L_2242/(2.0f))))), (0.0f), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4648>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4648>
 		goto IL_4a87;
 	}
 
 IL_475a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4651>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4651>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2243 = V_191;
 		float L_2244 = L_2243.___marginLeft;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2245 = V_191;
@@ -12211,13 +12211,13 @@ IL_475a:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_2253 = L_2252.___max;
 		float L_2254 = L_2253.___x;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), ((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2244, ((float)(L_2246/(2.0f))))), ((float)(((float)il2cpp_codegen_add(L_2250, L_2254))/(2.0f))))), (0.0f), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4652>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4652>
 		goto IL_4a87;
 	}
 
 IL_47af:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4655>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4655>
 		bool L_2255 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (L_2255)
 		{
@@ -12225,7 +12225,7 @@ IL_47af:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4656>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4656>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2256 = V_191;
 		float L_2257 = L_2256.___marginLeft;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2258 = V_191;
@@ -12238,19 +12238,19 @@ IL_47af:
 
 IL_47e4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4658>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4658>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2262 = V_191;
 		float L_2263 = L_2262.___marginLeft;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2264 = V_191;
 		float L_2265 = L_2264.___width;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), ((float)il2cpp_codegen_add(L_2263, L_2265)), (0.0f), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4659>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4659>
 		goto IL_4a87;
 	}
 
 IL_4809:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4664>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4664>
 		int32_t L_2266 = V_186;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2267 = V_191;
 		int32_t L_2268 = L_2267.___lastVisibleCharacterIndex;
@@ -12295,16 +12295,16 @@ IL_4809:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4666>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4666>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2274 = V_64;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2275 = V_191;
 		int32_t L_2276 = L_2275.___lastCharacterIndex;
 		NullCheck(L_2274);
 		Il2CppChar L_2277 = ((L_2274)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2276)))->___character;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4668>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4668>
 		int32_t L_2278 = V_192;
 		V_195 = (bool)((((int32_t)((int32_t)((int32_t)L_2278&((int32_t)16)))) == ((int32_t)((int32_t)16)))? 1 : 0);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4672>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4672>
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_2279;
 		L_2279 = Char_IsControl_m133C10360BE82B7580E4D3ECE3C881A6C82B3F7F(L_2277, NULL);
@@ -12346,7 +12346,7 @@ IL_487e:
 
 IL_4896:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4675>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4675>
 		int32_t L_2287 = V_190;
 		int32_t L_2288 = V_42;
 		if ((!(((uint32_t)L_2287) == ((uint32_t)L_2288))))
@@ -12372,7 +12372,7 @@ IL_4896:
 
 IL_48aa:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4677>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4677>
 		bool L_2292 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (L_2292)
 		{
@@ -12380,7 +12380,7 @@ IL_48aa:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4678>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4678>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2293 = V_191;
 		float L_2294 = L_2293.___marginLeft;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), L_2294, (0.0f), (0.0f), NULL);
@@ -12389,7 +12389,7 @@ IL_48aa:
 
 IL_48cc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4680>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4680>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2295 = V_191;
 		float L_2296 = L_2295.___marginLeft;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2297 = V_191;
@@ -12399,7 +12399,7 @@ IL_48cc:
 
 IL_48ec:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4682>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4682>
 		Il2CppChar L_2299 = V_188;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_2300;
@@ -12410,21 +12410,21 @@ IL_48ec:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4683>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4683>
 		V_43 = (bool)1;
 		goto IL_4a87;
 	}
 
 IL_48fd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4685>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4685>
 		V_43 = (bool)0;
 		goto IL_4a87;
 	}
 
 IL_4905:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4689>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4689>
 		bool L_2301 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (!L_2301)
 		{
@@ -12452,19 +12452,19 @@ IL_491e:
 IL_492d:
 	{
 		V_196 = G_B641_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4690>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4690>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2310 = V_191;
 		int32_t L_2311 = L_2310.___visibleCharacterCount;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2312 = V_191;
 		int32_t L_2313 = L_2312.___controlCharacterCount;
 		V_197 = ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_subtract(L_2311, 1)), L_2313));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4691>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4691>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2314 = V_191;
 		int32_t L_2315 = L_2314.___visibleSpaceCount;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2316 = V_191;
 		int32_t L_2317 = L_2316.___controlCharacterCount;
 		V_198 = ((int32_t)il2cpp_codegen_subtract(L_2315, L_2317));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4693>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4693>
 		bool L_2318 = V_43;
 		if (!L_2318)
 		{
@@ -12472,17 +12472,17 @@ IL_492d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4693>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4693>
 		int32_t L_2319 = V_198;
 		V_198 = ((int32_t)il2cpp_codegen_subtract(L_2319, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4693>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4693>
 		int32_t L_2320 = V_197;
 		V_197 = ((int32_t)il2cpp_codegen_add(L_2320, 1));
 	}
 
 IL_4963:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4695>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4695>
 		int32_t L_2321 = V_198;
 		if ((((int32_t)L_2321) > ((int32_t)0)))
 		{
@@ -12503,7 +12503,7 @@ IL_496f:
 IL_4975:
 	{
 		V_199 = G_B646_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4697>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4697>
 		int32_t L_2323 = V_198;
 		if ((((int32_t)L_2323) >= ((int32_t)1)))
 		{
@@ -12511,13 +12511,13 @@ IL_4975:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4697>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4697>
 		V_198 = 1;
 	}
 
 IL_497f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4699>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4699>
 		Il2CppChar L_2324 = V_188;
 		if ((((int32_t)L_2324) == ((int32_t)((int32_t)160))))
 		{
@@ -12544,7 +12544,7 @@ IL_497f:
 
 IL_4997:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4701>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4701>
 		bool L_2328 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (L_2328)
 		{
@@ -12552,7 +12552,7 @@ IL_4997:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4702>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4702>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2329 = V_38;
 		float L_2330 = V_196;
 		float L_2331 = V_199;
@@ -12568,7 +12568,7 @@ IL_4997:
 
 IL_49cb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4704>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4704>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2335 = V_38;
 		float L_2336 = V_196;
 		float L_2337 = V_199;
@@ -12584,7 +12584,7 @@ IL_49cb:
 
 IL_49f7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4708>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4708>
 		bool L_2341 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (L_2341)
 		{
@@ -12592,7 +12592,7 @@ IL_49f7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4709>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4709>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2342 = V_38;
 		float L_2343 = V_196;
 		float L_2344 = V_199;
@@ -12608,7 +12608,7 @@ IL_49f7:
 
 IL_4a22:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4711>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4711>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2348 = V_38;
 		float L_2349 = V_196;
 		float L_2350 = V_199;
@@ -12624,7 +12624,7 @@ IL_4a22:
 
 IL_4a45:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4717>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4717>
 		bool L_2354 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_isRightToLeft;
 		if (L_2354)
 		{
@@ -12632,7 +12632,7 @@ IL_4a45:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4718>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4718>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2355 = V_191;
 		float L_2356 = L_2355.___marginLeft;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_38), L_2356, (0.0f), (0.0f), NULL);
@@ -12641,7 +12641,7 @@ IL_4a45:
 
 IL_4a67:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4720>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4720>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2357 = V_191;
 		float L_2358 = L_2357.___marginLeft;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2359 = V_191;
@@ -12651,19 +12651,19 @@ IL_4a67:
 
 IL_4a87:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4727>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4727>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2361 = V_36;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2362 = V_38;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_2363;
 		L_2363 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_2361, L_2362, NULL);
 		V_39 = L_2363;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4731>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4731>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2364 = V_64;
 		int32_t L_2365 = V_186;
 		NullCheck(L_2364);
 		bool L_2366 = ((L_2364)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2365)))->___isVisible;
 		V_193 = L_2366;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4732>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4732>
 		bool L_2367 = V_193;
 		if (!L_2367)
 		{
@@ -12671,7 +12671,7 @@ IL_4a87:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4734>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4734>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2368 = V_64;
 		int32_t L_2369 = V_186;
 		NullCheck(L_2368);
@@ -12696,15 +12696,15 @@ IL_4a87:
 
 IL_4aca:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4739>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4739>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2373 = V_191;
 		Extents_tA2D2F95811D0A18CB7AC3570D2D8F8CD3AF4C4A8 L_2374 = L_2373.___lineExtents;
 		V_201 = L_2374;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4740>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4740>
 		float L_2375 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_uvLineOffset;
 		int32_t L_2376 = V_190;
 		V_202 = (fmodf(((float)il2cpp_codegen_multiply(L_2375, ((float)L_2376))), (1.0f)));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4744>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4744>
 		int32_t L_2377 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_horizontalMapping;
 		V_204 = L_2377;
 		int32_t L_2378 = V_204;
@@ -12734,41 +12734,41 @@ IL_4aca:
 
 IL_4b09:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4747>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4747>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2379 = V_64;
 		int32_t L_2380 = V_186;
 		NullCheck(L_2379);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2381 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2379)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2380)))->___vertex_BL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2382 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2381->___uv2);
 		L_2382->___x = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4748>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4748>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2383 = V_64;
 		int32_t L_2384 = V_186;
 		NullCheck(L_2383);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2385 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2383)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2384)))->___vertex_TL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2386 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2385->___uv2);
 		L_2386->___x = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4749>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4749>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2387 = V_64;
 		int32_t L_2388 = V_186;
 		NullCheck(L_2387);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2389 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2387)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2388)))->___vertex_TR);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2390 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2389->___uv2);
 		L_2390->___x = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4750>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4750>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2391 = V_64;
 		int32_t L_2392 = V_186;
 		NullCheck(L_2391);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2393 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2391)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2392)))->___vertex_BR);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2394 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2393->___uv2);
 		L_2394->___x = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4751>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4751>
 		goto IL_549f;
 	}
 
 IL_4b82:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4754>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4754>
 		int32_t L_2395 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textAlignment;
 		if ((((int32_t)L_2395) == ((int32_t)((int32_t)520))))
 		{
@@ -12776,7 +12776,7 @@ IL_4b82:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4756>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4756>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2396 = V_64;
 		int32_t L_2397 = V_186;
 		NullCheck(L_2396);
@@ -12799,7 +12799,7 @@ IL_4b82:
 		float L_2413 = L_2412.___x;
 		float L_2414 = V_202;
 		L_2399->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2404, L_2407))/((float)il2cpp_codegen_subtract(L_2410, L_2413)))), L_2414));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4757>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4757>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2415 = V_64;
 		int32_t L_2416 = V_186;
 		NullCheck(L_2415);
@@ -12822,7 +12822,7 @@ IL_4b82:
 		float L_2432 = L_2431.___x;
 		float L_2433 = V_202;
 		L_2418->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2423, L_2426))/((float)il2cpp_codegen_subtract(L_2429, L_2432)))), L_2433));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4758>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4758>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2434 = V_64;
 		int32_t L_2435 = V_186;
 		NullCheck(L_2434);
@@ -12845,7 +12845,7 @@ IL_4b82:
 		float L_2451 = L_2450.___x;
 		float L_2452 = V_202;
 		L_2437->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2442, L_2445))/((float)il2cpp_codegen_subtract(L_2448, L_2451)))), L_2452));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4759>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4759>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2453 = V_64;
 		int32_t L_2454 = V_186;
 		NullCheck(L_2453);
@@ -12868,13 +12868,13 @@ IL_4b82:
 		float L_2470 = L_2469.___x;
 		float L_2471 = V_202;
 		L_2456->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2461, L_2464))/((float)il2cpp_codegen_subtract(L_2467, L_2470)))), L_2471));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4760>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4760>
 		goto IL_549f;
 	}
 
 IL_4cff:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4764>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4764>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2472 = V_64;
 		int32_t L_2473 = V_186;
 		NullCheck(L_2472);
@@ -12899,7 +12899,7 @@ IL_4cff:
 		float L_2491 = L_2490->___x;
 		float L_2492 = V_202;
 		L_2475->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2480, L_2482)), L_2485))/((float)il2cpp_codegen_subtract(L_2488, L_2491)))), L_2492));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4765>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4765>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2493 = V_64;
 		int32_t L_2494 = V_186;
 		NullCheck(L_2493);
@@ -12924,7 +12924,7 @@ IL_4cff:
 		float L_2512 = L_2511->___x;
 		float L_2513 = V_202;
 		L_2496->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2501, L_2503)), L_2506))/((float)il2cpp_codegen_subtract(L_2509, L_2512)))), L_2513));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4766>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4766>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2514 = V_64;
 		int32_t L_2515 = V_186;
 		NullCheck(L_2514);
@@ -12949,7 +12949,7 @@ IL_4cff:
 		float L_2533 = L_2532->___x;
 		float L_2534 = V_202;
 		L_2517->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2522, L_2524)), L_2527))/((float)il2cpp_codegen_subtract(L_2530, L_2533)))), L_2534));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4767>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4767>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2535 = V_64;
 		int32_t L_2536 = V_186;
 		NullCheck(L_2535);
@@ -12974,13 +12974,13 @@ IL_4cff:
 		float L_2554 = L_2553->___x;
 		float L_2555 = V_202;
 		L_2538->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2543, L_2545)), L_2548))/((float)il2cpp_codegen_subtract(L_2551, L_2554)))), L_2555));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4768>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4768>
 		goto IL_549f;
 	}
 
 IL_4ebc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4772>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4772>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2556 = V_64;
 		int32_t L_2557 = V_186;
 		NullCheck(L_2556);
@@ -13005,7 +13005,7 @@ IL_4ebc:
 		float L_2575 = L_2574->___x;
 		float L_2576 = V_202;
 		L_2559->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2564, L_2566)), L_2569))/((float)il2cpp_codegen_subtract(L_2572, L_2575)))), L_2576));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4773>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4773>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2577 = V_64;
 		int32_t L_2578 = V_186;
 		NullCheck(L_2577);
@@ -13030,7 +13030,7 @@ IL_4ebc:
 		float L_2596 = L_2595->___x;
 		float L_2597 = V_202;
 		L_2580->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2585, L_2587)), L_2590))/((float)il2cpp_codegen_subtract(L_2593, L_2596)))), L_2597));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4774>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4774>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2598 = V_64;
 		int32_t L_2599 = V_186;
 		NullCheck(L_2598);
@@ -13055,7 +13055,7 @@ IL_4ebc:
 		float L_2617 = L_2616->___x;
 		float L_2618 = V_202;
 		L_2601->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2606, L_2608)), L_2611))/((float)il2cpp_codegen_subtract(L_2614, L_2617)))), L_2618));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4775>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4775>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2619 = V_64;
 		int32_t L_2620 = V_186;
 		NullCheck(L_2619);
@@ -13080,13 +13080,13 @@ IL_4ebc:
 		float L_2638 = L_2637->___x;
 		float L_2639 = V_202;
 		L_2622->___x = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(((float)il2cpp_codegen_add(L_2627, L_2629)), L_2632))/((float)il2cpp_codegen_subtract(L_2635, L_2638)))), L_2639));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4776>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4776>
 		goto IL_549f;
 	}
 
 IL_5079:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4780>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4780>
 		int32_t L_2640 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_verticalMapping;
 		V_205 = L_2640;
 		int32_t L_2641 = V_205;
@@ -13116,41 +13116,41 @@ IL_5079:
 
 IL_509d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4783>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4783>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2642 = V_64;
 		int32_t L_2643 = V_186;
 		NullCheck(L_2642);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2644 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2642)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2643)))->___vertex_BL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2645 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2644->___uv2);
 		L_2645->___y = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4784>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4784>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2646 = V_64;
 		int32_t L_2647 = V_186;
 		NullCheck(L_2646);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2648 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2646)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2647)))->___vertex_TL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2649 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2648->___uv2);
 		L_2649->___y = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4785>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4785>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2650 = V_64;
 		int32_t L_2651 = V_186;
 		NullCheck(L_2650);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2652 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2650)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2651)))->___vertex_TR);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2653 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2652->___uv2);
 		L_2653->___y = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4786>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4786>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2654 = V_64;
 		int32_t L_2655 = V_186;
 		NullCheck(L_2654);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2656 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2654)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2655)))->___vertex_BR);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2657 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2656->___uv2);
 		L_2657->___y = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4787>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4787>
 		goto IL_5367;
 	}
 
 IL_5116:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4790>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4790>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2658 = V_64;
 		int32_t L_2659 = V_186;
 		NullCheck(L_2658);
@@ -13173,7 +13173,7 @@ IL_5116:
 		float L_2675 = L_2674.___y;
 		float L_2676 = V_202;
 		L_2661->___y = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2666, L_2669))/((float)il2cpp_codegen_subtract(L_2672, L_2675)))), L_2676));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4791>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4791>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2677 = V_64;
 		int32_t L_2678 = V_186;
 		NullCheck(L_2677);
@@ -13196,7 +13196,7 @@ IL_5116:
 		float L_2694 = L_2693.___y;
 		float L_2695 = V_202;
 		L_2680->___y = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2685, L_2688))/((float)il2cpp_codegen_subtract(L_2691, L_2694)))), L_2695));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4792>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4792>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2696 = V_64;
 		int32_t L_2697 = V_186;
 		NullCheck(L_2696);
@@ -13209,7 +13209,7 @@ IL_5116:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2703 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2702->___uv2);
 		float L_2704 = L_2703->___y;
 		L_2699->___y = L_2704;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4793>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4793>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2705 = V_64;
 		int32_t L_2706 = V_186;
 		NullCheck(L_2705);
@@ -13222,13 +13222,13 @@ IL_5116:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2712 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2711->___uv2);
 		float L_2713 = L_2712->___y;
 		L_2708->___y = L_2713;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4794>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4794>
 		goto IL_5367;
 	}
 
 IL_522f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4797>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4797>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2714 = V_64;
 		int32_t L_2715 = V_186;
 		NullCheck(L_2714);
@@ -13251,7 +13251,7 @@ IL_522f:
 		float L_2731 = L_2730->___y;
 		float L_2732 = V_202;
 		L_2717->___y = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2722, L_2725))/((float)il2cpp_codegen_subtract(L_2728, L_2731)))), L_2732));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4798>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4798>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2733 = V_64;
 		int32_t L_2734 = V_186;
 		NullCheck(L_2733);
@@ -13274,7 +13274,7 @@ IL_522f:
 		float L_2750 = L_2749->___y;
 		float L_2751 = V_202;
 		L_2736->___y = ((float)il2cpp_codegen_add(((float)(((float)il2cpp_codegen_subtract(L_2741, L_2744))/((float)il2cpp_codegen_subtract(L_2747, L_2750)))), L_2751));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4799>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4799>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2752 = V_64;
 		int32_t L_2753 = V_186;
 		NullCheck(L_2752);
@@ -13287,7 +13287,7 @@ IL_522f:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2759 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2758->___uv2);
 		float L_2760 = L_2759->___y;
 		L_2755->___y = L_2760;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4800>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4800>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2761 = V_64;
 		int32_t L_2762 = V_186;
 		NullCheck(L_2761);
@@ -13300,20 +13300,20 @@ IL_522f:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2768 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2767->___uv2);
 		float L_2769 = L_2768->___y;
 		L_2764->___y = L_2769;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4801>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4801>
 		goto IL_5367;
 	}
 
 IL_535d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4804>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4804>
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteralAFB91D1DF3A99213A5F62F37EB0B31E6121411C4, NULL);
 	}
 
 IL_5367:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4809>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4809>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2770 = V_64;
 		int32_t L_2771 = V_186;
 		NullCheck(L_2770);
@@ -13331,7 +13331,7 @@ IL_5367:
 		NullCheck(L_2780);
 		float L_2782 = ((L_2780)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2781)))->___aspectRatio;
 		V_203 = ((float)(((float)il2cpp_codegen_subtract((1.0f), ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_add(L_2774, L_2779)), L_2782))))/(2.0f)));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4811>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4811>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2783 = V_64;
 		int32_t L_2784 = V_186;
 		NullCheck(L_2783);
@@ -13350,7 +13350,7 @@ IL_5367:
 		float L_2795 = V_203;
 		float L_2796 = V_202;
 		L_2786->___x = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_2791, L_2794)), L_2795)), L_2796));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4812>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4812>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2797 = V_64;
 		int32_t L_2798 = V_186;
 		NullCheck(L_2797);
@@ -13363,7 +13363,7 @@ IL_5367:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2804 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2803->___uv2);
 		float L_2805 = L_2804->___x;
 		L_2800->___x = L_2805;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4813>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4813>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2806 = V_64;
 		int32_t L_2807 = V_186;
 		NullCheck(L_2806);
@@ -13382,7 +13382,7 @@ IL_5367:
 		float L_2818 = V_203;
 		float L_2819 = V_202;
 		L_2809->___x = ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_2814, L_2817)), L_2818)), L_2819));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4814>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4814>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2820 = V_64;
 		int32_t L_2821 = V_186;
 		NullCheck(L_2820);
@@ -13399,7 +13399,7 @@ IL_5367:
 
 IL_549f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4818>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4818>
 		int32_t L_2829 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_verticalMapping;
 		V_204 = L_2829;
 		int32_t L_2830 = V_204;
@@ -13429,41 +13429,41 @@ IL_549f:
 
 IL_54c3:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4821>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4821>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2831 = V_64;
 		int32_t L_2832 = V_186;
 		NullCheck(L_2831);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2833 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2831)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2832)))->___vertex_BL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2834 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2833->___uv2);
 		L_2834->___y = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4822>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4822>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2835 = V_64;
 		int32_t L_2836 = V_186;
 		NullCheck(L_2835);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2837 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2835)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2836)))->___vertex_TL);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2838 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2837->___uv2);
 		L_2838->___y = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4823>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4823>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2839 = V_64;
 		int32_t L_2840 = V_186;
 		NullCheck(L_2839);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2841 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2839)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2840)))->___vertex_TR);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2842 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2841->___uv2);
 		L_2842->___y = (1.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4824>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4824>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2843 = V_64;
 		int32_t L_2844 = V_186;
 		NullCheck(L_2843);
 		TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A* L_2845 = (TMP_Vertex_t0FD80AE2515219689310A8F619A265667B530E1A*)(&((L_2843)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2844)))->___vertex_BR);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2846 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2845->___uv2);
 		L_2846->___y = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4825>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4825>
 		goto IL_588e;
 	}
 
 IL_553c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4828>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4828>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2847 = V_64;
 		int32_t L_2848 = V_186;
 		NullCheck(L_2847);
@@ -13482,7 +13482,7 @@ IL_553c:
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2860 = V_191;
 		float L_2861 = L_2860.___descender;
 		L_2850->___y = ((float)(((float)il2cpp_codegen_subtract(L_2855, L_2857))/((float)il2cpp_codegen_subtract(L_2859, L_2861))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4829>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4829>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2862 = V_64;
 		int32_t L_2863 = V_186;
 		NullCheck(L_2862);
@@ -13501,7 +13501,7 @@ IL_553c:
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_2875 = V_191;
 		float L_2876 = L_2875.___descender;
 		L_2865->___y = ((float)(((float)il2cpp_codegen_subtract(L_2870, L_2872))/((float)il2cpp_codegen_subtract(L_2874, L_2876))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4830>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4830>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2877 = V_64;
 		int32_t L_2878 = V_186;
 		NullCheck(L_2877);
@@ -13514,7 +13514,7 @@ IL_553c:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2884 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2883->___uv2);
 		float L_2885 = L_2884->___y;
 		L_2880->___y = L_2885;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4831>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4831>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2886 = V_64;
 		int32_t L_2887 = V_186;
 		NullCheck(L_2886);
@@ -13527,13 +13527,13 @@ IL_553c:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2893 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2892->___uv2);
 		float L_2894 = L_2893->___y;
 		L_2889->___y = L_2894;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4832>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4832>
 		goto IL_588e;
 	}
 
 IL_5631:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4835>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4835>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2895 = V_64;
 		int32_t L_2896 = V_186;
 		NullCheck(L_2895);
@@ -13555,7 +13555,7 @@ IL_5631:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2911 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2910->___min);
 		float L_2912 = L_2911->___y;
 		L_2898->___y = ((float)(((float)il2cpp_codegen_subtract(L_2903, L_2906))/((float)il2cpp_codegen_subtract(L_2909, L_2912))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4836>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4836>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2913 = V_64;
 		int32_t L_2914 = V_186;
 		NullCheck(L_2913);
@@ -13577,7 +13577,7 @@ IL_5631:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2929 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2928->___min);
 		float L_2930 = L_2929->___y;
 		L_2916->___y = ((float)(((float)il2cpp_codegen_subtract(L_2921, L_2924))/((float)il2cpp_codegen_subtract(L_2927, L_2930))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4837>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4837>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2931 = V_64;
 		int32_t L_2932 = V_186;
 		NullCheck(L_2931);
@@ -13590,7 +13590,7 @@ IL_5631:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2938 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2937->___uv2);
 		float L_2939 = L_2938->___y;
 		L_2934->___y = L_2939;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4838>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4838>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2940 = V_64;
 		int32_t L_2941 = V_186;
 		NullCheck(L_2940);
@@ -13603,13 +13603,13 @@ IL_5631:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2947 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2946->___uv2);
 		float L_2948 = L_2947->___y;
 		L_2943->___y = L_2948;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4839>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4839>
 		goto IL_588e;
 	}
 
 IL_575c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4842>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4842>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2949 = V_64;
 		int32_t L_2950 = V_186;
 		NullCheck(L_2949);
@@ -13627,7 +13627,7 @@ IL_575c:
 		NullCheck(L_2959);
 		float L_2961 = ((L_2959)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2960)))->___aspectRatio;
 		V_206 = ((float)(((float)il2cpp_codegen_subtract((1.0f), ((float)(((float)il2cpp_codegen_add(L_2953, L_2958))/L_2961))))/(2.0f)));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4844>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4844>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2962 = V_64;
 		int32_t L_2963 = V_186;
 		NullCheck(L_2962);
@@ -13645,7 +13645,7 @@ IL_575c:
 		NullCheck(L_2972);
 		float L_2974 = ((L_2972)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2973)))->___aspectRatio;
 		L_2965->___y = ((float)il2cpp_codegen_add(L_2966, ((float)(L_2971/L_2974))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4845>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4845>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2975 = V_64;
 		int32_t L_2976 = V_186;
 		NullCheck(L_2975);
@@ -13663,7 +13663,7 @@ IL_575c:
 		NullCheck(L_2985);
 		float L_2987 = ((L_2985)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_2986)))->___aspectRatio;
 		L_2978->___y = ((float)il2cpp_codegen_add(L_2979, ((float)(L_2984/L_2987))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4846>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4846>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2988 = V_64;
 		int32_t L_2989 = V_186;
 		NullCheck(L_2988);
@@ -13676,7 +13676,7 @@ IL_575c:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_2995 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&L_2994->___uv2);
 		float L_2996 = L_2995->___y;
 		L_2991->___y = L_2996;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4847>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4847>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_2997 = V_64;
 		int32_t L_2998 = V_186;
 		NullCheck(L_2997);
@@ -13693,7 +13693,7 @@ IL_575c:
 
 IL_588e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4854>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4854>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3006 = V_64;
 		int32_t L_3007 = V_186;
 		NullCheck(L_3006);
@@ -13701,7 +13701,7 @@ IL_588e:
 		float L_3009 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_charWidthAdjDelta;
 		float L_3010 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterHorizontalScale;
 		V_54 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_3008, ((float)il2cpp_codegen_subtract((1.0f), L_3009)))), L_3010));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4855>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4855>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3011 = V_64;
 		int32_t L_3012 = V_186;
 		NullCheck(L_3011);
@@ -13722,7 +13722,7 @@ IL_588e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4855>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4855>
 		float L_3017 = V_54;
 		V_54 = ((float)il2cpp_codegen_multiply(L_3017, (-1.0f)));
 	}
@@ -13752,20 +13752,20 @@ IL_58df:
 
 IL_58f4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4860>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4860>
 		float L_3019 = V_54;
 		float L_3020 = V_48;
 		float L_3021;
 		L_3021 = fabsf(L_3020);
 		float L_3022 = V_50;
 		V_54 = ((float)il2cpp_codegen_multiply(L_3019, ((float)(L_3021/L_3022))));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4861>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4861>
 		goto IL_592a;
 	}
 
 IL_5905:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4863>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4863>
 		float L_3023 = V_54;
 		bool L_3024 = V_47;
 		if (L_3024)
@@ -13793,13 +13793,13 @@ IL_5912:
 IL_5919:
 	{
 		V_54 = ((float)il2cpp_codegen_multiply(G_B693_1, G_B693_0));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4864>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4864>
 		goto IL_592a;
 	}
 
 IL_591e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4866>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4866>
 		float L_3027 = V_54;
 		float L_3028 = V_48;
 		float L_3029;
@@ -13809,7 +13809,7 @@ IL_591e:
 
 IL_592a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4871>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4871>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3030 = V_64;
 		int32_t L_3031 = V_186;
 		NullCheck(L_3030);
@@ -13817,7 +13817,7 @@ IL_592a:
 		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3* L_3033 = (Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3*)(&L_3032->___uv);
 		float L_3034 = V_54;
 		L_3033->___w = L_3034;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4872>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4872>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3035 = V_64;
 		int32_t L_3036 = V_186;
 		NullCheck(L_3035);
@@ -13825,7 +13825,7 @@ IL_592a:
 		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3* L_3038 = (Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3*)(&L_3037->___uv);
 		float L_3039 = V_54;
 		L_3038->___w = L_3039;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4873>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4873>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3040 = V_64;
 		int32_t L_3041 = V_186;
 		NullCheck(L_3040);
@@ -13833,7 +13833,7 @@ IL_592a:
 		Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3* L_3043 = (Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3*)(&L_3042->___uv);
 		float L_3044 = V_54;
 		L_3043->___w = L_3044;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4874>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4874>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3045 = V_64;
 		int32_t L_3046 = V_186;
 		NullCheck(L_3045);
@@ -13845,7 +13845,7 @@ IL_592a:
 
 IL_5992:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4886>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4886>
 		int32_t L_3050 = V_186;
 		int32_t L_3051 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxVisibleCharacters;
 		if ((((int32_t)L_3050) >= ((int32_t)L_3051)))
@@ -13877,7 +13877,7 @@ IL_5992:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4888>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4888>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3057 = V_64;
 		int32_t L_3058 = V_186;
 		NullCheck(L_3057);
@@ -13889,7 +13889,7 @@ IL_5992:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3064;
 		L_3064 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3062, L_3063, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3061 = L_3064;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4889>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4889>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3065 = V_64;
 		int32_t L_3066 = V_186;
 		NullCheck(L_3065);
@@ -13901,7 +13901,7 @@ IL_5992:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3072;
 		L_3072 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3070, L_3071, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3069 = L_3072;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4890>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4890>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3073 = V_64;
 		int32_t L_3074 = V_186;
 		NullCheck(L_3073);
@@ -13913,7 +13913,7 @@ IL_5992:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3080;
 		L_3080 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3078, L_3079, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3077 = L_3080;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4891>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4891>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3081 = V_64;
 		int32_t L_3082 = V_186;
 		NullCheck(L_3081);
@@ -13930,7 +13930,7 @@ IL_5992:
 
 IL_5a5e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4893>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4893>
 		int32_t L_3089 = V_186;
 		int32_t L_3090 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxVisibleCharacters;
 		if ((((int32_t)L_3089) >= ((int32_t)L_3090)))
@@ -13973,7 +13973,7 @@ IL_5a5e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4895>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4895>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3100 = V_64;
 		int32_t L_3101 = V_186;
 		NullCheck(L_3100);
@@ -13985,7 +13985,7 @@ IL_5a5e:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3107;
 		L_3107 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3105, L_3106, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3104 = L_3107;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4896>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4896>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3108 = V_64;
 		int32_t L_3109 = V_186;
 		NullCheck(L_3108);
@@ -13997,7 +13997,7 @@ IL_5a5e:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3115;
 		L_3115 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3113, L_3114, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3112 = L_3115;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4897>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4897>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3116 = V_64;
 		int32_t L_3117 = V_186;
 		NullCheck(L_3116);
@@ -14009,7 +14009,7 @@ IL_5a5e:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3123;
 		L_3123 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3121, L_3122, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3120 = L_3123;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4898>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4898>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3124 = V_64;
 		int32_t L_3125 = V_186;
 		NullCheck(L_3124);
@@ -14026,7 +14026,7 @@ IL_5a5e:
 
 IL_5b3c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4902>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4902>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3132 = V_64;
 		int32_t L_3133 = V_186;
 		NullCheck(L_3132);
@@ -14034,7 +14034,7 @@ IL_5b3c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3135;
 		L_3135 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		L_3134->___position = L_3135;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4903>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4903>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3136 = V_64;
 		int32_t L_3137 = V_186;
 		NullCheck(L_3136);
@@ -14042,7 +14042,7 @@ IL_5b3c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3139;
 		L_3139 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		L_3138->___position = L_3139;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4904>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4904>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3140 = V_64;
 		int32_t L_3141 = V_186;
 		NullCheck(L_3140);
@@ -14050,7 +14050,7 @@ IL_5b3c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3143;
 		L_3143 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		L_3142->___position = L_3143;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4905>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4905>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3144 = V_64;
 		int32_t L_3145 = V_186;
 		NullCheck(L_3144);
@@ -14058,7 +14058,7 @@ IL_5b3c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3147;
 		L_3147 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		L_3146->___position = L_3147;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4906>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4906>
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3148 = V_64;
 		int32_t L_3149 = V_186;
 		NullCheck(L_3148);
@@ -14067,7 +14067,7 @@ IL_5b3c:
 
 IL_5bab:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4912>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4912>
 		int32_t L_3150 = V_200;
 		if (L_3150)
 		{
@@ -14075,7 +14075,7 @@ IL_5bab:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4914>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4914>
 		int32_t L_3151 = V_186;
 		VirtualActionInvoker1< int32_t >::Invoke(122, __this, L_3151);
 		goto IL_5bc6;
@@ -14083,7 +14083,7 @@ IL_5bab:
 
 IL_5bb9:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4916>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4916>
 		int32_t L_3152 = V_200;
 		if ((!(((uint32_t)L_3152) == ((uint32_t)1))))
 		{
@@ -14091,14 +14091,14 @@ IL_5bb9:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4918>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4918>
 		int32_t L_3153 = V_186;
 		VirtualActionInvoker1< int32_t >::Invoke(124, __this, L_3153);
 	}
 
 IL_5bc6:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4924>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4924>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3154 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3154);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3155 = L_3154->___characterInfo;
@@ -14111,7 +14111,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3161;
 		L_3161 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3159, L_3160, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3158 = L_3161;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4925>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4925>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3162 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3162);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3163 = L_3162->___characterInfo;
@@ -14124,7 +14124,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3169;
 		L_3169 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3167, L_3168, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3166 = L_3169;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4926>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4926>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3170 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3170);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3171 = L_3170->___characterInfo;
@@ -14137,7 +14137,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3177;
 		L_3177 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3175, L_3176, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3174 = L_3177;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4927>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4927>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3178 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3178);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3179 = L_3178->___characterInfo;
@@ -14150,7 +14150,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3185;
 		L_3185 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_3183, L_3184, NULL);
 		*(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2*)L_3182 = L_3185;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4929>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4929>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3186 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3186);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3187 = L_3186->___characterInfo;
@@ -14162,7 +14162,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3192 = V_39;
 		float L_3193 = L_3192.___x;
 		*((float*)L_3190) = (float)((float)il2cpp_codegen_add(L_3191, L_3193));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4930>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4930>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3194 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3194);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3195 = L_3194->___characterInfo;
@@ -14174,7 +14174,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3200 = V_39;
 		float L_3201 = L_3200.___x;
 		*((float*)L_3198) = (float)((float)il2cpp_codegen_add(L_3199, L_3201));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4932>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4932>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3202 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3202);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3203 = L_3202->___characterInfo;
@@ -14186,7 +14186,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3208 = V_39;
 		float L_3209 = L_3208.___y;
 		*((float*)L_3206) = (float)((float)il2cpp_codegen_add(L_3207, L_3209));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4933>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4933>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3210 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3210);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3211 = L_3210->___characterInfo;
@@ -14198,7 +14198,7 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3216 = V_39;
 		float L_3217 = L_3216.___y;
 		*((float*)L_3214) = (float)((float)il2cpp_codegen_add(L_3215, L_3217));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4934>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4934>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3218 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3218);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3219 = L_3218->___characterInfo;
@@ -14210,9 +14210,9 @@ IL_5bc6:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3224 = V_39;
 		float L_3225 = L_3224.___y;
 		*((float*)L_3222) = (float)((float)il2cpp_codegen_add(L_3223, L_3225));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4937>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4937>
 		bool L_3226 = V_193;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4945>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4945>
 		int32_t L_3227 = V_190;
 		int32_t L_3228 = V_42;
 		if ((!(((uint32_t)L_3227) == ((uint32_t)L_3228))))
@@ -14231,7 +14231,7 @@ IL_5bc6:
 
 IL_5d2c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4948>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4948>
 		int32_t L_3231 = V_190;
 		int32_t L_3232 = V_42;
 		if ((((int32_t)L_3231) == ((int32_t)L_3232)))
@@ -14240,7 +14240,7 @@ IL_5d2c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4950>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4950>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3233 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3233);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3234 = L_3233->___lineInfo;
@@ -14252,7 +14252,7 @@ IL_5d2c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3239 = V_39;
 		float L_3240 = L_3239.___y;
 		*((float*)L_3237) = (float)((float)il2cpp_codegen_add(L_3238, L_3240));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4951>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4951>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3241 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3241);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3242 = L_3241->___lineInfo;
@@ -14264,7 +14264,7 @@ IL_5d2c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3247 = V_39;
 		float L_3248 = L_3247.___y;
 		*((float*)L_3245) = (float)((float)il2cpp_codegen_add(L_3246, L_3248));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4952>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4952>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3249 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3249);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3250 = L_3249->___lineInfo;
@@ -14276,7 +14276,7 @@ IL_5d2c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3255 = V_39;
 		float L_3256 = L_3255.___y;
 		*((float*)L_3253) = (float)((float)il2cpp_codegen_add(L_3254, L_3256));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4954>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4954>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3257 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3257);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3258 = L_3257->___lineInfo;
@@ -14288,7 +14288,7 @@ IL_5d2c:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3263 = V_39;
 		float L_3264 = L_3263.___x;
 		*((float*)L_3261) = (float)((float)il2cpp_codegen_add(L_3262, L_3264));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4956>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4956>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3265 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3265);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3266 = L_3265->___lineInfo;
@@ -14317,7 +14317,7 @@ IL_5d2c:
 		memset((&L_3281), 0, sizeof(L_3281));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_3281), L_3276, L_3280, NULL);
 		L_3268->___min = L_3281;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4957>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4957>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3282 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3282);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3283 = L_3282->___lineInfo;
@@ -14350,7 +14350,7 @@ IL_5d2c:
 
 IL_5e8f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4961>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4961>
 		int32_t L_3299 = V_186;
 		int32_t L_3300 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		if ((!(((uint32_t)L_3299) == ((uint32_t)((int32_t)il2cpp_codegen_subtract(L_3300, 1))))))
@@ -14359,7 +14359,7 @@ IL_5e8f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4963>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4963>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3301 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3301);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3302 = L_3301->___lineInfo;
@@ -14371,7 +14371,7 @@ IL_5e8f:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3307 = V_39;
 		float L_3308 = L_3307.___y;
 		*((float*)L_3305) = (float)((float)il2cpp_codegen_add(L_3306, L_3308));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4964>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4964>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3309 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3309);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3310 = L_3309->___lineInfo;
@@ -14383,7 +14383,7 @@ IL_5e8f:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3315 = V_39;
 		float L_3316 = L_3315.___y;
 		*((float*)L_3313) = (float)((float)il2cpp_codegen_add(L_3314, L_3316));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4965>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4965>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3317 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3317);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3318 = L_3317->___lineInfo;
@@ -14395,7 +14395,7 @@ IL_5e8f:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3323 = V_39;
 		float L_3324 = L_3323.___y;
 		*((float*)L_3321) = (float)((float)il2cpp_codegen_add(L_3322, L_3324));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4967>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4967>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3325 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3325);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3326 = L_3325->___lineInfo;
@@ -14407,7 +14407,7 @@ IL_5e8f:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3331 = V_39;
 		float L_3332 = L_3331.___x;
 		*((float*)L_3329) = (float)((float)il2cpp_codegen_add(L_3330, L_3332));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4969>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4969>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3333 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3333);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3334 = L_3333->___lineInfo;
@@ -14436,7 +14436,7 @@ IL_5e8f:
 		memset((&L_3349), 0, sizeof(L_3349));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_3349), L_3344, L_3348, NULL);
 		L_3336->___min = L_3349;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4970>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4970>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3350 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3350);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3351 = L_3350->___lineInfo;
@@ -14469,7 +14469,7 @@ IL_5e8f:
 
 IL_5ff8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4978>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4978>
 		Il2CppChar L_3367 = V_188;
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.char_class);
 		bool L_3368;
@@ -14510,7 +14510,7 @@ IL_5ff8:
 
 IL_6025:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4980>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4980>
 		bool L_3373 = V_44;
 		if (L_3373)
 		{
@@ -14518,16 +14518,16 @@ IL_6025:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4982>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4982>
 		V_44 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4983>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4983>
 		int32_t L_3374 = V_186;
 		V_45 = L_3374;
 	}
 
 IL_6030:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4987>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4987>
 		bool L_3375 = V_44;
 		if (!L_3375)
 		{
@@ -14543,18 +14543,18 @@ IL_6030:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4989>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4989>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3378 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3378);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3379 = L_3378->___wordInfo;
 		NullCheck(L_3379);
 		V_207 = ((int32_t)(((RuntimeArray*)L_3379)->max_length));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4990>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4990>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3380 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3380);
 		int32_t L_3381 = L_3380->___wordCount;
 		V_208 = L_3381;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4992>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4992>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3382 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3382);
 		int32_t L_3383 = L_3382->___wordCount;
@@ -14565,7 +14565,7 @@ IL_6030:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4993>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4993>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3385 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3385);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC** L_3386 = (TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC**)(&L_3385->___wordInfo);
@@ -14576,10 +14576,10 @@ IL_6030:
 
 IL_6087:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4995>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4995>
 		int32_t L_3388 = V_186;
 		V_46 = L_3388;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4997>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4997>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3389 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3389);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3390 = L_3389->___wordInfo;
@@ -14587,7 +14587,7 @@ IL_6087:
 		NullCheck(L_3390);
 		int32_t L_3392 = V_45;
 		((L_3390)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3391)))->___firstCharacterIndex = L_3392;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4998>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4998>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3393 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3393);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3394 = L_3393->___wordInfo;
@@ -14595,7 +14595,7 @@ IL_6087:
 		NullCheck(L_3394);
 		int32_t L_3396 = V_46;
 		((L_3394)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3395)))->___lastCharacterIndex = L_3396;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4999>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4999>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3397 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3397);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3398 = L_3397->___wordInfo;
@@ -14604,7 +14604,7 @@ IL_6087:
 		int32_t L_3400 = V_46;
 		int32_t L_3401 = V_45;
 		((L_3398)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3399)))->___characterCount = ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_subtract(L_3400, L_3401)), 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5000>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5000>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3402 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3402);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3403 = L_3402->___wordInfo;
@@ -14612,17 +14612,17 @@ IL_6087:
 		NullCheck(L_3403);
 		((L_3403)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3404)))->___textComponent = __this;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_3403)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3404)))->___textComponent), (void*)__this);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5002>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5002>
 		int32_t L_3405 = V_40;
 		V_40 = ((int32_t)il2cpp_codegen_add(L_3405, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5003>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5003>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3406 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3407 = L_3406;
 		NullCheck(L_3407);
 		int32_t L_3408 = L_3407->___wordCount;
 		NullCheck(L_3407);
 		L_3407->___wordCount = ((int32_t)il2cpp_codegen_add(L_3408, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5004>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5004>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3409 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3409);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3410 = L_3409->___lineInfo;
@@ -14637,7 +14637,7 @@ IL_6087:
 
 IL_612d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5007>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5007>
 		bool L_3415 = V_44;
 		if (L_3415)
 		{
@@ -14680,7 +14680,7 @@ IL_612d:
 
 IL_615f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5009>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5009>
 		int32_t L_3423 = V_186;
 		if ((((int32_t)L_3423) <= ((int32_t)0)))
 		{
@@ -14749,7 +14749,7 @@ IL_6187:
 
 IL_61b8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5015>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5015>
 		int32_t L_3438 = V_186;
 		int32_t L_3439 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		if ((!(((uint32_t)L_3438) == ((uint32_t)((int32_t)il2cpp_codegen_subtract(L_3439, 1))))))
@@ -14784,20 +14784,20 @@ IL_61d3:
 IL_61d5:
 	{
 		V_46 = G_B746_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5016>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5016>
 		V_44 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5018>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5018>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3444 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3444);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3445 = L_3444->___wordInfo;
 		NullCheck(L_3445);
 		V_209 = ((int32_t)(((RuntimeArray*)L_3445)->max_length));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5019>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5019>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3446 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3446);
 		int32_t L_3447 = L_3446->___wordCount;
 		V_210 = L_3447;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5021>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5021>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3448 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3448);
 		int32_t L_3449 = L_3448->___wordCount;
@@ -14808,7 +14808,7 @@ IL_61d5:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5022>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5022>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3451 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3451);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC** L_3452 = (TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC**)(&L_3451->___wordInfo);
@@ -14819,7 +14819,7 @@ IL_61d5:
 
 IL_621b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5024>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5024>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3454 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3454);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3455 = L_3454->___wordInfo;
@@ -14827,7 +14827,7 @@ IL_621b:
 		NullCheck(L_3455);
 		int32_t L_3457 = V_45;
 		((L_3455)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3456)))->___firstCharacterIndex = L_3457;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5025>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5025>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3458 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3458);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3459 = L_3458->___wordInfo;
@@ -14835,7 +14835,7 @@ IL_621b:
 		NullCheck(L_3459);
 		int32_t L_3461 = V_46;
 		((L_3459)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3460)))->___lastCharacterIndex = L_3461;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5026>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5026>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3462 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3462);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3463 = L_3462->___wordInfo;
@@ -14844,7 +14844,7 @@ IL_621b:
 		int32_t L_3465 = V_46;
 		int32_t L_3466 = V_45;
 		((L_3463)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3464)))->___characterCount = ((int32_t)il2cpp_codegen_add(((int32_t)il2cpp_codegen_subtract(L_3465, L_3466)), 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5027>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5027>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3467 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3467);
 		TMP_WordInfoU5BU5D_tD1759E5A84DCCCD42B718D79E953E72A432BB4DC* L_3468 = L_3467->___wordInfo;
@@ -14852,17 +14852,17 @@ IL_621b:
 		NullCheck(L_3468);
 		((L_3468)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3469)))->___textComponent = __this;
 		Il2CppCodeGenWriteBarrier((void**)(&((L_3468)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3469)))->___textComponent), (void*)__this);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5029>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5029>
 		int32_t L_3470 = V_40;
 		V_40 = ((int32_t)il2cpp_codegen_add(L_3470, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5030>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5030>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3471 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3472 = L_3471;
 		NullCheck(L_3472);
 		int32_t L_3473 = L_3472->___wordCount;
 		NullCheck(L_3472);
 		L_3472->___wordCount = ((int32_t)il2cpp_codegen_add(L_3473, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5031>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5031>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3474 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3474);
 		TMP_LineInfoU5BU5D_tE485ECF6A7A96441C72B53D75E7A5A5461A2CA0E* L_3475 = L_3474->___lineInfo;
@@ -14876,23 +14876,23 @@ IL_621b:
 
 IL_62b8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5040>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5040>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3480 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3480);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3481 = L_3480->___characterInfo;
 		int32_t L_3482 = V_186;
 		NullCheck(L_3481);
 		int32_t L_3483 = ((L_3481)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3482)))->___style;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5041>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5041>
 		if (!((((int32_t)((int32_t)((int32_t)L_3483&4))) == ((int32_t)4))? 1 : 0))
 		{
 			goto IL_671b;
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5043>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5043>
 		V_211 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5044>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5044>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3484 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3484);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3485 = L_3484->___characterInfo;
@@ -14900,7 +14900,7 @@ IL_62b8:
 		NullCheck(L_3485);
 		int32_t L_3487 = ((L_3485)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3486)))->___pageNumber;
 		V_212 = L_3487;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5045>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5045>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3488 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3488);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3489 = L_3488->___characterInfo;
@@ -14908,7 +14908,7 @@ IL_62b8:
 		NullCheck(L_3489);
 		int32_t L_3491 = V_35;
 		((L_3489)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3490)))->___underlineVertexIndex = L_3491;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5047>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5047>
 		int32_t L_3492 = V_186;
 		int32_t L_3493 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxVisibleCharacters;
 		if ((((int32_t)L_3492) > ((int32_t)L_3493)))
@@ -14942,13 +14942,13 @@ IL_62b8:
 
 IL_6337:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5048>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5048>
 		V_211 = (bool)0;
 	}
 
 IL_633a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5051>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5051>
 		bool L_3499 = V_189;
 		if (L_3499)
 		{
@@ -14963,7 +14963,7 @@ IL_633a:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5053>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5053>
 		float L_3501 = V_58;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3502 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3502);
@@ -14974,7 +14974,7 @@ IL_633a:
 		float L_3506;
 		L_3506 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_3501, L_3505, NULL);
 		V_58 = L_3506;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5054>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5054>
 		float L_3507 = V_55;
 		float L_3508 = V_54;
 		float L_3509;
@@ -14982,7 +14982,7 @@ IL_633a:
 		float L_3510;
 		L_3510 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_3507, L_3509, NULL);
 		V_55 = L_3510;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5055>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5055>
 		int32_t L_3511 = V_212;
 		int32_t L_3512 = V_60;
 		if ((((int32_t)L_3511) == ((int32_t)L_3512)))
@@ -15021,14 +15021,14 @@ IL_6386:
 		float L_3523;
 		L_3523 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(G_B760_0, ((float)il2cpp_codegen_add(L_3518, ((float)il2cpp_codegen_multiply(L_3521, L_3522)))), NULL);
 		V_59 = L_3523;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5056>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5056>
 		int32_t L_3524 = V_212;
 		V_60 = L_3524;
 	}
 
 IL_63bc:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5059>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5059>
 		bool L_3525 = V_8;
 		if (L_3525)
 		{
@@ -15073,7 +15073,7 @@ IL_63bc:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5061>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5061>
 		int32_t L_3533 = V_186;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_3534 = V_191;
 		int32_t L_3535 = L_3534.___lastVisibleCharacterIndex;
@@ -15095,9 +15095,9 @@ IL_63bc:
 
 IL_6407:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5065>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5065>
 		V_8 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5066>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5066>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3538 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3538);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3539 = L_3538->___characterInfo;
@@ -15105,7 +15105,7 @@ IL_6407:
 		NullCheck(L_3539);
 		float L_3541 = ((L_3539)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3540)))->___scale;
 		V_56 = L_3541;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5067>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5067>
 		float L_3542 = V_58;
 		if ((!(((float)L_3542) == ((float)(0.0f)))))
 		{
@@ -15113,17 +15113,17 @@ IL_6407:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5069>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5069>
 		float L_3543 = V_56;
 		V_58 = L_3543;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5070>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5070>
 		float L_3544 = V_54;
 		V_55 = L_3544;
 	}
 
 IL_6434:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5072>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5072>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3545 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3545);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3546 = L_3545->___characterInfo;
@@ -15133,7 +15133,7 @@ IL_6434:
 		float L_3549 = L_3548->___x;
 		float L_3550 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_9), L_3549, L_3550, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5073>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5073>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3551 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3551);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3552 = L_3551->___characterInfo;
@@ -15145,7 +15145,7 @@ IL_6434:
 
 IL_6477:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5078>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5078>
 		bool L_3555 = V_8;
 		if (!L_3555)
 		{
@@ -15160,9 +15160,9 @@ IL_6477:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5080>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5080>
 		V_8 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5081>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5081>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3557 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3557);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3558 = L_3557->___characterInfo;
@@ -15172,7 +15172,7 @@ IL_6477:
 		float L_3561 = L_3560->___x;
 		float L_3562 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_10), L_3561, L_3562, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5082>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5082>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3563 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3563);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3564 = L_3563->___characterInfo;
@@ -15180,7 +15180,7 @@ IL_6477:
 		NullCheck(L_3564);
 		float L_3566 = ((L_3564)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3565)))->___scale;
 		V_57 = L_3566;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5084>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5084>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3567 = V_9;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3568 = V_10;
 		float L_3569 = V_56;
@@ -15189,11 +15189,11 @@ IL_6477:
 		float L_3572 = V_55;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3573 = V_51;
 		VirtualActionInvoker8< Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, int32_t*, float, float, float, float, Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(125, __this, L_3567, L_3568, (&V_35), L_3569, L_3570, L_3571, L_3572, L_3573);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5085>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5085>
 		V_58 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5086>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5086>
 		V_55 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5087>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5087>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_3574 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		V_59 = L_3574;
@@ -15202,7 +15202,7 @@ IL_6477:
 
 IL_64fa:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5089>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5089>
 		bool L_3575 = V_8;
 		if (!L_3575)
 		{
@@ -15230,7 +15230,7 @@ IL_64fa:
 
 IL_651a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5092>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5092>
 		bool L_3582 = V_189;
 		if (L_3582)
 		{
@@ -15247,11 +15247,11 @@ IL_651a:
 
 IL_6527:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5094>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5094>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_3584 = V_191;
 		int32_t L_3585 = L_3584.___lastVisibleCharacterIndex;
 		V_213 = L_3585;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5095>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5095>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3586 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3586);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3587 = L_3586->___characterInfo;
@@ -15261,7 +15261,7 @@ IL_6527:
 		float L_3590 = L_3589->___x;
 		float L_3591 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_10), L_3590, L_3591, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5096>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5096>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3592 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3592);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3593 = L_3592->___characterInfo;
@@ -15274,7 +15274,7 @@ IL_6527:
 
 IL_6575:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5100>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5100>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3596 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3596);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3597 = L_3596->___characterInfo;
@@ -15284,7 +15284,7 @@ IL_6575:
 		float L_3600 = L_3599->___x;
 		float L_3601 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_10), L_3600, L_3601, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5101>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5101>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3602 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3602);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3603 = L_3602->___characterInfo;
@@ -15296,9 +15296,9 @@ IL_6575:
 
 IL_65b8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5104>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5104>
 		V_8 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5105>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5105>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3606 = V_9;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3607 = V_10;
 		float L_3608 = V_56;
@@ -15307,11 +15307,11 @@ IL_65b8:
 		float L_3611 = V_55;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3612 = V_51;
 		VirtualActionInvoker8< Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, int32_t*, float, float, float, float, Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(125, __this, L_3606, L_3607, (&V_35), L_3608, L_3609, L_3610, L_3611, L_3612);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5106>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5106>
 		V_58 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5107>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5107>
 		V_55 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5108>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5108>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_3613 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		V_59 = L_3613;
@@ -15320,7 +15320,7 @@ IL_65b8:
 
 IL_65eb:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5110>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5110>
 		bool L_3614 = V_8;
 		if (!L_3614)
 		{
@@ -15335,9 +15335,9 @@ IL_65eb:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5112>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5112>
 		V_8 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5113>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5113>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3616 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3616);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3617 = L_3616->___characterInfo;
@@ -15347,7 +15347,7 @@ IL_65eb:
 		float L_3620 = L_3619->___x;
 		float L_3621 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_10), L_3620, L_3621, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5114>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5114>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3622 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3622);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3623 = L_3622->___characterInfo;
@@ -15355,7 +15355,7 @@ IL_65eb:
 		NullCheck(L_3623);
 		float L_3625 = ((L_3623)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_subtract(L_3624, 1)))))->___scale;
 		V_57 = L_3625;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5116>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5116>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3626 = V_9;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3627 = V_10;
 		float L_3628 = V_56;
@@ -15364,11 +15364,11 @@ IL_65eb:
 		float L_3631 = V_55;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3632 = V_51;
 		VirtualActionInvoker8< Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, int32_t*, float, float, float, float, Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(125, __this, L_3626, L_3627, (&V_35), L_3628, L_3629, L_3630, L_3631, L_3632);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5117>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5117>
 		V_58 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5118>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5118>
 		V_55 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5119>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5119>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_3633 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		V_59 = L_3633;
@@ -15377,7 +15377,7 @@ IL_65eb:
 
 IL_666d:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5121>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5121>
 		bool L_3634 = V_8;
 		if (!L_3634)
 		{
@@ -15408,9 +15408,9 @@ IL_666d:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5124>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5124>
 		V_8 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5125>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5125>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3643 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3643);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3644 = L_3643->___characterInfo;
@@ -15420,7 +15420,7 @@ IL_666d:
 		float L_3647 = L_3646->___x;
 		float L_3648 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_10), L_3647, L_3648, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5126>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5126>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3649 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3649);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3650 = L_3649->___characterInfo;
@@ -15428,7 +15428,7 @@ IL_666d:
 		NullCheck(L_3650);
 		float L_3652 = ((L_3650)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3651)))->___scale;
 		V_57 = L_3652;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5128>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5128>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3653 = V_9;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3654 = V_10;
 		float L_3655 = V_56;
@@ -15437,11 +15437,11 @@ IL_666d:
 		float L_3658 = V_55;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3659 = V_51;
 		VirtualActionInvoker8< Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, int32_t*, float, float, float, float, Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(125, __this, L_3653, L_3654, (&V_35), L_3655, L_3656, L_3657, L_3658, L_3659);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5129>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5129>
 		V_58 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5130>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5130>
 		V_55 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5131>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5131>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_3660 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		V_59 = L_3660;
@@ -15450,7 +15450,7 @@ IL_666d:
 
 IL_671b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5137>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5137>
 		bool L_3661 = V_8;
 		if (!L_3661)
 		{
@@ -15458,9 +15458,9 @@ IL_671b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5139>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5139>
 		V_8 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5140>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5140>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3662 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3662);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3663 = L_3662->___characterInfo;
@@ -15470,7 +15470,7 @@ IL_671b:
 		float L_3666 = L_3665->___x;
 		float L_3667 = V_59;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_10), L_3666, L_3667, (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5141>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5141>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3668 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3668);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3669 = L_3668->___characterInfo;
@@ -15478,7 +15478,7 @@ IL_671b:
 		NullCheck(L_3669);
 		float L_3671 = ((L_3669)->GetAddressAt(static_cast<il2cpp_array_size_t>(((int32_t)il2cpp_codegen_subtract(L_3670, 1)))))->___scale;
 		V_57 = L_3671;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5143>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5143>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3672 = V_9;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3673 = V_10;
 		float L_3674 = V_56;
@@ -15487,11 +15487,11 @@ IL_671b:
 		float L_3677 = V_55;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3678 = V_51;
 		VirtualActionInvoker8< Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, int32_t*, float, float, float, float, Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(125, __this, L_3672, L_3673, (&V_35), L_3674, L_3675, L_3676, L_3677, L_3678);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5144>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5144>
 		V_58 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5145>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5145>
 		V_55 = (0.0f);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5146>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5146>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		float L_3679 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveFloat;
 		V_59 = L_3679;
@@ -15499,30 +15499,30 @@ IL_671b:
 
 IL_6794:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5155>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5155>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3680 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3680);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3681 = L_3680->___characterInfo;
 		int32_t L_3682 = V_186;
 		NullCheck(L_3681);
 		int32_t L_3683 = ((L_3681)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3682)))->___style;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5156>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5156>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_3684 = V_187;
 		NullCheck(L_3684);
 		FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756* L_3685 = (FaceInfo_t12F0319E555A62CBA1D9E51A16C7963393932756*)(&((TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969*)L_3684)->___m_FaceInfo);
 		float L_3686;
 		L_3686 = FaceInfo_get_strikethroughOffset_m7997E4A1512FE358331B3A6543C62C92A0AA5CA5(L_3685, NULL);
 		V_194 = L_3686;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5158>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5158>
 		if (!((((int32_t)((int32_t)((int32_t)L_3683&((int32_t)64)))) == ((int32_t)((int32_t)64)))? 1 : 0))
 		{
 			goto IL_6c7e;
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5160>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5160>
 		V_214 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5161>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5161>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3687 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3687);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3688 = L_3687->___characterInfo;
@@ -15530,7 +15530,7 @@ IL_6794:
 		NullCheck(L_3688);
 		int32_t L_3690 = V_35;
 		((L_3688)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3689)))->___strikethroughVertexIndex = L_3690;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5163>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5163>
 		int32_t L_3691 = V_186;
 		int32_t L_3692 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxVisibleCharacters;
 		if ((((int32_t)L_3691) > ((int32_t)L_3692)))
@@ -15569,13 +15569,13 @@ IL_6794:
 
 IL_681f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5164>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5164>
 		V_214 = (bool)0;
 	}
 
 IL_6822:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5166>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5166>
 		bool L_3701 = V_11;
 		bool L_3702 = V_214;
 		if (!((int32_t)(((((int32_t)L_3701) == ((int32_t)0))? 1 : 0)&(int32_t)L_3702)))
@@ -15614,7 +15614,7 @@ IL_6822:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5168>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5168>
 		int32_t L_3709 = V_186;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_3710 = V_191;
 		int32_t L_3711 = L_3710.___lastVisibleCharacterIndex;
@@ -15636,9 +15636,9 @@ IL_6822:
 
 IL_686f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5172>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5172>
 		V_11 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5173>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5173>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3714 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3714);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3715 = L_3714->___characterInfo;
@@ -15646,7 +15646,7 @@ IL_686f:
 		NullCheck(L_3715);
 		float L_3717 = ((L_3715)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3716)))->___pointSize;
 		V_61 = L_3717;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5174>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5174>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3718 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3718);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3719 = L_3718->___characterInfo;
@@ -15654,7 +15654,7 @@ IL_686f:
 		NullCheck(L_3719);
 		float L_3721 = ((L_3719)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3720)))->___scale;
 		V_62 = L_3721;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5175>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5175>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3722 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3722);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3723 = L_3722->___characterInfo;
@@ -15671,7 +15671,7 @@ IL_686f:
 		float L_3731 = V_194;
 		float L_3732 = V_62;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_12), L_3726, ((float)il2cpp_codegen_add(L_3730, ((float)il2cpp_codegen_multiply(L_3731, L_3732)))), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5176>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5176>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3733 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3733);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3734 = L_3733->___characterInfo;
@@ -15679,7 +15679,7 @@ IL_686f:
 		NullCheck(L_3734);
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3736 = ((L_3734)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3735)))->___strikethroughColor;
 		V_52 = L_3736;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5177>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5177>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3737 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3737);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3738 = L_3737->___characterInfo;
@@ -15691,7 +15691,7 @@ IL_686f:
 
 IL_691b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5183>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5183>
 		bool L_3741 = V_11;
 		if (!L_3741)
 		{
@@ -15706,9 +15706,9 @@ IL_691b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5185>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5185>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5186>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5186>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3743 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3743);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3744 = L_3743->___characterInfo;
@@ -15725,7 +15725,7 @@ IL_691b:
 		float L_3752 = V_194;
 		float L_3753 = V_62;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_13), L_3747, ((float)il2cpp_codegen_add(L_3751, ((float)il2cpp_codegen_multiply(L_3752, L_3753)))), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5188>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5188>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3754 = V_12;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3755 = V_13;
 		float L_3756 = V_62;
@@ -15739,7 +15739,7 @@ IL_691b:
 
 IL_698b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5190>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5190>
 		bool L_3761 = V_11;
 		if (!L_3761)
 		{
@@ -15756,7 +15756,7 @@ IL_698b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5193>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5193>
 		bool L_3765 = V_189;
 		if (L_3765)
 		{
@@ -15773,11 +15773,11 @@ IL_698b:
 
 IL_69ad:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5195>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5195>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_3767 = V_191;
 		int32_t L_3768 = L_3767.___lastVisibleCharacterIndex;
 		V_215 = L_3768;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5196>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5196>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3769 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3769);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3770 = L_3769->___characterInfo;
@@ -15799,7 +15799,7 @@ IL_69ad:
 
 IL_69fd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5201>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5201>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3780 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3780);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3781 = L_3780->___characterInfo;
@@ -15820,9 +15820,9 @@ IL_69fd:
 
 IL_6a42:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5204>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5204>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5205>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5205>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3791 = V_12;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3792 = V_13;
 		float L_3793 = V_62;
@@ -15836,7 +15836,7 @@ IL_6a42:
 
 IL_6a60:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5207>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5207>
 		bool L_3798 = V_11;
 		if (!L_3798)
 		{
@@ -15885,13 +15885,13 @@ IL_6a60:
 
 IL_6abe:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5210>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5210>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5212>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5212>
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_3814 = V_191;
 		int32_t L_3815 = L_3814.___lastVisibleCharacterIndex;
 		V_216 = L_3815;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5213>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5213>
 		int32_t L_3816 = V_186;
 		int32_t L_3817 = V_216;
 		if ((((int32_t)L_3816) <= ((int32_t)L_3817)))
@@ -15900,7 +15900,7 @@ IL_6abe:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5214>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5214>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3818 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3818);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3819 = L_3818->___characterInfo;
@@ -15922,7 +15922,7 @@ IL_6abe:
 
 IL_6b17:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5216>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5216>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3829 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3829);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3830 = L_3829->___characterInfo;
@@ -15943,7 +15943,7 @@ IL_6b17:
 
 IL_6b5c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5218>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5218>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3840 = V_12;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3841 = V_13;
 		float L_3842 = V_62;
@@ -15957,7 +15957,7 @@ IL_6b5c:
 
 IL_6b77:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5221>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5221>
 		bool L_3847 = V_11;
 		if (!L_3847)
 		{
@@ -15990,9 +15990,9 @@ IL_6b77:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5224>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5224>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5225>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5225>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3856 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3856);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3857 = L_3856->___characterInfo;
@@ -16009,7 +16009,7 @@ IL_6b77:
 		float L_3865 = V_194;
 		float L_3866 = V_62;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_13), L_3860, ((float)il2cpp_codegen_add(L_3864, ((float)il2cpp_codegen_multiply(L_3865, L_3866)))), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5227>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5227>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3867 = V_12;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3868 = V_13;
 		float L_3869 = V_62;
@@ -16023,7 +16023,7 @@ IL_6b77:
 
 IL_6c0c:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5229>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5229>
 		bool L_3874 = V_11;
 		if (!L_3874)
 		{
@@ -16038,9 +16038,9 @@ IL_6c0c:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5232>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5232>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5233>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5233>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3876 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3876);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3877 = L_3876->___characterInfo;
@@ -16057,7 +16057,7 @@ IL_6c0c:
 		float L_3885 = V_194;
 		float L_3886 = V_62;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_13), L_3880, ((float)il2cpp_codegen_add(L_3884, ((float)il2cpp_codegen_multiply(L_3885, L_3886)))), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5235>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5235>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3887 = V_12;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3888 = V_13;
 		float L_3889 = V_62;
@@ -16071,7 +16071,7 @@ IL_6c0c:
 
 IL_6c7e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5241>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5241>
 		bool L_3894 = V_11;
 		if (!L_3894)
 		{
@@ -16079,9 +16079,9 @@ IL_6c7e:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5243>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5243>
 		V_11 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5244>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5244>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3895 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3895);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3896 = L_3895->___characterInfo;
@@ -16098,7 +16098,7 @@ IL_6c7e:
 		float L_3904 = V_194;
 		float L_3905 = V_62;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_13), L_3899, ((float)il2cpp_codegen_add(L_3903, ((float)il2cpp_codegen_multiply(L_3904, L_3905)))), (0.0f), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5246>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5246>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3906 = V_12;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3907 = V_13;
 		float L_3908 = V_62;
@@ -16111,23 +16111,23 @@ IL_6c7e:
 
 IL_6ce4:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5254>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5254>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3913 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3913);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3914 = L_3913->___characterInfo;
 		int32_t L_3915 = V_186;
 		NullCheck(L_3914);
 		int32_t L_3916 = ((L_3914)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3915)))->___style;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5255>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5255>
 		if (!((((int32_t)((int32_t)((int32_t)L_3916&((int32_t)512)))) == ((int32_t)((int32_t)512)))? 1 : 0))
 		{
 			goto IL_70b7;
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5257>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5257>
 		V_217 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5258>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5258>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3917 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3917);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3918 = L_3917->___characterInfo;
@@ -16135,7 +16135,7 @@ IL_6ce4:
 		NullCheck(L_3918);
 		int32_t L_3920 = ((L_3918)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_3919)))->___pageNumber;
 		V_218 = L_3920;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5260>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5260>
 		int32_t L_3921 = V_186;
 		int32_t L_3922 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_maxVisibleCharacters;
 		if ((((int32_t)L_3921) > ((int32_t)L_3922)))
@@ -16169,13 +16169,13 @@ IL_6ce4:
 
 IL_6d52:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5261>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5261>
 		V_217 = (bool)0;
 	}
 
 IL_6d55:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5263>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5263>
 		bool L_3928 = V_14;
 		if (L_3928)
 		{
@@ -16220,7 +16220,7 @@ IL_6d55:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5265>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5265>
 		int32_t L_3936 = V_186;
 		TMP_LineInfo_tB75C1965B58DB7B3A046C8CA55AD6AB92B6B17B3 L_3937 = V_191;
 		int32_t L_3938 = L_3937.___lastVisibleCharacterIndex;
@@ -16242,20 +16242,20 @@ IL_6d55:
 
 IL_6d8e:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5269>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5269>
 		V_14 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5270>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5270>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_3941 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargePositiveVector2;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3942;
 		L_3942 = Vector2_op_Implicit_m6D9CABB2C791A192867D7A4559D132BE86DD3EB7_inline(L_3941, NULL);
 		V_15 = L_3942;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5271>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5271>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_3943 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_il2cpp_TypeInfo_var))->___k_LargeNegativeVector2;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3944;
 		L_3944 = Vector2_op_Implicit_m6D9CABB2C791A192867D7A4559D132BE86DD3EB7_inline(L_3943, NULL);
 		V_16 = L_3944;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5272>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5272>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3945 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3945);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3946 = L_3945->___characterInfo;
@@ -16267,7 +16267,7 @@ IL_6d8e:
 
 IL_6dc2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5276>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5276>
 		bool L_3949 = V_14;
 		if (!L_3949)
 		{
@@ -16275,7 +16275,7 @@ IL_6dc2:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5278>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5278>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_3950 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_3950);
 		TMP_CharacterInfoU5BU5D_t297D56FCF66DAA99D8FEA7C30F9F3926902C5B99* L_3951 = L_3950->___characterInfo;
@@ -16284,13 +16284,13 @@ IL_6dc2:
 		int32_t L_3953 = L_3952;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_3954 = (L_3951)->GetAt(static_cast<il2cpp_array_size_t>(L_3953));
 		V_219 = L_3954;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5279>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5279>
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_3955 = V_219;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_3956 = L_3955.___highlightState;
 		V_220 = L_3956;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5281>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5281>
 		V_221 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5284>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5284>
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_3957 = V_53;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_3958 = V_220;
 		bool L_3959;
@@ -16301,7 +16301,7 @@ IL_6dc2:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5287>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5287>
 		bool L_3960 = V_189;
 		if (!L_3960)
 		{
@@ -16309,7 +16309,7 @@ IL_6dc2:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5288>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5288>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3961 = V_16;
 		float L_3962 = L_3961.___x;
 		TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* L_3963 = (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6*)(&(&V_53)->___padding);
@@ -16324,7 +16324,7 @@ IL_6dc2:
 
 IL_6e26:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5290>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5290>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3967 = V_16;
 		float L_3968 = L_3967.___x;
 		TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* L_3969 = (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6*)(&(&V_53)->___padding);
@@ -16339,7 +16339,7 @@ IL_6e26:
 
 IL_6e54:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5292>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5292>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3974 = V_15;
 		float L_3975 = L_3974.___y;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_3976 = V_219;
@@ -16347,7 +16347,7 @@ IL_6e54:
 		float L_3978;
 		L_3978 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_3975, L_3977, NULL);
 		(&V_15)->___y = L_3978;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5293>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5293>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3979 = V_16;
 		float L_3980 = L_3979.___y;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_3981 = V_219;
@@ -16355,15 +16355,15 @@ IL_6e54:
 		float L_3983;
 		L_3983 = Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline(L_3980, L_3982, NULL);
 		(&V_16)->___y = L_3983;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5295>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5295>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3984 = V_15;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3985 = V_16;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_3986 = V_53;
 		Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B L_3987 = L_3986.___color;
 		VirtualActionInvoker4< Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2, int32_t*, Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B >::Invoke(126, __this, L_3984, L_3985, (&V_35), L_3987);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5297>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5297>
 		V_14 = (bool)1;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5298>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5298>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3988 = V_16;
 		float L_3989 = L_3988.___x;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_3990 = V_219;
@@ -16378,7 +16378,7 @@ IL_6e54:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3995;
 		L_3995 = Vector2_op_Implicit_m6D9CABB2C791A192867D7A4559D132BE86DD3EB7_inline(L_3994, NULL);
 		V_15 = L_3995;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5300>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5300>
 		bool L_3996 = V_189;
 		if (!L_3996)
 		{
@@ -16386,7 +16386,7 @@ IL_6e54:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5301>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5301>
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_3997 = V_219;
 		float L_3998 = L_3997.___xAdvance;
 		TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* L_3999 = (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6*)(&(&V_220)->___padding);
@@ -16409,7 +16409,7 @@ IL_6e54:
 
 IL_6eff:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5303>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5303>
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4007 = V_219;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4008 = L_4007.___topRight;
 		float L_4009 = L_4008.___x;
@@ -16432,16 +16432,16 @@ IL_6eff:
 
 IL_6f38:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5305>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5305>
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_4018 = V_220;
 		V_53 = L_4018;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5307>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5307>
 		V_221 = (bool)1;
 	}
 
 IL_6f3f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5310>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5310>
 		bool L_4019 = V_221;
 		if (L_4019)
 		{
@@ -16449,7 +16449,7 @@ IL_6f3f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5312>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5312>
 		bool L_4020 = V_189;
 		if (!L_4020)
 		{
@@ -16457,7 +16457,7 @@ IL_6f3f:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5315>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5315>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4021 = V_15;
 		float L_4022 = L_4021.___x;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4023 = V_219;
@@ -16469,7 +16469,7 @@ IL_6f3f:
 		float L_4027;
 		L_4027 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_4022, ((float)il2cpp_codegen_subtract(L_4024, L_4026)), NULL);
 		(&V_15)->___x = L_4027;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5316>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5316>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4028 = V_16;
 		float L_4029 = L_4028.___x;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4030 = V_219;
@@ -16485,7 +16485,7 @@ IL_6f3f:
 
 IL_6f9a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5321>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5321>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4035 = V_15;
 		float L_4036 = L_4035.___x;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4037 = V_219;
@@ -16498,7 +16498,7 @@ IL_6f9a:
 		float L_4042;
 		L_4042 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_4036, ((float)il2cpp_codegen_subtract(L_4039, L_4041)), NULL);
 		(&V_15)->___x = L_4042;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5322>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5322>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4043 = V_16;
 		float L_4044 = L_4043.___x;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4045 = V_219;
@@ -16514,7 +16514,7 @@ IL_6f9a:
 
 IL_6ff2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5325>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5325>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4051 = V_15;
 		float L_4052 = L_4051.___y;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4053 = V_219;
@@ -16526,7 +16526,7 @@ IL_6ff2:
 		float L_4057;
 		L_4057 = Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline(L_4052, ((float)il2cpp_codegen_subtract(L_4054, L_4056)), NULL);
 		(&V_15)->___y = L_4057;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5326>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5326>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4058 = V_16;
 		float L_4059 = L_4058.___y;
 		TMP_CharacterInfo_t8B8FF32D6AACE251F2E7835AA5BC6608D535D9F8 L_4060 = V_219;
@@ -16541,7 +16541,7 @@ IL_6ff2:
 
 IL_7040:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5331>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5331>
 		bool L_4065 = V_14;
 		if (!L_4065)
 		{
@@ -16556,9 +16556,9 @@ IL_7040:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5333>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5333>
 		V_14 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5335>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5335>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4067 = V_15;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4068 = V_16;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_4069 = V_53;
@@ -16569,7 +16569,7 @@ IL_7040:
 
 IL_7065:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5337>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5337>
 		bool L_4071 = V_14;
 		if (!L_4071)
 		{
@@ -16597,9 +16597,9 @@ IL_7065:
 
 IL_707f:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5339>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5339>
 		V_14 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5340>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5340>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4078 = V_15;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4079 = V_16;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_4080 = V_53;
@@ -16610,7 +16610,7 @@ IL_707f:
 
 IL_7097:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5342>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5342>
 		bool L_4082 = V_14;
 		if (!L_4082)
 		{
@@ -16625,9 +16625,9 @@ IL_7097:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5344>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5344>
 		V_14 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5345>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5345>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4084 = V_15;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4085 = V_16;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_4086 = V_53;
@@ -16638,7 +16638,7 @@ IL_7097:
 
 IL_70b7:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5351>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5351>
 		bool L_4088 = V_14;
 		if (!L_4088)
 		{
@@ -16646,9 +16646,9 @@ IL_70b7:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5353>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5353>
 		V_14 = (bool)0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5354>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5354>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4089 = V_15;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4090 = V_16;
 		HighlightState_tE4F50287E5E2E91D42AB77DEA281D88D3AD6A28B L_4091 = V_53;
@@ -16658,17 +16658,17 @@ IL_70b7:
 
 IL_70d1:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5359>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5359>
 		int32_t L_4093 = V_190;
 		V_42 = L_4093;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4622>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4622>
 		int32_t L_4094 = V_186;
 		V_186 = ((int32_t)il2cpp_codegen_add(L_4094, 1));
 	}
 
 IL_70db:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:4622>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:4622>
 		int32_t L_4095 = V_186;
 		int32_t L_4096 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		if ((((int32_t)L_4095) < ((int32_t)L_4096)))
@@ -16677,7 +16677,7 @@ IL_70db:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5364>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5364>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4097 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4097);
 		TMP_MeshInfoU5BU5D_t3549EA3B9F542558E0DB1EDFAB98C612FE4231D7* L_4098 = L_4097->___meshInfo;
@@ -16686,22 +16686,22 @@ IL_70db:
 		NullCheck(L_4098);
 		int32_t L_4101 = V_35;
 		((L_4098)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_4100)))->___vertexCount = L_4101;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5367>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5367>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4102 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		int32_t L_4103 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_characterCount;
 		NullCheck(L_4102);
 		L_4102->___characterCount = L_4103;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5368>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5368>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4104 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		int32_t L_4105 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_spriteCount;
 		NullCheck(L_4104);
 		L_4104->___spriteCount = L_4105;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5369>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5369>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4106 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		int32_t L_4107 = V_41;
 		NullCheck(L_4106);
 		L_4106->___lineCount = L_4107;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5370>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5370>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4108 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		int32_t L_4109 = V_40;
 		if (!L_4109)
@@ -16739,12 +16739,12 @@ IL_7151:
 	{
 		NullCheck(G_B880_1);
 		G_B880_1->___wordCount = G_B880_0;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5371>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5371>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4112 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		int32_t L_4113 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_pageNumber;
 		NullCheck(L_4112);
 		L_4112->___pageCount = ((int32_t)il2cpp_codegen_add(L_4113, 1));
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5379>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5379>
 		int32_t L_4114 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_renderMode;
 		if ((!(((uint32_t)L_4114) == ((uint32_t)((int32_t)255)))))
 		{
@@ -16760,7 +16760,7 @@ IL_7151:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5382>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5382>
 		Action_1_tB93AB717F9D419A1BEC832FF76E74EAA32184CC1* L_4116 = __this->___OnPreRenderText;
 		Action_1_tB93AB717F9D419A1BEC832FF76E74EAA32184CC1* L_4117 = L_4116;
 		if (L_4117)
@@ -16783,7 +16783,7 @@ IL_7190:
 
 IL_719b:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5386>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5386>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_4119 = __this->___m_canvas;
 		NullCheck(L_4119);
 		int32_t L_4120;
@@ -16794,7 +16794,7 @@ IL_719b:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5387>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5387>
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_4121 = __this->___m_canvas;
 		Canvas_t2DB4CEFDFF732884866C83F11ABF75F5AE8FFB26* L_4122 = L_4121;
 		NullCheck(L_4122);
@@ -16806,7 +16806,7 @@ IL_719b:
 
 IL_71be:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5390>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5390>
 		int32_t L_4124 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_geometrySortingOrder;
 		if (!L_4124)
 		{
@@ -16814,7 +16814,7 @@ IL_71be:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5391>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5391>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4125 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4125);
 		TMP_MeshInfoU5BU5D_t3549EA3B9F542558E0DB1EDFAB98C612FE4231D7* L_4126 = L_4125->___meshInfo;
@@ -16825,11 +16825,11 @@ IL_71be:
 
 IL_71dd:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5394>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5394>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4127 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		NullCheck(L_4127);
 		Mesh_MarkDynamic_m718089940F240AFE625D6DC9DA4E6F20229CC322(L_4127, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5395>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5395>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4128 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4129 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4129);
@@ -16838,7 +16838,7 @@ IL_71dd:
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_4131 = ((L_4130)->GetAddressAt(static_cast<il2cpp_array_size_t>(0)))->___vertices;
 		NullCheck(L_4128);
 		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_4128, L_4131, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5396>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5396>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4132 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4133 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4133);
@@ -16847,7 +16847,7 @@ IL_71dd:
 		Vector4U5BU5D_tC0F3A7115F85007510F6D173968200CD31BCF7AD* L_4135 = ((L_4134)->GetAddressAt(static_cast<il2cpp_array_size_t>(0)))->___uvs0;
 		NullCheck(L_4132);
 		Mesh_SetUVs_mDFA98E5557AB6585FE0F8AB5C9286D1C69A53324(L_4132, 0, L_4135, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5397>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5397>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4136 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4137 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4137);
@@ -16856,7 +16856,7 @@ IL_71dd:
 		Vector2U5BU5D_tFEBBC94BCC6C9C88277BA04047D2B3FDB6ED7FDA* L_4139 = ((L_4138)->GetAddressAt(static_cast<il2cpp_array_size_t>(0)))->___uvs2;
 		NullCheck(L_4136);
 		Mesh_set_uv2_m37B442C04EBB029C0AD9545C54F95D9BDAD8E9B5(L_4136, L_4139, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5399>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5399>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4140 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4141 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4141);
@@ -16865,35 +16865,35 @@ IL_71dd:
 		Color32U5BU5D_t38116C3E91765C4C5726CE12C77FAD7F9F737259* L_4143 = ((L_4142)->GetAddressAt(static_cast<il2cpp_array_size_t>(0)))->___colors32;
 		NullCheck(L_4140);
 		Mesh_set_colors32_m0E4462B7A1D613E6FB15DD7584BCE5491C17820F(L_4140, L_4143, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5402>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5402>
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4144 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		NullCheck(L_4144);
 		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_4144, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5405>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5405>
 		CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860* L_4145 = __this->___m_canvasRenderer;
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4146 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_mesh;
 		NullCheck(L_4145);
 		CanvasRenderer_SetMesh_m1DF21BBC31233AC324BC08331BB542C619DC7543(L_4145, L_4146, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5408>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5408>
 		CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860* L_4147 = __this->___m_canvasRenderer;
 		NullCheck(L_4147);
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_4148;
 		L_4148 = CanvasRenderer_GetColor_m16A530AA6D0A6ACB5A6C1DDCC17D259DA856EC70(L_4147, NULL);
 		V_222 = L_4148;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5410>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5410>
 		CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860* L_4149 = __this->___m_canvasRenderer;
 		NullCheck(L_4149);
 		bool L_4150;
 		L_4150 = CanvasRenderer_get_cullTransparentMesh_m116BB768D49AC0068E6861A8F7F1A52A0DC5DC7C(L_4149, NULL);
 		V_223 = L_4150;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5412>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5412>
 		V_224 = 1;
 		goto IL_73f8;
 	}
 
 IL_72ab:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5415>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5415>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4151 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4151);
 		TMP_MeshInfoU5BU5D_t3549EA3B9F542558E0DB1EDFAB98C612FE4231D7* L_4152 = L_4151->___meshInfo;
@@ -16901,14 +16901,14 @@ IL_72ab:
 		NullCheck(L_4152);
 		il2cpp_codegen_runtime_class_init_inline(TMP_MeshInfo_t320C52212E9D672EBB5F5C18C3E0700AA33DD76B_il2cpp_TypeInfo_var);
 		TMP_MeshInfo_ClearUnusedVertices_mF5DC41BB72A19486A4079208D13472DD0BDE2CD9(((L_4152)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_4153))), NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5417>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5417>
 		TMP_SubMeshUIU5BU5D_tC77B263183A59A75345C26152457207EAC3BBF29* L_4154 = __this->___m_subTextObjects;
 		int32_t L_4155 = V_224;
 		NullCheck(L_4154);
 		int32_t L_4156 = L_4155;
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4157 = (L_4154)->GetAt(static_cast<il2cpp_array_size_t>(L_4156));
 		V_225 = L_4157;
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5419>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5419>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4158 = V_225;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_4159;
@@ -16919,7 +16919,7 @@ IL_72ab:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5422>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5422>
 		int32_t L_4160 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_geometrySortingOrder;
 		if (!L_4160)
 		{
@@ -16927,7 +16927,7 @@ IL_72ab:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5423>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5423>
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4161 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4161);
 		TMP_MeshInfoU5BU5D_t3549EA3B9F542558E0DB1EDFAB98C612FE4231D7* L_4162 = L_4161->___meshInfo;
@@ -16939,7 +16939,7 @@ IL_72ab:
 
 IL_72fa:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5425>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5425>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4164 = V_225;
 		NullCheck(L_4164);
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4165;
@@ -16952,7 +16952,7 @@ IL_72fa:
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_4169 = ((L_4167)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_4168)))->___vertices;
 		NullCheck(L_4165);
 		Mesh_set_vertices_m5BB814D89E9ACA00DBF19F7D8E22CB73AC73FE5C(L_4165, L_4169, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5426>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5426>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4170 = V_225;
 		NullCheck(L_4170);
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4171;
@@ -16965,7 +16965,7 @@ IL_72fa:
 		Vector4U5BU5D_tC0F3A7115F85007510F6D173968200CD31BCF7AD* L_4175 = ((L_4173)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_4174)))->___uvs0;
 		NullCheck(L_4171);
 		Mesh_SetUVs_mDFA98E5557AB6585FE0F8AB5C9286D1C69A53324(L_4171, 0, L_4175, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5427>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5427>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4176 = V_225;
 		NullCheck(L_4176);
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4177;
@@ -16978,7 +16978,7 @@ IL_72fa:
 		Vector2U5BU5D_tFEBBC94BCC6C9C88277BA04047D2B3FDB6ED7FDA* L_4181 = ((L_4179)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_4180)))->___uvs2;
 		NullCheck(L_4177);
 		Mesh_set_uv2_m37B442C04EBB029C0AD9545C54F95D9BDAD8E9B5(L_4177, L_4181, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5428>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5428>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4182 = V_225;
 		NullCheck(L_4182);
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4183;
@@ -16991,14 +16991,14 @@ IL_72fa:
 		Color32U5BU5D_t38116C3E91765C4C5726CE12C77FAD7F9F737259* L_4187 = ((L_4185)->GetAddressAt(static_cast<il2cpp_array_size_t>(L_4186)))->___colors32;
 		NullCheck(L_4183);
 		Mesh_set_colors32_m0E4462B7A1D613E6FB15DD7584BCE5491C17820F(L_4183, L_4187, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5430>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5430>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4188 = V_225;
 		NullCheck(L_4188);
 		Mesh_t6D9C539763A09BC2B12AEAEF36F6DFFC98AE63D4* L_4189;
 		L_4189 = TMP_SubMeshUI_get_mesh_m18BAE0DB357DC5D7993D07BD826429AF727548E2(L_4188, NULL);
 		NullCheck(L_4189);
 		Mesh_RecalculateBounds_mA9B293F57C6CD298AE2D2DB19061FC23B05AB90B(L_4189, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5432>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5432>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4190 = V_225;
 		NullCheck(L_4190);
 		CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860* L_4191;
@@ -17009,7 +17009,7 @@ IL_72fa:
 		L_4193 = TMP_SubMeshUI_get_mesh_m18BAE0DB357DC5D7993D07BD826429AF727548E2(L_4192, NULL);
 		NullCheck(L_4191);
 		CanvasRenderer_SetMesh_m1DF21BBC31233AC324BC08331BB542C619DC7543(L_4191, L_4193, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5435>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5435>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4194 = V_225;
 		NullCheck(L_4194);
 		CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860* L_4195;
@@ -17017,7 +17017,7 @@ IL_72fa:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_4196 = V_222;
 		NullCheck(L_4195);
 		CanvasRenderer_SetColor_mA65CB97B7C6673C0EA7A42BED93D22DD127C7BFA(L_4195, L_4196, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5438>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5438>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4197 = V_225;
 		NullCheck(L_4197);
 		CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860* L_4198;
@@ -17025,13 +17025,13 @@ IL_72fa:
 		bool L_4199 = V_223;
 		NullCheck(L_4198);
 		CanvasRenderer_set_cullTransparentMesh_m72093B655EFCCF35FE50C60258F0B1440BFD04BE(L_4198, L_4199, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5441>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5441>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4200 = V_225;
 		bool L_4201;
 		L_4201 = VirtualFuncInvoker0< bool >::Invoke(24, __this);
 		NullCheck(L_4200);
 		VirtualActionInvoker1< bool >::Invoke(25, L_4200, L_4201);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5444>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5444>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4202 = V_225;
 		NullCheck(L_4202);
 		bool L_4203;
@@ -17044,13 +17044,13 @@ IL_72fa:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5446>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5446>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4205 = V_225;
 		bool L_4206;
 		L_4206 = MaskableGraphic_get_maskable_m34B87CD87CFF73FF4E09D892ADB316E412F22660_inline(__this, NULL);
 		NullCheck(L_4205);
 		MaskableGraphic_set_maskable_mC2486FDC0636C83AC3BDBFF11E6E85CC27F15689(L_4205, L_4206, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5447>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5447>
 		TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* L_4207 = V_225;
 		NullCheck(L_4207);
 		VirtualActionInvoker0::Invoke(63, L_4207);
@@ -17058,14 +17058,14 @@ IL_72fa:
 
 IL_73f2:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5412>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5412>
 		int32_t L_4208 = V_224;
 		V_224 = ((int32_t)il2cpp_codegen_add(L_4208, 1));
 	}
 
 IL_73f8:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5412>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5412>
 		int32_t L_4209 = V_224;
 		TMP_TextInfo_t09A8E906329422C3F0C059876801DD695B8D524D* L_4210 = ((TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9*)__this)->___m_textInfo;
 		NullCheck(L_4210);
@@ -17078,7 +17078,7 @@ IL_73f8:
 
 IL_740a:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5453>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5453>
 		bool L_4212 = __this->___m_ShouldUpdateCulling;
 		if (!L_4212)
 		{
@@ -17086,23 +17086,23 @@ IL_740a:
 		}
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5454>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5454>
 		VirtualActionInvoker0::Invoke(102, __this);
 	}
 
 IL_7418:
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5457>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5457>
 		il2cpp_codegen_runtime_class_init_inline(TMPro_EventManager_t0234DB5BF625FC164B395C5C3B6F2CB8C89A3BA9_il2cpp_TypeInfo_var);
 		TMPro_EventManager_ON_TEXT_CHANGED_mC933ED67F225E90E2F7B5F0D176D62D3A560BFAE(__this, NULL);
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TextMeshProUGUI.cs:5464>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TextMeshProUGUI.cs:5464>
 		return;
 	}
 }
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
-// Method Definition Index: 52190
+// Method Definition Index: 67505
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -17116,7 +17116,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 52040
+// Method Definition Index: 67347
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B Color32_op_Implicit_m79AF5E0BDE9CE041CAC4D89CBFA66E71C6DD1B70_inline (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_c, const RuntimeMethod* method) 
 {
 	Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B V_0;
@@ -17155,7 +17155,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color32_t73C5004937BF5BB8AD55323D
 		return L_16;
 	}
 }
-// Method Definition Index: 83958
+// Method Definition Index: 99522
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6 TMP_Offset_get_zero_m8D8E8D2E46EAB0DFFED647AC5EEB41A5B2AA2339_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -17165,13 +17165,13 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TMP_Offset_t2262BE4E87D9662487777
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_CharacterInfo.cs:44>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_CharacterInfo.cs:44>
 		il2cpp_codegen_runtime_class_init_inline(TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6_il2cpp_TypeInfo_var);
 		TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6 L_0 = ((TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6_StaticFields*)il2cpp_codegen_static_fields_for(TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6_il2cpp_TypeInfo_var))->___k_ZeroOffset;
 		return L_0;
 	}
 }
-// Method Definition Index: 52191
+// Method Definition Index: 67506
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -17185,7 +17185,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_0;
 	}
 }
-// Method Definition Index: 52230
+// Method Definition Index: 67549
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_get_identity_m7E701AE095ED10FD5EA0B50ABCFDE2EEFF2173A5_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -17199,7 +17199,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E
 		return L_0;
 	}
 }
-// Method Definition Index: 52297
+// Method Definition Index: 67623
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t Mathf_Clamp_m4DC36EEFDBE5F07C16249DA568023C5ECCFF0E7B_inline (int32_t ___0_value, int32_t ___1_min, int32_t ___2_max, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -17250,124 +17250,124 @@ IL_001d:
 		return L_9;
 	}
 }
-// Method Definition Index: 85262
+// Method Definition Index: 100826
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969* TMP_TextElement_get_textAsset_m3FFA01E6D0068D1F8F578CBF2590A752683A61EA_inline (TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_TextElement.cs:32>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_TextElement.cs:32>
 		TMP_Asset_t135A047D4F5CBBA9CD356B762B55AB164122B969* L_0 = __this->___m_TextAsset;
 		return L_0;
 	}
 }
-// Method Definition Index: 85266
+// Method Definition Index: 100830
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR uint32_t TMP_TextElement_get_glyphIndex_m149D0BB0350CFC7D3C46CA011669295DC8CF8E9E_inline (TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_TextElement.cs:42>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_TextElement.cs:42>
 		uint32_t L_0 = __this->___m_GlyphIndex;
 		return L_0;
 	}
 }
-// Method Definition Index: 84895
+// Method Definition Index: 100459
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float TMP_SubMeshUI_get_padding_mFE0F475014CBD79033493C185323B095356C4D98_inline (TMP_SubMeshUI_tC465A77BC412382AABB3052CBA268623AAF3A25D* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_SubMeshUI.cs:155>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_SubMeshUI.cs:155>
 		float L_0 = __this->___m_padding;
 		return L_0;
 	}
 }
-// Method Definition Index: 85264
+// Method Definition Index: 100828
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* TMP_TextElement_get_glyph_mB86D5107DDF4ADB051309056E876FEAE843E3D07_inline (TMP_TextElement_t262A55214F712D4274485ABE5676E5254B84D0A5* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_TextElement.cs:37>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_TextElement.cs:37>
 		Glyph_t700CF8EBE04ED4AEAB520885AAA1B309E02A103F* L_0 = __this->___m_Glyph;
 		return L_0;
 	}
 }
-// Method Definition Index: 84176
+// Method Definition Index: 99740
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TMP_FontFeatureTable_t726A09E64FDF682A8FFE294BB6CFE7747F6C40EA* TMP_FontAsset_get_fontFeatureTable_mF00EEAEDD0448BE4667CB959CCE79ED45D2300AE_inline (TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_FontAsset.cs:370>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_FontAsset.cs:370>
 		TMP_FontFeatureTable_t726A09E64FDF682A8FFE294BB6CFE7747F6C40EA* L_0 = __this->___m_FontFeatureTable;
 		return L_0;
 	}
 }
-// Method Definition Index: 83630
+// Method Definition Index: 99194
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 MarkToBaseAdjustmentRecord_get_baseGlyphAnchorPoint_mFECF1D5AFAC10D1DBB0C5147325AE5D6D9083E31_inline (MarkToBaseAdjustmentRecord_t03C041CB56601B46F025C69B899BBAB750201C71* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:88>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:88>
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_0 = __this->___m_BaseGlyphAnchorPoint;
 		return L_0;
 	}
 }
-// Method Definition Index: 83619
+// Method Definition Index: 99183
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float GlyphAnchorPoint_get_xCoordinate_m17636F751AE0D4897647F617EE2823093E8968A0_inline (GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:17>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:17>
 		float L_0 = __this->___m_XCoordinate;
 		return L_0;
 	}
 }
-// Method Definition Index: 83634
+// Method Definition Index: 99198
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR MarkPositionAdjustment_tEE7CE316B8F61A7D6725524435B6363E849C62ED MarkToBaseAdjustmentRecord_get_markPositionAdjustment_mC04ECF73BB1C639C692E34DF7DBBC21B09661E84_inline (MarkToBaseAdjustmentRecord_t03C041CB56601B46F025C69B899BBAB750201C71* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:98>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:98>
 		MarkPositionAdjustment_tEE7CE316B8F61A7D6725524435B6363E849C62ED L_0 = __this->___m_MarkPositionAdjustment;
 		return L_0;
 	}
 }
-// Method Definition Index: 83623
+// Method Definition Index: 99187
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float MarkPositionAdjustment_get_xPositionAdjustment_m20DA20230B832D18BD7AE7A715981046917833F3_inline (MarkPositionAdjustment_tEE7CE316B8F61A7D6725524435B6363E849C62ED* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:45>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:45>
 		float L_0 = __this->___m_XPositionAdjustment;
 		return L_0;
 	}
 }
-// Method Definition Index: 83621
+// Method Definition Index: 99185
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float GlyphAnchorPoint_get_yCoordinate_mF413FBEB1E2819FC6CFEA33234080D0359F06549_inline (GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:22>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:22>
 		float L_0 = __this->___m_YCoordinate;
 		return L_0;
 	}
 }
-// Method Definition Index: 83625
+// Method Definition Index: 99189
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float MarkPositionAdjustment_get_yPositionAdjustment_m0D9AA5E5D5AFFF371CBFE74D2133B47364CD238A_inline (MarkPositionAdjustment_tEE7CE316B8F61A7D6725524435B6363E849C62ED* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:50>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:50>
 		float L_0 = __this->___m_YPositionAdjustment;
 		return L_0;
 	}
 }
-// Method Definition Index: 83638
+// Method Definition Index: 99202
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 MarkToMarkAdjustmentRecord_get_baseMarkGlyphAnchorPoint_mA5B70EE56DD3ACAA43B0B8F517F99D6EBE8B6D4F_inline (MarkToMarkAdjustmentRecord_t5D12F757E4ECB2EA12EB404228D70FA4DDBD6654* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:131>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:131>
 		GlyphAnchorPoint_t1E0A7753CCCC41F22D3C408C4F96DDEC70291929 L_0 = __this->___m_BaseMarkGlyphAnchorPoint;
 		return L_0;
 	}
 }
-// Method Definition Index: 83642
+// Method Definition Index: 99206
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR MarkPositionAdjustment_tEE7CE316B8F61A7D6725524435B6363E849C62ED MarkToMarkAdjustmentRecord_get_combiningMarkPositionAdjustment_m9C1B756599DAE78BA91E728565A52EA49BFF60FC_inline (MarkToMarkAdjustmentRecord_t5D12F757E4ECB2EA12EB404228D70FA4DDBD6654* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/FontFeatureCommonGPOS.cs:141>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/FontFeatureCommonGPOS.cs:141>
 		MarkPositionAdjustment_tEE7CE316B8F61A7D6725524435B6363E849C62ED L_0 = __this->___m_CombiningMarkPositionAdjustment;
 		return L_0;
 	}
 }
-// Method Definition Index: 52159
+// Method Definition Index: 67472
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) 
 {
 	{
@@ -17380,7 +17380,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999E
 		return;
 	}
 }
-// Method Definition Index: 52198
+// Method Definition Index: 67514
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_a, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_b, const RuntimeMethod* method) 
 {
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -17406,7 +17406,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_12;
 	}
 }
-// Method Definition Index: 52234
+// Method Definition Index: 67553
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_op_Inequality_m4EC1EF263D0E42432A301F85CB52028D2973F5DA_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_lhs, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -17417,7 +17417,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_op_Inequality_m4E
 		return (bool)((((int32_t)L_2) == ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 52134
+// Method Definition Index: 67445
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6 Matrix4x4_Rotate_m015442530DFF5651458BBFDFB3CBC9180FC09D9E_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_q, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -17527,7 +17527,7 @@ IL_0157:
 		return L_52;
 	}
 }
-// Method Definition Index: 52203
+// Method Definition Index: 67519
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_op_Division_mCC6BB24E372AB96B8380D1678446EF6A8BAE13BB_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_a, float ___1_d, const RuntimeMethod* method) 
 {
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -17550,7 +17550,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_9;
 	}
 }
-// Method Definition Index: 52199
+// Method Definition Index: 67515
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_a, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_b, const RuntimeMethod* method) 
 {
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -17576,7 +17576,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_12;
 	}
 }
-// Method Definition Index: 52130
+// Method Definition Index: 67441
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Matrix4x4_MultiplyPoint3x4_mACCBD70AFA82C63DA88555780B7B6B01281AB814_inline (Matrix4x4_tDB70CF134A14BA38190C59AA700BCE10E2AED3E6* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_point, const RuntimeMethod* method) 
 {
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -17620,7 +17620,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_30;
 	}
 }
-// Method Definition Index: 52281
+// Method Definition Index: 67607
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Max_mF5379E63D2BBAC76D090748695D833934F8AD051_inline (float ___0_a, float ___1_b, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -17657,7 +17657,7 @@ IL_000c:
 		return L_4;
 	}
 }
-// Method Definition Index: 52279
+// Method Definition Index: 67604
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Min_m747CA71A9483CDB394B13BD0AD048EE17E48FFE4_inline (float ___0_a, float ___1_b, const RuntimeMethod* method) 
 {
 	float V_0 = 0.0f;
@@ -17694,7 +17694,7 @@ IL_000c:
 		return L_4;
 	}
 }
-// Method Definition Index: 52321
+// Method Definition Index: 67648
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* __this, float ___0_x, float ___1_y, const RuntimeMethod* method) 
 {
 	{
@@ -17705,7 +17705,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2__ctor_m9525B79969AFF
 		return;
 	}
 }
-// Method Definition Index: 52037
+// Method Definition Index: 67344
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C1F Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline (const RuntimeMethod* method) 
 {
 	{
@@ -17715,7 +17715,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED02
 		return L_0;
 	}
 }
-// Method Definition Index: 52039
+// Method Definition Index: 67346
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Color32__ctor_mC9C6B443F0C7CA3F8B174158B2AF6F05E18EAC4E_inline (Color32_t73C5004937BF5BB8AD55323D51AAA40A898EF48B* __this, uint8_t ___0_r, uint8_t ___1_g, uint8_t ___2_b, uint8_t ___3_a, const RuntimeMethod* method) 
 {
 	{
@@ -17731,16 +17731,16 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Color32__ctor_mC9C6B443F0C7C
 		return;
 	}
 }
-// Method Definition Index: 84936
+// Method Definition Index: 100500
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* TMP_Text_get_font_m1F5E907B9181A54212FBD8123242583C1CA4BE2A_inline (TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_Text.cs:175>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_Text.cs:175>
 		TMP_FontAsset_t923BF2F78D7C5AC36376E168A1193B7CB4855160* L_0 = __this->___m_fontAsset;
 		return L_0;
 	}
 }
-// Method Definition Index: 52353
+// Method Definition Index: 67681
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector2_op_Implicit_m6D9CABB2C791A192867D7A4559D132BE86DD3EB7_inline (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_v, const RuntimeMethod* method) 
 {
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
@@ -17758,67 +17758,67 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_4;
 	}
 }
-// Method Definition Index: 83948
+// Method Definition Index: 99512
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float TMP_Offset_get_right_m268492C5D14D1239A429A152ED04DD8790EC98C4_inline (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_CharacterInfo.cs:31>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_CharacterInfo.cs:31>
 		float L_0 = __this->___m_Right;
 		return L_0;
 	}
 }
-// Method Definition Index: 83952
+// Method Definition Index: 99516
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float TMP_Offset_get_bottom_m71E985879E87F76BE28A0FB0485F279866279845_inline (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_CharacterInfo.cs:35>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_CharacterInfo.cs:35>
 		float L_0 = __this->___m_Bottom;
 		return L_0;
 	}
 }
-// Method Definition Index: 83950
+// Method Definition Index: 99514
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float TMP_Offset_get_top_m5BAE1A688A264A63524AD4C456CE88CB2086105E_inline (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_CharacterInfo.cs:33>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_CharacterInfo.cs:33>
 		float L_0 = __this->___m_Top;
 		return L_0;
 	}
 }
-// Method Definition Index: 83946
+// Method Definition Index: 99510
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float TMP_Offset_get_left_mCDC93F42B720817E1119AA5360962F038A39E044_inline (TMP_Offset_t2262BE4E87D9662487777FF8FFE1B17B0E4438C6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_CharacterInfo.cs:29>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_CharacterInfo.cs:29>
 		float L_0 = __this->___m_Left;
 		return L_0;
 	}
 }
-// Method Definition Index: 96094
+// Method Definition Index: 115984
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool MaskableGraphic_get_maskable_m34B87CD87CFF73FF4E09D892ADB316E412F22660_inline (MaskableGraphic_tFC5B6BE351C90DE53744DF2A70940242774B361E* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/UGUI/UI/Core/MaskableGraphic.cs:61>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/MaskableGraphic.cs:61>
 		bool L_0 = __this->___m_Maskable;
 		return L_0;
 	}
 }
-// Method Definition Index: 85349
+// Method Definition Index: 100913
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t TMP_TextProcessingStack_1_get_Count_m9EAE0A093640CEAA2DB049AD6E89747865404C3A_gshared_inline (TMP_TextProcessingStack_1_t2DDA00FFC64AF6E3AFD475AB2086D16C34787E0F* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:./Library/PackageCache/com.unity.ugui@8141084bceb4/Runtime/TMP/TMP_TextProcessingStack.cs:208>
+		//<source_info:./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_TextProcessingStack.cs:208>
 		int32_t L_0 = __this->___m_Count;
 		return L_0;
 	}
 }
-// Method Definition Index: 882
+// Method Definition Index: 884
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Action_1_Invoke_mF2422B2DD29F74CE66F791C3F68E288EC7C3DB9E_gshared_inline (Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* __this, RuntimeObject* ___0_obj, const RuntimeMethod* method) 
 {
 	typedef void (*FunctionPointerType) (RuntimeObject*, RuntimeObject*, const RuntimeMethod*);
 	((FunctionPointerType)__this->___invoke_impl)((Il2CppObject*)__this->___method_code, ___0_obj, reinterpret_cast<RuntimeMethod*>(__this->___method));
 }
-// Method Definition Index: 52298
+// Method Definition Index: 67624
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline (float ___0_value, const RuntimeMethod* method) 
 {
 	bool V_0 = false;
@@ -17866,7 +17866,7 @@ IL_002d:
 		return L_5;
 	}
 }
-// Method Definition Index: 52233
+// Method Definition Index: 67552
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_op_Equality_mE6F6B56FCED8478552BE02BBAF18C70B969217F9_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_lhs, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_rhs, const RuntimeMethod* method) 
 {
 	{
@@ -17877,7 +17877,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_op_Equality_mE6F6
 		return L_1;
 	}
 }
-// Method Definition Index: 52003
+// Method Definition Index: 67309
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* __this, float ___0_r, float ___1_g, float ___2_b, float ___3_a, const RuntimeMethod* method) 
 {
 	{
@@ -17892,7 +17892,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Color__ctor_m3786F0D6E510D9C
 		return;
 	}
 }
-// Method Definition Index: 52236
+// Method Definition Index: 67556
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Quaternion_Dot_m80E67A0F9F1FD9EAD0C8EEF7D5396ADF612FA105_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___0_a, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* ___1_b, const RuntimeMethod* method) 
 {
 	{
@@ -17915,7 +17915,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Quaternion_Dot_m80E67A0F9F1
 		return ((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_add(((float)il2cpp_codegen_multiply(L_1, L_3)), ((float)il2cpp_codegen_multiply(L_5, L_7)))), ((float)il2cpp_codegen_multiply(L_9, L_11)))), ((float)il2cpp_codegen_multiply(L_13, L_15))));
 	}
 }
-// Method Definition Index: 52235
+// Method Definition Index: 67554
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Quaternion_IsEqualUsingDot_m9C672201C918C2D1E739F559DBE4406F95997CBD_inline (float ___0_dot, const RuntimeMethod* method) 
 {
 	{

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Young Woman with Peonies
   title: Young Woman with Peonies
-  author: Frédéric Bazille
+  author: Frederic Bazille
   year: 1870
   description: "Museum: National Gallery of Art\nArt Movement: Impressionism\nYear: 1870"
   museum: National Gallery of Art

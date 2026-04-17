@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Flowers in a Terracotta Vase
   author: Jan van Huysum
   year: 1736
-  description: "Museum: The National Gallery, London\nArt Movement: Late Baroque\nYear: 1736"
+  description: "Museum: The National Gallery, London\nArt Movement: Baroque\nYear: 1736"
   museum: The National Gallery, London
-  artMovement: Late Baroque
+  artMovement: Baroque
   aspectRatio: 0.6777
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

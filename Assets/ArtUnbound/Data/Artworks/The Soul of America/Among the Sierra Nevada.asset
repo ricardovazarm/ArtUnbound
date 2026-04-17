@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Among the Sierra Nevada
   author: Albert Bierstadt
   year: 1868
-  description: "Museum: Smithsonian\nArt Movement: Romanticism (Hudson River School)\nYear: 1868"
+  description: "Museum: Smithsonian\nArt Movement: Romanticism\nYear: 1868"
   museum: Smithsonian
-  artMovement: Romanticism (Hudson River School)
+  artMovement: Romanticism
   aspectRatio: 1.6728
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Las Meninas
   title: Las Meninas
-  author: Diego Velázquez
+  author: Diego Velazquez
   year: 1656
-  description: "Museum: Museo del Prado\nArt Movement: Spanish Baroque\nYear: 1656"
+  description: "Museum: Museo del Prado\nArt Movement: Baroque\nYear: 1656"
   museum: Museo del Prado
-  artMovement: Spanish Baroque
+  artMovement: Baroque
   aspectRatio: 0.8688
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

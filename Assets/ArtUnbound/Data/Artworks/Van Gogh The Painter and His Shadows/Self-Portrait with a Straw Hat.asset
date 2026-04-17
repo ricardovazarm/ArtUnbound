@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
   artworkId: Self-Portrait with a Straw Hat
   title: Self-Portrait with a Straw Hat
-  author: Vincent Van Gogh
+  author: Vincent van Gogh
   year: 1887
   description: "Museum: The Met\nArt Movement: Post-Impressionism\nYear: 1887"
   museum: The Met

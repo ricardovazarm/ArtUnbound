@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Breezing Up (A Fair Wind)
   author: Winslow Homer
   year: 1876
-  description: "Museum: National Gallery of Art\nArt Movement: American Realism\nYear: 1876"
+  description: "Museum: National Gallery of Art\nArt Movement: Realism\nYear: 1876"
   museum: National Gallery of Art
-  artMovement: American Realism
+  artMovement: Realism
   aspectRatio: 1.5888
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

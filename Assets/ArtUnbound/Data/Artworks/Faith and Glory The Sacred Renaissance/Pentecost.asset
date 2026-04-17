@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Pentecost
   author: Giotto
   year: 1305
-  description: "Museum: National Gallery (London)\nArt Movement: Proto-Renaissance\nYear: 1305"
+  description: "Museum: National Gallery (London)\nArt Movement: Renaissance\nYear: 1305"
   museum: National Gallery (London)
-  artMovement: Proto-Renaissance
+  artMovement: Renaissance
   aspectRatio: 0.9266
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

@@ -16,9 +16,9 @@ MonoBehaviour:
   title: Descent from the Cross
   author: Rembrandt van Rijn
   year: 1634
-  description: "Museum: Alte Pinakothek / Rijks\nArt Movement: Dutch Golden Age / Baroque\nYear: 1634"
+  description: "Museum: Alte Pinakothek / Rijks\nArt Movement: Dutch Golden Age\nYear: 1634"
   museum: Alte Pinakothek / Rijks
-  artMovement: Dutch Golden Age / Baroque
+  artMovement: Dutch Golden Age
   aspectRatio: 0.7687
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}
