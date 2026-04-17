@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Impression, Sunrise
   author: Claude Monet
   year: 1872
-  description: "Museum: Musée Marmottan Monet\nArt Movement: Impressionism\nYear: 1872"
-  museum: Musée Marmottan Monet
+  description: "Museum: Musee Marmottan Monet\nArt Movement: Impressionism\nYear: 1872"
+  museum: Musee Marmottan Monet
   artMovement: Impressionism
   aspectRatio: 1.289
   baseSizePortrait: {x: 0.5, y: 0.7}

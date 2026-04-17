@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Mona Lisa
   author: Leonardo da Vinci
   year: 1503
-  description: "Museum: Musée du Louvre\nArt Movement: Renaissance\nYear: 1503"
-  museum: Musée du Louvre
+  description: "Museum: Musee du Louvre\nArt Movement: Renaissance\nYear: 1503"
+  museum: Musee du Louvre
   artMovement: Renaissance
   aspectRatio: 0.6711
   baseSizePortrait: {x: 0.5, y: 0.7}

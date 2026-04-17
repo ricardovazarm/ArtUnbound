@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Bacchus and Ariadne
   author: Tiziano
   year: 1523
-  description: "Museum: Galería Uffizi, Florencia\nArt Movement: Renaissance\nYear: 1523"
-  museum: Galería Uffizi, Florencia
+  description: "Museum: Galeria Uffizi, Florencia\nArt Movement: Renaissance\nYear: 1523"
+  museum: Galeria Uffizi, Florencia
   artMovement: Renaissance
   aspectRatio: 1.105
   baseSizePortrait: {x: 0.5, y: 0.7}

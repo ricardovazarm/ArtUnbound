@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Basket of Peaches
   author: Jean-Baptiste Chardin
   year: 1768
-  description: "Museum: Musée du Louvre\nArt Movement: Rococo\nYear: 1768"
-  museum: Musée du Louvre
+  description: "Museum: Musee du Louvre\nArt Movement: Rococo\nYear: 1768"
+  museum: Musee du Louvre
   artMovement: Rococo
   aspectRatio: 1.2889
   baseSizePortrait: {x: 0.5, y: 0.7}

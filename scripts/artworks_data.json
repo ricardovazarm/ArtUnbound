@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "collection": "01 Base Set",
     "title": "A Sunday on La Grande Jatte",
@@ -28,7 +28,7 @@
     "title": "Bacchus and Ariadne",
     "author": "Tiziano",
     "year": 1523,
-    "museum": "Galería Uffizi, Florencia",
+    "museum": "Galeria Uffizi, Florencia",
     "artMovement": "Renaissance"
   },
   {
@@ -36,7 +36,7 @@
     "title": "Bal du moulin de la Galette",
     "author": "Pierre-Auguste Renoir",
     "year": 1876,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Impressionism"
   },
   {
@@ -68,7 +68,7 @@
     "title": "Impression, Sunrise",
     "author": "Claude Monet",
     "year": 1872,
-    "museum": "Musée Marmottan Monet",
+    "museum": "Musee Marmottan Monet",
     "artMovement": "Impressionism"
   },
   {
@@ -116,7 +116,7 @@
     "title": "Mona Lisa",
     "author": "Leonardo da Vinci",
     "year": 1503,
-    "museum": "Musée du Louvre",
+    "museum": "Musee du Louvre",
     "artMovement": "Renaissance"
   },
   {
@@ -124,7 +124,7 @@
     "title": "Napoleon Crossing the Alps",
     "author": "Jacques-Louis David",
     "year": 1801,
-    "museum": "Château de Malmaison",
+    "museum": "Chateau de Malmaison",
     "artMovement": "Neoclassicism"
   },
   {
@@ -172,7 +172,7 @@
     "title": "The Angelus",
     "author": "Jean-Francois Millet",
     "year": 1859,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Realism"
   },
   {
@@ -236,7 +236,7 @@
     "title": "The Gleaners",
     "author": "Jean-Francois Millet",
     "year": 1857,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Realism"
   },
   {
@@ -372,7 +372,7 @@
     "title": "Whistler's Mother",
     "author": "James McNeill Whistler",
     "year": 1871,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Realism"
   },
   {
@@ -484,7 +484,7 @@
     "title": "Card Players",
     "author": "Paul Cezanne",
     "year": 1895,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Post-Impressionism"
   },
   {
@@ -548,7 +548,7 @@
     "title": "Women of Tahiti",
     "author": "Paul Gauguin",
     "year": 1891,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Post-Impressionism"
   },
   {
@@ -817,7 +817,7 @@
   },
   {
     "collection": "Manet and the Impressionist Circle",
-    "title": "A Bar at the Folies-Bergère",
+    "title": "A Bar at the Folies-Bergere",
     "author": "Edouard Manet",
     "year": 1882,
     "museum": "Courtauld Gallery, London",
@@ -868,7 +868,7 @@
     "title": "The Fifer",
     "author": "Edouard Manet",
     "year": 1866,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Realism"
   },
   {
@@ -929,7 +929,7 @@
   },
   {
     "collection": "Monet Gardens Through Time",
-    "title": "Flower Beds at Vétheuil",
+    "title": "Flower Beds at Vetheuil",
     "author": "Claude Monet",
     "year": 1881,
     "museum": "Museum of Fine Arts, Boston",
@@ -969,7 +969,7 @@
   },
   {
     "collection": "Monet Gardens Through Time",
-    "title": "The Artist's Garden at Vétheuil",
+    "title": "The Artist's Garden at Vetheuil",
     "author": "Claude Monet",
     "year": 1880,
     "museum": "National Gallery of Art",
@@ -1041,7 +1041,7 @@
   },
   {
     "collection": "Northern Light Rembrandt & Vermeer",
-    "title": "Isaac and Rebecca, Known as ‘The Jewish Bride’",
+    "title": "Isaac and Rebecca, Known as 'The Jewish Bride'",
     "author": "Rembrandt van Rijn",
     "year": 1665,
     "museum": "Rijksmuseum",
@@ -1092,7 +1092,7 @@
     "title": "Woman with a Pearl Necklace",
     "author": "Johannes Vermeer",
     "year": 1664,
-    "museum": "Gemäldegalerie",
+    "museum": "Gemaldegalerie",
     "artMovement": "Dutch Golden Age"
   },
   {
@@ -1188,7 +1188,7 @@
     "title": "Basket of Peaches",
     "author": "Jean-Baptiste Chardin",
     "year": 1768,
-    "museum": "Musée du Louvre",
+    "museum": "Musee du Louvre",
     "artMovement": "Rococo"
   },
   {
@@ -1476,7 +1476,7 @@
     "title": "Portrait of Dr. Gachet (Etching)",
     "author": "Vincent van Gogh",
     "year": 1890,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Post-Impressionism"
   },
   {
@@ -1529,10 +1529,10 @@
   },
   {
     "collection": "Van Gogh Under the Sun of Provence",
-    "title": "CaféeTerrace at Night",
+    "title": "Cafe Terrace at Night",
     "author": "Vincent van Gogh",
     "year": 1888,
-    "museum": "Kröller-Müller Museum",
+    "museum": "Kroller-Muller Museum",
     "artMovement": "Post-Impressionism"
   },
   {
@@ -1548,15 +1548,15 @@
     "title": "Starry Night Over the Rhone",
     "author": "Vincent van Gogh",
     "year": 1888,
-    "museum": "Musée d'Orsay",
+    "museum": "Musee d'Orsay",
     "artMovement": "Post-Impressionism"
   },
   {
     "collection": "Van Gogh Under the Sun of Provence",
-    "title": "The Garden of the Asylum at Saint-Rémy",
+    "title": "The Garden of the Asylum at Saint-Remy",
     "author": "Vincent van Gogh",
     "year": 1889,
-    "museum": "Kröller-Müller Museum",
+    "museum": "Kroller-Muller Museum",
     "artMovement": "Post-Impressionism"
   },
   {

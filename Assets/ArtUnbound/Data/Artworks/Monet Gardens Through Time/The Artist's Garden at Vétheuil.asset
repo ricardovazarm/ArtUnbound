@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
-  m_Name: The Artist's Garden at Vétheuil
+  m_Name: The Artist's Garden at Vetheuil
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
-  artworkId: The Artist's Garden at Vétheuil
-  title: The Artist's Garden at Vétheuil
+  artworkId: The Artist's Garden at Vetheuil
+  title: The Artist's Garden at Vetheuil
   author: Claude Monet
   year: 1880
   description: "Museum: National Gallery of Art\nArt Movement: Impressionism\nYear: 1880"

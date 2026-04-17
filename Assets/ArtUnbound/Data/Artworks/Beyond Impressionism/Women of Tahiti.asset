@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,8 +16,8 @@ MonoBehaviour:
   title: Women of Tahiti
   author: Paul Gauguin
   year: 1891
-  description: "Museum: Musée d'Orsay\nArt Movement: Post-Impressionism\nYear: 1891"
-  museum: Musée d'Orsay
+  description: "Museum: Musee d'Orsay\nArt Movement: Post-Impressionism\nYear: 1891"
+  museum: Musee d'Orsay
   artMovement: Post-Impressionism
   aspectRatio: 1.3407
   baseSizePortrait: {x: 0.5, y: 0.7}
