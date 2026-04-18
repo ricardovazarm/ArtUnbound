@@ -26,6 +26,7 @@ namespace ArtUnbound.Input
         private Vector3 dragOffset;
         private int targetSlotIndex = -1; // Store the slot shown in the highlight
         private bool pieceWasFromBoard = false; // Track if the piece was grabbed from the board
+        private bool pieceWasFromThumbnail = false; // True when grabbed from the 2D thumbnail panel
 
         private void OnEnable()
         {
@@ -92,12 +93,14 @@ namespace ArtUnbound.Input
 
             // currentDragDistance = 0f; // Removed - not used
             dragOffset = Vector3.zero;
+            pieceWasFromThumbnail = false;
 
             // METHOD 1: Proximity/Sphere Overlap (Primary for Hand Tracking)
             float grabRadius = 0.04f; // 4cm radius - easier to grab pieces
             Collider[] colliders = Physics.OverlapSphere(position, grabRadius, interactableLayer);
 
             PuzzlePiece bestPiece = null;
+            ArtUnbound.UI.PieceThumbnailItem bestThumbnail = null;
             GrabbableFrame grabbableFrame = null;
             float bestDist = float.MaxValue;
 
@@ -161,6 +164,25 @@ namespace ArtUnbound.Input
                         break; // Frame takes priority
                     }
                     
+                    // Check for 2D thumbnail (lives in panel, NOT a child of PuzzlePiece)
+                    var thumb = col.GetComponent<ArtUnbound.UI.PieceThumbnailItem>();
+                    if (thumb != null)
+                    {
+                        if (thumb.LinkedPiece != null
+                            && thumb.LinkedPiece.CurrentState != PieceState.Grabbed
+                            && thumb.LinkedPiece.CurrentState != PieceState.Placed)
+                        {
+                            float d = Vector3.Distance(position, col.bounds.center);
+                            if (d <= grabRadius && d < bestDist)
+                            {
+                                bestDist      = d;
+                                bestThumbnail = thumb;
+                                bestPiece     = null; // thumbnail supersedes any 3D piece at same spot
+                            }
+                        }
+                        continue; // don't also check as a regular piece
+                    }
+
                     // Otherwise check for puzzle pieces
                     var p = col.GetComponentInParent<PuzzlePiece>();
                     if (p != null && p.CurrentState != PieceState.Grabbed)
@@ -168,8 +190,9 @@ namespace ArtUnbound.Input
                         float d = Vector3.Distance(position, p.transform.position);
                         if (d < bestDist)
                         {
-                            bestDist = d;
+                            bestDist  = d;
                             bestPiece = p;
+                            bestThumbnail = null; // 3D piece supersedes thumbnail if closer
                         }
                     }
                 }
@@ -187,6 +210,33 @@ namespace ArtUnbound.Input
                 grabbableFrame.StartDrag(position);
                 currentDraggedFrame = grabbableFrame;
                 Debug.Log("[InteractionManager] Started dragging frame");
+                return;
+            }
+
+            // Handle thumbnail grab — spawn the linked 3D piece at hand position
+            if (bestThumbnail != null)
+            {
+                var piece = bestThumbnail.LinkedPiece;
+
+                // Align piece rotation to board so placement looks natural
+                var board0 = FindFirstObjectByType<PuzzleBoard>();
+                if (board0 != null)
+                    piece.transform.rotation = board0.transform.rotation;
+
+                // Move piece to hand immediately (it was somewhere invisible in PieceScrollController)
+                piece.transform.position = position;
+
+                currentDraggedPiece   = piece;
+                dragOffset            = Vector3.zero;   // piece is already at hand
+                pieceWasFromBoard     = false;
+                pieceWasFromThumbnail = true;
+
+                piece.SetDragged(true); // → SetState(Grabbed) → ShowPieceMode (mesh on, thumb hidden)
+
+                if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                    ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+
+                Debug.Log($"[InteractionManager] Grabbed piece {piece.PieceId} from thumbnail panel");
                 return;
             }
 
@@ -366,15 +416,16 @@ namespace ArtUnbound.Input
             }
             
             // Store references before clearing
-            var piece = currentDraggedPiece;
-            var slotIndex = targetSlotIndex;
+            var piece      = currentDraggedPiece;
+            var slotIndex  = targetSlotIndex;
             var wasFromBoard = pieceWasFromBoard;
-            
+
             // Clear IMMEDIATELY to prevent double processing
             piece.SetDragged(false);
-            currentDraggedPiece = null;
-            targetSlotIndex = -1;
-            pieceWasFromBoard = false;
+            currentDraggedPiece   = null;
+            targetSlotIndex       = -1;
+            pieceWasFromBoard     = false;
+            pieceWasFromThumbnail = false;
             
             // Try to snap the piece to the board using the slot we stored from the highlight
             var board = FindFirstObjectByType<PuzzleBoard>();

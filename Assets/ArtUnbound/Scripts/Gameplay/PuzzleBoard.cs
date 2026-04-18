@@ -23,6 +23,11 @@ namespace ArtUnbound.Gameplay
         [SerializeField] private Transform slotRoot;
         [SerializeField] private PuzzlePiece piecePrefab;
         [SerializeField] private ArtUnbound.UI.PieceScrollController scrollController;
+
+        [Tooltip("Assign the PieceTrayPanel GameObject that has PieceTrayGridController. " +
+                 "Position it in the scene wherever you want the 2-D thumbnail grid to appear.")]
+        [SerializeField] private ArtUnbound.UI.PieceTrayGridController pieceTrayController;
+
         [SerializeField] private ArtUnbound.Input.HandTrackingInputController inputController;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private bool helpModeEnabled = true;
@@ -112,6 +117,8 @@ namespace ArtUnbound.Gameplay
         private float currentPieceSize = 0.05f; // Current piece size (calculated dynamically)
         private float boardWidthM;
         private float boardHeightM;
+        private int   gridCols;       // set in CreateSlotsFromCount / CreateSlots
+        private int   gridRows;
         private GameObject fullImageReveal;
         private GameObject fullImageRevealFrame;
 
@@ -548,6 +555,9 @@ namespace ArtUnbound.Gameplay
             if (isCorrectSlot)
                 TryPlayMilestoneFeedback(slots[slotIndex].col, slots[slotIndex].row, piece.transform.position);
 
+            // Remove thumbnail permanently — piece is now on the board
+            pieceTrayController?.RemoveThumbnail(piece.PieceId);
+
             if (snappedCount >= slots.Count)
             {
                 // Puzzle complete - play completion sound
@@ -555,13 +565,13 @@ namespace ArtUnbound.Gameplay
                 {
                     ArtUnbound.Feedback.AudioManager.Instance.PlayPuzzleComplete();
                 }
-                
+
                 OnCompleted?.Invoke();
                 OnPuzzleComplete?.Invoke();
             }
 
             string correctnessMsg = isCorrectSlot ? "✅ CORRECT PLACEMENT" : "❌ INCORRECT PLACEMENT";
-            
+
             // Notify that board state changed (triggers auto-save)
             NotifyBoardStateChanged();
             
@@ -612,22 +622,25 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
-        /// Returns a piece to the beginning of the tray.
-        /// Used when a piece is released without placing it on the board.
+        /// Returns a piece to the tray after it was picked up from the board (wrong slot).
+        /// Also moves the piece's thumbnail to the last position in the 2D panel.
         /// </summary>
         public void ReturnPieceToTray(PuzzlePiece piece)
         {
             if (piece == null) return;
+
+            // Move thumbnail to end of panel BEFORE SetState(InPool) shows it
+            pieceTrayController?.MoveToEnd(piece.PieceId);
+
             if (scrollController == null)
             {
                 Debug.LogWarning("[PuzzleBoard] Cannot return piece to tray - scrollController is null");
                 return;
             }
 
-            
-            // Ask the scroll controller to add the piece at the end
+            // Ask the scroll controller to add the piece at the end (handles state + 3D position)
             scrollController.AddPieceAtEnd(piece);
-            
+
             // Notify that board state changed (triggers auto-save)
             NotifyBoardStateChanged();
         }
@@ -700,6 +713,10 @@ namespace ArtUnbound.Gameplay
             // NEW SYSTEM: Calculate grid AND piece size together
             CalculateGridAndPieceSize(pieceCount, currentTexture.width, currentTexture.height,
                 out int cols, out int rows, out float pieceSize);
+
+            // Store grid dimensions for PieceTrayGridController
+            gridCols = cols;
+            gridRows = rows;
 
             // Generate varied edge states (seed from pieceCount + texture size for reproducibility)
             GenerateEdgeStates(cols, rows, pieceCount ^ (currentTexture.width * 31) ^ (currentTexture.height * 17));
@@ -781,6 +798,10 @@ namespace ArtUnbound.Gameplay
             // NEW SYSTEM: Calculate grid AND piece size together
             CalculateGridAndPieceSize(pieceCount, textureToUse.width, textureToUse.height,
                 out int cols, out int rows, out float pieceSize);
+
+            // Store grid dimensions for PieceTrayGridController
+            gridCols = cols;
+            gridRows = rows;
 
             // Generate varied edge states seeded by artworkId → same artwork always produces same shapes
             GenerateEdgeStates(cols, rows, definition.artworkId?.GetHashCode() ?? 0);
@@ -1366,6 +1387,12 @@ namespace ArtUnbound.Gameplay
 
             Debug.Log($"[PIECE] InitializeScroll: passing {pieceTransforms.Count} pieces to tray (slots={slots.Count})");
             scrollController.Initialize(pieceTransforms, currentPieceSize);
+
+            // Initialize the 2D thumbnail panel (positioned wherever the designer placed it in the scene)
+            if (pieceTrayController != null)
+            {
+                pieceTrayController.Initialize(shuffledPieces, currentTexture, gridCols, gridRows, currentPieceSize);
+            }
         }
 
         private void CreateTrayVisual(Transform tray)

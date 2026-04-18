@@ -37,26 +37,74 @@ namespace ArtUnbound.Gameplay
         private Vector3 poolPosition;
         private Coroutine returnCoroutine;
 
+        // 2D thumbnail overlay (shown in tray; hidden when grabbed / placed on board)
+        private ArtUnbound.UI.PieceThumbnailItem _thumbnailItem;
+        private MeshCollider _meshCollider;
+
         private void Awake()
         {
             if (grabAnchor == null)
                 grabAnchor = transform;
 
             if (meshRenderer == null)
-                meshRenderer = GetComponentInChildren<MeshRenderer>();
+                meshRenderer = GetComponentInChildren<MeshRenderer>(true);
+
+            // Cache collider before the thumbnail child is created by PuzzleBoard
+            _meshCollider = GetComponentInChildren<MeshCollider>(true);
 
             poolPosition = transform.position;
         }
 
+        // ── Thumbnail helpers ────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Called by PieceTrayGridController after creating the thumbnail in the panel.
+        /// Stores the reference and immediately switches to thumbnail mode.
+        /// </summary>
+        public void SetThumbnailItem(ArtUnbound.UI.PieceThumbnailItem item)
+        {
+            _thumbnailItem = item;
+            ShowThumbnailMode();   // start life in the tray as a flat 2D image
+        }
+
+        /// <summary>Enables the 3-D mesh and collider; hides the 2D thumbnail in the panel.</summary>
+        public void ShowPieceMode()
+        {
+            if (meshRenderer  != null) meshRenderer.enabled  = true;
+            if (_meshCollider != null) _meshCollider.enabled = true;
+            if (_thumbnailItem != null) _thumbnailItem.gameObject.SetActive(false);
+        }
+
+        /// <summary>Hides the 3-D mesh and collider; shows the 2D thumbnail in the panel.</summary>
+        public void ShowThumbnailMode()
+        {
+            if (meshRenderer  != null) meshRenderer.enabled  = false;
+            if (_meshCollider != null) _meshCollider.enabled = false;
+            if (_thumbnailItem != null) _thumbnailItem.gameObject.SetActive(true);
+        }
+
         /// <summary>
         /// Sets the piece state and fires the state changed event.
+        /// Also switches between 2D thumbnail mode (tray) and 3D mesh mode (board/grabbed).
         /// </summary>
         public void SetState(PieceState newState)
         {
             if (currentState == newState) return;
 
-            PieceState oldState = currentState;
             currentState = newState;
+
+            // Switch visual mode based on state
+            switch (newState)
+            {
+                case PieceState.InPool:
+                case PieceState.Returning:
+                    ShowThumbnailMode();   // flat 2D image in tray
+                    break;
+                case PieceState.Grabbed:
+                case PieceState.Placed:
+                    ShowPieceMode();       // full 3D mesh on board / in hand
+                    break;
+            }
 
             OnStateChanged?.Invoke(this, newState);
         }
