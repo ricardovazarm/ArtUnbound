@@ -36,5 +36,25 @@ namespace ArtUnbound.Data
         [Header("Deprecated - Do Not Use")]
         [Tooltip("DEPRECATED: Piece size is now calculated dynamically based on board width")]
         public float pieceSizeCm = 5.0f; // Kept for backward compatibility, but not used
+
+        [Header("Piece Tray 3D")]
+        [Tooltip("Width of the tray viewport in cm (horizontal, controls number of columns)")]
+        public float trayViewportWidthCm = 30f;
+        [Tooltip("Height of the tray viewport in cm (vertical, controls visible rows)")]
+        public float trayViewportHeightCm = 50f;
+        [Tooltip("Y rotation of the tray relative to the board (degrees). Negative = faces user's right.")]
+        public float trayRotationY = -35f;
+        [Tooltip("Horizontal offset from board center to tray center (m). Applied as negative X in inverted-canvas space.")]
+        public float trayOffsetX = 0.45f;
+        [Tooltip("Vertical offset from board center to tray center (m). Positive = up.")]
+        public float trayOffsetY = 0f;
+        [Tooltip("Depth offset from board center to tray center (m). Positive = toward user.")]
+        public float trayOffsetZ = 0f;
+        [Tooltip("Scroll speed in m/s per thumbstick unit")]
+        public float trayScrollSpeed = 0.3f;
+        [Tooltip("Lerp smoothing factor for scroll animation")]
+        public float trayScrollSmoothing = 10f;
+        [Tooltip("Cell size = pieceSize * trayCellMargin")]
+        public float trayCellMargin = 1.2f;
     }
 }

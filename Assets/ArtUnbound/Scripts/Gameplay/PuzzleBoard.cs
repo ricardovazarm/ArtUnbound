@@ -28,6 +28,9 @@ namespace ArtUnbound.Gameplay
                  "Position it in the scene wherever you want the 2-D thumbnail grid to appear.")]
         [SerializeField] private ArtUnbound.UI.PieceTrayGridController pieceTrayController;
 
+        [Tooltip("New 3D tray controller. When assigned, replaces PieceScrollController and PieceTrayGridController.")]
+        [SerializeField] private ArtUnbound.UI.PieceTray3DController pieceTray3DController;
+
         [SerializeField] private ArtUnbound.Input.HandTrackingInputController inputController;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private bool helpModeEnabled = true;
@@ -146,20 +149,6 @@ namespace ArtUnbound.Gameplay
         {
             if (Vector3.Distance(transform.position, lastPos) > 0.01f)
                 lastPos = transform.position;
-
-            // VERTICAL TRAY: Force PieceTray position to the RIGHT of the board (player's right)
-            // INVERTED: Canvas is rotated 180°, so player's right = negative X
-            // Use 0.1f threshold so we only correct large drift; PieceScrollController may add trayOffsetX (e.g. -0.05)
-            // Note: Do NOT reset localRotation - PieceScrollController sets it (e.g. 15° Y) to align with pagination panel
-            if (scrollController != null)
-            {
-                Vector3 targetPos = new Vector3(-0.45f, 0f, 0f); // Player's right side, same height as board center
-                if (Vector3.Distance(scrollController.transform.localPosition, targetPos) > 0.1f)
-                {
-                    scrollController.transform.localPosition = targetPos;
-                    scrollController.transform.localScale = Vector3.one;
-                }
-            }
         }
 
         /// <summary>
@@ -323,6 +312,9 @@ namespace ArtUnbound.Gameplay
                 piece.SetSnapped(slots[bestIndex].position, slots[bestIndex].rotation);
             }
 
+            // Reparent to slotRoot so piece stays with board, not tray
+            if (slotRoot != null) piece.transform.SetParent(slotRoot, true);
+
             piece.SetSlotIndex(bestIndex);
             placedBySlot[bestIndex] = piece;
 
@@ -365,15 +357,15 @@ namespace ArtUnbound.Gameplay
             {
                 // Log detailed piece placement before completion
                 LogPiecePlacementStatus();
-                
+
                 OnCompleted?.Invoke();
                 OnPuzzleComplete?.Invoke();
             }
 
-            
+
             // Clear highlight after successful snap
             ClearSlotHighlight();
-            
+
             return true;
         }
 
@@ -555,8 +547,14 @@ namespace ArtUnbound.Gameplay
             if (isCorrectSlot)
                 TryPlayMilestoneFeedback(slots[slotIndex].col, slots[slotIndex].row, piece.transform.position);
 
-            // Remove thumbnail permanently — piece is now on the board
+            // Remove thumbnail permanently — piece is now on the board (no-op in 3D system)
             pieceTrayController?.RemoveThumbnail(piece.PieceId);
+
+            // Reparent to slotRoot so piece moves with board, not tray
+            if (slotRoot != null) piece.transform.SetParent(slotRoot, true);
+
+            // 3D tray: remove piece and compact remaining pieces to fill the gap
+            pieceTray3DController?.RemovePieceFromTray(piece);
 
             if (snappedCount >= slots.Count)
             {
@@ -622,30 +620,43 @@ namespace ArtUnbound.Gameplay
         }
 
         /// <summary>
-        /// Returns a piece to the tray after it was picked up from the board (wrong slot).
-        /// Also moves the piece's thumbnail to the last position in the 2D panel.
+        /// Returns a board piece to the tray (wrong slot or intentional removal).
+        /// Moves the thumbnail to the end of the 2D grid so it appears as newly available.
+        /// For pieces grabbed directly from the tray, InteractionManager calls
+        /// piece.SetState(InPool) instead to avoid the MoveToEnd grid shift.
         /// </summary>
         public void ReturnPieceToTray(PuzzlePiece piece)
         {
             if (piece == null) return;
 
-            // Move thumbnail to end of panel BEFORE SetState(InPool) shows it
-            pieceTrayController?.MoveToEnd(piece.PieceId);
-
-            if (scrollController == null)
+            // 3D SYSTEM: add piece to the end of the tray grid
+            if (pieceTray3DController != null)
             {
-                Debug.LogWarning("[PuzzleBoard] Cannot return piece to tray - scrollController is null");
+                pieceTray3DController.AddPieceAtEnd(piece);
+                NotifyBoardStateChanged();
                 return;
             }
 
-            // Ask the scroll controller to add the piece at the end (handles state + 3D position)
-            scrollController.AddPieceAtEnd(piece);
+            // OLD SYSTEM (2D thumbnails + PieceScrollController)
+            pieceTrayController?.MoveToEnd(piece.PieceId);
+            if (pieceTrayController != null)
+            {
+                piece.SetState(PieceState.InPool);
+            }
+            else if (scrollController != null)
+            {
+                scrollController.AddPieceAtEnd(piece);
+            }
+            else
+            {
+                Debug.LogWarning("[PuzzleBoard] Cannot return piece to tray - no tray controller available");
+                return;
+            }
 
-            // Notify that board state changed (triggers auto-save)
             NotifyBoardStateChanged();
         }
 
-        private void HighlightSlot(int slotIndex)
+        public void HighlightSlot(int slotIndex)
         {
             if (slotIndex < 0 || slotIndex >= slots.Count) return;
 
@@ -672,7 +683,7 @@ namespace ArtUnbound.Gameplay
 
             // Position and scale the highlight in SLOT ROOT local space
             PuzzleSlot slot = slots[slotIndex];
-            float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
+            float pieceSize = currentPieceSize > 0f ? currentPieceSize : (puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f);
             
             // Convert slot world position to local position relative to slotRoot
             Vector3 localPos = slotRoot.InverseTransformPoint(slot.position);
@@ -694,6 +705,63 @@ namespace ArtUnbound.Gameplay
                 slotHighlight.SetActive(false);
             }
             currentHighlightedSlot = -1;
+        }
+
+        /// <summary>Returns true if the ray intersects the board plane within the board's bounds.</summary>
+        public bool RayHitsBoard(Ray ray)
+        {
+            Plane p = new Plane(-transform.forward, transform.position);
+            if (!p.Raycast(ray, out float dist) || dist <= 0f) return false;
+            Vector3 local = transform.InverseTransformPoint(ray.GetPoint(dist));
+            return Mathf.Abs(local.x) <= boardWidthM  * 0.5f + 0.05f
+                && Mathf.Abs(local.y) <= boardHeightM * 0.5f + 0.05f;
+        }
+
+        /// <summary>
+        /// Returns the placed piece whose slot is closest to where the ray intersects the board plane.
+        /// Returns null if the ray misses the board or no pieces are placed near the hit point.
+        /// </summary>
+        public PuzzlePiece GetPlacedPieceAtRaycast(Ray ray)
+        {
+            Plane p = new Plane(-transform.forward, transform.position);
+            if (!p.Raycast(ray, out float dist) || dist <= 0f) return null;
+            Vector3 hit   = ray.GetPoint(dist);
+            Vector3 local = transform.InverseTransformPoint(hit);
+            if (Mathf.Abs(local.x) > boardWidthM  * 0.5f + 0.05f) return null;
+            if (Mathf.Abs(local.y) > boardHeightM * 0.5f + 0.05f) return null;
+
+            PuzzlePiece best = null;
+            float bestDist = float.MaxValue;
+            foreach (var kvp in placedBySlot)
+            {
+                float d = Vector3.Distance(hit, slots[kvp.Key].position);
+                if (d < bestDist) { bestDist = d; best = kvp.Value; }
+            }
+            // Only return if within half a cell (avoids grabbing distant pieces)
+            return bestDist <= currentPieceSize * 0.7f ? best : null;
+        }
+
+        /// <summary>
+        /// Returns the index of the closest unoccupied slot to where the ray intersects the board.
+        /// Returns -1 if the ray misses the board or all slots are occupied.
+        /// </summary>
+        public int GetSlotAtRaycast(Ray ray)
+        {
+            Plane p = new Plane(-transform.forward, transform.position);
+            if (!p.Raycast(ray, out float dist) || dist <= 0f) return -1;
+            Vector3 hit   = ray.GetPoint(dist);
+            Vector3 local = transform.InverseTransformPoint(hit);
+            if (Mathf.Abs(local.x) > boardWidthM  * 0.5f + 0.05f) return -1;
+            if (Mathf.Abs(local.y) > boardHeightM * 0.5f + 0.05f) return -1;
+
+            int best = -1; float bestDist = float.MaxValue;
+            for (int i = 0; i < slots.Count; i++)
+            {
+                if (placedBySlot.ContainsKey(i)) continue;
+                float d = Vector3.Distance(hit, slots[i].position);
+                if (d < bestDist) { bestDist = d; best = i; }
+            }
+            return best;
         }
 
         private void CreateSlotsFromCount(int pieceCount)
@@ -1301,6 +1369,15 @@ namespace ArtUnbound.Gameplay
                 }
             }
 
+            // Store UV region for editor comparison with thumbnail
+            {
+                float uL  = (float)col / gridCols;
+                float uR  = (float)(col + 1) / gridCols;
+                float vBt = 1f - (float)(row + 1) / gridRows;
+                float vTp = 1f - (float)row / gridRows;
+                piece.SetMeshUvRegion(new Rect(uL, vBt, uR - uL, vTp - vBt));
+            }
+
             // Add collider for interaction
             var collider = piece.GetComponentInChildren<MeshCollider>();
             if (collider != null)
@@ -1311,8 +1388,30 @@ namespace ArtUnbound.Gameplay
             activePieces.Add(piece);
         }
 
+        private Vector3 TrayLocalPosition()
+        {
+            float x = puzzleConfig != null ? puzzleConfig.trayOffsetX : 0.45f;
+            float y = puzzleConfig != null ? puzzleConfig.trayOffsetY : 0f;
+            float z = puzzleConfig != null ? puzzleConfig.trayOffsetZ : 0f;
+            return new Vector3(-x, y, z);
+        }
+
         private void InitializeScroll()
         {
+            // ── 3D TRAY SYSTEM ─────────────────────────────────────────────────────
+            if (pieceTray3DController != null)
+            {
+                float rotY = puzzleConfig != null ? puzzleConfig.trayRotationY : -35f;
+                pieceTray3DController.transform.localPosition = TrayLocalPosition();
+                pieceTray3DController.transform.localRotation = Quaternion.Euler(0f, rotY, 0f);
+                pieceTray3DController.transform.localScale    = Vector3.one;
+
+                var shuffled3D = PieceShuffler.GetShuffledCopy(activePieces);
+                pieceTray3DController.Initialize(shuffled3D, currentPieceSize);
+                return;
+            }
+            // ── OLD SYSTEM (fallback) ──────────────────────────────────────────────
+
             if (scrollController == null)
             {
                 scrollController = GetComponentInChildren<ArtUnbound.UI.PieceScrollController>();
@@ -1380,9 +1479,10 @@ namespace ArtUnbound.Gameplay
             foreach (var p in shuffledPieces)
             {
                 pieceTransforms.Add(p.transform);
-                // Fix: Do NOT call ReturnToPool here, as it starts a coroutine that overrides the position
-                // set by scrollController.Initialize. Just set the state directly.
+                // SetState(InPool) is a no-op for newly created pieces (default state is already InPool).
+                // Call ShowThumbnailMode directly so MeshRenderers are hidden immediately.
                 p.SetState(PieceState.InPool);
+                p.ShowThumbnailMode();
             }
 
             Debug.Log($"[PIECE] InitializeScroll: passing {pieceTransforms.Count} pieces to tray (slots={slots.Count})");
@@ -1392,6 +1492,11 @@ namespace ArtUnbound.Gameplay
             if (pieceTrayController != null)
             {
                 pieceTrayController.Initialize(shuffledPieces, currentTexture, gridCols, gridRows, currentPieceSize);
+
+                // Move the 3D tray far below so its pieces don't overlap with the 2D panel.
+                // Pieces are hidden (MeshRenderer disabled) but the 3D tray was positioned at the
+                // same world-space location as the canvas panel, causing depth-buffer artifacts.
+                scrollController.transform.localPosition = new Vector3(0f, -5f, 0f);
             }
         }
 
@@ -1536,11 +1641,14 @@ namespace ArtUnbound.Gameplay
                 
                 restoredCount++;
                 
-                // Remove from scroll controller (this will deactivate it in tray, but we reactivate it above)
-                if (scrollController != null)
+                // Reparent to slotRoot so the piece stays with the board
+                if (slotRoot != null) piece.transform.SetParent(slotRoot, true);
+
+                // Remove from tray list (both systems)
+                pieceTray3DController?.RemovePieceFromTray(piece);
+                if (pieceTray3DController == null && scrollController != null)
                 {
                     scrollController.RemovePieceFromTray(piece);
-                    // Reactivate after removing from tray
                     piece.gameObject.SetActive(true);
                 }
             }
@@ -1554,10 +1662,10 @@ namespace ArtUnbound.Gameplay
             Debug.Log($"[PIECE] RestoreBoardState done: restored={restoredCount}/{savedState.Count}, correctOnBoard={snappedCount}, trayInPool={trayInPool}, totalPieces={totalPieces}");
 
             // Ensure remaining tray pieces are visible and correctly positioned
-            if (scrollController != null)
-            {
+            if (pieceTray3DController != null)
+                pieceTray3DController.RefreshAfterRestore();
+            else if (scrollController != null)
                 scrollController.RefreshTrayAfterRestore();
-            }
             
             // Update HUD if needed
             OnPieceSnapped?.Invoke(snappedCount, totalPieces);
@@ -1737,6 +1845,11 @@ namespace ArtUnbound.Gameplay
         /// </summary>
         public void HideScrollButtons()
         {
+            if (pieceTray3DController != null)
+            {
+                pieceTray3DController.HideScrollButtons();
+                return;
+            }
             if (scrollController != null)
             {
                 scrollController.HideScrollButtons();

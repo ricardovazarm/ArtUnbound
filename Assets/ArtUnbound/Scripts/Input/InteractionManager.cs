@@ -19,6 +19,12 @@ namespace ArtUnbound.Input
         [SerializeField] private bool useRaycast = true; // Enabled for Controllers
         [SerializeField] private LineRenderer rayVisualizer;
 
+        /// <summary>True while any piece or frame is actively being held.</summary>
+        public bool IsDragging => currentDraggedPiece != null || currentDraggedFrame != null;
+
+        /// <summary>The piece currently being dragged, or null if none.</summary>
+        public PuzzlePiece CurrentDraggedPiece => currentDraggedPiece;
+
         private PuzzlePiece currentDraggedPiece;
         private GrabbableFrame currentDraggedFrame; // For hanging artwork
         private bool isRepositioningWallArtwork = false; // True when dragging a placed wall artwork
@@ -27,6 +33,37 @@ namespace ArtUnbound.Input
         private int targetSlotIndex = -1; // Store the slot shown in the highlight
         private bool pieceWasFromBoard = false; // Track if the piece was grabbed from the board
         private bool pieceWasFromThumbnail = false; // True when grabbed from the 2D thumbnail panel
+        private float _externalDragStartTime = -10f; // Time.time when BeginExternalDrag was called
+        private const float MinThumbnailHoldSec = 0.25f; // Ignore Pinch END this soon after thumbnail grab
+        private int _pinchStartsSinceExternalDrag = 0; // counts NEW Pinch STARTs after BeginExternalDrag
+        private bool _ignoreNextPinchStart = false;    // skips the grab gesture's own START if it fires after BeginExternalDrag
+
+        // ── Controller select→aim→place state ────────────────────────────────────
+        private PuzzlePiece _ctrlSelectedPiece      = null;
+        private bool        _ctrlIsScrollingTray    = false;
+        private bool        _ctrlRayHitTrayOnDown   = false; // ray hit tray at trigger-down
+        private float       _ctrlTriggerDownTime    = -1f;
+        private float       _ctrlLastRayHitY        = 0f;
+        private bool        _ctrlPieceWasFromBoard  = false;
+        private const float ClickMaxSec             = 0.15f; // <= 0.15s = click, > = hold/scroll
+        private ArtUnbound.UI.PieceTray3DController _tray3DCached;
+        private PuzzleBoard _boardCached;
+
+        private bool IsControllerMode => inputController != null && inputController.useControllers;
+
+        private ArtUnbound.UI.PieceTray3DController GetTray3D()
+        {
+            if (_tray3DCached == null)
+                _tray3DCached = FindFirstObjectByType<ArtUnbound.UI.PieceTray3DController>();
+            return _tray3DCached;
+        }
+
+        private PuzzleBoard GetBoard()
+        {
+            if (_boardCached == null)
+                _boardCached = FindFirstObjectByType<PuzzleBoard>();
+            return _boardCached;
+        }
 
         private void OnEnable()
         {
@@ -68,9 +105,25 @@ namespace ArtUnbound.Input
 
         private void Update()
         {
-            // El Ray Visualizer manual ha sido eliminado para evitar conflictos.
-            // Si necesitas un láser visual para la UI, te recomiendo usar el 
-            // XRRayInteractor o Near-Far Interactor nativo de Unity en los prefabs de las manos.
+            // While a piece is selected (controller mode), continuously highlight the board
+            // slot under the ray so the user knows where the piece will land before clicking.
+            if (!IsControllerMode || _ctrlSelectedPiece == null) return;
+            if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
+
+            Ray ray = new Ray(origin, rot * Vector3.forward);
+            var board = GetBoard();
+            if (board == null) return;
+
+            if (board.RayHitsBoard(ray))
+            {
+                int slotIdx = board.GetSlotAtRaycast(ray);
+                if (slotIdx >= 0) board.HighlightSlot(slotIdx);
+                else              board.ClearSlotHighlight();
+            }
+            else
+            {
+                board.ClearSlotHighlight();
+            }
         }
 
         private void OnDestroy()
@@ -85,11 +138,26 @@ namespace ArtUnbound.Input
 
         private void HandlePinchStart(Vector3 position, Quaternion rotation)
         {
-            // GUARD: Don't grab a new object if we're already holding one
-            if (currentDraggedPiece != null || currentDraggedFrame != null)
+            if (IsControllerMode) { HandleControllerTriggerDown(); return; }
+
+            // Count genuinely NEW gestures that start while a thumbnail-grabbed piece is held.
+            // Skip the first one: the grab gesture's own START can fire after BeginExternalDrag
+            // due to UIInputModule/HTPC execution order, so it must not disable the block guard.
+            if (pieceWasFromThumbnail && currentDraggedPiece != null)
             {
-                return;
+                if (_ignoreNextPinchStart)
+                    _ignoreNextPinchStart = false;
+                else
+                    _pinchStartsSinceExternalDrag++;
             }
+
+            // GUARD: Don't grab a new object if we're already holding one (this instance or any other).
+            if (currentDraggedPiece != null || currentDraggedFrame != null) return;
+
+            // If another IM already holds a piece (GlobalGrabbedPiece != null), respect that lock.
+            // The sphere-overlap filter (CurrentState != Grabbed) already prevents grabbing the same piece,
+            // and ForceReleaseGlobalLock would destroy a legitimate grab held by the other IM.
+            if (PuzzlePiece.GlobalGrabbedPiece != null) return;
 
             // currentDragDistance = 0f; // Removed - not used
             dragOffset = Vector3.zero;
@@ -100,7 +168,6 @@ namespace ArtUnbound.Input
             Collider[] colliders = Physics.OverlapSphere(position, grabRadius, interactableLayer);
 
             PuzzlePiece bestPiece = null;
-            ArtUnbound.UI.PieceThumbnailItem bestThumbnail = null;
             GrabbableFrame grabbableFrame = null;
             float bestDist = float.MaxValue;
 
@@ -134,7 +201,6 @@ namespace ArtUnbound.Input
                         frame.IsGrabbable = true;
                         isRepositioningWallArtwork = true;
                         repositioningArtworkId = artId;
-                        Debug.Log($"[InteractionManager] Grabbing placed artwork for repositioning: {artId ?? "unknown"}");
                     }
                     // If GrabbableFrame already exists from a previous grab, still check if
                     // this is a placed artwork — the component is left over from the first grab
@@ -154,36 +220,15 @@ namespace ArtUnbound.Input
                         }
                         isRepositioningWallArtwork = true;
                         repositioningArtworkId = artId;
-                        Debug.Log($"[InteractionManager] Re-grabbing placed artwork for repositioning: {artId ?? "unknown"}");
                     }
 
                     if (frame != null && frame.IsGrabbable && !frame.IsBeingDragged)
                     {
                         grabbableFrame = frame;
-                        Debug.Log($"[InteractionManager] Found grabbable frame at {frame.transform.position}");
                         break; // Frame takes priority
                     }
                     
-                    // Check for 2D thumbnail (lives in panel, NOT a child of PuzzlePiece)
-                    var thumb = col.GetComponent<ArtUnbound.UI.PieceThumbnailItem>();
-                    if (thumb != null)
-                    {
-                        if (thumb.LinkedPiece != null
-                            && thumb.LinkedPiece.CurrentState != PieceState.Grabbed
-                            && thumb.LinkedPiece.CurrentState != PieceState.Placed)
-                        {
-                            float d = Vector3.Distance(position, col.bounds.center);
-                            if (d <= grabRadius && d < bestDist)
-                            {
-                                bestDist      = d;
-                                bestThumbnail = thumb;
-                                bestPiece     = null; // thumbnail supersedes any 3D piece at same spot
-                            }
-                        }
-                        continue; // don't also check as a regular piece
-                    }
-
-                    // Otherwise check for puzzle pieces
+                    // Check for puzzle pieces on the board (thumbnails are handled via Button/IPointerDownHandler)
                     var p = col.GetComponentInParent<PuzzlePiece>();
                     if (p != null && p.CurrentState != PieceState.Grabbed)
                     {
@@ -192,7 +237,6 @@ namespace ArtUnbound.Input
                         {
                             bestDist  = d;
                             bestPiece = p;
-                            bestThumbnail = null; // 3D piece supersedes thumbnail if closer
                         }
                     }
                 }
@@ -209,38 +253,10 @@ namespace ArtUnbound.Input
             {
                 grabbableFrame.StartDrag(position);
                 currentDraggedFrame = grabbableFrame;
-                Debug.Log("[InteractionManager] Started dragging frame");
                 return;
             }
 
-            // Handle thumbnail grab — spawn the linked 3D piece at hand position
-            if (bestThumbnail != null)
-            {
-                var piece = bestThumbnail.LinkedPiece;
-
-                // Align piece rotation to board so placement looks natural
-                var board0 = FindFirstObjectByType<PuzzleBoard>();
-                if (board0 != null)
-                    piece.transform.rotation = board0.transform.rotation;
-
-                // Move piece to hand immediately (it was somewhere invisible in PieceScrollController)
-                piece.transform.position = position;
-
-                currentDraggedPiece   = piece;
-                dragOffset            = Vector3.zero;   // piece is already at hand
-                pieceWasFromBoard     = false;
-                pieceWasFromThumbnail = true;
-
-                piece.SetDragged(true); // → SetState(Grabbed) → ShowPieceMode (mesh on, thumb hidden)
-
-                if (ArtUnbound.Feedback.AudioManager.Instance != null)
-                    ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
-
-                Debug.Log($"[InteractionManager] Grabbed piece {piece.PieceId} from thumbnail panel");
-                return;
-            }
-
-            // METHOD 2: Raycast Fallback (for Controllers) - only for pieces
+            // METHOD 2: Raycast Fallback (for Controllers) - only for board pieces
             if (useRaycast && bestPiece == null)
             {
                 Ray ray = new Ray(position, rotation * Vector3.forward);
@@ -261,6 +277,8 @@ namespace ArtUnbound.Input
 
             if (bestPiece != null)
             {
+                Debug.Log($"[GRAB-Physics] piece={bestPiece.PieceId} state={bestPiece.CurrentState} dist={bestDist*100:F1}cm");
+
                 // Track if the piece was grabbed from the board
                 pieceWasFromBoard = (bestPiece.CurrentState == PieceState.Placed);
                 
@@ -298,11 +316,21 @@ namespace ArtUnbound.Input
                 currentDraggedPiece = bestPiece;
                 dragOffset = bestPiece.transform.position - position;
                 bestPiece.SetDragged(true);
+
+                // If SetDragged was blocked (another piece has the global lock), discard ownership.
+                if (bestPiece.CurrentState != PieceState.Grabbed)
+                {
+                    currentDraggedPiece = null;
+                    bestPiece.ShowThumbnailMode(); // ensure thumbnail is visible if it was ghosted
+                    return;
+                }
             }
         }
 
         private void HandlePinchHold(Vector3 position, Quaternion rotation)
         {
+            if (IsControllerMode) { HandleControllerTriggerHeld(); return; }
+
             // Handle frame dragging
             if (currentDraggedFrame != null)
             {
@@ -339,6 +367,8 @@ namespace ArtUnbound.Input
 
         private void HandlePinchEnd(Vector3 position, Quaternion rotation)
         {
+            if (IsControllerMode) { HandleControllerTriggerUp(); return; }
+
             if (rayVisualizer != null)
             {
                 rayVisualizer.enabled = false;
@@ -386,7 +416,6 @@ namespace ArtUnbound.Input
                     bool placedOnWall = false;
                     if (hangingController != null)
                     {
-                        Debug.Log($"[InteractionManager] Passing clone {clonedFrame.name} to TryPlaceOnWall");
                         placedOnWall = hangingController.TryPlaceOnWall(clonedFrame, releasePosition);
                     }
                     else
@@ -401,7 +430,6 @@ namespace ArtUnbound.Input
                         currentDraggedFrame.RestoreOriginal();
                     }
 
-                    Debug.Log($"[InteractionManager] Released in-puzzle frame (placed on wall: {placedOnWall})");
                 }
 
                 currentDraggedFrame = null;
@@ -414,11 +442,26 @@ namespace ArtUnbound.Input
                 targetSlotIndex = -1;
                 return;
             }
+
+            // Block the Pinch END that belongs to the same gesture that triggered the thumbnail grab.
+            // Two conditions must BOTH be met to allow release:
+            //   1. At least one new Pinch START was seen after BeginExternalDrag (new gesture)
+            //   2. OR the minimum hold time has elapsed (safety net for edge cases)
+            if (pieceWasFromThumbnail &&
+                _pinchStartsSinceExternalDrag == 0 &&
+                Time.time - _externalDragStartTime < MinThumbnailHoldSec)
+            {
+                Debug.Log($"[RELEASE-Blocked] piece={currentDraggedPiece.PieceId} noNewPinch dt={(Time.time-_externalDragStartTime)*1000:F0}ms");
+                return;
+            }
+
+            Debug.Log($"[RELEASE] piece={currentDraggedPiece.PieceId} fromThumbnail={pieceWasFromThumbnail} fromBoard={pieceWasFromBoard}");
             
             // Store references before clearing
-            var piece      = currentDraggedPiece;
-            var slotIndex  = targetSlotIndex;
-            var wasFromBoard = pieceWasFromBoard;
+            var piece            = currentDraggedPiece;
+            var slotIndex        = targetSlotIndex;
+            var wasFromBoard     = pieceWasFromBoard;
+            var wasFromThumbnail = pieceWasFromThumbnail;
 
             // Clear IMMEDIATELY to prevent double processing
             piece.SetDragged(false);
@@ -451,19 +494,254 @@ namespace ArtUnbound.Input
 
                 if (!snapped)
                 {
-                    // Failed to snap - return based on origin
                     if (wasFromBoard)
                     {
+                        // Piece was grabbed from the board → goes to END of tray
                         board.ReturnPieceToTray(piece);
                     }
                     else
                     {
-                        piece.ReturnToPool(piece.GetPoolPosition());
+                        // Piece came from the tray → animate back to its original grid position
+                        var tray3D = FindFirstObjectByType<ArtUnbound.UI.PieceTray3DController>();
+                        if (tray3D != null)
+                        {
+                            tray3D.ReturnPieceToGrid(piece);
+                        }
+                        else if (wasFromThumbnail)
+                        {
+                            // 2D thumbnail fallback
+                            piece.SetState(PieceState.InPool);
+                            piece.ShowThumbnailMode();
+                        }
+                        else
+                        {
+                            board.ReturnPieceToTray(piece);
+                        }
                     }
                 }
-                
+
                 // Clear highlight after snap attempt
                 board.ClearSlotHighlight();
+            }
+            else
+            {
+                // Board not found — force the piece back to a clean state so _globalGrabbedPiece
+                // doesn't remain locked forever, which would block all future grabs.
+                Debug.LogWarning("[InteractionManager] Board not found on release — force returning piece to pool.");
+                piece.SetState(PieceState.InPool);
+                piece.ShowThumbnailMode();
+            }
+        }
+
+        /// <summary>
+        /// Called by PieceThumbnailItem.OnPointerDown to begin dragging a piece
+        /// from the thumbnail panel. Works for near pinch (poke), remote pinch (ray),
+        /// and controller input — all routed through the Meta XR UI event system.
+        ///
+        /// HandlePinchHold will start moving the piece to the hand on the next frame.
+        /// HandlePinchEnd will attempt the snap when the pinch is released.
+        /// </summary>
+        public void BeginExternalDrag(PuzzlePiece piece)
+        {
+            if (piece == null) return;
+            if (currentDraggedPiece != null || currentDraggedFrame != null) return;
+
+            var board = FindFirstObjectByType<PuzzleBoard>();
+            if (board != null)
+                piece.transform.rotation = board.transform.rotation;
+
+            // Place the piece at the live hand position. GetPointerPose queries the
+            // XRHandSubsystem directly so it is never stale, unlike TrackedObject which
+            // is written by ProcessHand one Update() tick before UIInputModule fires.
+            if (inputController != null &&
+                inputController.GetPointerPose(out Vector3 handPos, out Quaternion _))
+            {
+                piece.transform.position = handPos;
+            }
+            else if (inputController != null && inputController.TrackedObject != null)
+            {
+                piece.transform.position = inputController.TrackedObject.position;
+            }
+
+            currentDraggedPiece              = piece;
+            dragOffset                       = Vector3.zero;
+            pieceWasFromBoard                = false;
+            pieceWasFromThumbnail            = true;
+            _externalDragStartTime           = Time.time;
+            _pinchStartsSinceExternalDrag    = 0;
+            _ignoreNextPinchStart            = true;  // the grab gesture's START may fire after us
+
+            Debug.Log($"[GRAB-Thumbnail] piece={piece.PieceId} state={piece.CurrentState}");
+
+            piece.SetDragged(true); // → SetState(Grabbed) → ShowPieceMode (mesh on, thumbnail ghosted)
+
+            // Verify the grab actually succeeded — SetState(Grabbed) can be blocked by the global lock.
+            if (piece.CurrentState != PieceState.Grabbed)
+            {
+                Debug.LogWarning($"[GRAB-Thumbnail] Grab blocked by global lock on piece {piece.PieceId} — cleaning up.");
+                currentDraggedPiece   = null;
+                pieceWasFromThumbnail = false;
+                piece.ShowThumbnailMode(); // un-ghost thumbnail in case OnPointerDown already ghosted it
+                return;
+            }
+
+            if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+
+        }
+
+        // ── Controller select→aim→place handlers ─────────────────────────────────
+
+        private void HandleControllerTriggerDown()
+        {
+            _ctrlTriggerDownTime  = Time.time;
+            _ctrlRayHitTrayOnDown = false;
+            if (_ctrlSelectedPiece != null) return; // Already selecting — wait for TriggerUp to place
+
+            if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
+            Ray ray = new Ray(origin, rot * Vector3.forward);
+
+            var tray = GetTray3D();
+            if (tray != null && tray.RayHitsTray(ray, out float hitY))
+            {
+                // Don't start scrolling immediately — record intent; scroll activates after ClickMaxSec hold
+                _ctrlRayHitTrayOnDown = true;
+                _ctrlLastRayHitY     = hitY;
+                Debug.Log($"[CTRL-Down] ray hit tray — deferring scroll until hold > {ClickMaxSec}s");
+            }
+            else
+            {
+                Debug.Log("[CTRL-Down] ray did NOT hit tray");
+            }
+        }
+
+        private void HandleControllerTriggerHeld()
+        {
+            if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
+            Ray ray = new Ray(origin, rot * Vector3.forward);
+
+            // Promote deferred tray-hit to active scroll once the hold crosses ClickMaxSec
+            if (!_ctrlIsScrollingTray && _ctrlRayHitTrayOnDown
+                && (Time.time - _ctrlTriggerDownTime) >= ClickMaxSec)
+            {
+                var tray0 = GetTray3D();
+                if (tray0 != null && tray0.RayHitsTray(ray, out float initY))
+                {
+                    _ctrlIsScrollingTray = true;
+                    _ctrlLastRayHitY    = initY;
+                    Debug.Log("[CTRL-Held] scroll mode activated");
+                }
+            }
+
+            if (_ctrlIsScrollingTray)
+            {
+                var tray = GetTray3D();
+                if (tray != null && tray.RayHitsTray(ray, out float hitY))
+                {
+                    tray.ScrollBy(hitY - _ctrlLastRayHitY);
+                    _ctrlLastRayHitY = hitY;
+                }
+                return;
+            }
+
+            if (_ctrlSelectedPiece != null)
+            {
+                var board = FindFirstObjectByType<PuzzleBoard>();
+                if (board != null)
+                {
+                    int slotIdx = board.GetSlotAtRaycast(ray);
+                    if (slotIdx >= 0) board.HighlightSlot(slotIdx);
+                    else              board.ClearSlotHighlight();
+                }
+            }
+        }
+
+        private void HandleControllerTriggerUp()
+        {
+            bool wasClick = (Time.time - _ctrlTriggerDownTime) < ClickMaxSec;
+            bool rayHitTray = _ctrlRayHitTrayOnDown;
+            _ctrlRayHitTrayOnDown = false;
+
+            Debug.Log($"[CTRL-Up] wasClick={wasClick} isScrolling={_ctrlIsScrollingTray} rayHitTray={rayHitTray} selectedPiece={_ctrlSelectedPiece?.PieceId.ToString() ?? "none"}");
+
+            if (_ctrlIsScrollingTray)
+            {
+                _ctrlIsScrollingTray = false;
+                return;
+            }
+
+            // Quick click while ray was on tray and no piece was already selected → attempt piece select via raycast
+            // (falls through to SELECT phase below)
+
+            if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
+            Ray ray = new Ray(origin, rot * Vector3.forward);
+            var board = FindFirstObjectByType<PuzzleBoard>();
+
+            // ── PLACE phase: piece already selected ──────────────────────────────
+            if (_ctrlSelectedPiece != null && wasClick)
+            {
+                board?.ClearSlotHighlight();
+
+                if (board != null && board.RayHitsBoard(ray))
+                {
+                    int slotIdx = board.GetSlotAtRaycast(ray);
+                    if (slotIdx >= 0)
+                    {
+                        bool snapped = board.SnapPieceToSlot(_ctrlSelectedPiece, slotIdx);
+                        if (snapped && !_ctrlPieceWasFromBoard)
+                            GetTray3D()?.RemovePieceFromTray(_ctrlSelectedPiece);
+                    }
+                }
+                else if (_ctrlPieceWasFromBoard && board != null)
+                {
+                    // Click outside board: piece was from board → return to end of tray
+                    board.ReturnPieceToTray(_ctrlSelectedPiece);
+                }
+                // else: click outside board, piece from tray → just deselect (no move)
+
+                _ctrlSelectedPiece.SetSelected(false);
+                _ctrlSelectedPiece     = null;
+                _ctrlPieceWasFromBoard = false;
+                return;
+            }
+
+            // ── SELECT phase: no piece selected yet ──────────────────────────────
+            if (_ctrlSelectedPiece == null && wasClick)
+            {
+                if (board == null) board = FindFirstObjectByType<PuzzleBoard>();
+                PuzzlePiece piece = null;
+
+                // 1st: board geometry pick — finds placed pieces without relying on Physics/colliders
+                if (board != null && board.RayHitsBoard(ray))
+                {
+                    piece = board.GetPlacedPieceAtRaycast(ray);
+                    Debug.Log($"[CTRL-Select] board geo → {(piece != null ? piece.PieceId.ToString() : "null")}");
+                }
+
+                // 2nd: tray geometry pick — tray pieces have colliders OFF
+                if (piece == null)
+                {
+                    var tray = GetTray3D();
+                    if (tray != null && tray.RayHitsTray(ray, out float _))
+                    {
+                        piece = tray.GetPieceAtRaycast(ray);
+                        Debug.Log($"[CTRL-Select] tray grid → {(piece != null ? piece.PieceId.ToString() : "null")}");
+                    }
+                }
+
+                if (piece != null && piece.CurrentState != PieceState.Grabbed)
+                {
+                    if (piece.CurrentState == PieceState.Placed)
+                    {
+                        if (board == null || !board.RemovePieceFromSlot(piece)) return; // Locked
+                        _ctrlPieceWasFromBoard = true;
+                    }
+                    _ctrlSelectedPiece = piece;
+                    piece.SetSelected(true);
+                    Debug.Log($"[CTRL-Select] selected piece {piece.PieceId}");
+                    if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                        ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+                }
             }
         }
 

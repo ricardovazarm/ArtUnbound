@@ -220,7 +220,9 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
-            if (!gameObject.activeSelf)
+            // Use activeInHierarchy: activeSelf can be true while a parent is inactive,
+            // in which case the content would still be invisible.
+            if (!gameObject.activeInHierarchy)
                 gameObject.SetActive(true);
 
             if (hudPanel != null)

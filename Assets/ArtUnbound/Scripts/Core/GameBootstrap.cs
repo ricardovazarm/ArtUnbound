@@ -38,6 +38,7 @@ namespace ArtUnbound.Core
         [SerializeField] private NativeGalleryController nativeGallery;          // Galería nativa (Prime Video style)
         [SerializeField] private PuzzleHUDController puzzleHUD;
         [SerializeField] private PuzzleAchievementsController puzzleAchievements;
+        [SerializeField] private ArtUnbound.UI.PiecesPanelController puzzlePiecesPanel;
         [SerializeField] private PostGameController postGameController;
         [SerializeField] private OnboardingController onboardingController;
 
@@ -85,6 +86,7 @@ namespace ArtUnbound.Core
         private string selectedArtworkId;
         private int selectedPieceCount = 64;
         private int selectedDifficultyIndex = 0; // 0=Easy(Bronce), 1=Normal(Plata), 2=Hard(Oro), 3=Expert(Platinum)
+        private bool _boardPositioned = false; // Board position is calculated once and never changed again
 
         private void Awake()
         {
@@ -385,7 +387,8 @@ namespace ArtUnbound.Core
                 puzzleHUD.Show();
             }
 
-            puzzleAchievements?.Show();
+            // Armando rompecabezas: mostrar instrucciones de piezas, no el panel de logros
+            puzzlePiecesPanel?.Show();
 
             // Timer is already started in InitializePuzzleBoard(), so don't restart it here
             // if (timerController != null)
@@ -449,11 +452,11 @@ namespace ArtUnbound.Core
 
         private void OnWallSelected(Vector3 position, Quaternion rotation)
         {
-            // Position the puzzle board
-            if (puzzleBoard != null)
+            if (!_boardPositioned && puzzleBoard != null)
             {
                 puzzleBoard.transform.position = position;
                 puzzleBoard.transform.rotation = rotation;
+                _boardPositioned = true;
             }
 
             if (!InitializePuzzleBoard())
@@ -462,19 +465,13 @@ namespace ArtUnbound.Core
 
         private void OnComfortPositionLocked()
         {
-
-            // Sync PuzzleBoard to match Canvas exactly
-            if (puzzleBoard != null && mainUICanvas != null)
+            // Position board only once — never move it again after first placement
+            if (!_boardPositioned && puzzleBoard != null && mainUICanvas != null)
             {
-                // Use Canvas position and rotation as the base
-                // Board should be at EXACTLY the same position
                 puzzleBoard.transform.position = mainUICanvas.position;
-                
-                // Board rotation = Canvas rotation + 180° to face the user
-                Quaternion canvasRotation = mainUICanvas.rotation;
-                Quaternion boardRotation = canvasRotation * Quaternion.Euler(0f, 180f, 0f);
+                Quaternion boardRotation = mainUICanvas.rotation * Quaternion.Euler(0f, 180f, 0f);
                 puzzleBoard.transform.rotation = boardRotation;
-
+                _boardPositioned = true;
             }
 
             if (!InitializePuzzleBoard())
@@ -621,6 +618,7 @@ namespace ArtUnbound.Core
         {
             SetState(GameState.PostGame);
             // Don't call HideAllPanels - it hides puzzleBoard; we need board+full image visible
+            puzzlePiecesPanel?.Hide();
 
             if (timerController != null)
                 timerController.StopTimer();
@@ -972,6 +970,7 @@ namespace ArtUnbound.Core
             nativeGallery?.Hide();
             puzzleHUD?.Hide();
             puzzleAchievements?.Hide();
+            puzzlePiecesPanel?.Hide();
             postGameController?.Hide();
             onboardingController?.Hide();
             

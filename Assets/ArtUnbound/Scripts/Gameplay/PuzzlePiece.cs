@@ -25,6 +25,12 @@ namespace ArtUnbound.Gameplay
         [Header("Animation")]
         [SerializeField] private float returnAnimationDuration = 0.5f;
 
+        [Header("Debug — UV Region")]
+        [Tooltip("UV rect in texture space used to generate this piece's 3D mesh (before board-rotation correction). Compare with the thumbnail's uvRect to verify they match.")]
+        [SerializeField] private Rect _meshUvRegion;
+        public Rect MeshUvRegion => _meshUvRegion;
+        public void SetMeshUvRegion(Rect region) { _meshUvRegion = region; }
+
         public int PieceId => pieceId;
         public int CorrectSlotIndex => correctSlotIndex;
         public Transform GrabAnchor => grabAnchor;
@@ -36,6 +42,26 @@ namespace ArtUnbound.Gameplay
         private PieceState currentState = PieceState.InPool;
         private Vector3 poolPosition;
         private Coroutine returnCoroutine;
+
+        // Global guard: only one piece can be in Grabbed state at a time.
+        private static PuzzlePiece _globalGrabbedPiece = null;
+
+        /// <summary>The piece currently grabbed across all InteractionManager instances, or null.</summary>
+        public static PuzzlePiece GlobalGrabbedPiece => _globalGrabbedPiece;
+
+        /// <summary>
+        /// Force-clears the global grab lock and resets the piece to InPool (thumbnail visible).
+        /// Call this when the lock is detected as stuck (no InteractionManager is tracking it).
+        /// </summary>
+        public static void ForceReleaseGlobalLock()
+        {
+            if (_globalGrabbedPiece == null) return;
+            var stuck = _globalGrabbedPiece;
+            _globalGrabbedPiece = null;
+            stuck.currentState = PieceState.InPool;
+            stuck.ShowThumbnailMode();
+            Debug.LogWarning($"[PuzzlePiece] Force-released stuck global lock on piece {stuck.pieceId}");
+        }
 
         // 2D thumbnail overlay (shown in tray; hidden when grabbed / placed on board)
         private ArtUnbound.UI.PieceThumbnailItem _thumbnailItem;
@@ -67,20 +93,31 @@ namespace ArtUnbound.Gameplay
             ShowThumbnailMode();   // start life in the tray as a flat 2D image
         }
 
-        /// <summary>Enables the 3-D mesh and collider; hides the 2D thumbnail in the panel.</summary>
+        /// <summary>
+        /// Enables the 3-D mesh and collider; dims the thumbnail to show the piece is grabbed.
+        /// The thumbnail stays in the grid so the slot is still visible while the piece is held.
+        /// </summary>
         public void ShowPieceMode()
         {
+            if (meshRenderer  == null) meshRenderer  = GetComponentInChildren<MeshRenderer>(true);
+            if (_meshCollider == null) _meshCollider = GetComponentInChildren<MeshCollider>(true);
+
             if (meshRenderer  != null) meshRenderer.enabled  = true;
             if (_meshCollider != null) _meshCollider.enabled = true;
-            if (_thumbnailItem != null) _thumbnailItem.gameObject.SetActive(false);
+            if (_thumbnailItem != null) _thumbnailItem.SetGhost(true);
         }
 
-        /// <summary>Hides the 3-D mesh and collider; shows the 2D thumbnail in the panel.</summary>
+        /// <summary>
+        /// Hides the 3-D mesh and collider; restores the thumbnail to full opacity.
+        /// </summary>
         public void ShowThumbnailMode()
         {
+            if (meshRenderer  == null) meshRenderer  = GetComponentInChildren<MeshRenderer>(true);
+            if (_meshCollider == null) _meshCollider = GetComponentInChildren<MeshCollider>(true);
+
             if (meshRenderer  != null) meshRenderer.enabled  = false;
             if (_meshCollider != null) _meshCollider.enabled = false;
-            if (_thumbnailItem != null) _thumbnailItem.gameObject.SetActive(true);
+            if (_thumbnailItem != null) _thumbnailItem.SetGhost(false);
         }
 
         /// <summary>
@@ -91,6 +128,21 @@ namespace ArtUnbound.Gameplay
         {
             if (currentState == newState) return;
 
+            // Block if another piece is already grabbed.
+            if (newState == PieceState.Grabbed && _globalGrabbedPiece != null && _globalGrabbedPiece != this)
+            {
+                Debug.LogWarning($"[PuzzlePiece] Blocked grab on piece {pieceId} — piece {_globalGrabbedPiece.pieceId} is already grabbed.");
+                return;
+            }
+
+            // Release global lock when leaving Grabbed.
+            if (currentState == PieceState.Grabbed && _globalGrabbedPiece == this)
+                _globalGrabbedPiece = null;
+
+            // Acquire global lock when entering Grabbed.
+            if (newState == PieceState.Grabbed)
+                _globalGrabbedPiece = this;
+
             currentState = newState;
 
             // Switch visual mode based on state
@@ -98,11 +150,9 @@ namespace ArtUnbound.Gameplay
             {
                 case PieceState.InPool:
                 case PieceState.Returning:
-                    ShowThumbnailMode();   // flat 2D image in tray
-                    break;
                 case PieceState.Grabbed:
                 case PieceState.Placed:
-                    ShowPieceMode();       // full 3D mesh on board / in hand
+                    ShowPieceMode();   // 3D mesh always visible
                     break;
             }
 
@@ -278,6 +328,33 @@ namespace ArtUnbound.Gameplay
                         highlightRenderer.material.color = color.Value;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Highlights this piece as "selected" for controller point-to-place interaction.
+        /// Uses highlightObject if available, otherwise applies emission to the mesh renderer.
+        /// </summary>
+        public void SetSelected(bool selected)
+        {
+            if (highlightObject != null)
+            {
+                SetHighlight(selected, Color.yellow);
+                return;
+            }
+
+            // Fallback: emission on mesh renderer
+            var rend = meshRenderer != null ? meshRenderer : GetComponentInChildren<MeshRenderer>();
+            if (rend == null) return;
+
+            if (selected)
+            {
+                rend.material.EnableKeyword("_EMISSION");
+                rend.material.SetColor("_EmissionColor", Color.yellow * 0.4f);
+            }
+            else
+            {
+                rend.material.DisableKeyword("_EMISSION");
             }
         }
 

@@ -58,27 +58,34 @@ namespace ArtUnbound.Input
 
         public Transform TrackedObject => trackedObject;
 
+        /// <summary>True while a pinch (hand) or trigger press (controller) is active.</summary>
+        public bool IsPinching => useControllers ? wasTriggerPressed : isPinchingRight;
+
+        private float _autoDetectTimer = 0f;
+        private const float AutoDetectInterval = 1f;
+
         private void Start()
         {
-            if (!useControllers)
-            {
-                GetHandSubsystem();
-            }
-            else
-            {
-                Debug.Log("[HandTracking] Switched to CONTROLLER Input Mode.");
-            }
+            GetHandSubsystem();
+            AutoDetectInputMode();
         }
 
         private void Update()
         {
+            // Re-check input mode every second (user may put down controllers and use hands)
+            _autoDetectTimer += Time.deltaTime;
+            if (_autoDetectTimer >= AutoDetectInterval)
+            {
+                _autoDetectTimer = 0f;
+                AutoDetectInputMode();
+            }
+
             if (useControllers)
             {
                 ProcessControllerInput();
             }
             else
             {
-                // Original Hand Tracking Logic
                 if (m_HandSubsystem == null || !m_HandSubsystem.running)
                 {
                     GetHandSubsystem();
@@ -93,6 +100,27 @@ namespace ArtUnbound.Input
             }
         }
 
+        private void AutoDetectInputMode()
+        {
+            // Check for a valid right controller
+            var devices = new System.Collections.Generic.List<InputDevice>();
+            InputDevices.GetDevicesWithCharacteristics(
+                InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, devices);
+            bool hasController = devices.Count > 0 && devices[0].isValid;
+
+            // Check for active hand tracking
+            bool hasHands = m_HandSubsystem != null
+                         && m_HandSubsystem.running
+                         && m_HandSubsystem.rightHand.isTracked;
+
+            bool newMode = hasController && !hasHands;
+            if (newMode != useControllers)
+            {
+                useControllers = newMode;
+                Debug.Log($"[HandTracking] Input mode → {(useControllers ? "CONTROLLER" : "HAND TRACKING")}");
+            }
+        }
+
         private void ProcessControllerInput()
         {
             // 1. Ensure we have a valid device
@@ -101,14 +129,7 @@ namespace ArtUnbound.Input
                 InitializeController();
             }
 
-            if (!targetDevice.isValid)
-            {
-                if (Time.time > debugPoseTimer)
-                {
-                    Debug.LogWarning($"[HandTracking] Processing Input: Device INVALID for {controllerNode}");
-                }
-                return;
-            }
+            if (!targetDevice.isValid) return;
 
             // 2. Get Data from cached device
             bool hasPos = targetDevice.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 devicePos);
@@ -130,29 +151,16 @@ namespace ArtUnbound.Input
                 transform.localRotation = deviceRot;
             }
 
-            if (Time.time > debugPoseTimer)
-            {
-                Debug.Log($"[HandTracking] Updating Transform to: {devicePos}");
-            }
-
             // 3. Map Trigger to "Pinch" Events
             // Trigger Pressed = Pinch Start / Hold
             // Trigger Released = Pinch End
 
             if (isTriggerPressed && !wasTriggerPressed)
-            {
-                Debug.Log($"[ControllerInput] Trigger START at {devicePos}");
                 OnPinchStart?.Invoke(devicePos, deviceRot);
-            }
             else if (isTriggerPressed && wasTriggerPressed)
-            {
                 OnPinchHold?.Invoke(devicePos, deviceRot);
-            }
             else if (!isTriggerPressed && wasTriggerPressed)
-            {
-                Debug.Log($"[ControllerInput] Trigger END at {devicePos}");
                 OnPinchEnd?.Invoke(devicePos, deviceRot);
-            }
 
             wasTriggerPressed = isTriggerPressed;
 
@@ -161,6 +169,25 @@ namespace ArtUnbound.Input
 
         private float debugPoseTimer = 0f;
         private InputDevice targetDevice; // Cache the device to avoid frequent lookups
+
+        public bool TryGetIndexTipPosition(out Vector3 worldPosition)
+        {
+            if (m_HandSubsystem != null && m_HandSubsystem.running)
+            {
+                var hand = m_HandSubsystem.rightHand;
+                if (hand.isTracked)
+                {
+                    var joint = hand.GetJoint(XRHandJointID.IndexTip);
+                    if (joint.TryGetPose(out Pose pose))
+                    {
+                        worldPosition = pose.position;
+                        return true;
+                    }
+                }
+            }
+            worldPosition = Vector3.zero;
+            return false;
+        }
 
         public bool GetPointerPose(out Vector3 position, out Quaternion rotation)
         {
@@ -192,21 +219,7 @@ namespace ArtUnbound.Input
                         if (r) rotation = rotation * Quaternion.Euler(40, 0, 0);
                     }
 
-                    if (Time.time > debugPoseTimer)
-                    {
-                        Debug.Log($"[HandTracking] Controller Valid. Pos: {position} (Using Pointer: {hasPointerRot})");
-                        debugPoseTimer = Time.time + 2.0f;
-                    }
-
                     return true;
-                }
-                else
-                {
-                    if (Time.time > debugPoseTimer)
-                    {
-                        Debug.LogWarning($"[HandTracking] Controller for {controllerNode} NOT FOUND. Check connection.");
-                        debugPoseTimer = Time.time + 2.0f;
-                    }
                 }
             }
             else
@@ -276,11 +289,6 @@ namespace ArtUnbound.Input
             if (devices.Count > 0)
             {
                 targetDevice = devices[0];
-                Debug.Log($"[HandTracking] Found Controller: {targetDevice.name}");
-            }
-            else
-            {
-                Debug.LogWarning($"[HandTracking] Searching for {controllerNode} controller... (Count: 0)");
             }
         }
 
@@ -294,7 +302,6 @@ namespace ArtUnbound.Input
             if (subsystems.Count > 0)
             {
                 m_HandSubsystem = subsystems[0];
-                Debug.Log($"[HandTracking] Hand Subsystem Found and Linked.");
                 // Ensure it's running
                 if (!m_HandSubsystem.running)
                 {
@@ -320,6 +327,18 @@ namespace ArtUnbound.Input
 
             Vector3 handPosition = palmPose.position;
             Quaternion handRotation = palmPose.rotation;
+
+            // Keep trackedObject current so BeginExternalDrag can read the hand position.
+            if (trackedObject != null)
+            {
+                trackedObject.position = handPosition;
+                trackedObject.rotation = handRotation;
+            }
+            else
+            {
+                transform.position = handPosition;
+                transform.rotation = handRotation;
+            }
 
             // 2. Pinch Detection (Using XRHand native pinch data if available, or manual check)
             // Calculate pinch center (midpoint between thumb and index) for accurate interaction

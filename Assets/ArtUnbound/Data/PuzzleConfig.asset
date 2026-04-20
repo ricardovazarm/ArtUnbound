@@ -25,3 +25,12 @@ MonoBehaviour:
   useGridSnapping: 1
   useTriangularMorphology: 1
   pieceSizeCm: 5
+  trayViewportWidthCm: 45
+  trayViewportHeightCm: 45
+  trayRotationY: 20
+  trayOffsetX: 0.45
+  trayOffsetY: -0.09
+  trayOffsetZ: 0.04
+  trayScrollSpeed: 0.3
+  trayScrollSmoothing: 10
+  trayCellMargin: 2

@@ -247,6 +247,15 @@ namespace ArtUnbound.UI
             gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Resetea la posición para que el próximo Show() reposicione la galería
+        /// frente al usuario. Llamar antes de Show() al regresar del rompecabezas.
+        /// </summary>
+        public void ResetPosition()
+        {
+            _hasBeenPositioned = false;
+        }
+
         // ─────────────────────────────────────────────────────────────────────
         /// <summary>
         /// Oculta el contenido hasta que el head-tracking sea válido,
