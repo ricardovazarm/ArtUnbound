@@ -387,8 +387,9 @@ namespace ArtUnbound.Core
                 puzzleHUD.Show();
             }
 
-            // Armando rompecabezas: mostrar instrucciones de piezas, no el panel de logros
+            // Armando rompecabezas: mostrar instrucciones de piezas y panel de logros (milestones)
             puzzlePiecesPanel?.Show();
+            puzzleAchievements?.Show();
 
             // Timer is already started in InitializePuzzleBoard(), so don't restart it here
             // if (timerController != null)
@@ -774,6 +775,11 @@ namespace ArtUnbound.Core
                 
                 // Enable frame grabbing
                 artworkHangingController.EnableFrameGrab(selectedArtworkId, frameTier);
+
+                // Block all InteractionManagers from selecting the frame for 0.5s so the
+                // trigger press that triggered this flow (e.g., confirming comfort position
+                // or tapping a gallery card) cannot immediately select the frame on TriggerUp.
+                ArtUnbound.Input.InteractionManager.BlockFrameSelectFor(0.5f);
                 
                 // Enable frame interaction on puzzle board
                 if (puzzleBoard != null)
@@ -786,9 +792,13 @@ namespace ArtUnbound.Core
                 artworkHangingController.OnFramePlaced += OnFramePlaced;
                 artworkHangingController.OnPlacementCancelled += OnPlacementCancelled;
                 
+                // Disable replay button so controller trigger can't accidentally click it
+                // while the user is pointing at the frame to grab it.
+                postGameController?.SetHangingMode(true);
+
                 // DON'T hide panels yet - wait until user grabs the frame
                 // HideAllPanels(); // Moved to OnFrameGrabbed()
-                
+
                 Debug.Log($"[GameBootstrap] Started artwork hanging flow for {selectedArtworkId}");
             }
             else
@@ -857,9 +867,10 @@ namespace ArtUnbound.Core
             Debug.Log("[GameBootstrap] CenterZone (puzzleAchievements) re-enabled");
         }
         
-        // Show PostGame panel and board again
+        // Show PostGame panel and board again; re-enable replay button
         if (postGameController != null)
         {
+            postGameController.SetHangingMode(false);
             postGameController.Show();
             Debug.Log("[GameBootstrap] PostGame panel re-shown");
         }

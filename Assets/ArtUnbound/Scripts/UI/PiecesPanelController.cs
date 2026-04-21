@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using ArtUnbound.Input;
 
 namespace ArtUnbound.UI
 {
@@ -17,7 +19,30 @@ namespace ArtUnbound.UI
         [Tooltip("Root GameObject of the pieces panel. If null, this GameObject is used.")]
         [SerializeField] private GameObject panel;
 
+        [Tooltip("Text field that shows the interaction instructions.")]
+        [SerializeField] private TMP_Text instructionText;
+
+        [Tooltip("HandTrackingInputController used to detect hand vs controller mode.")]
+        [SerializeField] private HandTrackingInputController inputController;
+
+        [Header("Instructions")]
+        [TextArea(2, 4)]
+        [SerializeField] private string handsInstruction = "Grab the pieces and place them on the board to complete the puzzle";
+        [TextArea(2, 4)]
+        [SerializeField] private string controllerInstruction = "Point and click to select a piece, then click a cell on the board to place it.";
+
+        private bool _lastControllerMode;
+
         private void Awake() => Hide();
+
+        private void Update()
+        {
+            if (instructionText == null || inputController == null) return;
+            bool isController = inputController.useControllers;
+            if (isController == _lastControllerMode) return;
+            _lastControllerMode = isController;
+            instructionText.text = isController ? controllerInstruction : handsInstruction;
+        }
 
         // ── Panel visibility ─────────────────────────────────────────────────
 
@@ -26,6 +51,15 @@ namespace ArtUnbound.UI
         {
             if (panel != null) panel.SetActive(true);
             else               gameObject.SetActive(true);
+            RefreshInstruction();
+        }
+
+        private void RefreshInstruction()
+        {
+            if (instructionText == null || inputController == null) return;
+            bool isController = inputController.useControllers;
+            _lastControllerMode = isController;
+            instructionText.text = isController ? controllerInstruction : handsInstruction;
         }
 
         /// <summary>Hide the pieces panel (called when a puzzle completes).</summary>

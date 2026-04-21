@@ -191,6 +191,9 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
+            slotRoot.localPosition = Vector3.zero;
+            slotRoot.localRotation = Quaternion.identity;
+
             CreateSlotsFromCount(pieceCount);
         }
 
@@ -203,11 +206,15 @@ namespace ArtUnbound.Gameplay
             var textureToUse = definition?.puzzleTexture != null ? definition.puzzleTexture : definition?.fullImage?.texture;
             currentTexture = textureToUse;
             
-            // Ensure slotRoot is active (it may have been disabled during artwork hanging)
-            if (slotRoot != null && !slotRoot.gameObject.activeSelf)
+            // Ensure slotRoot is active and at its default local transform.
+            // Controller-mode hanging moves slotRoot (completedFrame) to wall position;
+            // resetting here ensures the new puzzle/restore appears in front of the user.
+            if (slotRoot != null)
             {
-                slotRoot.gameObject.SetActive(true);
-                Debug.Log("[PuzzleBoard] SlotRoot re-enabled for new puzzle");
+                if (!slotRoot.gameObject.activeSelf)
+                    slotRoot.gameObject.SetActive(true);
+                slotRoot.localPosition = Vector3.zero;
+                slotRoot.localRotation = Quaternion.identity;
             }
 
             if (fullImageReveal != null)
@@ -734,6 +741,8 @@ namespace ArtUnbound.Gameplay
             float bestDist = float.MaxValue;
             foreach (var kvp in placedBySlot)
             {
+                // Skip hidden pieces (e.g. during PostGame full-image reveal)
+                if (kvp.Value == null || !kvp.Value.gameObject.activeSelf) continue;
                 float d = Vector3.Distance(hit, slots[kvp.Key].position);
                 if (d < bestDist) { bestDist = d; best = kvp.Value; }
             }
@@ -1892,6 +1901,9 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
+            // Clear any lingering slot-highlight so it doesn't render over the revealed image.
+            ClearSlotHighlight();
+
             // Remove previous reveal if any
             if (fullImageReveal != null)
             {
@@ -1991,14 +2003,32 @@ namespace ArtUnbound.Gameplay
             var config = frameConfigSet?.GetConfig(tier);
             if (config?.frameMaterial != null)
                 return config.frameMaterial;
-            return tier switch
+
+            Material mat = tier switch
             {
-                FrameTier.Bronce => frameBronceMaterial,
-                FrameTier.Plata => framePlataMaterial,
-                FrameTier.Oro => frameOroMaterial,
+                FrameTier.Bronce   => frameBronceMaterial,
+                FrameTier.Plata    => framePlataMaterial,
+                FrameTier.Oro      => frameOroMaterial,
                 FrameTier.Platinum => frameEbanoMaterial,
-                _ => frameBronceMaterial
+                _                  => frameBronceMaterial
             };
+
+            if (mat != null) return mat;
+
+            // Fallback: procedural material so the frame always renders even if Inspector slots are empty.
+            Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+            if (shader == null) return null;
+
+            var fallback = new Material(shader);
+            fallback.color = tier switch
+            {
+                FrameTier.Bronce   => new Color(0.55f, 0.33f, 0.12f), // bronze brown
+                FrameTier.Plata    => new Color(0.75f, 0.75f, 0.78f), // silver
+                FrameTier.Oro      => new Color(0.85f, 0.70f, 0.10f), // gold
+                FrameTier.Platinum => new Color(0.14f, 0.10f, 0.07f), // dark ebony
+                _                  => new Color(0.55f, 0.33f, 0.12f)
+            };
+            return fallback;
         }
 
         private IEnumerator AnimateFullImageReveal()

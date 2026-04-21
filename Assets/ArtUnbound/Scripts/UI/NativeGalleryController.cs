@@ -282,14 +282,9 @@ namespace ArtUnbound.UI
                 yield break;
             }
 
-            // Esperar tracking válido (cabeza > 1.2 m), máximo 3 segundos
-            const float MAX_WAIT = 3f;
-            float waited = 0f;
-            while (Camera.main.transform.position.y < 1.2f && waited < MAX_WAIT)
-            {
-                yield return null;
-                waited += Time.deltaTime;
-            }
+            // Fixed 2-second wait — mirrors PositionCanvasWithDelay in GameBootstrap,
+            // ensuring head tracking is stable before reading camera.forward.
+            yield return new WaitForSeconds(2.0f);
 
             PositionInFrontOfUser();
             _hasBeenPositioned = true;

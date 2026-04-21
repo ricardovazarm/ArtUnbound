@@ -269,6 +269,92 @@ namespace ArtUnbound.MR
             }
         }
 
+        /// <summary>
+        /// Controller mode: places the completed frame at an already-known wall position/rotation.
+        /// Clones the frame (same as the hand-tracking grab path) so the original slotRoot is
+        /// never moved, allowing the puzzle board to be reused correctly on the next restore.
+        /// </summary>
+        public bool PlaceFrameAtWall(Vector3 wallPosition, Quaternion wallRotation)
+        {
+            if (completedFrame == null)
+            {
+                Debug.LogWarning("[ArtworkHanging] PlaceFrameAtWall: no completedFrame");
+                return false;
+            }
+
+            Vector3 offsetPos = wallPosition + wallRotation * Vector3.forward * 0.005f;
+
+            // Clone the frame to the wall — identical to what GrabbableFrame.StartDrag + EndDrag does
+            Transform clone = Instantiate(completedFrame, offsetPos, wallRotation);
+            clone.name = completedFrame.name + "_Placed";
+            clone.SetParent(null);
+
+            // Strip interactive components from the clone (keep renderers/visuals)
+            var grabbable = clone.GetComponent<GrabbableFrame>();
+            if (grabbable != null) Destroy(grabbable);
+            var col = clone.GetComponent<BoxCollider>();
+            if (col != null) Destroy(col);
+            var pieces = clone.GetComponentsInChildren<ArtUnbound.Gameplay.PuzzlePiece>();
+            foreach (var p in pieces) Destroy(p);
+
+            if (anchorManager != null && puzzleBoard != null)
+            {
+                puzzleBoard.GetBoardDimensions(out float boardW, out float boardH);
+                bool success = anchorManager.CreateAnchor(
+                    currentArtworkId, offsetPos, wallRotation,
+                    currentFrameTier, clone, boardW, boardH);
+                if (success)
+                {
+                    currentState = HangingState.Placed;
+                    OnFramePlaced?.Invoke();
+                    Debug.Log($"[ArtworkHanging] Controller: frame clone placed on wall for {currentArtworkId}");
+                    return true;
+                }
+            }
+
+            // Anchor failed — destroy the clone and cancel
+            Destroy(clone.gameObject);
+            OnPlacementCancelled?.Invoke();
+            return false;
+        }
+
+        /// <summary>
+        /// Controller mode: moves a placed wall artwork to a new wall position, or destroys it if
+        /// <paramref name="placeOnWall"/> is false (user aimed at empty air).
+        /// </summary>
+        public void ControllerRepositionWallArtwork(string artworkId, GameObject artworkGO, bool placeOnWall, Vector3 wallPosition, Quaternion wallRotation)
+        {
+            if (artworkGO == null)
+            {
+                Debug.LogWarning("[ArtworkHanging] ControllerRepositionWallArtwork: artworkGO is null");
+                return;
+            }
+
+            if (placeOnWall)
+            {
+                Vector3 offsetPos = wallPosition + wallRotation * Vector3.forward * 0.005f;
+                artworkGO.transform.SetPositionAndRotation(offsetPos, wallRotation);
+
+                if (anchorManager != null && !string.IsNullOrEmpty(artworkId))
+                    anchorManager.UpdateAnchorForSpecificArtwork(artworkId, artworkGO.transform, offsetPos, wallRotation);
+
+                Debug.Log($"[ArtworkHanging] Controller: wall artwork {artworkId} repositioned");
+            }
+            else
+            {
+                Destroy(artworkGO);
+
+                if (anchorManager != null && !string.IsNullOrEmpty(artworkId))
+                    anchorManager.EraseArtworkStorageEntry(artworkId);
+
+                Debug.Log($"[ArtworkHanging] Controller: wall artwork {artworkId} removed");
+            }
+        }
+
+        /// <summary>Returns the GrabbableFrame component on the completed frame, or null.</summary>
+        public GrabbableFrame GetGrabbableFrame() =>
+            completedFrame != null ? completedFrame.GetComponent<GrabbableFrame>() : null;
+
         private void HandleFrameGrabbed()
         {
             Debug.Log("[ArtworkHanging] Frame was grabbed by user");

@@ -297,6 +297,72 @@ namespace ArtUnbound.MR
             return false;
         }
 
+        /// <summary>
+        /// Casts a ray and returns the first vertical wall it hits (AR plane or physics).
+        /// Designed for controller mode: ray comes from controller pose, not from near the frame.
+        /// </summary>
+        public bool RaycastToWall(Ray ray, out Vector3 wallPosition, out Quaternion wallRotation)
+        {
+            wallPosition = Vector3.zero;
+            wallRotation = Quaternion.identity;
+
+            // Try AR vertical planes first
+            if (planeManager != null)
+            {
+                float bestDist = float.MaxValue;
+                bool found = false;
+                foreach (var plane in planeManager.trackables)
+                {
+                    if (plane.alignment != PlaneAlignment.Vertical) continue;
+                    Plane mathPlane = new Plane(plane.transform.up, plane.transform.position);
+                    if (!mathPlane.Raycast(ray, out float dist) || dist <= 0.1f || dist > raycastDistance) continue;
+                    Vector3 hit = ray.GetPoint(dist);
+                    Vector3 local = plane.transform.InverseTransformPoint(hit);
+                    if (Mathf.Abs(local.x) > plane.size.x * 0.5f || Mathf.Abs(local.z) > plane.size.y * 0.5f) continue;
+                    if (IsOccupiedByOtherArtwork(hit)) continue;
+                    if (dist < bestDist)
+                    {
+                        bestDist = dist;
+                        wallPosition = hit;
+                        Vector3 normal = plane.transform.up;
+                        Vector3 cam = Camera.main ? Camera.main.transform.position : ray.origin;
+                        if (Vector3.Dot(normal, (cam - hit).normalized) < 0) normal = -normal;
+                        wallRotation = Quaternion.LookRotation(normal);
+                        found = true;
+                    }
+                }
+                if (found) return true;
+            }
+
+            // Fallback: physics raycast
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, raycastDistance, wallLayerMask))
+            {
+                if (IsWallSurface(hitInfo) && !IsOccupiedByOtherArtwork(hitInfo.point))
+                {
+                    wallPosition = hitInfo.point;
+                    Vector3 cam = Camera.main ? Camera.main.transform.position : ray.origin;
+                    Vector3 normal = hitInfo.normal;
+                    if (Vector3.Dot(normal, (cam - hitInfo.point).normalized) < 0) normal = -normal;
+                    wallRotation = Quaternion.LookRotation(normal);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>Shows the ghost preview at a given position (controller mode).</summary>
+        public void ShowControllerGhost(Vector3 position, Quaternion rotation, bool valid)
+        {
+            CreateGhostPreview();
+            UpdateGhostPreview(valid, position, rotation);
+        }
+
+        /// <summary>Hides the ghost preview (controller mode).</summary>
+        public void HideControllerGhost()
+        {
+            if (ghostPreview != null) ghostPreview.SetActive(false);
+        }
+
         private void CreateGhostPreview()
         {
             if (ghostPreview != null)

@@ -162,6 +162,16 @@ namespace ArtUnbound.UI
             };
         }
 
+        /// <summary>
+        /// Disables the replay button while the frame is in hanging mode so the controller
+        /// trigger cannot accidentally click it while the user is trying to grab the frame.
+        /// </summary>
+        public void SetHangingMode(bool isHanging)
+        {
+            if (replayButton != null)
+                replayButton.interactable = !isHanging;
+        }
+
         public void Show()
         {
             if (!gameObject.activeSelf)
@@ -169,7 +179,7 @@ namespace ArtUnbound.UI
 
             if (panel != null)
                 panel.SetActive(true);
-            
+
             // Update UI to refresh instruction text based on lastWallCount
             UpdateUI();
         }

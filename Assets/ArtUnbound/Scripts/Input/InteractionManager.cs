@@ -48,6 +48,26 @@ namespace ArtUnbound.Input
         private const float ClickMaxSec             = 0.15f; // <= 0.15s = click, > = hold/scroll
         private ArtUnbound.UI.PieceTray3DController _tray3DCached;
         private PuzzleBoard _boardCached;
+        private ArtUnbound.MR.WallPlacementDetector _wallDetectorCached;
+
+        // Controller frame-hanging state
+        private ArtUnbound.MR.GrabbableFrame _ctrlSelectedFrame = null;
+        private bool        _ctrlIsRepositioningWallArtwork = false;
+        private string      _ctrlRepositioningArtworkId     = null;
+        private GameObject  _ctrlRepositioningArtworkGO     = null;
+        // Time until which frame SELECT is blocked — set by BlockFrameSelectFor() when
+        // EnableFrameGrab is called, preventing the navigation trigger from accidentally
+        // selecting the newly-enabled frame in the same press.
+        private static float _frameSelectBlockedUntil = -1f;
+
+        /// <summary>
+        /// Blocks all InteractionManager instances from selecting a GrabbableFrame for
+        /// <paramref name="seconds"/>. Call this immediately after EnableFrameGrab().
+        /// </summary>
+        public static void BlockFrameSelectFor(float seconds)
+        {
+            _frameSelectBlockedUntil = Time.time + seconds;
+        }
 
         private bool IsControllerMode => inputController != null && inputController.useControllers;
 
@@ -63,6 +83,30 @@ namespace ArtUnbound.Input
             if (_boardCached == null)
                 _boardCached = FindFirstObjectByType<PuzzleBoard>();
             return _boardCached;
+        }
+
+        private ArtUnbound.MR.WallPlacementDetector GetWallDetector()
+        {
+            if (_wallDetectorCached == null)
+                _wallDetectorCached = FindFirstObjectByType<ArtUnbound.MR.WallPlacementDetector>();
+            return _wallDetectorCached;
+        }
+
+        private void SetFrameHighlight(ArtUnbound.MR.GrabbableFrame frame, bool selected)
+        {
+            if (frame == null) return;
+            foreach (var rend in frame.GetComponentsInChildren<Renderer>())
+            {
+                if (selected)
+                {
+                    rend.material.EnableKeyword("_EMISSION");
+                    rend.material.SetColor("_EmissionColor", Color.yellow * 0.3f);
+                }
+                else
+                {
+                    rend.material.DisableKeyword("_EMISSION");
+                }
+            }
         }
 
         private void OnEnable()
@@ -105,24 +149,38 @@ namespace ArtUnbound.Input
 
         private void Update()
         {
-            // While a piece is selected (controller mode), continuously highlight the board
-            // slot under the ray so the user knows where the piece will land before clicking.
-            if (!IsControllerMode || _ctrlSelectedPiece == null) return;
+            if (!IsControllerMode) return;
             if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
-
             Ray ray = new Ray(origin, rot * Vector3.forward);
-            var board = GetBoard();
-            if (board == null) return;
 
-            if (board.RayHitsBoard(ray))
+            // Piece selected: highlight target board slot
+            if (_ctrlSelectedPiece != null)
             {
-                int slotIdx = board.GetSlotAtRaycast(ray);
-                if (slotIdx >= 0) board.HighlightSlot(slotIdx);
-                else              board.ClearSlotHighlight();
+                var board = GetBoard();
+                if (board != null)
+                {
+                    if (board.RayHitsBoard(ray))
+                    {
+                        int slotIdx = board.GetSlotAtRaycast(ray);
+                        if (slotIdx >= 0) board.HighlightSlot(slotIdx);
+                        else              board.ClearSlotHighlight();
+                    }
+                    else board.ClearSlotHighlight();
+                }
+                return;
             }
-            else
+
+            // Frame selected: show wall ghost preview
+            if (_ctrlSelectedFrame != null)
             {
-                board.ClearSlotHighlight();
+                var wallDetector = GetWallDetector();
+                if (wallDetector != null)
+                {
+                    if (wallDetector.RaycastToWall(ray, out Vector3 wallPos, out Quaternion wallRot))
+                        wallDetector.ShowControllerGhost(wallPos, wallRot, true);
+                    else
+                        wallDetector.HideControllerGhost();
+                }
             }
         }
 
@@ -596,7 +654,9 @@ namespace ArtUnbound.Input
         {
             _ctrlTriggerDownTime  = Time.time;
             _ctrlRayHitTrayOnDown = false;
-            if (_ctrlSelectedPiece != null) return; // Already selecting — wait for TriggerUp to place
+
+            if (_ctrlSelectedPiece != null) return; // piece selected — wait for TriggerUp to place
+            if (_ctrlSelectedFrame != null) return;  // frame selected — wait for TriggerUp to hang
 
             if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
             Ray ray = new Ray(origin, rot * Vector3.forward);
@@ -675,7 +735,58 @@ namespace ArtUnbound.Input
 
             if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
             Ray ray = new Ray(origin, rot * Vector3.forward);
-            var board = FindFirstObjectByType<PuzzleBoard>();
+            var board = GetBoard();
+
+            // ── HANG phase: frame already selected ───────────────────────────────
+            if (_ctrlSelectedFrame != null && wasClick)
+            {
+                var wallDetector = GetWallDetector();
+                bool placed = false;
+
+                bool wasRepositioning = _ctrlIsRepositioningWallArtwork;
+                if (wasRepositioning)
+                {
+                    // Placed wall artwork: reposition on wall or remove
+                    var hanging = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
+                    Vector3    wallPos2 = Vector3.zero;
+                    Quaternion wallRot2 = Quaternion.identity;
+                    bool foundWall = wallDetector != null &&
+                                     wallDetector.RaycastToWall(ray, out wallPos2, out wallRot2);
+                    if (foundWall)
+                    {
+                        hanging?.ControllerRepositionWallArtwork(
+                            _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
+                            true, wallPos2, wallRot2);
+                        placed = true;
+                    }
+                    else
+                    {
+                        hanging?.ControllerRepositionWallArtwork(
+                            _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
+                            false, Vector3.zero, Quaternion.identity);
+                    }
+
+                    _ctrlIsRepositioningWallArtwork = false;
+                    _ctrlRepositioningArtworkId     = null;
+                    _ctrlRepositioningArtworkGO     = null;
+                }
+                else
+                {
+                    // Completed puzzle frame: place clone on wall
+                    if (wallDetector != null && wallDetector.RaycastToWall(ray, out Vector3 wallPos, out Quaternion wallRot))
+                    {
+                        var hanging = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
+                        if (hanging != null)
+                            placed = hanging.PlaceFrameAtWall(wallPos, wallRot);
+                    }
+                }
+
+                wallDetector?.HideControllerGhost();
+                SetFrameHighlight(_ctrlSelectedFrame, false);
+                _ctrlSelectedFrame = null;
+                Debug.Log($"[CTRL-Hang] placed={placed} wasRepositioning={wasRepositioning}");
+                return;
+            }
 
             // ── PLACE phase: piece already selected ──────────────────────────────
             if (_ctrlSelectedPiece != null && wasClick)
@@ -741,6 +852,63 @@ namespace ArtUnbound.Input
                     Debug.Log($"[CTRL-Select] selected piece {piece.PieceId}");
                     if (ArtUnbound.Feedback.AudioManager.Instance != null)
                         ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+                    return;
+                }
+
+                // No puzzle piece found — check for a grabbable completed frame or placed wall artwork.
+                // Skip if frame selection is blocked (cooldown after EnableFrameGrab prevents
+                // the navigation trigger from immediately selecting the newly-active frame).
+                if (Time.time < _frameSelectBlockedUntil) return;
+
+                RaycastHit[] allHits = Physics.RaycastAll(ray, rayLength);
+                foreach (var h in allHits)
+                {
+                    // Placed wall artwork takes priority over the puzzle-complete frame.
+                    // Ignore if further than 40 cm from the controller — prevents accidentally
+                    // selecting paintings on a distant back wall while interacting with the board.
+                    if (h.collider.CompareTag("PlacedArtwork") && h.distance <= 0.4f)
+                    {
+                        string artId = null;
+                        var placedId = h.collider.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+                        if (placedId != null && !string.IsNullOrEmpty(placedId.artworkId))
+                            artId = placedId.artworkId;
+                        else
+                        {
+                            string goName = h.collider.gameObject.name;
+                            const string prefix = "PlacedArtwork_";
+                            if (goName.StartsWith(prefix))
+                                artId = goName.Substring(prefix.Length);
+                        }
+
+                        // Reuse or add GrabbableFrame only for highlight purposes
+                        var gfPlaced = h.collider.GetComponentInParent<ArtUnbound.MR.GrabbableFrame>();
+                        if (gfPlaced == null)
+                        {
+                            gfPlaced = h.collider.gameObject.AddComponent<ArtUnbound.MR.GrabbableFrame>();
+                            gfPlaced.IsGrabbable = true;
+                        }
+
+                        _ctrlSelectedFrame              = gfPlaced;
+                        _ctrlIsRepositioningWallArtwork = true;
+                        _ctrlRepositioningArtworkId     = artId;
+                        _ctrlRepositioningArtworkGO     = h.collider.gameObject;
+                        SetFrameHighlight(gfPlaced, true);
+                        Debug.Log($"[CTRL-Select] selected placed wall artwork '{artId}' for repositioning");
+                        if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                            ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+                        break;
+                    }
+
+                    var gf = h.collider.GetComponentInParent<ArtUnbound.MR.GrabbableFrame>();
+                    if (gf != null && gf.IsGrabbable && !gf.IsBeingDragged)
+                    {
+                        _ctrlSelectedFrame = gf;
+                        SetFrameHighlight(gf, true);
+                        Debug.Log("[CTRL-Select] selected frame for hanging");
+                        if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                            ArtUnbound.Feedback.AudioManager.Instance.PlayPieceGrab();
+                        break;
+                    }
                 }
             }
         }
