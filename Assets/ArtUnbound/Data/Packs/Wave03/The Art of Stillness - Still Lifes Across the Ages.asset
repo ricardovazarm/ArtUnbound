@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: The Art of Stillness - Still Lifes Across the Ages
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_the_art_of_stillness_still_lifes_across_the_ages
+  packName: 'The Art of Stillness: Still Lifes Across the Ages'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: da55421b7ff14b95a5ad1ad92546b853, type: 2}
+  - {fileID: 11400000, guid: 561deb8ae81e4b73ba4a2af72cfe4d9a, type: 2}
+  - {fileID: 11400000, guid: f42fcead486b46d48982639e4070caeb, type: 2}
+  - {fileID: 11400000, guid: 0746fa961c1d4872a3694afdb66f9d04, type: 2}
+  - {fileID: 11400000, guid: 796eaad1bc104c2ebef09d12c41b4d9c, type: 2}
+  - {fileID: 11400000, guid: 94e223d01e1440549410e3e685646f26, type: 2}
+  - {fileID: 11400000, guid: aa451e023068414293f3395ae020346d, type: 2}
+  - {fileID: 11400000, guid: 57ff9d0ca1e64336a64f9ae54197e769, type: 2}
+  - {fileID: 11400000, guid: 051a02c466414a21bd5f21e9b4299496, type: 2}
+  - {fileID: 11400000, guid: 33907312f4e04819a1a7623eb1ef2da0, type: 2}
+  - {fileID: 11400000, guid: 67d31fe6779f4b8d8dac033b5deee90e, type: 2}
+  - {fileID: 11400000, guid: 2ee09ad52c15416e9fd5719641cc71c5, type: 2}

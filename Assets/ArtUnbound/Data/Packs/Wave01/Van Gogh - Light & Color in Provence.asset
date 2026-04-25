@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Van Gogh - Light & Color in Provence
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_van_gogh_light_and_color_in_provence
+  packName: 'Van Gogh: Light & Color in Provence'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: 0a61d1645c594a91b7c45ba7b5b8d7ba, type: 2}
+  - {fileID: 11400000, guid: 4c4eccbcea304a9c8836b9f67e9d81d5, type: 2}
+  - {fileID: 11400000, guid: b31c8823b7ef40caa78e4c70a0d0257c, type: 2}
+  - {fileID: 11400000, guid: bb10f1f9c8db4f7ba3f839d4771c9f7a, type: 2}
+  - {fileID: 11400000, guid: 0822d1bbe9cb4f90bbd70221908dfb1c, type: 2}
+  - {fileID: 11400000, guid: 856b3d210f40413db2707ee7405131da, type: 2}
+  - {fileID: 11400000, guid: ca4060126b0849ed82252e2642457bf9, type: 2}
+  - {fileID: 11400000, guid: 05cf976174934497888eff4e333006dc, type: 2}
+  - {fileID: 11400000, guid: a0000ee600314fbe9cee2e1ee9b3819b, type: 2}
+  - {fileID: 11400000, guid: b8c55f1e64894547a497097a224ae260, type: 2}
+  - {fileID: 11400000, guid: 31218b2165cb42d68281f2dfeac89b60, type: 2}
+  - {fileID: 11400000, guid: c38a86939ac74eb79bc9b90a5baef324, type: 2}

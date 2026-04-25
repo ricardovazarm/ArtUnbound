@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Birth of Venus (Bouguereau)
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Birth of Venus (Bouguereau)
+  title: The Birth of Venus (Bouguereau)
+  author: William-Adolphe Bouguereau
+  year: 1879
+  description: "Museum: Musee d'Orsay, Paris\nArt Movement: Realism\nYear: 1879"
+  museum: Musee d'Orsay, Paris
+  artMovement: Realism
+  aspectRatio: 0.7080
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 2b33cf8d795a4da99dbfa70c2189ad22, type: 3}
+  fullImage: {fileID: 21300000, guid: c09dceea134eda943b2768ccfb38db16, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 70
+  pieceCountNormal: 117
+  pieceCountHard: 204
+  pieceCountExpert: 280
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

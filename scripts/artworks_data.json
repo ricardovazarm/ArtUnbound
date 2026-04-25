@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "collection": "01 Base Set",
     "title": "A Sunday on La Grande Jatte",
@@ -1606,5 +1606,29 @@
     "year": 1890,
     "museum": "Van Gogh Museum",
     "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Arnolfini Portrait",
+    "author": "Jan van Eyck",
+    "year": 1434,
+    "museum": "The National Gallery, London",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "The Dance Class",
+    "author": "Edgar Degas",
+    "year": 1874,
+    "museum": "The Met",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "Dance at Bougival",
+    "author": "Pierre-Auguste Renoir",
+    "year": 1883,
+    "museum": "MFA Boston",
+    "artMovement": "Impressionism"
   }
 ]

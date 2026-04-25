@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Caravaggio & The Baroque Drama
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_caravaggio_and_the_baroque_drama
+  packName: 'Caravaggio & The Baroque Drama'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: e06ecd97acfa4a6dbd3da5ebbebd7b64, type: 2}
+  - {fileID: 11400000, guid: ca2970ce6de54f77ae8b79df64256202, type: 2}
+  - {fileID: 11400000, guid: 7b6e1f5d320041df8ca3a26fa67b7459, type: 2}
+  - {fileID: 11400000, guid: 6bfbe5a93445497d9fe60cc18c317c96, type: 2}
+  - {fileID: 11400000, guid: aec9ab9bd5954745bb52542a63955c75, type: 2}
+  - {fileID: 11400000, guid: de33011b49344b218e07bde6da7d07c0, type: 2}
+  - {fileID: 11400000, guid: 969a064f266c4765b0069fc86e9cdfdb, type: 2}
+  - {fileID: 11400000, guid: ef45fff938b9428f827425aaaf02b950, type: 2}
+  - {fileID: 11400000, guid: 1ad041309a47406b8c0e569262680ff8, type: 2}
+  - {fileID: 11400000, guid: 2a3917abeccb441f93a26100afdc3113, type: 2}
+  - {fileID: 11400000, guid: 07134977a3864726a4331136dc870a4a, type: 2}
+  - {fileID: 11400000, guid: 32a6d38efa0e479e83e20c418f77b11d, type: 2}

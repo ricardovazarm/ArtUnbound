@@ -7,6 +7,7 @@ using ArtUnbound.Gameplay;
 using ArtUnbound.MR;
 using ArtUnbound.Services;
 using ArtUnbound.UI;
+using ArtUnbound.VR;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -65,6 +66,13 @@ namespace ArtUnbound.Core
         [Tooltip("true = usa la galería radial experimental (palm navigation).")]
         [SerializeField] private bool useRadialGallery = false;
 
+        [Header("VR Mode")]
+        [SerializeField] private VRModeController vrModeController;
+        [SerializeField] private VRGalleryController vrGalleryController;
+        [SerializeField] private VRLocomotionController vrLocomotionController;
+        [SerializeField] private VRWallHangingController vrWallHangingController;
+        [SerializeField] private GalleryCatalog galleryCatalog;
+
         [Header("Pack System")]
         [SerializeField] private PackPurchaseService packPurchaseService;
 
@@ -82,11 +90,21 @@ namespace ArtUnbound.Core
         private LocalCatalogService localCatalogService;
         private WeeklyUnlockService weeklyUnlockService;
         private LocalTelemetryService localTelemetryService;
+        private GalleryPersistenceService galleryPersistenceService;
 
         private string selectedArtworkId;
         private int selectedPieceCount = 64;
         private int selectedDifficultyIndex = 0; // 0=Easy(Bronce), 1=Normal(Plata), 2=Hard(Oro), 3=Expert(Platinum)
         private bool _boardPositioned = false; // Board position is calculated once and never changed again
+
+        private bool _isQuest3OrPro;
+        private Transform _nativeGalleryOriginalParent;
+
+        /// <summary>True when the game is running in VR mode (no passthrough).</summary>
+        public bool IsVRMode => vrModeController != null && vrModeController.IsVRMode;
+
+        /// <summary>Exposes the active gallery ID for use by NativeGalleryController.</summary>
+        public string ActiveVRGalleryId => vrGalleryController != null ? vrGalleryController.ActiveGalleryId : "gallery_classic";
 
         private void Awake()
         {
@@ -109,35 +127,42 @@ namespace ArtUnbound.Core
 
         private void Start()
         {
-            SetupCameraForPassthrough();
-            HideAllPanels();
+            DetectDevice();
 
-            // Hide canvas until calibration completes (avoids visible jump)
-            if (mainUICanvas != null)
-            {
-                mainUICanvas.gameObject.SetActive(false);
-            }
+            bool shouldStartInVR = SaveData.preferVRMode || !_isQuest3OrPro;
 
-            // Check for onboarding
-            if (!SaveData.onboardingCompleted && onboardingController != null)
+            if (shouldStartInVR)
             {
-                ShowOnboarding();
+                // VR path: skip passthrough setup, go straight to gallery
+                TransitionToVRGallery();
             }
             else
             {
-                TransitionToMainMenu();
+                // MR path (existing behavior)
+                SetupCameraForPassthrough();
+                HideAllPanels();
+
+                if (mainUICanvas != null)
+                    mainUICanvas.gameObject.SetActive(false);
+
+                if (!SaveData.onboardingCompleted && onboardingController != null)
+                    ShowOnboarding();
+                else
+                    TransitionToMainMenu();
             }
 
-            // Position the UI Canvas ergonomically with a delay to allow XR tracking to initialize
-            if (mainUICanvas != null)
+            // Update VR buttons on NativeGallery
+            nativeGallery?.SetVRButtonsMode(IsVRMode, _isQuest3OrPro);
+
+            if (!IsVRMode)
             {
-                StartCoroutine(PositionCanvasWithDelay(mainUICanvas));
-            }
-            
-            // Load saved spatial anchors after a delay to allow tracking to stabilize
-            if (wallAnchorManager != null)
-            {
-                StartCoroutine(LoadAnchorsWithDelay());
+                // Position the UI Canvas ergonomically (MR only)
+                if (mainUICanvas != null)
+                    StartCoroutine(PositionCanvasWithDelay(mainUICanvas));
+
+                // Load saved spatial anchors (MR only)
+                if (wallAnchorManager != null)
+                    StartCoroutine(LoadAnchorsWithDelay());
             }
         }
         
@@ -203,6 +228,37 @@ namespace ArtUnbound.Core
                 wallAnchorManager.Initialize(saveDataService);
                 Debug.Log("[GameBootstrap] WallAnchorManager initialized");
             }
+
+            // VR services
+            galleryPersistenceService = new GalleryPersistenceService(saveDataService);
+
+            if (vrGalleryController != null)
+                vrGalleryController.Initialize(saveDataService, galleryPersistenceService);
+
+            if (vrWallHangingController != null)
+                vrWallHangingController.Initialize(galleryPersistenceService);
+        }
+
+        private void DetectDevice()
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            try
+            {
+                var headset = OVRPlugin.GetSystemHeadsetType();
+                _isQuest3OrPro = headset == OVRPlugin.SystemHeadset.Meta_Quest_3
+                              || headset == OVRPlugin.SystemHeadset.Meta_Quest_Pro
+                              || headset == OVRPlugin.SystemHeadset.Meta_Quest_3S;
+            }
+            catch
+            {
+                // OVRPlugin not available — assume Quest 3
+                _isQuest3OrPro = true;
+            }
+#else
+            // In Editor, treat as Quest 3 so MR mode is default for testing
+            _isQuest3OrPro = true;
+#endif
+            Debug.Log($"[GameBootstrap] Device: Quest3/Pro={_isQuest3OrPro}");
         }
 
         private void LoadData()
@@ -273,6 +329,8 @@ namespace ArtUnbound.Core
             {
                 nativeGallery.OnStartPuzzle    += OnUnifiedMenuStartPuzzle;
                 nativeGallery.OnSettingsChanged += OnNativeGallerySettingsChanged;
+                nativeGallery.OnVRModeRequested += OnVRModeRequested;
+                nativeGallery.OnMRModeRequested += OnMRModeRequested;
             }
 
             // UnifiedMainMenu
@@ -342,6 +400,87 @@ namespace ArtUnbound.Core
             {
                 Debug.LogError("[GameBootstrap] No hay controlador de menú asignado en el Inspector.");
             }
+        }
+
+        // ─── VR Gallery Transitions ───────────────────────────────────────────
+
+        public void TransitionToVRGallery()
+        {
+            SetState(GameState.VRGallery);
+            HideAllPanels();
+
+            if (vrModeController != null && !vrModeController.IsVRMode)
+                vrModeController.ActivateVRMode();
+
+            // Ensure canvas is visible for the VR navigation panel
+            if (mainUICanvas != null)
+                mainUICanvas.gameObject.SetActive(true);
+
+            string galleryId = SaveData?.lastGalleryId ?? "gallery_classic";
+            vrGalleryController?.LoadGallery(galleryId);
+
+            if (vrLocomotionController != null)
+                vrLocomotionController.gameObject.SetActive(true);
+
+            // Show NativeGallery as the navigation panel in VR
+            if (audioManager != null)
+                audioManager.StartMusicPlayback();
+
+            if (nativeGallery != null)
+            {
+                // Detach from any camera-following parent so the panel stays fixed in world space.
+                // In MR the NativeGallery may be parented under mainUICanvas which tracks the camera.
+                if (_nativeGalleryOriginalParent == null)
+                    _nativeGalleryOriginalParent = nativeGallery.transform.parent;
+                // worldPositionStays:true preserves the panel's current world position
+                // so it doesn't snap to origin when detached from the canvas parent.
+                nativeGallery.transform.SetParent(null, worldPositionStays: true);
+                nativeGallery.ResetPosition();
+
+                nativeGallery.SetVRButtonsMode(true, _isQuest3OrPro);
+                if (vrModeController != null)
+                    nativeGallery.SetPositioningCamera(vrModeController.MainCamera);
+                nativeGallery.Show();
+            }
+
+            Debug.Log("[GameBootstrap] Transitioned to VRGallery");
+        }
+
+        /// <summary>Switches the active VR gallery. Called from NativeGalleryController.</summary>
+        public void SwitchVRGallery(string galleryId)
+        {
+            vrGalleryController?.SwitchGallery(galleryId);
+        }
+
+        /// <summary>Called when user taps "VR" button in MR mode (Quest 3/Pro only).</summary>
+        private void OnVRModeRequested()
+        {
+            SaveData.preferVRMode = true;
+            saveDataService.MarkDirty();
+            TransitionToVRGallery();
+        }
+
+        /// <summary>Called when user taps "MR" button in VR mode (Quest 3/Pro only).</summary>
+        private void OnMRModeRequested()
+        {
+            SaveData.preferVRMode = false;
+            saveDataService.MarkDirty();
+
+            // Destroy the 3-D gallery environment BEFORE disabling VR systems so the
+            // room prefab (which lives outside vrGalleryController's hierarchy) is removed.
+            vrGalleryController?.UnloadGallery();
+            vrModeController?.DeactivateVRMode();
+            nativeGallery?.SetVRButtonsMode(false, _isQuest3OrPro);
+
+            // Re-attach NativeGallery to its original parent (under mainUICanvas)
+            if (nativeGallery != null && _nativeGalleryOriginalParent != null)
+                nativeGallery.transform.SetParent(_nativeGalleryOriginalParent, worldPositionStays: true);
+
+            // Force repositioning in front of user when the menu shows in MR
+            nativeGallery?.ResetPosition();
+
+            SetupCameraForPassthrough();
+            TransitionToMainMenu();
         }
 
         /// <summary>
@@ -570,7 +709,7 @@ namespace ArtUnbound.Core
                     puzzleBoard?.HideScrollButtons();
                     puzzleBoard?.ShowFullImageReveal(frameTier);
 
-                    int wallCount = DetectAndLogWalls();
+                    int wallCount = IsVRMode ? 1 : DetectAndLogWalls();
                     if (postGameController != null)
                         postGameController.ShowResults(displaySession, timeSec, timeSec, frameTier, false, wallCount);
 
@@ -678,7 +817,9 @@ namespace ArtUnbound.Core
             // Keep board and HUD visible, only show post game panel on top
             // puzzleHUD?.Hide(); // Uncomment if you want to hide HUD
 
-            int wallCount = DetectAndLogWalls();
+            // In VR mode gallery always has walls; in MR detect AR planes
+            int wallCount = IsVRMode ? 1 : DetectAndLogWalls();
+
             if (postGameController != null)
             {
                 postGameController.ShowResults(CurrentSession, timeSec, previousBestTime, frameTier, isNewRecord, wallCount);
@@ -694,7 +835,11 @@ namespace ArtUnbound.Core
         {
             SaveCurrentSessionIfPlaying();
             CurrentSession = null;
-            TransitionToMainMenu();
+
+            if (IsVRMode)
+                TransitionToVRGallery();
+            else
+                TransitionToMainMenu();
         }
 
         /// <summary>
@@ -768,11 +913,31 @@ namespace ArtUnbound.Core
 
         private void OnPlaceArtworkRequested()
         {
-            // NEW SYSTEM: Use ArtworkHangingController instead of old wall selection
+            FrameTier frameTier = postGameController?.GetAwardedFrame() ?? FrameTier.Bronce;
+
+            if (IsVRMode)
+            {
+                // VR path: use VRWallHangingController
+                if (vrWallHangingController != null)
+                {
+                    vrWallHangingController.EnableFrameGrab(selectedArtworkId, selectedDifficultyIndex, frameTier);
+                    ArtUnbound.Input.InteractionManager.BlockFrameSelectFor(0.5f);
+
+                    if (puzzleBoard != null)
+                        puzzleBoard.EnableFrameInteraction(true);
+
+                    vrWallHangingController.OnFrameGrabbed += OnFrameGrabbed;
+                    vrWallHangingController.OnFramePlaced  += OnVRFramePlaced;
+                    vrWallHangingController.OnPlacementCancelled += OnPlacementCancelled;
+
+                    postGameController?.SetHangingMode(true);
+                }
+                return;
+            }
+
+            // MR path (original behavior)
             if (artworkHangingController != null)
             {
-                FrameTier frameTier = postGameController?.GetAwardedFrame() ?? FrameTier.Bronce;
-                
                 // Enable frame grabbing
                 artworkHangingController.EnableFrameGrab(selectedArtworkId, frameTier);
 
@@ -893,8 +1058,27 @@ namespace ArtUnbound.Core
         }
     }
 
+        private void OnVRFramePlaced()
+        {
+            Debug.Log($"[GameBootstrap] VR Frame placed for {selectedArtworkId}");
+
+            if (audioManager != null)
+                audioManager.PlayPuzzleComplete();
+            if (hapticController != null)
+                hapticController.PlaySuccessHaptic();
+
+            if (puzzleBoard != null)
+            {
+                puzzleBoard.gameObject.SetActive(false);
+            }
+
+            CleanupArtworkHanging();
+            TransitionToVRGallery();
+        }
+
         private void CleanupArtworkHanging()
         {
+            // MR hanging cleanup
             if (artworkHangingController != null)
             {
                 artworkHangingController.OnFrameGrabbed -= OnFrameGrabbed;
@@ -902,7 +1086,16 @@ namespace ArtUnbound.Core
                 artworkHangingController.OnPlacementCancelled -= OnPlacementCancelled;
                 artworkHangingController.DisableFrameGrab();
             }
-            
+
+            // VR hanging cleanup
+            if (vrWallHangingController != null)
+            {
+                vrWallHangingController.OnFrameGrabbed -= OnFrameGrabbed;
+                vrWallHangingController.OnFramePlaced -= OnVRFramePlaced;
+                vrWallHangingController.OnPlacementCancelled -= OnPlacementCancelled;
+                vrWallHangingController.DisableFrameGrab();
+            }
+
             if (puzzleBoard != null)
             {
                 puzzleBoard.EnableFrameInteraction(false);
@@ -1231,6 +1424,7 @@ namespace ArtUnbound.Core
         Onboarding,
         MainMenu,
         Gallery,
+        VRGallery,
         ArtworkSelection,
         WallSelection,
         ComfortPositioning,

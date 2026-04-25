@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Vermeer & The Dutch Interior
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_vermeer_and_the_dutch_interior
+  packName: 'Vermeer & The Dutch Interior'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: 1154efe337f541f6abe72ccf2d01007c, type: 2}
+  - {fileID: 11400000, guid: 6cdd2b4196804b588ab3977132f61769, type: 2}
+  - {fileID: 11400000, guid: 03dcb3ecae08421486d9655c8a5c90ec, type: 2}
+  - {fileID: 11400000, guid: d4f6abd8fff14013a533977f1a76ac98, type: 2}
+  - {fileID: 11400000, guid: e2860e74ea4f4b50804997c3030b7cc1, type: 2}
+  - {fileID: 11400000, guid: e08dc2d9622d4ca1b10ab3551ad7b2e7, type: 2}
+  - {fileID: 11400000, guid: b1079a71416c494ea69804a5cde938bd, type: 2}
+  - {fileID: 11400000, guid: 6cfa0bb111db41ae91e6a8fad681eca3, type: 2}
+  - {fileID: 11400000, guid: 1d6c763d41b842fc8897228036943b2b, type: 2}
+  - {fileID: 11400000, guid: e1e3b61f04ea4d38830700e9810a4087, type: 2}
+  - {fileID: 11400000, guid: 389ef195a3a545369b2e683dd04516bf, type: 2}
+  - {fileID: 11400000, guid: 22064cf51f9b4349b5aede6038d5fd92, type: 2}

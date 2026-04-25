@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Grand Masters of Europe - Durer to Turner
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_grand_masters_of_europe_durer_to_turner
+  packName: 'Grand Masters of Europe: Durer to Turner'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: a7683da5378a494784e0cc2028415d55, type: 2}
+  - {fileID: 11400000, guid: aee2622922ea472a84bad0ba161d97ee, type: 2}
+  - {fileID: 11400000, guid: 53df57999f4a493b8224e7aed6a3494e, type: 2}
+  - {fileID: 11400000, guid: 1e7c426a853e4945bff4f81b3639c35b, type: 2}
+  - {fileID: 11400000, guid: 68276bc04e964b4c932eb6f090de8e79, type: 2}
+  - {fileID: 11400000, guid: 65918b50d58c4852ad1b3ee31a24773e, type: 2}
+  - {fileID: 11400000, guid: b4b7303c8f214d6a94c8c1de819987dd, type: 2}
+  - {fileID: 11400000, guid: ea84f6333f204fd3a39ff1bcfce8a8ab, type: 2}
+  - {fileID: 11400000, guid: e42086a51f344f7ba0edbfdde94575f6, type: 2}
+  - {fileID: 11400000, guid: 5604cab939ca49f6855250d05af70f51, type: 2}
+  - {fileID: 11400000, guid: b2962da2d09345b6bebaa2d198149dc5, type: 2}
+  - {fileID: 11400000, guid: 9e8176abe6b643b893c068b06ca6050d, type: 2}

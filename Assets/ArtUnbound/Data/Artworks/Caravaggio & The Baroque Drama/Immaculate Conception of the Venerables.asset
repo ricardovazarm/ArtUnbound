@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Immaculate Conception of the Venerables
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Immaculate Conception of the Venerables
+  title: Immaculate Conception of the Venerables
+  author: Bartolome Esteban Murillo
+  year: 1665
+  description: "Museum: Museo del Prado, Madrid\nArt Movement: Baroque\nYear: 1665"
+  museum: Museo del Prado, Madrid
+  artMovement: Baroque
+  aspectRatio: 0.6816
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 94ebddfa269e4f979ef7f9b91e07102d, type: 3}
+  fullImage: {fileID: 21300000, guid: 6b749980745006f40bfb92feffb02588, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 70
+  pieceCountNormal: 117
+  pieceCountHard: 204
+  pieceCountExpert: 294
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

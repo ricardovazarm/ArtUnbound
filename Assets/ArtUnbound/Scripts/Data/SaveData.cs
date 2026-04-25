@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace ArtUnbound.Data
 {
-    /// <summary>
-    /// Main save data container for all persistent game data.
-    /// </summary>
     [Serializable]
     public class SaveData
     {
@@ -25,6 +22,11 @@ namespace ArtUnbound.Data
         /// <summary>Pack IDs that have been purchased by the user.</summary>
         public List<string> purchasedPackIds = new List<string>();
 
+        // VR Mode
+        public bool preferVRMode = false;
+        public string lastGalleryId = "gallery_classic";
+        public Dictionary<string, List<GalleryPaintingData>> galleryPaintings = new Dictionary<string, List<GalleryPaintingData>>();
+
         /// <summary>
         /// Alias for progressByArtwork for consistency with UI code.
         /// </summary>
@@ -43,6 +45,7 @@ namespace ArtUnbound.Data
             onboardingCompleted = false;
             firstPlayDate = DateTime.UtcNow.ToString("o");
             purchasedPackIds = new List<string>();
+            galleryPaintings = new Dictionary<string, List<GalleryPaintingData>>();
         }
 
         /// <summary>Gets in-progress session for artwork+pieceCount, or null.</summary>

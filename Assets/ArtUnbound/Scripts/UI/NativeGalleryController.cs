@@ -161,6 +161,7 @@ namespace ArtUnbound.UI
         private bool                       _isInitialized;
         private bool                       _catalogPopulated;
         private bool                       _hasBeenPositioned;
+        private Camera                     _positioningCamera;
 
         private enum Tab { Catalog, Completed, Settings, Search }
         private Tab _currentTab = Tab.Catalog;
@@ -169,6 +170,29 @@ namespace ArtUnbound.UI
         private const int DEFAULT_EASY   = 64;
         private const int DEFAULT_NORMAL = 144;
         private const int DEFAULT_HARD   = 256;
+
+        // ── VR Mode Buttons ───────────────────────────────────────────────────
+        [Header("VR Mode Buttons (added to BottomNav)")]
+        [Tooltip("Button 'VR' — visible in MR mode on Quest 3/Pro only.")]
+        [SerializeField] private Button btnVR;
+        [Tooltip("Button 'MR' — visible in VR mode on Quest 3/Pro only.")]
+        [SerializeField] private Button btnMR;
+        [Tooltip("Button 'Galerías' — visible in VR mode on all devices.")]
+        [SerializeField] private Button btnGalerias;
+        [SerializeField] private GallerySelectionController gallerySelectionController;
+
+        [Header("VR Mode — Controller Required Warning")]
+        [Tooltip("Panel shown for 3s when user taps VR without controllers active.")]
+        [SerializeField] private GameObject vrControllerRequiredPanel;
+        [Tooltip("Reference to HandTrackingInputController to detect controller presence.")]
+        [SerializeField] private ArtUnbound.Input.HandTrackingInputController handTrackingInput;
+
+        /// <summary>Fired when the user taps the VR button (MR → VR transition).</summary>
+        public event Action OnVRModeRequested;
+        /// <summary>Fired when the user taps the MR button (VR → MR transition).</summary>
+        public event Action OnMRModeRequested;
+
+        private Coroutine _vrWarningCoroutine;
 
         // ════════════════════════════════════════════════════════════════════════
         //  LIFECYCLE
@@ -194,6 +218,11 @@ namespace ArtUnbound.UI
             sfxSlider?.onValueChanged.RemoveAllListeners();
             hapticsToggle?.onValueChanged.RemoveAllListeners();
             searchInputField?.onValueChanged.RemoveAllListeners();
+            btnVR?.onClick.RemoveAllListeners();
+            btnMR?.onClick.RemoveAllListeners();
+            btnGalerias?.onClick.RemoveAllListeners();
+            if (gallerySelectionController != null)
+                gallerySelectionController.OnGallerySelected -= OnGallerySelectionChanged;
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -217,8 +246,10 @@ namespace ArtUnbound.UI
             WireDetailButtons();
             WireSettingsControls();
             WireSearchControls();
+            WireVRButtons();
 
             if (detailPanel != null) detailPanel.SetActive(false);
+            if (vrControllerRequiredPanel != null) vrControllerRequiredPanel.SetActive(false);
 
             _isInitialized = true;
             Debug.Log($"[NativeGallery] Inicializado con {_allArtworks.Count} obras.");
@@ -256,6 +287,15 @@ namespace ArtUnbound.UI
             _hasBeenPositioned = false;
         }
 
+        /// <summary>
+        /// Provides a direct camera reference to use for positioning when Camera.main is unavailable (e.g. VR mode).
+        /// Call this before Show() when switching to VR.
+        /// </summary>
+        public void SetPositioningCamera(Camera cam)
+        {
+            _positioningCamera = cam;
+        }
+
         // ─────────────────────────────────────────────────────────────────────
         /// <summary>
         /// Oculta el contenido hasta que el head-tracking sea válido,
@@ -275,16 +315,37 @@ namespace ArtUnbound.UI
                 yield break;
             }
 
-            if (Camera.main == null)
+            Camera cam = Camera.main ?? _positioningCamera;
+            if (cam == null)
             {
-                Debug.LogWarning("[NativeGallery] Camera.main es null. Mostrando sin posicionar.");
-                RevealContent();
-                yield break;
+                float waited = 0f;
+                while (cam == null && waited < 3f)
+                {
+                    yield return null;
+                    waited += Time.deltaTime;
+                    cam = Camera.main ?? _positioningCamera;
+                }
+                if (cam == null)
+                {
+                    Debug.LogWarning("[NativeGallery] No hay cámara disponible tras espera. Mostrando sin posicionar.");
+                    RevealContent();
+                    yield break;
+                }
             }
 
-            // Fixed 2-second wait — mirrors PositionCanvasWithDelay in GameBootstrap,
-            // ensuring head tracking is stable before reading camera.forward.
-            yield return new WaitForSeconds(2.0f);
+            // Poll until head tracking is stable (head above floor level).
+            // During mode switches the headset is already worn so this exits immediately.
+            // On cold boot the Quest starts at y≈0 until tracking initialises (~1-2 s).
+            const float kStableThreshold = 0.5f;
+            const float kMaxWait = 3f;
+            float elapsed = 0f;
+            while (cam.transform.position.y < kStableThreshold && elapsed < kMaxWait)
+            {
+                yield return null;
+                elapsed += Time.deltaTime;
+                cam = Camera.main ?? _positioningCamera;
+                if (cam == null) break;
+            }
 
             PositionInFrontOfUser();
             _hasBeenPositioned = true;
@@ -305,14 +366,18 @@ namespace ArtUnbound.UI
             }
 
             SwitchTab(_currentTab, force: true);
+
+            // Clear EventSystem selection so no button shows the golden "selected" highlight on reveal
+            UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
         }
 
         // ─────────────────────────────────────────────────────────────────────
         private void PositionInFrontOfUser()
         {
-            if (Camera.main == null) return;
+            Camera activeCam = Camera.main ?? _positioningCamera;
+            if (activeCam == null) return;
 
-            Transform cam     = Camera.main.transform;
+            Transform cam     = activeCam.transform;
             Vector3   headPos = cam.position;
             headPos.y = Mathf.Clamp(headPos.y, 1.2f, 2.0f);
 
@@ -372,6 +437,11 @@ namespace ArtUnbound.UI
             SetTabColor(btnCompletadas, _currentTab == Tab.Completed);
             SetTabColor(btnConfig,      _currentTab == Tab.Settings);
             SetTabColor(btnBuscar,      _currentTab == Tab.Search);
+            // VR/MR/Galerías are action buttons, not tabs — always use inactive color
+            SetTabColor(btnVR,       false);
+            SetTabColor(btnMR,       false);
+            SetTabColor(btnGalerias, false);
+            Debug.Log($"[NativeGallery] UpdateTabColors — tab={_currentTab} | btnVR normalColor={tabInactiveColor} (active={btnVR != null && btnVR.gameObject.activeSelf})");
         }
 
         private void SetTabColor(Button btn, bool active)
@@ -627,6 +697,102 @@ namespace ArtUnbound.UI
         // ════════════════════════════════════════════════════════════════════════
         //  SEARCH
         // ════════════════════════════════════════════════════════════════════════
+
+        // ════════════════════════════════════════════════════════════════════════
+        //  VR MODE BUTTONS
+        // ════════════════════════════════════════════════════════════════════════
+
+        private void WireVRButtons()
+        {
+            btnVR?.onClick.AddListener(() =>
+            {
+                UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
+
+                bool hasControllers = handTrackingInput != null && handTrackingInput.useControllers;
+                if (!hasControllers)
+                {
+                    ShowVRControllerWarning();
+                    return;
+                }
+
+                OnVRModeRequested?.Invoke();
+            });
+            btnMR?.onClick.AddListener(() =>
+            {
+                UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
+                OnMRModeRequested?.Invoke();
+            });
+            btnGalerias?.onClick.AddListener(OnGaleriasClicked);
+
+            if (gallerySelectionController != null)
+                gallerySelectionController.OnGallerySelected += OnGallerySelectionChanged;
+
+            // Hidden by default — GameBootstrap calls SetVRButtonsMode after initialization
+            SetVRButtonVisibility(false, false, false);
+        }
+
+        /// <summary>
+        /// Configures which VR-related buttons are visible based on current mode and device.
+        /// Call from GameBootstrap when entering MR or VR mode.
+        /// </summary>
+        /// <param name="isVRMode">True if currently in VR mode.</param>
+        /// <param name="isQuest3">True for Quest 3/Pro (supports MR mode switch).</param>
+        public void SetVRButtonsMode(bool isVRMode, bool isQuest3)
+        {
+            // VR button: shown in MR mode, Quest 3/Pro only
+            bool showVR = !isVRMode && isQuest3;
+            // MR button: shown in VR mode, Quest 3/Pro only
+            bool showMR = isVRMode && isQuest3;
+            // Galerías: shown in VR mode on all devices
+            bool showGalerias = isVRMode;
+
+            SetVRButtonVisibility(showVR, showMR, showGalerias);
+        }
+
+        private void SetVRButtonVisibility(bool showVR, bool showMR, bool showGalerias)
+        {
+            if (btnVR != null)       btnVR.gameObject.SetActive(showVR);
+            if (btnMR != null)       btnMR.gameObject.SetActive(showMR);
+            if (btnGalerias != null) btnGalerias.gameObject.SetActive(showGalerias);
+        }
+
+        private void ShowVRControllerWarning()
+        {
+            if (vrControllerRequiredPanel == null)
+            {
+                Debug.LogWarning("[NativeGallery] vrControllerRequiredPanel no asignado en el Inspector.");
+                return;
+            }
+
+            if (_vrWarningCoroutine != null)
+                StopCoroutine(_vrWarningCoroutine);
+
+            vrControllerRequiredPanel.SetActive(true);
+            _vrWarningCoroutine = StartCoroutine(HideVRWarningAfterDelay(3f));
+        }
+
+        private System.Collections.IEnumerator HideVRWarningAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            if (vrControllerRequiredPanel != null)
+                vrControllerRequiredPanel.SetActive(false);
+            _vrWarningCoroutine = null;
+        }
+
+        private void OnGaleriasClicked()
+        {
+            if (gallerySelectionController == null) return;
+            // Retrieve active gallery ID from GameBootstrap/VRGalleryController
+            string activeId = ArtUnbound.Core.GameBootstrap.Instance != null
+                ? ArtUnbound.Core.GameBootstrap.Instance.ActiveVRGalleryId
+                : "gallery_classic";
+            gallerySelectionController.Show(activeId);
+        }
+
+        private void OnGallerySelectionChanged(string galleryId)
+        {
+            ArtUnbound.Core.GameBootstrap.Instance?.SwitchVRGallery(galleryId);
+        }
 
         private TouchScreenKeyboard _searchKeyboard;
 

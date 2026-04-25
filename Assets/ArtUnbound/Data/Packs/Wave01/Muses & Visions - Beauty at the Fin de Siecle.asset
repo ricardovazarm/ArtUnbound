@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Muses & Visions - Beauty at the Fin de Siecle
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_muses_and_visions_beauty_at_the_fin_de_siecle
+  packName: 'Muses & Visions: Beauty at the Fin de Siecle'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: 75270815212e41e5a2b71a393e172635, type: 2}
+  - {fileID: 11400000, guid: 48c714d3e7564112b017e6eeb1b9f82b, type: 2}
+  - {fileID: 11400000, guid: 9323942d46414526aca74faeaba13315, type: 2}
+  - {fileID: 11400000, guid: 3ae3b4105eda4e62bfda780f44401242, type: 2}
+  - {fileID: 11400000, guid: bd2b593d40764936988a9de774b93327, type: 2}
+  - {fileID: 11400000, guid: 8d9818fa4dc64ebca2d4f5651c9d822a, type: 2}
+  - {fileID: 11400000, guid: 93439e9e5d624f5594b4367e7364a6af, type: 2}
+  - {fileID: 11400000, guid: a0d94e1c0cf5483a8681945b69246a6a, type: 2}
+  - {fileID: 11400000, guid: f323907e7ec04efa89f1801a6dc0518a, type: 2}
+  - {fileID: 11400000, guid: 1f805b77452d4409800315a2524b45fe, type: 2}
+  - {fileID: 11400000, guid: 7f3b8e96062740e391b583fcb1d80670, type: 2}
+  - {fileID: 11400000, guid: 86b5fbd0ee324e5f941da21c9f064e2a, type: 2}

@@ -13,17 +13,9 @@ MonoBehaviour:
   m_Name: ArtworkPackCatalog
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackCatalog
   packs:
-  - {fileID: 11400000, guid: 846e12b600fb4560885a34a42f70378d, type: 2}
-  - {fileID: 11400000, guid: 51e88c072f824360941f07603fc5a105, type: 2}
-  - {fileID: 11400000, guid: 58f3ddb90a284113ae01fee4795c6ff9, type: 2}
-  - {fileID: 11400000, guid: 7393f69503dc4630a1c9c6690dd3cddd, type: 2}
-  - {fileID: 11400000, guid: 46bcb38612a2418298a6408de220d2f1, type: 2}
-  - {fileID: 11400000, guid: 1a5fad9f89854977ab38def4060f4327, type: 2}
-  - {fileID: 11400000, guid: a768e3c913284dc1a4e1a1ef2e37160c, type: 2}
-  - {fileID: 11400000, guid: 095f599539474eddaf2cb9759e63be46, type: 2}
-  - {fileID: 11400000, guid: 331f8f756894477a91053aa51e811568, type: 2}
-  - {fileID: 11400000, guid: d265bc3f250d47e8b5e88f01d7c838c3, type: 2}
-  - {fileID: 11400000, guid: 9e669be1e1ed4579ba470f05dbce13a2, type: 2}
-  - {fileID: 11400000, guid: a7f94591cf4c485ea385956dcea1c244, type: 2}
-  - {fileID: 11400000, guid: ad64430aa3d84c1bb84eb18d93cc33b2, type: 2}
-  - {fileID: 11400000, guid: 6ce923f440d645dc9574acfecf7f96a1, type: 2}
+  - {fileID: 11400000, guid: f76acf342bd443f880d5453fd7acf034, type: 2}
+  - {fileID: 11400000, guid: b24bde6775b34752a5ab9f719234f213, type: 2}
+  - {fileID: 11400000, guid: c8cedb1cdbab40efabc1d6d8f0c4c721, type: 2}
+  - {fileID: 11400000, guid: 5e1d689c73324a59b1a58b6a7a605000, type: 2}
+  - {fileID: 11400000, guid: b68eef610aea4da99265f788870ddc65, type: 2}
+  - {fileID: 11400000, guid: 6477655cbec84893abe6dad7a56a4ebd, type: 2}

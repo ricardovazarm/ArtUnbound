@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: View of Delft
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: View of Delft
+  title: View of Delft
+  author: Johannes Vermeer
+  year: 1660
+  description: "Museum: Mauritshuis, The Hague\nArt Movement: Dutch Golden Age\nYear: 1660"
+  museum: Mauritshuis, The Hague
+  artMovement: Dutch Golden Age
+  aspectRatio: 1.2045
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 2ae1fa1cfd7e4a328a41a5d2e4afe958, type: 3}
+  fullImage: {fileID: 21300000, guid: 80ad10d3a5f19d741a1a4b0160570c76, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 56
+  pieceCountNormal: 120
+  pieceCountHard: 208
+  pieceCountExpert: 270
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

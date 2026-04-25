@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Van Gogh - Mirrors of the Soul
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_van_gogh_mirrors_of_the_soul
+  packName: 'Van Gogh: Mirrors of the Soul'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: bf3951a150dd43959cb8b12f925ff306, type: 2}
+  - {fileID: 11400000, guid: 8e90db9119424367949bff7b2b4dd94e, type: 2}
+  - {fileID: 11400000, guid: 375bff82de8f4cf5a98a990d765c8453, type: 2}
+  - {fileID: 11400000, guid: e487d88817fc423a81a5aab6dd89ae58, type: 2}
+  - {fileID: 11400000, guid: dfd656edf5b74cc9a4bbbf6881eaa4a0, type: 2}
+  - {fileID: 11400000, guid: 540e722ffe6b422086138bfdad8a7cc0, type: 2}
+  - {fileID: 11400000, guid: dfc96adc796f4efaa77c91d1cecc7e0f, type: 2}
+  - {fileID: 11400000, guid: c23ea6787c0c4324886ac1c540c70c1d, type: 2}
+  - {fileID: 11400000, guid: 685284ad8a5b4297b727f53e17f533ca, type: 2}
+  - {fileID: 11400000, guid: b06f0205530b43e3b2fd73497e9ec8ac, type: 2}
+  - {fileID: 11400000, guid: 909c2a856b574536b0071dec1048df1d, type: 2}
+  - {fileID: 11400000, guid: 83962cae0ff7477fb19cc52f2f0f97dc, type: 2}

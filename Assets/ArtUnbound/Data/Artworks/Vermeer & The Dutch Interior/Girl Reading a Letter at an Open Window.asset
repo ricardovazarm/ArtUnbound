@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: Girl Reading a Letter at an Open Window
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: Girl Reading a Letter at an Open Window
+  title: Girl Reading a Letter at an Open Window
+  author: Johannes Vermeer
+  year: 1657
+  description: "Museum: Gemaldegalerie Alte Meister, Dresden\nArt Movement: Dutch Golden Age\nYear: 1657"
+  museum: Gemaldegalerie Alte Meister, Dresden
+  artMovement: Dutch Golden Age
+  aspectRatio: 0.7646
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: 2117b665714f4c03a71b6a1e25383059, type: 3}
+  fullImage: {fileID: 21300000, guid: 3a603dda87755fc4bb81a1714c812f5b, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 63
+  pieceCountNormal: 130
+  pieceCountHard: 192
+  pieceCountExpert: 285
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3

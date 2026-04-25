@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: The Impressionist Family - Morisot, Cassatt & Manet's Circle
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_the_impressionist_family_morisot_cassatt_and_manets_circle
+  packName: 'The Impressionist Family: Morisot, Cassatt & Manet''s Circle'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: c9e976c335204e829b45da524344ed08, type: 2}
+  - {fileID: 11400000, guid: 608b4fd16bfb46e18cee81005416a112, type: 2}
+  - {fileID: 11400000, guid: 5de87f90f1c841febf83e7143341a24a, type: 2}
+  - {fileID: 11400000, guid: 5c80c7fd3de845c3932b1add31c787c7, type: 2}
+  - {fileID: 11400000, guid: 98a12fa49ece4baea7133ef23a05e8b8, type: 2}
+  - {fileID: 11400000, guid: eab655c58b854695a408794662f9c5d5, type: 2}
+  - {fileID: 11400000, guid: 4e4ffc5721014c8a9161f758c9a24490, type: 2}
+  - {fileID: 11400000, guid: 370b3e6ece70444c917b7a8b916deab1, type: 2}
+  - {fileID: 11400000, guid: d898cc7844364e7398cfe9fa1b3d6723, type: 2}
+  - {fileID: 11400000, guid: 79fd1b8e8f6e45adb99f555b1931440a, type: 2}
+  - {fileID: 11400000, guid: 0c5b08503d454d2aa76cc390ecadf1b3, type: 2}
+  - {fileID: 11400000, guid: b5d9d75f75f049649351b062b774d98a, type: 2}

@@ -1,0 +1,386 @@
+[
+  {
+    "collection": "01 Base Set",
+    "title": "The Burial of the Count of Orgaz",
+    "author": "El Greco",
+    "year": 1586,
+    "museum": "Church of Santo Tome, Toledo",
+    "artMovement": "Mannerism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "Lady with an Ermine",
+    "author": "Leonardo da Vinci",
+    "year": 1490,
+    "museum": "Czartoryski Museum, Krakow",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Fighting Temeraire",
+    "author": "Joseph Mallord William Turner",
+    "year": 1839,
+    "museum": "National Gallery, London",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Grand Odalisque",
+    "author": "Jean-Auguste-Dominique Ingres",
+    "year": 1814,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Neoclassicism"
+  },
+  {
+    "collection": "01 Base Set",
+    "title": "The Blue Boy",
+    "author": "Thomas Gainsborough",
+    "year": 1770,
+    "museum": "Huntington Library, San Marino",
+    "artMovement": "Rococo"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "The Rokeby Venus",
+    "author": "Diego Velazquez",
+    "year": 1651,
+    "museum": "National Gallery, London",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "The Birth of Venus (Bouguereau)",
+    "author": "William-Adolphe Bouguereau",
+    "year": 1879,
+    "museum": "Musee d'Orsay, Paris",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Art Without Borders Gems of the World",
+    "title": "Beata Beatrix",
+    "author": "Dante Gabriel Rossetti",
+    "year": 1870,
+    "museum": "Tate Britain",
+    "artMovement": "Pre-Raphaelite"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "Rain, Steam and Speed",
+    "author": "Joseph Mallord William Turner",
+    "year": 1844,
+    "museum": "National Gallery, London",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "A Burial at Ornans",
+    "author": "Gustave Courbet",
+    "year": 1850,
+    "museum": "Musee d'Orsay, Paris",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "Girl Reading a Letter at an Open Window",
+    "author": "Johannes Vermeer",
+    "year": 1657,
+    "museum": "Gemaldegalerie Alte Meister, Dresden",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "The Lacemaker",
+    "author": "Johannes Vermeer",
+    "year": 1669,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "The Sleeping Gypsy",
+    "author": "Henri Rousseau",
+    "year": 1897,
+    "museum": "Museum of Modern Art, New York",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "The Dream",
+    "author": "Henri Rousseau",
+    "year": 1910,
+    "museum": "Museum of Modern Art, New York",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Durer Holbein and the Northern Renaissance",
+    "title": "Self-Portrait (1500)",
+    "author": "Albrecht Durer",
+    "year": 1500,
+    "museum": "Alte Pinakothek, Munich",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Durer Holbein and the Northern Renaissance",
+    "title": "Young Hare",
+    "author": "Albrecht Durer",
+    "year": 1502,
+    "museum": "Albertina, Vienna",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Durer Holbein and the Northern Renaissance",
+    "title": "The Ambassadors",
+    "author": "Hans Holbein the Younger",
+    "year": 1533,
+    "museum": "National Gallery, London",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Durer Holbein and the Northern Renaissance",
+    "title": "Portrait of Henry VIII",
+    "author": "Hans Holbein the Younger",
+    "year": 1537,
+    "museum": "Thyssen-Bornemisza Museum, Madrid",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Durer Holbein and the Northern Renaissance",
+    "title": "The Descent from the Cross (van der Weyden)",
+    "author": "Rogier van der Weyden",
+    "year": 1435,
+    "museum": "Museo del Prado, Madrid",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Venice and Florence The Italian High Renaissance",
+    "title": "Venus of Urbino",
+    "author": "Titian",
+    "year": 1538,
+    "museum": "Uffizi Gallery, Florence",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Venice and Florence The Italian High Renaissance",
+    "title": "The Wedding at Cana",
+    "author": "Paolo Veronese",
+    "year": 1563,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Venice and Florence The Italian High Renaissance",
+    "title": "Susanna and the Elders",
+    "author": "Jacopo Tintoretto",
+    "year": 1555,
+    "museum": "Kunsthistorisches Museum, Vienna",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Venice and Florence The Italian High Renaissance",
+    "title": "Madonna with the Long Neck",
+    "author": "Parmigianino",
+    "year": 1535,
+    "museum": "Uffizi Gallery, Florence",
+    "artMovement": "Mannerism"
+  },
+  {
+    "collection": "Venice and Florence The Italian High Renaissance",
+    "title": "Allegory with Venus and Cupid",
+    "author": "Agnolo Bronzino",
+    "year": 1545,
+    "museum": "National Gallery, London",
+    "artMovement": "Mannerism"
+  },
+  {
+    "collection": "Venice and Florence The Italian High Renaissance",
+    "title": "Lamentation over the Dead Christ",
+    "author": "Andrea Mantegna",
+    "year": 1480,
+    "museum": "Pinacoteca di Brera, Milan",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "Judith Beheading Holofernes (Caravaggio)",
+    "author": "Caravaggio",
+    "year": 1599,
+    "museum": "Galleria Nazionale d'Arte Antica, Rome",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "The Calling of Saint Matthew",
+    "author": "Caravaggio",
+    "year": 1600,
+    "museum": "San Luigi dei Francesi, Rome",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "Supper at Emmaus",
+    "author": "Caravaggio",
+    "year": 1601,
+    "museum": "National Gallery, London",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "David with the Head of Goliath",
+    "author": "Caravaggio",
+    "year": 1610,
+    "museum": "Borghese Gallery, Rome",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "The Three Graces",
+    "author": "Peter Paul Rubens",
+    "year": 1635,
+    "museum": "Museo del Prado, Madrid",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "The Descent from the Cross (Rubens)",
+    "author": "Peter Paul Rubens",
+    "year": 1614,
+    "museum": "Cathedral of Our Lady, Antwerp",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "Immaculate Conception of the Venerables",
+    "author": "Bartolome Esteban Murillo",
+    "year": 1665,
+    "museum": "Museo del Prado, Madrid",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "The Penitent Magdalene",
+    "author": "Georges de La Tour",
+    "year": 1640,
+    "museum": "The Metropolitan Museum of Art, New York",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "Et in Arcadia Ego",
+    "author": "Nicolas Poussin",
+    "year": 1638,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Light and Shadow Caravaggio and the Baroque",
+    "title": "Saint Francis in Meditation",
+    "author": "Francisco de Zurbaran",
+    "year": 1635,
+    "museum": "National Gallery, London",
+    "artMovement": "Baroque"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "The Virgin of the Rocks",
+    "author": "Leonardo da Vinci",
+    "year": 1486,
+    "museum": "Louvre Museum, Paris",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Olympia",
+    "author": "Edouard Manet",
+    "year": 1863,
+    "museum": "Musee d'Orsay, Paris",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Manet and the Impressionist Circle",
+    "title": "Luncheon on the Grass",
+    "author": "Edouard Manet",
+    "year": 1863,
+    "museum": "Musee d'Orsay, Paris",
+    "artMovement": "Realism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "The Nude Maja",
+    "author": "Francisco de Goya",
+    "year": 1800,
+    "museum": "Museo del Prado, Madrid",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "Drama and Reason From Rococo to Romanticism",
+    "title": "The Clothed Maja",
+    "author": "Francisco de Goya",
+    "year": 1808,
+    "museum": "Museo del Prado, Madrid",
+    "artMovement": "Romanticism"
+  },
+  {
+    "collection": "Parisian Life Renoir & Degas",
+    "title": "The Absinthe Drinker",
+    "author": "Edgar Degas",
+    "year": 1876,
+    "museum": "Musee d'Orsay, Paris",
+    "artMovement": "Impressionism"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "View of Delft",
+    "author": "Johannes Vermeer",
+    "year": 1660,
+    "museum": "Mauritshuis, The Hague",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Northern Light Rembrandt & Vermeer",
+    "title": "The Return of the Prodigal Son",
+    "author": "Rembrandt van Rijn",
+    "year": 1668,
+    "museum": "Hermitage Museum, Saint Petersburg",
+    "artMovement": "Dutch Golden Age"
+  },
+  {
+    "collection": "Beyond Impressionism",
+    "title": "Where Do We Come From? What Are We? Where Are We Going?",
+    "author": "Paul Gauguin",
+    "year": 1898,
+    "museum": "Museum of Fine Arts, Boston",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Life in Flanders From Bruegel to Van Dyck",
+    "title": "Hunters in the Snow",
+    "author": "Pieter Bruegel the Elder",
+    "year": 1565,
+    "museum": "Kunsthistorisches Museum, Vienna",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Lamentation of Christ",
+    "author": "Giotto",
+    "year": 1305,
+    "museum": "Scrovegni Chapel, Padua",
+    "artMovement": "Renaissance"
+  },
+  {
+    "collection": "Van Gogh The Human Eye",
+    "title": "Self-Portrait with Bandaged Ear",
+    "author": "Vincent van Gogh",
+    "year": 1889,
+    "museum": "The Courtauld Gallery, London",
+    "artMovement": "Post-Impressionism"
+  },
+  {
+    "collection": "Faith and Glory The Sacred Renaissance",
+    "title": "Sistine Madonna",
+    "author": "Raphael",
+    "year": 1512,
+    "museum": "Gemaldegalerie Alte Meister, Dresden",
+    "artMovement": "Renaissance"
+  }
+]

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bc9881b0b369f4aa53097659298761, type: 3}
+  m_Name: Gallery_Classic
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.GalleryDefinition
+  galleryId: gallery_classic
+  displayName: Classic Gallery
+  thumbnail: {fileID: 0}
+  environmentPrefab: {fileID: 2946484827674165858, guid: e0e079551c470ea48a486a5c2842b90b, type: 3}

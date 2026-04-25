@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bab14190a3c7244a552451ba8c445f, type: 3}
+  m_Name: Birth of the Renaissance
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
+  packId: pack_birth_of_the_renaissance
+  packName: 'Birth of the Renaissance'
+  price: $2.99
+  artworks:
+  - {fileID: 11400000, guid: 172c0c89403247d28c66f1bc58b692c5, type: 2}
+  - {fileID: 11400000, guid: 422cc468a25a487cb5543e0c9c6d7967, type: 2}
+  - {fileID: 11400000, guid: 31242e5ce508456fada970b957243b00, type: 2}
+  - {fileID: 11400000, guid: a523e3811227466e956030259136d2f6, type: 2}
+  - {fileID: 11400000, guid: dbbc2bcbde534ef185b751fcefee0194, type: 2}
+  - {fileID: 11400000, guid: fa6a593ece0e4e87a9ad55b4e861c694, type: 2}
+  - {fileID: 11400000, guid: a9d253b731b547f1b4d033a0f99fe837, type: 2}
+  - {fileID: 11400000, guid: 1384d4b95f3d4f0db2b20a152d45f514, type: 2}
+  - {fileID: 11400000, guid: 209d3b125d094af79251669740c77b2b, type: 2}
+  - {fileID: 11400000, guid: 2781a5c11f594ea38a1b9b0e73c4c483, type: 2}
+  - {fileID: 11400000, guid: c1155c9e286b459e9cae2286ee6963be, type: 2}
+  - {fileID: 11400000, guid: 9d1b7074c455448eb84ea0b0fdf743b1, type: 2}

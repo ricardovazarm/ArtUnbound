@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32110b9219b62be46b10a97c773a56f7, type: 3}
+  m_Name: The Penitent Magdalene
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkDefinition
+  artworkId: The Penitent Magdalene
+  title: The Penitent Magdalene
+  author: Georges de La Tour
+  year: 1640
+  description: "Museum: The Metropolitan Museum of Art, New York\nArt Movement: Baroque\nYear: 1640"
+  museum: The Metropolitan Museum of Art, New York
+  artMovement: Baroque
+  aspectRatio: 0.6944
+  baseSizePortrait: {x: 0.5, y: 0.7}
+  baseSizeLandscape: {x: 0.7, y: 0.5}
+  thumbnail: {fileID: 21300000, guid: c38a6a766b1749cab9b7ba2086ff2870, type: 3}
+  fullImage: {fileID: 21300000, guid: b7b2808c6d55cf3478de620ff658da23, type: 3}
+  previewTexture: {fileID: 0}
+  puzzleTexture: {fileID: 0}
+  isBaseContent: 1
+  requiresUnlock: 0
+  unlockWeek: 0
+  pieceCountEasy: 70
+  pieceCountNormal: 117
+  pieceCountHard: 204
+  pieceCountExpert: 280
+  complexity: 1
+  colorVariety: 3
+  detailLevel: 3
