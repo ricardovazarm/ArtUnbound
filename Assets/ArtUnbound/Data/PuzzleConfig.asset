@@ -28,8 +28,8 @@ MonoBehaviour:
   trayViewportWidthCm: 45
   trayViewportHeightCm: 45
   trayRotationY: 20
-  trayOffsetX: 0.5
-  trayOffsetY: -0.06
+  trayOffsetX: 0.6
+  trayOffsetY: 0
   trayOffsetZ: 0.06
   trayScrollSpeed: 0.3
   trayScrollSmoothing: 10

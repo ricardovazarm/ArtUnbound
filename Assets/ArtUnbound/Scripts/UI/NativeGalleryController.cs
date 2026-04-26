@@ -87,11 +87,6 @@ namespace ArtUnbound.UI
         [SerializeField] private Button  btnBuscar;
         [SerializeField] private Button  btnStore;
 
-        [Tooltip("Color del tab seleccionado.")]
-        [SerializeField] private Color tabActiveColor   = new Color(0.537f, 0.424f, 0.290f); // #896C4A
-        [Tooltip("Color de tabs inactivos.")]
-        [SerializeField] private Color tabInactiveColor = new Color(0.22f, 0.22f, 0.22f);
-
         // ── Paneles de vista ──────────────────────────────────────────────────
         [Header("Paneles de vista")]
         [SerializeField] private GameObject catalogView;
@@ -257,6 +252,11 @@ namespace ArtUnbound.UI
 
             if (detailPanel != null) detailPanel.SetActive(false);
             if (vrControllerRequiredPanel != null) vrControllerRequiredPanel.SetActive(false);
+
+            // NativeGallery sits at the scene root (not under mainUICanvas), so
+            // GameBootstrap.ApplyButtonTheme misses it. Apply the central theme
+            // here to keep hover/state behavior consistent with the rest of the UI.
+            UIButtonTheme.ApplyToAllIn(transform);
 
             _isInitialized = true;
             Debug.Log($"[NativeGallery] Inicializado con {_allArtworks.Count} obras.");
@@ -435,8 +435,6 @@ namespace ArtUnbound.UI
             if (searchView != null)    searchView.SetActive(tab == Tab.Search);
             if (storeView != null)     storeView.SetActive(tab == Tab.Store);
 
-            UpdateTabColors();
-
             switch (tab)
             {
                 case Tab.Settings:  PopulateSettings();  break;
@@ -450,26 +448,9 @@ namespace ArtUnbound.UI
             }
         }
 
-        private void UpdateTabColors()
-        {
-            SetTabColor(btnInicio, _currentTab == Tab.Catalog);
-            SetTabColor(btnConfig, _currentTab == Tab.Settings);
-            SetTabColor(btnBuscar, _currentTab == Tab.Search);
-            SetTabColor(btnStore,  _currentTab == Tab.Store);
-            // VR/MR/Galerías are action buttons, not tabs — always use inactive color
-            SetTabColor(btnVR,       false);
-            SetTabColor(btnMR,       false);
-            SetTabColor(btnGalerias, false);
-            Debug.Log($"[NativeGallery] UpdateTabColors — tab={_currentTab} | btnVR normalColor={tabInactiveColor} (active={btnVR != null && btnVR.gameObject.activeSelf})");
-        }
-
-        private void SetTabColor(Button btn, bool active)
-        {
-            if (btn == null) return;
-            var colors        = btn.colors;
-            colors.normalColor = active ? tabActiveColor : tabInactiveColor;
-            btn.colors        = colors;
-        }
+        // Tab active/inactive coloring intentionally removed — tabs use the central
+        // UIButtonTheme like every other button (transparent rest, semi-brown hover).
+        // Active tab is implicit from which view is shown, matching Disney+/Prime UX.
 
         // ════════════════════════════════════════════════════════════════════════
         //  POPULATE GRIDS
@@ -593,6 +574,10 @@ namespace ArtUnbound.UI
                 card.Setup(artwork, bestTier, bronzeMedal, silverMedal, goldMedal, OnCardTapped);
             else
                 Debug.LogWarning($"[NativeGallery] El prefab '{artworkCardPrefab.name}' no tiene ArtworkCardUI.");
+
+            // Cards are instantiated after GameBootstrap.ApplyButtonTheme has run,
+            // so they need the theme applied per-card to get hover behavior.
+            UIButtonTheme.ApplyTo(go.GetComponent<Button>());
         }
 
         private static void ClearGrid(Transform container)

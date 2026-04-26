@@ -463,7 +463,8 @@ namespace ArtUnbound.Core
             if (puzzleHUD != null)
             {
                 puzzleHUD.Initialize(selectedPieceCount, true); // Help mode always enabled
-                
+                puzzleHUD.SetDifficulty(selectedDifficultyIndex);
+
                 // Set artwork information in HUD
                 var currentArtwork = localCatalogService?.GetById(selectedArtworkId);
                 if (currentArtwork != null)
@@ -475,7 +476,7 @@ namespace ArtUnbound.Core
                     );
                     puzzleHUD.SetArtworkReference(currentArtwork.fullImage);
                 }
-                
+
                 puzzleHUD.Show();
             }
 
@@ -613,6 +614,7 @@ namespace ArtUnbound.Core
             if (puzzleHUD != null)
             {
                 puzzleHUD.Initialize(actualPieceCount, true); // Help mode always enabled
+                puzzleHUD.SetDifficulty(selectedDifficultyIndex);
                 if (artworkData != null)
                 {
                     puzzleHUD.SetArtworkInfo(
@@ -662,7 +664,7 @@ namespace ArtUnbound.Core
 
                     int wallCount = IsVRMode ? 1 : DetectAndLogWalls();
                     if (postGameController != null)
-                        postGameController.ShowResults(displaySession, timeSec, timeSec, frameTier, false, wallCount);
+                        postGameController.ShowResults(displaySession, frameTier, wallCount);
 
                     if (puzzleHUD != null) puzzleHUD.Show();
                     puzzleAchievements?.Show();
@@ -773,7 +775,7 @@ namespace ArtUnbound.Core
 
             if (postGameController != null)
             {
-                postGameController.ShowResults(CurrentSession, timeSec, previousBestTime, frameTier, isNewRecord, wallCount);
+                postGameController.ShowResults(CurrentSession, frameTier, wallCount);
             }
             else
             {

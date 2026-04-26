@@ -17,25 +17,25 @@ MonoBehaviour:
     title: Moonlight Sonata
     artist: Ludwig Van Beethoven
   - clip: {fileID: 8300000, guid: fb25ba373f8aa4f479f45380848b1c13, type: 3}
-    title: Air on the G String (from Orchestral Suite no. 3, BWV 1068)
+    title: Air on the G String
     artist: Johann Sebastian Bach
   - clip: {fileID: 8300000, guid: 5fc8af48e1d4a874d92474475bcd83d0, type: 3}
-    title: Cello Suite no. 1 - Prelude in G, BWV 1007
+    title: Cello Suite no. 1 - Prelude in G
     artist: Johann Sebastian Bach
   - clip: {fileID: 8300000, guid: a65b70430f1de9c47b7b2df2bd6a4333, type: 3}
-    title: Minuet in G major, Anh. 114 - Notebook for Anna Magdalena Bach
+    title: Minuet in G major, Anh. 114
     artist: Johann Sebastian Bach
   - clip: {fileID: 8300000, guid: e4b31485ae79e3e418df3d79c1fe1cd2, type: 3}
-    title: Prelude in C major, BWV 846
+    title: Prelude in C major
     artist: Johann Sebastian Bach
   - clip: {fileID: 8300000, guid: a6bebcdf386161743ac0d2274950143d, type: 3}
-    title: Bagatelle no. 25 Fur Elise, WoO 59
+    title: Bagatelle no. 25 Fur Elise
     artist: Ludwig Van Beethoven
   - clip: {fileID: 8300000, guid: 7d739e876ada3374b9bc0f336ad4f288, type: 3}
-    title: Piano Sonata no. 8 in C minor Pathetique, Op. 13 - III. Rondo - Allegro
+    title: Piano Sonata no. 8 in C minor Pathetique
     artist: Ludwig van Beethoven
   - clip: {fileID: 8300000, guid: 03bce645abea85e48ba8925ac0d2ebc1, type: 3}
-    title: Piano Sonata no. 11, K. 331 - III. Alla Turca
+    title: Piano Sonata no. 11,  Alla Turca
     artist: Wolfgang Amadeus Mozart
   - clip: {fileID: 8300000, guid: 46ccf520189eba74f9f437204a8356e3, type: 3}
     title: Symphony no. 40 in G minor
@@ -44,27 +44,26 @@ MonoBehaviour:
     title: Serenade in G major
     artist: Wolfgang Amadeus Mozart
   - clip: {fileID: 8300000, guid: 713c20af78a6acc46ad873768c26250c, type: 3}
-    title: Swan Lake Op.20 - Act II Pt.1
+    title: Swan Lake Op.20
     artist: Piotr Ilyich Tchaikovsky
   - clip: {fileID: 8300000, guid: ab390702e32ecf846972bf0292dab894, type: 3}
-    title: Nocturne in B flat minor, Op. 9 no. 1
+    title: Nocturne in B flat minor
     artist: Frederic Chopin
   - clip: {fileID: 8300000, guid: 3364c5dad60dea240b05c6db709b9c4c, type: 3}
-    title: Nocturne in E flat minor, Op. 9 no. 2
+    title: Nocturne in E flat minor
     artist: Frederic Chopin
   - clip: {fileID: 8300000, guid: fab55fb23b388884aac6b93058e56b98, type: 3}
     title: Fantaisie - Impromptu, Op. 66
     artist: Frederic Chopin
   - clip: {fileID: 8300000, guid: 44178dd0e705f2a4ebe6b2e29d59479c, type: 3}
-    title: Concerto No. 4 in F minor, Op. 8, RV 297, 'L'inverno' (Winter) - Allegro
-      non molto
+    title: Concerto No. 4 in F minor,
     artist: Antonio Vivaldi
   - clip: {fileID: 8300000, guid: 65e1e30ba9495884c83a1b0253a97511, type: 3}
-    title: Violin Concerto in E major, RV 269 'Spring'
+    title: Violin Concerto in E major,  'Spring'
     artist: Antonio Vivaldi
   - clip: {fileID: 8300000, guid: 49232d75ddabfa344bb9f0f4c3ebbf20, type: 3}
-    title: Violin Concerto in F major, RV 293 'Autumn'
+    title: Violin Concerto in F major, 'Autumn'
     artist: Antonio Vivaldi
   - clip: {fileID: 8300000, guid: be522122bfd33f24c8cec07fc1bdb3da, type: 3}
-    title: Violin Concerto in G minor, RV 315 'Summer'
+    title: Violin Concerto in G minor,  'Summer'
     artist: Antonio Vivaldi

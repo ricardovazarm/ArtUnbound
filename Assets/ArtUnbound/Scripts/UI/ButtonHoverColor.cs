@@ -26,7 +26,7 @@ namespace ArtUnbound.UI
             if (semantic != null && semantic.IsSelected)
                 return; // Already has correct color, don't change
             if (_targetGraphic != null && _selectable != null && _selectable.interactable)
-                _targetGraphic.color = UIButtonTheme.HighlightColor;
+                _targetGraphic.color = UIButtonTheme.HoverFillColor;
         }
 
         public void OnPointerExit(PointerEventData eventData)

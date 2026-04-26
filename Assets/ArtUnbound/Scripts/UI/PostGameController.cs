@@ -19,11 +19,16 @@ namespace ArtUnbound.UI
 
         [Header("UI References")]
         [SerializeField] private GameObject panel;
-        [SerializeField] private TextMeshProUGUI completionText;  // "Puzzle Complete!"
-        [SerializeField] private TextMeshProUGUI timeText;         // "Completed in: 01:23:02"
-        [SerializeField] private TextMeshProUGUI frameText;       // "Bronze frame earned!"
-        [SerializeField] private TextMeshProUGUI newRecordText;   // Kept for future use - currently hidden
-        [SerializeField] private TextMeshProUGUI wallStatusText;  // "Paredes detectadas: Sí/No" (below board)
+        // Completion time is shown by the HUD's frozen timer — no separate text needed here.
+        [SerializeField] private TextMeshProUGUI medalText;       // "Congratulations you have earned a Bronze medal!!!"
+
+        [Header("Medal Icon")]
+        [Tooltip("Image que muestra la medalla ganada (mismo asset que aparece en NativeGallery).")]
+        [SerializeField] private Image medalIcon;
+        [SerializeField] private Sprite bronzeMedal;
+        [SerializeField] private Sprite silverMedal;
+        [Tooltip("Sprite usado para Oro y Platinum (Expert reusa Oro, igual que NativeGallery).")]
+        [SerializeField] private Sprite goldMedal;
         
         [Header("Hang Artwork Instruction")]
         [Tooltip("Text that appears above the painting with instruction to pinch and place. Located in a separate panel (center), not in the PostGame panel (right).")]
@@ -33,10 +38,7 @@ namespace ArtUnbound.UI
         [SerializeField] private Button replayButton;
 
         private PuzzleSessionData sessionData;
-        private int completionTime;
-        private int previousBestTime;
         private FrameTier awardedFrame;
-        private bool isNewRecord;
 
         private void Awake()
         {
@@ -56,13 +58,10 @@ namespace ArtUnbound.UI
         /// Shows the results screen with the given data.
         /// wallCount: number of walls detected (0 = none). Used for on-device feedback when console is unavailable.
         /// </summary>
-        public void ShowResults(PuzzleSessionData data, int timeSec, int prevBestTime, FrameTier frame, bool newRecord = false, int wallCount = -1)
+        public void ShowResults(PuzzleSessionData data, FrameTier frame, int wallCount = -1)
         {
             sessionData = data;
-            completionTime = timeSec;
-            previousBestTime = prevBestTime;
             awardedFrame = frame;
-            isNewRecord = newRecord;
             lastWallCount = wallCount;
 
             UpdateUI();
@@ -82,75 +81,32 @@ namespace ArtUnbound.UI
 
         private void UpdateUI()
         {
-            if (completionText != null)
-                completionText.text = "Puzzle Complete!";
+            string medalName = GetMedalDisplayName(awardedFrame);
 
-            if (timeText != null)
-                timeText.text = $"Completed in: {FormatTime(completionTime)}";
+            if (medalText != null)
+                medalText.text = $"Congratulations you have earned a {medalName} medal!!!";
 
-            if (frameText != null)
-                frameText.text = $"{GetFrameDisplayName(awardedFrame)} frame earned!";
+            if (medalIcon != null)
+            {
+                Sprite sprite = awardedFrame switch
+                {
+                    FrameTier.Bronce => bronzeMedal,
+                    FrameTier.Plata  => silverMedal,
+                    _                => goldMedal, // Oro y Platinum
+                };
+                medalIcon.sprite = sprite;
+                medalIcon.enabled = sprite != null;
+            }
 
-            // New record - functionality kept, text hidden for now
-            if (newRecordText != null)
-                newRecordText.gameObject.SetActive(false);
-
-            // Wall detection status — oculto (era texto de debug)
-            if (wallStatusText != null)
-                wallStatusText.gameObject.SetActive(false);
-            
-        // Show/hide hang instruction text based on wall detection
-        if (hangInstructionText != null)
-        {
-            bool hasWalls = lastWallCount > 0;
-            hangInstructionText.SetActive(hasWalls);
-            
-            // Check if the text is actually visible (parent might be inactive)
-            bool isActiveInHierarchy = hangInstructionText.activeInHierarchy;
-            bool isActiveSelf = hangInstructionText.activeSelf;
-            bool parentActive = hangInstructionText.transform.parent != null && hangInstructionText.transform.parent.gameObject.activeInHierarchy;
-            
-            Debug.Log($"[PostGame] Hang instruction text - SetActive({hasWalls}), activeSelf: {isActiveSelf}, activeInHierarchy: {isActiveInHierarchy}, parent active: {parentActive}, walls: {lastWallCount}");
-        }
-        else
-        {
-            Debug.LogWarning("[PostGame] hangInstructionText is null! Please assign it in the Inspector.");
-        }
+            // Show/hide hang instruction text based on wall detection
+            if (hangInstructionText != null)
+            {
+                bool hasWalls = lastWallCount > 0;
+                hangInstructionText.SetActive(hasWalls);
+            }
         }
 
-        private void EnsureWallStatusTextExists()
-        {
-            if (wallStatusText != null) return;
-            if (panel == null) return;
-
-            var go = new GameObject("WallStatusText");
-            go.transform.SetParent(panel.transform, false);
-            var rect = go.AddComponent<RectTransform>();
-            rect.anchorMin = new Vector2(0.5f, 0f);
-            rect.anchorMax = new Vector2(0.5f, 0f);
-            rect.pivot = new Vector2(0.5f, 0.5f);
-            rect.anchoredPosition = new Vector2(0f, -95f);
-            rect.sizeDelta = new Vector2(400f, 28f);
-
-            var tmp = go.AddComponent<TextMeshProUGUI>();
-            tmp.fontSize = 18;
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.color = new Color(0.9f, 0.9f, 0.9f, 0.9f);
-            tmp.text = "Paredes: —";
-            wallStatusText = tmp;
-        }
-
-        private string FormatTime(int totalSeconds)
-        {
-            int hours = totalSeconds / 3600;
-            int minutes = (totalSeconds % 3600) / 60;
-            int seconds = totalSeconds % 60;
-            if (hours > 0)
-                return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
-            return $"{minutes:D2}:{seconds:D2}";
-        }
-
-        private static string GetFrameDisplayName(FrameTier tier)
+        private static string GetMedalDisplayName(FrameTier tier)
         {
             return tier switch
             {
@@ -208,11 +164,6 @@ namespace ArtUnbound.UI
         /// Gets the current session data.
         /// </summary>
         public PuzzleSessionData GetSessionData() => sessionData;
-
-        /// <summary>
-        /// Gets the completion time in seconds.
-        /// </summary>
-        public int GetCompletionTime() => completionTime;
 
         /// <summary>
         /// Gets the awarded frame tier.

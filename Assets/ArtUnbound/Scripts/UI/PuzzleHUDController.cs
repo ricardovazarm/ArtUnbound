@@ -30,8 +30,20 @@ namespace ArtUnbound.UI
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private Image timerIcon;
 
+        [Header("Difficulty Icon")]
+        [Tooltip("Icono mostrado segun la dificultad seleccionada (Easy/Normal/Hard/Expert).")]
+        [SerializeField] private Image difficultyIcon;
+        [Tooltip("Sprite para Easy (difficulty-easy).")]
+        [SerializeField] private Sprite easyIcon;
+        [Tooltip("Sprite para Normal/Medium (difficulty-medium).")]
+        [SerializeField] private Sprite mediumIcon;
+        [Tooltip("Sprite para Hard y Expert (difficulty-hard). Expert reutiliza el icono de Hard.")]
+        [SerializeField] private Sprite hardIcon;
+
         [Header("Progress Display")]
-        [SerializeField] private TextMeshProUGUI piecesText;
+        [SerializeField] private TextMeshProUGUI totalPiecesText;
+        [SerializeField] private TextMeshProUGUI correctPiecesText;
+        [SerializeField] private TextMeshProUGUI incorrectPiecesText;
         [SerializeField] private Slider progressSlider;
         [SerializeField] private Image progressFill;
 
@@ -104,7 +116,7 @@ namespace ArtUnbound.UI
                 musicTrackText.text = "";
                 return;
             }
-            musicTrackText.text = $"Song: {title ?? ""} - {artist ?? ""}";
+            musicTrackText.text = $"{artist ?? ""}-{title ?? ""}";
         }
 
         private void Update()
@@ -174,6 +186,25 @@ namespace ArtUnbound.UI
             }
         }
 
+        /// <summary>
+        /// Sets the difficulty icon based on the selected difficulty index.
+        /// 0=Easy, 1=Normal, 2=Hard, 3=Expert (Expert reuses the Hard icon).
+        /// </summary>
+        public void SetDifficulty(int difficultyIndex)
+        {
+            if (difficultyIcon == null) return;
+            Sprite sprite = difficultyIndex switch
+            {
+                0 => easyIcon,
+                1 => mediumIcon,
+                2 => hardIcon,
+                3 => hardIcon,
+                _ => easyIcon
+            };
+            difficultyIcon.sprite = sprite;
+            difficultyIcon.enabled = sprite != null;
+        }
+
         private void UpdateTimerDisplay()
         {
             if (timerText != null && timerController != null)
@@ -184,10 +215,14 @@ namespace ArtUnbound.UI
 
         private void UpdateProgressDisplay()
         {
-            if (piecesText != null)
-            {
-                piecesText.text = $"Total: {totalPieces} / Correct: {placedPieces} / Incorrect: {incorrectPieces}";
-            }
+            if (totalPiecesText != null)
+                totalPiecesText.text = totalPieces.ToString();
+
+            if (correctPiecesText != null)
+                correctPiecesText.text = placedPieces.ToString();
+
+            if (incorrectPiecesText != null)
+                incorrectPiecesText.text = incorrectPieces.ToString();
 
             if (progressSlider != null)
             {
