@@ -34,8 +34,6 @@ namespace ArtUnbound.Core
     [SerializeField] private LoadingSpinner loadingSpinner;
 
     [Header("UI Controllers")]
-        [SerializeField] private UnifiedMainMenuController unifiedMainMenu;       // Menú clásico (3×3 paginado)
-        [SerializeField] private RadialGridGalleryController radialGridGallery;  // Galería radial (experimental)
         [SerializeField] private NativeGalleryController nativeGallery;          // Galería nativa (Prime Video style)
         [SerializeField] private PuzzleHUDController puzzleHUD;
         [SerializeField] private PuzzleAchievementsController puzzleAchievements;
@@ -59,12 +57,6 @@ namespace ArtUnbound.Core
         [SerializeField] private WallDetectionService wallDetectionService;
         [SerializeField] private ArtworkHangingController artworkHangingController;
         [SerializeField] private WallAnchorManager wallAnchorManager;
-
-        [Header("Feature Flags")]
-        [Tooltip("true = usa la galería nativa (Prime Video style) — recomendado.")]
-        [SerializeField] private bool useNativeGallery = true;
-        [Tooltip("true = usa la galería radial experimental (palm navigation).")]
-        [SerializeField] private bool useRadialGallery = false;
 
         [Header("VR Mode")]
         [SerializeField] private VRModeController vrModeController;
@@ -207,20 +199,12 @@ namespace ArtUnbound.Core
                 packPurchaseService.Initialize(saveDataService);
             }
 
-            // Initialize UnifiedMainMenu with services
-            if (unifiedMainMenu != null)
-            {
-                unifiedMainMenu.Initialize(localCatalogService, saveDataService);
-                unifiedMainMenu.SetPackPurchaseService(packPurchaseService);
-            }
-
-            // Initialize RadialGridGallery (galería radial — solo si está asignada)
-            if (radialGridGallery != null)
-                radialGridGallery.Initialize(localCatalogService, saveDataService);
-
             // Initialize NativeGallery (galería Prime Video style)
             if (nativeGallery != null)
+            {
                 nativeGallery.Initialize(localCatalogService, saveDataService);
+                nativeGallery.SetPackPurchaseService(packPurchaseService);
+            }
 
             // Initialize WallAnchorManager with SaveDataService
             if (wallAnchorManager != null)
@@ -320,10 +304,6 @@ namespace ArtUnbound.Core
                 comfortModeController.OnPositionLocked += OnComfortPositionLocked;
             }
 
-            // RadialGridGallery
-            if (radialGridGallery != null)
-                radialGridGallery.OnStartPuzzle += OnUnifiedMenuStartPuzzle;
-
             // NativeGallery
             if (nativeGallery != null)
             {
@@ -331,24 +311,6 @@ namespace ArtUnbound.Core
                 nativeGallery.OnSettingsChanged += OnNativeGallerySettingsChanged;
                 nativeGallery.OnVRModeRequested += OnVRModeRequested;
                 nativeGallery.OnMRModeRequested += OnMRModeRequested;
-            }
-
-            // UnifiedMainMenu
-            if (unifiedMainMenu != null)
-            {
-                unifiedMainMenu.OnStartPuzzle += OnUnifiedMenuStartPuzzle;
-
-                unifiedMainMenu.OnMusicVolumeChanged += (volume) =>
-                {
-                    if (audioManager != null)
-                        audioManager.SetMusicVolume(volume);
-                };
-
-                unifiedMainMenu.OnSoundVolumeChanged += (volume) =>
-                {
-                    if (audioManager != null)
-                        audioManager.SetSfxVolume(volume);
-                };
             }
         }
 
@@ -383,22 +345,13 @@ namespace ArtUnbound.Core
             if (audioManager != null)
                 audioManager.StartMusicPlayback();
 
-            // Mostrar galería activa según el feature flag (prioridad: Native > Radial > Classic)
-            if (useNativeGallery && nativeGallery != null)
+            if (nativeGallery != null)
             {
                 nativeGallery.Show();
             }
-            else if (useRadialGallery && radialGridGallery != null)
-            {
-                radialGridGallery.Show();
-            }
-            else if (unifiedMainMenu != null)
-            {
-                unifiedMainMenu.Show();
-            }
             else
             {
-                Debug.LogError("[GameBootstrap] No hay controlador de menú asignado en el Inspector.");
+                Debug.LogError("[GameBootstrap] NativeGallery no está asignado en el Inspector.");
             }
         }
 
@@ -692,9 +645,7 @@ namespace ArtUnbound.Core
                 if (displaySession.isCompleted)
                 {
                     SetState(GameState.PostGame);
-                    // Ocultar todas las galerías sin usar HideAllPanels (que también oculta el puzzleBoard)
-                    unifiedMainMenu?.Hide();
-                    radialGridGallery?.Hide();
+                    // Ocultar la galería sin usar HideAllPanels (que también oculta el puzzleBoard)
                     nativeGallery?.Hide();
                     var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
                     int timeSec = record?.bestTimeSec ?? displaySession.GetElapsedSeconds();
@@ -1169,8 +1120,6 @@ namespace ArtUnbound.Core
 
         private void HideAllPanels()
         {
-            unifiedMainMenu?.Hide();
-            radialGridGallery?.Hide();
             nativeGallery?.Hide();
             puzzleHUD?.Hide();
             puzzleAchievements?.Hide();
@@ -1334,8 +1283,6 @@ namespace ArtUnbound.Core
             }
 
             yield return null; // Wait one frame so Canvas/Button state is settled before applying colors
-            if (unifiedMainMenu != null)
-                unifiedMainMenu.RefreshButtonColors();
 
             // Hide loading spinner
             if (loadingSpinner != null)

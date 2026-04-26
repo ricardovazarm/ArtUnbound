@@ -90,7 +90,7 @@ Each piece edge is `PieceEdgeState`: `Flat` (border) | `Positive` (tab out) | `N
 
 All UI panels extend a common show/hide pattern. `GameBootstrap.HideAllPanels()` calls `.Hide()` on all controllers before showing the relevant one. UI lives on a World Space canvas positioned ergonomically at startup (`PositionCanvasWithDelay` coroutine waits for `Camera.main.transform.position.y > 0.5f`).
 
-**Unified Main Menu** (`UnifiedMainMenuController`) handles the `ArtworkSelection` state as a single curved MR panel with three sub-views: artwork catalog (3×3 grid with pagination and All/InProgress/Completed filters), gallery of hung artworks, and artwork detail (difficulty buttons + per-difficulty progress sliders). This replaces the older separate screen approach.
+**Main Menu** (`NativeGalleryController`) handles the `ArtworkSelection` state. It is a Prime Video–style native gallery with an artwork catalog, a `DetailPanel` for the selected artwork (difficulty buttons "Easy/Medium/Hard"), and bottom navigation. It is the only menu controller; `GameBootstrap` wires `OnStartPuzzle`, `OnSettingsChanged`, `OnVRModeRequested`, and `OnMRModeRequested` events from it.
 
 **In-Game HUD** (`PuzzleHUDController`) displays during `Playing` state: artwork title/artist/description, full reference image in the left zone, timer, piece progress (Total/Correct/Incorrect), current music track (title – artist from `MusicLibrary`), room wall detection count, and a quit button.
 

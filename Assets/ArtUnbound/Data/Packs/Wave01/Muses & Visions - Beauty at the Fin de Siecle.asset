@@ -15,9 +15,10 @@ MonoBehaviour:
   packId: pack_muses_and_visions_beauty_at_the_fin_de_siecle
   packName: 'Muses & Visions: Beauty at the Fin de Siecle'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 85025a24af877d243a273c8cccc899ec, type: 3}
   artworks:
-  - {fileID: 11400000, guid: 75270815212e41e5a2b71a393e172635, type: 2}
   - {fileID: 11400000, guid: 48c714d3e7564112b017e6eeb1b9f82b, type: 2}
+  - {fileID: 11400000, guid: 75270815212e41e5a2b71a393e172635, type: 2}
   - {fileID: 11400000, guid: 9323942d46414526aca74faeaba13315, type: 2}
   - {fileID: 11400000, guid: 3ae3b4105eda4e62bfda780f44401242, type: 2}
   - {fileID: 11400000, guid: bd2b593d40764936988a9de774b93327, type: 2}

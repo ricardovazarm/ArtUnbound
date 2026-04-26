@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_monet_gardens_of_light
   packName: 'Monet: Gardens of Light'
   price: $2.99
+  packImage: {fileID: 21300000, guid: b0b263913e36c534187532e8c3b67f5e, type: 3}
   artworks:
+  - {fileID: 11400000, guid: 421bac590e6c4f1fa9ff70f79985e6da, type: 2}
   - {fileID: 11400000, guid: bcdec1e5573548729ab81ea1a05b0465, type: 2}
   - {fileID: 11400000, guid: 1556fcd86c224303a85447237870e187, type: 2}
   - {fileID: 11400000, guid: 516e615919a54247b1a78dfa257390d2, type: 2}
@@ -25,6 +27,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11670fd9cd1a4ac1ab57b2e21893ef48, type: 2}
   - {fileID: 11400000, guid: 9b566b5238644ed29a8a4b5a95f97274, type: 2}
   - {fileID: 11400000, guid: e24bdcef92d44d50b69571056b70e0ae, type: 2}
-  - {fileID: 11400000, guid: 421bac590e6c4f1fa9ff70f79985e6da, type: 2}
   - {fileID: 11400000, guid: 6cfbc60c276a4af9ba41b46e18a95385, type: 2}
   - {fileID: 11400000, guid: 75f578ae30584b6487dbd5d9b2fc1b6d, type: 2}

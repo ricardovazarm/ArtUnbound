@@ -16,7 +16,18 @@
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:v for k,v in d.items\\(\\) if 'skill' in k.lower\\(\\) or 'command' in k.lower\\(\\)}, indent=2\\)\\)\")",
       "Skill(gen-thumbnails)",
       "Skill(create-artwork-definition)",
-      "Bash(grep \"\\\\.asset\\\\.meta$\")"
+      "Bash(grep \"\\\\.asset\\\\.meta$\")",
+      "Bash(grep \"^--- !u!1$\" -A 2 \"C:\\\\Users\\\\rvazq\\\\Documents\\\\Mac\\\\AjoloteStudios\\\\ArtUnbound\\\\Assets\\\\ArtUnbound\\\\Scenes\\\\Main.unity\")",
+      "Bash(grep -E \"^--- !u!1$|m_Name:\")",
+      "Bash(grep -o \"^  m_Name: [^$]*\" \"C:\\\\Users\\\\rvazq\\\\Documents\\\\Mac\\\\AjoloteStudios\\\\ArtUnbound\\\\Assets\\\\ArtUnbound\\\\Scenes\\\\Main.unity\")",
+      "Bash(python3 *)",
+      "Skill(calc-piezas)",
+      "WebSearch",
+      "Bash(grep \"\\\\.asset$\")",
+      "Skill(gen-bundle-hero)",
+      "mcp__unity-mcp__Unity_ManageScene",
+      "mcp__unity-mcp__Unity_FindProjectAssets",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('C:\\\\Users\\\\rvazq\\\\Documents\\\\Mac\\\\AjoloteStudios\\\\ArtUnbound\\\\Assets\\\\ArtUnbound\\\\UI\\\\Sprites\\\\house.png'\\); \"$\\($img.Width\\)x$\\($img.Height\\)\"; $img.Dispose\\(\\))"
     ]
   }
 }

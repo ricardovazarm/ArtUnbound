@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Rembrandt & The Dutch Masters
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
   packId: pack_rembrandt_and_the_dutch_masters
-  packName: 'Rembrandt & The Dutch Masters'
+  packName: Rembrandt & The Dutch Masters
   price: $2.99
+  packImage: {fileID: 21300000, guid: 263c7a45f14853e45856a46427c9a743, type: 3}
   artworks:
+  - {fileID: 11400000, guid: da6c4cad686847428616c81caac74a48, type: 2}
   - {fileID: 11400000, guid: 2a4596bf381f411a8fba50ba8f149569, type: 2}
   - {fileID: 11400000, guid: daa7743df3f845dcb5c4215dc9640ebf, type: 2}
   - {fileID: 11400000, guid: 77e8281463784fc382d7184e9f2a7a83, type: 2}
   - {fileID: 11400000, guid: 8f2ceea7e44747919104a1a3d12cfc28, type: 2}
   - {fileID: 11400000, guid: 8a81022c243f42e68c7c9a2be15d7070, type: 2}
-  - {fileID: 11400000, guid: da6c4cad686847428616c81caac74a48, type: 2}
   - {fileID: 11400000, guid: 3d9951d8524a4914a0c3538187e2aab2, type: 2}
   - {fileID: 11400000, guid: ed3f3a7a823e4f0583c397b2d9b70024, type: 2}
   - {fileID: 11400000, guid: 76990264f938456ba897bb105439c62a, type: 2}

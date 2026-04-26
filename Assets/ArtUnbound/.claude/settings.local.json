@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__unity-mcp__Unity_ReadConsole",
+      "mcp__unity-mcp__Unity_GetConsoleLogs",
+      "mcp__HzOSDevMCP__get_device_logcat"
+    ]
+  }
+}

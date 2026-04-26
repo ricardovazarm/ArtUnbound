@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_reason_and_revolution_rococo_to_romanticism
   packName: 'Reason & Revolution: Rococo to Romanticism'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 941a784c0576a724199f46b1693aa00a, type: 3}
   artworks:
+  - {fileID: 11400000, guid: d8c3e29ed63840ebab4c4ed3f9bfb92d, type: 2}
   - {fileID: 11400000, guid: 56e98ffcc3e24f62bd37b4d18bc538bf, type: 2}
   - {fileID: 11400000, guid: 29c38aa4acff4979b26ba27b51eb16fc, type: 2}
   - {fileID: 11400000, guid: 4b1b3b4663a04f74a349d5a40162e134, type: 2}
@@ -27,4 +29,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f022647fa28b45a0b9de1dbf24fa28ab, type: 2}
   - {fileID: 11400000, guid: 3607016e43094ffc92ce300b26ee6124, type: 2}
   - {fileID: 11400000, guid: d72c824c3d394afc8324023050beaf1c, type: 2}
-  - {fileID: 11400000, guid: d8c3e29ed63840ebab4c4ed3f9bfb92d, type: 2}

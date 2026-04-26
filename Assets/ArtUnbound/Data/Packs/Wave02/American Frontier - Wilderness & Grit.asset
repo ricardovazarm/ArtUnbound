@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_american_frontier_wilderness_and_grit
   packName: 'American Frontier: Wilderness & Grit'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 92871465223af91499cafbb696503a0c, type: 3}
   artworks:
+  - {fileID: 11400000, guid: 0ad388f3f81045e6b6a9a2edcc324220, type: 2}
   - {fileID: 11400000, guid: 83e3e289ae1c4e01b0a31548adb31bf1, type: 2}
   - {fileID: 11400000, guid: 4eac7ffe22c7452a8646346fe67ca306, type: 2}
   - {fileID: 11400000, guid: 5a19568607f34a4e8e5d161e4b8fc9ec, type: 2}
@@ -26,5 +28,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bcd4874a75f14e5990bf8200f7c0ed56, type: 2}
   - {fileID: 11400000, guid: 55a7944bd2524566bd405a74b78ac9ba, type: 2}
   - {fileID: 11400000, guid: 40682a678b1a4d978351e01fa5986398, type: 2}
-  - {fileID: 11400000, guid: 0ad388f3f81045e6b6a9a2edcc324220, type: 2}
   - {fileID: 11400000, guid: e89f7ac1d71c478186bb2d07ae5601c1, type: 2}

@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_the_art_of_stillness_still_lifes_across_the_ages
   packName: 'The Art of Stillness: Still Lifes Across the Ages'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 6e6c828b7c93d0345966b0e165fa9610, type: 3}
   artworks:
+  - {fileID: 11400000, guid: 2ee09ad52c15416e9fd5719641cc71c5, type: 2}
   - {fileID: 11400000, guid: da55421b7ff14b95a5ad1ad92546b853, type: 2}
   - {fileID: 11400000, guid: 561deb8ae81e4b73ba4a2af72cfe4d9a, type: 2}
   - {fileID: 11400000, guid: f42fcead486b46d48982639e4070caeb, type: 2}
@@ -27,4 +29,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 051a02c466414a21bd5f21e9b4299496, type: 2}
   - {fileID: 11400000, guid: 33907312f4e04819a1a7623eb1ef2da0, type: 2}
   - {fileID: 11400000, guid: 67d31fe6779f4b8d8dac033b5deee90e, type: 2}
-  - {fileID: 11400000, guid: 2ee09ad52c15416e9fd5719641cc71c5, type: 2}

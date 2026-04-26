@@ -15,9 +15,10 @@ MonoBehaviour:
   packId: pack_van_gogh_light_and_color_in_provence
   packName: 'Van Gogh: Light & Color in Provence'
   price: $2.99
+  packImage: {fileID: 21300000, guid: deda2666c59c2b146b271646097121a6, type: 3}
   artworks:
-  - {fileID: 11400000, guid: 0a61d1645c594a91b7c45ba7b5b8d7ba, type: 2}
   - {fileID: 11400000, guid: 4c4eccbcea304a9c8836b9f67e9d81d5, type: 2}
+  - {fileID: 11400000, guid: 0a61d1645c594a91b7c45ba7b5b8d7ba, type: 2}
   - {fileID: 11400000, guid: b31c8823b7ef40caa78e4c70a0d0257c, type: 2}
   - {fileID: 11400000, guid: bb10f1f9c8db4f7ba3f839d4771c9f7a, type: 2}
   - {fileID: 11400000, guid: 0822d1bbe9cb4f90bbd70221908dfb1c, type: 2}

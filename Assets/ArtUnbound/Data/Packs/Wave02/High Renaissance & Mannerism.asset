@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: High Renaissance & Mannerism
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
   packId: pack_high_renaissance_and_mannerism
-  packName: 'High Renaissance & Mannerism'
+  packName: High Renaissance & Mannerism
   price: $2.99
+  packImage: {fileID: 21300000, guid: 1e4fac9578d9e56428eb1d0d7be8799b, type: 3}
   artworks:
+  - {fileID: 11400000, guid: d08f52a29d584771b01973f2173b0673, type: 2}
   - {fileID: 11400000, guid: 5eaa7a1a3d764f92a82642b706a5098b, type: 2}
   - {fileID: 11400000, guid: e5a754b5463e4477a1ddee17d49273cb, type: 2}
   - {fileID: 11400000, guid: 0fff8bb53fbf4976ac68a2b0d595c285, type: 2}
   - {fileID: 11400000, guid: 8013e0fe32db4d18990e21c340915b46, type: 2}
-  - {fileID: 11400000, guid: d08f52a29d584771b01973f2173b0673, type: 2}
   - {fileID: 11400000, guid: 5a61741c92104b04b1ca527703b219ce, type: 2}
   - {fileID: 11400000, guid: 45825aa8eab0473aa22cde734dfc0071, type: 2}
   - {fileID: 11400000, guid: 3b78af368c814e1ba591833b34b2e91e, type: 2}

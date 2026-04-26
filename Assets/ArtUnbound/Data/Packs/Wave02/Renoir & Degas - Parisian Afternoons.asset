@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_renoir_and_degas_parisian_afternoons
   packName: 'Renoir & Degas: Parisian Afternoons'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 6d57a1e7bca8114429185a21e50be866, type: 3}
   artworks:
+  - {fileID: 11400000, guid: bb0ce95457d9491c8f523c9da608394f, type: 2}
   - {fileID: 11400000, guid: 146e910cdfb146b08013a6c8f30320e8, type: 2}
   - {fileID: 11400000, guid: 034ced7f7c4c4c2fb68431b0e7f4ab83, type: 2}
   - {fileID: 11400000, guid: a61abd3db1234c96a0a04c1a58bc6727, type: 2}
@@ -24,7 +26,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94b7aae06d0a48e0b36dd2c43b4b7a83, type: 2}
   - {fileID: 11400000, guid: 7e026ee27e7144d192050090e5362a35, type: 2}
   - {fileID: 11400000, guid: cfeebb01718f46eb95982c6101b4f810, type: 2}
-  - {fileID: 11400000, guid: bb0ce95457d9491c8f523c9da608394f, type: 2}
   - {fileID: 11400000, guid: a3860ceac5554f45806339c8e4bb3349, type: 2}
   - {fileID: 11400000, guid: c328b0b51fb1485cba75ee2ecde6c9a9, type: 2}
   - {fileID: 11400000, guid: 3a97d3a64f0a427aa2c6c19899b57bbc, type: 2}

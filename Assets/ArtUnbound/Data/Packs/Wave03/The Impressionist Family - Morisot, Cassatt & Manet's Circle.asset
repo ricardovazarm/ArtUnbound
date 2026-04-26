@@ -15,14 +15,15 @@ MonoBehaviour:
   packId: pack_the_impressionist_family_morisot_cassatt_and_manets_circle
   packName: 'The Impressionist Family: Morisot, Cassatt & Manet''s Circle'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 8087e251120e4e9459173c268c4853cd, type: 3}
   artworks:
+  - {fileID: 11400000, guid: 4e4ffc5721014c8a9161f758c9a24490, type: 2}
   - {fileID: 11400000, guid: c9e976c335204e829b45da524344ed08, type: 2}
   - {fileID: 11400000, guid: 608b4fd16bfb46e18cee81005416a112, type: 2}
   - {fileID: 11400000, guid: 5de87f90f1c841febf83e7143341a24a, type: 2}
   - {fileID: 11400000, guid: 5c80c7fd3de845c3932b1add31c787c7, type: 2}
   - {fileID: 11400000, guid: 98a12fa49ece4baea7133ef23a05e8b8, type: 2}
   - {fileID: 11400000, guid: eab655c58b854695a408794662f9c5d5, type: 2}
-  - {fileID: 11400000, guid: 4e4ffc5721014c8a9161f758c9a24490, type: 2}
   - {fileID: 11400000, guid: 370b3e6ece70444c917b7a8b916deab1, type: 2}
   - {fileID: 11400000, guid: d898cc7844364e7398cfe9fa1b3d6723, type: 2}
   - {fileID: 11400000, guid: 79fd1b8e8f6e45adb99f555b1931440a, type: 2}

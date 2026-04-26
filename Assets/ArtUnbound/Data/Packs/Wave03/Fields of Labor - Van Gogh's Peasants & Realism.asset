@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_fields_of_labor_van_goghs_peasants_and_realism
   packName: 'Fields of Labor: Van Gogh''s Peasants & Realism'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 06fb73f96bf802d4784579abda2bbd9a, type: 3}
   artworks:
+  - {fileID: 11400000, guid: 1c4160322c444cbc88df9d4a83ecc90d, type: 2}
   - {fileID: 11400000, guid: 7fcc8ba3a0874794afdc15d6839e9a07, type: 2}
   - {fileID: 11400000, guid: 7c459846838e447bb8deffef7fd0673b, type: 2}
   - {fileID: 11400000, guid: c5c010b9c9a04d469f4cfa3e6c78fa5d, type: 2}
@@ -24,7 +26,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6ba39a7f976493589a72bdfafaba05a, type: 2}
   - {fileID: 11400000, guid: 8887eeae00174673abefc7eef9b19e81, type: 2}
   - {fileID: 11400000, guid: d2b03c8527354a31bc8afce3056f3a17, type: 2}
-  - {fileID: 11400000, guid: 1c4160322c444cbc88df9d4a83ecc90d, type: 2}
   - {fileID: 11400000, guid: ffe13952d6544b079538525d9b62ae49, type: 2}
   - {fileID: 11400000, guid: 52d26a421f19487cb768935c32b7d350, type: 2}
   - {fileID: 11400000, guid: f9fb519a7c87414489f75bbcdb42a634, type: 2}

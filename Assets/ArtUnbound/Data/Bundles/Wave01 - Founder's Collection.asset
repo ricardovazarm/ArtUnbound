@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.BundleDefinition
   bundleId: bundle_wave01_founders_collection
   bundleName: Founder''s Collection
+  bundleImage: {fileID: 21300000, guid: a8a4b278547333745b0c76ef2b102949, type: 3}
   price: $12.99
   packs:
   - {fileID: 11400000, guid: f76acf342bd443f880d5453fd7acf034, type: 2}

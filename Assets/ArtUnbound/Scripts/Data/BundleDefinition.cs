@@ -16,6 +16,9 @@ namespace ArtUnbound.Data
         [Tooltip("Display name shown in the UI")]
         public string bundleName;
 
+        [Tooltip("Hero image shown on the bundle card. Generate via /gen-bundle-hero skill or set a custom one.")]
+        public Sprite bundleImage;
+
         [Tooltip("Price string shown on the unlock button, e.g. '$12.99'")]
         public string price;
 

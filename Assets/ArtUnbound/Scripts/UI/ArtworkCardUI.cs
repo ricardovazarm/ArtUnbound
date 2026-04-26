@@ -13,7 +13,7 @@ namespace ArtUnbound.UI
     ///   ArtworkCard (Button, 220×270 en canvas-units)
     ///     ├── Thumbnail      (Image, stretch-stretch, Bottom:50, preserveAspect, raycastTarget=OFF)
     ///     ├── Title          (TMP Bold blanco, bottom-stretch H:50, raycastTarget=OFF)
-    ///     └── CompletedBadge (Image ✓ verde, top-right, SetActive, raycastTarget=OFF)
+    ///     └── CompletedBadge (Image, top-right, sprite swapped to medal based on FrameTier, raycastTarget=OFF)
     /// </summary>
     [RequireComponent(typeof(Button))]
     public class ArtworkCardUI : MonoBehaviour
@@ -23,14 +23,16 @@ namespace ArtUnbound.UI
         [SerializeField] private GameObject  completedBadge;
 
         private Button                        _button;
+        private Image                         _completedBadgeImage;
         private ArtworkDefinition             _artwork;
         private Action<ArtworkDefinition>     _onTap;
 
-        // ─────────────────────────────────────────────────────────────────────
         private void Awake()
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(HandleTap);
+            if (completedBadge != null)
+                _completedBadgeImage = completedBadge.GetComponent<Image>();
         }
 
         private void OnDestroy()
@@ -39,11 +41,14 @@ namespace ArtUnbound.UI
                 _button.onClick.RemoveListener(HandleTap);
         }
 
-        // ─────────────────────────────────────────────────────────────────────
         /// <summary>
-        /// Configura la tarjeta con la obra y el estado de progreso del usuario.
+        /// Configura la tarjeta con la obra y la mejor medalla obtenida.
+        /// El badge se oculta si bestTier == Madera (no completada).
+        /// Bronce, Plata y Oro usan su sprite correspondiente; Platinum cae a Oro
+        /// porque el nivel Expert quedo en deuda tecnica y solo hay 3 medallas.
         /// </summary>
-        public void Setup(ArtworkDefinition artwork, bool isCompleted,
+        public void Setup(ArtworkDefinition artwork, FrameTier bestTier,
+                          Sprite bronzeMedal, Sprite silverMedal, Sprite goldMedal,
                           Action<ArtworkDefinition> onTap)
         {
             _artwork = artwork;
@@ -62,12 +67,25 @@ namespace ArtUnbound.UI
             if (titleText != null)
                 titleText.text = artwork?.title ?? string.Empty;
 
-            // Badge de completada
+            // Badge: pick medal sprite based on highest difficulty completed
             if (completedBadge != null)
-                completedBadge.SetActive(isCompleted);
+            {
+                bool hasMedal = bestTier > FrameTier.Madera;
+                completedBadge.SetActive(hasMedal);
+
+                if (hasMedal && _completedBadgeImage != null)
+                {
+                    Sprite medal = bestTier switch
+                    {
+                        FrameTier.Bronce => bronzeMedal,
+                        FrameTier.Plata  => silverMedal,
+                        _                => goldMedal, // Oro y Platinum
+                    };
+                    if (medal != null) _completedBadgeImage.sprite = medal;
+                }
+            }
         }
 
-        // ─────────────────────────────────────────────────────────────────────
         private void HandleTap() => _onTap?.Invoke(_artwork);
     }
 }

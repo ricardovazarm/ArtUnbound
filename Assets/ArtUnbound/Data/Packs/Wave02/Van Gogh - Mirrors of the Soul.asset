@@ -15,7 +15,9 @@ MonoBehaviour:
   packId: pack_van_gogh_mirrors_of_the_soul
   packName: 'Van Gogh: Mirrors of the Soul'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 051a2c2888b7e5e42b1565eaa59abb15, type: 3}
   artworks:
+  - {fileID: 11400000, guid: c23ea6787c0c4324886ac1c540c70c1d, type: 2}
   - {fileID: 11400000, guid: bf3951a150dd43959cb8b12f925ff306, type: 2}
   - {fileID: 11400000, guid: 8e90db9119424367949bff7b2b4dd94e, type: 2}
   - {fileID: 11400000, guid: 375bff82de8f4cf5a98a990d765c8453, type: 2}
@@ -23,7 +25,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfd656edf5b74cc9a4bbbf6881eaa4a0, type: 2}
   - {fileID: 11400000, guid: 540e722ffe6b422086138bfdad8a7cc0, type: 2}
   - {fileID: 11400000, guid: dfc96adc796f4efaa77c91d1cecc7e0f, type: 2}
-  - {fileID: 11400000, guid: c23ea6787c0c4324886ac1c540c70c1d, type: 2}
   - {fileID: 11400000, guid: 685284ad8a5b4297b727f53e17f533ca, type: 2}
   - {fileID: 11400000, guid: b06f0205530b43e3b2fd73497e9ec8ac, type: 2}
   - {fileID: 11400000, guid: 909c2a856b574536b0071dec1048df1d, type: 2}

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Birth of the Renaissance
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.ArtworkPackDefinition
   packId: pack_birth_of_the_renaissance
-  packName: 'Birth of the Renaissance'
+  packName: Birth of the Renaissance
   price: $2.99
+  packImage: {fileID: 21300000, guid: 60d3efd00af4ed247952e3855212ec3a, type: 3}
   artworks:
+  - {fileID: 11400000, guid: a523e3811227466e956030259136d2f6, type: 2}
   - {fileID: 11400000, guid: 172c0c89403247d28c66f1bc58b692c5, type: 2}
   - {fileID: 11400000, guid: 422cc468a25a487cb5543e0c9c6d7967, type: 2}
   - {fileID: 11400000, guid: 31242e5ce508456fada970b957243b00, type: 2}
-  - {fileID: 11400000, guid: a523e3811227466e956030259136d2f6, type: 2}
   - {fileID: 11400000, guid: dbbc2bcbde534ef185b751fcefee0194, type: 2}
   - {fileID: 11400000, guid: fa6a593ece0e4e87a9ad55b4e861c694, type: 2}
   - {fileID: 11400000, guid: a9d253b731b547f1b4d033a0f99fe837, type: 2}

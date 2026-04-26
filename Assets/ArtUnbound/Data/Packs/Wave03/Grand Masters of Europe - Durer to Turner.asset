@@ -15,10 +15,11 @@ MonoBehaviour:
   packId: pack_grand_masters_of_europe_durer_to_turner
   packName: 'Grand Masters of Europe: Durer to Turner'
   price: $2.99
+  packImage: {fileID: 21300000, guid: 08ca2b798d39f0d48be81b740bd7c744, type: 3}
   artworks:
+  - {fileID: 11400000, guid: 53df57999f4a493b8224e7aed6a3494e, type: 2}
   - {fileID: 11400000, guid: a7683da5378a494784e0cc2028415d55, type: 2}
   - {fileID: 11400000, guid: aee2622922ea472a84bad0ba161d97ee, type: 2}
-  - {fileID: 11400000, guid: 53df57999f4a493b8224e7aed6a3494e, type: 2}
   - {fileID: 11400000, guid: 1e7c426a853e4945bff4f81b3639c35b, type: 2}
   - {fileID: 11400000, guid: 68276bc04e964b4c932eb6f090de8e79, type: 2}
   - {fileID: 11400000, guid: 65918b50d58c4852ad1b3ee31a24773e, type: 2}
