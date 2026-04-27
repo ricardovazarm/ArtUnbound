@@ -29,10 +29,6 @@ MonoBehaviour:
   isBaseContent: 0
   requiresUnlock: 1
   unlockWeek: 0
-  pieceCountEasy: 72
-  pieceCountNormal: 120
-  pieceCountHard: 195
-  pieceCountExpert: 270
   complexity: 1
   colorVariety: 3
   detailLevel: 3

@@ -27,7 +27,6 @@ namespace ArtUnbound.Editor
                 ("Frame_Bronce", "FrameBronce.png"),
                 ("Frame_Plata", "FramePlata.png"),
                 ("Frame_Oro", "FrameOro.png"),
-                ("Frame_Ebano", "FrameEbano.png"),
             };
 
             int total = materials.Length;
@@ -54,7 +53,7 @@ namespace ArtUnbound.Editor
             EditorUtility.ClearProgressBar();
             AssetDatabase.Refresh();
 
-            var outputNames = new[] { "FrameMadera.png", "FrameDetail.png", "FrameThumbnail.png", "FrameBronce.png", "FramePlata.png", "FrameOro.png", "FrameEbano.png" };
+            var outputNames = new[] { "FrameMadera.png", "FrameDetail.png", "FrameThumbnail.png", "FrameBronce.png", "FramePlata.png", "FrameOro.png" };
             foreach (var outName in outputNames)
             {
                 var path = Path.Combine(OutputFolder, outName);

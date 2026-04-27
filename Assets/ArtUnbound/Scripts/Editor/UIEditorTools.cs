@@ -28,7 +28,7 @@ namespace ArtUnbound.Editor
 
             if (GUILayout.Button("Main Menu")) ToggleSolo<MainMenuController>();
             if (GUILayout.Button("Onboarding")) ToggleSolo<OnboardingController>();
-            if (GUILayout.Button("Gallery")) ToggleSolo<GalleryPanelController>();
+            if (GUILayout.Button("Gallery")) ToggleSolo<NativeGalleryController>();
             if (GUILayout.Button("Puzzle HUD")) ToggleSolo<PuzzleHUDController>();
             if (GUILayout.Button("Post Game")) ToggleSolo<PostGameController>();
             if (GUILayout.Button("Settings")) ToggleSolo<SettingsController>();
@@ -52,7 +52,7 @@ namespace ArtUnbound.Editor
             
             ToggleValues(active, typeof(MainMenuController));
             ToggleValues(active, typeof(OnboardingController));
-            ToggleValues(active, typeof(GalleryPanelController));
+            ToggleValues(active, typeof(NativeGalleryController));
             ToggleValues(active, typeof(PuzzleHUDController));
             ToggleValues(active, typeof(PostGameController));
             ToggleValues(active, typeof(SettingsController));

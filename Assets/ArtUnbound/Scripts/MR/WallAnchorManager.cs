@@ -406,11 +406,10 @@ namespace ArtUnbound.MR
             // which is not available here; we use solid colors as stand-ins.
             Color color = tier switch
             {
-                FrameTier.Bronce   => new Color(0.55f, 0.35f, 0.15f),
-                FrameTier.Plata    => new Color(0.75f, 0.75f, 0.78f),
-                FrameTier.Oro      => new Color(0.85f, 0.72f, 0.20f),
-                FrameTier.Platinum => new Color(0.90f, 0.90f, 0.95f),
-                _                  => new Color(0.55f, 0.35f, 0.15f),
+                FrameTier.Bronce => new Color(0.55f, 0.35f, 0.15f),
+                FrameTier.Plata  => new Color(0.75f, 0.75f, 0.78f),
+                FrameTier.Oro    => new Color(0.85f, 0.72f, 0.20f),
+                _                => new Color(0.55f, 0.35f, 0.15f),
             };
             Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
             if (shader == null) return null;

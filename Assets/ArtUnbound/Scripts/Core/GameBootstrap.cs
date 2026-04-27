@@ -86,7 +86,7 @@ namespace ArtUnbound.Core
 
         private string selectedArtworkId;
         private int selectedPieceCount = 64;
-        private int selectedDifficultyIndex = 0; // 0=Easy(Bronce), 1=Normal(Plata), 2=Hard(Oro), 3=Expert(Platinum)
+        private int selectedDifficultyIndex = 0; // 0=Easy(Bronce), 1=Normal(Plata), 2=Hard(Oro)
         private bool _boardPositioned = false; // Board position is calculated once and never changed again
 
         private bool _isQuest3OrPro;
@@ -121,7 +121,11 @@ namespace ArtUnbound.Core
         {
             DetectDevice();
 
-            bool shouldStartInVR = SaveData.preferVRMode || !_isQuest3OrPro;
+            // Always boot in MR on Quest 3/Pro — the user opts into VR via the in-game button.
+            // We intentionally don't persist the last mode: a previously-saved preferVRMode caused
+            // VR→MR transitions to fail on cold-boot (passthrough never initialised), so we boot
+            // fresh in MR every session. Non-Quest-3 devices fall back to VR (no passthrough).
+            bool shouldStartInVR = !_isQuest3OrPro;
 
             if (shouldStartInVR)
             {
@@ -408,17 +412,12 @@ namespace ArtUnbound.Core
         /// <summary>Called when user taps "VR" button in MR mode (Quest 3/Pro only).</summary>
         private void OnVRModeRequested()
         {
-            SaveData.preferVRMode = true;
-            saveDataService.MarkDirty();
             TransitionToVRGallery();
         }
 
         /// <summary>Called when user taps "MR" button in VR mode (Quest 3/Pro only).</summary>
         private void OnMRModeRequested()
         {
-            SaveData.preferVRMode = false;
-            saveDataService.MarkDirty();
-
             // Destroy the 3-D gallery environment BEFORE disabling VR systems so the
             // room prefab (which lives outside vrGalleryController's hierarchy) is removed.
             vrGalleryController?.UnloadGallery();
@@ -438,13 +437,14 @@ namespace ArtUnbound.Core
 
         /// <summary>
         /// Handler for UnifiedMainMenu's OnStartPuzzle event.
-        /// Receives artworkId, pieceCount, and difficultyIndex (0=Easy, 1=Normal, 2=Hard, 3=Expert).
+        /// Receives artworkId and difficultyIndex (0=Easy, 1=Normal, 2=Hard). The actual piece
+        /// count is derived by PuzzleBoard once the board is generated.
         /// </summary>
-        private void OnUnifiedMenuStartPuzzle(string artworkId, int pieceCount, int difficultyIndex)
+        private void OnUnifiedMenuStartPuzzle(string artworkId, int difficultyIndex)
         {
             selectedArtworkId = artworkId;
-            selectedPieceCount = pieceCount;
             selectedDifficultyIndex = difficultyIndex;
+            selectedPieceCount = 0; // Will be set by PuzzleBoard.TotalPieces after Initialize.
             StartPuzzle();
         }
 
@@ -592,23 +592,20 @@ namespace ArtUnbound.Core
                 Debug.LogError($"[GameBootstrap] Artwork '{selectedArtworkId}' has no texture (fullImage.texture is null). Pieces will NOT appear.");
             }
 
-            // Prefer Initialize(ArtworkDefinition) - it uses puzzleTexture or fullImage.texture
+            // The board picks the grid + piece size from the difficulty index. The piece
+            // count comes out as a consequence and is read back via TotalPieces.
             if (artworkData != null)
             {
-                puzzleBoard.Initialize(artworkData, selectedPieceCount);
+                puzzleBoard.Initialize(artworkData, selectedDifficultyIndex);
             }
             else
             {
-                puzzleBoard.Initialize(selectedPieceCount, artworkTexture);
+                puzzleBoard.Initialize(selectedDifficultyIndex, artworkTexture);
             }
-            
-            // IMPORTANT: Update selectedPieceCount to the ACTUAL piece count
-            // (may differ from target due to aspect ratio)
+
+            // The actual piece count is determined by the board after generation.
             int actualPieceCount = puzzleBoard.TotalPieces;
-            if (actualPieceCount != selectedPieceCount)
-            {
-                selectedPieceCount = actualPieceCount;
-            }
+            selectedPieceCount = actualPieceCount;
             
             // Re-initialize HUD with the ACTUAL piece count and artwork info
             if (puzzleHUD != null)
@@ -651,8 +648,9 @@ namespace ArtUnbound.Core
                     nativeGallery?.Hide();
                     var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
                     int timeSec = record?.bestTimeSec ?? displaySession.GetElapsedSeconds();
-                    int difficultyIdx = GetDifficultyIndexFromPieceCount(selectedArtworkId, actualPieceCount);
-                    FrameTier frameTier = record?.bestFrameTier ?? GetFrameTierFromDifficultyIndex(difficultyIdx);
+                    // The selected difficulty is still in scope (set when the user picked the puzzle),
+                    // so we can derive the frame tier directly without reverse-engineering it from piece count.
+                    FrameTier frameTier = record?.bestFrameTier ?? GetFrameTierFromDifficultyIndex(selectedDifficultyIndex);
 
                     if (timerController != null)
                     {
@@ -732,7 +730,7 @@ namespace ArtUnbound.Core
             // Get completion time from the timer (simple counter, source of truth)
             int timeSec = timerController != null ? timerController.GetElapsedSeconds() : (CurrentSession?.GetElapsedSeconds() ?? 1);
             
-            // Frame tier based on difficulty SIZE (Easy=Bronce, Normal=Plata, Hard=Oro, Expert=Platinum)
+            // Frame tier based on difficulty SIZE (Easy=Bronce, Normal=Plata, Hard=Oro)
             FrameTier frameTier = GetFrameTierFromDifficultyIndex(selectedDifficultyIndex);
 
             // Check for new record (based on TIME only)
@@ -1302,7 +1300,7 @@ namespace ArtUnbound.Core
 
         /// <summary>
         /// Determines the frame tier based on difficulty SIZE (which puzzle size was selected).
-        /// Easy = Bronce, Normal = Plata, Hard = Oro, Expert = Platinum
+        /// Easy = Bronce, Normal = Plata, Hard = Oro
         /// </summary>
         private FrameTier GetFrameTierFromDifficultyIndex(int difficultyIndex)
         {
@@ -1310,37 +1308,9 @@ namespace ArtUnbound.Core
             {
                 0 => FrameTier.Bronce,   // Easy (smallest)
                 1 => FrameTier.Plata,   // Normal
-                2 => FrameTier.Oro,     // Hard
-                3 => FrameTier.Platinum,// Expert (largest)
+                2 => FrameTier.Oro,     // Hard (largest)
                 _ => FrameTier.Bronce
             };
-        }
-
-        /// <summary>
-        /// Infers difficulty index from piece count by matching against artwork's piece counts.
-        /// Used when restoring a completed puzzle (we don't have the original difficulty index).
-        /// Falls back to PuzzleConfig.pieceCounts if artwork has no custom counts.
-        /// </summary>
-        private int GetDifficultyIndexFromPieceCount(string artworkId, int pieceCount)
-        {
-            var artwork = localCatalogService?.GetArtworkById(artworkId);
-            if (artwork != null)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    if (artwork.GetPieceCount(i) == pieceCount)
-                        return i;
-                }
-            }
-            if (puzzleConfig != null && puzzleConfig.pieceCounts != null)
-            {
-                for (int i = 0; i < puzzleConfig.pieceCounts.Length && i < 4; i++)
-                {
-                    if (puzzleConfig.pieceCounts[i] == pieceCount)
-                        return i;
-                }
-            }
-            return 0; // Default to Easy if no match
         }
 
         /// <summary>

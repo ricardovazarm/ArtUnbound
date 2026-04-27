@@ -27,14 +27,6 @@ VAN_GOGH_MUSEUM = "Van Gogh Museum"
 VAN_GOGH_CREDIT = "Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)"
 BASE_SET_FOLDER = "01 Base Set"
 
-TARGETS = [64, 121, 196, 289]
-
-def calc_pieces(target, w, h):
-    ratio = w / h
-    rows = max(2, round(math.sqrt(target / ratio)))
-    cols = max(2, round(rows * ratio))
-    return rows * cols
-
 def calc_aspect(w, h):
     return round(w / h, 4)
 
@@ -146,9 +138,6 @@ def process_collection(col, artworks):
             errors.append(f"No se pudo leer imagen {title}: {e}")
             continue
 
-        # Piece counts
-        pieces = [calc_pieces(t, w, h) for t in TARGETS]
-
         # Aspect ratio and base sizes
         ratio = calc_aspect(w, h)
         if ratio >= 1.0:  # landscape
@@ -198,17 +187,13 @@ MonoBehaviour:
   isBaseContent: {1 if is_base else 0}
   requiresUnlock: {0 if is_base else 1}
   unlockWeek: 0
-  pieceCountEasy: {pieces[0]}
-  pieceCountNormal: {pieces[1]}
-  pieceCountHard: {pieces[2]}
-  pieceCountExpert: {pieces[3]}
   complexity: 1
   colorVariety: 3
   detailLevel: 3
 """
         write_asset(asset_path, asset_content)
         write_meta(meta_path, existing_guid)
-        print(f"  [OK] {title}  {w}x{h}  piezas={pieces[0]}/{pieces[1]}/{pieces[2]}/{pieces[3]}")
+        print(f"  [OK] {title}  {w}x{h}")
         ok += 1
 
     return ok, skip, errors

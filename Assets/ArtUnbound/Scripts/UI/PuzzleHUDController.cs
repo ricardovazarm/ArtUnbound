@@ -31,13 +31,13 @@ namespace ArtUnbound.UI
         [SerializeField] private Image timerIcon;
 
         [Header("Difficulty Icon")]
-        [Tooltip("Icono mostrado segun la dificultad seleccionada (Easy/Normal/Hard/Expert).")]
+        [Tooltip("Icono mostrado segun la dificultad seleccionada (Easy/Normal/Hard).")]
         [SerializeField] private Image difficultyIcon;
         [Tooltip("Sprite para Easy (difficulty-easy).")]
         [SerializeField] private Sprite easyIcon;
         [Tooltip("Sprite para Normal/Medium (difficulty-medium).")]
         [SerializeField] private Sprite mediumIcon;
-        [Tooltip("Sprite para Hard y Expert (difficulty-hard). Expert reutiliza el icono de Hard.")]
+        [Tooltip("Sprite para Hard (difficulty-hard).")]
         [SerializeField] private Sprite hardIcon;
 
         [Header("Progress Display")]
@@ -188,7 +188,7 @@ namespace ArtUnbound.UI
 
         /// <summary>
         /// Sets the difficulty icon based on the selected difficulty index.
-        /// 0=Easy, 1=Normal, 2=Hard, 3=Expert (Expert reuses the Hard icon).
+        /// 0=Easy, 1=Normal, 2=Hard.
         /// </summary>
         public void SetDifficulty(int difficultyIndex)
         {
@@ -198,7 +198,6 @@ namespace ArtUnbound.UI
                 0 => easyIcon,
                 1 => mediumIcon,
                 2 => hardIcon,
-                3 => hardIcon,
                 _ => easyIcon
             };
             difficultyIcon.sprite = sprite;

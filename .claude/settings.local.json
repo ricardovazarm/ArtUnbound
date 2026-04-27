@@ -27,7 +27,18 @@
       "Skill(gen-bundle-hero)",
       "mcp__unity-mcp__Unity_ManageScene",
       "mcp__unity-mcp__Unity_FindProjectAssets",
-      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('C:\\\\Users\\\\rvazq\\\\Documents\\\\Mac\\\\AjoloteStudios\\\\ArtUnbound\\\\Assets\\\\ArtUnbound\\\\UI\\\\Sprites\\\\house.png'\\); \"$\\($img.Width\\)x$\\($img.Height\\)\"; $img.Dispose\\(\\))"
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('C:\\\\Users\\\\rvazq\\\\Documents\\\\Mac\\\\AjoloteStudios\\\\ArtUnbound\\\\Assets\\\\ArtUnbound\\\\UI\\\\Sprites\\\\house.png'\\); \"$\\($img.Width\\)x$\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "Bash(rm -f \"Assets/ArtUnbound/Materials/Frame_Platinum.mat\" \"Assets/ArtUnbound/Materials/Frame_Platinum.mat.meta\")",
+      "Bash(rm -f \"Assets/ArtUnbound/Materials/Frame_Ebano.mat\" \"Assets/ArtUnbound/Materials/Frame_Ebano.mat.meta\")",
+      "Bash(rm -f \"Assets/ArtUnbound/UI/Sprites/FrameEbano.png\" \"Assets/ArtUnbound/UI/Sprites/FrameEbano.png.meta\")",
+      "Bash(ls Assets/ArtUnbound/Materials/Frame_*.mat)",
+      "Bash(ls Assets/ArtUnbound/UI/Sprites/Frame*.png)",
+      "Bash(grep -v \":0$\")",
+      "Bash(grep -B1 \"GallerySelection\\\\|gallerySelection\" echo \"---\" grep -E \"GallerySelection|m_Name: GallerySelection\" \"/c/Users/rvazq/Documents/Mac/AjoloteStudios/ArtUnbound/Assets/ArtUnbound/Scenes/Main.unity\")",
+      "Bash(rm -f Assets/ArtUnbound/Scripts/UI/GalleryItemController.cs Assets/ArtUnbound/Scripts/UI/GalleryItemController.cs.meta)",
+      "Bash(rm -f Assets/ArtUnbound/Scripts/UI/ArtworkSelectionController.cs Assets/ArtUnbound/Scripts/UI/ArtworkSelectionController.cs.meta)",
+      "Bash(rm -f Assets/ArtUnbound/Scripts/UI/GalleryPanelController.cs Assets/ArtUnbound/Scripts/UI/GalleryPanelController.cs.meta)",
+      "Bash(rm -f Assets/ArtUnbound/Prefabs/GalleryItem.prefab Assets/ArtUnbound/Prefabs/GalleryItem.prefab.meta)"
     ]
   }
 }

@@ -1,74 +1,92 @@
 ---
 name: calc-piezas
-description: Calcula el grid de piezas para un rompecabezas de Art Unbound dada una imagen. Úsalo cuando el usuario pregunte cuántas piezas tendrá una imagen específica, qué grid generará, o mencione una ruta de imagen junto con "piezas", "rompecabezas", "grid" o "dificultad".
+description: Calcula el grid de piezas y dimensiones del board que generara una pintura en Art Unbound. Usalo para previsualizar (curacion) cuantas piezas tendra una imagen, que tan grandes seran y de que dimensiones quedara el board en cada dificultad. NO escribe los valores en ningun lado: con el nuevo algoritmo el conteo lo deriva PuzzleBoard en runtime, no necesita estar pre-cacheado.
 argument-hint: <ruta_imagen>
 allowed-tools: [Bash, Read]
 ---
 
 # Calculadora de Piezas — Art Unbound
 
-El usuario invocó este skill con: $ARGUMENTS
+El usuario invoco este skill con: $ARGUMENTS
 
-## Instrucciones
+Esto es una **previsualizacion** del rompecabezas que generara una imagen al meterla al catalogo. El conteo y dimensiones se calculan en runtime por `PuzzleBoard.CalculateGridAndPieces`, no se almacenan en el .asset. Usa este skill para curacion: decidir si una imagen es buena candidata, ver si Hard genera demasiadas piezas, etc.
 
-### Paso 1 — Obtener dimensiones reales de la imagen
-
-Usa Bash con Python para leer las dimensiones exactas en píxeles:
+## Paso 1 — Obtener dimensiones de la imagen
 
 ```bash
 python -c "from PIL import Image; img = Image.open('$ARGUMENTS'); print(img.size)"
 ```
 
-Si PIL no está disponible, intenta con:
-```bash
-python -c "import struct,zlib; print(open('$ARGUMENTS','rb').read())" 2>/dev/null
-```
+Si PIL no esta disponible, usa el tool Read para inferir dimensiones del header de la imagen.
 
-O como último recurso, usa el tool Read para ver la imagen visualmente e inferir las dimensiones aproximadas desde los metadatos que muestre.
+## Paso 2 — Aplicar el algoritmo (mirror exacto de `PuzzleBoard.CalculateGridAndPieces`)
 
-### Paso 2 — Aplicar el algoritmo (de `PuzzleBoard.CalculateGridAndPieceSize`)
+**Configuracion en `PuzzleConfig.asset`:**
+- `boardMaxSizeM`   = 0.60 m  → caja maxima cuadrada (lado de 60 cm)
+- `maxPieceSizeM`   = 0.05 m  → pieza Easy (no mas grande que esto)
+- `minPieceSizeM`   = 0.03 m  → pieza Hard (no mas chica que esto)
+- Normal target    = (max + min) / 2 = 0.04 m
 
-Usa las dimensiones obtenidas y aplica esto para **cada una de las 4 dificultades**:
+**Algoritmo:**
 
-**Configuración fija (PuzzleConfig.asset):**
-- `boardWidth`    = 0.50 m — fijo
-- `boardMaxHeight` = 0.90 m — máximo
-- `minPieceSize`  = 0.03 m — mínimo
-- Targets por dificultad: Easy=64, Normal=121, Hard=196, Expert=289
-
-**Fórmulas:**
 ```
 aspectRatio = ancho_px / alto_px
 
-rows = round( sqrt(targetCount / aspectRatio) )   // mínimo 2
-cols = round( rows * aspectRatio )                 // mínimo 2
+# Paso A — board dentro de la caja maxima respetando ratio
+SI aspectRatio >= 1 (landscape o cuadrado):
+    boardWidth  = boardMaxSizeM
+    boardHeight = boardMaxSizeM / aspectRatio
+SINO (portrait):
+    boardHeight = boardMaxSizeM
+    boardWidth  = boardMaxSizeM * aspectRatio
 
-pieceSizeFromWidth = boardWidth / cols
-boardHeight = pieceSizeFromWidth * rows
+# Paso B — para cada dificultad, target piece size:
+target[Easy]   = maxPieceSizeM           (0.05)
+target[Normal] = (max + min) / 2         (0.04)
+target[Hard]   = minPieceSizeM           (0.03)
 
-SI boardHeight > 0.90:
-    pieceSize = 0.90 / rows              → nota: "altura máx"
-SINO SI pieceSizeFromWidth < 0.03:
-    pieceSize = 0.03                     → nota: "pieza mínima"
-SINO:
-    pieceSize = pieceSizeFromWidth       → nota: normal
+# Paso C — para cada eje (cols por boardWidth, rows por boardHeight):
+approx = boardSpan / target
+floor  = max(2, floor(approx))
+ceil   = max(2, ceil(approx))
+SI floor == ceil: count = floor
+SINO segun dificultad:
+    Easy   → ceil   (round UP, pieza ≤ max)
+    Hard   → floor  (round DOWN, pieza ≥ min)
+    Normal → la que produzca pieza mas cercana al target
 
-piezas_reales = cols × rows
-board_cm = (pieceSize×cols)*100  ×  (pieceSize×rows)*100
+# Paso D — dimensiones reales de pieza
+pieceWidth  = boardWidth  / cols
+pieceHeight = boardHeight / rows
+
+totalPiezas = cols * rows
 ```
 
-### Paso 3 — Presentar resultados
+## Paso 3 — Presentar resultados
 
-Muestra primero la info de la imagen:
-- Ruta, dimensiones (px), aspect ratio, orientación (portrait/landscape/cuadrada)
+**Header con info de la imagen:**
+- Ruta y nombre.
+- Dimensiones en pixeles (ancho × alto).
+- Aspect ratio (4 decimales).
+- Orientacion: landscape (ratio > 1), portrait (ratio < 1) o cuadrado.
 
-Luego la tabla de dificultades:
+**Dimensiones del board (mismas para las 3 dificultades, dependen solo del aspect ratio):**
+- boardWidth × boardHeight en cm.
 
-| Dificultad | Target | Grid     | Piezas reales | Tamaño pieza | Board         | Restricción |
-|------------|--------|----------|---------------|--------------|---------------|-------------|
-| Easy       | 64     | C × R    | N             | X.X cm       | WW × HH cm   |             |
-| Normal     | 121    | C × R    | N             | X.X cm       | WW × HH cm   |             |
-| Hard       | 196    | C × R    | N             | X.X cm       | WW × HH cm   |             |
-| Expert     | 289    | C × R    | N             | X.X cm       | WW × HH cm   |             |
+**Tabla de las 3 dificultades:**
 
-Si hay diferencia entre el target y las piezas reales, explica brevemente por qué (ajuste por aspect ratio).
+| Dificultad | Grid (cols × rows) | Pieza (W × H) en cm | Total piezas |
+|------------|--------------------|---------------------|--------------|
+| Easy       | C × R              | W.WW × H.HH         | N            |
+| Normal     | C × R              | W.WW × H.HH         | N            |
+| Hard       | C × R              | W.WW × H.HH         | N            |
+
+**Notas a agregar al final:**
+- Si `pieceWidth` y `pieceHeight` difieren mas del 10%: la pieza es notablemente rectangular, mencionalo.
+- Si Easy genera <30 piezas: imagen muy chica/cuadrada, puede sentirse trivial.
+- Si Hard genera >300 piezas: imagen muy grande/panoramica, puede sentirse abrumador.
+- Si Hard cae al limite de 3 cm exactos en algun eje: vale la pena saber que no hay margen.
+
+## Importante
+
+**NO** sugerir copiar valores a `ArtworkDefinition.asset` — esos campos (`pieceCountEasy/Normal/Hard`) ya no existen en el modelo. Si el usuario pregunta donde meter los numeros, responder que no hay donde: el sistema los recalcula al iniciar cada puzzle.

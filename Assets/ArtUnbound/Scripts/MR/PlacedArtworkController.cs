@@ -24,14 +24,12 @@ namespace ArtUnbound.MR
         [SerializeField] private Mesh frameBronceMesh;
         [SerializeField] private Mesh framePlataMesh;
         [SerializeField] private Mesh frameOroMesh;
-        [SerializeField] private Mesh frameEbanoMesh;
 
         [Header("Frame Materials")]
         [SerializeField] private Material frameMaderaMaterial;
         [SerializeField] private Material frameBronceMaterial;
         [SerializeField] private Material framePlataMaterial;
         [SerializeField] private Material frameOroMaterial;
-        [SerializeField] private Material frameEbanoMaterial;
 
         [Header("Interaction")]
         [SerializeField] private float interactionDistance = 1.5f;
@@ -121,8 +119,7 @@ namespace ArtUnbound.MR
                 FrameTier.Bronce => frameBronceMesh,
                 FrameTier.Plata => framePlataMesh,
                 FrameTier.Oro => frameOroMesh,
-                FrameTier.Platinum => frameEbanoMesh,  // Reutilizamos el mesh de Ebano para Platinum
-                _ => frameBronceMesh  // Changed: Bronce is default
+                _ => frameBronceMesh
             };
         }
 
@@ -133,8 +130,7 @@ namespace ArtUnbound.MR
                 FrameTier.Bronce => frameBronceMaterial,
                 FrameTier.Plata => framePlataMaterial,
                 FrameTier.Oro => frameOroMaterial,
-                FrameTier.Platinum => frameEbanoMaterial,  // Reutilizamos el material de Ebano para Platinum
-                _ => frameBronceMaterial  // Changed: Bronce is default
+                _ => frameBronceMaterial
             };
         }
 

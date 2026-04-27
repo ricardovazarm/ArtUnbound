@@ -7,7 +7,7 @@ namespace ArtUnbound.Feedback
 {
     /// <summary>
     /// Controls the frame reveal animation when puzzle is completed.
-    /// Aligned with FrameTier: Bronce, Plata, Oro, Platinum.
+    /// Aligned with FrameTier: Bronce, Plata, Oro.
     /// </summary>
     public class FrameAnimationController : MonoBehaviour
     {
@@ -20,14 +20,11 @@ namespace ArtUnbound.Feedback
         [SerializeField] private GameObject framePlata;
         [Tooltip("Oro = Hard (256 pieces)")]
         [SerializeField] private GameObject frameOro;
-        [Tooltip("Platinum = Expert (512 pieces)")]
-        [SerializeField] private GameObject framePlatinum;
 
         [Header("Tier Materials (for auto-creation)")]
         [SerializeField] private Material bronceMaterial;
         [SerializeField] private Material plataMaterial;
         [SerializeField] private Material oroMaterial;
-        [SerializeField] private Material platinumMaterial;
 
         [Header("Animation Settings")]
         [SerializeField] private float revealDuration = 1.5f;
@@ -43,7 +40,6 @@ namespace ArtUnbound.Feedback
         [SerializeField] private Color bronceColor = new Color(0.8f, 0.5f, 0.2f);
         [SerializeField] private Color plataColor = new Color(0.75f, 0.75f, 0.75f);
         [SerializeField] private Color oroColor = new Color(1f, 0.84f, 0f);
-        [SerializeField] private Color platinumColor = new Color(0.85f, 0.85f, 0.9f);
 
         private GameObject currentFrame;
         private FrameTier currentTier;
@@ -59,19 +55,18 @@ namespace ArtUnbound.Feedback
         /// </summary>
         private void EnsureFramesExist()
         {
-            if (frameBronce != null && framePlata != null && frameOro != null && framePlatinum != null)
+            if (frameBronce != null && framePlata != null && frameOro != null)
                 return;
 
-            if (bronceMaterial == null || plataMaterial == null || oroMaterial == null || platinumMaterial == null)
+            if (bronceMaterial == null || plataMaterial == null || oroMaterial == null)
             {
-                Debug.LogWarning("[FrameAnimationController] Frame objects and tier materials are unassigned. Frame reveal will play without visuals. Assign materials (Frame_Bronce, Frame_Plata, Frame_Oro, Frame_Platinum) in Inspector.");
+                Debug.LogWarning("[FrameAnimationController] Frame objects and tier materials are unassigned. Frame reveal will play without visuals. Assign materials (Frame_Bronce, Frame_Plata, Frame_Oro) in Inspector.");
                 return;
             }
 
             if (frameBronce == null) frameBronce = CreateFrameQuad("FrameBronce", bronceMaterial);
             if (framePlata == null) framePlata = CreateFrameQuad("FramePlata", plataMaterial);
             if (frameOro == null) frameOro = CreateFrameQuad("FrameOro", oroMaterial);
-            if (framePlatinum == null) framePlatinum = CreateFrameQuad("FramePlatinum", platinumMaterial);
         }
 
         private GameObject CreateFrameQuad(string name, Material mat)
@@ -242,8 +237,7 @@ namespace ArtUnbound.Feedback
                 FrameTier.Bronce => frameBronce,
                 FrameTier.Plata => framePlata,
                 FrameTier.Oro => frameOro,
-                FrameTier.Platinum => framePlatinum,
-                _ => frameBronce  // Changed: Bronce is default
+                _ => frameBronce
             };
         }
 
@@ -254,8 +248,7 @@ namespace ArtUnbound.Feedback
                 FrameTier.Bronce => bronceColor,
                 FrameTier.Plata => plataColor,
                 FrameTier.Oro => oroColor,
-                FrameTier.Platinum => platinumColor,
-                _ => bronceColor  // Changed: Bronce is default
+                _ => bronceColor
             };
         }
 
@@ -264,7 +257,6 @@ namespace ArtUnbound.Feedback
             if (frameBronce != null) frameBronce.SetActive(false);
             if (framePlata != null) framePlata.SetActive(false);
             if (frameOro != null) frameOro.SetActive(false);
-            if (framePlatinum != null) framePlatinum.SetActive(false);
         }
 
         /// <summary>

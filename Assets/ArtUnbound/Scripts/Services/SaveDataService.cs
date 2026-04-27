@@ -47,6 +47,7 @@ namespace ArtUnbound.Services
                         cachedData = JsonUtility.FromJson<SaveData>(json);
                         if (cachedData != null)
                         {
+                            MigrateLegacyPlatinumTier(cachedData);
                             OnDataLoaded?.Invoke(cachedData);
                             return cachedData;
                         }
@@ -63,6 +64,7 @@ namespace ArtUnbound.Services
                         if (cachedData != null)
                         {
                             Debug.LogWarning("Loaded from backup save file.");
+                            MigrateLegacyPlatinumTier(cachedData);
                             OnDataLoaded?.Invoke(cachedData);
                             return cachedData;
                         }
@@ -77,6 +79,27 @@ namespace ArtUnbound.Services
             cachedData = new SaveData();
             OnDataLoaded?.Invoke(cachedData);
             return cachedData;
+        }
+
+        // Saves persisted before Expert/Platinum was retired stored bestFrameTier=4.
+        // Map to Oro (the new highest tier) so the loaded value falls within FrameTier.
+        private static void MigrateLegacyPlatinumTier(SaveData data)
+        {
+            if (data?.progressByArtwork == null) return;
+            const int LEGACY_PLATINUM = 4;
+            foreach (var progress in data.progressByArtwork)
+            {
+                if (progress == null) continue;
+                if ((int)progress.bestFrameTier == LEGACY_PLATINUM)
+                    progress.bestFrameTier = FrameTier.Oro;
+                if (progress.recordsByPieceCount == null) continue;
+                foreach (var record in progress.recordsByPieceCount)
+                {
+                    if (record == null) continue;
+                    if ((int)record.bestFrameTier == LEGACY_PLATINUM)
+                        record.bestFrameTier = FrameTier.Oro;
+                }
+            }
         }
 
         /// <summary>

@@ -24,12 +24,10 @@ namespace ArtUnbound.Editor
             var bronceProp = so.FindProperty("bronceMaterial");
             var plataProp = so.FindProperty("plataMaterial");
             var oroProp = so.FindProperty("oroMaterial");
-            var platinumProp = so.FindProperty("platinumMaterial");
 
             bronceProp.objectReferenceValue = AssetDatabase.LoadAssetAtPath<Material>("Assets/ArtUnbound/Materials/Frame_Bronce.mat");
             plataProp.objectReferenceValue = AssetDatabase.LoadAssetAtPath<Material>("Assets/ArtUnbound/Materials/Frame_Plata.mat");
             oroProp.objectReferenceValue = AssetDatabase.LoadAssetAtPath<Material>("Assets/ArtUnbound/Materials/Frame_Oro.mat");
-            platinumProp.objectReferenceValue = AssetDatabase.LoadAssetAtPath<Material>("Assets/ArtUnbound/Materials/Frame_Platinum.mat");
 
             so.ApplyModifiedProperties();
             EditorUtility.SetDirty(controller);

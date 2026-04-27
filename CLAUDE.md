@@ -81,10 +81,10 @@ Each piece edge is `PieceEdgeState`: `Flat` (border) | `Positive` (tab out) | `N
   - **Easy** (64 pieces) → **Bronce** frame
   - **Normal** (144 pieces) → **Plata** frame
   - **Hard** (256 pieces) → **Oro** frame
-  - **Expert** (512 pieces) → **Platinum** frame
 - Logic lives in `GameBootstrap.GetFrameTierFromDifficultyIndex()`
 - `ScoringController` is kept for backward compatibility but marked as obsolete
-- `FrameConfigSet` is OPTIONAL — if not configured or materials missing, `PuzzleBoard` uses fallback materials (`frameBronceMaterial`, `framePlataMaterial`, `frameOroMaterial`, `frameEbanoMaterial`)
+- `FrameConfigSet` is OPTIONAL — if not configured or materials missing, `PuzzleBoard` uses fallback materials (`frameBronceMaterial`, `framePlataMaterial`, `frameOroMaterial`)
+- **Expert difficulty was retired** (pieces too small to grab in MR/VR). `FrameTier.Platinum` and the Ebano frame were also removed. Save migration in `SaveDataService.MigrateLegacyPlatinumTier` maps legacy `bestFrameTier=4` records to `FrameTier.Oro`.
 
 ### UI Architecture
 

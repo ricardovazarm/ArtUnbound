@@ -20,17 +20,15 @@ namespace ArtUnbound.UI
         [SerializeField] private Button btn64;
         [SerializeField] private Button btn144;
         [SerializeField] private Button btn256;
-        [SerializeField] private Button btn512;
         [SerializeField] private Button cancelButton;
 
         [Header("Button Labels")]
         [SerializeField] private TextMeshProUGUI label64;
         [SerializeField] private TextMeshProUGUI label144;
         [SerializeField] private TextMeshProUGUI label256;
-        [SerializeField] private TextMeshProUGUI label512;
 
         [Header("Configuration")]
-        [SerializeField] private int[] availableCounts = { 64, 144, 256, 512 };
+        [SerializeField] private int[] availableCounts = { 64, 144, 256 };
 
         public int SelectedCount { get; private set; } = 64;
 
@@ -44,9 +42,6 @@ namespace ArtUnbound.UI
 
             if (btn256 != null)
                 btn256.onClick.AddListener(() => SelectCount(256));
-
-            if (btn512 != null)
-                btn512.onClick.AddListener(() => SelectCount(512));
 
             if (cancelButton != null)
                 cancelButton.onClick.AddListener(Hide);
@@ -110,7 +105,6 @@ namespace ArtUnbound.UI
             if (btn64 != null) btn64.interactable = enabled;
             if (btn144 != null) btn144.interactable = enabled;
             if (btn256 != null) btn256.interactable = enabled;
-            if (btn512 != null) btn512.interactable = enabled;
         }
 
         private Button GetButtonForCount(int count)
@@ -120,7 +114,6 @@ namespace ArtUnbound.UI
                 64 => btn64,
                 144 => btn144,
                 256 => btn256,
-                512 => btn512,
                 _ => null
             };
         }
@@ -130,7 +123,6 @@ namespace ArtUnbound.UI
             if (label64 != null) label64.text = "Fácil";
             if (label144 != null) label144.text = "Normal";
             if (label256 != null) label256.text = "Difícil";
-            if (label512 != null) label512.text = "Experto";
         }
 
         /// <summary>
@@ -140,8 +132,7 @@ namespace ArtUnbound.UI
         {
             if (count < 100) return "Fácil";
             if (count < 200) return "Normal";
-            if (count < 350) return "Difícil";
-            return "Experto";
+            return "Difícil";
         }
 
         /// <summary>
@@ -154,7 +145,6 @@ namespace ArtUnbound.UI
                 64 => 5,
                 144 => 15,
                 256 => 30,
-                512 => 60,
                 _ => count / 10
             };
         }
@@ -181,7 +171,6 @@ namespace ArtUnbound.UI
             if (btn64 != null) btn64.onClick.RemoveAllListeners();
             if (btn144 != null) btn144.onClick.RemoveAllListeners();
             if (btn256 != null) btn256.onClick.RemoveAllListeners();
-            if (btn512 != null) btn512.onClick.RemoveAllListeners();
             if (cancelButton != null) cancelButton.onClick.RemoveAllListeners();
         }
     }

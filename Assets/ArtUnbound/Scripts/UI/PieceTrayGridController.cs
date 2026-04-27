@@ -17,7 +17,6 @@ namespace ArtUnbound.UI
     ///   Easy   ( 64 pcs, large pieces)  → fewer, larger thumbnails per row
     ///   Normal (144 pcs, medium pieces) → medium thumbnails per row
     ///   Hard   (256 pcs, small pieces)  → more, smaller thumbnails per row
-    ///   Expert (512 pcs, tiny pieces)   → many small thumbnails per row
     ///
     /// Inspector requirements on the Content GridLayoutGroup:
     ///   Constraint      = Flexible

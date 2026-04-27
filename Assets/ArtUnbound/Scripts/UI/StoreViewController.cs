@@ -50,6 +50,16 @@ namespace ArtUnbound.UI
         public event Action<ArtworkPackDefinition> OnPackPurchased;
         public event Action<BundleDefinition>      OnBundlePurchased;
 
+        /// <summary>
+        /// Closes any open modal detail panels (artwork-in-pack, pack-in-bundle).
+        /// Called from NativeGalleryController.SwitchTab so modals don't survive across tab changes.
+        /// </summary>
+        public void CloseAllDetailPanels()
+        {
+            artworkInPackDetailController?.Hide();
+            packInBundleDetailController?.Hide();
+        }
+
         public void Initialize(PackPurchaseService purchaseService)
         {
             _purchaseService = purchaseService;

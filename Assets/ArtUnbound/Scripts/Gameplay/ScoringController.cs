@@ -78,12 +78,6 @@ namespace ArtUnbound.Gameplay
         /// </summary>
         public FrameTier GetFrameTier(int score, bool helpMode, int pieceCount = 64)
         {
-            // Platinum requires: score >= 300, no help, and at least 256 pieces
-            if (score >= 300 && !helpMode && pieceCount >= 256)
-            {
-                return FrameTier.Platinum;
-            }
-
             // Oro requires: score >= 200 and no help
             if (score >= 200 && !helpMode)
             {

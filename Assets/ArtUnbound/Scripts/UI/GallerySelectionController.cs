@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using ArtUnbound.Data;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,28 +57,25 @@ namespace ArtUnbound.UI
         {
             var go = Instantiate(galleryCardPrefab, gridContainer);
 
-            // Set thumbnail
-            var img = go.GetComponentInChildren<Image>();
-            if (img != null && gallery.thumbnail != null)
-                img.sprite = gallery.thumbnail;
-
-            // Set label
-            var labels = go.GetComponentsInChildren<TMP_Text>();
-            foreach (var label in labels)
-                label.text = isCurrent ? $"{gallery.displayName}\n(Actual)" : gallery.displayName;
-
-            // Wire button
-            var btn = go.GetComponentInChildren<Button>();
-            if (btn != null)
+            var card = go.GetComponent<GalleryCardUI>();
+            if (card != null)
             {
-                btn.interactable = !isCurrent;
-                string id = gallery.galleryId;
-                btn.onClick.AddListener(() =>
-                {
-                    OnGallerySelected?.Invoke(id);
-                    Hide();
-                });
+                card.Setup(gallery, isCurrent, OnCardTapped);
             }
+            else
+            {
+                Debug.LogWarning($"[GallerySelectionController] El prefab '{galleryCardPrefab.name}' no tiene GalleryCardUI.");
+            }
+
+            // Apply the central theme so spawned cards match the rest of the UI
+            // (transparent rest, semi-brown hover).
+            UIButtonTheme.ApplyTo(go.GetComponent<Button>());
+        }
+
+        private void OnCardTapped(string galleryId)
+        {
+            OnGallerySelected?.Invoke(galleryId);
+            Hide();
         }
     }
 }

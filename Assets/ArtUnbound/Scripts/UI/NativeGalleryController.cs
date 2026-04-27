@@ -55,8 +55,8 @@ namespace ArtUnbound.UI
         //  EVENTOS
         // ════════════════════════════════════════════════════════════════════════
 
-        /// <summary>Disparado al iniciar un puzzle: (artworkId, pieceCount, difficultyIndex).</summary>
-        public event Action<string, int, int> OnStartPuzzle;
+        /// <summary>Disparado al iniciar un puzzle: (artworkId, difficultyIndex).</summary>
+        public event Action<string, int> OnStartPuzzle;
 
         /// <summary>Se dispara cuando el usuario mueve un slider de configuración.</summary>
         public event Action<float, float, bool> OnSettingsChanged; // (musicVol, sfxVol, haptics)
@@ -147,7 +147,7 @@ namespace ArtUnbound.UI
         [SerializeField] private Sprite bronzeMedal;
         [Tooltip("Sprite mostrado en CompletedBadge cuando bestFrameTier == Plata (Normal).")]
         [SerializeField] private Sprite silverMedal;
-        [Tooltip("Sprite mostrado en CompletedBadge cuando bestFrameTier == Oro o Platinum (Hard/Expert).")]
+        [Tooltip("Sprite mostrado en CompletedBadge cuando bestFrameTier == Oro (Hard).")]
         [SerializeField] private Sprite goldMedal;
 
         // ════════════════════════════════════════════════════════════════════════
@@ -164,13 +164,10 @@ namespace ArtUnbound.UI
         private bool                       _hasBeenPositioned;
         private Camera                     _positioningCamera;
 
-        private enum Tab { Catalog, Settings, Search, Store }
+        private enum Tab { Catalog, Settings, Search, Store, Galleries }
         private Tab _currentTab = Tab.Catalog;
 
-        // Fallback de piezas si la ArtworkDefinition no tiene configurados los valores
-        private const int DEFAULT_EASY   = 64;
-        private const int DEFAULT_NORMAL = 144;
-        private const int DEFAULT_HARD   = 256;
+        // Piece counts are derived by PuzzleBoard from the difficulty index — no defaults needed here.
 
         // ── VR Mode Buttons ───────────────────────────────────────────────────
         [Header("VR Mode Buttons (added to BottomNav)")]
@@ -187,6 +184,10 @@ namespace ArtUnbound.UI
         [SerializeField] private GameObject vrControllerRequiredPanel;
         [Tooltip("Reference to HandTrackingInputController to detect controller presence.")]
         [SerializeField] private ArtUnbound.Input.HandTrackingInputController handTrackingInput;
+
+        [Header("Feature Flags")]
+        [Tooltip("Multi-gallery picker (VR mode). Disabled at launch; flip on when shipping DLC galleries.")]
+        [SerializeField] private bool enableGallerySelection = false;
 
         /// <summary>Fired when the user taps the VR button (MR → VR transition).</summary>
         public event Action OnVRModeRequested;
@@ -435,6 +436,26 @@ namespace ArtUnbound.UI
             if (searchView != null)    searchView.SetActive(tab == Tab.Search);
             if (storeView != null)     storeView.SetActive(tab == Tab.Store);
 
+            // Galleries is a tab-like view backed by gallerySelectionController. Show it
+            // when the tab is selected; hide it whenever any other tab is active.
+            if (tab == Tab.Galleries)
+            {
+                string activeId = ArtUnbound.Core.GameBootstrap.Instance != null
+                    ? ArtUnbound.Core.GameBootstrap.Instance.ActiveVRGalleryId
+                    : "gallery_classic";
+                gallerySelectionController?.Show(activeId);
+            }
+            else
+            {
+                gallerySelectionController?.Hide();
+            }
+
+            // Close any modal detail panels so they don't survive across tab changes:
+            //   - detailPanel:                 catalog artwork detail (Easy/Medium/Hard).
+            //   - storeViewController modals:  ArtworkInPackDetail and PackInBundleDetail.
+            if (detailPanel != null) detailPanel.SetActive(false);
+            storeViewController?.CloseAllDetailPanels();
+
             switch (tab)
             {
                 case Tab.Settings:  PopulateSettings();  break;
@@ -644,18 +665,9 @@ namespace ArtUnbound.UI
         {
             if (_selectedArtwork == null) return;
 
-            int pieceCount = difficultyIndex switch
-            {
-                0 => _selectedArtwork.pieceCountEasy   > 0 ? _selectedArtwork.pieceCountEasy   : DEFAULT_EASY,
-                1 => _selectedArtwork.pieceCountNormal > 0 ? _selectedArtwork.pieceCountNormal : DEFAULT_NORMAL,
-                2 => _selectedArtwork.pieceCountHard   > 0 ? _selectedArtwork.pieceCountHard   : DEFAULT_HARD,
-                _ => DEFAULT_NORMAL
-            };
+            Debug.Log($"[NativeGallery] Iniciando puzzle: {_selectedArtwork.title} | difficulty={difficultyIndex}");
 
-            Debug.Log($"[NativeGallery] Iniciando puzzle: {_selectedArtwork.title} | " +
-                      $"difficulty={difficultyIndex} | pieces={pieceCount}");
-
-            OnStartPuzzle?.Invoke(_selectedArtwork.artworkId, pieceCount, difficultyIndex);
+            OnStartPuzzle?.Invoke(_selectedArtwork.artworkId, difficultyIndex);
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -725,7 +737,7 @@ namespace ArtUnbound.UI
                 UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
                 OnMRModeRequested?.Invoke();
             });
-            btnGalerias?.onClick.AddListener(OnGaleriasClicked);
+            btnGalerias?.onClick.AddListener(() => SwitchTab(Tab.Galleries));
 
             if (gallerySelectionController != null)
                 gallerySelectionController.OnGallerySelected += OnGallerySelectionChanged;
@@ -746,8 +758,8 @@ namespace ArtUnbound.UI
             bool showVR = !isVRMode && isQuest3;
             // MR button: shown in VR mode, Quest 3/Pro only
             bool showMR = isVRMode && isQuest3;
-            // Galerías: shown in VR mode on all devices
-            bool showGalerias = isVRMode;
+            // Galerías: shown in VR mode only when DLC gallery selection is enabled (feature flag).
+            bool showGalerias = isVRMode && enableGallerySelection;
 
             SetVRButtonVisibility(showVR, showMR, showGalerias);
         }
@@ -782,19 +794,11 @@ namespace ArtUnbound.UI
             _vrWarningCoroutine = null;
         }
 
-        private void OnGaleriasClicked()
-        {
-            if (gallerySelectionController == null) return;
-            // Retrieve active gallery ID from GameBootstrap/VRGalleryController
-            string activeId = ArtUnbound.Core.GameBootstrap.Instance != null
-                ? ArtUnbound.Core.GameBootstrap.Instance.ActiveVRGalleryId
-                : "gallery_classic";
-            gallerySelectionController.Show(activeId);
-        }
-
         private void OnGallerySelectionChanged(string galleryId)
         {
             ArtUnbound.Core.GameBootstrap.Instance?.SwitchVRGallery(galleryId);
+            // Return to the catalog so the user lands on the new gallery's artwork list.
+            SwitchTab(Tab.Catalog, force: true);
         }
 
         private TouchScreenKeyboard _searchKeyboard;

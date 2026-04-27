@@ -27,9 +27,9 @@ namespace ArtUnbound.UI
         [SerializeField] private GameObject paquetesView;
         [SerializeField] private GameObject bundlesView;
 
-        [Header("Colors (match BottomNav)")]
-        [SerializeField] private Color tabActiveColor   = new Color32(0x89, 0x6C, 0x4A, 0xFF); // #896C4A
-        [SerializeField] private Color tabInactiveColor = new Color32(0x37, 0x37, 0x37, 0xFF); // #373737
+        [Header("Colors")]
+        [Tooltip("Color del tab activo (fondo opaco). El tab inactivo queda transparente.")]
+        [SerializeField] private Color tabActiveColor = new Color32(0x89, 0x6C, 0x4A, 0xFF); // #896C4A
 
         /// <summary>Fires when the active tab changes. true = Paquetes, false = Bundles.</summary>
         public event Action<bool> OnTabChanged;
@@ -72,9 +72,21 @@ namespace ArtUnbound.UI
         private void SetTabColor(Button btn, bool active)
         {
             if (btn == null) return;
+            Color target = active ? tabActiveColor : UIButtonTheme.RestColor;
             var colors = btn.colors;
-            colors.normalColor = active ? tabActiveColor : tabInactiveColor;
+            // Update both normal and selected — clicking a tab makes it the EventSystem's
+            // selected GameObject, which would otherwise repaint with selectedColor and
+            // erase the active highlight.
+            colors.normalColor = target;
+            colors.selectedColor = target;
             btn.colors = colors;
+
+            // Force the targetGraphic to repaint to the new color now. Unity's
+            // Selectable.DoStateTransition only fires when state changes (hover, click),
+            // so a pure ColorBlock update otherwise leaves the previous render in place.
+            var graphic = btn.targetGraphic as Graphic;
+            if (graphic != null)
+                graphic.color = target;
         }
     }
 }

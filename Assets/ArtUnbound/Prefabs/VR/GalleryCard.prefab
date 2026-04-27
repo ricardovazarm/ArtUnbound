@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2855774480480826212}
   - component: {fileID: 6040879233094306545}
   - component: {fileID: 4173492079538690277}
+  - component: {fileID: 7875485777406074539}
   m_Layer: 0
   m_Name: GalleryCard
   m_TagString: Untagged
@@ -122,6 +123,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7875485777406074539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460970689217710808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c68c3cb13b96144ea72bd4480a07f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.UI.GalleryCardUI
+  thumbnailImage: {fileID: 1694398069113690006}
+  labelText: {fileID: 3327644894438997936}
 --- !u!1 &5627631736202364281
 GameObject:
   m_ObjectHideFlags: 0

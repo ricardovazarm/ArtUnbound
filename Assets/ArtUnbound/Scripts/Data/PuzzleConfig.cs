@@ -5,20 +5,30 @@ namespace ArtUnbound.Data
     [CreateAssetMenu(menuName = "ArtUnbound/Puzzle Config", fileName = "PuzzleConfig")]
     public class PuzzleConfig : ScriptableObject
     {
-        [Header("Piece Counts")]
-        [Tooltip("Target piece counts: 8², 11², 14², 17² = 64, 121, 196, 289")]
-        public int[] pieceCounts = { 64, 121, 196, 289 };
-        public int defaultPieceCount = 121; // Normal difficulty (approx 11×11)
-
         [Header("Board Size Constraints (in meters)")]
-        [Tooltip("Fixed board width in meters (default: 0.5m = 50cm)")]
-        public float boardWidthM = 0.5f;
-        
-        [Tooltip("Maximum board height in meters (default: 0.9m = 90cm)")]
-        public float boardMaxHeightM = 0.9f;
-        
-        [Tooltip("Minimum piece size in meters (default: 0.03m = 3cm)")]
+        [Tooltip("Side of the square bounding box that the board fits into. Landscape paintings get this as max width; portrait paintings get this as max height. Default: 0.6m = 60cm.")]
+        public float boardMaxSizeM = 0.6f;
+
+        [Header("Piece Size Constraints (in meters)")]
+        [Tooltip("Easy target piece size — also the absolute upper bound. No piece is bigger than this. Default: 0.05m = 5cm.")]
+        public float maxPieceSizeM = 0.05f;
+        [Tooltip("Hard target piece size — also the absolute lower bound. No piece is smaller than this. Default: 0.03m = 3cm. Normal difficulty derives as (max+min)/2.")]
         public float minPieceSizeM = 0.03f;
+
+        /// <summary>
+        /// Returns the target piece size in meters for the given difficulty index.
+        /// 0=Easy (max), 1=Normal (midpoint), 2=Hard (min).
+        /// </summary>
+        public float GetTargetPieceSize(int difficultyIndex)
+        {
+            return difficultyIndex switch
+            {
+                0 => maxPieceSizeM,
+                1 => (maxPieceSizeM + minPieceSizeM) * 0.5f,
+                2 => minPieceSizeM,
+                _ => maxPieceSizeM
+            };
+        }
 
         [Header("Snapping & Interaction")]
         [Tooltip("Max distance (cm) from piece to slot center to allow snap. Higher = more forgiving.")]
@@ -32,10 +42,6 @@ namespace ArtUnbound.Data
         public bool helpModeDefault = true;
         public bool useGridSnapping = true;
         public bool useTriangularMorphology = true;
-
-        [Header("Deprecated - Do Not Use")]
-        [Tooltip("DEPRECATED: Piece size is now calculated dynamically based on board width")]
-        public float pieceSizeCm = 5.0f; // Kept for backward compatibility, but not used
 
         [Header("Piece Tray 3D")]
         [Tooltip("Width of the tray viewport in cm (horizontal, controls number of columns)")]

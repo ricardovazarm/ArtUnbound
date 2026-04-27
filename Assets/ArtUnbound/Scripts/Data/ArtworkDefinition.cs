@@ -47,13 +47,6 @@ namespace ArtUnbound.Data
         public bool requiresUnlock = false;
         public int unlockWeek = 0;
 
-        [Header("Piece Counts (per difficulty)")]
-        [Tooltip("Use scripts/calc_piece_counts.py with image dimensions to get these values. 0 = use PuzzleConfig default.")]
-        public int pieceCountEasy;
-        public int pieceCountNormal;
-        public int pieceCountHard;
-        public int pieceCountExpert;
-
         [Header("Difficulty Hints")]
         public ArtworkComplexity complexity = ArtworkComplexity.Medium;
         [Range(1, 5)]
@@ -80,22 +73,6 @@ namespace ArtUnbound.Data
         }
 
         /// <summary>
-        /// Gets the piece count for the given difficulty index (0=Easy, 1=Normal, 2=Hard, 3=Expert).
-        /// Returns 0 if not set (caller should use PuzzleConfig default).
-        /// </summary>
-        public int GetPieceCount(int difficultyIndex)
-        {
-            return difficultyIndex switch
-            {
-                0 => pieceCountEasy,
-                1 => pieceCountNormal,
-                2 => pieceCountHard,
-                3 => pieceCountExpert,
-                _ => 0
-            };
-        }
-
-        /// <summary>
         /// Gets the full attribution string.
         /// </summary>
         public string GetAttribution()
@@ -116,7 +93,6 @@ namespace ArtUnbound.Data
     {
         Easy,
         Medium,
-        Hard,
-        Expert
+        Hard
     }
 }

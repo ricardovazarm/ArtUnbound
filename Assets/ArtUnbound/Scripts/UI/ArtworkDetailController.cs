@@ -48,7 +48,6 @@ namespace ArtUnbound.UI
         [SerializeField] private Sprite bronceIcon;
         [SerializeField] private Sprite plataIcon;
         [SerializeField] private Sprite oroIcon;
-        [SerializeField] private Sprite ebanoIcon;
 
         private string currentArtworkId;
         private ArtworkProgress currentProgress;
@@ -123,7 +122,7 @@ namespace ArtUnbound.UI
 
             if (progress == null || progress.recordsByPieceCount == null) return;
 
-            int[] pieceCounts = { 64, 144, 256, 512 };
+            int[] pieceCounts = { 64, 144, 256 };
 
             foreach (int pieceCount in pieceCounts)
             {
@@ -252,7 +251,6 @@ namespace ArtUnbound.UI
                 FrameTier.Bronce => bronceIcon,
                 FrameTier.Plata => plataIcon,
                 FrameTier.Oro => oroIcon,
-                FrameTier.Platinum => ebanoIcon,
                 _ => maderaIcon
             };
         }
@@ -274,7 +272,6 @@ namespace ArtUnbound.UI
 
         public void Show()
         {
-            // Ensure the script holder is active (consistent with ArtworkSelectionController)
             if (!gameObject.activeSelf)
                 gameObject.SetActive(true);
 

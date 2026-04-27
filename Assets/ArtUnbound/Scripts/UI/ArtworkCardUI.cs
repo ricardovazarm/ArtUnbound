@@ -44,8 +44,7 @@ namespace ArtUnbound.UI
         /// <summary>
         /// Configura la tarjeta con la obra y la mejor medalla obtenida.
         /// El badge se oculta si bestTier == Madera (no completada).
-        /// Bronce, Plata y Oro usan su sprite correspondiente; Platinum cae a Oro
-        /// porque el nivel Expert quedo en deuda tecnica y solo hay 3 medallas.
+        /// Bronce, Plata y Oro usan su sprite correspondiente.
         /// </summary>
         public void Setup(ArtworkDefinition artwork, FrameTier bestTier,
                           Sprite bronzeMedal, Sprite silverMedal, Sprite goldMedal,
@@ -79,7 +78,7 @@ namespace ArtUnbound.UI
                     {
                         FrameTier.Bronce => bronzeMedal,
                         FrameTier.Plata  => silverMedal,
-                        _                => goldMedal, // Oro y Platinum
+                        _                => goldMedal, // Oro
                     };
                     if (medal != null) _completedBadgeImage.sprite = medal;
                 }

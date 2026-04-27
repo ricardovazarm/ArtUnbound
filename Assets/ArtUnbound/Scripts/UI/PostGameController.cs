@@ -27,7 +27,6 @@ namespace ArtUnbound.UI
         [SerializeField] private Image medalIcon;
         [SerializeField] private Sprite bronzeMedal;
         [SerializeField] private Sprite silverMedal;
-        [Tooltip("Sprite usado para Oro y Platinum (Expert reusa Oro, igual que NativeGallery).")]
         [SerializeField] private Sprite goldMedal;
         
         [Header("Hang Artwork Instruction")]
@@ -92,7 +91,7 @@ namespace ArtUnbound.UI
                 {
                     FrameTier.Bronce => bronzeMedal,
                     FrameTier.Plata  => silverMedal,
-                    _                => goldMedal, // Oro y Platinum
+                    _                => goldMedal, // Oro
                 };
                 medalIcon.sprite = sprite;
                 medalIcon.enabled = sprite != null;
@@ -113,7 +112,6 @@ namespace ArtUnbound.UI
                 FrameTier.Bronce => "Bronze",
                 FrameTier.Plata => "Silver",
                 FrameTier.Oro => "Gold",
-                FrameTier.Platinum => "Platinum",
                 _ => "Bronze"
             };
         }

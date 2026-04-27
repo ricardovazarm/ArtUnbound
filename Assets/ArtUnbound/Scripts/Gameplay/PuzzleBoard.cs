@@ -49,7 +49,6 @@ namespace ArtUnbound.Gameplay
         [SerializeField] private Material frameBronceMaterial;
         [SerializeField] private Material framePlataMaterial;
         [SerializeField] private Material frameOroMaterial;
-        [SerializeField] private Material frameEbanoMaterial;
 
         private readonly List<PuzzlePiece> activePieces = new List<PuzzlePiece>();
         
@@ -117,7 +116,8 @@ namespace ArtUnbound.Gameplay
         private bool[] vEdges;
         private int edgeCols; // stored so GenerateMorphology can index the arrays
         private Vector3 lastPos;
-        private float currentPieceSize = 0.05f; // Current piece size (calculated dynamically)
+        private float currentPieceWidth = 0.05f;  // Current piece width  (calculated dynamically per puzzle)
+        private float currentPieceHeight = 0.05f; // Current piece height (calculated dynamically per puzzle)
         private float boardWidthM;
         private float boardHeightM;
         private int   gridCols;       // set in CreateSlotsFromCount / CreateSlots
@@ -154,10 +154,10 @@ namespace ArtUnbound.Gameplay
         /// <summary>
         /// Initializes the puzzle board with piece count and artwork texture.
         /// </summary>
-        public void Initialize(int pieceCount, Texture2D artworkTexture)
+        public void Initialize(int difficultyIndex, Texture2D artworkTexture)
         {
             snappedCount = 0;
-            totalPieces = pieceCount;
+            totalPieces = 0; // Computed by BuildSlotsAndPieces from grid
             currentTexture = artworkTexture;
 
             if (fullImageReveal != null)
@@ -185,22 +185,22 @@ namespace ArtUnbound.Gameplay
             completedEdges.Clear();
             allEdgesCelebrated = false;
 
-            if (slotRoot == null || pieceCount <= 0)
+            if (slotRoot == null)
             {
-                Debug.LogError($"[PuzzleBoard] Initialize failed. SlotRoot: {slotRoot}, PieceCount: {pieceCount}");
+                Debug.LogError($"[PuzzleBoard] Initialize failed. SlotRoot is null.");
                 return;
             }
 
             slotRoot.localPosition = Vector3.zero;
             slotRoot.localRotation = Quaternion.identity;
 
-            CreateSlotsFromCount(pieceCount);
+            CreateSlotsFromCount(difficultyIndex);
         }
 
         /// <summary>
         /// Initializes the puzzle board with artwork definition.
         /// </summary>
-        public void Initialize(ArtworkDefinition definition, int pieceCount)
+        public void Initialize(ArtworkDefinition definition, int difficultyIndex)
         {
             snappedCount = 0;
             var textureToUse = definition?.puzzleTexture != null ? definition.puzzleTexture : definition?.fullImage?.texture;
@@ -242,12 +242,12 @@ namespace ArtUnbound.Gameplay
             completedEdges.Clear();
             allEdgesCelebrated = false;
 
-            if (definition == null || slotRoot == null || pieceCount <= 0)
+            if (definition == null || slotRoot == null)
             {
                 return;
             }
 
-            CreateSlots(definition, pieceCount);
+            CreateSlots(definition, difficultyIndex);
         }
 
         public void SetHelpMode(bool enabled)
@@ -690,17 +690,18 @@ namespace ArtUnbound.Gameplay
 
             // Position and scale the highlight in SLOT ROOT local space
             PuzzleSlot slot = slots[slotIndex];
-            float pieceSize = currentPieceSize > 0f ? currentPieceSize : (puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f);
-            
+            float pieceW = currentPieceWidth  > 0f ? currentPieceWidth  : (puzzleConfig != null ? puzzleConfig.maxPieceSizeM : 0.05f);
+            float pieceH = currentPieceHeight > 0f ? currentPieceHeight : (puzzleConfig != null ? puzzleConfig.maxPieceSizeM : 0.05f);
+
             // Convert slot world position to local position relative to slotRoot
             Vector3 localPos = slotRoot.InverseTransformPoint(slot.position);
             localPos.z = 0.017f; // Slightly in front of grid and numbers for visibility
-            
+
             slotHighlight.transform.SetParent(slotRoot, false);
             slotHighlight.transform.localPosition = localPos;
             slotHighlight.transform.localRotation = Quaternion.Euler(0, 180, 0); // Rotate 180° to face user
             // Make it slightly larger than the piece for better visibility
-            slotHighlight.transform.localScale = new Vector3(pieceSize * 1.1f, pieceSize * 1.1f, 1f);
+            slotHighlight.transform.localScale = new Vector3(pieceW * 1.1f, pieceH * 1.1f, 1f);
             slotHighlight.SetActive(true);
             
         }
@@ -746,8 +747,9 @@ namespace ArtUnbound.Gameplay
                 float d = Vector3.Distance(hit, slots[kvp.Key].position);
                 if (d < bestDist) { bestDist = d; best = kvp.Value; }
             }
-            // Only return if within half a cell (avoids grabbing distant pieces)
-            return bestDist <= currentPieceSize * 0.7f ? best : null;
+            // Only return if within ~70% of the smaller piece dimension (avoids grabbing distant pieces).
+            float minPieceDim = Mathf.Min(currentPieceWidth, currentPieceHeight);
+            return bestDist <= minPieceDim * 0.7f ? best : null;
         }
 
         /// <summary>
@@ -773,7 +775,7 @@ namespace ArtUnbound.Gameplay
             return best;
         }
 
-        private void CreateSlotsFromCount(int pieceCount)
+        private void CreateSlotsFromCount(int difficultyIndex)
         {
             if (currentTexture == null)
             {
@@ -787,83 +789,16 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
-            // NEW SYSTEM: Calculate grid AND piece size together
-            CalculateGridAndPieceSize(pieceCount, currentTexture.width, currentTexture.height,
-                out int cols, out int rows, out float pieceSize);
+            CalculateGridAndPieces(difficultyIndex, currentTexture.width, currentTexture.height,
+                out int cols, out int rows, out float pieceWidth, out float pieceHeight,
+                out float boardW, out float boardH);
 
-            // Store grid dimensions for PieceTrayGridController
-            gridCols = cols;
-            gridRows = rows;
-
-            // Generate varied edge states (seed from pieceCount + texture size for reproducibility)
-            GenerateEdgeStates(cols, rows, pieceCount ^ (currentTexture.width * 31) ^ (currentTexture.height * 17));
-
-            // Store current piece size for tray initialization
-            currentPieceSize = pieceSize;
-
-            float sizeX = cols * pieceSize;
-            float sizeY = rows * pieceSize;
-            float cellWidth = pieceSize;
-            float cellHeight = pieceSize;
-
-            int id = 0;
-            for (int y = 0; y < rows; y++)
-            {
-                for (int x = 0; x < cols; x++)
-                {
-                    if (id >= pieceCount)
-                    {
-                        // Note: With adaptive grid, we might exceed or fall short of exact pieceCount.
-                        // We strictly fill the grid we calculated.
-                        // To allow the loop to finish the grid, we use 'id' as just a counter,
-                        // but we should ensure unique IDs if we go over initial pieceCount?
-                        // Actually, better to just let it increment. The target count is soft.
-                    }
-
-                    Vector3 localPos = new Vector3(
-                        (-sizeX * 0.5f) + cellWidth * 0.5f + cellWidth * x,
-                        (sizeY * 0.5f) - cellHeight * 0.5f - cellHeight * y,
-                        0.015f // Correct Z for visual placement
-                    );
-
-                    // Slot (col,row) expects the piece that shows texture for that position.
-                    // UVs are flipped horizontally (board 180° Y), so piece (cols-1-x, y) shows texture at (x,y).
-                    int expectedPieceId = y * cols + (cols - 1 - x);
-                    int slotCol = cols - 1 - x; // Piece (x,y) goes to slot (slotCol, y)
-                    PieceMorphology morphology = GenerateMorphology(slotCol, y, cols, rows); // Morphology for slot position
-
-                    PuzzleSlot slot = new PuzzleSlot
-                    {
-                        pieceId = expectedPieceId,
-                        row = y,
-                        col = x,
-                        position = slotRoot.TransformPoint(localPos),
-                        rotation = slotRoot.rotation,
-                        morphology = morphology
-                    };
-
-                    slots.Add(slot);
-                    morphologyByPieceId[id] = morphology;
-
-                    // Create Piece Visual (piece at texture pos x,y, with morphology for its slot)
-                    CreatePiece(id, x, y, cols, rows, morphology, pieceSize, currentTexture);
-
-                    id++;
-                }
-            }
-
-            // Update totalPieces to the ACTUAL number of pieces created
-            totalPieces = slots.Count;
-            Debug.Log($"[PIECE] CreateSlots: slots={slots.Count}, activePieces={activePieces.Count}, targetCount={pieceCount}");
-            
-            // Create Visual Board Context
-            CreateBoardVisual(cols * pieceSize, rows * pieceSize);
-
-            // Shuffle and populate scroll
-            InitializeScroll();
+            BuildSlotsAndPieces(cols, rows, pieceWidth, pieceHeight, boardW, boardH,
+                seed: difficultyIndex ^ (currentTexture.width * 31) ^ (currentTexture.height * 17),
+                texture: currentTexture);
         }
 
-        private void CreateSlots(ArtworkDefinition definition, int pieceCount)
+        private void CreateSlots(ArtworkDefinition definition, int difficultyIndex)
         {
             var textureToUse = definition.puzzleTexture != null ? definition.puzzleTexture : definition.fullImage?.texture;
             if (textureToUse == null)
@@ -872,24 +807,24 @@ namespace ArtUnbound.Gameplay
                 return;
             }
 
-            // NEW SYSTEM: Calculate grid AND piece size together
-            CalculateGridAndPieceSize(pieceCount, textureToUse.width, textureToUse.height,
-                out int cols, out int rows, out float pieceSize);
+            CalculateGridAndPieces(difficultyIndex, textureToUse.width, textureToUse.height,
+                out int cols, out int rows, out float pieceWidth, out float pieceHeight,
+                out float boardW, out float boardH);
 
-            // Store grid dimensions for PieceTrayGridController
+            BuildSlotsAndPieces(cols, rows, pieceWidth, pieceHeight, boardW, boardH,
+                seed: definition.artworkId?.GetHashCode() ?? 0,
+                texture: textureToUse);
+        }
+
+        private void BuildSlotsAndPieces(int cols, int rows, float pieceWidth, float pieceHeight,
+            float boardW, float boardH, int seed, Texture2D texture)
+        {
             gridCols = cols;
             gridRows = rows;
+            currentPieceWidth = pieceWidth;
+            currentPieceHeight = pieceHeight;
 
-            // Generate varied edge states seeded by artworkId → same artwork always produces same shapes
-            GenerateEdgeStates(cols, rows, definition.artworkId?.GetHashCode() ?? 0);
-
-            // Store current piece size for tray initialization
-            currentPieceSize = pieceSize;
-
-            float sizeX = cols * pieceSize;
-            float sizeY = rows * pieceSize;
-            float cellWidth = pieceSize;
-            float cellHeight = pieceSize;
+            GenerateEdgeStates(cols, rows, seed);
 
             int id = 0;
             for (int y = 0; y < rows; y++)
@@ -897,16 +832,16 @@ namespace ArtUnbound.Gameplay
                 for (int x = 0; x < cols; x++)
                 {
                     Vector3 localPos = new Vector3(
-                        (-sizeX * 0.5f) + cellWidth * 0.5f + cellWidth * x,
-                        (sizeY * 0.5f) - cellHeight * 0.5f - cellHeight * y,
-                        0.015f // Correct Z for visual placement per user
+                        (-boardW * 0.5f) + pieceWidth  * 0.5f + pieceWidth  * x,
+                        ( boardH * 0.5f) - pieceHeight * 0.5f - pieceHeight * y,
+                        0.015f
                     );
 
                     // Slot (col,row) expects the piece that shows texture for that position.
                     // UVs are flipped horizontally (board 180° Y), so piece (cols-1-x, y) shows texture at (x,y).
                     int expectedPieceId = y * cols + (cols - 1 - x);
-                    int slotCol = cols - 1 - x; // Piece (x,y) goes to slot (slotCol, y)
-                    PieceMorphology morphology = GenerateMorphology(slotCol, y, cols, rows); // Morphology for slot position
+                    int slotCol = cols - 1 - x;
+                    PieceMorphology morphology = GenerateMorphology(slotCol, y, cols, rows);
 
                     PuzzleSlot slot = new PuzzleSlot
                     {
@@ -921,20 +856,17 @@ namespace ArtUnbound.Gameplay
                     slots.Add(slot);
                     morphologyByPieceId[id] = morphology;
 
-                    // Create Piece Visual (piece at texture pos x,y, with morphology for its slot)
-                    CreatePiece(id, x, y, cols, rows, morphology, pieceSize, textureToUse);
-
+                    CreatePiece(id, x, y, cols, rows, morphology, pieceWidth, pieceHeight, texture);
                     id++;
                 }
             }
 
             totalPieces = slots.Count;
-            Debug.Log($"[PIECE] CreateSlots(definition): slots={slots.Count}, activePieces={activePieces.Count}");
+            Debug.Log($"[PIECE] BuildSlotsAndPieces: cols={cols}, rows={rows}, " +
+                      $"pieceW={pieceWidth*100f:F2}cm, pieceH={pieceHeight*100f:F2}cm, " +
+                      $"board={boardW*100f:F1}x{boardH*100f:F1}cm, total={totalPieces}");
 
-            // Create Visual Board Context
-            CreateBoardVisual(sizeX, sizeY);
-
-            // Shuffle and populate scroll
+            CreateBoardVisual(boardW, boardH);
             InitializeScroll();
         }
 
@@ -1086,7 +1018,8 @@ namespace ArtUnbound.Gameplay
             labelContainer.transform.SetParent(slotRoot, false);
             labelContainer.transform.localPosition = new Vector3(0, 0, 0.016f); // In front of grid
 
-            float pieceSize = puzzleConfig != null ? puzzleConfig.pieceSizeCm * 0.01f : 0.05f;
+            float pieceSize = currentPieceWidth > 0f ? Mathf.Min(currentPieceWidth, currentPieceHeight)
+                                                    : (puzzleConfig != null ? puzzleConfig.maxPieceSizeM : 0.05f);
 
             for (int i = 0; i < slots.Count; i++)
             {
@@ -1127,63 +1060,67 @@ namespace ArtUnbound.Gameplay
         /// <summary>
         /// Calculates optimal grid dimensions and piece size based on fixed board width.
         /// NEW SYSTEM: Board width is fixed (50cm), piece size is dynamic.
-        /// Uses targetCount and aspect ratio to calculate optimal grid.
+        /// Computes board dimensions and grid for the given difficulty and texture.
+        /// Approach:
+        ///   1. Fit the texture's aspect ratio inside a square bounding box of side
+        ///      <c>puzzleConfig.boardMaxSizeM</c>. Landscape images get the full side as width;
+        ///      portrait images get the full side as height. This keeps the actual board
+        ///      ratio identical to the painting's — no rounding distortion.
+        ///   2. For each axis, pick a grid count that keeps the resulting piece dimension
+        ///      close to <c>puzzleConfig.GetTargetPieceSize(difficultyIndex)</c>:
+        ///        - Easy   → round UP   (cols/rows go up so pieces shrink toward target ≤ max)
+        ///        - Hard   → round DOWN (cols/rows go down so pieces grow toward target ≥ min)
+        ///        - Normal → round CLOSEST to the target midpoint
+        ///   3. Pieces are rectangular: pieceWidth and pieceHeight are independent. The
+        ///      "rectangularness" is small in practice (typically &lt;10%) because both axes
+        ///      target the same piece size — only the rounding direction differs.
         /// </summary>
-        private void CalculateGridAndPieceSize(int targetCount, int texWidth, int texHeight, 
-            out int cols, out int rows, out float pieceSize)
+        private void CalculateGridAndPieces(int difficultyIndex, int texWidth, int texHeight,
+            out int cols, out int rows, out float pieceWidth, out float pieceHeight,
+            out float boardWidth, out float boardHeight)
         {
-            // Get config constraints
-            float boardWidth = puzzleConfig != null ? puzzleConfig.boardWidthM : 0.5f;
-            float boardMaxHeight = puzzleConfig != null ? puzzleConfig.boardMaxHeightM : 0.9f;
-            float minPieceSize = puzzleConfig != null ? puzzleConfig.minPieceSizeM : 0.03f;
+            float boundingBox = puzzleConfig != null ? puzzleConfig.boardMaxSizeM : 0.6f;
+            float targetPieceSize = puzzleConfig != null
+                ? puzzleConfig.GetTargetPieceSize(difficultyIndex)
+                : 0.05f;
 
-            // Calculate aspect ratio
-            float aspectRatio = (float)texWidth / texHeight;
-
-            // Calculate initial grid based on target count and aspect ratio
-            // rows = sqrt(target / ratio)
-            rows = Mathf.RoundToInt(Mathf.Sqrt(targetCount / aspectRatio));
-            if (rows < 2) rows = 2;
-            
-            cols = Mathf.RoundToInt(rows * aspectRatio);
-            if (cols < 2) cols = 2;
-
-            // Calculate piece size based on FIXED board width
-            float pieceSizeFromWidth = boardWidth / cols;
-            
-            // Calculate what board height would be with this piece size
-            float boardHeight = pieceSizeFromWidth * rows;
-
-            // CHECK CONSTRAINT 1: Board height exceeds maximum (90cm)
-            if (boardHeight > boardMaxHeight)
+            float aspectRatio = texHeight > 0 ? (float)texWidth / texHeight : 1f;
+            if (aspectRatio >= 1f)
             {
-                Debug.LogWarning($"[PuzzleBoard] Board height ({boardHeight*100:F1}cm) exceeds max ({boardMaxHeight*100:F1}cm). Calculating from height instead.");
-                
-                // Recalculate piece size based on height constraint
-                pieceSize = boardMaxHeight / rows;
-                
-                // Recalculate board dimensions
-                float actualBoardWidth = pieceSize * cols;
-            }
-            // CHECK CONSTRAINT 2: Piece size is too small (< 3cm)
-            else if (pieceSizeFromWidth < minPieceSize)
-            {
-                Debug.LogWarning($"[PuzzleBoard] Piece size ({pieceSizeFromWidth*100:F2}cm) below minimum ({minPieceSize*100:F1}cm). Using minimum.");
-                
-                pieceSize = minPieceSize;
-                
-                // Recalculate board dimensions with minimum piece size
-                float actualBoardWidth = pieceSize * cols;
-                float actualBoardHeight = pieceSize * rows;
+                boardWidth = boundingBox;
+                boardHeight = boundingBox / aspectRatio;
             }
             else
             {
-                // All constraints satisfied - use width-based calculation
-                pieceSize = pieceSizeFromWidth;
+                boardHeight = boundingBox;
+                boardWidth = boundingBox * aspectRatio;
             }
 
-            // Log final grid
-            int actualCount = cols * rows;
+            cols = ChooseGridCount(boardWidth, targetPieceSize, difficultyIndex);
+            rows = ChooseGridCount(boardHeight, targetPieceSize, difficultyIndex);
+
+            pieceWidth = boardWidth / cols;
+            pieceHeight = boardHeight / rows;
+        }
+
+        /// <summary>
+        /// Picks an integer grid count along one axis such that the resulting piece dimension
+        /// satisfies the difficulty's bound (Easy ≤ max, Hard ≥ min, Normal closest to midpoint).
+        /// </summary>
+        private static int ChooseGridCount(float boardSpan, float targetPieceSize, int difficultyIndex)
+        {
+            if (targetPieceSize <= 0f || boardSpan <= 0f) return 2;
+            float approx = boardSpan / targetPieceSize;
+            int floor = Mathf.Max(2, Mathf.FloorToInt(approx));
+            int ceil = Mathf.Max(2, Mathf.CeilToInt(approx));
+            if (floor == ceil) return floor;
+
+            return difficultyIndex switch
+            {
+                0 => ceil,  // Easy: keep piece ≤ max → more cells
+                2 => floor, // Hard: keep piece ≥ min → fewer cells
+                _ => Mathf.Abs(boardSpan / floor - targetPieceSize) <= Mathf.Abs(boardSpan / ceil - targetPieceSize) ? floor : ceil
+            };
         }
 
         /// <summary>
@@ -1328,7 +1265,7 @@ namespace ArtUnbound.Gameplay
             return row * gridSize + col;
         }
 
-        private void CreatePiece(int id, int col, int row, int gridCols, int gridRows, PieceMorphology morphology, float pieceSize, Texture2D texture)
+        private void CreatePiece(int id, int col, int row, int gridCols, int gridRows, PieceMorphology morphology, float pieceWidth, float pieceHeight, Texture2D texture)
         {
             if (piecePrefab == null) return;
 
@@ -1340,10 +1277,8 @@ namespace ArtUnbound.Gameplay
             piece.Initialize(id, GetSlotIndex(row, col), morphology);
             piece.name = $"Piece_{id}_{col}_{row}";
 
-            // Debug.Log($"[PuzzleBoard] Created Piece {id} at {col},{row}. Pos: {piece.transform.position}");
-
             // Generate Mesh
-            Mesh mesh = PieceMeshGenerator.GeneratePieceMesh(morphology, pieceSize, col, row, gridCols, gridRows);
+            Mesh mesh = PieceMeshGenerator.GeneratePieceMesh(morphology, pieceWidth, pieceHeight, col, row, gridCols, gridRows);
 
             // Assign Mesh
             var meshFilter = piece.GetComponentInChildren<MeshFilter>();
@@ -1416,7 +1351,9 @@ namespace ArtUnbound.Gameplay
                 pieceTray3DController.transform.localScale    = Vector3.one;
 
                 var shuffled3D = PieceShuffler.GetShuffledCopy(activePieces);
-                pieceTray3DController.Initialize(shuffled3D, currentPieceSize);
+                // Tray cells are square; use the larger piece dimension so rectangular thumbnails fit without clipping.
+                float trayCellSize = Mathf.Max(currentPieceWidth, currentPieceHeight);
+                pieceTray3DController.Initialize(shuffled3D, trayCellSize);
                 return;
             }
             // ── OLD SYSTEM (fallback) ──────────────────────────────────────────────
@@ -1495,12 +1432,13 @@ namespace ArtUnbound.Gameplay
             }
 
             Debug.Log($"[PIECE] InitializeScroll: passing {pieceTransforms.Count} pieces to tray (slots={slots.Count})");
-            scrollController.Initialize(pieceTransforms, currentPieceSize);
+            float legacyTrayCellSize = Mathf.Max(currentPieceWidth, currentPieceHeight);
+            scrollController.Initialize(pieceTransforms, legacyTrayCellSize);
 
             // Initialize the 2D thumbnail panel (positioned wherever the designer placed it in the scene)
             if (pieceTrayController != null)
             {
-                pieceTrayController.Initialize(shuffledPieces, currentTexture, gridCols, gridRows, currentPieceSize);
+                pieceTrayController.Initialize(shuffledPieces, currentTexture, gridCols, gridRows, legacyTrayCellSize);
 
                 // Move the 3D tray far below so its pieces don't overlap with the 2D panel.
                 // Pieces are hidden (MeshRenderer disabled) but the 3D tray was positioned at the
@@ -1892,7 +1830,7 @@ namespace ArtUnbound.Gameplay
         /// Replaces the assembled pieces with the full artwork image and plays a reveal animation.
         /// Creates a 3D frame around the image with the correct material for the earned tier.
         /// </summary>
-        /// <param name="frameTier">The frame tier earned (Bronce, Plata, Oro, Platinum).</param>
+        /// <param name="frameTier">The frame tier earned (Bronce, Plata, Oro).</param>
         public void ShowFullImageReveal(FrameTier frameTier = FrameTier.Bronce)
         {
             if (slotRoot == null || currentTexture == null)
@@ -2006,11 +1944,10 @@ namespace ArtUnbound.Gameplay
 
             Material mat = tier switch
             {
-                FrameTier.Bronce   => frameBronceMaterial,
-                FrameTier.Plata    => framePlataMaterial,
-                FrameTier.Oro      => frameOroMaterial,
-                FrameTier.Platinum => frameEbanoMaterial,
-                _                  => frameBronceMaterial
+                FrameTier.Bronce => frameBronceMaterial,
+                FrameTier.Plata  => framePlataMaterial,
+                FrameTier.Oro    => frameOroMaterial,
+                _                => frameBronceMaterial
             };
 
             if (mat != null) return mat;
@@ -2022,11 +1959,10 @@ namespace ArtUnbound.Gameplay
             var fallback = new Material(shader);
             fallback.color = tier switch
             {
-                FrameTier.Bronce   => new Color(0.55f, 0.33f, 0.12f), // bronze brown
-                FrameTier.Plata    => new Color(0.75f, 0.75f, 0.78f), // silver
-                FrameTier.Oro      => new Color(0.85f, 0.70f, 0.10f), // gold
-                FrameTier.Platinum => new Color(0.14f, 0.10f, 0.07f), // dark ebony
-                _                  => new Color(0.55f, 0.33f, 0.12f)
+                FrameTier.Bronce => new Color(0.55f, 0.33f, 0.12f), // bronze brown
+                FrameTier.Plata  => new Color(0.75f, 0.75f, 0.78f), // silver
+                FrameTier.Oro    => new Color(0.85f, 0.70f, 0.10f), // gold
+                _                => new Color(0.55f, 0.33f, 0.12f)
             };
             return fallback;
         }

@@ -22,7 +22,6 @@ namespace ArtUnbound.UI
         [SerializeField] private Sprite frameBronce;
         [SerializeField] private Sprite framePlata;
         [SerializeField] private Sprite frameOro;
-        [SerializeField] private Sprite frameEbano;
 
         public Image ThumbnailImage => thumbnailImage;
         public TextMeshProUGUI TitleText => titleText;
@@ -51,7 +50,6 @@ namespace ArtUnbound.UI
                 FrameTier.Bronce => frameBronce,
                 FrameTier.Plata => framePlata,
                 FrameTier.Oro => frameOro,
-                FrameTier.Platinum => frameEbano,
                 _ => frameMadera
             };
         }
