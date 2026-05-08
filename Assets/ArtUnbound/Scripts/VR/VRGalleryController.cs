@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ArtUnbound.Data;
 using ArtUnbound.Services;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 namespace ArtUnbound.VR
 {
@@ -66,6 +67,7 @@ namespace ArtUnbound.VR
             if (def.environmentPrefab != null)
             {
                 _activeGalleryInstance = Instantiate(def.environmentPrefab);
+                EnsureTeleportableFloors(_activeGalleryInstance);
                 TeleportToSpawnPoint(_activeGalleryInstance);
             }
 
@@ -111,6 +113,54 @@ namespace ArtUnbound.VR
         {
             if (!_spawnedPaintings.Contains(paintingGO))
                 _spawnedPaintings.Add(paintingGO);
+        }
+
+        /// <summary>
+        /// Garantiza que cualquier GameObject en la galeria con layer "Teleportable" tenga TeleportationArea
+        /// y este wireado al TeleportationProvider activo. Algunas galerias importadas (ej: Lumina, AK Studio Art)
+        /// traen el piso con MeshCollider pero sin TeleportationArea, lo que hace que el rayo del teleport
+        /// se vea rojo (destino invalido).
+        /// </summary>
+        private void EnsureTeleportableFloors(GameObject root)
+        {
+            int teleportableLayer = LayerMask.NameToLayer("Teleportable");
+            if (teleportableLayer < 0) return;
+
+            // Importante: hay multiples TeleportationProvider en escena (uno en MR rig, uno en VR rig).
+            // Filtrar por el que vive bajo XR Origin (VR) — ese es el que esta wireado al
+            // LocomotionMediator activo en VR mode. FindFirstObjectByType retorna cualquiera y
+            // puede caer en el de MR (INACTIVO en VR), bloqueando el teleport.
+            TeleportationProvider provider = null;
+            var allProviders = FindObjectsByType<TeleportationProvider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            foreach (var p in allProviders)
+            {
+                var t = p.transform;
+                while (t != null)
+                {
+                    if (t.name == "XR Origin (VR)") { provider = p; break; }
+                    t = t.parent;
+                }
+                if (provider != null) break;
+            }
+
+            // XRI Interaction Layer "Teleport" = bit 31. Mantiene la separacion convencional
+            // entre interactables de teleport y los demas (UI, grab, etc).
+            int teleportInteractionLayer = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
+
+            var meshColliders = root.GetComponentsInChildren<MeshCollider>(true);
+            foreach (var mc in meshColliders)
+            {
+                if (mc.gameObject.layer != teleportableLayer) continue;
+                var area = mc.GetComponent<BaseTeleportationInteractable>();
+                if (area == null)
+                {
+                    area = mc.gameObject.AddComponent<TeleportationArea>();
+                    if (teleportInteractionLayer != 0)
+                        area.interactionLayers = teleportInteractionLayer;
+                }
+                if (provider != null)
+                    area.teleportationProvider = provider;
+            }
         }
 
         private void TeleportToSpawnPoint(GameObject galleryInstance)

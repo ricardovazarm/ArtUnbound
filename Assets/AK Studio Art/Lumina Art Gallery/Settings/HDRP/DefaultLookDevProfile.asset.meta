@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 66c80debb53bd1d418c697476fff0d99
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264587
+  packageName: Lumina Art Gallery
+  packageVersion: 1.0
+  assetPath: Assets/AK Studio Art/Lumina Art Gallery/Settings/HDRP/DefaultLookDevProfile.asset
+  uploadId: 901308

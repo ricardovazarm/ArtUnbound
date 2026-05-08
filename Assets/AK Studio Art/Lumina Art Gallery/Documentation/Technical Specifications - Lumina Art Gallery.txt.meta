@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a5a56826a7b37a54697822a95943d855
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264587
+  packageName: Lumina Art Gallery
+  packageVersion: 1.0
+  assetPath: Assets/AK Studio Art/Lumina Art Gallery/Documentation/Technical Specifications
+    - Lumina Art Gallery.txt
+  uploadId: 901308

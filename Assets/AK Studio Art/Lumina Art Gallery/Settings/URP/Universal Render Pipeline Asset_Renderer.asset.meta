@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d1be8c46fddab1b478f3f7fddfe48b9c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264587
+  packageName: Lumina Art Gallery
+  packageVersion: 1.0
+  assetPath: Assets/AK Studio Art/Lumina Art Gallery/Settings/URP/Universal Render
+    Pipeline Asset_Renderer.asset
+  uploadId: 901308

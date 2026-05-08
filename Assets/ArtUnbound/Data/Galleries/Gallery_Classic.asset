@@ -15,4 +15,4 @@ MonoBehaviour:
   galleryId: gallery_classic
   displayName: Classic Gallery
   thumbnail: {fileID: 0}
-  environmentPrefab: {fileID: 2946484827674165858, guid: e0e079551c470ea48a486a5c2842b90b, type: 3}
+  environmentPrefab: {fileID: 3075846255998732642, guid: 31e66aaec06ac6342af596add8e5f35c, type: 3}

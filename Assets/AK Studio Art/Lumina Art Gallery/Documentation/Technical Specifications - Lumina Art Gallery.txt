@@ -1,0 +1,30 @@
+﻿Technical Specifications - Lumina Art Gallery
+Author: AK Studio Art
+
+=== Summary ===
+A premium modern art gallery environment optimized for VR, featuring minimalist architecture, 
+clean lighting, and customizable exhibition spaces.
+
+=== Content ===
+- Number of Unique Meshes: 32.
+- Number of Unique Materials: 44.
+- Number of polygons: 2 to 2.784.
+- Texture sizes used:
+  - 2048x2048 (62)
+  - 1024x1024 (1)
+- Types of texture maps: BaseMap, MaskMap, NormalMap.
+
+=== Statistics ===
+The package includes:
+  - 13 FBX models.
+  - 23 Prefabs.
+  - 44 Materials.
+  - 63 Textures.
+  - 1 Demo Scene(s) with preconfigured Lightmap.
+
+=== Notes ===
+- Optimized 3D Models for performance.
+- VR-ready assets.
+- Baked GI included.
+- Post Processing Setup provided.
+

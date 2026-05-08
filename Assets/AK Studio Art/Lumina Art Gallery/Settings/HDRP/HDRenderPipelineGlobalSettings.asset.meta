@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e3921542119071947a84ed796ba37bcb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264587
+  packageName: Lumina Art Gallery
+  packageVersion: 1.0
+  assetPath: Assets/AK Studio Art/Lumina Art Gallery/Settings/HDRP/HDRenderPipelineGlobalSettings.asset
+  uploadId: 901308

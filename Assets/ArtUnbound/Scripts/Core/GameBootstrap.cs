@@ -61,7 +61,6 @@ namespace ArtUnbound.Core
         [Header("VR Mode")]
         [SerializeField] private VRModeController vrModeController;
         [SerializeField] private VRGalleryController vrGalleryController;
-        [SerializeField] private VRLocomotionController vrLocomotionController;
         [SerializeField] private VRWallHangingController vrWallHangingController;
         [SerializeField] private GalleryCatalog galleryCatalog;
 
@@ -375,9 +374,6 @@ namespace ArtUnbound.Core
 
             string galleryId = SaveData?.lastGalleryId ?? "gallery_classic";
             vrGalleryController?.LoadGallery(galleryId);
-
-            if (vrLocomotionController != null)
-                vrLocomotionController.gameObject.SetActive(true);
 
             // Show NativeGallery as the navigation panel in VR
             if (audioManager != null)
