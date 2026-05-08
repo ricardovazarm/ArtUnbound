@@ -14,6 +14,13 @@ namespace ArtUnbound.VR
         [Header("Teleport")]
         [SerializeField] private TeleportationProvider teleportationProvider;
 
+        [Header("Controller")]
+        [Tooltip("Transform del controlador izquierdo. El arco de teleport saldra de aqui y apuntara hacia su forward.")]
+        [SerializeField] private Transform leftControllerAnchor;
+
+        [Tooltip("Root de los controladores fisicos (HardwareControllers). Se mueve con el teleport para que el tracking siga al jugador. Dejar null si los controladores ya son hijos del XR Origin.")]
+        [SerializeField] private Transform hardwareControllersRoot;
+
         [Header("Input")]
         [SerializeField] private InputActionReference leftThumbstickAction;
 
@@ -96,6 +103,16 @@ namespace ArtUnbound.VR
                     matchOrientation = MatchOrientation.None
                 };
                 teleportationProvider.QueueTeleportRequest(request);
+
+                if (hardwareControllersRoot != null && Camera.main != null)
+                {
+                    Vector3 camPos = Camera.main.transform.position;
+                    Vector3 delta = new Vector3(
+                        _teleportTarget.x - camPos.x,
+                        0f,
+                        _teleportTarget.z - camPos.z);
+                    hardwareControllersRoot.position += delta;
+                }
             }
 
             StopAiming();
@@ -103,13 +120,15 @@ namespace ArtUnbound.VR
 
         private void UpdateArc()
         {
-            if (Camera.main == null) return;
+            if (leftControllerAnchor == null)
+            {
+                Debug.LogWarning("[VRLocomotionController] leftControllerAnchor no esta asignado. Asigna el LeftHand Controller en el Inspector.");
+                return;
+            }
 
-            Transform cam = Camera.main.transform;
-            Vector3 origin = cam.position;
+            Vector3 origin = leftControllerAnchor.position;
 
-            // Shoot arc from camera forward, slightly downward
-            Vector3 forward = cam.forward;
+            Vector3 forward = leftControllerAnchor.forward;
             forward.y = Mathf.Min(forward.y, -0.1f);
             forward.Normalize();
 

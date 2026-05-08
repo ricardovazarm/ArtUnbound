@@ -19,6 +19,8 @@ namespace ArtUnbound.VR
         [SerializeField] private ARAnchorManager arAnchorManager;
 
         [Header("MR Systems")]
+        [Tooltip("AudioListener del MR Main Camera. Se desactiva en VR para evitar el warning de '2 audio listeners'.")]
+        [SerializeField] private AudioListener mrAudioListener;
         [SerializeField] private MonoBehaviour spatialPermissionService;
         [SerializeField] private MonoBehaviour wallPlacementDetector;
         [SerializeField] private MonoBehaviour wallAnchorManager;
@@ -28,8 +30,12 @@ namespace ArtUnbound.VR
 
         [Header("VR Systems")]
         [SerializeField] private VRGalleryController vrGalleryController;
-        [SerializeField] private VRLocomotionController vrLocomotionController;
+        [Tooltip("XR Origin (VR) root. Contiene Locomotion + LeftHand + Teleport Interactor (XRI nativo). Se activa entero al entrar a VR.")]
+        [SerializeField] private GameObject xrOriginVR;
         [SerializeField] private VRWallHangingController vrWallHangingController;
+
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig). Se desactiva entero en VR mode para evitar que sus interactores (Near-Far, Poke, Teleport del controlador MR) sigan renderizando rayos y compitan con el VR.")]
+        [SerializeField] private GameObject mrXrRig;
 
         [Header("VR Skybox")]
         [SerializeField] private Material vrSkyboxMaterial;
@@ -81,6 +87,7 @@ namespace ArtUnbound.VR
             // so we don't accidentally deactivate parent GameObjects that contain Main Camera.
             if (arPlaneManager != null) arPlaneManager.enabled = false;
             if (arAnchorManager != null) arAnchorManager.enabled = false;
+            if (mrAudioListener != null) mrAudioListener.enabled = false;
             if (spatialPermissionService != null) spatialPermissionService.enabled = false;
             if (wallPlacementDetector != null) wallPlacementDetector.enabled = false;
             if (wallAnchorManager != null) wallAnchorManager.enabled = false;
@@ -114,6 +121,7 @@ namespace ArtUnbound.VR
             // Re-enable MR systems
             if (arPlaneManager != null) arPlaneManager.enabled = true;
             if (arAnchorManager != null) arAnchorManager.enabled = true;
+            if (mrAudioListener != null) mrAudioListener.enabled = true;
             if (spatialPermissionService != null) spatialPermissionService.enabled = true;
             if (wallPlacementDetector != null) wallPlacementDetector.enabled = true;
             if (wallAnchorManager != null) wallAnchorManager.enabled = true;
@@ -130,8 +138,10 @@ namespace ArtUnbound.VR
         private void SetVRSystemsActive(bool active)
         {
             if (vrGalleryController != null) vrGalleryController.gameObject.SetActive(active);
-            if (vrLocomotionController != null) vrLocomotionController.gameObject.SetActive(active);
+            if (xrOriginVR != null) xrOriginVR.SetActive(active);
             if (vrWallHangingController != null) vrWallHangingController.gameObject.SetActive(active);
+            // El MR rig hace lo opuesto: activo en MR, inactivo en VR.
+            if (mrXrRig != null) mrXrRig.SetActive(!active);
         }
     }
 }
