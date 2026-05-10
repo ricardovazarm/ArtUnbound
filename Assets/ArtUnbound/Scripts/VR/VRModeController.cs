@@ -30,11 +30,22 @@ namespace ArtUnbound.VR
 
         [Header("VR Systems")]
         [SerializeField] private VRGalleryController vrGalleryController;
-        [Tooltip("XR Origin (VR) root. Contiene Locomotion + LeftHand + Teleport Interactor (XRI nativo). Se activa entero al entrar a VR.")]
-        [SerializeField] private GameObject xrOriginVR;
         [SerializeField] private VRWallHangingController vrWallHangingController;
 
-        [Tooltip("MR Interaction Setup > XR Origin (XR Rig). Se desactiva entero en VR mode para evitar que sus interactores (Near-Far, Poke, Teleport del controlador MR) sigan renderizando rayos y compitan con el VR.")]
+        [Header("MR Rig VR Locomotion")]
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig)/Locomotion/Teleportation. Se enciende solo en VR.")]
+        [SerializeField] private GameObject mrTeleportationGO;
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig)/Locomotion/Turn (SnapTurnProvider). Se enciende solo en VR.")]
+        [SerializeField] private GameObject mrSnapTurnGO;
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig)/Camera Offset/Left Controller/Teleport Interactor. Se enciende solo en VR.")]
+        [SerializeField] private GameObject mrLeftTeleportInteractorGO;
+
+        [Header("Obsolete (kept for migration; remove after full consolidation)")]
+        [Tooltip("OBSOLETO: el rig VR se eliminara. No se toca en runtime.")]
+        [SerializeField] private GameObject xrOriginVR;
+        [Tooltip("OBSOLETO: la camara VR se eliminara. No se toca en runtime.")]
+        [SerializeField] private Camera vrCamera;
+        [Tooltip("OBSOLETO: ya no se desactiva el MR rig.")]
         [SerializeField] private GameObject mrXrRig;
 
         [Header("VR Skybox")]
@@ -51,6 +62,7 @@ namespace ArtUnbound.VR
 
             // VR systems start disabled
             SetVRSystemsActive(false);
+            SetMRLocomotionForVR(false);
         }
 
         public void ActivateVRMode()
@@ -97,6 +109,7 @@ namespace ArtUnbound.VR
 
             // Enable VR systems
             SetVRSystemsActive(true);
+            SetMRLocomotionForVR(true);
 
             Debug.Log("[VRModeController] VR Mode activated");
         }
@@ -130,6 +143,7 @@ namespace ArtUnbound.VR
             if (wallDetectionService != null) wallDetectionService.enabled = true;
 
             // Disable VR systems
+            SetMRLocomotionForVR(false);
             SetVRSystemsActive(false);
 
             Debug.Log("[VRModeController] VR Mode deactivated — MR restored");
@@ -138,10 +152,14 @@ namespace ArtUnbound.VR
         private void SetVRSystemsActive(bool active)
         {
             if (vrGalleryController != null) vrGalleryController.gameObject.SetActive(active);
-            if (xrOriginVR != null) xrOriginVR.SetActive(active);
             if (vrWallHangingController != null) vrWallHangingController.gameObject.SetActive(active);
-            // El MR rig hace lo opuesto: activo en MR, inactivo en VR.
-            if (mrXrRig != null) mrXrRig.SetActive(!active);
+        }
+
+        private void SetMRLocomotionForVR(bool active)
+        {
+            if (mrTeleportationGO != null) mrTeleportationGO.SetActive(active);
+            if (mrSnapTurnGO != null) mrSnapTurnGO.SetActive(active);
+            if (mrLeftTeleportInteractorGO != null) mrLeftTeleportInteractorGO.SetActive(active);
         }
     }
 }

@@ -34,8 +34,22 @@ namespace ArtUnbound.VR
         private string _activeGalleryId;
         private List<GameObject> _spawnedPaintings = new List<GameObject>();
 
+        private Vector3 _originalRigPos;
+        private Quaternion _originalRigRot;
+        private bool _hasOriginalRig;
+
         private void Awake()
         {
+            // Cache the rig's initial position so we can restore it when leaving VR.
+            // With a single rig (post XR Origin VR removal), the same rig that
+            // teleports to the gallery spawn must return to the MR origin.
+            if (xrOrigin != null)
+            {
+                _originalRigPos = xrOrigin.position;
+                _originalRigRot = xrOrigin.rotation;
+                _hasOriginalRig = true;
+            }
+
             gameObject.SetActive(false);
         }
 
@@ -104,6 +118,12 @@ namespace ArtUnbound.VR
                 if (p != null) Destroy(p);
             _spawnedPaintings.Clear();
 
+            // Restore rig to its original (MR) position. The same rig that was
+            // teleported to the gallery spawn must return to origin so the
+            // user reappears in their physical space.
+            if (_hasOriginalRig && xrOrigin != null)
+                xrOrigin.SetPositionAndRotation(_originalRigPos, _originalRigRot);
+
             _activeGalleryId = null;
             Debug.Log("[VRGallery] Gallery unloaded");
         }
@@ -117,31 +137,20 @@ namespace ArtUnbound.VR
 
         /// <summary>
         /// Garantiza que cualquier GameObject en la galeria con layer "Teleportable" tenga TeleportationArea
-        /// y este wireado al TeleportationProvider activo. Algunas galerias importadas (ej: Lumina, AK Studio Art)
-        /// traen el piso con MeshCollider pero sin TeleportationArea, lo que hace que el rayo del teleport
-        /// se vea rojo (destino invalido).
+        /// y este wireado al TeleportationProvider del rig activo. Algunas galerias importadas (ej: Lumina,
+        /// AK Studio Art) traen el piso con MeshCollider pero sin TeleportationArea, lo que hace que el
+        /// rayo del teleport se vea rojo (destino invalido).
         /// </summary>
         private void EnsureTeleportableFloors(GameObject root)
         {
             int teleportableLayer = LayerMask.NameToLayer("Teleportable");
             if (teleportableLayer < 0) return;
 
-            // Importante: hay multiples TeleportationProvider en escena (uno en MR rig, uno en VR rig).
-            // Filtrar por el que vive bajo XR Origin (VR) — ese es el que esta wireado al
-            // LocomotionMediator activo en VR mode. FindFirstObjectByType retorna cualquiera y
-            // puede caer en el de MR (INACTIVO en VR), bloqueando el teleport.
+            // Buscar el TeleportationProvider en el rig configurado (xrOrigin field).
+            // Con el rig consolidado solo hay un provider en el arbol; ya no hay ambiguedad.
             TeleportationProvider provider = null;
-            var allProviders = FindObjectsByType<TeleportationProvider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            foreach (var p in allProviders)
-            {
-                var t = p.transform;
-                while (t != null)
-                {
-                    if (t.name == "XR Origin (VR)") { provider = p; break; }
-                    t = t.parent;
-                }
-                if (provider != null) break;
-            }
+            if (xrOrigin != null)
+                provider = xrOrigin.GetComponentInChildren<TeleportationProvider>(includeInactive: true);
 
             // XRI Interaction Layer "Teleport" = bit 31. Mantiene la separacion convencional
             // entre interactables de teleport y los demas (UI, grab, etc).
