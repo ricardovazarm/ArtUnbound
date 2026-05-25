@@ -3498,7 +3498,6 @@ MonoBehaviour:
   arCameraBackground: {fileID: 2066512587}
   arPlaneManager: {fileID: 376669989}
   arAnchorManager: {fileID: 376669978}
-  mrAudioListener: {fileID: 2066512592}
   spatialPermissionService: {fileID: 376669991}
   wallPlacementDetector: {fileID: 376669991}
   wallAnchorManager: {fileID: 376669991}
@@ -3934,21 +3933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &376669998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376669976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider
-  m_Mediator: {fileID: 0}
-  m_TransformationPriority: 0
-  m_DelayTime: 0
 --- !u!4 &376670008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5632266133985503989, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
@@ -10365,6 +10349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.VR.VRTeleportActivator
   teleportInteractor: {fileID: 718527698}
   teleportModeActivate: {fileID: 1263111715868034790, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  xrOrigin: {fileID: 1138434201}
+  teleportRayPitch: -35
 --- !u!1 &855129177
 GameObject:
   m_ObjectHideFlags: 0
@@ -12673,6 +12659,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6484816944125706195, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+      propertyPath: m_RayOriginTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484816944125706195, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 2147500065
+      objectReference: {fileID: 0}
     - target: {fileID: 6484816944661230508, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       propertyPath: m_Depth
       value: 0
@@ -12728,6 +12722,10 @@ PrefabInstance:
     - target: {fileID: 7460734852215867547, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       propertyPath: m_OnHandOcclusionChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647428932452654026, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 2147500065
       objectReference: {fileID: 0}
     - target: {fileID: 8993040715512175147, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       propertyPath: m_IsActive
@@ -12931,9 +12929,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5632266133985503990, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 376669984}
-    - targetCorrespondingSourceObject: {fileID: 5632266133985503990, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 376669998}
     - targetCorrespondingSourceObject: {fileID: 6484816945243591636, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2010974454}
@@ -22168,7 +22163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1897419103
 Transform:
   m_ObjectHideFlags: 0
@@ -22197,7 +22192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6ebe70fedaaec4fbc9329a1e3e9b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.VR.VRLocomotionController
-  teleportationProvider: {fileID: 376669998}
+  teleportationProvider: {fileID: 2026890804}
   leftControllerAnchor: {fileID: 1660234806}
   hardwareControllersRoot: {fileID: 1055727061}
   leftThumbstickAction: {fileID: -60998027439631388, guid: c348712bda248c246b8c49b3db54643f, type: 3}
@@ -23253,6 +23248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.VR.VRTeleportActivator
   teleportInteractor: {fileID: 2010974452}
   teleportModeActivate: {fileID: 1263111715868034790, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  xrOrigin: {fileID: 376669991}
+  teleportRayPitch: -35
 --- !u!1 &2011409722
 GameObject:
   m_ObjectHideFlags: 0
@@ -23395,6 +23392,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5159383552422065301, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
   m_PrefabInstance: {fileID: 1062345726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026890804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4736762124178261300, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
+  m_PrefabInstance: {fileID: 1062345726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026890802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2028482266
 GameObject:
   m_ObjectHideFlags: 0
@@ -24028,11 +24036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816b289ef451e094f9ae174fb4cf8db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &2066512592 stripped
-AudioListener:
-  m_CorrespondingSourceObject: {fileID: 6484816944661230510, guid: 86a5bf68cb51f4e44bd3893bd22a2ba7, type: 3}
-  m_PrefabInstance: {fileID: 1062345726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2084302297
 GameObject:
   m_ObjectHideFlags: 0

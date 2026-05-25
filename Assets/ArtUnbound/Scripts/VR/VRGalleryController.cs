@@ -146,30 +146,58 @@ namespace ArtUnbound.VR
             int teleportableLayer = LayerMask.NameToLayer("Teleportable");
             if (teleportableLayer < 0) return;
 
-            // Buscar el TeleportationProvider en el rig configurado (xrOrigin field).
-            // Con el rig consolidado solo hay un provider en el arbol; ya no hay ambiguedad.
+            // Use the Locomotion/Teleportation path specifically to avoid accidentally
+            // picking up any stray TeleportationProvider that may be on the XR Origin root.
             TeleportationProvider provider = null;
             if (xrOrigin != null)
-                provider = xrOrigin.GetComponentInChildren<TeleportationProvider>(includeInactive: true);
+            {
+                var locomotion = xrOrigin.Find("Locomotion");
+                if (locomotion != null)
+                    provider = locomotion.GetComponentInChildren<TeleportationProvider>(includeInactive: true);
+                // Fallback in case the hierarchy differs
+                if (provider == null)
+                    provider = xrOrigin.GetComponentInChildren<TeleportationProvider>(includeInactive: true);
+            }
 
             // XRI Interaction Layer "Teleport" = bit 31. Mantiene la separacion convencional
             // entre interactables de teleport y los demas (UI, grab, etc).
             int teleportInteractionLayer = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
 
+            int addedCount = 0;
             var meshColliders = root.GetComponentsInChildren<MeshCollider>(true);
             foreach (var mc in meshColliders)
             {
-                if (mc.gameObject.layer != teleportableLayer) continue;
+                if (teleportableLayer >= 0 && mc.gameObject.layer != teleportableLayer) continue;
                 var area = mc.GetComponent<BaseTeleportationInteractable>();
                 if (area == null)
                 {
                     area = mc.gameObject.AddComponent<TeleportationArea>();
                     if (teleportInteractionLayer != 0)
                         area.interactionLayers = teleportInteractionLayer;
+                    addedCount++;
                 }
                 if (provider != null)
                     area.teleportationProvider = provider;
             }
+
+            // Fallback: gallery prefabs from the Asset Store typically don't assign a custom
+            // Unity layer to their floors. Wire all MeshColliders so the teleport arc always
+            // has valid destinations without requiring manual layer setup on every gallery prefab.
+            if (addedCount == 0)
+            {
+                foreach (var mc in meshColliders)
+                {
+                    if (mc.GetComponent<BaseTeleportationInteractable>() != null) continue;
+                    var area = mc.gameObject.AddComponent<TeleportationArea>();
+                    if (teleportInteractionLayer != 0)
+                        area.interactionLayers = teleportInteractionLayer;
+                    if (provider != null)
+                        area.teleportationProvider = provider;
+                    addedCount++;
+                }
+            }
+
+            Debug.Log($"[VRGallery] EnsureTeleportableFloors: added {addedCount} TeleportationArea(s), provider={(provider != null ? provider.gameObject.name : "NULL")}, interactionLayer={teleportInteractionLayer}");
         }
 
         private void TeleportToSpawnPoint(GameObject galleryInstance)

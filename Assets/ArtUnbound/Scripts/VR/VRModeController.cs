@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 namespace ArtUnbound.VR
 {
@@ -19,8 +20,6 @@ namespace ArtUnbound.VR
         [SerializeField] private ARAnchorManager arAnchorManager;
 
         [Header("MR Systems")]
-        [Tooltip("AudioListener del MR Main Camera. Se desactiva en VR para evitar el warning de '2 audio listeners'.")]
-        [SerializeField] private AudioListener mrAudioListener;
         [SerializeField] private MonoBehaviour spatialPermissionService;
         [SerializeField] private MonoBehaviour wallPlacementDetector;
         [SerializeField] private MonoBehaviour wallAnchorManager;
@@ -99,7 +98,6 @@ namespace ArtUnbound.VR
             // so we don't accidentally deactivate parent GameObjects that contain Main Camera.
             if (arPlaneManager != null) arPlaneManager.enabled = false;
             if (arAnchorManager != null) arAnchorManager.enabled = false;
-            if (mrAudioListener != null) mrAudioListener.enabled = false;
             if (spatialPermissionService != null) spatialPermissionService.enabled = false;
             if (wallPlacementDetector != null) wallPlacementDetector.enabled = false;
             if (wallAnchorManager != null) wallAnchorManager.enabled = false;
@@ -134,7 +132,6 @@ namespace ArtUnbound.VR
             // Re-enable MR systems
             if (arPlaneManager != null) arPlaneManager.enabled = true;
             if (arAnchorManager != null) arAnchorManager.enabled = true;
-            if (mrAudioListener != null) mrAudioListener.enabled = true;
             if (spatialPermissionService != null) spatialPermissionService.enabled = true;
             if (wallPlacementDetector != null) wallPlacementDetector.enabled = true;
             if (wallAnchorManager != null) wallAnchorManager.enabled = true;
@@ -159,7 +156,19 @@ namespace ArtUnbound.VR
         {
             if (mrTeleportationGO != null) mrTeleportationGO.SetActive(active);
             if (mrSnapTurnGO != null) mrSnapTurnGO.SetActive(active);
-            if (mrLeftTeleportInteractorGO != null) mrLeftTeleportInteractorGO.SetActive(active);
+            if (mrLeftTeleportInteractorGO != null)
+            {
+                var leftController = mrLeftTeleportInteractorGO.transform.parent?.gameObject;
+                if (leftController != null)
+                {
+                    leftController.SetActive(active);
+                    // MR rig uses smooth motion (continuous move). Switch to teleport in VR mode
+                    // so ControllerInputActionManager.UpdateLocomotionActions() enables the
+                    // TeleportMode action instead of disabling it.
+                    var ciam = leftController.GetComponent<ControllerInputActionManager>();
+                    if (ciam != null) ciam.smoothMotionEnabled = !active;
+                }
+            }
         }
     }
 }
