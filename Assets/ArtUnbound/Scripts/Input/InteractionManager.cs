@@ -1,6 +1,7 @@
 using ArtUnbound.Data;
 using ArtUnbound.Gameplay;
 using ArtUnbound.MR;
+using ArtUnbound.VR;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -49,6 +50,8 @@ namespace ArtUnbound.Input
         private ArtUnbound.UI.PieceTray3DController _tray3DCached;
         private PuzzleBoard _boardCached;
         private ArtUnbound.MR.WallPlacementDetector _wallDetectorCached;
+        private VRModeController _vrModeControllerCached;
+        private VRWallHangingController _vrWallHangingCached;
 
         // Controller frame-hanging state
         private ArtUnbound.MR.GrabbableFrame _ctrlSelectedFrame = null;
@@ -90,6 +93,20 @@ namespace ArtUnbound.Input
             if (_wallDetectorCached == null)
                 _wallDetectorCached = FindFirstObjectByType<ArtUnbound.MR.WallPlacementDetector>();
             return _wallDetectorCached;
+        }
+
+        private VRModeController GetVRModeController()
+        {
+            if (_vrModeControllerCached == null)
+                _vrModeControllerCached = FindFirstObjectByType<VRModeController>();
+            return _vrModeControllerCached;
+        }
+
+        private VRWallHangingController GetVRWallHangingController()
+        {
+            if (_vrWallHangingCached == null)
+                _vrWallHangingCached = FindFirstObjectByType<VRWallHangingController>();
+            return _vrWallHangingCached;
         }
 
         private void SetFrameHighlight(ArtUnbound.MR.GrabbableFrame frame, bool selected)
@@ -773,7 +790,15 @@ namespace ArtUnbound.Input
                 else
                 {
                     // Completed puzzle frame: place clone on wall
-                    if (wallDetector != null && wallDetector.RaycastToWall(ray, out Vector3 wallPos, out Quaternion wallRot))
+                    var vrMode = GetVRModeController();
+                    if (vrMode != null && vrMode.IsVRMode)
+                    {
+                        // VR path: raycast against VRWall layer
+                        var vrHanging = GetVRWallHangingController();
+                        if (vrHanging != null && vrHanging.RaycastToWall(ray, out Vector3 vrWallPos, out Quaternion vrWallRot))
+                            placed = vrHanging.PlaceFrameAtWall(vrWallPos, vrWallRot);
+                    }
+                    else if (wallDetector != null && wallDetector.RaycastToWall(ray, out Vector3 wallPos, out Quaternion wallRot))
                     {
                         var hanging = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
                         if (hanging != null)

@@ -182,6 +182,20 @@ namespace ArtUnbound.VR
             OnFrameGrabbed?.Invoke();
         }
 
+        /// <summary>Controller mode: raycast from pointer ray to a VR wall.</summary>
+        public bool RaycastToWall(Ray ray, out Vector3 wallPos, out Quaternion wallRot)
+        {
+            wallPos = Vector3.zero;
+            wallRot = Quaternion.identity;
+            if (Physics.Raycast(ray, out RaycastHit hit, wallRaycastDistance, vrWallLayerMask))
+            {
+                wallPos = hit.point;
+                wallRot = Quaternion.LookRotation(-hit.normal, Vector3.up);
+                return true;
+            }
+            return false;
+        }
+
         private bool FindNearbyVRWall(Vector3 origin, out Vector3 wallPos, out Quaternion wallRot)
         {
             wallPos = Vector3.zero;
