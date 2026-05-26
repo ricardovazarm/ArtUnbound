@@ -386,9 +386,10 @@ namespace ArtUnbound.Core
                 if (_nativeGalleryOriginalParent == null)
                     _nativeGalleryOriginalParent = nativeGallery.transform.parent;
                 // worldPositionStays:true preserves the panel's current world position
-                // so it doesn't snap to origin when detached from the canvas parent.
+                // so it stays at the same spot the user saw it in MR.
+                // Do NOT call ResetPosition() here — keeping _hasBeenPositioned=true
+                // prevents PositionAndReveal from recalculating and shifting the panel.
                 nativeGallery.transform.SetParent(null, worldPositionStays: true);
-                nativeGallery.ResetPosition();
 
                 nativeGallery.SetVRButtonsMode(true, _isQuest3OrPro);
                 if (vrModeController != null)
@@ -423,9 +424,6 @@ namespace ArtUnbound.Core
             // Re-attach NativeGallery to its original parent (under mainUICanvas)
             if (nativeGallery != null && _nativeGalleryOriginalParent != null)
                 nativeGallery.transform.SetParent(_nativeGalleryOriginalParent, worldPositionStays: true);
-
-            // Force repositioning in front of user when the menu shows in MR
-            nativeGallery?.ResetPosition();
 
             SetupCameraForPassthrough();
             TransitionToMainMenu();

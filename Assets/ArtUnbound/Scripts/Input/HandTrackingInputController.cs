@@ -61,6 +61,10 @@ namespace ArtUnbound.Input
         /// <summary>True while a pinch (hand) or trigger press (controller) is active.</summary>
         public bool IsPinching => useControllers ? wasTriggerPressed : isPinchingRight;
 
+        /// <summary>True if a physical right controller device is currently connected and valid,
+        /// regardless of whether hand tracking is also active.</summary>
+        public bool HasValidController { get; private set; }
+
         private float _autoDetectTimer = 0f;
         private const float AutoDetectInterval = 1f;
 
@@ -112,6 +116,8 @@ namespace ArtUnbound.Input
             bool hasHands = m_HandSubsystem != null
                          && m_HandSubsystem.running
                          && m_HandSubsystem.rightHand.isTracked;
+
+            HasValidController = hasController;
 
             bool newMode = hasController && !hasHands;
             if (newMode != useControllers)

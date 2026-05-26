@@ -42,6 +42,7 @@ namespace ArtUnbound.UI
         [SerializeField] private string controllerHangingInstruction = "Point and click to select the frame, then click on a wall to hang it.";
 
         private bool _lastControllerMode;
+        private bool _hangingTextInitialized;
 
         [Header("Message Strings (edit for localization)")]
         [SerializeField] private string rowComplete = "¡Fila completa!";
@@ -52,11 +53,23 @@ namespace ArtUnbound.UI
         [SerializeField] private string edgesCompleteFormat = "¡{0} bordes completos!";
         [SerializeField] private string allEdgesComplete = "¡Marco completo!";
 
+        private void Start()
+        {
+            if (inputController == null)
+                inputController = FindFirstObjectByType<HandTrackingInputController>();
+        }
+
+        private void OnEnable()
+        {
+            _hangingTextInitialized = false;
+        }
+
         private void Update()
         {
             if (hangingInstructionText == null || inputController == null) return;
-            bool isController = inputController.useControllers;
-            if (isController == _lastControllerMode) return;
+            bool isController = inputController.HasValidController;
+            if (_hangingTextInitialized && isController == _lastControllerMode) return;
+            _hangingTextInitialized = true;
             _lastControllerMode = isController;
             hangingInstructionText.text = isController ? controllerHangingInstruction : handsHangingInstruction;
         }
@@ -65,7 +78,7 @@ namespace ArtUnbound.UI
         public void RefreshHangingInstruction()
         {
             if (hangingInstructionText == null || inputController == null) return;
-            _lastControllerMode = inputController.useControllers;
+            _lastControllerMode = inputController.HasValidController;
             hangingInstructionText.text = _lastControllerMode ? controllerHangingInstruction : handsHangingInstruction;
         }
 

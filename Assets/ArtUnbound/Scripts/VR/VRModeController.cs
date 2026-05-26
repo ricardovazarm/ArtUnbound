@@ -1,6 +1,9 @@
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Turning;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 namespace ArtUnbound.VR
@@ -54,6 +57,7 @@ namespace ArtUnbound.VR
         public Camera MainCamera => mainCamera;
 
         private Material _originalSkybox;
+        private VRSnapTurnController _snapTurnController;
 
         private void Awake()
         {
@@ -155,19 +159,65 @@ namespace ArtUnbound.VR
         private void SetMRLocomotionForVR(bool active)
         {
             if (mrTeleportationGO != null) mrTeleportationGO.SetActive(active);
-            if (mrSnapTurnGO != null) mrSnapTurnGO.SetActive(active);
+            if (mrSnapTurnGO != null)
+            {
+                mrSnapTurnGO.SetActive(active);
+                if (active) WireSnapTurnMediator();
+            }
             if (mrLeftTeleportInteractorGO != null)
             {
                 var leftController = mrLeftTeleportInteractorGO.transform.parent?.gameObject;
                 if (leftController != null)
                 {
                     leftController.SetActive(active);
-                    // MR rig uses smooth motion (continuous move). Switch to teleport in VR mode
-                    // so ControllerInputActionManager.UpdateLocomotionActions() enables the
-                    // TeleportMode action instead of disabling it.
                     var ciam = leftController.GetComponent<ControllerInputActionManager>();
                     if (ciam != null) ciam.smoothMotionEnabled = !active;
                 }
+            }
+
+            EnsureSnapTurnController();
+            if (_snapTurnController != null) _snapTurnController.enabled = active;
+        }
+
+        private void EnsureSnapTurnController()
+        {
+            if (_snapTurnController == null)
+                _snapTurnController = gameObject.GetComponent<VRSnapTurnController>()
+                    ?? gameObject.AddComponent<VRSnapTurnController>();
+
+            if (_snapTurnController.xrOrigin != null) return;
+
+            XROrigin origin = null;
+            if (mainCamera != null)
+                origin = mainCamera.GetComponentInParent<XROrigin>();
+            if (origin == null && mrTeleportationGO != null)
+                origin = mrTeleportationGO.GetComponentInParent<XROrigin>(includeInactive: true);
+
+            _snapTurnController.xrOrigin = origin;
+            if (origin != null)
+                Debug.Log($"[VRModeController] VRSnapTurnController -> XROrigin '{origin.gameObject.name}'");
+            else
+                Debug.LogWarning("[VRModeController] VRSnapTurnController: no se encontro XROrigin");
+        }
+
+        private void WireSnapTurnMediator()
+        {
+            var snapTurn = mrSnapTurnGO.GetComponent<SnapTurnProvider>();
+            if (snapTurn == null || snapTurn.mediator != null) return;
+
+            // Busca el LocomotionMediator en el mismo nivel o padre del SnapTurnProvider.
+            var mediator = mrSnapTurnGO.GetComponentInParent<LocomotionMediator>(includeInactive: true);
+            if (mediator == null && mrTeleportationGO != null)
+                mediator = mrTeleportationGO.GetComponentInParent<LocomotionMediator>(includeInactive: true);
+
+            if (mediator != null)
+            {
+                snapTurn.mediator = mediator;
+                Debug.Log($"[VRModeController] SnapTurnProvider wireado a mediator '{mediator.gameObject.name}'");
+            }
+            else
+            {
+                Debug.LogWarning("[VRModeController] No se encontro LocomotionMediator para SnapTurnProvider");
             }
         }
     }
