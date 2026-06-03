@@ -654,9 +654,9 @@ namespace ArtUnbound.UI
             if (detailArtistText      != null) detailArtistText.text      = artwork.author;
             if (detailDescriptionText != null) detailDescriptionText.text = artwork.description;
 
-            if (btnEasyText   != null) btnEasyText.text   = "Easy";
-            if (btnNormalText != null) btnNormalText.text = "Medium";
-            if (btnHardText   != null) btnHardText.text   = "Hard";
+            if (btnEasyText   != null) btnEasyText.text   = "A Coffee";
+            if (btnNormalText != null) btnNormalText.text = "A Break";
+            if (btnHardText   != null) btnHardText.text   = "An Afternoon";
 
             detailPanel.SetActive(true);
         }

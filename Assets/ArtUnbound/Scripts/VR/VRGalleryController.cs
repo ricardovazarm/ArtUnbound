@@ -14,6 +14,7 @@ namespace ArtUnbound.VR
     {
         [Header("Data")]
         [SerializeField] private GalleryCatalog galleryCatalog;
+        [SerializeField] private ArtUnbound.Data.ArtworkCatalog artworkCatalog;
 
         [Header("Painting Prefab")]
         [Tooltip("Prefab used to display a hung painting in the gallery. Needs a renderer and PlacedArtworkIdentifier.")]
@@ -214,19 +215,20 @@ namespace ArtUnbound.VR
 
         private void SpawnSavedPaintings(string galleryId)
         {
-            if (_persistenceService == null || galleryPaintingPrefab == null) return;
+            if (_persistenceService == null) return;
 
             var paintings = _persistenceService.GetPaintings(galleryId);
             foreach (var data in paintings)
             {
-                var go = Instantiate(galleryPaintingPrefab, data.Position, data.Rotation);
+                float w = data.boardWidth  > 0f ? data.boardWidth  : 0.5f;
+                float h = data.boardHeight > 0f ? data.boardHeight : 0.5f;
 
-                var identifier = go.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
-                if (identifier == null)
-                    identifier = go.AddComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
-                identifier.artworkId = data.artworkId;
+                var go = PlacedArtworkFactory.Build(
+                    data.artworkId, data.frameTier, w, h, artworkCatalog);
+                go.transform.SetPositionAndRotation(data.Position, data.Rotation);
 
                 _spawnedPaintings.Add(go);
+                Debug.Log($"[VRGallery] Spawned saved painting '{data.artworkId}' at {data.Position:F2}");
             }
         }
 

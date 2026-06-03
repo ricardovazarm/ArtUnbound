@@ -105,7 +105,7 @@ namespace ArtUnbound.Input
         private VRWallHangingController GetVRWallHangingController()
         {
             if (_vrWallHangingCached == null)
-                _vrWallHangingCached = FindFirstObjectByType<VRWallHangingController>();
+                _vrWallHangingCached = FindFirstObjectByType<VRWallHangingController>(FindObjectsInactive.Include);
             return _vrWallHangingCached;
         }
 
@@ -755,7 +755,9 @@ namespace ArtUnbound.Input
             var board = GetBoard();
 
             // ── HANG phase: frame already selected ───────────────────────────────
-            if (_ctrlSelectedFrame != null && wasClick)
+            // No wasClick guard: any trigger-up while frame is selected attempts hanging.
+            // 0.15s click threshold is too tight for VR controller use.
+            if (_ctrlSelectedFrame != null)
             {
                 var wallDetector = GetWallDetector();
                 bool placed = false;
@@ -791,10 +793,12 @@ namespace ArtUnbound.Input
                 {
                     // Completed puzzle frame: place clone on wall
                     var vrMode = GetVRModeController();
+                    Debug.Log($"[CTRL-Hang-VR] vrMode={vrMode != null} IsVRMode={vrMode?.IsVRMode}  ray.origin={ray.origin:F2}  ray.dir={ray.direction:F2}");
                     if (vrMode != null && vrMode.IsVRMode)
                     {
-                        // VR path: raycast against VRWall layer
+                        // VR path: raycast against VRWall layer (with fallback to normal-based detection)
                         var vrHanging = GetVRWallHangingController();
+                        Debug.Log($"[CTRL-Hang-VR] vrHanging={vrHanging != null}");
                         if (vrHanging != null && vrHanging.RaycastToWall(ray, out Vector3 vrWallPos, out Quaternion vrWallRot))
                             placed = vrHanging.PlaceFrameAtWall(vrWallPos, vrWallRot);
                     }
@@ -804,6 +808,13 @@ namespace ArtUnbound.Input
                         if (hanging != null)
                             placed = hanging.PlaceFrameAtWall(wallPos, wallRot);
                     }
+                }
+
+                // If no wall found, keep frame selected so user can aim at a different wall
+                if (!placed && !wasRepositioning)
+                {
+                    Debug.Log("[CTRL-Hang] No wall found — frame stays selected for retry");
+                    return;
                 }
 
                 wallDetector?.HideControllerGhost();
@@ -883,9 +894,12 @@ namespace ArtUnbound.Input
                 // No puzzle piece found — check for a grabbable completed frame or placed wall artwork.
                 // Skip if frame selection is blocked (cooldown after EnableFrameGrab prevents
                 // the navigation trigger from immediately selecting the newly-active frame).
+                float blockRemaining = _frameSelectBlockedUntil - Time.time;
+                Debug.Log($"[CTRL-FrameSelect] blocked={blockRemaining > 0} ({blockRemaining:F2}s left)  wasClick={wasClick}  piece=null");
                 if (Time.time < _frameSelectBlockedUntil) return;
 
                 RaycastHit[] allHits = Physics.RaycastAll(ray, rayLength);
+                Debug.Log($"[CTRL-FrameSelect] RaycastAll hits={allHits.Length}  rayLen={rayLength}");
                 foreach (var h in allHits)
                 {
                     // Placed wall artwork takes priority over the puzzle-complete frame.
@@ -925,6 +939,7 @@ namespace ArtUnbound.Input
                     }
 
                     var gf = h.collider.GetComponentInParent<ArtUnbound.MR.GrabbableFrame>();
+                    Debug.Log($"[CTRL-FrameSelect] hit: {h.collider.gameObject.name} layer={LayerMask.LayerToName(h.collider.gameObject.layer)} tag={h.collider.tag} dist={h.distance:F2}  gf={gf != null}  grabbable={gf?.IsGrabbable}");
                     if (gf != null && gf.IsGrabbable && !gf.IsBeingDragged)
                     {
                         _ctrlSelectedFrame = gf;

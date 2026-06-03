@@ -67,6 +67,7 @@ namespace ArtUnbound.Input
 
         private float _autoDetectTimer = 0f;
         private const float AutoDetectInterval = 1f;
+        private Transform _xrOriginRoot;
 
         private void Start()
         {
@@ -157,16 +158,17 @@ namespace ArtUnbound.Input
                 transform.localRotation = deviceRot;
             }
 
-            // 3. Map Trigger to "Pinch" Events
-            // Trigger Pressed = Pinch Start / Hold
-            // Trigger Released = Pinch End
+            // 3. Map Trigger to "Pinch" Events (transform to world space first)
+            var xrRoot = GetXROriginRoot();
+            Vector3 worldPos = xrRoot != null ? xrRoot.TransformPoint(devicePos) : devicePos;
+            Quaternion worldRot = xrRoot != null ? xrRoot.rotation * deviceRot : deviceRot;
 
             if (isTriggerPressed && !wasTriggerPressed)
-                OnPinchStart?.Invoke(devicePos, deviceRot);
+                OnPinchStart?.Invoke(worldPos, worldRot);
             else if (isTriggerPressed && wasTriggerPressed)
-                OnPinchHold?.Invoke(devicePos, deviceRot);
+                OnPinchHold?.Invoke(worldPos, worldRot);
             else if (!isTriggerPressed && wasTriggerPressed)
-                OnPinchEnd?.Invoke(devicePos, deviceRot);
+                OnPinchEnd?.Invoke(worldPos, worldRot);
 
             wasTriggerPressed = isTriggerPressed;
 
@@ -225,6 +227,13 @@ namespace ArtUnbound.Input
                         if (r) rotation = rotation * Quaternion.Euler(40, 0, 0);
                     }
 
+                    // Transform from tracking space (local to XR Origin) to world space
+                    var xrRoot = GetXROriginRoot();
+                    if (xrRoot != null)
+                    {
+                        position = xrRoot.TransformPoint(position);
+                        rotation = xrRoot.rotation * rotation;
+                    }
                     return true;
                 }
             }
@@ -264,6 +273,13 @@ namespace ArtUnbound.Input
                                 // Default to a reasonable palm offset
                                 rotation = palmPose.rotation * Quaternion.Euler(0, 90, 0); // Adjust based on XR Hands standard
                             }
+                            // Transform from tracking space to world space
+                            var xrRoot = GetXROriginRoot();
+                            if (xrRoot != null)
+                            {
+                                position = xrRoot.TransformPoint(position);
+                                rotation = xrRoot.rotation * rotation;
+                            }
                             return true;
                         }
                     }
@@ -274,6 +290,14 @@ namespace ArtUnbound.Input
             position = Vector3.zero;
             rotation = Quaternion.identity;
             return false;
+        }
+
+        // Camera.main → Camera Offset → XR Origin (XR Rig)
+        private Transform GetXROriginRoot()
+        {
+            if (_xrOriginRoot == null && Camera.main != null)
+                _xrOriginRoot = Camera.main.transform.parent?.parent;
+            return _xrOriginRoot;
         }
 
         private void InitializeController()

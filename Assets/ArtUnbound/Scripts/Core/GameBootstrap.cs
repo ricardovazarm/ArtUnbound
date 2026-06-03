@@ -360,7 +360,7 @@ namespace ArtUnbound.Core
 
         // ─── VR Gallery Transitions ───────────────────────────────────────────
 
-        public void TransitionToVRGallery()
+        public void TransitionToVRGallery(bool reloadGallery = true)
         {
             SetState(GameState.VRGallery);
             HideAllPanels();
@@ -368,12 +368,19 @@ namespace ArtUnbound.Core
             if (vrModeController != null && !vrModeController.IsVRMode)
                 vrModeController.ActivateVRMode();
 
+            // Hide MR-placed artworks — they live in real-world space and should not
+            // appear inside the VR gallery environment.
+            wallAnchorManager?.SetMRVisible(false);
+
             // Ensure canvas is visible for the VR navigation panel
             if (mainUICanvas != null)
                 mainUICanvas.gameObject.SetActive(true);
 
-            string galleryId = SaveData?.lastGalleryId ?? "gallery_classic";
-            vrGalleryController?.LoadGallery(galleryId);
+            if (reloadGallery)
+            {
+                string galleryId = SaveData?.lastGalleryId ?? "gallery_classic";
+                vrGalleryController?.LoadGallery(galleryId);
+            }
 
             // Show NativeGallery as the navigation panel in VR
             if (audioManager != null)
@@ -424,6 +431,9 @@ namespace ArtUnbound.Core
             // Re-attach NativeGallery to its original parent (under mainUICanvas)
             if (nativeGallery != null && _nativeGalleryOriginalParent != null)
                 nativeGallery.transform.SetParent(_nativeGalleryOriginalParent, worldPositionStays: true);
+
+            // Restore MR-placed artworks now that passthrough is back.
+            wallAnchorManager?.SetMRVisible(true);
 
             SetupCameraForPassthrough();
             TransitionToMainMenu();
@@ -920,10 +930,10 @@ namespace ArtUnbound.Core
         private void OnFrameGrabbed()
         {
             Debug.Log("[GameBootstrap] Frame grabbed - hiding UI, placement mode active");
-            
+
             // NOW hide UI panels to allow free movement
             HideAllPanels();
-            
+
             // Play haptic feedback
             if (hapticController != null)
             {
@@ -1018,7 +1028,9 @@ namespace ArtUnbound.Core
             }
 
             CleanupArtworkHanging();
-            TransitionToVRGallery();
+            // Gallery is already loaded — only show the UI, don't reload (avoids
+            // teleporting user back to spawn point and destroying the just-placed frame).
+            TransitionToVRGallery(reloadGallery: false);
         }
 
         private void CleanupArtworkHanging()

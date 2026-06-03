@@ -70,14 +70,18 @@ namespace ArtUnbound.MR
             for (int i = 1; i < renderers.Length; i++)
                 world.Encapsulate(renderers[i].bounds);
 
-            // Convert world-space AABB to local space (handles pivot offset).
-            // Divide size by lossyScale assuming no skewed rotation on the root.
+            // Convert world-space AABB to local space.
+            // Cap Z depth to 0.05m world-space: child renderers (puzzle pieces in tray)
+            // inflate the bounding box in Z, causing the collider to engulf the controller
+            // position and making Physics.RaycastAll return 0 hits (ray starts inside collider).
             frameCollider.center = transform.InverseTransformPoint(world.center);
             Vector3 s = transform.lossyScale;
+            const float maxWorldDepth = 0.05f;
+            float localZ = Mathf.Abs(s.z) > 0.001f ? maxWorldDepth / Mathf.Abs(s.z) : maxWorldDepth;
             frameCollider.size = new Vector3(
                 world.size.x / s.x,
                 world.size.y / s.y,
-                world.size.z / s.z);
+                localZ);
 
             Debug.Log($"[GrabbableFrame] Collider fit to renderers: center={frameCollider.center} size={frameCollider.size}");
         }

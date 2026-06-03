@@ -10,6 +10,9 @@ namespace ArtUnbound.Data
         public int difficultyIndex;
         public float posX, posY, posZ;
         public float rotX, rotY, rotZ, rotW;
+        public float boardWidth;
+        public float boardHeight;
+        public FrameTier frameTier;
 
         public Vector3 Position
         {
