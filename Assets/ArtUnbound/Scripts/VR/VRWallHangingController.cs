@@ -17,6 +17,7 @@ namespace ArtUnbound.VR
         [Header("References")]
         [SerializeField] private PuzzleBoard puzzleBoard;
         [SerializeField] private VRGalleryController galleryController;
+        [SerializeField] private ArtworkCatalog artworkCatalog;
 
         [Header("Wall Detection")]
         [SerializeField] private LayerMask vrWallLayerMask;
@@ -121,10 +122,13 @@ namespace ArtUnbound.VR
                 return false;
             }
 
-            Vector3 offsetPos = wallPos + wallRot * Vector3.forward * 0.005f;
+            float boardW = 0.5f, boardH = 0.5f;
+            puzzleBoard?.GetBoardDimensions(out boardW, out boardH);
+
+            Vector3 offsetPos = wallPos + wallRot * Vector3.forward * 0.02f;
             frameClone.SetPositionAndRotation(offsetPos, wallRot);
 
-            SavePainting(offsetPos, wallRot);
+            SavePainting(offsetPos, wallRot, boardW, boardH);
             galleryController?.RegisterPlacedPainting(frameClone.gameObject);
 
             HideGhost();
@@ -138,20 +142,18 @@ namespace ArtUnbound.VR
         {
             if (_completedFrame == null) return false;
 
-            Vector3 offsetPos = wallPosition + wallRotation * Vector3.forward * 0.005f;
-            Transform clone = Instantiate(_completedFrame, offsetPos, wallRotation);
-            clone.name = _completedFrame.name + "_VRPlaced";
-            clone.SetParent(null);
+            float boardW = 0.5f, boardH = 0.5f;
+            puzzleBoard?.GetBoardDimensions(out boardW, out boardH);
 
-            var grabbable = clone.GetComponent<GrabbableFrame>();
-            if (grabbable != null) Destroy(grabbable);
-            var col = clone.GetComponent<BoxCollider>();
-            if (col != null) Destroy(col);
-            foreach (var p in clone.GetComponentsInChildren<PuzzlePiece>())
-                Destroy(p);
+            Vector3 offsetPos = wallPosition + wallRotation * Vector3.forward * 0.02f;
+            GameObject artworkGO = PlacedArtworkFactory.Build(
+                _currentArtworkId, _currentFrameTier, boardW, boardH, artworkCatalog);
+            artworkGO.transform.SetPositionAndRotation(offsetPos, wallRotation);
 
-            SavePainting(offsetPos, wallRotation);
-            galleryController?.RegisterPlacedPainting(clone.gameObject);
+            Debug.Log($"[VRWallHanging] Placed at worldPos={offsetPos:F2}. Teleport near X={offsetPos.x:F1} Z={offsetPos.z:F1}");
+
+            SavePainting(offsetPos, wallRotation, boardW, boardH);
+            galleryController?.RegisterPlacedPainting(artworkGO);
 
             OnFramePlaced?.Invoke();
             return true;
@@ -166,7 +168,7 @@ namespace ArtUnbound.VR
             if (FindNearbyVRWall(dragPosition, out Vector3 wallPos, out Quaternion wallRot))
             {
                 _ghostInstance.SetActive(true);
-                Vector3 previewPos = wallPos + wallRot * Vector3.forward * 0.005f;
+                Vector3 previewPos = wallPos + wallRot * Vector3.forward * 0.02f;
                 _ghostInstance.transform.SetPositionAndRotation(previewPos, wallRot);
             }
             else
@@ -178,6 +180,55 @@ namespace ArtUnbound.VR
         // ─── Internal ─────────────────────────────────────────────────────────
 
         private void HandleFrameGrabbed()
+        {
+            OnFrameGrabbed?.Invoke();
+        }
+
+        /// <summary>Controller mode: raycast from pointer ray to a VR wall.</summary>
+        public bool RaycastToWall(Ray ray, out Vector3 wallPos, out Quaternion wallRot)
+        {
+            wallPos = Vector3.zero;
+            wallRot = Quaternion.identity;
+
+            // Primary: VRWall layer (requires scene objects tagged with VRWall layer)
+            if (vrWallLayerMask.value != 0 &&
+                Physics.Raycast(ray, out RaycastHit hit, wallRaycastDistance, vrWallLayerMask))
+            {
+                wallPos = hit.point;
+                wallRot = Quaternion.LookRotation(hit.normal, Vector3.up);
+                Debug.Log($"[VRWall-Ray] HIT (VRWall) '{hit.collider.name}' dist={hit.distance:F2}m");
+                return true;
+            }
+
+            // Fallback: all layers except PuzzlePiece/UI, filtered by surface normal
+            // wall-like surfaces have a mostly-horizontal normal (small Y component)
+            int puzzleLayer = LayerMask.NameToLayer("PuzzlePiece");
+            int uiLayer     = LayerMask.NameToLayer("UI");
+            LayerMask fallbackMask = ~0;
+            if (puzzleLayer >= 0) fallbackMask &= ~(1 << puzzleLayer);
+            if (uiLayer >= 0)     fallbackMask &= ~(1 << uiLayer);
+
+            if (Physics.Raycast(ray, out RaycastHit fbHit, wallRaycastDistance, fallbackMask))
+            {
+                float normalY = Mathf.Abs(fbHit.normal.y);
+                if (normalY < 0.5f)
+                {
+                    wallPos = fbHit.point;
+                    wallRot = Quaternion.LookRotation(fbHit.normal, Vector3.up);
+                    Debug.Log($"[VRWall-Ray] HIT (fallback) '{fbHit.collider.name}' layer={LayerMask.LayerToName(fbHit.collider.gameObject.layer)} dist={fbHit.distance:F2}m normalY={normalY:F2}");
+                    return true;
+                }
+            }
+
+            RaycastHit[] allHits = Physics.RaycastAll(ray, wallRaycastDistance);
+            Debug.Log($"[VRWall-Ray] MISS  maxDist={wallRaycastDistance}m  mask={vrWallLayerMask.value}  origin={ray.origin:F2}  dir={ray.direction:F2}  unmasked_hits={allHits.Length}");
+            foreach (var h in allHits)
+                Debug.Log($"[VRWall-Ray]   hit '{h.collider.name}' layer={LayerMask.LayerToName(h.collider.gameObject.layer)} dist={h.distance:F2}m normalY={h.normal.y:F2}");
+            return false;
+        }
+
+        /// <summary>Controller mode: fires OnFrameGrabbed to hide UI panels when frame is selected.</summary>
+        public void NotifyFrameSelected()
         {
             OnFrameGrabbed?.Invoke();
         }
@@ -194,13 +245,22 @@ namespace ArtUnbound.VR
                 (Vector3.back + Vector3.right).normalized, (Vector3.back + Vector3.left).normalized
             };
 
+            // Fallback mask excludes puzzle/UI layers when VRWall layer is not configured
+            int puzzleLayer = LayerMask.NameToLayer("PuzzlePiece");
+            int uiLayer     = LayerMask.NameToLayer("UI");
+            LayerMask fallbackMask = ~0;
+            if (puzzleLayer >= 0) fallbackMask &= ~(1 << puzzleLayer);
+            if (uiLayer >= 0)     fallbackMask &= ~(1 << uiLayer);
+            LayerMask activeMask = vrWallLayerMask.value != 0 ? vrWallLayerMask : fallbackMask;
+
             foreach (var dir in directions)
             {
-                if (Physics.Raycast(origin, dir, out RaycastHit hit, wallProximityRadius, vrWallLayerMask))
+                if (Physics.Raycast(origin, dir, out RaycastHit hit, wallProximityRadius, activeMask))
                 {
+                    if (activeMask == fallbackMask && Mathf.Abs(hit.normal.y) >= 0.5f)
+                        continue; // skip floors/ceilings in fallback mode
                     wallPos = hit.point;
-                    // Rotation: face away from wall (toward user side)
-                    wallRot = Quaternion.LookRotation(-hit.normal, Vector3.up);
+                    wallRot = Quaternion.LookRotation(hit.normal, Vector3.up);
                     return true;
                 }
             }
@@ -208,14 +268,18 @@ namespace ArtUnbound.VR
             return false;
         }
 
-        private void SavePainting(Vector3 position, Quaternion rotation)
+        private void SavePainting(Vector3 position, Quaternion rotation,
+                                   float boardW = 0.5f, float boardH = 0.5f)
         {
             if (_persistenceService == null || galleryController == null) return;
 
             var data = new GalleryPaintingData
             {
-                artworkId = _currentArtworkId,
-                difficultyIndex = _currentDifficultyIndex
+                artworkId       = _currentArtworkId,
+                difficultyIndex = _currentDifficultyIndex,
+                boardWidth      = boardW,
+                boardHeight     = boardH,
+                frameTier       = _currentFrameTier
             };
             data.Position = position;
             data.Rotation = rotation;

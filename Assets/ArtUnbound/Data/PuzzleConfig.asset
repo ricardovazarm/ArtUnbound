@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PuzzleConfig
   m_EditorClassIdentifier: Assembly-CSharp::ArtUnbound.Data.PuzzleConfig
   boardMaxSizeM: 0.6
-  maxPieceSizeM: 0.05
-  minPieceSizeM: 0.03
+  maxPieceSizeM: 0.08
+  minPieceSizeM: 0.04
   snapDistanceCm: 3
   maxDepthToPlaneCm: 4
   pinchRangeCm: 1
@@ -25,9 +25,9 @@ MonoBehaviour:
   trayViewportWidthCm: 45
   trayViewportHeightCm: 45
   trayRotationY: 20
-  trayOffsetX: 0.6
+  trayOffsetX: 0.55
   trayOffsetY: 0
   trayOffsetZ: 0.06
   trayScrollSpeed: 0.3
   trayScrollSmoothing: 10
-  trayCellMargin: 2
+  trayCellMargin: 1.6

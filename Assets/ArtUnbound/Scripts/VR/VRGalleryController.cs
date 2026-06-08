@@ -14,6 +14,7 @@ namespace ArtUnbound.VR
     {
         [Header("Data")]
         [SerializeField] private GalleryCatalog galleryCatalog;
+        [SerializeField] private ArtUnbound.Data.ArtworkCatalog artworkCatalog;
 
         [Header("Painting Prefab")]
         [Tooltip("Prefab used to display a hung painting in the gallery. Needs a renderer and PlacedArtworkIdentifier.")]
@@ -34,8 +35,22 @@ namespace ArtUnbound.VR
         private string _activeGalleryId;
         private List<GameObject> _spawnedPaintings = new List<GameObject>();
 
+        private Vector3 _originalRigPos;
+        private Quaternion _originalRigRot;
+        private bool _hasOriginalRig;
+
         private void Awake()
         {
+            // Cache the rig's initial position so we can restore it when leaving VR.
+            // With a single rig (post XR Origin VR removal), the same rig that
+            // teleports to the gallery spawn must return to the MR origin.
+            if (xrOrigin != null)
+            {
+                _originalRigPos = xrOrigin.position;
+                _originalRigRot = xrOrigin.rotation;
+                _hasOriginalRig = true;
+            }
+
             gameObject.SetActive(false);
         }
 
@@ -104,6 +119,12 @@ namespace ArtUnbound.VR
                 if (p != null) Destroy(p);
             _spawnedPaintings.Clear();
 
+            // Restore rig to its original (MR) position. The same rig that was
+            // teleported to the gallery spawn must return to origin so the
+            // user reappears in their physical space.
+            if (_hasOriginalRig && xrOrigin != null)
+                xrOrigin.SetPositionAndRotation(_originalRigPos, _originalRigRot);
+
             _activeGalleryId = null;
             Debug.Log("[VRGallery] Gallery unloaded");
         }
@@ -117,50 +138,67 @@ namespace ArtUnbound.VR
 
         /// <summary>
         /// Garantiza que cualquier GameObject en la galeria con layer "Teleportable" tenga TeleportationArea
-        /// y este wireado al TeleportationProvider activo. Algunas galerias importadas (ej: Lumina, AK Studio Art)
-        /// traen el piso con MeshCollider pero sin TeleportationArea, lo que hace que el rayo del teleport
-        /// se vea rojo (destino invalido).
+        /// y este wireado al TeleportationProvider del rig activo. Algunas galerias importadas (ej: Lumina,
+        /// AK Studio Art) traen el piso con MeshCollider pero sin TeleportationArea, lo que hace que el
+        /// rayo del teleport se vea rojo (destino invalido).
         /// </summary>
         private void EnsureTeleportableFloors(GameObject root)
         {
             int teleportableLayer = LayerMask.NameToLayer("Teleportable");
             if (teleportableLayer < 0) return;
 
-            // Importante: hay multiples TeleportationProvider en escena (uno en MR rig, uno en VR rig).
-            // Filtrar por el que vive bajo XR Origin (VR) — ese es el que esta wireado al
-            // LocomotionMediator activo en VR mode. FindFirstObjectByType retorna cualquiera y
-            // puede caer en el de MR (INACTIVO en VR), bloqueando el teleport.
+            // Use the Locomotion/Teleportation path specifically to avoid accidentally
+            // picking up any stray TeleportationProvider that may be on the XR Origin root.
             TeleportationProvider provider = null;
-            var allProviders = FindObjectsByType<TeleportationProvider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            foreach (var p in allProviders)
+            if (xrOrigin != null)
             {
-                var t = p.transform;
-                while (t != null)
-                {
-                    if (t.name == "XR Origin (VR)") { provider = p; break; }
-                    t = t.parent;
-                }
-                if (provider != null) break;
+                var locomotion = xrOrigin.Find("Locomotion");
+                if (locomotion != null)
+                    provider = locomotion.GetComponentInChildren<TeleportationProvider>(includeInactive: true);
+                // Fallback in case the hierarchy differs
+                if (provider == null)
+                    provider = xrOrigin.GetComponentInChildren<TeleportationProvider>(includeInactive: true);
             }
 
             // XRI Interaction Layer "Teleport" = bit 31. Mantiene la separacion convencional
             // entre interactables de teleport y los demas (UI, grab, etc).
             int teleportInteractionLayer = UnityEngine.XR.Interaction.Toolkit.InteractionLayerMask.GetMask("Teleport");
 
+            int addedCount = 0;
             var meshColliders = root.GetComponentsInChildren<MeshCollider>(true);
             foreach (var mc in meshColliders)
             {
-                if (mc.gameObject.layer != teleportableLayer) continue;
+                if (teleportableLayer >= 0 && mc.gameObject.layer != teleportableLayer) continue;
                 var area = mc.GetComponent<BaseTeleportationInteractable>();
                 if (area == null)
                 {
                     area = mc.gameObject.AddComponent<TeleportationArea>();
                     if (teleportInteractionLayer != 0)
                         area.interactionLayers = teleportInteractionLayer;
+                    addedCount++;
                 }
                 if (provider != null)
                     area.teleportationProvider = provider;
             }
+
+            // Fallback: gallery prefabs from the Asset Store typically don't assign a custom
+            // Unity layer to their floors. Wire all MeshColliders so the teleport arc always
+            // has valid destinations without requiring manual layer setup on every gallery prefab.
+            if (addedCount == 0)
+            {
+                foreach (var mc in meshColliders)
+                {
+                    if (mc.GetComponent<BaseTeleportationInteractable>() != null) continue;
+                    var area = mc.gameObject.AddComponent<TeleportationArea>();
+                    if (teleportInteractionLayer != 0)
+                        area.interactionLayers = teleportInteractionLayer;
+                    if (provider != null)
+                        area.teleportationProvider = provider;
+                    addedCount++;
+                }
+            }
+
+            Debug.Log($"[VRGallery] EnsureTeleportableFloors: added {addedCount} TeleportationArea(s), provider={(provider != null ? provider.gameObject.name : "NULL")}, interactionLayer={teleportInteractionLayer}");
         }
 
         private void TeleportToSpawnPoint(GameObject galleryInstance)
@@ -177,19 +215,20 @@ namespace ArtUnbound.VR
 
         private void SpawnSavedPaintings(string galleryId)
         {
-            if (_persistenceService == null || galleryPaintingPrefab == null) return;
+            if (_persistenceService == null) return;
 
             var paintings = _persistenceService.GetPaintings(galleryId);
             foreach (var data in paintings)
             {
-                var go = Instantiate(galleryPaintingPrefab, data.Position, data.Rotation);
+                float w = data.boardWidth  > 0f ? data.boardWidth  : 0.5f;
+                float h = data.boardHeight > 0f ? data.boardHeight : 0.5f;
 
-                var identifier = go.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
-                if (identifier == null)
-                    identifier = go.AddComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
-                identifier.artworkId = data.artworkId;
+                var go = PlacedArtworkFactory.Build(
+                    data.artworkId, data.frameTier, w, h, artworkCatalog);
+                go.transform.SetPositionAndRotation(data.Position, data.Rotation);
 
                 _spawnedPaintings.Add(go);
+                Debug.Log($"[VRGallery] Spawned saved painting '{data.artworkId}' at {data.Position:F2}");
             }
         }
 

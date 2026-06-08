@@ -144,7 +144,7 @@ namespace ArtUnbound.UI
             for (int i = 0; i < _pieces.Count; i++)
             {
                 var p = _pieces[i];
-                if (p == null || p.CurrentState == PieceState.Placed) continue;
+                if (p == null || !p.gameObject.activeSelf || p.CurrentState == PieceState.Placed) continue;
                 Vector3 slot = GetLocalGridPosition(i);
                 if (Mathf.Abs(local.x - slot.x) <= halfCell &&
                     Mathf.Abs(local.y - slot.y) <= halfCell)
@@ -225,8 +225,9 @@ namespace ArtUnbound.UI
                 p.transform.localPosition = localPos;
                 p.SetPoolPosition(p.transform.position);
 
-                bool inViewport = localPos.y + halfCell > -halfView
-                               && localPos.y - halfCell <  halfView;
+                // Strict boundary: piece must be fully within viewport (no partial clipping)
+                bool inViewport = localPos.y - halfCell >= -halfView
+                               && localPos.y + halfCell <=  halfView;
 
                 if (p.gameObject.activeSelf != inViewport)
                     p.gameObject.SetActive(inViewport);

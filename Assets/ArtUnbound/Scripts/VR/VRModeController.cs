@@ -1,6 +1,10 @@
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Turning;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 namespace ArtUnbound.VR
 {
@@ -19,8 +23,6 @@ namespace ArtUnbound.VR
         [SerializeField] private ARAnchorManager arAnchorManager;
 
         [Header("MR Systems")]
-        [Tooltip("AudioListener del MR Main Camera. Se desactiva en VR para evitar el warning de '2 audio listeners'.")]
-        [SerializeField] private AudioListener mrAudioListener;
         [SerializeField] private MonoBehaviour spatialPermissionService;
         [SerializeField] private MonoBehaviour wallPlacementDetector;
         [SerializeField] private MonoBehaviour wallAnchorManager;
@@ -30,11 +32,22 @@ namespace ArtUnbound.VR
 
         [Header("VR Systems")]
         [SerializeField] private VRGalleryController vrGalleryController;
-        [Tooltip("XR Origin (VR) root. Contiene Locomotion + LeftHand + Teleport Interactor (XRI nativo). Se activa entero al entrar a VR.")]
-        [SerializeField] private GameObject xrOriginVR;
         [SerializeField] private VRWallHangingController vrWallHangingController;
 
-        [Tooltip("MR Interaction Setup > XR Origin (XR Rig). Se desactiva entero en VR mode para evitar que sus interactores (Near-Far, Poke, Teleport del controlador MR) sigan renderizando rayos y compitan con el VR.")]
+        [Header("MR Rig VR Locomotion")]
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig)/Locomotion/Teleportation. Se enciende solo en VR.")]
+        [SerializeField] private GameObject mrTeleportationGO;
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig)/Locomotion/Turn (SnapTurnProvider). Se enciende solo en VR.")]
+        [SerializeField] private GameObject mrSnapTurnGO;
+        [Tooltip("MR Interaction Setup > XR Origin (XR Rig)/Camera Offset/Left Controller/Teleport Interactor. Se enciende solo en VR.")]
+        [SerializeField] private GameObject mrLeftTeleportInteractorGO;
+
+        [Header("Obsolete (kept for migration; remove after full consolidation)")]
+        [Tooltip("OBSOLETO: el rig VR se eliminara. No se toca en runtime.")]
+        [SerializeField] private GameObject xrOriginVR;
+        [Tooltip("OBSOLETO: la camara VR se eliminara. No se toca en runtime.")]
+        [SerializeField] private Camera vrCamera;
+        [Tooltip("OBSOLETO: ya no se desactiva el MR rig.")]
         [SerializeField] private GameObject mrXrRig;
 
         [Header("VR Skybox")]
@@ -44,6 +57,7 @@ namespace ArtUnbound.VR
         public Camera MainCamera => mainCamera;
 
         private Material _originalSkybox;
+        private VRSnapTurnController _snapTurnController;
 
         private void Awake()
         {
@@ -51,6 +65,7 @@ namespace ArtUnbound.VR
 
             // VR systems start disabled
             SetVRSystemsActive(false);
+            SetMRLocomotionForVR(false);
         }
 
         public void ActivateVRMode()
@@ -87,7 +102,6 @@ namespace ArtUnbound.VR
             // so we don't accidentally deactivate parent GameObjects that contain Main Camera.
             if (arPlaneManager != null) arPlaneManager.enabled = false;
             if (arAnchorManager != null) arAnchorManager.enabled = false;
-            if (mrAudioListener != null) mrAudioListener.enabled = false;
             if (spatialPermissionService != null) spatialPermissionService.enabled = false;
             if (wallPlacementDetector != null) wallPlacementDetector.enabled = false;
             if (wallAnchorManager != null) wallAnchorManager.enabled = false;
@@ -97,6 +111,7 @@ namespace ArtUnbound.VR
 
             // Enable VR systems
             SetVRSystemsActive(true);
+            SetMRLocomotionForVR(true);
 
             Debug.Log("[VRModeController] VR Mode activated");
         }
@@ -121,7 +136,6 @@ namespace ArtUnbound.VR
             // Re-enable MR systems
             if (arPlaneManager != null) arPlaneManager.enabled = true;
             if (arAnchorManager != null) arAnchorManager.enabled = true;
-            if (mrAudioListener != null) mrAudioListener.enabled = true;
             if (spatialPermissionService != null) spatialPermissionService.enabled = true;
             if (wallPlacementDetector != null) wallPlacementDetector.enabled = true;
             if (wallAnchorManager != null) wallAnchorManager.enabled = true;
@@ -130,6 +144,7 @@ namespace ArtUnbound.VR
             if (wallDetectionService != null) wallDetectionService.enabled = true;
 
             // Disable VR systems
+            SetMRLocomotionForVR(false);
             SetVRSystemsActive(false);
 
             Debug.Log("[VRModeController] VR Mode deactivated — MR restored");
@@ -138,10 +153,72 @@ namespace ArtUnbound.VR
         private void SetVRSystemsActive(bool active)
         {
             if (vrGalleryController != null) vrGalleryController.gameObject.SetActive(active);
-            if (xrOriginVR != null) xrOriginVR.SetActive(active);
             if (vrWallHangingController != null) vrWallHangingController.gameObject.SetActive(active);
-            // El MR rig hace lo opuesto: activo en MR, inactivo en VR.
-            if (mrXrRig != null) mrXrRig.SetActive(!active);
+        }
+
+        private void SetMRLocomotionForVR(bool active)
+        {
+            if (mrTeleportationGO != null) mrTeleportationGO.SetActive(active);
+            if (mrSnapTurnGO != null)
+            {
+                mrSnapTurnGO.SetActive(active);
+                if (active) WireSnapTurnMediator();
+            }
+            if (mrLeftTeleportInteractorGO != null)
+            {
+                var leftController = mrLeftTeleportInteractorGO.transform.parent?.gameObject;
+                if (leftController != null)
+                {
+                    leftController.SetActive(active);
+                    var ciam = leftController.GetComponent<ControllerInputActionManager>();
+                    if (ciam != null) ciam.smoothMotionEnabled = !active;
+                }
+            }
+
+            EnsureSnapTurnController();
+            if (_snapTurnController != null) _snapTurnController.enabled = active;
+        }
+
+        private void EnsureSnapTurnController()
+        {
+            if (_snapTurnController == null)
+                _snapTurnController = gameObject.GetComponent<VRSnapTurnController>()
+                    ?? gameObject.AddComponent<VRSnapTurnController>();
+
+            if (_snapTurnController.xrOrigin != null) return;
+
+            XROrigin origin = null;
+            if (mainCamera != null)
+                origin = mainCamera.GetComponentInParent<XROrigin>();
+            if (origin == null && mrTeleportationGO != null)
+                origin = mrTeleportationGO.GetComponentInParent<XROrigin>(includeInactive: true);
+
+            _snapTurnController.xrOrigin = origin;
+            if (origin != null)
+                Debug.Log($"[VRModeController] VRSnapTurnController -> XROrigin '{origin.gameObject.name}'");
+            else
+                Debug.LogWarning("[VRModeController] VRSnapTurnController: no se encontro XROrigin");
+        }
+
+        private void WireSnapTurnMediator()
+        {
+            var snapTurn = mrSnapTurnGO.GetComponent<SnapTurnProvider>();
+            if (snapTurn == null || snapTurn.mediator != null) return;
+
+            // Busca el LocomotionMediator en el mismo nivel o padre del SnapTurnProvider.
+            var mediator = mrSnapTurnGO.GetComponentInParent<LocomotionMediator>(includeInactive: true);
+            if (mediator == null && mrTeleportationGO != null)
+                mediator = mrTeleportationGO.GetComponentInParent<LocomotionMediator>(includeInactive: true);
+
+            if (mediator != null)
+            {
+                snapTurn.mediator = mediator;
+                Debug.Log($"[VRModeController] SnapTurnProvider wireado a mediator '{mediator.gameObject.name}'");
+            }
+            else
+            {
+                Debug.LogWarning("[VRModeController] No se encontro LocomotionMediator para SnapTurnProvider");
+            }
         }
     }
 }

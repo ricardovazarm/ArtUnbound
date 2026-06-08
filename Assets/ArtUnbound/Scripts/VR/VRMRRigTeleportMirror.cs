@@ -3,30 +3,22 @@ using UnityEngine;
 namespace ArtUnbound.VR
 {
     /// <summary>
-    /// Espeja la posicion del root del MR XR Rig sobre la del VR XR Origin mientras VR mode esta activo.
+    /// Restaura la posicion del MR XR Origin al salir de VR mode.
     ///
-    /// Contexto: en VR mode el MR rig se deja prendido (desactivarlo rompe el teleport por dependencias
-    /// del XR Interaction Toolkit). Pero los widgets visibles de los controllers/manos (Right Controller,
-    /// Left Controller, Right Hand, Left Hand, etc.) son TrackedPoseDriver-driven y se posicionan relativo
-    /// al MR XR Origin que esta fijo en (0,0,0). Despues de teleportar, el VR XR Origin se mueve pero el
-    /// MR no, asi que los widgets quedan anclados al lugar original.
-    ///
-    /// Solucion: mientras VR este activo, copiamos la posicion del VR XR Origin al MR XR Origin cada
-    /// LateUpdate. Como los TrackedPoseDriver corren en Update + BeforeRender y leen el world transform
-    /// de su parent (el MR origin), al moverlo arrastramos a todos los widgets sin pelear con el sistema
-    /// de tracking. Al salir de VR restauramos la posicion original del MR origin.
-    ///
-    /// El MR rig en si NO se desactiva, asi que no se rompe nada del setup XRI.
+    /// NOTA POST-CONSOLIDACION: el VR XR Origin fue eliminado; el MR rig ahora ES el rig VR y se
+    /// mueve directamente via VRTeleportActivator. Este script ya NO debe copiar ninguna posicion
+    /// externa sobre el MR rig (eso resetearia el teleport cada LateUpdate). Su unica funcion
+    /// restante es cachear la posicion MR antes de entrar a VR y restaurarla al salir.
     /// </summary>
     public class VRMRRigTeleportMirror : MonoBehaviour
     {
-        [Tooltip("Transform raiz del MR XR Origin (XR Rig). Su posicion se sobrescribe cuando VR esta activo.")]
+        [Tooltip("Transform raiz del MR XR Origin (XR Rig). Se restaura a su posicion original al salir de VR.")]
         [SerializeField] private Transform mrXROrigin;
 
-        [Tooltip("Transform raiz del XR Origin (VR). Su posicion es la fuente del mirror.")]
+        [Tooltip("OBSOLETO: ya no se usa para mirroring. Mantenido para no perder la referencia en escena.")]
         [SerializeField] private Transform vrXROrigin;
 
-        [Tooltip("VRModeController que indica si VR esta activo. Si es null, se usa activeInHierarchy del VR origin.")]
+        [Tooltip("VRModeController que indica si VR esta activo.")]
         [SerializeField] private VRModeController vrModeController;
 
         private Vector3 _mrOriginalPos;
@@ -46,22 +38,23 @@ namespace ArtUnbound.VR
 
         private void LateUpdate()
         {
-            if (mrXROrigin == null || vrXROrigin == null) return;
+            if (mrXROrigin == null) return;
 
             bool vrActive = vrModeController != null
                 ? vrModeController.IsVRMode
-                : vrXROrigin.gameObject.activeInHierarchy;
+                : (vrXROrigin != null && vrXROrigin.gameObject.activeInHierarchy);
 
             if (vrActive)
             {
+                // Cachear posicion MR al entrar a VR por primera vez en esta sesion.
+                // NO copiar nada sobre el MR rig: VRTeleportActivator lo mueve directamente
+                // y sobreescribirlo aqui cancelaria el teleport cada frame.
                 if (!_isMirroring && _hasOriginal)
                 {
                     _mrOriginalPos = mrXROrigin.position;
                     _mrOriginalRot = mrXROrigin.rotation;
                     _isMirroring = true;
                 }
-
-                mrXROrigin.SetPositionAndRotation(vrXROrigin.position, vrXROrigin.rotation);
             }
             else if (_isMirroring && _hasOriginal)
             {

@@ -31,6 +31,8 @@ namespace ArtUnbound.MR
         // artworkId → the frame GameObject parented to the anchor
         private Dictionary<string, GameObject> spawnedArtworks = new Dictionary<string, GameObject>();
 
+        private bool _mrArtworksVisible = true;
+
         public event Action<string, Vector3> OnArtworkAnchored; // artworkId, position
 
         private void Awake()
@@ -275,7 +277,26 @@ namespace ArtUnbound.MR
             else
                 Debug.LogWarning($"[WallAnchor] Anchor did not localize after {timeout}s for {artworkId}, showing anyway");
 
-            artworkRoot.SetActive(true);
+            artworkRoot.SetActive(_mrArtworksVisible);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
+        //  VISIBILITY (MR ↔ VR mode switch)
+        // ─────────────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Shows or hides all MR-placed artworks. Call with false when entering VR mode,
+        /// true when returning to MR. Newly localized anchors respect this flag too.
+        /// </summary>
+        public void SetMRVisible(bool visible)
+        {
+            _mrArtworksVisible = visible;
+            foreach (var kvp in spawnedArtworks)
+            {
+                if (kvp.Value != null)
+                    kvp.Value.SetActive(visible);
+            }
+            Debug.Log($"[WallAnchor] MR artworks {(visible ? "shown" : "hidden")} ({spawnedArtworks.Count} objects)");
         }
 
         // ─────────────────────────────────────────────────────────────────────

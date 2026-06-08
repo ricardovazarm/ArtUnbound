@@ -109,7 +109,6 @@ namespace ArtUnbound.Core
                 return;
             }
 
-            ApplyButtonTheme(); // Apply base theme first so filter/tab-specific colors aren't overwritten
             InitializeServices();
             HideAllPanels(); // Ensure clean state immediately
             LoadData();
@@ -360,7 +359,7 @@ namespace ArtUnbound.Core
 
         // ─── VR Gallery Transitions ───────────────────────────────────────────
 
-        public void TransitionToVRGallery()
+        public void TransitionToVRGallery(bool reloadGallery = true)
         {
             SetState(GameState.VRGallery);
             HideAllPanels();
@@ -368,12 +367,19 @@ namespace ArtUnbound.Core
             if (vrModeController != null && !vrModeController.IsVRMode)
                 vrModeController.ActivateVRMode();
 
+            // Hide MR-placed artworks — they live in real-world space and should not
+            // appear inside the VR gallery environment.
+            wallAnchorManager?.SetMRVisible(false);
+
             // Ensure canvas is visible for the VR navigation panel
             if (mainUICanvas != null)
                 mainUICanvas.gameObject.SetActive(true);
 
-            string galleryId = SaveData?.lastGalleryId ?? "gallery_classic";
-            vrGalleryController?.LoadGallery(galleryId);
+            if (reloadGallery)
+            {
+                string galleryId = SaveData?.lastGalleryId ?? "gallery_classic";
+                vrGalleryController?.LoadGallery(galleryId);
+            }
 
             // Show NativeGallery as the navigation panel in VR
             if (audioManager != null)
@@ -386,9 +392,10 @@ namespace ArtUnbound.Core
                 if (_nativeGalleryOriginalParent == null)
                     _nativeGalleryOriginalParent = nativeGallery.transform.parent;
                 // worldPositionStays:true preserves the panel's current world position
-                // so it doesn't snap to origin when detached from the canvas parent.
+                // so it stays at the same spot the user saw it in MR.
+                // Do NOT call ResetPosition() here — keeping _hasBeenPositioned=true
+                // prevents PositionAndReveal from recalculating and shifting the panel.
                 nativeGallery.transform.SetParent(null, worldPositionStays: true);
-                nativeGallery.ResetPosition();
 
                 nativeGallery.SetVRButtonsMode(true, _isQuest3OrPro);
                 if (vrModeController != null)
@@ -424,8 +431,8 @@ namespace ArtUnbound.Core
             if (nativeGallery != null && _nativeGalleryOriginalParent != null)
                 nativeGallery.transform.SetParent(_nativeGalleryOriginalParent, worldPositionStays: true);
 
-            // Force repositioning in front of user when the menu shows in MR
-            nativeGallery?.ResetPosition();
+            // Restore MR-placed artworks now that passthrough is back.
+            wallAnchorManager?.SetMRVisible(true);
 
             SetupCameraForPassthrough();
             TransitionToMainMenu();
@@ -438,6 +445,18 @@ namespace ArtUnbound.Core
         /// </summary>
         private void OnUnifiedMenuStartPuzzle(string artworkId, int difficultyIndex)
         {
+            // Defensa: nunca iniciar un puzzle de una obra bloqueada (no gratis y catalogo
+            // no comprado). El detail panel ya lo previene en la UI; esto es respaldo.
+            if (packPurchaseService != null)
+            {
+                var artwork = localCatalogService?.GetById(artworkId);
+                if (packPurchaseService.IsArtworkLocked(artwork))
+                {
+                    Debug.LogWarning($"[GameBootstrap] Obra bloqueada, no se inicia puzzle: {artworkId}");
+                    return;
+                }
+            }
+
             selectedArtworkId = artworkId;
             selectedDifficultyIndex = difficultyIndex;
             selectedPieceCount = 0; // Will be set by PuzzleBoard.TotalPieces after Initialize.
@@ -922,10 +941,10 @@ namespace ArtUnbound.Core
         private void OnFrameGrabbed()
         {
             Debug.Log("[GameBootstrap] Frame grabbed - hiding UI, placement mode active");
-            
+
             // NOW hide UI panels to allow free movement
             HideAllPanels();
-            
+
             // Play haptic feedback
             if (hapticController != null)
             {
@@ -1020,7 +1039,9 @@ namespace ArtUnbound.Core
             }
 
             CleanupArtworkHanging();
-            TransitionToVRGallery();
+            // Gallery is already loaded — only show the UI, don't reload (avoids
+            // teleporting user back to spawn point and destroying the just-placed frame).
+            TransitionToVRGallery(reloadGallery: false);
         }
 
         private void CleanupArtworkHanging()
@@ -1105,14 +1126,6 @@ namespace ArtUnbound.Core
         }
 
         #endregion
-
-        private void ApplyButtonTheme()
-        {
-            if (mainUICanvas != null)
-                ArtUnbound.UI.UIButtonTheme.ApplyToAllIn(mainUICanvas);
-            if (puzzleBoard != null)
-                ArtUnbound.UI.UIButtonTheme.ApplyToAllIn(puzzleBoard.transform);
-        }
 
         private void HideAllPanels()
         {

@@ -13,6 +13,7 @@ namespace ArtUnbound.UI
     ///   ArtworkCard (Button, 220×270 en canvas-units)
     ///     ├── Thumbnail      (Image, stretch-stretch, Bottom:50, preserveAspect, raycastTarget=OFF)
     ///     ├── Title          (TMP Bold blanco, bottom-stretch H:50, raycastTarget=OFF)
+    ///     ├── Author         (TMP_Text, raycastTarget=OFF)
     ///     └── CompletedBadge (Image, top-right, sprite swapped to medal based on FrameTier, raycastTarget=OFF)
     /// </summary>
     [RequireComponent(typeof(Button))]
@@ -20,7 +21,14 @@ namespace ArtUnbound.UI
     {
         [SerializeField] private Image       thumbnailImage;
         [SerializeField] private TMP_Text    titleText;
+        [SerializeField] private TMP_Text    authorText;
         [SerializeField] private GameObject  completedBadge;
+
+        [Tooltip("Icono de candado mostrado cuando la obra esta bloqueada (no gratis y catalogo no comprado).")]
+        [SerializeField] private GameObject  lockBadge;
+
+        [Tooltip("Color aplicado al thumbnail cuando la obra esta bloqueada (atenuado).")]
+        [SerializeField] private Color       lockedTint = new Color(0.45f, 0.45f, 0.45f, 1f);
 
         private Button                        _button;
         private Image                         _completedBadgeImage;
@@ -48,7 +56,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void Setup(ArtworkDefinition artwork, FrameTier bestTier,
                           Sprite bronzeMedal, Sprite silverMedal, Sprite goldMedal,
-                          Action<ArtworkDefinition> onTap)
+                          Action<ArtworkDefinition> onTap, bool isLocked = false)
         {
             _artwork = artwork;
             _onTap   = onTap;
@@ -60,11 +68,19 @@ namespace ArtUnbound.UI
                 thumbnailImage.sprite  = sprite;
                 thumbnailImage.enabled = sprite != null;
                 thumbnailImage.preserveAspect = true;
+                thumbnailImage.color   = isLocked ? lockedTint : Color.white;
             }
 
-            // Título
+            // Lock badge: shown when the artwork is locked behind the catalog purchase.
+            if (lockBadge != null)
+                lockBadge.SetActive(isLocked);
+
+            // Título y autor
             if (titleText != null)
                 titleText.text = artwork?.title ?? string.Empty;
+
+            if (authorText != null)
+                authorText.text = artwork?.author ?? string.Empty;
 
             // Badge: pick medal sprite based on highest difficulty completed
             if (completedBadge != null)

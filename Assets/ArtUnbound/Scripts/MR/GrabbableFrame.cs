@@ -40,28 +40,50 @@ namespace ArtUnbound.MR
 
         private void Awake()
         {
-            // Add or get collider for grab detection
             frameCollider = GetComponent<BoxCollider>();
             if (frameCollider == null)
-            {
                 frameCollider = gameObject.AddComponent<BoxCollider>();
-                frameCollider.size = new Vector3(0.5f, 0.5f, 0.05f); // Approximate frame size
-            }
-            
-            // Start with collider disabled
+
+            FitColliderToRenderers();
+
             frameCollider.enabled = false;
-            
-            // Set to same layer as puzzle pieces so InteractionManager can detect it
+
             int puzzlePieceLayer = LayerMask.NameToLayer("PuzzlePiece");
             if (puzzlePieceLayer >= 0)
-            {
                 gameObject.layer = puzzlePieceLayer;
-                Debug.Log($"[GrabbableFrame] Set to PuzzlePiece layer ({puzzlePieceLayer})");
-            }
             else
+                Debug.LogWarning($"[GrabbableFrame] PuzzlePiece layer not found! layer={LayerMask.LayerToName(gameObject.layer)}");
+        }
+
+        private void FitColliderToRenderers()
+        {
+            var renderers = GetComponentsInChildren<Renderer>(includeInactive: true);
+            if (renderers.Length == 0)
             {
-                Debug.LogWarning($"[GrabbableFrame] PuzzlePiece layer not found! Current layer: {LayerMask.LayerToName(gameObject.layer)} ({gameObject.layer})");
+                frameCollider.center = Vector3.zero;
+                frameCollider.size = new Vector3(0.5f, 0.5f, 0.05f);
+                Debug.LogWarning("[GrabbableFrame] No renderers found; using fallback collider size");
+                return;
             }
+
+            Bounds world = renderers[0].bounds;
+            for (int i = 1; i < renderers.Length; i++)
+                world.Encapsulate(renderers[i].bounds);
+
+            // Convert world-space AABB to local space.
+            // Cap Z depth to 0.05m world-space: child renderers (puzzle pieces in tray)
+            // inflate the bounding box in Z, causing the collider to engulf the controller
+            // position and making Physics.RaycastAll return 0 hits (ray starts inside collider).
+            frameCollider.center = transform.InverseTransformPoint(world.center);
+            Vector3 s = transform.lossyScale;
+            const float maxWorldDepth = 0.05f;
+            float localZ = Mathf.Abs(s.z) > 0.001f ? maxWorldDepth / Mathf.Abs(s.z) : maxWorldDepth;
+            frameCollider.size = new Vector3(
+                world.size.x / s.x,
+                world.size.y / s.y,
+                localZ);
+
+            Debug.Log($"[GrabbableFrame] Collider fit to renderers: center={frameCollider.center} size={frameCollider.size}");
         }
 
         public void StartDrag(Vector3 pinchPosition)

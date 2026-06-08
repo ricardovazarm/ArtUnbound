@@ -66,10 +66,6 @@ namespace ArtUnbound.UI
             {
                 Debug.LogWarning($"[GallerySelectionController] El prefab '{galleryCardPrefab.name}' no tiene GalleryCardUI.");
             }
-
-            // Apply the central theme so spawned cards match the rest of the UI
-            // (transparent rest, semi-brown hover).
-            UIButtonTheme.ApplyTo(go.GetComponent<Button>());
         }
 
         private void OnCardTapped(string galleryId)

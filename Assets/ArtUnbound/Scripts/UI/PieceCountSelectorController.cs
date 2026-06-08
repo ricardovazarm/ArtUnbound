@@ -120,9 +120,9 @@ namespace ArtUnbound.UI
 
         private void UpdateLabels()
         {
-            if (label64 != null) label64.text = "Fácil";
-            if (label144 != null) label144.text = "Normal";
-            if (label256 != null) label256.text = "Difícil";
+            if (label64 != null) label64.text = "A Coffee";
+            if (label144 != null) label144.text = "A Break";
+            if (label256 != null) label256.text = "An Afternoon";
         }
 
         /// <summary>
@@ -130,9 +130,9 @@ namespace ArtUnbound.UI
         /// </summary>
         public static string GetDifficultyLabel(int count)
         {
-            if (count < 100) return "Fácil";
-            if (count < 200) return "Normal";
-            return "Difícil";
+            if (count < 100) return "A Coffee";
+            if (count < 200) return "A Break";
+            return "An Afternoon";
         }
 
         /// <summary>

@@ -46,7 +46,6 @@ namespace ArtUnbound.UI
         private float currentPieceSize = 0.05f; // Current piece size (set by Initialize)
 
         [Header("Pagination (UI)")]
-        [Tooltip("Assign PiecesPanelController to use your UI pagination bar. If null, 3D TrayScrollButtons will be created as fallback.")]
         [SerializeField] private PiecesPanelController panelController;
         [Tooltip("Y rotation (degrees) to align tray with pagination panel. Default 15.")]
         [SerializeField] private float trayRotationY = 15f;
@@ -60,16 +59,6 @@ namespace ArtUnbound.UI
             transform.localPosition = new Vector3(-0.45f, 0f, 0f);
             transform.localRotation = Quaternion.identity;
 
-            if (panelController != null)
-            {
-                var fallback = GetComponent<TrayScrollButtons>();
-                if (fallback != null)
-                    Destroy(fallback); // Prefer UI buttons over 3D fallback
-            }
-            else if (GetComponent<TrayScrollButtons>() == null)
-            {
-                gameObject.AddComponent<TrayScrollButtons>();
-            }
         }
 
         /// <summary>
@@ -128,27 +117,14 @@ namespace ArtUnbound.UI
             UpdateVisibility();
             UpdateButtonStates();
 
-            // Show pieces panel and pagination (PiecesPanelController or 3D TrayScrollButtons)
-            if (panelController != null)
-            {
-                // Apply Y rotation and X offset to align tray with pagination panel
-                transform.localRotation = Quaternion.Euler(0f, trayRotationY, 0f);
-                transform.localPosition += new Vector3(trayOffsetX, 0f, 0f);
-                panelController.Show();
-                // Refresh button states now that the panel is active — the first
-                // UpdateButtonStates() call above ran while the panel was still
-                // inactive, so the Canvas hadn't laid out the buttons yet.
-                UpdateButtonStates();
-            }
-            else
-            {
-                var scrollButtons = GetComponent<TrayScrollButtons>();
-                if (scrollButtons != null)
-                {
-                    scrollButtons.Initialize();
-                    scrollButtons.Show();
-                }
-            }
+            // Apply Y rotation and X offset to align tray with pagination panel
+            transform.localRotation = Quaternion.Euler(0f, trayRotationY, 0f);
+            transform.localPosition += new Vector3(trayOffsetX, 0f, 0f);
+            panelController.Show();
+            // Refresh button states now that the panel is active — the first
+            // UpdateButtonStates() call above ran while the panel was still
+            // inactive, so the Canvas hadn't laid out the buttons yet.
+            UpdateButtonStates();
         }
 
         /// <summary>
@@ -242,16 +218,8 @@ namespace ArtUnbound.UI
             bool upEnabled = totalPages > 1 && canScrollUp;
             bool downEnabled = totalPages > 1 && canScrollDown && currentPage < totalPages;
 
-            if (panelController != null)
-            {
-                panelController.SetPaginationButtonStates(upEnabled, downEnabled);
-                panelController.SetPageIndicator(currentPage, totalPages);
-                return;
-            }
-
-            var scrollButtons = GetComponent<TrayScrollButtons>();
-            if (scrollButtons != null)
-                scrollButtons.SetButtonStates(upEnabled, downEnabled);
+            panelController.SetPaginationButtonStates(upEnabled, downEnabled);
+            panelController.SetPageIndicator(currentPage, totalPages);
         }
 
         private void OnPieceStateChanged(ArtUnbound.Gameplay.PuzzlePiece piece, ArtUnbound.Data.PieceState newState)
@@ -491,15 +459,7 @@ namespace ArtUnbound.UI
         /// </summary>
         public void HideScrollButtons()
         {
-            if (panelController != null)
-            {
-                panelController.Hide();
-                return;
-            }
-
-            var scrollButtons = GetComponent<TrayScrollButtons>();
-            if (scrollButtons != null)
-                scrollButtons.Hide();
+            panelController?.Hide();
         }
     }
 }

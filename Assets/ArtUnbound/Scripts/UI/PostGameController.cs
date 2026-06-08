@@ -1,6 +1,7 @@
 using System;
 using ArtUnbound.Data;
 using ArtUnbound.Gameplay;
+using ArtUnbound.Input;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -30,25 +31,66 @@ namespace ArtUnbound.UI
         [SerializeField] private Sprite goldMedal;
         
         [Header("Hang Artwork Instruction")]
-        [Tooltip("Text that appears above the painting with instruction to pinch and place. Located in a separate panel (center), not in the PostGame panel (right).")]
-        [SerializeField] private GameObject hangInstructionText;  // "Pinch the paint to place it on the wall."
+        [Tooltip("Texto (TMP) que aparece sobre el cuadro (panel central, NO el panel de PostGame de la derecha) con la instruccion de colgarlo. Se muestra solo si se detectaron paredes. El texto cambia segun manos vs control.")]
+        [SerializeField] private TMP_Text hangInstructionText;
+        [Tooltip("HandTrackingInputController para elegir el texto de manos vs control.")]
+        [SerializeField] private HandTrackingInputController inputController;
+        [TextArea(2, 4)]
+        [SerializeField] private string handsHangingInstruction = "Pinch to grab the frame and release it against a wall to hang your masterpiece.";
+        [TextArea(2, 4)]
+        [SerializeField] private string controllerHangingInstruction = "Point and click to select the frame, then click on a wall to hang it.";
 
         [Header("Buttons")]
         [SerializeField] private Button replayButton;
 
         private PuzzleSessionData sessionData;
         private FrameTier awardedFrame;
+        private bool _lastControllerMode;
+        private bool _hangingTextInitialized;
 
         private void Awake()
         {
             if (replayButton != null)
                 replayButton.onClick.AddListener(OnReplayClicked);
 
+            if (inputController == null)
+                inputController = FindFirstObjectByType<HandTrackingInputController>();
+
             // Make sure hang instruction is hidden initially
             if (hangInstructionText != null)
-                hangInstructionText.SetActive(false);
+                hangInstructionText.gameObject.SetActive(false);
 
             Hide();
+        }
+
+        private void Update()
+        {
+            // Mientras la instruccion esta visible, mantenla en el texto correcto segun
+            // el modo de entrada actual (manos vs control), por si el usuario cambia.
+            if (hangInstructionText == null || inputController == null) return;
+            if (!hangInstructionText.gameObject.activeInHierarchy) return;
+
+            bool isController = inputController.HasValidController;
+            if (_hangingTextInitialized && isController == _lastControllerMode) return;
+            _hangingTextInitialized = true;
+            _lastControllerMode = isController;
+            hangInstructionText.text = isController ? controllerHangingInstruction : handsHangingInstruction;
+        }
+
+        /// <summary>
+        /// Aplica de inmediato el texto de instruccion correcto (manos vs control).
+        /// Se llama al mostrar el panel para no esperar al siguiente Update.
+        /// </summary>
+        public void RefreshHangingInstruction()
+        {
+            if (hangInstructionText == null) return;
+            if (inputController == null)
+                inputController = FindFirstObjectByType<HandTrackingInputController>();
+
+            bool isController = inputController != null && inputController.HasValidController;
+            _lastControllerMode = isController;
+            _hangingTextInitialized = true;
+            hangInstructionText.text = isController ? controllerHangingInstruction : handsHangingInstruction;
         }
 
         private int lastWallCount = -1;
@@ -101,7 +143,8 @@ namespace ArtUnbound.UI
             if (hangInstructionText != null)
             {
                 bool hasWalls = lastWallCount > 0;
-                hangInstructionText.SetActive(hasWalls);
+                hangInstructionText.gameObject.SetActive(hasWalls);
+                if (hasWalls) RefreshHangingInstruction();
             }
         }
 
@@ -147,7 +190,7 @@ namespace ArtUnbound.UI
             
             // Also hide the hang instruction text when hiding the panel
             if (hangInstructionText != null)
-                hangInstructionText.SetActive(false);
+                hangInstructionText.gameObject.SetActive(false);
         }
 
         private void OnReplayClicked()
