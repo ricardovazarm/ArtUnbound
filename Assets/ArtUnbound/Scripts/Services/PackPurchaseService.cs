@@ -11,18 +11,48 @@ namespace ArtUnbound.Services
     /// </summary>
     public class PackPurchaseService : MonoBehaviour
     {
+        /// <summary>
+        /// Single SKU that unlocks the entire catalog (freemium "complete gallery" model).
+        /// Stored in SaveData.purchasedPackIds like any other purchased id.
+        /// </summary>
+        public const string CatalogSku = "catalog_complete";
+
         [SerializeField] private ArtworkPackCatalog packCatalog;
         [SerializeField] private BundleCatalog bundleCatalog;
+
+        [Header("Complete Catalog Purchase")]
+        [Tooltip("Precio mostrado en el boton de comprar el catalogo completo.")]
+        [SerializeField] private string catalogPrice = "$9.99";
 
         private SaveDataService saveDataService;
 
         public ArtworkPackCatalog PackCatalog => packCatalog;
         public BundleCatalog BundleCatalog => bundleCatalog;
+        public string CatalogPrice => catalogPrice;
 
         public void Initialize(SaveDataService sds)
         {
             saveDataService = sds;
         }
+
+        /// <summary>
+        /// True once the user has purchased the complete catalog.
+        /// </summary>
+        public bool IsCatalogPurchased() => IsPurchased(CatalogSku);
+
+        /// <summary>
+        /// Initiates the complete-catalog purchase. Reuses the PurchasePack stub
+        /// (marks CatalogSku as purchased and saves). Replace with Meta IAP for production.
+        /// </summary>
+        public void PurchaseCatalog(Action onSuccess, Action onFailure = null)
+            => PurchasePack(CatalogSku, onSuccess, onFailure);
+
+        /// <summary>
+        /// An artwork is locked when it is not flagged isFree and the complete catalog
+        /// has not been purchased.
+        /// </summary>
+        public bool IsArtworkLocked(ArtworkDefinition artwork)
+            => artwork != null && !artwork.isFree && !IsCatalogPurchased();
 
         /// <summary>
         /// Returns true if the pack/bundle has been purchased or if id is null/empty (base-game artwork).

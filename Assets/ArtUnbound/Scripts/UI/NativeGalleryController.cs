@@ -24,9 +24,9 @@ namespace ArtUnbound.UI
     ///         └── [contentRoot] Panel   ← Image negra semitransparente, se oculta al posicionar
     ///              ├── Header            (TMP "Art Unbound", h=60)
     ///              ├── ContentArea       (anchors: stretch-stretch, menos 60 arriba y 80 abajo)
-    ///              │    ├── CatalogView  (ScrollRect vertical → GridLayoutGroup 4 cols)
-    ///              │    ├── SettingsView (Layout vertical con Sliders y Toggle)
-    ///              │    └── SearchView   (InputField + Toggle "Solo completadas" arriba + ScrollRect de resultados)
+    ///              │    ├── CatalogView  (SearchInputField fijo arriba + ScrollRect vertical → GridLayoutGroup 4 cols.
+    ///              │    │                 La búsqueda filtra el grid en vivo; EmptyLabel si no hay coincidencias.)
+    ///              │    └── SettingsView (Layout vertical con Sliders y Toggle)
     ///              ├── DetailPanel       (overlay oscuro, SetActive false por defecto)
     ///              │    ├── ArtworkImage (Image, preserve aspect)
     ///              │    ├── TitleText    (TMP bold)
@@ -38,9 +38,7 @@ namespace ArtUnbound.UI
     ///              │    └── BtnClose     (Button "✕")
     ///              └── BottomNav        (h=80, HorizontalLayoutGroup)
     ///                   ├── BtnInicio       (Button + TMP "🏠 Inicio")
-    ///                   ├── BtnCompletadas  (Button + TMP "✓ Completadas")
-    ///                   ├── BtnConfig       (Button + TMP "⚙ Config")
-    ///                   └── BtnBuscar       (Button + TMP "🔍 Buscar")
+    ///                   └── BtnConfig       (Button + TMP "⚙ Config")
     ///
     ///  NOTAS CLAVE:
     ///  • El ScrollRect de cada grid debe tener Horizontal=false, Vertical=true.
@@ -84,14 +82,17 @@ namespace ArtUnbound.UI
         [Header("Tabs — Botones")]
         [SerializeField] private Button  btnInicio;
         [SerializeField] private Button  btnConfig;
-        [SerializeField] private Button  btnBuscar;
         [SerializeField] private Button  btnStore;
+
+        [Header("Tabs — Indicadores de tab activo")]
+        [SerializeField] private GameObject indicatorInicio;
+        [SerializeField] private GameObject indicatorConfig;
+        [SerializeField] private GameObject indicatorStore;
 
         // ── Paneles de vista ──────────────────────────────────────────────────
         [Header("Paneles de vista")]
         [SerializeField] private GameObject catalogView;
         [SerializeField] private GameObject settingsView;
-        [SerializeField] private GameObject searchView;
         [SerializeField] private GameObject storeView;
         [SerializeField] private StoreViewController storeViewController;
 
@@ -100,17 +101,12 @@ namespace ArtUnbound.UI
         [Tooltip("Transform con GridLayoutGroup donde se instancian las cards del catálogo.")]
         [SerializeField] private Transform catalogGridContainer;
 
-        // ── Búsqueda ──────────────────────────────────────────────────────────
+        // ── Búsqueda (barra fija dentro del Catálogo) ─────────────────────────
         [Header("Búsqueda")]
+        [Tooltip("Campo de texto fijo en la parte superior del Catálogo. Filtra el grid en vivo.")]
         [SerializeField] private TMP_InputField searchInputField;
 
-        [Tooltip("Toggle: cuando esta ON, el search filtra solo sobre obras completadas. Si esta OFF, busca sobre todo el catalogo.")]
-        [SerializeField] private Toggle completedFilterToggle;
-
-        [Tooltip("Transform con GridLayoutGroup donde se instancian los resultados de búsqueda.")]
-        [SerializeField] private Transform searchGridContainer;
-
-        [Tooltip("Label que aparece cuando no hay resultados o el campo esta vacio (sin toggle).")]
+        [Tooltip("Label que aparece cuando la búsqueda no coincide con ninguna obra del catálogo.")]
         [SerializeField] private TMP_Text searchEmptyLabel;
 
         // ── Configuración ────────────────────────────────────────────────────
@@ -128,13 +124,25 @@ namespace ArtUnbound.UI
         [SerializeField] private TMP_Text   detailTitleText;
         [SerializeField] private TMP_Text   detailArtistText;
         [SerializeField] private TMP_Text   detailDescriptionText;
+        [Tooltip("Texto de creditos de la obra. Queda en blanco si la obra no tiene credits.")]
+        [SerializeField] private TMP_Text   detailCreditsText;
+        [SerializeField] private Button     btnDetailClose;
+
+        [Header("Detalle — Componente de Armado (obra desbloqueada)")]
+        [Tooltip("Contenedor con los 3 botones de dificultad. Se muestra si la obra es gratis o el catalogo ya se compro.")]
+        [SerializeField] private GameObject assemblyComponent;
         [SerializeField] private Button     btnEasy;
         [SerializeField] private Button     btnNormal;
         [SerializeField] private Button     btnHard;
         [SerializeField] private TMP_Text   btnEasyText;
         [SerializeField] private TMP_Text   btnNormalText;
         [SerializeField] private TMP_Text   btnHardText;
-        [SerializeField] private Button     btnDetailClose;
+
+        [Header("Detalle — Componente de Compra (obra bloqueada)")]
+        [Tooltip("Contenedor con el boton de comprar el catalogo completo. Se muestra si la obra esta bloqueada.")]
+        [SerializeField] private GameObject purchaseComponent;
+        [SerializeField] private Button     btnBuyCatalog;
+        [SerializeField] private TMP_Text   buyCatalogPriceText;
 
         // ── Prefab ───────────────────────────────────────────────────────────
         [Header("Card Prefab")]
@@ -156,6 +164,7 @@ namespace ArtUnbound.UI
 
         private LocalCatalogService        _catalog;
         private SaveDataService            _saveData;
+        private PackPurchaseService        _purchaseService;
         private List<ArtworkDefinition>    _allArtworks = new List<ArtworkDefinition>();
         private ArtworkDefinition          _selectedArtwork;
         private bool                       _isVisible;
@@ -164,8 +173,12 @@ namespace ArtUnbound.UI
         private bool                       _hasBeenPositioned;
         private Camera                     _positioningCamera;
 
-        private enum Tab { Catalog, Settings, Search, Store, Galleries }
+        private enum Tab { Catalog, Settings, Store, Galleries }
         private Tab _currentTab = Tab.Catalog;
+
+        // Mapeo card→obra del catálogo para filtrar (mostrar/ocultar) sin re-instanciar.
+        private readonly List<(ArtworkDefinition art, GameObject go)> _catalogCards =
+            new List<(ArtworkDefinition, GameObject)>();
 
         // Piece counts are derived by PuzzleBoard from the difficulty index — no defaults needed here.
 
@@ -210,17 +223,16 @@ namespace ArtUnbound.UI
             // Limpiar listeners para evitar memory leaks
             btnInicio?.onClick.RemoveAllListeners();
             btnConfig?.onClick.RemoveAllListeners();
-            btnBuscar?.onClick.RemoveAllListeners();
             btnStore?.onClick.RemoveAllListeners();
             btnDetailClose?.onClick.RemoveAllListeners();
             btnEasy?.onClick.RemoveAllListeners();
             btnNormal?.onClick.RemoveAllListeners();
             btnHard?.onClick.RemoveAllListeners();
+            btnBuyCatalog?.onClick.RemoveAllListeners();
             musicSlider?.onValueChanged.RemoveAllListeners();
             sfxSlider?.onValueChanged.RemoveAllListeners();
             hapticsToggle?.onValueChanged.RemoveAllListeners();
             searchInputField?.onValueChanged.RemoveAllListeners();
-            completedFilterToggle?.onValueChanged.RemoveAllListeners();
             btnVR?.onClick.RemoveAllListeners();
             btnMR?.onClick.RemoveAllListeners();
             btnGalerias?.onClick.RemoveAllListeners();
@@ -241,9 +253,9 @@ namespace ArtUnbound.UI
             _catalog  = catalog;
             _saveData = saveData;
 
+            // Respetar el orden definido en ArtworkCatalog.asset (no reordenar).
+            // El usuario controla el orden del menu y de la busqueda desde el asset.
             _allArtworks = catalog.GetAll();
-            _allArtworks.Sort((a, b) =>
-                string.Compare(a.title, b.title, StringComparison.OrdinalIgnoreCase));
 
             WireTabButtons();
             WireDetailButtons();
@@ -253,11 +265,6 @@ namespace ArtUnbound.UI
 
             if (detailPanel != null) detailPanel.SetActive(false);
             if (vrControllerRequiredPanel != null) vrControllerRequiredPanel.SetActive(false);
-
-            // NativeGallery sits at the scene root (not under mainUICanvas), so
-            // GameBootstrap.ApplyButtonTheme misses it. Apply the central theme
-            // here to keep hover/state behavior consistent with the rest of the UI.
-            UIButtonTheme.ApplyToAllIn(transform);
 
             _isInitialized = true;
             Debug.Log($"[NativeGallery] Inicializado con {_allArtworks.Count} obras.");
@@ -269,8 +276,14 @@ namespace ArtUnbound.UI
         /// </summary>
         public void SetPackPurchaseService(PackPurchaseService purchaseService)
         {
-            if (storeViewController != null)
-                storeViewController.Initialize(purchaseService);
+            _purchaseService = purchaseService;
+
+            // Modelo de venta simplificado: la compra del catalogo completo ocurre desde
+            // el detail panel. Se retira de la UI el tab Store por packs/bundles.
+            if (btnStore != null)        btnStore.gameObject.SetActive(false);
+            if (indicatorStore != null)  indicatorStore.SetActive(false);
+
+            // StoreViewController se conserva pero ya no se inicializa/cablea.
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -422,7 +435,6 @@ namespace ArtUnbound.UI
         {
             btnInicio?.onClick.AddListener(() => SwitchTab(Tab.Catalog));
             btnConfig?.onClick.AddListener(() => SwitchTab(Tab.Settings));
-            btnBuscar?.onClick.AddListener(() => SwitchTab(Tab.Search));
             btnStore?.onClick.AddListener(()  => SwitchTab(Tab.Store));
         }
 
@@ -431,9 +443,17 @@ namespace ArtUnbound.UI
             if (_currentTab == tab && !force) return;
             _currentTab = tab;
 
+            // NOTA: no usar el operador `?.` con objetos Unity. Una referencia
+            // serializada sin asignar es un "fake-null" que `?.` NO detecta (usa
+            // igualdad de referencia pura, no el `==` sobrecargado de Unity), por lo
+            // que llamaria a SetActive y lanzaria UnassignedReferenceException,
+            // abortando SwitchTab antes de activar catalogView (galeria en blanco).
+            if (indicatorInicio != null) indicatorInicio.SetActive(tab == Tab.Catalog);
+            if (indicatorStore  != null) indicatorStore.SetActive(tab == Tab.Store);
+            if (indicatorConfig != null) indicatorConfig.SetActive(tab == Tab.Settings);
+
             if (catalogView != null)   catalogView.SetActive(tab == Tab.Catalog);
             if (settingsView != null)  settingsView.SetActive(tab == Tab.Settings);
-            if (searchView != null)    searchView.SetActive(tab == Tab.Search);
             if (storeView != null)     storeView.SetActive(tab == Tab.Store);
 
             // Galleries is a tab-like view backed by gallerySelectionController. Show it
@@ -459,10 +479,6 @@ namespace ArtUnbound.UI
             switch (tab)
             {
                 case Tab.Settings:  PopulateSettings();  break;
-                case Tab.Search:
-                    searchInputField?.SetTextWithoutNotify(string.Empty);
-                    PopulateSearch(searchInputField != null ? searchInputField.text : string.Empty);
-                    break;
                 case Tab.Store:
                     storeViewController?.Populate();
                     break;
@@ -478,8 +494,9 @@ namespace ArtUnbound.UI
         // ════════════════════════════════════════════════════════════════════════
 
         /// <summary>
-        /// Instancia una card por cada obra del catálogo.
-        /// Solo se llama una vez — las cards no se destruyen entre vistas.
+        /// Instancia una card por cada obra del catálogo y registra el mapeo card→obra
+        /// en <see cref="_catalogCards"/> para poder filtrar (mostrar/ocultar) en vivo
+        /// sin re-instanciar. Solo se llama una vez — las cards no se destruyen entre vistas.
         /// </summary>
         private void PopulateCatalog()
         {
@@ -490,79 +507,65 @@ namespace ArtUnbound.UI
             }
 
             ClearGrid(catalogGridContainer);
+            _catalogCards.Clear();
 
             SaveData saveData = _saveData.GetCachedData();
             foreach (var artwork in _allArtworks)
             {
                 if (artwork == null) continue;
                 FrameTier bestTier = GetBestTier(artwork.artworkId, saveData);
-                SpawnCard(artwork, bestTier, catalogGridContainer);
+                GameObject go = SpawnCard(artwork, bestTier, catalogGridContainer);
+                if (go != null) _catalogCards.Add((artwork, go));
             }
 
-            Debug.Log($"[NativeGallery] Catálogo poblado con {_allArtworks.Count} cards.");
+            // Reaplica el filtro actual (campo vacío ⇒ se ven todas).
+            FilterCatalog(searchInputField != null ? searchInputField.text : string.Empty);
+
+            Debug.Log($"[NativeGallery] Catálogo poblado con {_catalogCards.Count} cards.");
         }
 
-        private void PopulateSearch(string query)
+        /// <summary>
+        /// Filtra el grid del catálogo mostrando/ocultando las cards ya instanciadas según
+        /// el query (título / autor / movimiento). Campo vacío ⇒ se muestran todas.
+        /// El GridLayoutGroup ignora los hijos inactivos y reacomoda solo.
+        /// </summary>
+        private void FilterCatalog(string query)
         {
-            if (searchGridContainer == null || artworkCardPrefab == null) return;
-            ClearGrid(searchGridContainer);
+            bool emptyQuery = string.IsNullOrWhiteSpace(query);
+            string lower    = emptyQuery ? string.Empty : query.ToLowerInvariant();
+            int visible     = 0;
 
-            bool onlyCompleted = completedFilterToggle != null && completedFilterToggle.isOn;
-            bool emptyQuery    = string.IsNullOrWhiteSpace(query);
-            string lower       = emptyQuery ? string.Empty : query.ToLowerInvariant();
+            // Oculta el placeholder en cuanto hay texto. TMP lo hace solo al teclear
+            // directo, pero en Quest el texto entra via SetTextWithoutNotify (teclado del
+            // sistema), que no siempre lo refresca; lo forzamos aquí para cubrir ambas rutas.
+            if (searchInputField != null && searchInputField.placeholder != null)
+                searchInputField.placeholder.enabled = string.IsNullOrEmpty(query);
 
-            // Toggle OFF + empty query: nothing to show, prompt user to type.
-            if (!onlyCompleted && emptyQuery)
+            foreach (var (art, go) in _catalogCards)
             {
-                if (searchEmptyLabel != null)
+                if (go == null) continue;
+
+                bool match = emptyQuery;
+                if (!emptyQuery && art != null)
                 {
-                    searchEmptyLabel.text = "Type to search";
-                    searchEmptyLabel.gameObject.SetActive(true);
-                }
-                return;
-            }
-
-            SaveData saveData = _saveData.GetCachedData();
-            int count = 0;
-
-            foreach (var artwork in _allArtworks)
-            {
-                if (artwork == null) continue;
-
-                FrameTier bestTier = GetBestTier(artwork.artworkId, saveData);
-
-                // Toggle ON: only completed artworks pass.
-                if (onlyCompleted && bestTier == FrameTier.Madera) continue;
-
-                // If there is a query, it acts as a filter on top.
-                if (!emptyQuery)
-                {
-                    bool matchTitle    = !string.IsNullOrEmpty(artwork.title)       &&
-                                         artwork.title.ToLowerInvariant().Contains(lower);
-                    bool matchAuthor   = !string.IsNullOrEmpty(artwork.author)      &&
-                                         artwork.author.ToLowerInvariant().Contains(lower);
-                    bool matchMovement = !string.IsNullOrEmpty(artwork.artMovement) &&
-                                         artwork.artMovement.ToLowerInvariant().Contains(lower);
-                    if (!matchTitle && !matchAuthor && !matchMovement) continue;
+                    bool matchTitle    = !string.IsNullOrEmpty(art.title)       &&
+                                         art.title.ToLowerInvariant().Contains(lower);
+                    bool matchAuthor   = !string.IsNullOrEmpty(art.author)      &&
+                                         art.author.ToLowerInvariant().Contains(lower);
+                    bool matchMovement = !string.IsNullOrEmpty(art.artMovement) &&
+                                         art.artMovement.ToLowerInvariant().Contains(lower);
+                    match = matchTitle || matchAuthor || matchMovement;
                 }
 
-                SpawnCard(artwork, bestTier, searchGridContainer);
-                count++;
+                go.SetActive(match);
+                if (match) visible++;
             }
 
             if (searchEmptyLabel != null)
             {
-                if (count == 0)
-                {
-                    searchEmptyLabel.text = onlyCompleted
-                        ? (emptyQuery ? "No completed artworks yet" : $"No completed match \"{query}\"")
-                        : $"No results for \"{query}\"";
-                    searchEmptyLabel.gameObject.SetActive(true);
-                }
-                else
-                {
-                    searchEmptyLabel.gameObject.SetActive(false);
-                }
+                // Solo muestra/oculta el label; el texto se define en el Editor.
+                bool showEmpty = !emptyQuery && visible == 0;
+                searchEmptyLabel.gameObject.SetActive(showEmpty);
             }
         }
 
@@ -587,18 +590,18 @@ namespace ArtUnbound.UI
 
         // ── Helpers de grid ───────────────────────────────────────────────────
 
-        private void SpawnCard(ArtworkDefinition artwork, FrameTier bestTier, Transform container)
+        private GameObject SpawnCard(ArtworkDefinition artwork, FrameTier bestTier, Transform container)
         {
             var go   = Instantiate(artworkCardPrefab, container);
             var card = go.GetComponent<ArtworkCardUI>();
             if (card != null)
-                card.Setup(artwork, bestTier, bronzeMedal, silverMedal, goldMedal, OnCardTapped);
+            {
+                bool isLocked = _purchaseService != null && _purchaseService.IsArtworkLocked(artwork);
+                card.Setup(artwork, bestTier, bronzeMedal, silverMedal, goldMedal, OnCardTapped, isLocked);
+            }
             else
                 Debug.LogWarning($"[NativeGallery] El prefab '{artworkCardPrefab.name}' no tiene ArtworkCardUI.");
-
-            // Cards are instantiated after GameBootstrap.ApplyButtonTheme has run,
-            // so they need the theme applied per-card to get hover behavior.
-            UIButtonTheme.ApplyTo(go.GetComponent<Button>());
+            return go;
         }
 
         private static void ClearGrid(Transform container)
@@ -629,6 +632,30 @@ namespace ArtUnbound.UI
             btnEasy?.onClick.AddListener(()   => StartPuzzle(0));
             btnNormal?.onClick.AddListener(() => StartPuzzle(1));
             btnHard?.onClick.AddListener(()   => StartPuzzle(2));
+
+            btnBuyCatalog?.onClick.AddListener(BuyCompleteCatalog);
+        }
+
+        private void BuyCompleteCatalog()
+        {
+            if (_purchaseService == null || _selectedArtwork == null) return;
+            if (_purchaseService.IsCatalogPurchased()) return;
+
+            _purchaseService.PurchaseCatalog(onSuccess: () =>
+            {
+                // Refrescar el detalle a modo armado y repoblar el catalogo para
+                // quitar candados de todas las cards.
+                ShowDetail(_selectedArtwork);
+                RepopulateCatalog();
+            });
+        }
+
+        /// <summary>
+        /// Reconstruye el grid del catalogo (p.ej. tras comprar el catalogo completo).
+        /// </summary>
+        private void RepopulateCatalog()
+        {
+            PopulateCatalog();
         }
 
         private void OnCardTapped(ArtworkDefinition artwork)
@@ -653,10 +680,23 @@ namespace ArtUnbound.UI
             if (detailTitleText       != null) detailTitleText.text       = artwork.title;
             if (detailArtistText      != null) detailArtistText.text      = artwork.author;
             if (detailDescriptionText != null) detailDescriptionText.text = artwork.description;
+            // Creditos: en blanco si la obra no los tiene (null o vacio).
+            if (detailCreditsText     != null) detailCreditsText.text     = artwork.credits ?? string.Empty;
 
             if (btnEasyText   != null) btnEasyText.text   = "A Coffee";
             if (btnNormalText != null) btnNormalText.text = "A Break";
-            if (btnHardText   != null) btnHardText.text   = "An Afternoon";
+            if (btnHardText   != null) btnHardText.text   = "A Movie";
+
+            // Armado vs compra: la obra esta desbloqueada si es gratis o si el catalogo
+            // completo ya fue comprado. Si no, se muestra el componente de compra.
+            bool unlocked = artwork.isFree ||
+                            (_purchaseService != null && _purchaseService.IsCatalogPurchased());
+
+            if (assemblyComponent != null) assemblyComponent.SetActive(unlocked);
+            if (purchaseComponent != null) purchaseComponent.SetActive(!unlocked);
+
+            // El precio es fijo y se escribe directo en la UI (ej. "250+ artworks · one-time $9.99").
+            // No se sobreescribe desde codigo; el campo buyCatalogPriceText queda opcional.
 
             detailPanel.SetActive(true);
         }
@@ -664,6 +704,14 @@ namespace ArtUnbound.UI
         private void StartPuzzle(int difficultyIndex)
         {
             if (_selectedArtwork == null) return;
+
+            // Defensa: una obra bloqueada nunca debe poder iniciar un puzzle.
+            if (_purchaseService != null && _purchaseService.IsArtworkLocked(_selectedArtwork))
+            {
+                Debug.LogWarning($"[NativeGallery] Intento de armar obra bloqueada: {_selectedArtwork.title}");
+                ShowDetail(_selectedArtwork); // re-muestra el componente de compra
+                return;
+            }
 
             Debug.Log($"[NativeGallery] Iniciando puzzle: {_selectedArtwork.title} | difficulty={difficultyIndex}");
 
@@ -805,11 +853,7 @@ namespace ArtUnbound.UI
 
         private void WireSearchControls()
         {
-            searchInputField?.onValueChanged.AddListener(PopulateSearch);
-
-            // Toggle filtra/desfiltra obras completadas; re-ejecuta busqueda con el query actual.
-            completedFilterToggle?.onValueChanged.AddListener(_ =>
-                PopulateSearch(searchInputField != null ? searchInputField.text : string.Empty));
+            searchInputField?.onValueChanged.AddListener(FilterCatalog);
 
             // En Quest (Android) el canvas es World Space y TMP_InputField no lanza
             // el teclado del sistema automáticamente con XR Interaction Toolkit.
@@ -842,7 +886,7 @@ namespace ArtUnbound.UI
                 if (searchInputField != null && searchInputField.text != kbText)
                 {
                     searchInputField.SetTextWithoutNotify(kbText);
-                    PopulateSearch(kbText);
+                    FilterCatalog(kbText);
                 }
             }
 

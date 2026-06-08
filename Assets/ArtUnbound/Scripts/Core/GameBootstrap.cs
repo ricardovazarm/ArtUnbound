@@ -109,7 +109,6 @@ namespace ArtUnbound.Core
                 return;
             }
 
-            ApplyButtonTheme(); // Apply base theme first so filter/tab-specific colors aren't overwritten
             InitializeServices();
             HideAllPanels(); // Ensure clean state immediately
             LoadData();
@@ -446,6 +445,18 @@ namespace ArtUnbound.Core
         /// </summary>
         private void OnUnifiedMenuStartPuzzle(string artworkId, int difficultyIndex)
         {
+            // Defensa: nunca iniciar un puzzle de una obra bloqueada (no gratis y catalogo
+            // no comprado). El detail panel ya lo previene en la UI; esto es respaldo.
+            if (packPurchaseService != null)
+            {
+                var artwork = localCatalogService?.GetById(artworkId);
+                if (packPurchaseService.IsArtworkLocked(artwork))
+                {
+                    Debug.LogWarning($"[GameBootstrap] Obra bloqueada, no se inicia puzzle: {artworkId}");
+                    return;
+                }
+            }
+
             selectedArtworkId = artworkId;
             selectedDifficultyIndex = difficultyIndex;
             selectedPieceCount = 0; // Will be set by PuzzleBoard.TotalPieces after Initialize.
@@ -1115,14 +1126,6 @@ namespace ArtUnbound.Core
         }
 
         #endregion
-
-        private void ApplyButtonTheme()
-        {
-            if (mainUICanvas != null)
-                ArtUnbound.UI.UIButtonTheme.ApplyToAllIn(mainUICanvas);
-            if (puzzleBoard != null)
-                ArtUnbound.UI.UIButtonTheme.ApplyToAllIn(puzzleBoard.transform);
-        }
 
         private void HideAllPanels()
         {

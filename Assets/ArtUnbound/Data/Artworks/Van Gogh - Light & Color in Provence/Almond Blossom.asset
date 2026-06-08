@@ -16,9 +16,10 @@ MonoBehaviour:
   title: Almond Blossom
   author: Vincent van Gogh
   year: 1890
-  description: "Museum: Van Gogh Museum\nArt Movement: Post-Impressionism\nYear: 1890\nCredits: Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)"
+  description: "Museum: Van Gogh Museum\nArt Movement: Post-Impressionism\nYear: 1890"
   museum: Van Gogh Museum
   artMovement: Post-Impressionism
+  credits: Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)
   aspectRatio: 1.2658
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}

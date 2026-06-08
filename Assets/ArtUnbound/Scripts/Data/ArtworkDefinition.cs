@@ -19,6 +19,8 @@ namespace ArtUnbound.Data
         public string description;
         public string museum;
         public string artMovement;
+        [TextArea(1, 3)]
+        public string credits;
 
         /// <summary>
         /// Alias for author for UI compatibility.
@@ -43,6 +45,12 @@ namespace ArtUnbound.Data
         public Texture2D puzzleTexture;
 
         [Header("Unlock Settings")]
+        [Tooltip("Si esta marcada, la obra es jugable gratis sin comprar el catalogo. Solo 12 deben estar en true.")]
+        public bool isFree = false;
+
+        // OBSOLETOS: el modelo de desbloqueo semanal fue retirado. El gate ahora es
+        // isFree + compra del catalogo completo (ver PackPurchaseService.IsArtworkLocked).
+        // Se conservan para no romper la serializacion de assets existentes.
         public bool isBaseContent = true;
         public bool requiresUnlock = false;
         public int unlockWeek = 0;

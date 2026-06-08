@@ -16,9 +16,10 @@ MonoBehaviour:
   title: Cafe Terrace at Night
   author: Vincent van Gogh
   year: 1888
-  description: "Museum: Kroller-Muller Museum\nArt Movement: Post-Impressionism\nYear: 1888\nCredits: Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)"
+  description: "Museum: Kroller-Muller Museum\nArt Movement: Post-Impressionism\nYear: 1888"
   museum: Kroller-Muller Museum
   artMovement: Post-Impressionism
+  credits: Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)
   aspectRatio: 0.7616
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}
