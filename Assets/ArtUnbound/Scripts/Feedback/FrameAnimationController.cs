@@ -237,6 +237,7 @@ namespace ArtUnbound.Feedback
                 FrameTier.Bronce => frameBronce,
                 FrameTier.Plata => framePlata,
                 FrameTier.Oro => frameOro,
+                FrameTier.Platino => frameOro, // sin objeto dedicado: reusa el de Oro como fallback
                 _ => frameBronce
             };
         }
@@ -248,6 +249,7 @@ namespace ArtUnbound.Feedback
                 FrameTier.Bronce => bronceColor,
                 FrameTier.Plata => plataColor,
                 FrameTier.Oro => oroColor,
+                FrameTier.Platino => new Color(0.90f, 0.91f, 0.95f), // platinum (white-blue)
                 _ => bronceColor
             };
         }

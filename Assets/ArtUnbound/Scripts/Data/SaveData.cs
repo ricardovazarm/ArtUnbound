@@ -27,6 +27,9 @@ namespace ArtUnbound.Data
         public string lastGalleryId = "gallery_classic";
         public Dictionary<string, List<GalleryPaintingData>> galleryPaintings = new Dictionary<string, List<GalleryPaintingData>>();
 
+        /// <summary>Placas con nombre obtenidas por el jugador (GDD 8.3). Ver EarnedPlaque.</summary>
+        public List<EarnedPlaque> earnedPlaques = new List<EarnedPlaque>();
+
         /// <summary>
         /// Alias for progressByArtwork for consistency with UI code.
         /// </summary>
@@ -46,6 +49,7 @@ namespace ArtUnbound.Data
             firstPlayDate = DateTime.UtcNow.ToString("o");
             purchasedPackIds = new List<string>();
             galleryPaintings = new Dictionary<string, List<GalleryPaintingData>>();
+            earnedPlaques = new List<EarnedPlaque>();
         }
 
         /// <summary>Gets in-progress session for artwork+pieceCount, or null.</summary>
@@ -140,6 +144,52 @@ namespace ArtUnbound.Data
                 }
             }
             return completed;
+        }
+
+        // ── Progresion global (GDD 8.2 / 8.4) ────────────────────────────────────
+
+        /// <summary>Total de obras DISTINTAS completadas — motor de la escalera global.</summary>
+        public int GetCompletedCount()
+        {
+            int count = 0;
+            foreach (var progress in progressByArtwork)
+                if (progress != null && progress.HasBeenCompleted()) count++;
+            return count;
+        }
+
+        /// <summary>Tier/material global del jugador, derivado del total de obras completadas.</summary>
+        public PlayerTier GetPlayerTier() => ProgressionRules.GetTier(GetCompletedCount());
+
+        // Mejoras de presentacion "efectivas" = desbloqueadas por progreso Y con el toggle on.
+        // El Frente 3 las consulta para decidir si aplicar cedula/marco/lampara a las obras colgadas.
+        public bool IsCedulaActive()  => ProgressionRules.CedulaUnlocked(GetCompletedCount())  && (settings == null || settings.showCedula);
+        public bool IsMarcoActive()   => ProgressionRules.MarcoUnlocked(GetCompletedCount())   && (settings == null || settings.showMarco);
+        public bool IsLamparaActive() => ProgressionRules.LamparaUnlocked(GetCompletedCount()) && (settings == null || settings.showLampara);
+
+        // ── Placas con nombre (GDD 8.3) ──────────────────────────────────────────
+
+        /// <summary>True si el jugador ya obtuvo la placa con ese id.</summary>
+        public bool HasPlaque(string plaqueId)
+        {
+            if (string.IsNullOrEmpty(plaqueId) || earnedPlaques == null) return false;
+            return earnedPlaques.Exists(p => p != null && p.plaqueId == plaqueId);
+        }
+
+        /// <summary>
+        /// Otorga una placa (idempotente). Devuelve el registro creado, o el existente si ya
+        /// la tenia (en cuyo caso no se otorga de nuevo y la fecha original se conserva).
+        /// </summary>
+        public EarnedPlaque GrantPlaque(string plaqueId)
+        {
+            if (string.IsNullOrEmpty(plaqueId)) return null;
+            if (earnedPlaques == null) earnedPlaques = new List<EarnedPlaque>();
+
+            var existing = earnedPlaques.Find(p => p != null && p.plaqueId == plaqueId);
+            if (existing != null) return existing;
+
+            var earned = new EarnedPlaque(plaqueId);
+            earnedPlaques.Add(earned);
+            return earned;
         }
 
         /// <summary>

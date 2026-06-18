@@ -27,7 +27,11 @@ namespace ArtUnbound.Core
         [SerializeField] private ArtworkCatalog artworkCatalog;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private FrameConfigSet frameConfigSet;
-        [SerializeField] private ArtworkPackCatalog artworkPackCatalog;
+        [Tooltip("Catalogo de coleccionables (placas + mejoras). Generar con Tools/ArtUnbound/Generate Collectibles.")]
+        [SerializeField] private CollectibleCatalog collectibleCatalog;
+        [Tooltip("Prefab de la cedula de museo (Tools/ArtUnbound/Create Cedula In Scene). Vacio = molde procedural.")]
+        [SerializeField] private GameObject cedulaPrefab;
+        public GameObject CedulaPrefab => cedulaPrefab;
 
     [Header("General UI")]
     [SerializeField] private Transform mainUICanvas;
@@ -79,13 +83,20 @@ namespace ArtUnbound.Core
 
         private SaveDataService saveDataService;
         private LocalCatalogService localCatalogService;
+        private CollectibleService collectibleService;
+
+        /// <summary>Servicio de coleccionables (GDD 8.x). Lo consume Collection (Frente 5).</summary>
+        public CollectibleService CollectibleService => collectibleService;
+
+        /// <summary>Coleccionables recien otorgados al completar la ultima obra (linea de hito del post-juego).</summary>
+        public System.Collections.Generic.List<ArtUnbound.Data.CollectibleDefinition> LastEarnedPlaques { get; private set; }
         private WeeklyUnlockService weeklyUnlockService;
         private LocalTelemetryService localTelemetryService;
         private GalleryPersistenceService galleryPersistenceService;
 
         private string selectedArtworkId;
         private int selectedPieceCount = 64;
-        private int selectedDifficultyIndex = 0; // 0=Easy(Bronce), 1=Normal(Plata), 2=Hard(Oro)
+        private int selectedDifficultyIndex = 0; // 0=A Coffee, 1=A Break, 2=A Movie (solo define el tamano de pieza; NO el marco — el material es global, GDD 4.2/8.4)
         private bool _boardPositioned = false; // Board position is calculated once and never changed again
 
         private bool _isQuest3OrPro;
@@ -194,6 +205,7 @@ namespace ArtUnbound.Core
             weeklyUnlockService = new WeeklyUnlockService();
             localTelemetryService = new LocalTelemetryService();
             localCatalogService = new LocalCatalogService(artworkCatalog);
+            collectibleService = new CollectibleService(saveDataService, localCatalogService, collectibleCatalog);
 
             // Initialize pack purchase service
             if (packPurchaseService != null)
@@ -257,6 +269,11 @@ namespace ArtUnbound.Core
                 ApplySettings(SaveData.settings);
             }
 
+            // Otorga retroactivamente las placas por umbral ya merecidas (autor/movimiento/estatus y las
+            // mejoras Cedula/Frame/Lamp): asi quien ya cruzo el umbral recibe su placa al cargar, sin
+            // esperar a completar otra obra. Solo otorga lo legitimamente ganado (idempotente).
+            collectibleService?.EvaluateOnCompletion();
+
             OnDataLoaded?.Invoke(SaveData);
         }
 
@@ -269,6 +286,7 @@ namespace ArtUnbound.Core
             {
                 postGameController.OnPlaceArtworkRequested += OnPlaceArtworkRequested;
                 postGameController.OnReplayRequested += ReplayPuzzle;
+                postGameController.OnBackRequested += OnBackFromPostGame;
             }
 
             // Onboarding
@@ -313,6 +331,8 @@ namespace ArtUnbound.Core
                 nativeGallery.OnSettingsChanged += OnNativeGallerySettingsChanged;
                 nativeGallery.OnVRModeRequested += OnVRModeRequested;
                 nativeGallery.OnMRModeRequested += OnMRModeRequested;
+                nativeGallery.OnHangArtworkRequested += OnHangArtworkFromCollection;
+                nativeGallery.OnHangPlaqueRequested  += OnHangPlaqueFromCollection;
             }
         }
 
@@ -461,6 +481,40 @@ namespace ArtUnbound.Core
             selectedDifficultyIndex = difficultyIndex;
             selectedPieceCount = 0; // Will be set by PuzzleBoard.TotalPieces after Initialize.
             StartPuzzle();
+        }
+
+        /// <summary>
+        /// Collection (GDD 8.5): colgar una obra ya completada. La instancia como objeto colgable
+        /// (tag "PlacedArtwork") frente al usuario, reutilizando el flujo de grab/colocacion existente.
+        /// </summary>
+        private void OnHangArtworkFromCollection(string artworkId)
+        {
+            nativeGallery?.Hide();
+            var go = ArtUnbound.VR.PlacedArtworkFactory.Build(artworkId, GetCurrentFrameTier(), 0.5f, 0.5f, artworkCatalog);
+            PlaceInFrontOfUser(go != null ? go.transform : null, 0.55f);
+        }
+
+        /// <summary>Collection: colgar una placa obtenida. Misma idea que las obras (objeto PlacedArtwork).</summary>
+        private void OnHangPlaqueFromCollection(string plaqueId)
+        {
+            nativeGallery?.Hide();
+            var def = collectibleCatalog != null ? collectibleCatalog.GetById(plaqueId) : null;
+            var go = ArtUnbound.MR.CollectibleFactory.Build(def, GetCurrentFrameTier());
+            PlaceInFrontOfUser(go != null ? go.transform : null, 0.45f);
+        }
+
+        /// <summary>Coloca un transform frente a la camara (a 'dist' m), mirando hacia el usuario.</summary>
+        private void PlaceInFrontOfUser(Transform t, float dist)
+        {
+            if (t == null) return;
+            var cam = Camera.main;
+            if (cam == null) return;
+            Vector3 fwd = cam.transform.forward;
+            fwd.y = 0f;
+            if (fwd.sqrMagnitude < 0.0001f) fwd = Vector3.forward;
+            fwd.Normalize();
+            t.position = cam.transform.position + fwd * dist;
+            t.rotation = Quaternion.LookRotation(fwd, Vector3.up);
         }
 
         private void TransitionToPlaying()
@@ -663,9 +717,9 @@ namespace ArtUnbound.Core
                     nativeGallery?.Hide();
                     var record = SaveData.GetProgress(selectedArtworkId)?.GetRecordForPieceCount(actualPieceCount);
                     int timeSec = record?.bestTimeSec ?? displaySession.GetElapsedSeconds();
-                    // The selected difficulty is still in scope (set when the user picked the puzzle),
-                    // so we can derive the frame tier directly without reverse-engineering it from piece count.
-                    FrameTier frameTier = record?.bestFrameTier ?? GetFrameTierFromDifficultyIndex(selectedDifficultyIndex);
+                    // El material del marco deriva del TIER GLOBAL del jugador (GDD 8.4),
+                    // no de la dificultad ni del bestFrameTier por-obra (legacy).
+                    FrameTier frameTier = GetCurrentFrameTier();
 
                     if (timerController != null)
                     {
@@ -745,19 +799,24 @@ namespace ArtUnbound.Core
             // Get completion time from the timer (simple counter, source of truth)
             int timeSec = timerController != null ? timerController.GetElapsedSeconds() : (CurrentSession?.GetElapsedSeconds() ?? 1);
             
-            // Frame tier based on difficulty SIZE (Easy=Bronce, Normal=Plata, Hard=Oro)
-            FrameTier frameTier = GetFrameTierFromDifficultyIndex(selectedDifficultyIndex);
-
             // Check for new record (based on TIME only)
             var progress = SaveData.GetProgress(selectedArtworkId);
             var existingRecord = progress?.GetRecordForPieceCount(selectedPieceCount);
             bool isNewRecord = existingRecord == null || timeSec < existingRecord.bestTimeSec;
             int previousBestTime = existingRecord?.bestTimeSec ?? 0;
 
-
-            // Save progress to permanent records (score = 0, only time matters now)
-            saveDataService.UpdateArtworkProgress(selectedArtworkId, selectedPieceCount, 0, timeSec, frameTier);
+            // Save progress to permanent records (score = 0, only time matters now).
+            // bestFrameTier por-obra es legacy: el material ahora deriva del TIER GLOBAL del
+            // jugador (GDD 8.4), no de la dificultad. Se pasa el tier global para no romper la firma.
+            saveDataService.UpdateArtworkProgress(selectedArtworkId, selectedPieceCount, 0, timeSec, GetCurrentFrameTier());
             SaveData = saveDataService.GetCachedData();
+
+            // Material de marco/placas = tier global del jugador, ya incluyendo esta obra recien completada.
+            FrameTier frameTier = GetCurrentFrameTier();
+
+            // Evalua placas de autor/movimiento/estatus (GDD 8.6). Las recien otorgadas alimentan
+            // la linea de hito condicional del post-juego (Frente 7).
+            LastEarnedPlaques = collectibleService?.EvaluateOnCompletion();
 
             // Play effects
             if (audioManager != null)
@@ -796,6 +855,13 @@ namespace ArtUnbound.Core
             }
         }
 
+
+        /// <summary>Post-juego "Back to collection": limpia el colgado y vuelve al menu (GDD 4.8).</summary>
+        private void OnBackFromPostGame()
+        {
+            CleanupArtworkHanging();
+            QuitToMenu();
+        }
 
         private void QuitToMenu()
         {
@@ -975,6 +1041,9 @@ namespace ArtUnbound.Core
             Debug.Log("[GameBootstrap] PuzzleBoard hidden after successful placement");
         }
         
+        // Placas de comportamiento (colgar 1a / Curator) — GDD 8.6.
+        collectibleService?.EvaluateOnHang();
+
         // Cleanup the hanging controller (unsubscribe events, etc)
         CleanupArtworkHanging();
         
@@ -1037,6 +1106,9 @@ namespace ArtUnbound.Core
             {
                 puzzleBoard.gameObject.SetActive(false);
             }
+
+            // Placas de comportamiento (colgar 1a / Curator) — GDD 8.6.
+            collectibleService?.EvaluateOnHang();
 
             CleanupArtworkHanging();
             // Gallery is already loaded — only show the UI, don't reload (avoids
@@ -1308,19 +1380,11 @@ namespace ArtUnbound.Core
         }
 
         /// <summary>
-        /// Determines the frame tier based on difficulty SIZE (which puzzle size was selected).
-        /// Easy = Bronce, Normal = Plata, Hard = Oro
+        /// Material/tier del marco derivado del TIER GLOBAL del jugador (GDD 8.4) y gateado por
+        /// el desbloqueo del Marco (Madera = base de madera lisa hasta las 25 obras / toggle off).
+        /// Delega en PresentationDecorator para una sola fuente de verdad (MR y VR).
         /// </summary>
-        private FrameTier GetFrameTierFromDifficultyIndex(int difficultyIndex)
-        {
-            return difficultyIndex switch
-            {
-                0 => FrameTier.Bronce,   // Easy (smallest)
-                1 => FrameTier.Plata,   // Normal
-                2 => FrameTier.Oro,     // Hard (largest)
-                _ => FrameTier.Bronce
-            };
-        }
+        private FrameTier GetCurrentFrameTier() => ArtUnbound.MR.PresentationDecorator.CurrentFrameTier();
 
         /// <summary>
         /// Detects walls in the room and logs the result. Called when entering PostGame.

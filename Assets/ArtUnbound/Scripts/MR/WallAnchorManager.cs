@@ -378,12 +378,17 @@ namespace ArtUnbound.MR
                 Debug.LogWarning($"[WallAnchor] No texture on artwork definition for {artworkData.artworkId}");
             }
 
-            // Frame bars (same as PuzzleBoard.CreateFrameAroundImage)
-            BuildFrameBars(root.transform, w, h, artworkData.frameTier);
+            // Frame bars — el marco se gatea por el tier global actual (Madera si el Marco aun
+            // no esta desbloqueado), no por el frameTier guardado (que queda legacy).
+            BuildFrameBars(root.transform, w, h, PresentationDecorator.CurrentFrameTier());
 
             // BoxCollider so the artwork can be re-grabbed
             var col = root.AddComponent<BoxCollider>();
             col.size = new Vector3(w, h, 0.05f);
+
+            // Cedula + lampara segun estado global (GDD 8.2), acabado por tier.
+            PresentationDecorator.Decorate(root, artworkDef.title, artworkDef.author, w, h,
+                artworkDef.year, artworkDef.artMovement, artworkDef.museum);
 
             spawnedArtworks[artworkData.artworkId] = root;
             Debug.Log($"[WallAnchor] Spawned artwork {artworkData.artworkId} ({w:F3}×{h:F3}m) at anchor (hidden until tracking)");
@@ -424,14 +429,8 @@ namespace ArtUnbound.MR
         private Material GetFrameMaterial(FrameTier tier)
         {
             // Minimal fallback materials — the full material set is on PuzzleBoard
-            // which is not available here; we use solid colors as stand-ins.
-            Color color = tier switch
-            {
-                FrameTier.Bronce => new Color(0.55f, 0.35f, 0.15f),
-                FrameTier.Plata  => new Color(0.75f, 0.75f, 0.78f),
-                FrameTier.Oro    => new Color(0.85f, 0.72f, 0.20f),
-                _                => new Color(0.55f, 0.35f, 0.15f),
-            };
+            // which is not available here; we use solid colors as stand-ins (incluye Madera).
+            Color color = PresentationDecorator.FrameBarColor(tier);
             Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
             if (shader == null) return null;
             var mat = new Material(shader);

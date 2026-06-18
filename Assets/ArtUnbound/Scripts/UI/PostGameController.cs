@@ -1,37 +1,41 @@
 using System;
+using System.Collections.Generic;
 using ArtUnbound.Data;
 using ArtUnbound.Gameplay;
 using ArtUnbound.Input;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
 
 namespace ArtUnbound.UI
 {
     /// <summary>
-    /// Controls the post-game results panel (RIGHT ZONE).
-    /// NEW: Shows only completion message and new record text (time-based).
-    /// Appears on the right side when puzzle is completed.
+    /// Panel de post-juego (GDD 4.8 / 11.4). SIN medalla ni lenguaje de "premio": muestra un
+    /// titulo de momento de museo ("Artwork Complete"), una linea de accion tenue
+    /// ("Ready to hang in your gallery") y, condicionalmente, una linea de hito si completar la
+    /// obra cruzo el umbral de una placa (GDD 8.x, via GameBootstrap.LastEarnedPlaques).
+    /// Botones: "Hang it now" (primario -> colgar) y "Back to collection" (secundario).
     /// </summary>
     public class PostGameController : MonoBehaviour
     {
         public event Action OnPlaceArtworkRequested;
+        public event Action OnBackRequested;
+        // Conservado por compatibilidad de wiring; ya no lo dispara ningun boton (GDD sin replay aqui).
         public event Action OnReplayRequested;
 
         [Header("UI References")]
         [SerializeField] private GameObject panel;
-        // Completion time is shown by the HUD's frozen timer — no separate text needed here.
-        [SerializeField] private TextMeshProUGUI medalText;       // "Congratulations you have earned a Bronze medal!!!"
+        [Tooltip("Texto principal del panel. Compone titulo + linea de accion + linea de hito condicional.")]
+        [FormerlySerializedAs("medalText")]
+        [SerializeField] private TextMeshProUGUI titleText;
 
-        [Header("Medal Icon")]
-        [Tooltip("Image que muestra la medalla ganada (mismo asset que aparece en NativeGallery).")]
-        [SerializeField] private Image medalIcon;
-        [SerializeField] private Sprite bronzeMedal;
-        [SerializeField] private Sprite silverMedal;
-        [SerializeField] private Sprite goldMedal;
-        
+        [Header("Textos (GDD 4.8)")]
+        [SerializeField] private string completeTitle  = "Artwork Complete";
+        [SerializeField] private string readyToHangLine = "Ready to hang in your gallery";
+
         [Header("Hang Artwork Instruction")]
-        [Tooltip("Texto (TMP) que aparece sobre el cuadro (panel central, NO el panel de PostGame de la derecha) con la instruccion de colgarlo. Se muestra solo si se detectaron paredes. El texto cambia segun manos vs control.")]
+        [Tooltip("Texto (TMP) sobre el cuadro (panel central) con la instruccion de colgarlo. Solo si hay paredes.")]
         [SerializeField] private TMP_Text hangInstructionText;
         [Tooltip("HandTrackingInputController para elegir el texto de manos vs control.")]
         [SerializeField] private HandTrackingInputController inputController;
@@ -41,22 +45,28 @@ namespace ArtUnbound.UI
         [SerializeField] private string controllerHangingInstruction = "Point and click to select the frame, then click on a wall to hang it.";
 
         [Header("Buttons")]
-        [SerializeField] private Button replayButton;
+        [Tooltip("Boton primario 'Hang it now' (lleva directo a colgar). Reusa el viejo replayButton.")]
+        [FormerlySerializedAs("replayButton")]
+        [SerializeField] private Button hangButton;
+        [Tooltip("Boton secundario 'Back to collection' (vuelve al menu).")]
+        [SerializeField] private Button backButton;
 
         private PuzzleSessionData sessionData;
         private FrameTier awardedFrame;
         private bool _lastControllerMode;
         private bool _hangingTextInitialized;
+        private int lastWallCount = -1;
 
         private void Awake()
         {
-            if (replayButton != null)
-                replayButton.onClick.AddListener(OnReplayClicked);
+            if (hangButton != null)
+                hangButton.onClick.AddListener(OnHangClicked);
+            if (backButton != null)
+                backButton.onClick.AddListener(OnBackClicked);
 
             if (inputController == null)
                 inputController = FindFirstObjectByType<HandTrackingInputController>();
 
-            // Make sure hang instruction is hidden initially
             if (hangInstructionText != null)
                 hangInstructionText.gameObject.SetActive(false);
 
@@ -65,8 +75,6 @@ namespace ArtUnbound.UI
 
         private void Update()
         {
-            // Mientras la instruccion esta visible, mantenla en el texto correcto segun
-            // el modo de entrada actual (manos vs control), por si el usuario cambia.
             if (hangInstructionText == null || inputController == null) return;
             if (!hangInstructionText.gameObject.activeInHierarchy) return;
 
@@ -77,10 +85,7 @@ namespace ArtUnbound.UI
             hangInstructionText.text = isController ? controllerHangingInstruction : handsHangingInstruction;
         }
 
-        /// <summary>
-        /// Aplica de inmediato el texto de instruccion correcto (manos vs control).
-        /// Se llama al mostrar el panel para no esperar al siguiente Update.
-        /// </summary>
+        /// <summary>Aplica de inmediato el texto de instruccion correcto (manos vs control).</summary>
         public void RefreshHangingInstruction()
         {
             if (hangInstructionText == null) return;
@@ -93,11 +98,8 @@ namespace ArtUnbound.UI
             hangInstructionText.text = isController ? controllerHangingInstruction : handsHangingInstruction;
         }
 
-        private int lastWallCount = -1;
-
         /// <summary>
-        /// Shows the results screen with the given data.
-        /// wallCount: number of walls detected (0 = none). Used for on-device feedback when console is unavailable.
+        /// Muestra el panel de resultados. wallCount: paredes detectadas (>0 habilita colgado auto).
         /// </summary>
         public void ShowResults(PuzzleSessionData data, FrameTier frame, int wallCount = -1)
         {
@@ -107,39 +109,23 @@ namespace ArtUnbound.UI
 
             UpdateUI();
             Show();
-            
-            // Automatically enable artwork hanging mode if walls were detected
+
             if (lastWallCount > 0)
             {
-                Debug.Log($"[PostGame] Walls detected ({lastWallCount}), automatically enabling artwork hanging mode");
+                Debug.Log($"[PostGame] Walls detected ({lastWallCount}), auto-enabling hanging mode");
                 OnPlaceArtworkRequested?.Invoke();
             }
             else
             {
-                Debug.Log("[PostGame] No walls detected, artwork hanging mode NOT enabled");
+                Debug.Log("[PostGame] No walls detected, hanging mode NOT auto-enabled");
             }
         }
 
         private void UpdateUI()
         {
-            string medalName = GetMedalDisplayName(awardedFrame);
+            if (titleText != null)
+                titleText.text = ComposeMessage();
 
-            if (medalText != null)
-                medalText.text = $"Congratulations you have earned a {medalName} medal!!!";
-
-            if (medalIcon != null)
-            {
-                Sprite sprite = awardedFrame switch
-                {
-                    FrameTier.Bronce => bronzeMedal,
-                    FrameTier.Plata  => silverMedal,
-                    _                => goldMedal, // Oro
-                };
-                medalIcon.sprite = sprite;
-                medalIcon.enabled = sprite != null;
-            }
-
-            // Show/hide hang instruction text based on wall detection
             if (hangInstructionText != null)
             {
                 bool hasWalls = lastWallCount > 0;
@@ -148,36 +134,51 @@ namespace ArtUnbound.UI
             }
         }
 
-        private static string GetMedalDisplayName(FrameTier tier)
+        /// <summary>
+        /// Compone el mensaje del panel: titulo (Cormorant) + linea de accion tenue (Hanken) +
+        /// linea de hito CONDICIONAL solo si esta obra cruzo el umbral de una placa.
+        /// </summary>
+        private string ComposeMessage()
         {
-            return tier switch
-            {
-                FrameTier.Bronce => "Bronze",
-                FrameTier.Plata => "Silver",
-                FrameTier.Oro => "Gold",
-                _ => "Bronze"
-            };
+            string msg = $"{completeTitle}\n<size=55%>{readyToHangLine}</size>";
+
+            string milestone = GetMilestoneLine();
+            if (!string.IsNullOrEmpty(milestone))
+                msg += $"\n<size=50%>{milestone}</size>";
+
+            return msg;
         }
 
-        /// <summary>
-        /// Disables the replay button while the frame is in hanging mode so the controller
-        /// trigger cannot accidentally click it while the user is trying to grab the frame.
-        /// </summary>
+        /// <summary>Linea de hito si completar esta obra otorgo alguna placa (GameBootstrap.LastEarnedPlaques).</summary>
+        private static string GetMilestoneLine()
+        {
+            var gb = ArtUnbound.Core.GameBootstrap.Instance;
+            List<CollectibleDefinition> earned = gb != null ? gb.LastEarnedPlaques : null;
+            if (earned == null || earned.Count == 0) return null;
+            // Prioriza un coleccionable con nombre (no el de estatus) para el mensaje.
+            CollectibleDefinition pick = null;
+            foreach (var p in earned)
+            {
+                if (p == null) continue;
+                if (p.kind != CollectibleKind.Status) { pick = p; break; }
+                pick ??= p;
+            }
+            return pick != null ? $"Milestone unlocked: {pick.title}" : null;
+        }
+
+        /// <summary>Desactiva los botones mientras se cuelga (para no clickear por accidente).</summary>
         public void SetHangingMode(bool isHanging)
         {
-            if (replayButton != null)
-                replayButton.interactable = !isHanging;
+            if (hangButton != null) hangButton.interactable = !isHanging;
+            if (backButton != null) backButton.interactable = !isHanging;
         }
 
         public void Show()
         {
             if (!gameObject.activeSelf)
                 gameObject.SetActive(true);
-
             if (panel != null)
                 panel.SetActive(true);
-
-            // Update UI to refresh instruction text based on lastWallCount
             UpdateUI();
         }
 
@@ -187,34 +188,31 @@ namespace ArtUnbound.UI
                 panel.SetActive(false);
             else
                 gameObject.SetActive(false);
-            
-            // Also hide the hang instruction text when hiding the panel
+
             if (hangInstructionText != null)
                 hangInstructionText.gameObject.SetActive(false);
         }
 
-        private void OnReplayClicked()
+        private void OnHangClicked()
         {
-            if (ArtUnbound.Feedback.AudioManager.Instance != null)
-                ArtUnbound.Feedback.AudioManager.Instance.PlayButtonClick();
-            OnReplayRequested?.Invoke();
+            ArtUnbound.Feedback.AudioManager.Instance?.PlayButtonClick();
+            OnPlaceArtworkRequested?.Invoke();
+        }
+
+        private void OnBackClicked()
+        {
+            ArtUnbound.Feedback.AudioManager.Instance?.PlayButtonClick();
+            OnBackRequested?.Invoke();
             Hide();
         }
 
-        /// <summary>
-        /// Gets the current session data.
-        /// </summary>
         public PuzzleSessionData GetSessionData() => sessionData;
-
-        /// <summary>
-        /// Gets the awarded frame tier.
-        /// </summary>
         public FrameTier GetAwardedFrame() => awardedFrame;
 
         private void OnDestroy()
         {
-            if (replayButton != null)
-                replayButton.onClick.RemoveListener(OnReplayClicked);
+            if (hangButton != null) hangButton.onClick.RemoveListener(OnHangClicked);
+            if (backButton != null) backButton.onClick.RemoveListener(OnBackClicked);
         }
     }
 }

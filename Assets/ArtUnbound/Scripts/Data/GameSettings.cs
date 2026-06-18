@@ -22,6 +22,13 @@ namespace ArtUnbound.Data
         public bool showGrid = false;
         public bool highContrast = false;
 
+        // Presentation upgrade toggles (GDD 8.2). Cada mejora, una vez desbloqueada por
+        // progreso, se auto-aplica a las obras colgadas salvo que el jugador la apague aqui.
+        // Default ON: si esta desbloqueada, se ve.
+        public bool showCedula = true;
+        public bool showMarco = true;
+        public bool showLampara = true;
+
         // Control settings
         public float pieceSnapDistance = 0.03f;
 
@@ -35,6 +42,9 @@ namespace ArtUnbound.Data
             defaultPieceCount = 64;
             showGrid = false;
             highContrast = false;
+            showCedula = true;
+            showMarco = true;
+            showLampara = true;
             pieceSnapDistance = 0.03f;
         }
     }

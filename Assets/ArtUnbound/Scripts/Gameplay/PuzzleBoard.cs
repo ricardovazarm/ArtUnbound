@@ -46,9 +46,11 @@ namespace ArtUnbound.Gameplay
         [Header("Frame (for completed image reveal)")]
         [SerializeField] private FrameConfigSet frameConfigSet;
         [Tooltip("Fallback if FrameConfigSet has no config for tier")]
+        [SerializeField] private Material frameMaderaMaterial;
         [SerializeField] private Material frameBronceMaterial;
         [SerializeField] private Material framePlataMaterial;
         [SerializeField] private Material frameOroMaterial;
+        [SerializeField] private Material framePlatinoMaterial;
 
         private readonly List<PuzzlePiece> activePieces = new List<PuzzlePiece>();
         
@@ -1944,10 +1946,12 @@ namespace ArtUnbound.Gameplay
 
             Material mat = tier switch
             {
-                FrameTier.Bronce => frameBronceMaterial,
-                FrameTier.Plata  => framePlataMaterial,
-                FrameTier.Oro    => frameOroMaterial,
-                _                => frameBronceMaterial
+                FrameTier.Madera  => frameMaderaMaterial,
+                FrameTier.Bronce  => frameBronceMaterial,
+                FrameTier.Plata   => framePlataMaterial,
+                FrameTier.Oro     => frameOroMaterial,
+                FrameTier.Platino => framePlatinoMaterial != null ? framePlatinoMaterial : frameOroMaterial,
+                _                 => frameBronceMaterial
             };
 
             if (mat != null) return mat;
@@ -1959,10 +1963,12 @@ namespace ArtUnbound.Gameplay
             var fallback = new Material(shader);
             fallback.color = tier switch
             {
-                FrameTier.Bronce => new Color(0.55f, 0.33f, 0.12f), // bronze brown
-                FrameTier.Plata  => new Color(0.75f, 0.75f, 0.78f), // silver
-                FrameTier.Oro    => new Color(0.85f, 0.70f, 0.10f), // gold
-                _                => new Color(0.55f, 0.33f, 0.12f)
+                FrameTier.Madera  => new Color(0.45f, 0.30f, 0.18f), // wood base
+                FrameTier.Bronce  => new Color(0.55f, 0.33f, 0.12f), // bronze brown
+                FrameTier.Plata   => new Color(0.75f, 0.75f, 0.78f), // silver
+                FrameTier.Oro     => new Color(0.85f, 0.70f, 0.10f), // gold
+                FrameTier.Platino => new Color(0.90f, 0.91f, 0.95f), // platinum (white-blue)
+                _                 => new Color(0.55f, 0.33f, 0.12f)
             };
             return fallback;
         }

@@ -71,23 +71,24 @@ namespace ArtUnbound.VR
                 }
             }
 
-            BuildFrameBars(root.transform, w, h, frameTier);
+            // El marco se gatea por el tier global actual (Madera = base de madera si el Marco
+            // aun no esta desbloqueado). El param frameTier queda como legacy.
+            FrameTier effectiveTier = PresentationDecorator.CurrentFrameTier();
+            BuildFrameBars(root.transform, w, h, effectiveTier);
 
             var col = root.AddComponent<BoxCollider>();
             col.size = new Vector3(w, h, 0.05f);
+
+            // Cedula + lampara segun estado global (GDD 8.2), acabado por tier.
+            PresentationDecorator.Decorate(root, artworkDef?.title ?? artworkId, artworkDef?.author ?? string.Empty, w, h,
+                artworkDef?.year ?? 0, artworkDef?.artMovement, artworkDef?.museum);
 
             return root;
         }
 
         private static void BuildFrameBars(Transform parent, float w, float h, FrameTier tier)
         {
-            Color color = tier switch
-            {
-                FrameTier.Bronce => new Color(0.55f, 0.35f, 0.15f),
-                FrameTier.Plata  => new Color(0.75f, 0.75f, 0.78f),
-                FrameTier.Oro    => new Color(0.85f, 0.72f, 0.20f),
-                _                => new Color(0.55f, 0.35f, 0.15f),
-            };
+            Color color = PresentationDecorator.FrameBarColor(tier);
             Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
             Material mat = null;
             if (shader != null)

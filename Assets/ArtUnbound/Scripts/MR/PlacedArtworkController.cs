@@ -119,6 +119,7 @@ namespace ArtUnbound.MR
                 FrameTier.Bronce => frameBronceMesh,
                 FrameTier.Plata => framePlataMesh,
                 FrameTier.Oro => frameOroMesh,
+                FrameTier.Platino => frameOroMesh, // sin malla dedicada: fallback a Oro
                 _ => frameBronceMesh
             };
         }
@@ -130,6 +131,7 @@ namespace ArtUnbound.MR
                 FrameTier.Bronce => frameBronceMaterial,
                 FrameTier.Plata => framePlataMaterial,
                 FrameTier.Oro => frameOroMaterial,
+                FrameTier.Platino => frameOroMaterial, // sin material dedicado: fallback a Oro
                 _ => frameBronceMaterial
             };
         }

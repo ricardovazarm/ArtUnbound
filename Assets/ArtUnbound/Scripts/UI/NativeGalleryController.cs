@@ -24,9 +24,11 @@ namespace ArtUnbound.UI
     ///         └── [contentRoot] Panel   ← Image negra semitransparente, se oculta al posicionar
     ///              ├── Header            (TMP "Art Unbound", h=60)
     ///              ├── ContentArea       (anchors: stretch-stretch, menos 60 arriba y 80 abajo)
-    ///              │    ├── CatalogView  (SearchInputField fijo arriba + ScrollRect vertical → GridLayoutGroup 4 cols.
-    ///              │    │                 La búsqueda filtra el grid en vivo; EmptyLabel si no hay coincidencias.)
-    ///              │    └── SettingsView (Layout vertical con Sliders y Toggle)
+    ///              │    ├── CatalogView    (SearchInputField fijo arriba + ScrollRect vertical → GridLayoutGroup 4 cols.
+    ///              │    │                   La búsqueda filtra el grid en vivo; EmptyLabel si no hay coincidencias.)
+    ///              │    ├── CollectionView (vista propia, copia del Catalog SIN barra de búsqueda; su ScrollRect → GridLayoutGroup.
+    ///              │    │                   Se puebla en PopulateCollection con obras completadas, placas y mejoras.)
+    ///              │    └── SettingsView   (Layout vertical con Sliders y Toggle)
     ///              ├── DetailPanel       (overlay oscuro, SetActive false por defecto)
     ///              │    ├── ArtworkImage (Image, preserve aspect)
     ///              │    ├── TitleText    (TMP bold)
@@ -59,6 +61,11 @@ namespace ArtUnbound.UI
         /// <summary>Se dispara cuando el usuario mueve un slider de configuración.</summary>
         public event Action<float, float, bool> OnSettingsChanged; // (musicVol, sfxVol, haptics)
 
+        /// <summary>Collection: el usuario seleccionó una obra completada para colgarla (artworkId).</summary>
+        public event Action<string> OnHangArtworkRequested;
+        /// <summary>Collection: el usuario seleccionó una placa obtenida para colgarla (plaqueId).</summary>
+        public event Action<string> OnHangPlaqueRequested;
+
         // ════════════════════════════════════════════════════════════════════════
         //  SERIALIZED — POSICIONAMIENTO
         // ════════════════════════════════════════════════════════════════════════
@@ -82,24 +89,27 @@ namespace ArtUnbound.UI
         [Header("Tabs — Botones")]
         [SerializeField] private Button  btnInicio;
         [SerializeField] private Button  btnConfig;
-        [SerializeField] private Button  btnStore;
+        [Tooltip("Boton COLLECTION de la barra inferior (inventario de obras + placas; GDD 8.5).")]
+        [SerializeField] private Button  btnCollection;
 
         [Header("Tabs — Indicadores de tab activo")]
         [SerializeField] private GameObject indicatorInicio;
         [SerializeField] private GameObject indicatorConfig;
-        [SerializeField] private GameObject indicatorStore;
 
         // ── Paneles de vista ──────────────────────────────────────────────────
         [Header("Paneles de vista")]
         [SerializeField] private GameObject catalogView;
+        [Tooltip("Vista propia de Collection (copia del Catalog sin barra de busqueda). Su grid se puebla en PopulateCollection.")]
+        [SerializeField] private GameObject collectionView;
         [SerializeField] private GameObject settingsView;
-        [SerializeField] private GameObject storeView;
-        [SerializeField] private StoreViewController storeViewController;
 
         // ── Grids ──────────────────────────────────────────────────────────────
         [Header("Grids — Contenedores")]
         [Tooltip("Transform con GridLayoutGroup donde se instancian las cards del catálogo.")]
         [SerializeField] private Transform catalogGridContainer;
+
+        [Tooltip("Transform con GridLayoutGroup de la vista Collection (dentro de collectionView). Donde se instancian sus cards.")]
+        [SerializeField] private Transform collectionGridContainer;
 
         // ── Búsqueda (barra fija dentro del Catálogo) ─────────────────────────
         [Header("Búsqueda")]
@@ -116,6 +126,14 @@ namespace ArtUnbound.UI
         [SerializeField] private Toggle   hapticsToggle;
         [SerializeField] private TMP_Text musicValueText;
         [SerializeField] private TMP_Text sfxValueText;
+
+        [Header("Configuración — Mejoras de presentación (GDD 8.2)")]
+        [Tooltip("Toggle de la Cédula (placa título/autor bajo cada cuadro). Solo surte efecto una vez desbloqueada (10 obras).")]
+        [SerializeField] private Toggle   cedulaToggle;
+        [Tooltip("Toggle del Marco (sobre la base de madera). Solo surte efecto una vez desbloqueado (25 obras).")]
+        [SerializeField] private Toggle   marcoToggle;
+        [Tooltip("Toggle de la Lámpara (luz museo sobre cada cuadro). Solo surte efecto una vez desbloqueada (50 obras).")]
+        [SerializeField] private Toggle   lamparaToggle;
 
         // ── Panel de Detalle ─────────────────────────────────────────────────
         [Header("Panel de Detalle")]
@@ -149,15 +167,6 @@ namespace ArtUnbound.UI
         [Tooltip("Prefab con ArtworkCardUI. Ver comentarios de jerarquía arriba.")]
         [SerializeField] private GameObject artworkCardPrefab;
 
-        // ── Medallas ─────────────────────────────────────────────────────────
-        [Header("Medallas (badge en la card)")]
-        [Tooltip("Sprite mostrado en CompletedBadge cuando bestFrameTier == Bronce (Easy).")]
-        [SerializeField] private Sprite bronzeMedal;
-        [Tooltip("Sprite mostrado en CompletedBadge cuando bestFrameTier == Plata (Normal).")]
-        [SerializeField] private Sprite silverMedal;
-        [Tooltip("Sprite mostrado en CompletedBadge cuando bestFrameTier == Oro (Hard).")]
-        [SerializeField] private Sprite goldMedal;
-
         // ════════════════════════════════════════════════════════════════════════
         //  ESTADO PRIVADO
         // ════════════════════════════════════════════════════════════════════════
@@ -173,7 +182,7 @@ namespace ArtUnbound.UI
         private bool                       _hasBeenPositioned;
         private Camera                     _positioningCamera;
 
-        private enum Tab { Catalog, Settings, Store, Galleries }
+        private enum Tab { Catalog, Settings, Collection, Galleries }
         private Tab _currentTab = Tab.Catalog;
 
         // Mapeo card→obra del catálogo para filtrar (mostrar/ocultar) sin re-instanciar.
@@ -223,7 +232,7 @@ namespace ArtUnbound.UI
             // Limpiar listeners para evitar memory leaks
             btnInicio?.onClick.RemoveAllListeners();
             btnConfig?.onClick.RemoveAllListeners();
-            btnStore?.onClick.RemoveAllListeners();
+            btnCollection?.onClick.RemoveAllListeners();
             btnDetailClose?.onClick.RemoveAllListeners();
             btnEasy?.onClick.RemoveAllListeners();
             btnNormal?.onClick.RemoveAllListeners();
@@ -232,6 +241,9 @@ namespace ArtUnbound.UI
             musicSlider?.onValueChanged.RemoveAllListeners();
             sfxSlider?.onValueChanged.RemoveAllListeners();
             hapticsToggle?.onValueChanged.RemoveAllListeners();
+            cedulaToggle?.onValueChanged.RemoveAllListeners();
+            marcoToggle?.onValueChanged.RemoveAllListeners();
+            lamparaToggle?.onValueChanged.RemoveAllListeners();
             searchInputField?.onValueChanged.RemoveAllListeners();
             btnVR?.onClick.RemoveAllListeners();
             btnMR?.onClick.RemoveAllListeners();
@@ -271,19 +283,13 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
-        /// Wires the StoreView with the purchase service. Called by GameBootstrap after
-        /// PackPurchaseService is itself initialized. Same pattern as UnifiedMainMenu.
+        /// Inyecta el servicio de compra. Llamado por GameBootstrap tras inicializarlo.
+        /// El unico punto de venta es el boton de compra contextual en el detalle de una obra
+        /// bloqueada (modelo de unlock unico del catalogo; no hay tienda).
         /// </summary>
         public void SetPackPurchaseService(PackPurchaseService purchaseService)
         {
             _purchaseService = purchaseService;
-
-            // Modelo de venta simplificado: la compra del catalogo completo ocurre desde
-            // el detail panel. Se retira de la UI el tab Store por packs/bundles.
-            if (btnStore != null)        btnStore.gameObject.SetActive(false);
-            if (indicatorStore != null)  indicatorStore.SetActive(false);
-
-            // StoreViewController se conserva pero ya no se inicializa/cablea.
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -389,13 +395,9 @@ namespace ArtUnbound.UI
             // desde la última vez que se mostró la galería
             if (contentRoot != null) contentRoot.SetActive(true);
 
-            // Poblar catálogo solo la primera vez (las cards no cambian)
-            if (!_catalogPopulated)
-            {
-                PopulateCatalog();
-                _catalogPopulated = true;
-            }
-
+            // SwitchTab puebla el tab actual (Catalog/Collection/Settings); no es necesario
+            // poblar el catalogo aparte. Marcamos el flag por compatibilidad.
+            _catalogPopulated = true;
             SwitchTab(_currentTab, force: true);
 
             // Clear EventSystem selection so no button shows the golden "selected" highlight on reveal
@@ -435,7 +437,7 @@ namespace ArtUnbound.UI
         {
             btnInicio?.onClick.AddListener(() => SwitchTab(Tab.Catalog));
             btnConfig?.onClick.AddListener(() => SwitchTab(Tab.Settings));
-            btnStore?.onClick.AddListener(()  => SwitchTab(Tab.Store));
+            btnCollection?.onClick.AddListener(() => SwitchTab(Tab.Collection));
         }
 
         private void SwitchTab(Tab tab, bool force = false)
@@ -449,12 +451,14 @@ namespace ArtUnbound.UI
             // que llamaria a SetActive y lanzaria UnassignedReferenceException,
             // abortando SwitchTab antes de activar catalogView (galeria en blanco).
             if (indicatorInicio != null) indicatorInicio.SetActive(tab == Tab.Catalog);
-            if (indicatorStore  != null) indicatorStore.SetActive(tab == Tab.Store);
             if (indicatorConfig != null) indicatorConfig.SetActive(tab == Tab.Settings);
 
-            if (catalogView != null)   catalogView.SetActive(tab == Tab.Catalog);
-            if (settingsView != null)  settingsView.SetActive(tab == Tab.Settings);
-            if (storeView != null)     storeView.SetActive(tab == Tab.Store);
+            // Cada pestaña tiene su propia vista. Collection ya NO reutiliza el catalogView:
+            // vive en collectionView (su grid propio, sin barra de busqueda).
+            if (catalogView != null)    catalogView.SetActive(tab == Tab.Catalog);
+            if (collectionView != null) collectionView.SetActive(tab == Tab.Collection);
+            if (settingsView != null)   settingsView.SetActive(tab == Tab.Settings);
+            SetSearchBarActive(tab == Tab.Catalog);
 
             // Galleries is a tab-like view backed by gallerySelectionController. Show it
             // when the tab is selected; hide it whenever any other tab is active.
@@ -470,19 +474,25 @@ namespace ArtUnbound.UI
                 gallerySelectionController?.Hide();
             }
 
-            // Close any modal detail panels so they don't survive across tab changes:
-            //   - detailPanel:                 catalog artwork detail (Easy/Medium/Hard).
-            //   - storeViewController modals:  ArtworkInPackDetail and PackInBundleDetail.
+            // Close the modal detail panel so it doesn't survive across tab changes
+            // (catalog artwork detail with the size buttons / purchase button).
             if (detailPanel != null) detailPanel.SetActive(false);
-            storeViewController?.CloseAllDetailPanels();
 
             switch (tab)
             {
-                case Tab.Settings:  PopulateSettings();  break;
-                case Tab.Store:
-                    storeViewController?.Populate();
-                    break;
+                case Tab.Settings:   PopulateSettings();   break;
+                case Tab.Catalog:    PopulateCatalog();    break;
+                case Tab.Collection: PopulateCollection(); break;
             }
+        }
+
+        /// <summary>Muestra/oculta la barra de busqueda (solo aplica en el tab Catalogo).</summary>
+        private void SetSearchBarActive(bool active)
+        {
+            if (searchInputField != null && searchInputField.gameObject.activeSelf != active)
+                searchInputField.gameObject.SetActive(active);
+            if (!active && searchEmptyLabel != null)
+                searchEmptyLabel.gameObject.SetActive(false);
         }
 
         // Tab active/inactive coloring intentionally removed — tabs use the central
@@ -513,8 +523,8 @@ namespace ArtUnbound.UI
             foreach (var artwork in _allArtworks)
             {
                 if (artwork == null) continue;
-                FrameTier bestTier = GetBestTier(artwork.artworkId, saveData);
-                GameObject go = SpawnCard(artwork, bestTier, catalogGridContainer);
+                bool isCompleted = IsArtworkCompleted(artwork.artworkId, saveData);
+                GameObject go = SpawnCard(artwork, isCompleted, catalogGridContainer);
                 if (go != null) _catalogCards.Add((artwork, go));
             }
 
@@ -569,6 +579,72 @@ namespace ArtUnbound.UI
             }
         }
 
+        /// <summary>
+        /// Puebla el grid propio de Collection (collectionGridContainer) con el inventario (GDD 8.5): obras completadas
+        /// (colgables), placas obtenidas (colgables) y objetos no obtenidos (placas + mejoras de
+        /// presentacion) mostrados como bloqueados con su condicion.
+        /// </summary>
+        private void PopulateCollection()
+        {
+            if (collectionGridContainer == null || artworkCardPrefab == null)
+            {
+                Debug.LogWarning("[NativeGallery] collectionGridContainer o artworkCardPrefab no asignados (revisa la vista CollectionView en el inspector).");
+                return;
+            }
+            ClearGrid(collectionGridContainer);
+
+            SaveData saveData = _saveData != null ? _saveData.GetCachedData() : null;
+            if (saveData == null) return;
+            int completedCount = saveData.GetCompletedCount();
+
+            // 1) Obras completadas -> colgar
+            foreach (var artwork in _allArtworks)
+            {
+                if (artwork == null || !IsArtworkCompleted(artwork.artworkId, saveData)) continue;
+                var go = Instantiate(artworkCardPrefab, collectionGridContainer);
+                var card = go.GetComponent<ArtworkCardUI>();
+                if (card != null)
+                {
+                    string id = artwork.artworkId;
+                    card.Setup(artwork, true, _ => OnHangArtworkRequested?.Invoke(id), false);
+                }
+            }
+
+            // 2) Coleccionables del catalogo (en su orden). Placas: obtenida -> colgar / bloqueada ->
+            //    condicion. Mejoras (no colgables): desbloqueada/locked segun obras completadas.
+            var gb = ArtUnbound.Core.GameBootstrap.Instance;
+            var catalog = gb != null && gb.CollectibleService != null ? gb.CollectibleService.Catalog : null;
+            if (catalog != null && catalog.collectibles != null)
+            {
+                foreach (var c in catalog.collectibles)
+                {
+                    if (c == null) continue;
+                    var go = Instantiate(artworkCardPrefab, collectionGridContainer);
+                    var card = go.GetComponent<ArtworkCardUI>();
+                    if (card == null) continue;
+
+                    if (c.hangable)
+                    {
+                        // Placa/estatus: miniatura 3D del propio asset (render-to-texture).
+                        bool earned = saveData.HasPlaque(c.id);
+                        string cid = c.id;
+                        Texture preview = CollectiblePreviewRenderer.Instance.GetPreview(c);
+                        if (earned)
+                            card.SetupGeneric(c.title, c.conditionText, true, false,
+                                () => OnHangPlaqueRequested?.Invoke(cid), preview);
+                        else
+                            card.SetupGeneric(c.title, c.conditionText, false, true, null, preview);
+                    }
+                    else
+                    {
+                        // Mejora (cedula/marco/lampara): no es colgable -> icono Sprite del asset.
+                        bool unlocked = completedCount >= c.threshold;
+                        card.SetupGeneric(c.title, c.conditionText, unlocked, !unlocked, null, null, c.icon);
+                    }
+                }
+            }
+        }
+
         private void PopulateSettings()
         {
             SaveData saveData = _saveData.GetCachedData();
@@ -586,18 +662,25 @@ namespace ArtUnbound.UI
             }
             if (hapticsToggle != null)
                 hapticsToggle.SetIsOnWithoutNotify(saveData.settings.hapticsEnabled);
+
+            if (cedulaToggle != null)
+                cedulaToggle.SetIsOnWithoutNotify(saveData.settings.showCedula);
+            if (marcoToggle != null)
+                marcoToggle.SetIsOnWithoutNotify(saveData.settings.showMarco);
+            if (lamparaToggle != null)
+                lamparaToggle.SetIsOnWithoutNotify(saveData.settings.showLampara);
         }
 
         // ── Helpers de grid ───────────────────────────────────────────────────
 
-        private GameObject SpawnCard(ArtworkDefinition artwork, FrameTier bestTier, Transform container)
+        private GameObject SpawnCard(ArtworkDefinition artwork, bool isCompleted, Transform container)
         {
             var go   = Instantiate(artworkCardPrefab, container);
             var card = go.GetComponent<ArtworkCardUI>();
             if (card != null)
             {
                 bool isLocked = _purchaseService != null && _purchaseService.IsArtworkLocked(artwork);
-                card.Setup(artwork, bestTier, bronzeMedal, silverMedal, goldMedal, OnCardTapped, isLocked);
+                card.Setup(artwork, isCompleted, OnCardTapped, isLocked);
             }
             else
                 Debug.LogWarning($"[NativeGallery] El prefab '{artworkCardPrefab.name}' no tiene ArtworkCardUI.");
@@ -610,12 +693,11 @@ namespace ArtUnbound.UI
                 Destroy(container.GetChild(i).gameObject);
         }
 
-        private static FrameTier GetBestTier(string artworkId, SaveData saveData)
+        private static bool IsArtworkCompleted(string artworkId, SaveData saveData)
         {
-            if (saveData == null) return FrameTier.Madera;
+            if (saveData == null) return false;
             var progress = saveData.GetProgress(artworkId);
-            if (progress == null || !progress.HasBeenCompleted()) return FrameTier.Madera;
-            return progress.bestFrameTier;
+            return progress != null && progress.HasBeenCompleted();
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -735,6 +817,25 @@ namespace ArtUnbound.UI
                 FireSettingsChanged();
             });
             hapticsToggle?.onValueChanged.AddListener(_ => FireSettingsChanged());
+
+            // Toggles de presentacion (cedula/marco/lampara): persisten la preferencia en
+            // GameSettings. Surten efecto en obras colgadas al re-instanciarse (re-entrar a la
+            // galeria / re-colgar). El desbloqueo por progreso se evalua aparte (IsCedulaActive...).
+            cedulaToggle?.onValueChanged.AddListener(_ => SavePresentationToggles());
+            marcoToggle?.onValueChanged.AddListener(_ => SavePresentationToggles());
+            lamparaToggle?.onValueChanged.AddListener(_ => SavePresentationToggles());
+        }
+
+        private void SavePresentationToggles()
+        {
+            var data = _saveData?.GetCachedData();
+            if (data?.settings == null) return;
+
+            if (cedulaToggle != null)  data.settings.showCedula  = cedulaToggle.isOn;
+            if (marcoToggle != null)   data.settings.showMarco   = marcoToggle.isOn;
+            if (lamparaToggle != null) data.settings.showLampara = lamparaToggle.isOn;
+
+            _saveData.MarkDirty();
         }
 
         private void UpdateMusicLabel(float v)
