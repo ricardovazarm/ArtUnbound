@@ -299,7 +299,10 @@ namespace ArtUnbound.Core
             // HUD
             if (puzzleHUD != null)
             {
-                puzzleHUD.OnExitRequested += QuitToMenu;
+                // Salir por el HUD tambien limpia el flujo de colgado: en PostGame el agarre del marco
+                // se auto-habilita al detectar pared, y sin esta limpieza los eventos quedarian suscritos
+                // (y se duplicarian en la siguiente partida). CleanupArtworkHanging es no-op durante Playing.
+                puzzleHUD.OnExitRequested += OnBackFromPostGame;
                 puzzleHUD.OnHighlightWrongRequested += HighlightWrongPieces;
             }
 
@@ -1144,6 +1147,10 @@ namespace ArtUnbound.Core
 
         private void ReplayPuzzle()
         {
+            // Si veniamos de PostGame con paredes, el colgado quedo auto-habilitado: limpiarlo antes
+            // de re-armar para no arrastrar eventos suscritos a la nueva partida.
+            CleanupArtworkHanging();
+
             // Clear session so we start fresh (record/time/frame stay in ArtworkProgress)
             saveDataService.ClearSession(selectedArtworkId, selectedPieceCount);
             postGameController?.Hide();

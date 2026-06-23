@@ -197,6 +197,32 @@ namespace ArtUnbound.Input
             return false;
         }
 
+        /// <summary>
+        /// Returns the current thumb-tip ↔ index-tip distance (meters) for the tracked hand.
+        /// Used to detect a *forming* grab gesture (fingers closing) so tray scroll can disengage
+        /// BEFORE the pinch threshold is crossed — reaching in to grab a tray piece must not scroll.
+        /// Returns false in controller mode or when the hand/joints aren't tracked.
+        /// </summary>
+        public bool TryGetPinchDistance(out float meters)
+        {
+            if (!useControllers && m_HandSubsystem != null && m_HandSubsystem.running)
+            {
+                var hand = m_HandSubsystem.rightHand;
+                if (hand.isTracked)
+                {
+                    var thumb = hand.GetJoint(XRHandJointID.ThumbTip);
+                    var index = hand.GetJoint(XRHandJointID.IndexTip);
+                    if (thumb.TryGetPose(out Pose tp) && index.TryGetPose(out Pose ip))
+                    {
+                        meters = Vector3.Distance(tp.position, ip.position);
+                        return true;
+                    }
+                }
+            }
+            meters = float.MaxValue;
+            return false;
+        }
+
         public bool GetPointerPose(out Vector3 position, out Quaternion rotation)
         {
             if (useControllers)

@@ -14,6 +14,10 @@ namespace ArtUnbound.UI
     {
         [SerializeField] private PuzzleConfig puzzleConfig;
 
+        [Tooltip("Logs each time a tray piece toggles visible/hidden, with the scroll value that caused it. " +
+                 "Use to confirm the 'first row disappears on grab' issue is scroll-driven.")]
+        [SerializeField] private bool debugVisibilityLogs = true;
+
         [Header("Runtime Info (read-only)")]
         [SerializeField] private int _columns;
         [SerializeField] private int _visibleRows;
@@ -74,6 +78,19 @@ namespace ArtUnbound.UI
         public void ScrollBy(float deltaMeters)
         {
             _targetScroll = Mathf.Clamp(_targetScroll + deltaMeters, 0f, _maxScroll);
+        }
+
+        /// <summary>Current scroll target (meters). Used to snapshot/restore scroll around a grab.</summary>
+        public float CurrentTargetScroll => _targetScroll;
+
+        /// <summary>
+        /// Restores the scroll target to a previously-snapshotted value. Called when a grab is
+        /// detected with the finger inside the tray, to undo any scroll that crept in while the
+        /// user was reaching to grab a piece (otherwise the top row would stay hidden).
+        /// </summary>
+        public void RevertScrollTo(float targetScroll)
+        {
+            _targetScroll = Mathf.Clamp(targetScroll, 0f, _maxScroll);
         }
 
         // ── Piece management ─────────────────────────────────────────────────────
@@ -225,12 +242,23 @@ namespace ArtUnbound.UI
                 p.transform.localPosition = localPos;
                 p.SetPoolPosition(p.transform.position);
 
-                // Strict boundary: piece must be fully within viewport (no partial clipping)
-                bool inViewport = localPos.y - halfCell >= -halfView
-                               && localPos.y + halfCell <=  halfView;
+                // A piece stays visible while it at least half-overlaps the viewport.
+                // This tolerance (half a cell) is critical: the TOP row sits exactly on the upper
+                // edge (localPos.y + halfCell == halfView), so a stricter test would flicker the
+                // whole first row off on the slightest scroll — and the reach-to-grab motion always
+                // nudges the proximity scroll a little, more so with the big pieces of small puzzles.
+                // Deliberate scrolls (a full row or more) still page content as expected.
+                float edgeTolerance = halfCell; // half a cell
+                bool inViewport = localPos.y - halfCell >= -halfView - edgeTolerance
+                               && localPos.y + halfCell <=  halfView + edgeTolerance;
 
                 if (p.gameObject.activeSelf != inViewport)
+                {
+                    if (debugVisibilityLogs)
+                        Debug.Log($"[Tray3D] piece idx={i} → {(inViewport ? "SHOW" : "HIDE")}  " +
+                                  $"localY={localPos.y:F3} scroll(cur={_currentScroll:F3} tgt={_targetScroll:F3})");
                     p.gameObject.SetActive(inViewport);
+                }
             }
         }
     }

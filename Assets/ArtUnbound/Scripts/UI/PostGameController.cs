@@ -11,22 +11,29 @@ using TMPro;
 namespace ArtUnbound.UI
 {
     /// <summary>
-    /// Panel de post-juego (GDD 4.8 / 11.4). SIN medalla ni lenguaje de "premio": muestra un
+    /// Panel de post-juego (GDD 4.8 / 11.4). Sin lenguaje de "premio": muestra un
     /// titulo de momento de museo ("Artwork Complete"), una linea de accion tenue
-    /// ("Ready to hang in your gallery") y, condicionalmente, una linea de hito si completar la
-    /// obra cruzo el umbral de una placa (GDD 8.x, via GameBootstrap.LastEarnedPlaques).
-    /// Botones: "Hang it now" (primario -> colgar) y "Back to collection" (secundario).
+    /// ("Ready to hang in your gallery"), la instruccion de colgado (pinch / point&click) y,
+    /// condicionalmente, la PLACA recien desbloqueada (visual + titulo) si completar la obra
+    /// cruzo el umbral de un coleccionable (GDD 8.x, via GameBootstrap.LastEarnedPlaques).
+    ///
+    /// Colgar NO requiere boton: cuando hay paredes, ShowResults auto-habilita el agarre del
+    /// marco (OnPlaceArtworkRequested) y muestra la instruccion. Salir se hace con el boton de
+    /// salida del HUD (panel izquierdo). El unico boton de este panel es "Play Again" (re-armar la
+    /// misma obra, p.ej. para que otra persona lo intente); por eso ya no hay "Hang it now" ni
+    /// "Back to collection".
     /// </summary>
     public class PostGameController : MonoBehaviour
     {
         public event Action OnPlaceArtworkRequested;
-        public event Action OnBackRequested;
-        // Conservado por compatibilidad de wiring; ya no lo dispara ningun boton (GDD sin replay aqui).
         public event Action OnReplayRequested;
+        // Conservado por compatibilidad de wiring (GameBootstrap aun se suscribe); ya no lo dispara
+        // ningun boton de este panel. Salir = boton del HUD; colgar = auto al detectar pared.
+        public event Action OnBackRequested;
 
         [Header("UI References")]
         [SerializeField] private GameObject panel;
-        [Tooltip("Texto principal del panel. Compone titulo + linea de accion + linea de hito condicional.")]
+        [Tooltip("Texto principal del panel. Compone titulo + linea de accion (+ titulo de placa si no hay contenedor visual).")]
         [FormerlySerializedAs("medalText")]
         [SerializeField] private TextMeshProUGUI titleText;
 
@@ -45,11 +52,25 @@ namespace ArtUnbound.UI
         [SerializeField] private string controllerHangingInstruction = "Point and click to select the frame, then click on a wall to hang it.";
 
         [Header("Buttons")]
-        [Tooltip("Boton primario 'Hang it now' (lleva directo a colgar). Reusa el viejo replayButton.")]
+        [Tooltip("Boton 'Play Again': re-arma la misma obra desde cero (misma dificultad). " +
+                 "Reusa el viejo replayButton del prefab.")]
         [FormerlySerializedAs("replayButton")]
-        [SerializeField] private Button hangButton;
-        [Tooltip("Boton secundario 'Back to collection' (vuelve al menu).")]
-        [SerializeField] private Button backButton;
+        [FormerlySerializedAs("hangButton")]
+        [SerializeField] private Button playAgainButton;
+
+        [Header("Placa desbloqueada (opcional)")]
+        [Tooltip("Contenedor de la placa recien desbloqueada. Se activa SOLO si esta obra otorgo una placa. " +
+                 "Si se deja vacio, el hito se muestra como linea de texto dentro del titulo (fallback).")]
+        [SerializeField] private GameObject plaqueContainer;
+        [Tooltip("RawImage donde se pinta la vista previa 3D de la placa (mismo render que las tarjetas de Collection).")]
+        [SerializeField] private RawImage plaqueImage;
+        [Tooltip("Encabezado (TMP) que se muestra junto a la placa, p.ej. 'Milestone unlocked!'. " +
+                 "La placa ya trae su propio nombre en la imagen, asi que aqui solo va el encabezado, no el titulo.")]
+        [FormerlySerializedAs("plaqueTitleText")]
+        [SerializeField] private TMP_Text plaqueHeaderText;
+        [Tooltip("Texto del encabezado de hito. Tambien se usa como linea de texto si no hay contenedor visual.")]
+        [FormerlySerializedAs("milestonePrefix")]
+        [SerializeField] private string milestoneHeader = "Milestone unlocked!";
 
         private PuzzleSessionData sessionData;
         private FrameTier awardedFrame;
@@ -59,16 +80,17 @@ namespace ArtUnbound.UI
 
         private void Awake()
         {
-            if (hangButton != null)
-                hangButton.onClick.AddListener(OnHangClicked);
-            if (backButton != null)
-                backButton.onClick.AddListener(OnBackClicked);
+            if (playAgainButton != null)
+                playAgainButton.onClick.AddListener(OnPlayAgainClicked);
 
             if (inputController == null)
                 inputController = FindFirstObjectByType<HandTrackingInputController>();
 
             if (hangInstructionText != null)
                 hangInstructionText.gameObject.SetActive(false);
+
+            if (plaqueContainer != null)
+                plaqueContainer.SetActive(false);
 
             Hide();
         }
@@ -126,6 +148,8 @@ namespace ArtUnbound.UI
             if (titleText != null)
                 titleText.text = ComposeMessage();
 
+            UpdatePlaqueVisual();
+
             if (hangInstructionText != null)
             {
                 bool hasWalls = lastWallCount > 0;
@@ -135,27 +159,74 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
-        /// Compone el mensaje del panel: titulo (Cormorant) + linea de accion tenue (Hanken) +
-        /// linea de hito CONDICIONAL solo si esta obra cruzo el umbral de una placa.
+        /// Compone el mensaje del panel: titulo (Cormorant) + linea de accion tenue (Hanken). La linea
+        /// de hito solo se agrega aqui como FALLBACK cuando no hay contenedor de placa visual cableado.
         /// </summary>
         private string ComposeMessage()
         {
             string msg = $"{completeTitle}\n<size=55%>{readyToHangLine}</size>";
 
-            string milestone = GetMilestoneLine();
-            if (!string.IsNullOrEmpty(milestone))
-                msg += $"\n<size=50%>{milestone}</size>";
+            // Si hay contenedor visual, el hito se muestra ahi (no duplicar en texto). Como FALLBACK,
+            // sin contenedor, mostramos el encabezado + el nombre de la placa para que se sepa cual fue.
+            if (plaqueContainer == null)
+            {
+                var pick = GetEarnedPick();
+                if (pick != null && !string.IsNullOrEmpty(pick.title))
+                    msg += $"\n<size=50%>{milestoneHeader} {pick.title}</size>";
+            }
 
             return msg;
         }
 
-        /// <summary>Linea de hito si completar esta obra otorgo alguna placa (GameBootstrap.LastEarnedPlaques).</summary>
-        private static string GetMilestoneLine()
+        /// <summary>
+        /// Activa y puebla el contenedor de la placa recien desbloqueada (preview 3D + titulo). Si esta
+        /// obra no otorgo placa, o no hay contenedor cableado, lo deja oculto.
+        /// </summary>
+        private void UpdatePlaqueVisual()
+        {
+            if (plaqueContainer == null) return;
+
+            var pick = GetEarnedPick();
+            if (pick == null)
+            {
+                plaqueContainer.SetActive(false);
+                return;
+            }
+
+            plaqueContainer.SetActive(true);
+
+            if (plaqueImage != null)
+            {
+                Texture preview = CollectiblePreviewRenderer.Instance.GetPreview(pick);
+                plaqueImage.texture = preview;
+                // Si no se pudo construir la preview, oculta solo la imagen (deja el titulo).
+                plaqueImage.enabled = preview != null;
+
+                // La preview es una textura cuadrada; sin esto la RawImage la estira al RectTransform
+                // (la placa se veria "alargada"). El AspectRatioFitter la mantiene con su proporcion real.
+                if (preview != null)
+                {
+                    var fitter = plaqueImage.GetComponent<AspectRatioFitter>();
+                    if (fitter == null) fitter = plaqueImage.gameObject.AddComponent<AspectRatioFitter>();
+                    fitter.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
+                    fitter.aspectRatio = preview.height > 0 ? (float)preview.width / preview.height : 1f;
+                }
+            }
+
+            if (plaqueHeaderText != null)
+                plaqueHeaderText.text = milestoneHeader;
+        }
+
+        /// <summary>
+        /// Coleccionable recien desbloqueado al completar esta obra (GameBootstrap.LastEarnedPlaques),
+        /// priorizando uno con nombre (no el de estatus) para el mensaje/visual. null si no hubo placa.
+        /// </summary>
+        private static CollectibleDefinition GetEarnedPick()
         {
             var gb = ArtUnbound.Core.GameBootstrap.Instance;
             List<CollectibleDefinition> earned = gb != null ? gb.LastEarnedPlaques : null;
             if (earned == null || earned.Count == 0) return null;
-            // Prioriza un coleccionable con nombre (no el de estatus) para el mensaje.
+
             CollectibleDefinition pick = null;
             foreach (var p in earned)
             {
@@ -163,14 +234,24 @@ namespace ArtUnbound.UI
                 if (p.kind != CollectibleKind.Status) { pick = p; break; }
                 pick ??= p;
             }
-            return pick != null ? $"Milestone unlocked: {pick.title}" : null;
+            return pick;
         }
 
-        /// <summary>Desactiva los botones mientras se cuelga (para no clickear por accidente).</summary>
+        private void OnPlayAgainClicked()
+        {
+            ArtUnbound.Feedback.AudioManager.Instance?.PlayButtonClick();
+            OnReplayRequested?.Invoke();
+            // ReplayPuzzle (GameBootstrap) ya oculta este panel; no llamar Hide() aqui.
+        }
+
+        /// <summary>
+        /// Deshabilita el boton "Play Again" mientras se cuelga el marco, para que el trigger/pinch
+        /// que apunta al cuadro no lo clickee por accidente.
+        /// </summary>
         public void SetHangingMode(bool isHanging)
         {
-            if (hangButton != null) hangButton.interactable = !isHanging;
-            if (backButton != null) backButton.interactable = !isHanging;
+            if (playAgainButton != null)
+                playAgainButton.interactable = !isHanging;
         }
 
         public void Show()
@@ -191,19 +272,9 @@ namespace ArtUnbound.UI
 
             if (hangInstructionText != null)
                 hangInstructionText.gameObject.SetActive(false);
-        }
 
-        private void OnHangClicked()
-        {
-            ArtUnbound.Feedback.AudioManager.Instance?.PlayButtonClick();
-            OnPlaceArtworkRequested?.Invoke();
-        }
-
-        private void OnBackClicked()
-        {
-            ArtUnbound.Feedback.AudioManager.Instance?.PlayButtonClick();
-            OnBackRequested?.Invoke();
-            Hide();
+            if (plaqueContainer != null)
+                plaqueContainer.SetActive(false);
         }
 
         public PuzzleSessionData GetSessionData() => sessionData;
@@ -211,8 +282,8 @@ namespace ArtUnbound.UI
 
         private void OnDestroy()
         {
-            if (hangButton != null) hangButton.onClick.RemoveListener(OnHangClicked);
-            if (backButton != null) backButton.onClick.RemoveListener(OnBackClicked);
+            if (playAgainButton != null)
+                playAgainButton.onClick.RemoveListener(OnPlayAgainClicked);
         }
     }
 }
