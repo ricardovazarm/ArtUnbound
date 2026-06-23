@@ -32,6 +32,13 @@ namespace ArtUnbound.VR
         public event Action OnFramePlaced;
         public event Action OnPlacementCancelled;
 
+        /// <summary>
+        /// VR equivalente de ArtworkHangingController.OnWallArtworkResolved: disparado al resolver el
+        /// soltado de una PLACA reposicionada (colgada en pared VR o retirada), con su artworkId.
+        /// Lo usa el flujo de PlaqueView (GameBootstrap) para cerrar el overlay y regresar a Collection.
+        /// </summary>
+        public event Action<string> OnWallArtworkResolved;
+
         private GalleryPersistenceService _persistenceService;
         private string _currentArtworkId;
         private int _currentDifficultyIndex;
@@ -157,6 +164,64 @@ namespace ArtUnbound.VR
 
             OnFramePlaced?.Invoke();
             return true;
+        }
+
+        /// <summary>
+        /// Controller mode (VR): cuelga/reposiciona una PLACA (artworkId "plaque_&lt;id&gt;") en la pared
+        /// VR, o la retira si <paramref name="placeOnWall"/> es false. Persiste via GalleryPersistenceService
+        /// (reusa GalleryPaintingData; VRGalleryController la reconstruye con CollectibleFactory al cargar).
+        /// Equivale a ArtworkHangingController.ControllerRepositionWallArtwork pero por el sistema VR, no
+        /// por OVRSpatialAnchor (que no aplica en VR). Dispara OnWallArtworkResolved al terminar.
+        /// </summary>
+        public void ControllerRepositionPlaque(string artworkId, GameObject plaqueGO,
+            bool placeOnWall, Vector3 wallPos, Quaternion wallRot)
+        {
+            if (plaqueGO == null)
+            {
+                OnWallArtworkResolved?.Invoke(artworkId);
+                return;
+            }
+
+            if (placeOnWall)
+            {
+                // wallRot's +Z apunta hacia el usuario (normal de la pared); la cara de la placa es +Z
+                // (CollectibleFactory.FaceContentTowardPlusZ), asi que queda mirando al usuario. El offset
+                // separa la placa 2cm de la pared a lo largo de +Z (hacia el usuario) para evitar z-fighting.
+                Vector3 offsetPos = wallPos + wallRot * Vector3.forward * 0.02f;
+                plaqueGO.transform.SetParent(null, worldPositionStays: true);
+                plaqueGO.transform.SetPositionAndRotation(offsetPos, wallRot);
+
+                SavePlaque(artworkId, offsetPos, wallRot);
+                galleryController?.RegisterPlacedPainting(plaqueGO);
+                Debug.Log($"[VRWallHanging] Plaque {artworkId} hung on VR wall at {offsetPos:F2}");
+            }
+            else
+            {
+                if (_persistenceService != null && galleryController != null)
+                    _persistenceService.RemovePainting(galleryController.ActiveGalleryId, artworkId, 0);
+                Destroy(plaqueGO);
+                Debug.Log($"[VRWallHanging] Plaque {artworkId} removed (aimed away from wall)");
+            }
+
+            OnWallArtworkResolved?.Invoke(artworkId);
+        }
+
+        private void SavePlaque(string artworkId, Vector3 position, Quaternion rotation)
+        {
+            if (_persistenceService == null || galleryController == null) return;
+
+            var data = new GalleryPaintingData
+            {
+                artworkId       = artworkId,   // "plaque_<id>" — VRGalleryController lo detecta al cargar
+                difficultyIndex = 0,
+                boardWidth      = 0f,
+                boardHeight     = 0f,
+                frameTier       = PresentationDecorator.CurrentFrameTier()
+            };
+            data.Position = position;
+            data.Rotation = rotation;
+
+            _persistenceService.SavePainting(galleryController.ActiveGalleryId, data);
         }
 
         // ─── Preview ghost during drag ──────────────────────────────────────────

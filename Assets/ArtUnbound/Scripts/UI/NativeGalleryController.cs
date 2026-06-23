@@ -65,6 +65,8 @@ namespace ArtUnbound.UI
         public event Action<string> OnHangArtworkRequested;
         /// <summary>Collection: el usuario seleccionó una placa obtenida para colgarla (plaqueId).</summary>
         public event Action<string> OnHangPlaqueRequested;
+        /// <summary>PlaqueView: el usuario cerró la vista sin colgar (cancelar) -> destruir la placa flotante.</summary>
+        public event Action OnPlaqueViewCancelled;
 
         // ════════════════════════════════════════════════════════════════════════
         //  SERIALIZED — POSICIONAMIENTO
@@ -155,6 +157,11 @@ namespace ArtUnbound.UI
         [SerializeField] private TMP_Text   btnEasyText;
         [SerializeField] private TMP_Text   btnNormalText;
         [SerializeField] private TMP_Text   btnHardText;
+
+        // ── Panel de Placa (colgar una placa obtenida desde Collection) ───────
+        [Header("Panel de Placa (PlaqueView)")]
+        [Tooltip("Vista overlay para colgar una placa obtenida. Hermana de DetailPanel: se muestra SOBRE el menu (no lo oculta), igual que el detalle. GameBootstrap solo instancia/cuelga la placa 3D.")]
+        [SerializeField] private PlaqueViewController plaqueView;
 
         [Header("Detalle — Componente de Compra (obra bloqueada)")]
         [Tooltip("Contenedor con el boton de comprar el catalogo completo. Se muestra si la obra esta bloqueada.")]
@@ -250,6 +257,8 @@ namespace ArtUnbound.UI
             btnGalerias?.onClick.RemoveAllListeners();
             if (gallerySelectionController != null)
                 gallerySelectionController.OnGallerySelected -= OnGallerySelectionChanged;
+            if (plaqueView != null)
+                plaqueView.OnCloseRequested -= OnPlaqueViewCloseClicked;
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -277,6 +286,12 @@ namespace ArtUnbound.UI
 
             if (detailPanel != null) detailPanel.SetActive(false);
             if (vrControllerRequiredPanel != null) vrControllerRequiredPanel.SetActive(false);
+
+            if (plaqueView != null)
+            {
+                plaqueView.OnCloseRequested += OnPlaqueViewCloseClicked;
+                plaqueView.Hide();
+            }
 
             _isInitialized = true;
             Debug.Log($"[NativeGallery] Inicializado con {_allArtworks.Count} obras.");
@@ -631,7 +646,7 @@ namespace ArtUnbound.UI
                         Texture preview = CollectiblePreviewRenderer.Instance.GetPreview(c);
                         if (earned)
                             card.SetupGeneric(c.title, c.conditionText, true, false,
-                                () => OnHangPlaqueRequested?.Invoke(cid), preview);
+                                () => ShowPlaqueView(cid), preview);
                         else
                             card.SetupGeneric(c.title, c.conditionText, false, true, null, preview);
                     }
@@ -781,6 +796,36 @@ namespace ArtUnbound.UI
             // No se sobreescribe desde codigo; el campo buyCatalogPriceText queda opcional.
 
             detailPanel.SetActive(true);
+        }
+
+        // ════════════════════════════════════════════════════════════════════════
+        //  PLAQUE VIEW  (colgar una placa obtenida — overlay sobre el menu)
+        // ════════════════════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// Card de placa obtenida tocada: muestra el PlaqueView SOBRE el menu (como el detalle, sin
+        /// ocultarlo) y pide a GameBootstrap instanciar la placa 3D al frente (via OnHangPlaqueRequested).
+        /// </summary>
+        private void ShowPlaqueView(string plaqueId)
+        {
+            if (plaqueView != null) plaqueView.Show();
+            OnHangPlaqueRequested?.Invoke(plaqueId);
+        }
+
+        /// <summary>Transform del PlaquePanel (o null). GameBootstrap lo usa para spawnear la placa 3D frente al panel.</summary>
+        public Transform PlaquePanelTransform => plaqueView != null ? plaqueView.PanelTransform : null;
+
+        /// <summary>Boton Close del PlaqueView: oculta el overlay y avisa a GameBootstrap para destruir la placa flotante.</summary>
+        private void OnPlaqueViewCloseClicked()
+        {
+            if (plaqueView != null) plaqueView.Hide();
+            OnPlaqueViewCancelled?.Invoke();
+        }
+
+        /// <summary>Cierra el PlaqueView sin cancelar (llamado por GameBootstrap cuando la placa ya quedo colgada).</summary>
+        public void HidePlaqueView()
+        {
+            if (plaqueView != null) plaqueView.Hide();
         }
 
         private void StartPuzzle(int difficultyIndex)

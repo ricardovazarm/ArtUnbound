@@ -306,6 +306,10 @@ namespace ArtUnbound.MR
         /// <returns>The root GameObject of the spawned artwork (inactive — caller decides when to show it).</returns>
         private GameObject SpawnArtworkAtAnchor(AnchoredArtwork artworkData, Transform anchorTransform)
         {
+            // Las placas (id "plaque_<id>") se reconstruyen con CollectibleFactory, no como quad de obra.
+            if (!string.IsNullOrEmpty(artworkData.artworkId) && artworkData.artworkId.StartsWith("plaque_"))
+                return SpawnPlaqueAtAnchor(artworkData, anchorTransform);
+
             if (artworkCatalog == null)
             {
                 Debug.LogError("[WallAnchor] Missing ArtworkCatalog reference for spawning artwork");
@@ -393,6 +397,41 @@ namespace ArtUnbound.MR
             spawnedArtworks[artworkData.artworkId] = root;
             Debug.Log($"[WallAnchor] Spawned artwork {artworkData.artworkId} ({w:F3}×{h:F3}m) at anchor (hidden until tracking)");
             return root;
+        }
+
+        /// <summary>
+        /// Reconstruye una PLACA colgada al cargar (id "plaque_&lt;plaqueId&gt;"). Usa CollectibleFactory
+        /// (mismo visual que al colgarla); la parenta al anchor y le repone el PlacedArtworkIdentifier
+        /// para que se pueda volver a agarrar/reposicionar. Devuelve el root (inactivo hasta tracking).
+        /// </summary>
+        private GameObject SpawnPlaqueAtAnchor(AnchoredArtwork data, Transform anchorTransform)
+        {
+            string plaqueId = data.artworkId.Substring("plaque_".Length);
+            var catalog = ArtUnbound.Core.GameBootstrap.Instance != null
+                ? ArtUnbound.Core.GameBootstrap.Instance.CollectibleCatalog : null;
+            var def = catalog != null ? catalog.GetById(plaqueId) : null;
+            if (def == null)
+                Debug.LogWarning($"[WallAnchor] CollectibleDefinition not found for '{plaqueId}' — plaque may be blank");
+
+            var go = CollectibleFactory.Build(def, PresentationDecorator.CurrentFrameTier());
+            if (go == null)
+            {
+                Debug.LogError($"[WallAnchor] CollectibleFactory.Build returned null for {data.artworkId}");
+                return null;
+            }
+
+            // CollectibleFactory ya pone tag/layer/collider; reponer el identifier para re-agarre.
+            var identifier = go.GetComponent<PlacedArtworkIdentifier>();
+            if (identifier == null) identifier = go.AddComponent<PlacedArtworkIdentifier>();
+            identifier.artworkId = data.artworkId;
+
+            go.transform.SetParent(anchorTransform, worldPositionStays: false);
+            go.transform.localPosition = data.localPosition.ToVector3();
+            go.transform.localRotation = data.localRotation.ToQuaternion();
+
+            spawnedArtworks[data.artworkId] = go;
+            Debug.Log($"[WallAnchor] Spawned plaque {data.artworkId} at anchor (hidden until tracking)");
+            return go;
         }
 
         private void BuildFrameBars(Transform parent, float w, float h, FrameTier tier)

@@ -220,16 +220,50 @@ namespace ArtUnbound.VR
             var paintings = _persistenceService.GetPaintings(galleryId);
             foreach (var data in paintings)
             {
-                float w = data.boardWidth  > 0f ? data.boardWidth  : 0.5f;
-                float h = data.boardHeight > 0f ? data.boardHeight : 0.5f;
+                GameObject go;
 
-                var go = PlacedArtworkFactory.Build(
-                    data.artworkId, data.frameTier, w, h, artworkCatalog);
+                // Las placas (id "plaque_<id>") se reconstruyen con CollectibleFactory, igual que en MR
+                // (WallAnchorManager.SpawnPlaqueAtAnchor); no son quads de obra.
+                if (!string.IsNullOrEmpty(data.artworkId) && data.artworkId.StartsWith("plaque_"))
+                {
+                    go = BuildSavedPlaque(data);
+                    if (go == null) continue;
+                }
+                else
+                {
+                    float w = data.boardWidth  > 0f ? data.boardWidth  : 0.5f;
+                    float h = data.boardHeight > 0f ? data.boardHeight : 0.5f;
+                    go = PlacedArtworkFactory.Build(data.artworkId, data.frameTier, w, h, artworkCatalog);
+                }
+
                 go.transform.SetPositionAndRotation(data.Position, data.Rotation);
-
                 _spawnedPaintings.Add(go);
-                Debug.Log($"[VRGallery] Spawned saved painting '{data.artworkId}' at {data.Position:F2}");
+                Debug.Log($"[VRGallery] Spawned saved '{data.artworkId}' at {data.Position:F2}");
             }
+        }
+
+        /// <summary>Reconstruye una PLACA colgada (id "plaque_&lt;id&gt;") con CollectibleFactory y le
+        /// repone el PlacedArtworkIdentifier para que se pueda volver a agarrar/reposicionar.</summary>
+        private GameObject BuildSavedPlaque(GalleryPaintingData data)
+        {
+            string plaqueId = data.artworkId.Substring("plaque_".Length);
+            var catalog = ArtUnbound.Core.GameBootstrap.Instance != null
+                ? ArtUnbound.Core.GameBootstrap.Instance.CollectibleCatalog : null;
+            var def = catalog != null ? catalog.GetById(plaqueId) : null;
+            if (def == null)
+                Debug.LogWarning($"[VRGallery] CollectibleDefinition not found for '{plaqueId}' — plaque may be blank");
+
+            var go = ArtUnbound.MR.CollectibleFactory.Build(def, ArtUnbound.MR.PresentationDecorator.CurrentFrameTier());
+            if (go == null)
+            {
+                Debug.LogError($"[VRGallery] CollectibleFactory.Build returned null for {data.artworkId}");
+                return null;
+            }
+
+            var id = go.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+            if (id == null) id = go.AddComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+            id.artworkId = data.artworkId;
+            return go;
         }
 
         private void RepositionNavigationPanel()

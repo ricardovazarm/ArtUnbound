@@ -45,6 +45,11 @@ namespace ArtUnbound.MR
         public event Action OnFrameGrabbed;
         public event Action OnFramePlaced;
         public event Action OnPlacementCancelled;
+        /// <summary>
+        /// Disparado al RESOLVER el soltado de un PlacedArtwork reposicionado (colgado en pared o
+        /// retirado), con su artworkId. Lo usa el flujo de PlaqueView para regresar a Collection.
+        /// </summary>
+        public event Action<string> OnWallArtworkResolved;
 
         public HangingState CurrentState => currentState;
 
@@ -267,6 +272,9 @@ namespace ArtUnbound.MR
 
                 Debug.Log($"[ArtworkHanging] Wall artwork {artworkId} removed from wall");
             }
+
+            // Soltado resuelto (colgada o retirada): notificar para flujos como PlaqueView.
+            OnWallArtworkResolved?.Invoke(artworkId);
         }
 
         /// <summary>

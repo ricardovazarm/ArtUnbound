@@ -765,24 +765,47 @@ namespace ArtUnbound.Input
                 bool wasRepositioning = _ctrlIsRepositioningWallArtwork;
                 if (wasRepositioning)
                 {
-                    // Placed wall artwork: reposition on wall or remove
-                    var hanging = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
-                    Vector3    wallPos2 = Vector3.zero;
-                    Quaternion wallRot2 = Quaternion.identity;
-                    bool foundWall = wallDetector != null &&
-                                     wallDetector.RaycastToWall(ray, out wallPos2, out wallRot2);
-                    if (foundWall)
+                    // En VR, una PLACA (id "plaque_<id>") se cuelga en la pared VIRTUAL (capa VRWall) y se
+                    // persiste en la galeria activa. El path MR (planos AR + WallAnchorManager/OVRSpatialAnchor)
+                    // no aplica en VR: no hay planos AR y el ancla espacial no se fija a la pared virtual, por
+                    // lo que la placa quedaba mal orientada y sin anclar. Usar el sistema VR como los marcos.
+                    var vrModeRepos = GetVRModeController();
+                    bool isPlaque = !string.IsNullOrEmpty(_ctrlRepositioningArtworkId) &&
+                                    _ctrlRepositioningArtworkId.StartsWith("plaque_");
+
+                    if (isPlaque && vrModeRepos != null && vrModeRepos.IsVRMode)
                     {
-                        hanging?.ControllerRepositionWallArtwork(
+                        var vrHangingRepos = GetVRWallHangingController();
+                        Vector3    vrWallPosR = Vector3.zero;
+                        Quaternion vrWallRotR = Quaternion.identity;
+                        bool foundVrWall = vrHangingRepos != null &&
+                                           vrHangingRepos.RaycastToWall(ray, out vrWallPosR, out vrWallRotR);
+                        vrHangingRepos?.ControllerRepositionPlaque(
                             _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
-                            true, wallPos2, wallRot2);
-                        placed = true;
+                            foundVrWall, vrWallPosR, vrWallRotR);
+                        placed = foundVrWall;
                     }
                     else
                     {
-                        hanging?.ControllerRepositionWallArtwork(
-                            _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
-                            false, Vector3.zero, Quaternion.identity);
+                        // MR: reposiciona en pared real (planos AR) o retira
+                        var hanging = FindFirstObjectByType<ArtUnbound.MR.ArtworkHangingController>();
+                        Vector3    wallPos2 = Vector3.zero;
+                        Quaternion wallRot2 = Quaternion.identity;
+                        bool foundWall = wallDetector != null &&
+                                         wallDetector.RaycastToWall(ray, out wallPos2, out wallRot2);
+                        if (foundWall)
+                        {
+                            hanging?.ControllerRepositionWallArtwork(
+                                _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
+                                true, wallPos2, wallRot2);
+                            placed = true;
+                        }
+                        else
+                        {
+                            hanging?.ControllerRepositionWallArtwork(
+                                _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
+                                false, Vector3.zero, Quaternion.identity);
+                        }
                     }
 
                     _ctrlIsRepositioningWallArtwork = false;

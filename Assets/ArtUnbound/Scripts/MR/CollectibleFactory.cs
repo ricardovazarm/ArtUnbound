@@ -41,6 +41,7 @@ namespace ArtUnbound.MR
                     var bc = inst.AddComponent<BoxCollider>();
                     bc.size = new Vector3(0.3f, 0.18f, 0.04f);
                 }
+                FaceContentTowardPlusZ(inst.transform);
                 return inst;
             }
 
@@ -86,7 +87,27 @@ namespace ArtUnbound.MR
 
             var col = root.AddComponent<BoxCollider>();
             col.size = new Vector3(w, h, 0.04f);
+            FaceContentTowardPlusZ(root.transform);
             return root;
+        }
+
+        /// <summary>
+        /// La cara de la placa (label, tornillos, texto) se arma sobre el lado -Z del prefab/molde,
+        /// pero el flujo de colgado compartido (CheckNearbyWall/TryRepositionWallArtwork) orienta los
+        /// objetos colocados con su +Z hacia el usuario — convencion correcta para las OBRAS, cuya cara
+        /// es +Z. Sin compensar, la placa quedaria viendo a la pared. Volteamos el contenido 180° sobre
+        /// Y (giro rigido: posicion + rotacion) para que la cara de la placa quede en +Z como las obras,
+        /// asi se cuelga mirando al usuario y persiste/recarga consistente.
+        /// La vista flotante de PlaqueView compensa este giro en GameBootstrap.OnHangPlaqueFromCollection.
+        /// </summary>
+        private static void FaceContentTowardPlusZ(Transform root)
+        {
+            var flip = Quaternion.Euler(0f, 180f, 0f);
+            foreach (Transform child in root)
+            {
+                child.localPosition = flip * child.localPosition;
+                child.localRotation = flip * child.localRotation;
+            }
         }
 
         /// <summary>

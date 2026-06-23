@@ -29,6 +29,8 @@ namespace ArtUnbound.Core
         [SerializeField] private FrameConfigSet frameConfigSet;
         [Tooltip("Catalogo de coleccionables (placas + mejoras). Generar con Tools/ArtUnbound/Generate Collectibles.")]
         [SerializeField] private CollectibleCatalog collectibleCatalog;
+        /// <summary>Catalogo de coleccionables (lo usa WallAnchorManager para reconstruir placas colgadas al cargar).</summary>
+        public CollectibleCatalog CollectibleCatalog => collectibleCatalog;
         [Tooltip("Prefab de la cedula de museo (Tools/ArtUnbound/Create Cedula In Scene). Vacio = molde procedural.")]
         [SerializeField] private GameObject cedulaPrefab;
         public GameObject CedulaPrefab => cedulaPrefab;
@@ -336,7 +338,17 @@ namespace ArtUnbound.Core
                 nativeGallery.OnMRModeRequested += OnMRModeRequested;
                 nativeGallery.OnHangArtworkRequested += OnHangArtworkFromCollection;
                 nativeGallery.OnHangPlaqueRequested  += OnHangPlaqueFromCollection;
+                nativeGallery.OnPlaqueViewCancelled  += OnPlaqueViewCancelled;
             }
+
+            // PlaqueView: el panel lo posee NativeGalleryController (overlay sobre el menu, como el
+            // detalle). GameBootstrap solo administra la placa 3D y escucha cuando se resuelve el colgado.
+            if (artworkHangingController != null)
+                artworkHangingController.OnWallArtworkResolved += OnPlaqueHangResolved;
+            // En VR el colgado de la placa se resuelve por VRWallHangingController (pared virtual +
+            // persistencia de galeria), no por ArtworkHangingController. Escuchar ambos.
+            if (vrWallHangingController != null)
+                vrWallHangingController.OnWallArtworkResolved += OnPlaqueHangResolved;
         }
 
         #region State Transitions
@@ -486,6 +498,11 @@ namespace ArtUnbound.Core
             StartPuzzle();
         }
 
+        // Placa flotante activa en el flujo de PlaqueView (aun no resuelta). Permite que el boton Close
+        // la destruya y que el handler de resolucion sepa cual placa se acaba de colgar/retirar.
+        private GameObject _activePlaqueGO;
+        private string _activePlaqueId;
+
         /// <summary>
         /// Collection (GDD 8.5): colgar una obra ya completada. La instancia como objeto colgable
         /// (tag "PlacedArtwork") frente al usuario, reutilizando el flujo de grab/colocacion existente.
@@ -497,13 +514,67 @@ namespace ArtUnbound.Core
             PlaceInFrontOfUser(go != null ? go.transform : null, 0.55f);
         }
 
-        /// <summary>Collection: colgar una placa obtenida. Misma idea que las obras (objeto PlacedArtwork).</summary>
+        /// <summary>
+        /// Collection: el gallery mostro el PlaqueView (overlay sobre el menu) y pide instanciar la placa
+        /// 3D al frente. NO se oculta el menu (eso lo decide el gallery). La placa nace con tag
+        /// "PlacedArtwork" + PlacedArtworkIdentifier para que el flujo de grab/reposicion la reconozca.
+        /// </summary>
         private void OnHangPlaqueFromCollection(string plaqueId)
         {
-            nativeGallery?.Hide();
             var def = collectibleCatalog != null ? collectibleCatalog.GetById(plaqueId) : null;
             var go = ArtUnbound.MR.CollectibleFactory.Build(def, GetCurrentFrameTier());
-            PlaceInFrontOfUser(go != null ? go.transform : null, 0.45f);
+            if (go == null) return;
+
+            // Id no-vacio: InteractionManager lo lee y TryRepositionWallArtwork ya no destruye el clon.
+            var id = go.AddComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+            id.artworkId = $"plaque_{plaqueId}";
+
+            // Colocar la placa donde esta el PlaquePanel (no a una distancia fija del head), para que
+            // aparezca "casi donde esta el panel". Fallback: al frente del usuario.
+            var panelT = nativeGallery != null ? nativeGallery.PlaquePanelTransform : null;
+            if (panelT != null)
+            {
+                PlaceFacingUserAt(go.transform, panelT.position);
+                // Igualar la orientacion del MENU (no la camara actual, que en VR puede diferir si giraste
+                // la cabeza despues de abrir el menu). El usuario lee el menu desde su lado -Z; la cara de
+                // la placa (+Z, ver CollectibleFactory.FaceContentTowardPlusZ) debe ver hacia ese lado.
+                go.transform.rotation = Quaternion.LookRotation(-panelT.forward, Vector3.up);
+            }
+            else
+            {
+                PlaceInFrontOfUser(go.transform, 0.45f);
+                // Sin panel de referencia: encarar al usuario. La cara de la placa es +Z; los helpers la
+                // dejan con +Z alejado del usuario, asi que giramos 180° para que mire hacia ti.
+                go.transform.rotation *= Quaternion.Euler(0f, 180f, 0f);
+            }
+
+            _activePlaqueGO = go;
+            _activePlaqueId = id.artworkId;
+        }
+
+        /// <summary>Close del PlaqueView (cancelar): destruye la placa flotante. El gallery ya oculto el overlay.</summary>
+        private void OnPlaqueViewCancelled()
+        {
+            if (_activePlaqueGO != null)
+                Destroy(_activePlaqueGO);
+            _activePlaqueGO = null;
+            _activePlaqueId = null;
+        }
+
+        /// <summary>
+        /// Tras soltar la placa (colgada en pared o retirada). Solo actua sobre la placa activa del
+        /// PlaqueView (no interfiere al reposicionar obras ya colgadas). La placa colgada persiste como
+        /// las obras (anclada en SaveData y reconstruida al cargar). Cierra el overlay; el menu nunca se
+        /// oculto, asi que la card de la placa sigue ahi ("reaparece la copia").
+        /// </summary>
+        private void OnPlaqueHangResolved(string artworkId)
+        {
+            if (_activePlaqueGO == null || artworkId != _activePlaqueId) return;
+
+            _activePlaqueGO = null;
+            _activePlaqueId = null;
+
+            nativeGallery?.HidePlaqueView();
         }
 
         /// <summary>Coloca un transform frente a la camara (a 'dist' m), mirando hacia el usuario.</summary>
@@ -517,6 +588,23 @@ namespace ArtUnbound.Core
             if (fwd.sqrMagnitude < 0.0001f) fwd = Vector3.forward;
             fwd.Normalize();
             t.position = cam.transform.position + fwd * dist;
+            t.rotation = Quaternion.LookRotation(fwd, Vector3.up);
+        }
+
+        /// <summary>
+        /// Coloca un transform en una posicion del mundo (p.ej. la del PlaquePanel), mirando al usuario.
+        /// Lo desplaza un poco hacia la camara para que no quede encimado en el plano del panel.
+        /// </summary>
+        private void PlaceFacingUserAt(Transform t, Vector3 worldPos)
+        {
+            if (t == null) return;
+            var cam = Camera.main;
+            if (cam == null) { t.position = worldPos; return; }
+            Vector3 fwd = cam.transform.forward;
+            fwd.y = 0f;
+            if (fwd.sqrMagnitude < 0.0001f) fwd = Vector3.forward;
+            fwd.Normalize();
+            t.position = worldPos - fwd * 0.12f; // un poco hacia el usuario, frente al panel
             t.rotation = Quaternion.LookRotation(fwd, Vector3.up);
         }
 
