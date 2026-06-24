@@ -50,6 +50,24 @@ namespace ArtUnbound.Services
             _saveDataService.Save(data); // guardado inmediato, como MR.AddAnchoredArtwork
         }
 
+        /// <summary>
+        /// Actualiza SOLO la pose (posicion/rotacion) de la copia con ese instanceId, preservando el
+        /// resto de campos (artworkId, tamaño, tier). Para reposicionar sin perder datos. Devuelve true
+        /// si encontro la entrada.
+        /// </summary>
+        public bool UpdatePaintingPose(string galleryId, string instanceId, UnityEngine.Vector3 position, UnityEngine.Quaternion rotation)
+        {
+            if (string.IsNullOrEmpty(instanceId)) return false;
+            var data = _saveDataService.GetCachedData();
+            if (!data.galleryPaintings.TryGetValue(galleryId, out var list)) return false;
+            var entry = list.Find(p => p.instanceId == instanceId);
+            if (entry == null) return false;
+            entry.Position = position;
+            entry.Rotation = rotation;
+            _saveDataService.Save(data);
+            return true;
+        }
+
         /// <summary>Quita la copia colgada con ese instanceId y guarda a disco.</summary>
         public void RemovePainting(string galleryId, string instanceId)
         {

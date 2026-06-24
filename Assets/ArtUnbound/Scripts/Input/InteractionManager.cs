@@ -765,22 +765,18 @@ namespace ArtUnbound.Input
                 bool wasRepositioning = _ctrlIsRepositioningWallArtwork;
                 if (wasRepositioning)
                 {
-                    // En VR, una PLACA (id "plaque_<id>") se cuelga en la pared VIRTUAL (capa VRWall) y se
-                    // persiste en la galeria activa. El path MR (planos AR + WallAnchorManager/OVRSpatialAnchor)
-                    // no aplica en VR: no hay planos AR y el ancla espacial no se fija a la pared virtual, por
-                    // lo que la placa quedaba mal orientada y sin anclar. Usar el sistema VR como los marcos.
+                    // VR: TODO PlacedArtwork (cuadro o placa) se reposiciona por el sistema VR (capa VRWall
+                    // + GalleryPersistenceService), igual que MR lo hace con su sistema. El path MR
+                    // (planos AR + OVRSpatialAnchor) no aplica en VR.
                     var vrModeRepos = GetVRModeController();
-                    bool isPlaque = !string.IsNullOrEmpty(_ctrlRepositioningArtworkId) &&
-                                    _ctrlRepositioningArtworkId.StartsWith("plaque_");
-
-                    if (isPlaque && vrModeRepos != null && vrModeRepos.IsVRMode)
+                    if (vrModeRepos != null && vrModeRepos.IsVRMode)
                     {
                         var vrHangingRepos = GetVRWallHangingController();
                         Vector3    vrWallPosR = Vector3.zero;
                         Quaternion vrWallRotR = Quaternion.identity;
                         bool foundVrWall = vrHangingRepos != null &&
                                            vrHangingRepos.RaycastToWall(ray, out vrWallPosR, out vrWallRotR);
-                        vrHangingRepos?.ControllerRepositionPlaque(
+                        vrHangingRepos?.ControllerRepositionWallArtwork(
                             _ctrlRepositioningArtworkId, _ctrlRepositioningArtworkGO,
                             foundVrWall, vrWallPosR, vrWallRotR);
                         placed = foundVrWall;
@@ -923,12 +919,15 @@ namespace ArtUnbound.Input
 
                 RaycastHit[] allHits = Physics.RaycastAll(ray, rayLength);
                 Debug.Log($"[CTRL-FrameSelect] RaycastAll hits={allHits.Length}  rayLen={rayLength}");
+                // En MR se apunta a obras cercanas (passthrough): 40cm evita seleccionar cuadros de una
+                // pared lejana mientras se arma el puzzle. En VR (galeria) se apunta de lejos para
+                // reposicionar, asi que se permite todo el alcance del rayo.
+                bool vrModeSelect = GetVRModeController()?.IsVRMode ?? false;
+                float maxPlacedArtworkDist = vrModeSelect ? rayLength : 0.4f;
                 foreach (var h in allHits)
                 {
                     // Placed wall artwork takes priority over the puzzle-complete frame.
-                    // Ignore if further than 40 cm from the controller — prevents accidentally
-                    // selecting paintings on a distant back wall while interacting with the board.
-                    if (h.collider.CompareTag("PlacedArtwork") && h.distance <= 0.4f)
+                    if (h.collider.CompareTag("PlacedArtwork") && h.distance <= maxPlacedArtworkDist)
                     {
                         string artId = null;
                         var placedId = h.collider.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();

@@ -178,46 +178,63 @@ namespace ArtUnbound.VR
         }
 
         /// <summary>
-        /// Controller mode (VR): cuelga/reposiciona una PLACA (artworkId "plaque_&lt;id&gt;") en la pared
-        /// VR, o la retira si <paramref name="placeOnWall"/> es false. Persiste via GalleryPersistenceService
-        /// (reusa GalleryPaintingData; VRGalleryController la reconstruye con CollectibleFactory al cargar).
-        /// Equivale a ArtworkHangingController.ControllerRepositionWallArtwork pero por el sistema VR, no
-        /// por OVRSpatialAnchor (que no aplica en VR). Dispara OnWallArtworkResolved al terminar.
+        /// Controller mode (VR): reposiciona en la pared virtual un PlacedArtwork ya colgado (cuadro o
+        /// placa), o lo retira si <paramref name="placeOnWall"/> es false. Espeja
+        /// ArtworkHangingController.ControllerRepositionWallArtwork de MR, pero por el sistema VR
+        /// (capa VRWall + GalleryPersistenceService) en lugar de OVRSpatialAnchor.
+        ///
+        /// Si el objeto ya tiene instanceId (copia colgada/recargada) se actualiza SU entrada (preserva
+        /// tamaño/datos); si no (primer colgado de una placa desde Collection) se crea la entrada.
+        /// Dispara OnWallArtworkResolved al terminar.
         /// </summary>
-        public void ControllerRepositionPlaque(string artworkId, GameObject plaqueGO,
+        public void ControllerRepositionWallArtwork(string artworkId, GameObject go,
             bool placeOnWall, Vector3 wallPos, Quaternion wallRot)
         {
-            if (plaqueGO == null)
+            if (go == null)
             {
                 OnWallArtworkResolved?.Invoke(artworkId);
                 return;
             }
 
+            string galleryId = galleryController != null ? galleryController.ActiveGalleryId : null;
+
             if (placeOnWall)
             {
-                // wallRot's +Z apunta hacia el usuario (normal de la pared); la cara de la placa es +Z
-                // (CollectibleFactory.FaceContentTowardPlusZ), asi que queda mirando al usuario. El offset
-                // separa la placa 2cm de la pared a lo largo de +Z (hacia el usuario) para evitar z-fighting.
+                // wallRot's +Z apunta hacia el usuario (normal de la pared) y el offset separa 2cm de la
+                // pared a lo largo de +Z para evitar z-fighting.
                 Vector3 offsetPos = wallPos + wallRot * Vector3.forward * 0.02f;
-                plaqueGO.transform.SetParent(null, worldPositionStays: true);
-                plaqueGO.transform.SetPositionAndRotation(offsetPos, wallRot);
+                go.transform.SetParent(null, worldPositionStays: true);
+                go.transform.SetPositionAndRotation(offsetPos, wallRot);
 
-                // instanceId: nuevo en el primer colgado, reutilizado al reposicionar (upsert por instanceId,
-                // asi reposicionar no crea una copia extra). artworkId queda limpio.
-                string instanceId = EnsureInstanceId(plaqueGO);
-                SavePlaque(instanceId, artworkId, offsetPos, wallRot);
-                galleryController?.RegisterPlacedPainting(plaqueGO);
-                Debug.Log($"[VRWallHanging] Plaque {artworkId} hung on VR wall at {offsetPos:F2} (instance {instanceId})");
+                var inst = go.GetComponent<GalleryPaintingInstance>();
+                bool alreadyHung = inst != null && !string.IsNullOrEmpty(inst.instanceId);
+
+                if (alreadyHung && _persistenceService != null && galleryId != null
+                    && _persistenceService.UpdatePaintingPose(galleryId, inst.instanceId, offsetPos, wallRot))
+                {
+                    Debug.Log($"[VRWallHanging] Repositioned {artworkId} (instance {inst.instanceId}) at {offsetPos:F2}");
+                }
+                else
+                {
+                    // Primer colgado (sin entrada previa): crear. Las placas vienen de Collection.
+                    string instanceId = EnsureInstanceId(go);
+                    bool isPlaque = !string.IsNullOrEmpty(artworkId) && artworkId.StartsWith("plaque_");
+                    if (isPlaque) SavePlaque(instanceId, artworkId, offsetPos, wallRot);
+                    else          SavePainting(instanceId, artworkId, offsetPos, wallRot);
+                    Debug.Log($"[VRWallHanging] Hung {artworkId} on VR wall at {offsetPos:F2} (instance {instanceId})");
+                }
+
+                galleryController?.RegisterPlacedPainting(go);
             }
             else
             {
-                // Solo borra de persistencia si esta copia ya estaba guardada (tiene instanceId).
-                var inst = plaqueGO.GetComponent<GalleryPaintingInstance>();
+                // Soltado lejos de la pared: si ya estaba guardado, quitar su entrada; destruir el objeto.
+                var inst = go.GetComponent<GalleryPaintingInstance>();
                 if (inst != null && !string.IsNullOrEmpty(inst.instanceId)
-                    && _persistenceService != null && galleryController != null)
-                    _persistenceService.RemovePainting(galleryController.ActiveGalleryId, inst.instanceId);
-                Destroy(plaqueGO);
-                Debug.Log($"[VRWallHanging] Plaque {artworkId} removed (aimed away from wall)");
+                    && _persistenceService != null && galleryId != null)
+                    _persistenceService.RemovePainting(galleryId, inst.instanceId);
+                Destroy(go);
+                Debug.Log($"[VRWallHanging] {artworkId} removed (aimed away from wall)");
             }
 
             OnWallArtworkResolved?.Invoke(artworkId);
