@@ -211,10 +211,12 @@ namespace ArtUnbound.Core
             localCatalogService = new LocalCatalogService(artworkCatalog);
             collectibleService = new CollectibleService(saveDataService, localCatalogService, collectibleCatalog);
 
-            // Initialize pack purchase service
+            // Initialize pack purchase service (+ arranca Meta IAP: entitlement, precio real y
+            // restauracion de la compra desde Meta). En el Editor InitializePlatform es no-op.
             if (packPurchaseService != null)
             {
                 packPurchaseService.Initialize(saveDataService);
+                packPurchaseService.InitializePlatform();
             }
 
             // Initialize NativeGallery (galería Prime Video style)

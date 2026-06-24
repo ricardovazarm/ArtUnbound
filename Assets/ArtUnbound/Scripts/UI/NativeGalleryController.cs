@@ -168,6 +168,10 @@ namespace ArtUnbound.UI
         [SerializeField] private GameObject purchaseComponent;
         [SerializeField] private Button     btnBuyCatalog;
         [SerializeField] private TMP_Text   buyCatalogPriceText;
+        [Tooltip("Plantilla del texto de precio. {0} se reemplaza por el precio LOCALIZADO real de " +
+                 "Meta. Ej: \"250+ artworks * one-time {0}\". Deja \"{0}\" para mostrar solo el precio. " +
+                 "No escribas el precio a mano (politica IAP de Meta).")]
+        [SerializeField] private string     buyCatalogPriceFormat = "{0}";
 
         // ── Prefab ───────────────────────────────────────────────────────────
         [Header("Card Prefab")]
@@ -259,6 +263,8 @@ namespace ArtUnbound.UI
                 gallerySelectionController.OnGallerySelected -= OnGallerySelectionChanged;
             if (plaqueView != null)
                 plaqueView.OnCloseRequested -= OnPlaqueViewCloseClicked;
+            if (_purchaseService != null)
+                _purchaseService.OnPurchaseStateChanged -= HandlePurchaseStateChanged;
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -304,7 +310,24 @@ namespace ArtUnbound.UI
         /// </summary>
         public void SetPackPurchaseService(PackPurchaseService purchaseService)
         {
+            if (_purchaseService != null)
+                _purchaseService.OnPurchaseStateChanged -= HandlePurchaseStateChanged;
+
             _purchaseService = purchaseService;
+
+            if (_purchaseService != null)
+                _purchaseService.OnPurchaseStateChanged += HandlePurchaseStateChanged;
+        }
+
+        /// <summary>
+        /// El estado de compra cambio (compra exitosa o restauracion asincrona desde Meta).
+        /// Repuebla el catalogo (quita candados) y refresca el detalle si esta abierto.
+        /// </summary>
+        private void HandlePurchaseStateChanged()
+        {
+            PopulateCatalog();
+            if (detailPanel != null && detailPanel.activeSelf && _selectedArtwork != null)
+                ShowDetail(_selectedArtwork);
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -726,13 +749,19 @@ namespace ArtUnbound.UI
             if (_purchaseService == null || _selectedArtwork == null) return;
             if (_purchaseService.IsCatalogPurchased()) return;
 
-            _purchaseService.PurchaseCatalog(onSuccess: () =>
-            {
-                // Refrescar el detalle a modo armado y repoblar el catalogo para
-                // quitar candados de todas las cards.
-                ShowDetail(_selectedArtwork);
-                RepopulateCatalog();
-            });
+            _purchaseService.PurchaseCatalog(
+                onSuccess: () =>
+                {
+                    // Refrescar el detalle a modo armado y repoblar el catalogo para
+                    // quitar candados de todas las cards.
+                    ShowDetail(_selectedArtwork);
+                    RepopulateCatalog();
+                },
+                onFailure: () =>
+                {
+                    // Compra cancelada o con error: el detalle se mantiene en modo compra.
+                    Debug.LogWarning("[NativeGallery] Compra del catalogo cancelada o fallida.");
+                });
         }
 
         /// <summary>
@@ -780,8 +809,15 @@ namespace ArtUnbound.UI
             if (assemblyComponent != null) assemblyComponent.SetActive(unlocked);
             if (purchaseComponent != null) purchaseComponent.SetActive(!unlocked);
 
-            // El precio es fijo y se escribe directo en la UI (ej. "250+ artworks · one-time $9.99").
-            // No se sobreescribe desde codigo; el campo buyCatalogPriceText queda opcional.
+            // Precio: si el campo esta asignado, se muestra el precio LOCALIZADO real que devuelve
+            // Meta (politica IAP: no hardcodear precios), inyectado en la plantilla buyCatalogPriceFormat
+            // (ej. "250+ artworks * one-time {0}"). Mientras Meta no responde, cae al precio de respaldo
+            // del servicio. Si el campo queda sin asignar, la UI usa su texto fijo.
+            if (!unlocked && buyCatalogPriceText != null && _purchaseService != null)
+            {
+                string fmt = string.IsNullOrEmpty(buyCatalogPriceFormat) ? "{0}" : buyCatalogPriceFormat;
+                buyCatalogPriceText.text = string.Format(fmt, _purchaseService.CatalogPrice);
+            }
 
             detailPanel.SetActive(true);
         }

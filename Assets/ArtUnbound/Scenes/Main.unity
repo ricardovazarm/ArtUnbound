@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &10641154
 RectTransform:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &25467943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   plaqueView: {fileID: 498318652}
   purchaseComponent: {fileID: 406355920}
   btnBuyCatalog: {fileID: 63413976}
-  buyCatalogPriceText: {fileID: 0}
+  buyCatalogPriceText: {fileID: 1545253538}
   artworkCardPrefab: {fileID: 6815670808488978764, guid: bac16f9a38845a84998bfc95aafe8eba, type: 3}
   btnVR: {fileID: 288400257}
   btnMR: {fileID: 573695550}
@@ -4549,7 +4549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &406355921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16714,7 +16714,7 @@ GameObject:
   - component: {fileID: 1545253539}
   - component: {fileID: 1545253538}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: 'Price Text (TMP) '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16759,7 +16759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 250+ artworks * one-time $9.99
+  m_text: 250+ artworks * one-time {0}
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a76f37cd808a6ef4aa38962d5a62a053, type: 2}
   m_sharedMaterial: {fileID: -2346974844240340300, guid: a76f37cd808a6ef4aa38962d5a62a053, type: 2}
@@ -16993,7 +16993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1553465787
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 using System;
 using ArtUnbound.Data;
 using UnityEngine;
+using Oculus.Platform;
+using Oculus.Platform.Models;
 
 namespace ArtUnbound.Services
 {
@@ -8,7 +10,17 @@ namespace ArtUnbound.Services
     /// Maneja el desbloqueo UNICO del catalogo completo (modelo freemium del GDD 12):
     /// 12 obras gratis + una sola compra ($9.99) que desbloquea las 240+ restantes. No hay
     /// packs, bundles ni seccion de tienda; la compra se ofrece de forma CONTEXTUAL al abrir
-    /// el detalle de una obra bloqueada. Sustituir el stub de PurchaseCatalog por Meta IAP.
+    /// el detalle de una obra bloqueada.
+    ///
+    /// Integra Meta IAP (Oculus.Platform.IAP) con el SKU durable "catalog_complete":
+    ///   - InitializePlatform: inicializa el Platform SDK, verifica entitlement, carga precio
+    ///     real (GetProductsBySKU) y restaura la compra desde Meta (GetViewerPurchases).
+    ///   - PurchaseCatalog: lanza el checkout nativo (LaunchCheckoutFlow). En el Editor concede
+    ///     de inmediato (no hay sesion de plataforma) para poder iterar la UI.
+    ///
+    /// Fuente de verdad del entitlement = Meta, no el save local. El save (purchasedPackIds) es
+    /// solo una cache: al arrancar se re-sincroniza desde GetViewerPurchases, por lo que la compra
+    /// sobrevive reinstalaciones.
     ///
     /// Nota: se conservan el nombre `PackPurchaseService` y `SaveData.purchasedPackIds` por
     /// compatibilidad con la escena y los saves existentes; internamente solo gestionan el SKU
@@ -16,20 +28,133 @@ namespace ArtUnbound.Services
     /// </summary>
     public class PackPurchaseService : MonoBehaviour
     {
-        /// <summary>SKU unico que desbloquea todo el catalogo.</summary>
+        /// <summary>SKU unico (durable) que desbloquea todo el catalogo. Debe coincidir letra por
+        /// letra con el add-on creado en el Developer Dashboard de Meta.</summary>
         public const string CatalogSku = "catalog_complete";
 
         [Header("Complete Catalog Purchase")]
-        [Tooltip("Precio mostrado en el boton de comprar el catalogo completo.")]
+        [Tooltip("Precio de respaldo mostrado si Meta aun no devolvio el precio localizado real.")]
         [SerializeField] private string catalogPrice = "$9.99";
 
         private SaveDataService saveDataService;
 
-        public string CatalogPrice => catalogPrice;
+        // Estado del Platform SDK (solo en device; en Editor se usa el fallback).
+        private bool _initStarted;
+        private bool _platformReady;
+
+        // Precio localizado devuelto por Meta (politica: no hardcodear precios). Vacio = usa el de respaldo.
+        private string _metaFormattedPrice;
+
+        /// <summary>Se dispara cuando cambia el estado de compra/entitlement (compra exitosa o
+        /// restauracion asincrona desde Meta). La UI lo usa para refrescar candados y precio.</summary>
+        public event Action OnPurchaseStateChanged;
+
+        /// <summary>Precio a mostrar: el localizado de Meta si esta disponible, si no el de respaldo.</summary>
+        public string CatalogPrice => string.IsNullOrEmpty(_metaFormattedPrice) ? catalogPrice : _metaFormattedPrice;
 
         public void Initialize(SaveDataService sds)
         {
             saveDataService = sds;
+        }
+
+        /// <summary>
+        /// Arranca el Platform SDK de Meta. Llamar una vez al inicio (GameBootstrap). En el Editor
+        /// no hace nada: no hay sesion de plataforma, asi que la compra usa el fallback de desarrollo.
+        /// </summary>
+        public void InitializePlatform()
+        {
+            if (Application.isEditor)
+                return;
+
+            try
+            {
+                // El App ID se toma de Oculus/Platform Settings (Meta > Platform > Edit Settings).
+                Core.AsyncInitialize();
+                _initStarted = true;
+                Debug.Log("[PackPurchaseService] Platform SDK init solicitado.");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"[PackPurchaseService] No se pudo iniciar el Platform SDK: {e.Message}");
+            }
+        }
+
+        private void Update()
+        {
+            // El Platform SDK requiere bombear los callbacks cada frame para que .OnComplete dispare.
+            if (!_initStarted)
+                return;
+
+            Request.RunCallbacks();
+
+            if (!_platformReady && Core.IsInitialized())
+            {
+                _platformReady = true;
+                OnPlatformReady();
+            }
+        }
+
+        private void OnPlatformReady()
+        {
+            Debug.Log("[PackPurchaseService] Platform SDK inicializado.");
+
+            // Verificar que el usuario tiene derecho a la app (entitlement). En desarrollo solo se
+            // registra; no forzamos salida para no estorbar las pruebas con test users.
+            Entitlements.IsUserEntitledToApplication().OnComplete(msg =>
+            {
+                if (msg.IsError)
+                    Debug.LogWarning($"[PackPurchaseService] Entitlement no concedido: {msg.GetError().Message}");
+            });
+
+            RefreshFromMeta();
+        }
+
+        /// <summary>
+        /// Sincroniza desde Meta: precio localizado real y estado de compra del catalogo.
+        /// </summary>
+        public void RefreshFromMeta()
+        {
+            if (!_platformReady)
+                return;
+
+            // Precio localizado real del add-on.
+            IAP.GetProductsBySKU(new[] { CatalogSku }).OnComplete((Message<ProductList> msg) =>
+            {
+                if (msg.IsError)
+                {
+                    Debug.LogError($"[PackPurchaseService] GetProductsBySKU fallo: {msg.GetError().Message}");
+                    return;
+                }
+
+                foreach (Product product in msg.GetProductList())
+                {
+                    if (product.Sku == CatalogSku && !string.IsNullOrEmpty(product.FormattedPrice))
+                    {
+                        _metaFormattedPrice = product.FormattedPrice;
+                        OnPurchaseStateChanged?.Invoke();
+                    }
+                }
+            });
+
+            // Restaurar la compra: Meta es la fuente de verdad (sobrevive reinstalaciones).
+            IAP.GetViewerPurchases().OnComplete((Message<PurchaseList> msg) =>
+            {
+                if (msg.IsError)
+                {
+                    Debug.LogError($"[PackPurchaseService] GetViewerPurchases fallo: {msg.GetError().Message}");
+                    return;
+                }
+
+                foreach (Purchase purchase in msg.GetPurchaseList())
+                {
+                    if (purchase.Sku == CatalogSku && !IsCatalogPurchased())
+                    {
+                        saveDataService?.MarkAsPurchased(CatalogSku);
+                        Debug.Log("[PackPurchaseService] Compra del catalogo restaurada desde Meta.");
+                        OnPurchaseStateChanged?.Invoke();
+                    }
+                }
+            });
         }
 
         /// <summary>True una vez que el usuario compro el catalogo completo.</summary>
@@ -42,18 +167,42 @@ namespace ArtUnbound.Services
             => artwork != null && !artwork.isFree && !IsCatalogPurchased();
 
         /// <summary>
-        /// Inicia la compra del catalogo completo. Stub: marca el SKU como comprado y guarda.
-        /// Reemplazar el cuerpo por Meta IAP para produccion.
+        /// Inicia la compra del catalogo completo via Meta IAP. En el Editor concede de inmediato
+        /// (no hay checkout disponible) para poder probar el flujo de UI.
         /// </summary>
         public void PurchaseCatalog(Action onSuccess, Action onFailure = null)
         {
-            // --- Stub: conceder de inmediato ---
-            saveDataService?.MarkAsPurchased(CatalogSku);
-            Debug.Log("[PackPurchaseService] Catalogo completo comprado (stub).");
-            onSuccess?.Invoke();
-            // --- Fin stub ---
+            if (Application.isEditor)
+            {
+                // Fallback de desarrollo: no existe checkout en el Editor.
+                saveDataService?.MarkAsPurchased(CatalogSku);
+                Debug.Log("[PackPurchaseService] Catalogo concedido (fallback de Editor).");
+                onSuccess?.Invoke();
+                OnPurchaseStateChanged?.Invoke();
+                return;
+            }
 
-            // TODO: reemplazar por IAP real, p.ej. MetaIAP.Purchase(CatalogSku, onSuccess, onFailure);
+            if (!_platformReady)
+            {
+                Debug.LogError("[PackPurchaseService] Platform SDK no listo; no se puede comprar.");
+                onFailure?.Invoke();
+                return;
+            }
+
+            IAP.LaunchCheckoutFlow(CatalogSku).OnComplete((Message<Purchase> msg) =>
+            {
+                if (msg.IsError)
+                {
+                    Debug.LogError($"[PackPurchaseService] Checkout fallo/cancelado: {msg.GetError().Message}");
+                    onFailure?.Invoke();
+                    return;
+                }
+
+                saveDataService?.MarkAsPurchased(CatalogSku);
+                Debug.Log($"[PackPurchaseService] Compra completada: {msg.GetPurchase().Sku}");
+                onSuccess?.Invoke();
+                OnPurchaseStateChanged?.Invoke();
+            });
         }
 
         private bool IsPurchased(string id)
