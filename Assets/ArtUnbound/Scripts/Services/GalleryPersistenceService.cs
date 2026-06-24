@@ -3,6 +3,12 @@ using ArtUnbound.Data;
 
 namespace ArtUnbound.Services
 {
+    /// <summary>
+    /// Persistencia de obras/placas colgadas por galeria VR. Espeja el metodo de MR (WallAnchorManager):
+    /// una LISTA de entradas donde cada copia colgada tiene su instanceId unico (equivalente al anchorId),
+    /// y el artworkId se mantiene limpio. Colgar AGREGA una entrada (no sobrescribe), por eso persisten
+    /// varias copias de la misma obra. Se guarda a disco de inmediato en cada cambio (como MR).
+    /// </summary>
     public class GalleryPersistenceService
     {
         private readonly SaveDataService _saveDataService;
@@ -20,37 +26,49 @@ namespace ArtUnbound.Services
             return new List<GalleryPaintingData>();
         }
 
+        /// <summary>
+        /// Inserta/actualiza una copia colgada por su instanceId (upsert) y guarda a disco. Una copia
+        /// nueva (instanceId nuevo) se AGREGA; reposicionar una existente (mismo instanceId) la reemplaza.
+        /// </summary>
         public void SavePainting(string galleryId, GalleryPaintingData painting)
         {
+            if (painting == null) return;
+
             var data = _saveDataService.GetCachedData();
             if (!data.galleryPaintings.ContainsKey(galleryId))
                 data.galleryPaintings[galleryId] = new List<GalleryPaintingData>();
 
-            // Replace existing entry for same artworkId+difficulty, or add new
             var list = data.galleryPaintings[galleryId];
-            int idx = list.FindIndex(p => p.artworkId == painting.artworkId && p.difficultyIndex == painting.difficultyIndex);
+            int idx = !string.IsNullOrEmpty(painting.instanceId)
+                ? list.FindIndex(p => p.instanceId == painting.instanceId)
+                : -1;
             if (idx >= 0)
                 list[idx] = painting;
             else
                 list.Add(painting);
 
-            _saveDataService.MarkDirty();
+            _saveDataService.Save(data); // guardado inmediato, como MR.AddAnchoredArtwork
         }
 
-        public void RemovePainting(string galleryId, string artworkId, int difficultyIndex)
+        /// <summary>Quita la copia colgada con ese instanceId y guarda a disco.</summary>
+        public void RemovePainting(string galleryId, string instanceId)
         {
+            if (string.IsNullOrEmpty(instanceId)) return;
             var data = _saveDataService.GetCachedData();
             if (!data.galleryPaintings.ContainsKey(galleryId)) return;
-            data.galleryPaintings[galleryId].RemoveAll(p => p.artworkId == artworkId && p.difficultyIndex == difficultyIndex);
-            _saveDataService.MarkDirty();
+            int removed = data.galleryPaintings[galleryId].RemoveAll(p => p.instanceId == instanceId);
+            if (removed > 0)
+                _saveDataService.Save(data);
         }
 
         public void ClearGallery(string galleryId)
         {
             var data = _saveDataService.GetCachedData();
             if (data.galleryPaintings.ContainsKey(galleryId))
+            {
                 data.galleryPaintings[galleryId].Clear();
-            _saveDataService.MarkDirty();
+                _saveDataService.Save(data);
+            }
         }
     }
 }

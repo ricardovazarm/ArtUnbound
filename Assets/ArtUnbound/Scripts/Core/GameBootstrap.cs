@@ -25,6 +25,8 @@ namespace ArtUnbound.Core
 
         [Header("Data Assets")]
         [SerializeField] private ArtworkCatalog artworkCatalog;
+        /// <summary>Catalogo de obras (fallback para VRGalleryController al reconstruir cuadros colgados).</summary>
+        public ArtworkCatalog ArtworkCatalog => artworkCatalog;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private FrameConfigSet frameConfigSet;
         [Tooltip("Catalogo de coleccionables (placas + mejoras). Generar con Tools/ArtUnbound/Generate Collectibles.")]
@@ -526,6 +528,8 @@ namespace ArtUnbound.Core
             if (go == null) return;
 
             // Id no-vacio: InteractionManager lo lee y TryRepositionWallArtwork ya no destruye el clon.
+            // El artworkId se mantiene limpio ("plaque_<id>"); la unicidad entre copias colgadas la da el
+            // instanceId (GalleryPaintingInstance), asignado al colgarla en la pared VR (como el anchorId de MR).
             var id = go.AddComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
             id.artworkId = $"plaque_{plaqueId}";
 

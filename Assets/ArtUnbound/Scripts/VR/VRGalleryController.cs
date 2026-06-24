@@ -213,6 +213,18 @@ namespace ArtUnbound.VR
             Debug.Log($"[VRGallery] Teleported XR Origin to PlayerSpawnPoint at {spawnPoint.position}");
         }
 
+        /// <summary>
+        /// Catalogo de obras a usar al reconstruir cuadros. Usa el campo serializado si esta asignado;
+        /// si no (causa de que los cuadros recargados salieran con el material "Lit" por defecto en vez
+        /// de su textura), cae al catalogo global de GameBootstrap.
+        /// </summary>
+        private ArtUnbound.Data.ArtworkCatalog EffectiveArtworkCatalog()
+        {
+            if (artworkCatalog != null) return artworkCatalog;
+            return ArtUnbound.Core.GameBootstrap.Instance != null
+                ? ArtUnbound.Core.GameBootstrap.Instance.ArtworkCatalog : null;
+        }
+
         private void SpawnSavedPaintings(string galleryId)
         {
             if (_persistenceService == null) return;
@@ -220,6 +232,10 @@ namespace ArtUnbound.VR
             var paintings = _persistenceService.GetPaintings(galleryId);
             foreach (var data in paintings)
             {
+                // Migracion: las entradas viejas (metodo #token, sin instanceId) se ignoran para no
+                // mostrar cuadros/placas en blanco. Se vuelven a colgar con el formato nuevo.
+                if (string.IsNullOrEmpty(data.instanceId)) continue;
+
                 GameObject go;
 
                 // Las placas (id "plaque_<id>") se reconstruyen con CollectibleFactory, igual que en MR
@@ -233,10 +249,16 @@ namespace ArtUnbound.VR
                 {
                     float w = data.boardWidth  > 0f ? data.boardWidth  : 0.5f;
                     float h = data.boardHeight > 0f ? data.boardHeight : 0.5f;
-                    go = PlacedArtworkFactory.Build(data.artworkId, data.frameTier, w, h, artworkCatalog);
+                    go = PlacedArtworkFactory.Build(data.artworkId, data.frameTier, w, h, EffectiveArtworkCatalog());
                 }
 
                 go.transform.SetPositionAndRotation(data.Position, data.Rotation);
+
+                // Reponer el instanceId (clave de persistencia) para que reposicionar/quitar afecte esta
+                // copia exacta. Equivale a re-vincular la pieza con su anchor en MR.
+                var inst = go.GetComponent<GalleryPaintingInstance>() ?? go.AddComponent<GalleryPaintingInstance>();
+                inst.instanceId = data.instanceId;
+
                 _spawnedPaintings.Add(go);
                 Debug.Log($"[VRGallery] Spawned saved '{data.artworkId}' at {data.Position:F2}");
             }
@@ -246,7 +268,7 @@ namespace ArtUnbound.VR
         /// repone el PlacedArtworkIdentifier para que se pueda volver a agarrar/reposicionar.</summary>
         private GameObject BuildSavedPlaque(GalleryPaintingData data)
         {
-            string plaqueId = data.artworkId.Substring("plaque_".Length);
+            string plaqueId = ArtUnbound.MR.CollectibleFactory.PlaqueCollectibleId(data.artworkId);
             var catalog = ArtUnbound.Core.GameBootstrap.Instance != null
                 ? ArtUnbound.Core.GameBootstrap.Instance.CollectibleCatalog : null;
             var def = catalog != null ? catalog.GetById(plaqueId) : null;

@@ -22,7 +22,9 @@ namespace ArtUnbound.VR
         [Header("Wall Detection")]
         [SerializeField] private LayerMask vrWallLayerMask;
         [SerializeField] private float wallProximityRadius = 0.35f;
-        [SerializeField] private float wallRaycastDistance = 2f;
+        // En VR se apunta a la pared desde lejos (a veces tras teleportarse); 2m era muy corto y el rayo
+        // no alcanzaba la pared, asi que no se colgaba nada. 6m cubre el ancho de una sala de galeria.
+        [SerializeField] private float wallRaycastDistance = 6f;
 
         [Header("Settings")]
         [SerializeField] private float placementAnimationDuration = 0.5f;
@@ -132,10 +134,16 @@ namespace ArtUnbound.VR
             float boardW = 0.5f, boardH = 0.5f;
             puzzleBoard?.GetBoardDimensions(out boardW, out boardH);
 
+            // artworkId limpio en el identifier (re-agarre); la unicidad de la copia la lleva el instanceId.
+            var idComp = frameClone.GetComponent<PlacedArtworkIdentifier>()
+                         ?? frameClone.gameObject.AddComponent<PlacedArtworkIdentifier>();
+            idComp.artworkId = _currentArtworkId;
+
             Vector3 offsetPos = wallPos + wallRot * Vector3.forward * 0.02f;
             frameClone.SetPositionAndRotation(offsetPos, wallRot);
 
-            SavePainting(offsetPos, wallRot, boardW, boardH);
+            string instanceId = EnsureInstanceId(frameClone.gameObject);
+            SavePainting(instanceId, _currentArtworkId, offsetPos, wallRot, boardW, boardH);
             galleryController?.RegisterPlacedPainting(frameClone.gameObject);
 
             HideGhost();
@@ -159,7 +167,10 @@ namespace ArtUnbound.VR
 
             Debug.Log($"[VRWallHanging] Placed at worldPos={offsetPos:F2}. Teleport near X={offsetPos.x:F1} Z={offsetPos.z:F1}");
 
-            SavePainting(offsetPos, wallRotation, boardW, boardH);
+            // instanceId unico por copia colgada (equivalente al anchorId de MR): permite varias copias
+            // de la misma obra sin pisarse. El artworkId se mantiene limpio para buscar la textura.
+            string instanceId = EnsureInstanceId(artworkGO);
+            SavePainting(instanceId, _currentArtworkId, offsetPos, wallRotation, boardW, boardH);
             galleryController?.RegisterPlacedPainting(artworkGO);
 
             OnFramePlaced?.Invoke();
@@ -191,14 +202,20 @@ namespace ArtUnbound.VR
                 plaqueGO.transform.SetParent(null, worldPositionStays: true);
                 plaqueGO.transform.SetPositionAndRotation(offsetPos, wallRot);
 
-                SavePlaque(artworkId, offsetPos, wallRot);
+                // instanceId: nuevo en el primer colgado, reutilizado al reposicionar (upsert por instanceId,
+                // asi reposicionar no crea una copia extra). artworkId queda limpio.
+                string instanceId = EnsureInstanceId(plaqueGO);
+                SavePlaque(instanceId, artworkId, offsetPos, wallRot);
                 galleryController?.RegisterPlacedPainting(plaqueGO);
-                Debug.Log($"[VRWallHanging] Plaque {artworkId} hung on VR wall at {offsetPos:F2}");
+                Debug.Log($"[VRWallHanging] Plaque {artworkId} hung on VR wall at {offsetPos:F2} (instance {instanceId})");
             }
             else
             {
-                if (_persistenceService != null && galleryController != null)
-                    _persistenceService.RemovePainting(galleryController.ActiveGalleryId, artworkId, 0);
+                // Solo borra de persistencia si esta copia ya estaba guardada (tiene instanceId).
+                var inst = plaqueGO.GetComponent<GalleryPaintingInstance>();
+                if (inst != null && !string.IsNullOrEmpty(inst.instanceId)
+                    && _persistenceService != null && galleryController != null)
+                    _persistenceService.RemovePainting(galleryController.ActiveGalleryId, inst.instanceId);
                 Destroy(plaqueGO);
                 Debug.Log($"[VRWallHanging] Plaque {artworkId} removed (aimed away from wall)");
             }
@@ -206,12 +223,22 @@ namespace ArtUnbound.VR
             OnWallArtworkResolved?.Invoke(artworkId);
         }
 
-        private void SavePlaque(string artworkId, Vector3 position, Quaternion rotation)
+        /// <summary>Obtiene (o crea) el id de instancia unico del objeto colgado. Equivale al anchorId de MR.</summary>
+        private string EnsureInstanceId(GameObject go)
+        {
+            var inst = go.GetComponent<GalleryPaintingInstance>() ?? go.AddComponent<GalleryPaintingInstance>();
+            if (string.IsNullOrEmpty(inst.instanceId))
+                inst.instanceId = System.Guid.NewGuid().ToString("N");
+            return inst.instanceId;
+        }
+
+        private void SavePlaque(string instanceId, string artworkId, Vector3 position, Quaternion rotation)
         {
             if (_persistenceService == null || galleryController == null) return;
 
             var data = new GalleryPaintingData
             {
+                instanceId      = instanceId,
                 artworkId       = artworkId,   // "plaque_<id>" — VRGalleryController lo detecta al cargar
                 difficultyIndex = 0,
                 boardWidth      = 0f,
@@ -333,14 +360,15 @@ namespace ArtUnbound.VR
             return false;
         }
 
-        private void SavePainting(Vector3 position, Quaternion rotation,
+        private void SavePainting(string instanceId, string artworkId, Vector3 position, Quaternion rotation,
                                    float boardW = 0.5f, float boardH = 0.5f)
         {
             if (_persistenceService == null || galleryController == null) return;
 
             var data = new GalleryPaintingData
             {
-                artworkId       = _currentArtworkId,
+                instanceId      = instanceId,  // unico por copia colgada (clave de persistencia)
+                artworkId       = artworkId,   // limpio (id real de la obra, para buscar la textura)
                 difficultyIndex = _currentDifficultyIndex,
                 boardWidth      = boardW,
                 boardHeight     = boardH,

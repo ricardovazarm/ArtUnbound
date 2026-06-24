@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace ArtUnbound.Data
 {
     [Serializable]
-    public class SaveData
+    public class SaveData : ISerializationCallbackReceiver
     {
         public List<ArtworkProgress> progressByArtwork = new List<ArtworkProgress>();
         public List<string> completedArtworks = new List<string>();
@@ -25,7 +26,18 @@ namespace ArtUnbound.Data
         // VR Mode
         public bool preferVRMode = false;
         public string lastGalleryId = "gallery_classic";
+
+        /// <summary>
+        /// Cuadros/placas colgados por galeria VR (key = galleryId). API de runtime. JsonUtility NO
+        /// serializa diccionarios, asi que se persiste via <see cref="galleryPaintingsSerialized"/> +
+        /// ISerializationCallbackReceiver. (Por eso VR no recordaba lo colgado: el dictionary se perdia.)
+        /// </summary>
+        [NonSerialized]
         public Dictionary<string, List<GalleryPaintingData>> galleryPaintings = new Dictionary<string, List<GalleryPaintingData>>();
+
+        // Espejo serializable del diccionario: JsonUtility solo serializa listas y campos [SerializeField].
+        [SerializeField]
+        private List<GalleryPaintingsEntry> galleryPaintingsSerialized = new List<GalleryPaintingsEntry>();
 
         /// <summary>Placas con nombre obtenidas por el jugador (GDD 8.3). Ver EarnedPlaque.</summary>
         public List<EarnedPlaque> earnedPlaques = new List<EarnedPlaque>();
@@ -259,5 +271,39 @@ namespace ArtUnbound.Data
         {
             return placedArtworks.RemoveAll(p => p.artworkId == artworkId) > 0;
         }
+
+        // ── Serializacion del diccionario galleryPaintings (JsonUtility) ─────────
+
+        /// <summary>Vuelca el diccionario al espejo serializable antes de guardar (JsonUtility).</summary>
+        public void OnBeforeSerialize()
+        {
+            if (galleryPaintingsSerialized == null)
+                galleryPaintingsSerialized = new List<GalleryPaintingsEntry>();
+            galleryPaintingsSerialized.Clear();
+            if (galleryPaintings == null) return;
+            foreach (var kv in galleryPaintings)
+                galleryPaintingsSerialized.Add(new GalleryPaintingsEntry { galleryId = kv.Key, paintings = kv.Value });
+        }
+
+        /// <summary>Reconstruye el diccionario desde el espejo serializable tras cargar (JsonUtility).</summary>
+        public void OnAfterDeserialize()
+        {
+            galleryPaintings = new Dictionary<string, List<GalleryPaintingData>>();
+            if (galleryPaintingsSerialized == null) return;
+            foreach (var entry in galleryPaintingsSerialized)
+            {
+                if (entry == null || string.IsNullOrEmpty(entry.galleryId)) continue;
+                galleryPaintings[entry.galleryId] = entry.paintings ?? new List<GalleryPaintingData>();
+            }
+        }
+    }
+
+    /// <summary>Entrada serializable (una galeria + sus cuadros/placas) usada para persistir el
+    /// diccionario galleryPaintings con JsonUtility, que no soporta Dictionary.</summary>
+    [Serializable]
+    public class GalleryPaintingsEntry
+    {
+        public string galleryId;
+        public List<GalleryPaintingData> paintings = new List<GalleryPaintingData>();
     }
 }

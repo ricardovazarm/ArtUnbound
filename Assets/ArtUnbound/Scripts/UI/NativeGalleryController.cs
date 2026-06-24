@@ -595,9 +595,9 @@ namespace ArtUnbound.UI
         }
 
         /// <summary>
-        /// Puebla el grid propio de Collection (collectionGridContainer) con el inventario (GDD 8.5): obras completadas
-        /// (colgables), placas obtenidas (colgables) y objetos no obtenidos (placas + mejoras de
-        /// presentacion) mostrados como bloqueados con su condicion.
+        /// Puebla el grid propio de Collection (collectionGridContainer) con placas obtenidas (colgables)
+        /// y objetos no obtenidos (placas + mejoras de presentacion) mostrados como bloqueados con su
+        /// condicion. Las obras completadas (pinturas) NO se listan aqui por decision de diseno.
         /// </summary>
         private void PopulateCollection()
         {
@@ -612,21 +612,9 @@ namespace ArtUnbound.UI
             if (saveData == null) return;
             int completedCount = saveData.GetCompletedCount();
 
-            // 1) Obras completadas -> colgar
-            foreach (var artwork in _allArtworks)
-            {
-                if (artwork == null || !IsArtworkCompleted(artwork.artworkId, saveData)) continue;
-                var go = Instantiate(artworkCardPrefab, collectionGridContainer);
-                var card = go.GetComponent<ArtworkCardUI>();
-                if (card != null)
-                {
-                    string id = artwork.artworkId;
-                    card.Setup(artwork, true, _ => OnHangArtworkRequested?.Invoke(id), false);
-                }
-            }
-
-            // 2) Coleccionables del catalogo (en su orden). Placas: obtenida -> colgar / bloqueada ->
-            //    condicion. Mejoras (no colgables): desbloqueada/locked segun obras completadas.
+            // Coleccionables del catalogo (en su orden). Placas: obtenida -> colgar / bloqueada ->
+            // condicion. Mejoras (no colgables): desbloqueada/locked segun obras completadas.
+            // (Las obras completadas ya NO se muestran en Collection.)
             var gb = ArtUnbound.Core.GameBootstrap.Instance;
             var catalog = gb != null && gb.CollectibleService != null ? gb.CollectibleService.Catalog : null;
             if (catalog != null && catalog.collectibles != null)

@@ -6,6 +6,9 @@ namespace ArtUnbound.Data
     [Serializable]
     public class GalleryPaintingData
     {
+        /// <summary>Id unico de esta copia colgada (equivalente al anchorId de MR). Clave de persistencia;
+        /// permite varias copias de la misma obra/placa sin pisarse. El artworkId se mantiene limpio.</summary>
+        public string instanceId;
         public string artworkId;
         public int difficultyIndex;
         public float posX, posY, posZ;

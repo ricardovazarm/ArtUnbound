@@ -406,7 +406,7 @@ namespace ArtUnbound.MR
         /// </summary>
         private GameObject SpawnPlaqueAtAnchor(AnchoredArtwork data, Transform anchorTransform)
         {
-            string plaqueId = data.artworkId.Substring("plaque_".Length);
+            string plaqueId = CollectibleFactory.PlaqueCollectibleId(data.artworkId);
             var catalog = ArtUnbound.Core.GameBootstrap.Instance != null
                 ? ArtUnbound.Core.GameBootstrap.Instance.CollectibleCatalog : null;
             var def = catalog != null ? catalog.GetById(plaqueId) : null;

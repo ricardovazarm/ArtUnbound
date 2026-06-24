@@ -12,6 +12,17 @@ namespace ArtUnbound.MR
     /// </summary>
     public static class CollectibleFactory
     {
+        /// <summary>
+        /// Extrae el id del COLECCIONABLE desde el artworkId de una placa colgada ("plaque_&lt;collectibleId&gt;").
+        /// La unicidad entre copias la da el instanceId (GalleryPaintingData/GalleryPaintingInstance), no el
+        /// artworkId, que se mantiene limpio.
+        /// </summary>
+        public static string PlaqueCollectibleId(string artworkId)
+        {
+            if (string.IsNullOrEmpty(artworkId)) return artworkId;
+            return artworkId.StartsWith("plaque_") ? artworkId.Substring("plaque_".Length) : artworkId;
+        }
+
         public static GameObject Build(CollectibleDefinition def, FrameTier tier, string earnedDate = null)
         {
             // Texto a mostrar: normalmente el del asset; la placa de estatus muestra rango + agregados
