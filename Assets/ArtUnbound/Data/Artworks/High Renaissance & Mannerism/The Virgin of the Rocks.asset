@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -15,10 +15,16 @@ MonoBehaviour:
   artworkId: The Virgin of the Rocks
   title: The Virgin of the Rocks
   author: Leonardo da Vinci
-  year: 1486
-  description: "Museum: Louvre Museum, Paris\nArt Movement: Renaissance\nYear: 1486"
-  museum: Louvre Museum, Paris
+  year: 1508
+  description: 'Museum: National Gallery, London
+
+    Art Movement: Renaissance
+
+    Year:
+    1508'
+  museum: National Gallery, London
   artMovement: Renaissance
+  credits: 
   aspectRatio: 0.6486
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}
@@ -26,6 +32,7 @@ MonoBehaviour:
   fullImage: {fileID: 21300000, guid: 72e575f9c92acfc41b842838f4fb46bd, type: 3}
   previewTexture: {fileID: 0}
   puzzleTexture: {fileID: 0}
+  isFree: 0
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0

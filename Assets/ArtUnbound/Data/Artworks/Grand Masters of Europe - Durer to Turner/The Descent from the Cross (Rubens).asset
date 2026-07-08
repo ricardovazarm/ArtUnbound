@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -15,10 +15,16 @@ MonoBehaviour:
   artworkId: The Descent from the Cross (Rubens)
   title: The Descent from the Cross (Rubens)
   author: Peter Paul Rubens
-  year: 1614
-  description: "Museum: Cathedral of Our Lady, Antwerp\nArt Movement: Baroque\nYear: 1614"
-  museum: Cathedral of Our Lady, Antwerp
+  year: 1602
+  description: 'Museum: Siegerlandmuseum, Siegen
+
+    Art Movement: Baroque
+
+    Year:
+    1602'
+  museum: Siegerlandmuseum, Siegen
   artMovement: Baroque
+  credits: 
   aspectRatio: 1.2543
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}
@@ -26,6 +32,7 @@ MonoBehaviour:
   fullImage: {fileID: 21300000, guid: 2d354df10bdd029459930629ea62ebaa, type: 3}
   previewTexture: {fileID: 0}
   puzzleTexture: {fileID: 0}
+  isFree: 0
   isBaseContent: 1
   requiresUnlock: 0
   unlockWeek: 0

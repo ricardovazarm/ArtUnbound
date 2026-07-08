@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,9 +16,15 @@ MonoBehaviour:
   title: Still Life with Quinces
   author: Vincent van Gogh
   year: 1887
-  description: "Museum: The Courtauld Gallery\nArt Movement: Post-Impressionism\nYear: 1887"
-  museum: The Courtauld Gallery
+  description: 'Museum: Galerie Neue Meister, Dresden
+
+    Art Movement: Post-Impressionism
+
+    Year:
+    1887'
+  museum: Galerie Neue Meister, Dresden
   artMovement: Post-Impressionism
+  credits: 
   aspectRatio: 1.2877
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}
@@ -26,6 +32,7 @@ MonoBehaviour:
   fullImage: {fileID: 21300000, guid: 606201e8a452979458adeebf1bccfb7c, type: 3}
   previewTexture: {fileID: 0}
   puzzleTexture: {fileID: 0}
+  isFree: 0
   isBaseContent: 0
   requiresUnlock: 1
   unlockWeek: 0

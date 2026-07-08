@@ -144,6 +144,10 @@ namespace ArtUnbound.UI
         [SerializeField] private TMP_Text   detailTitleText;
         [SerializeField] private TMP_Text   detailArtistText;
         [SerializeField] private TMP_Text   detailDescriptionText;
+        [Tooltip("Campos separados de metadata del panel de detalle. Se pueblan desde artwork.museum / artMovement / year en ShowDetail, para que editar esos campos en el ArtworkDefinition actualice la UI.")]
+        [SerializeField] private TMP_Text   detailMuseumText;
+        [SerializeField] private TMP_Text   detailMovementText;
+        [SerializeField] private TMP_Text   detailYearText;
         [Tooltip("Texto de creditos de la obra. Queda en blanco si la obra no tiene credits.")]
         [SerializeField] private TMP_Text   detailCreditsText;
         [SerializeField] private Button     btnDetailClose;
@@ -794,6 +798,11 @@ namespace ArtUnbound.UI
             if (detailTitleText       != null) detailTitleText.text       = artwork.title;
             if (detailArtistText      != null) detailArtistText.text      = artwork.author;
             if (detailDescriptionText != null) detailDescriptionText.text = artwork.description;
+            // Campos separados: se leen de los campos vivos del ArtworkDefinition (no del string
+            // duplicado `description`), asi editar museum/artMovement/year actualiza la pantalla.
+            if (detailMuseumText      != null) detailMuseumText.text      = artwork.museum;
+            if (detailMovementText    != null) detailMovementText.text    = artwork.artMovement;
+            if (detailYearText        != null) detailYearText.text        = artwork.year.ToString();
             // Creditos: en blanco si la obra no los tiene (null o vacio).
             if (detailCreditsText     != null) detailCreditsText.text     = artwork.credits ?? string.Empty;
 

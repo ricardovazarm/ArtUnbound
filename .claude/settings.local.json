@@ -91,7 +91,24 @@
       "mcp__unity-mcp__Unity_GetProjectData",
       "Bash(xargs -0 -I{} sh -c 'test -f \"{}\" && find \"{}\" -size +100M')",
       "mcp__HzOSDevMCP__search_docs",
-      "mcp__HzOSDevMCP__fetch_meta_quest_doc"
+      "mcp__HzOSDevMCP__fetch_meta_quest_doc",
+      "mcp__HzOSDevMCP__app_list",
+      "mcp__HzOSDevMCP__app_launch",
+      "mcp__HzOSDevMCP__app_stop",
+      "mcp__HzOSDevMCP__app_info",
+      "mcp__HzOSDevMCP__app_uninstall",
+      "WebFetch(domain:developers.meta.com)",
+      "WebFetch(domain:www.vangoghmuseum.nl)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:artsandculture.google.com)",
+      "WebFetch(domain:www.royalacademy.org.uk)",
+      "WebFetch(domain:www.artsbma.org)",
+      "WebFetch(domain:collections.mfa.org)",
+      "WebFetch(domain:www.metmuseum.org)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:www.wikiart.org)",
+      "WebFetch(domain:collectionapi.metmuseum.org)",
+      "WebFetch(domain:philamuseum.org)"
     ]
   }
 }

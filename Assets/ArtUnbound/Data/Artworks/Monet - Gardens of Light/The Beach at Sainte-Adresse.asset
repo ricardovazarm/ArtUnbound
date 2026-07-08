@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
@@ -16,9 +16,15 @@ MonoBehaviour:
   title: The Beach at Sainte-Adresse
   author: Claude Monet
   year: 1867
-  description: "Museum: The Met\nArt Movement: Impressionism\nYear: 1867"
-  museum: The Met
+  description: 'Museum: Art Institute of Chicago
+
+    Art Movement: Impressionism
+
+    Year:
+    1867'
+  museum: Art Institute of Chicago
   artMovement: Impressionism
+  credits: 
   aspectRatio: 1.3531
   baseSizePortrait: {x: 0.5, y: 0.7}
   baseSizeLandscape: {x: 0.7, y: 0.5}
@@ -26,6 +32,7 @@ MonoBehaviour:
   fullImage: {fileID: 21300000, guid: 8ab72fb20e3d26948ac38effdb0a2e95, type: 3}
   previewTexture: {fileID: 0}
   puzzleTexture: {fileID: 0}
+  isFree: 0
   isBaseContent: 0
   requiresUnlock: 1
   unlockWeek: 0
