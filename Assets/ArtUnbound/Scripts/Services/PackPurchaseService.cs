@@ -36,10 +36,8 @@ namespace ArtUnbound.Services
         public const string CatalogSku = "catalog_complete";
 
         [Header("Complete Catalog Purchase")]
-        [Tooltip("Precio de respaldo mostrado si Meta aun no devolvio el precio localizado real. " +
-                 "DIAGNOSTICO: dejalo en un valor obvio (ej. 'FALLBACK') para distinguir a simple " +
-                 "vista si el precio viene de Meta o no.")]
-        [SerializeField] private string catalogPrice = "FALLBACK";
+        [Tooltip("Precio de respaldo mostrado si Meta aun no devolvio el precio localizado real.")]
+        [SerializeField] private string catalogPrice = "$9.99";
 
         private SaveDataService saveDataService;
 
@@ -74,10 +72,8 @@ namespace ArtUnbound.Services
             try
             {
                 // El App ID se toma de Oculus/Platform Settings (Meta > Platform > Edit Settings).
-                Debug.Log($"[PackPurchaseService] InitializePlatform: SKU='{CatalogSku}', platform={Application.platform}. Llamando Core.AsyncInitialize...");
                 PlatformCore.AsyncInitialize();
                 _initStarted = true;
-                Debug.Log("[PackPurchaseService] Platform SDK init solicitado. Esperando IsInitialized...");
             }
             catch (Exception e)
             {
@@ -102,8 +98,6 @@ namespace ArtUnbound.Services
 
         private void OnPlatformReady()
         {
-            Debug.Log("[PackPurchaseService] Platform SDK INICIALIZADO OK (Core.IsInitialized=true).");
-
             // Verificar que el usuario tiene derecho a la app (entitlement). En desarrollo solo se
             // registra; no forzamos salida para no estorbar las pruebas con test users.
             Entitlements.IsUserEntitledToApplication().OnComplete(msg =>
@@ -111,8 +105,6 @@ namespace ArtUnbound.Services
                 if (msg.IsError)
                     Debug.LogError($"[PackPurchaseService] ENTITLEMENT FALLO: {msg.GetError().Message} (code={msg.GetError().Code}). " +
                                    "La cuenta del Quest no tiene acceso a la app (no es test user / firma del APK no coincide).");
-                else
-                    Debug.Log("[PackPurchaseService] Entitlement OK: la cuenta tiene acceso a la app.");
             });
 
             RefreshFromMeta();
@@ -130,7 +122,6 @@ namespace ArtUnbound.Services
             }
 
             // Precio localizado real del add-on.
-            Debug.Log($"[PackPurchaseService] GetProductsBySKU: pidiendo info del SKU '{CatalogSku}'...");
             IAP.GetProductsBySKU(new[] { CatalogSku }).OnComplete((Message<ProductList> msg) =>
             {
                 if (msg.IsError)
@@ -140,25 +131,21 @@ namespace ArtUnbound.Services
                 }
 
                 var list = msg.GetProductList();
-                Debug.Log($"[PackPurchaseService] GetProductsBySKU OK: Meta devolvio {list.Count} producto(s).");
                 if (list.Count == 0)
-                    Debug.LogWarning("[PackPurchaseService] La lista vino VACIA: el SKU no esta disponible para esta cuenta " +
+                    Debug.LogWarning("[PackPurchaseService] GetProductsBySKU devolvio lista VACIA: el SKU no esta disponible para esta cuenta " +
                                      "(add-on no propagado, sin descripcion, o cuenta sin acceso).");
 
                 foreach (Product product in list)
                 {
-                    Debug.Log($"[PackPurchaseService]   -> SKU='{product.Sku}' name='{product.Name}' price='{product.FormattedPrice}'");
                     if (product.Sku == CatalogSku && !string.IsNullOrEmpty(product.FormattedPrice))
                     {
                         _metaFormattedPrice = product.FormattedPrice;
-                        Debug.Log($"[PackPurchaseService] Precio de Meta aplicado: '{_metaFormattedPrice}'");
                         OnPurchaseStateChanged?.Invoke();
                     }
                 }
             });
 
             // Restaurar la compra: Meta es la fuente de verdad (sobrevive reinstalaciones).
-            Debug.Log("[PackPurchaseService] GetViewerPurchases: consultando compras previas...");
             IAP.GetViewerPurchases().OnComplete((Message<PurchaseList> msg) =>
             {
                 if (msg.IsError)
@@ -168,14 +155,11 @@ namespace ArtUnbound.Services
                 }
 
                 var list = msg.GetPurchaseList();
-                Debug.Log($"[PackPurchaseService] GetViewerPurchases OK: {list.Count} compra(s) previa(s).");
                 foreach (Purchase purchase in list)
                 {
-                    Debug.Log($"[PackPurchaseService]   -> compra SKU='{purchase.Sku}'");
                     if (purchase.Sku == CatalogSku && !IsCatalogPurchased())
                     {
                         saveDataService?.MarkAsPurchased(CatalogSku);
-                        Debug.Log("[PackPurchaseService] Compra del catalogo restaurada desde Meta.");
                         OnPurchaseStateChanged?.Invoke();
                     }
                 }
@@ -201,7 +185,6 @@ namespace ArtUnbound.Services
             {
                 // Fallback de desarrollo: no existe checkout en el Editor.
                 saveDataService?.MarkAsPurchased(CatalogSku);
-                Debug.Log("[PackPurchaseService] Catalogo concedido (fallback de Editor).");
                 onSuccess?.Invoke();
                 OnPurchaseStateChanged?.Invoke();
                 return;
@@ -209,13 +192,11 @@ namespace ArtUnbound.Services
 
             if (!_platformReady)
             {
-                Debug.LogError("[PackPurchaseService] PurchaseCatalog: Platform SDK NO listo; no se puede comprar. " +
-                               "(Por eso el boton 'no hace nada'.)");
+                Debug.LogError("[PackPurchaseService] PurchaseCatalog: Platform SDK no listo; no se puede lanzar el checkout.");
                 onFailure?.Invoke();
                 return;
             }
 
-            Debug.Log($"[PackPurchaseService] PurchaseCatalog: lanzando checkout para SKU '{CatalogSku}'...");
             IAP.LaunchCheckoutFlow(CatalogSku).OnComplete((Message<Purchase> msg) =>
             {
                 if (msg.IsError)
@@ -226,7 +207,6 @@ namespace ArtUnbound.Services
                 }
 
                 saveDataService?.MarkAsPurchased(CatalogSku);
-                Debug.Log($"[PackPurchaseService] Compra completada: {msg.GetPurchase().Sku}");
                 onSuccess?.Invoke();
                 OnPurchaseStateChanged?.Invoke();
             });
