@@ -37,6 +37,7 @@ namespace ArtUnbound.UI
     ///              │    ├── BtnEasy      (Button + TMP "Easy")
     ///              │    ├── BtnNormal    (Button + TMP "Medium")
     ///              │    ├── BtnHard      (Button + TMP "Hard")
+    ///              │    ├── BtnHang      (Button "Hang on Wall" — solo obras completadas)
     ///              │    └── BtnClose     (Button "✕")
     ///              └── BottomNav        (h=80, HorizontalLayoutGroup)
     ///                   ├── BtnInicio       (Button + TMP "🏠 Inicio")
@@ -61,8 +62,10 @@ namespace ArtUnbound.UI
         /// <summary>Se dispara cuando el usuario mueve un slider de configuración.</summary>
         public event Action<float, float, bool> OnSettingsChanged; // (musicVol, sfxVol, haptics)
 
-        /// <summary>Collection: el usuario seleccionó una obra completada para colgarla (artworkId).</summary>
+        /// <summary>Detail: el usuario pidió colgar una obra completada (boton Hang del detalle) (artworkId).</summary>
         public event Action<string> OnHangArtworkRequested;
+        /// <summary>Detail: el panel de detalle se cerró (boton close, cambio de tab o Hide). GameBootstrap destruye la obra flotante si no se colgó.</summary>
+        public event Action OnDetailClosed;
         /// <summary>Collection: el usuario seleccionó una placa obtenida para colgarla (plaqueId).</summary>
         public event Action<string> OnHangPlaqueRequested;
         /// <summary>PlaqueView: el usuario cerró la vista sin colgar (cancelar) -> destruir la placa flotante.</summary>
@@ -71,6 +74,13 @@ namespace ArtUnbound.UI
         // ════════════════════════════════════════════════════════════════════════
         //  SERIALIZED — POSICIONAMIENTO
         // ════════════════════════════════════════════════════════════════════════
+
+        [Header("Interacción táctil (poke)")]
+        [Tooltip("Umbral de drag del EventSystem en pixeles de canvas (1000 px = 1 m). El default de " +
+                 "Unity (10 px = 1 cm) hace que el temblor natural de un tap con el dedo inicie drag " +
+                 "del ScrollRect y el click a la card nunca dispare. 40 px = 4 cm distingue tap de " +
+                 "scroll deliberado. Aplica a todo el EventSystem (poke y ray).")]
+        [SerializeField] private int pokeDragThresholdPx = 40;
 
         [Header("Posicionamiento")]
         [Tooltip("Distancia (metros) al usuario cuando se muestra.")]
@@ -151,6 +161,8 @@ namespace ArtUnbound.UI
         [Tooltip("Texto de creditos de la obra. Queda en blanco si la obra no tiene credits.")]
         [SerializeField] private TMP_Text   detailCreditsText;
         [SerializeField] private Button     btnDetailClose;
+        [Tooltip("Boton 'Hang on Wall' del detalle. Solo visible si la obra ya fue completada. Al tocarlo GameBootstrap instancia la obra 3D enmarcada junto al panel para tomarla y colgarla (via OnHangArtworkRequested).")]
+        [SerializeField] private Button     btnHangArtwork;
 
         [Header("Detalle — Componente de Armado (obra desbloqueada)")]
         [Tooltip("Contenedor con los 3 botones de dificultad. Se muestra si la obra es gratis o el catalogo ya se compro.")]
@@ -249,6 +261,7 @@ namespace ArtUnbound.UI
             btnConfig?.onClick.RemoveAllListeners();
             btnCollection?.onClick.RemoveAllListeners();
             btnDetailClose?.onClick.RemoveAllListeners();
+            btnHangArtwork?.onClick.RemoveAllListeners();
             btnEasy?.onClick.RemoveAllListeners();
             btnNormal?.onClick.RemoveAllListeners();
             btnHard?.onClick.RemoveAllListeners();
@@ -343,9 +356,23 @@ namespace ArtUnbound.UI
             if (_isVisible || !_isInitialized) return;
             _isVisible = true;
 
+            ApplyDragThreshold();
+
             // El GO debe estar activo ANTES de StartCoroutine
             gameObject.SetActive(true);
             StartCoroutine(PositionAndReveal());
+        }
+
+        /// <summary>
+        /// Sube el umbral de drag del EventSystem para que un TAP con el dedo (poke) sobre una card
+        /// dispare el click en vez de convertirse en drag del ScrollRect. Se re-aplica en cada Show
+        /// por si el EventSystem aun no existia al inicializar.
+        /// </summary>
+        private void ApplyDragThreshold()
+        {
+            var es = UnityEngine.EventSystems.EventSystem.current;
+            if (es != null && es.pixelDragThreshold < pokeDragThresholdPx)
+                es.pixelDragThreshold = pokeDragThresholdPx;
         }
 
         public void Hide()
@@ -353,7 +380,7 @@ namespace ArtUnbound.UI
             if (!_isVisible) return;
             _isVisible = false;
 
-            if (detailPanel != null) detailPanel.SetActive(false);
+            CloseDetail();
             gameObject.SetActive(false);
         }
 
@@ -412,23 +439,65 @@ namespace ArtUnbound.UI
                 }
             }
 
-            // Poll until head tracking is stable (head above floor level).
-            // During mode switches the headset is already worn so this exits immediately.
-            // On cold boot the Quest starts at y≈0 until tracking initialises (~1-2 s).
-            const float kStableThreshold = 0.5f;
-            const float kMaxWait = 3f;
+            // Poll until the head pose is REALLY tracked before positioning.
+            //
+            // No basta con mirar la altura de la camara: el XROrigin de la escena usa
+            // TrackingOriginMode.Floor con m_CameraYOffset = 1.1176, asi que en el frame 0
+            // -- antes de que llegue la primera pose del headset -- la camara ya reporta
+            // y ~= 1.12 con rotacion identidad. Una guarda por altura sale de inmediato y
+            // posicionamos contra una pose falsa: el menu acaba en un punto FIJO del stage
+            // space, que Quest ancla al mismo sitio fisico de la habitacion en cada sesion.
+            // Ese era el bug de "el menu siempre aparece donde abri el juego la primera vez".
+            const float kMaxWait = 5f;
+            const int   kStableFrames = 3;   // frames consecutivos con pose valida
             float elapsed = 0f;
-            while (cam.transform.position.y < kStableThreshold && elapsed < kMaxWait)
+            int   stableFrames = 0;
+            while (elapsed < kMaxWait)
             {
+                if (IsHeadPoseTracked())
+                {
+                    if (++stableFrames >= kStableFrames) break;
+                }
+                else
+                {
+                    stableFrames = 0;
+                }
+
                 yield return null;
                 elapsed += Time.deltaTime;
                 cam = Camera.main ?? _positioningCamera;
                 if (cam == null) break;
             }
 
+            if (stableFrames < kStableFrames)
+                Debug.LogWarning($"[NativeGallery] Head pose no confirmada tras {elapsed:F1}s. Posicionando con la pose actual.");
+
             PositionInFrontOfUser();
             _hasBeenPositioned = true;
             RevealContent();
+        }
+
+        /// <summary>
+        /// True solo cuando el headset esta entregando pose de posicion Y rotacion reales.
+        /// Se consulta al XR input subsystem en vez de inferirlo de la altura de la camara,
+        /// porque el offset de piso del XROrigin hace que la altura parezca valida antes de
+        /// que exista tracking (ver PositionAndReveal).
+        /// </summary>
+        private static bool IsHeadPoseTracked()
+        {
+            var head = UnityEngine.XR.InputDevices.GetDeviceAtXRNode(UnityEngine.XR.XRNode.CenterEye);
+            if (!head.isValid) return false;
+
+            if (head.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trackingState,
+                                        out UnityEngine.XR.InputTrackingState state))
+            {
+                const UnityEngine.XR.InputTrackingState required =
+                    UnityEngine.XR.InputTrackingState.Position | UnityEngine.XR.InputTrackingState.Rotation;
+                return (state & required) == required;
+            }
+
+            // Fallback para runtimes que no exponen trackingState.
+            return head.TryGetFeatureValue(UnityEngine.XR.CommonUsages.isTracked, out bool tracked) && tracked;
         }
 
         private void RevealContent()
@@ -518,7 +587,7 @@ namespace ArtUnbound.UI
 
             // Close the modal detail panel so it doesn't survive across tab changes
             // (catalog artwork detail with the size buttons / purchase button).
-            if (detailPanel != null) detailPanel.SetActive(false);
+            CloseDetail();
 
             switch (tab)
             {
@@ -730,15 +799,34 @@ namespace ArtUnbound.UI
             return progress != null && progress.HasBeenCompleted();
         }
 
+        /// <summary>
+        /// Cierra el panel de detalle y avisa (OnDetailClosed) para que GameBootstrap destruya la
+        /// obra 3D flotante del boton Hang si quedo sin colgar. Unico punto de cierre del detalle.
+        /// </summary>
+        private void CloseDetail()
+        {
+            bool wasOpen = detailPanel != null && detailPanel.activeSelf;
+            if (detailPanel != null) detailPanel.SetActive(false);
+            if (wasOpen) OnDetailClosed?.Invoke();
+        }
+
+        /// <summary>Transform del DetailPanel (o null). GameBootstrap lo usa para spawnear la obra 3D junto al panel.</summary>
+        public Transform DetailPanelTransform => detailPanel != null ? detailPanel.transform : null;
+
         // ════════════════════════════════════════════════════════════════════════
         //  DETAIL PANEL
         // ════════════════════════════════════════════════════════════════════════
 
         private void WireDetailButtons()
         {
-            btnDetailClose?.onClick.AddListener(() =>
+            btnDetailClose?.onClick.AddListener(CloseDetail);
+
+            // Colgar una obra completada desde su detalle: GameBootstrap instancia la obra 3D
+            // enmarcada junto al panel (mismo patron que el PlaqueView; el menu no se oculta).
+            btnHangArtwork?.onClick.AddListener(() =>
             {
-                if (detailPanel != null) detailPanel.SetActive(false);
+                if (_selectedArtwork != null)
+                    OnHangArtworkRequested?.Invoke(_selectedArtwork.artworkId);
             });
 
             btnEasy?.onClick.AddListener(()   => StartPuzzle(0));
@@ -817,6 +905,15 @@ namespace ArtUnbound.UI
 
             if (assemblyComponent != null) assemblyComponent.SetActive(unlocked);
             if (purchaseComponent != null) purchaseComponent.SetActive(!unlocked);
+
+            // Hang solo para obras completadas (y desbloqueadas): siempre se puede volver a colgar
+            // una obra terminada sin re-armarla.
+            if (btnHangArtwork != null)
+            {
+                bool completed = unlocked &&
+                    IsArtworkCompleted(artwork.artworkId, _saveData != null ? _saveData.GetCachedData() : null);
+                btnHangArtwork.gameObject.SetActive(completed);
+            }
 
             // Precio: si el campo esta asignado, se muestra el precio LOCALIZADO real que devuelve
             // Meta (politica IAP: no hardcodear precios), inyectado en la plantilla buyCatalogPriceFormat

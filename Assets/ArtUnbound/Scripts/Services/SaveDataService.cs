@@ -360,18 +360,40 @@ namespace ArtUnbound.Services
 
         /// <summary>
         /// Removes an anchored artwork and saves.
+        /// OJO: borra TODAS las entradas de ese artworkId (todas las copias colgadas). Para
+        /// quitar una sola copia usa <see cref="RemoveAnchoredArtworkByAnchorId"/>.
         /// </summary>
         public bool RemoveAnchoredArtwork(string artworkId)
         {
             var data = GetCachedData();
             int removed = data.anchoredArtworks.RemoveAll(a => a.artworkId == artworkId);
-            
+
             if (removed > 0)
             {
                 Save(data);
                 return true;
             }
-            
+
+            return false;
+        }
+
+        /// <summary>
+        /// Removes the single anchored-artwork entry with that persistent anchor GUID and saves.
+        /// Deja intactas las demas copias colgadas de la misma obra (multi-copia en MR).
+        /// </summary>
+        public bool RemoveAnchoredArtworkByAnchorId(string anchorId)
+        {
+            if (string.IsNullOrEmpty(anchorId)) return false;
+
+            var data = GetCachedData();
+            int removed = data.anchoredArtworks.RemoveAll(a => a.anchorId == anchorId);
+
+            if (removed > 0)
+            {
+                Save(data);
+                return true;
+            }
+
             return false;
         }
 

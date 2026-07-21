@@ -75,6 +75,10 @@ namespace ArtUnbound.Core
         [Header("Pack System")]
         [SerializeField] private PackPurchaseService packPurchaseService;
 
+        [Header("Dev Cheats")]
+        [Tooltip("DEV ONLY: muestra un boton verde 'DEV' en el HUD que auto-completa el puzzle actual. Usado para preparar cuadros colgados para capturas de marketing. APAGAR antes de builds de release.")]
+        [SerializeField] private bool enableDevCheats = false;
+
         [Header("Feedback Controllers")]
         [SerializeField] private AudioManager audioManager;
         [SerializeField] private HapticController hapticController;
@@ -310,6 +314,12 @@ namespace ArtUnbound.Core
                 // (y se duplicarian en la siguiente partida). CleanupArtworkHanging es no-op durante Playing.
                 puzzleHUD.OnExitRequested += OnBackFromPostGame;
                 puzzleHUD.OnHighlightWrongRequested += HighlightWrongPieces;
+
+                if (enableDevCheats)
+                {
+                    puzzleHUD.EnableDevCompleteButton();
+                    puzzleHUD.OnDevCompleteRequested += OnDevCompletePuzzle;
+                }
             }
 
             // Puzzle Board
@@ -340,7 +350,8 @@ namespace ArtUnbound.Core
                 nativeGallery.OnSettingsChanged += OnNativeGallerySettingsChanged;
                 nativeGallery.OnVRModeRequested += OnVRModeRequested;
                 nativeGallery.OnMRModeRequested += OnMRModeRequested;
-                nativeGallery.OnHangArtworkRequested += OnHangArtworkFromCollection;
+                nativeGallery.OnHangArtworkRequested += OnHangArtworkFromDetail;
+                nativeGallery.OnDetailClosed         += OnDetailClosed;
                 nativeGallery.OnHangPlaqueRequested  += OnHangPlaqueFromCollection;
                 nativeGallery.OnPlaqueViewCancelled  += OnPlaqueViewCancelled;
             }
@@ -348,11 +359,17 @@ namespace ArtUnbound.Core
             // PlaqueView: el panel lo posee NativeGalleryController (overlay sobre el menu, como el
             // detalle). GameBootstrap solo administra la placa 3D y escucha cuando se resuelve el colgado.
             if (artworkHangingController != null)
+            {
                 artworkHangingController.OnWallArtworkResolved += OnPlaqueHangResolved;
+                artworkHangingController.OnWallArtworkResolved += OnDetailArtworkHangResolved;
+            }
             // En VR el colgado de la placa se resuelve por VRWallHangingController (pared virtual +
             // persistencia de galeria), no por ArtworkHangingController. Escuchar ambos.
             if (vrWallHangingController != null)
+            {
                 vrWallHangingController.OnWallArtworkResolved += OnPlaqueHangResolved;
+                vrWallHangingController.OnWallArtworkResolved += OnDetailArtworkHangResolved;
+            }
         }
 
         #region State Transitions
@@ -511,11 +528,73 @@ namespace ArtUnbound.Core
         /// Collection (GDD 8.5): colgar una obra ya completada. La instancia como objeto colgable
         /// (tag "PlacedArtwork") frente al usuario, reutilizando el flujo de grab/colocacion existente.
         /// </summary>
-        private void OnHangArtworkFromCollection(string artworkId)
+        private GameObject _activeHangArtworkGO;
+        private string _activeHangArtworkId;
+
+        /// <summary>
+        /// Detail: colgar una obra ya completada desde su panel de detalle (boton Hang). Instancia la
+        /// obra 3D enmarcada (tag "PlacedArtwork") a un costado del panel para tomarla y colgarla,
+        /// reutilizando el flujo de grab/colocacion existente. El menu NO se oculta (mismo patron que
+        /// el PlaqueView); al cerrar el detalle sin colgar, OnDetailClosed destruye la obra flotante.
+        /// </summary>
+        private void OnHangArtworkFromDetail(string artworkId)
         {
-            nativeGallery?.Hide();
-            var go = ArtUnbound.VR.PlacedArtworkFactory.Build(artworkId, GetCurrentFrameTier(), 0.5f, 0.5f, artworkCatalog);
-            PlaceInFrontOfUser(go != null ? go.transform : null, 0.55f);
+            // Una sola obra flotante a la vez: si habia otra sin colgar, se reemplaza.
+            if (_activeHangArtworkGO != null) Destroy(_activeHangArtworkGO);
+            _activeHangArtworkGO = null;
+            _activeHangArtworkId = null;
+
+            // Dimensiones con el aspect ratio real de la obra (lado mayor = 0.5 m).
+            float w = 0.5f, h = 0.5f;
+            var def = artworkCatalog != null ? artworkCatalog.artworks?.Find(a => a != null && a.artworkId == artworkId) : null;
+            Texture tex = def != null
+                ? (def.puzzleTexture != null ? (Texture)def.puzzleTexture : def.fullImage?.texture)
+                : null;
+            if (tex != null && tex.width > 0 && tex.height > 0)
+            {
+                float aspect = (float)tex.width / tex.height;
+                if (aspect >= 1f) h = w / aspect; else w = h * aspect;
+            }
+
+            var go = ArtUnbound.VR.PlacedArtworkFactory.Build(artworkId, GetCurrentFrameTier(), w, h, artworkCatalog);
+            if (go == null) return;
+
+            var panelT = nativeGallery != null ? nativeGallery.DetailPanelTransform : null;
+            if (panelT != null)
+            {
+                // A la derecha del panel y un poco hacia el usuario, para no tapar el detalle.
+                // La cara visible de la obra mira hacia -Z del root (quad con flip interno de 180°),
+                // asi que igualar la orientacion del menu (+Z alejandose del usuario) la deja de frente.
+                go.transform.position = panelT.position + panelT.right * 0.45f - panelT.forward * 0.15f;
+                go.transform.rotation = Quaternion.LookRotation(panelT.forward, Vector3.up);
+            }
+            else
+            {
+                PlaceInFrontOfUser(go.transform, 0.55f);
+            }
+
+            _activeHangArtworkGO = go;
+            _activeHangArtworkId = artworkId;
+        }
+
+        /// <summary>Detail cerrado (close, cambio de tab o Hide del menu): destruye la obra flotante no colgada.</summary>
+        private void OnDetailClosed()
+        {
+            if (_activeHangArtworkGO != null) Destroy(_activeHangArtworkGO);
+            _activeHangArtworkGO = null;
+            _activeHangArtworkId = null;
+        }
+
+        /// <summary>
+        /// Tras soltar la obra del boton Hang (colgada en pared o retirada), el flujo de colocacion ya
+        /// resolvio su destino (anclada y persistida, o destruida): solo soltar las referencias para
+        /// que OnDetailClosed no la destruya despues.
+        /// </summary>
+        private void OnDetailArtworkHangResolved(string artworkId)
+        {
+            if (_activeHangArtworkGO == null || artworkId != _activeHangArtworkId) return;
+            _activeHangArtworkGO = null;
+            _activeHangArtworkId = null;
         }
 
         /// <summary>
@@ -975,6 +1054,19 @@ namespace ArtUnbound.Core
         /// Highlights all incorrectly placed pieces with a red burst + wiggle + sound.
         /// Triggered by the "highlight wrong" button in the HUD.
         /// </summary>
+        /// <summary>
+        /// DEV CHEAT (enableDevCheats): auto-completa el puzzle actual colocando todas las
+        /// piezas restantes. Dispara el flujo normal de completado, asi el marco terminado
+        /// se puede colgar en pared como si se hubiera armado a mano.
+        /// </summary>
+        private void OnDevCompletePuzzle()
+        {
+            if (CurrentState != GameState.Playing || puzzleBoard == null) return;
+
+            Debug.Log("[GameBootstrap] DEV cheat: auto-completing current puzzle");
+            puzzleBoard.DebugCompleteRemaining();
+        }
+
         private void HighlightWrongPieces()
         {
             if (puzzleBoard == null) return;

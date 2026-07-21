@@ -178,6 +178,15 @@ namespace ArtUnbound.MR
                 boardHeight
             );
             saveDataService?.AddAnchoredArtwork(anchoredArtwork);
+
+            // Sellar el GUID en el identifier de ESTA copia: reposicionar/quitar despues opera
+            // solo sobre su entrada, sin pisar otras copias colgadas de la misma obra.
+            if (existingFrame != null)
+            {
+                var idComp = existingFrame.GetComponent<PlacedArtworkIdentifier>();
+                if (idComp != null) idComp.anchorId = persistentGuid.guid.ToString();
+            }
+
             Debug.Log($"[WallAnchor] Anchor data saved for {artworkId}");
         }
 
@@ -227,7 +236,8 @@ namespace ArtUnbound.MR
             if (!loadResult.status.IsSuccess())
             {
                 Debug.LogError($"[WallAnchor] TryLoadAnchorAsync failed for {artworkData.artworkId}: {loadResult.status}. Removing stale entry.");
-                saveDataService?.RemoveAnchoredArtwork(artworkData.artworkId);
+                // Solo la entrada corrupta: otras copias de la misma obra pueden ser validas.
+                saveDataService?.RemoveAnchoredArtworkByAnchorId(artworkData.anchorId);
                 return;
             }
 
@@ -334,6 +344,7 @@ namespace ArtUnbound.MR
             if (puzzlePieceLayer >= 0) root.layer = puzzlePieceLayer;
             var identifier = root.AddComponent<PlacedArtworkIdentifier>();
             identifier.artworkId = artworkData.artworkId;
+            identifier.anchorId  = artworkData.anchorId;
             root.transform.SetParent(anchorTransform, worldPositionStays: false);
             root.transform.localPosition = artworkData.localPosition.ToVector3();
             root.transform.localRotation = artworkData.localRotation.ToQuaternion();
@@ -424,6 +435,7 @@ namespace ArtUnbound.MR
             var identifier = go.GetComponent<PlacedArtworkIdentifier>();
             if (identifier == null) identifier = go.AddComponent<PlacedArtworkIdentifier>();
             identifier.artworkId = data.artworkId;
+            identifier.anchorId  = data.anchorId;
 
             go.transform.SetParent(anchorTransform, worldPositionStays: false);
             go.transform.localPosition = data.localPosition.ToVector3();
@@ -494,18 +506,9 @@ namespace ArtUnbound.MR
                 return false;
             }
 
-            var artworks = saveDataService?.GetAnchoredArtworks();
-            var existingData = artworks?.Find(a => a.artworkId == artworkId);
-
-            artworkObject.transform.SetParent(null, worldPositionStays: true);
-            artworkObject.transform.SetPositionAndRotation(newPosition, newRotation);
-
-            DoEraseAndRecreate(artworkId, newPosition, newRotation,
-                existingData?.frameTier ?? FrameTier.Bronce,
-                artworkObject.transform,
-                existingData?.boardWidth ?? 0.5f,
-                existingData?.boardHeight ?? 0.5f,
-                existingData?.anchorId);
+            // Delegar en la variante por-instancia: resuelve la entrada por el anchorId del
+            // identifier del objeto, sin pisar otras copias colgadas de la misma obra.
+            UpdateAnchorForSpecificArtwork(artworkId, artworkObject.transform, newPosition, newRotation);
             return true;
         }
 
@@ -520,7 +523,8 @@ namespace ArtUnbound.MR
                 if (!eraseStatus.IsSuccess())
                     Debug.LogWarning($"[WallAnchor] TryEraseAnchorAsync failed for old anchor of {artworkId}: {eraseStatus}");
 
-                saveDataService?.RemoveAnchoredArtwork(artworkId);
+                // Solo la entrada de ESTA ancla: otras copias colgadas de la obra quedan intactas.
+                saveDataService?.RemoveAnchoredArtworkByAnchorId(oldAnchorId);
             }
 
             if (activeAnchorsByArtworkId.TryGetValue(artworkId, out ARAnchor oldAnchor) && oldAnchor != null)
@@ -548,8 +552,15 @@ namespace ArtUnbound.MR
         {
             if (artworkTransform == null) return;
 
+            // Resolver la entrada de ESTA copia por su anchorId (multi-copia por obra). Si el
+            // identifier no tiene anchorId es una copia nunca anclada (Hang del detalle):
+            // existingData queda null y se crea una entrada nueva sin tocar las de otras copias.
+            var idComp = artworkTransform.GetComponent<PlacedArtworkIdentifier>();
+            string ownAnchorId = idComp != null ? idComp.anchorId : null;
             var artworks = saveDataService?.GetAnchoredArtworks();
-            var existingData = artworks?.Find(a => a.artworkId == artworkId);
+            var existingData = !string.IsNullOrEmpty(ownAnchorId)
+                ? artworks?.Find(a => a.anchorId == ownAnchorId)
+                : null;
 
             artworkTransform.SetParent(null, worldPositionStays: true);
             artworkTransform.SetPositionAndRotation(newPosition, newRotation);
@@ -557,26 +568,43 @@ namespace ArtUnbound.MR
             // Point the dictionary at this specific object going forward
             spawnedArtworks[artworkId] = artworkTransform.gameObject;
 
+            // Dimensiones: de la entrada existente, o del collider del objeto (primer colgado
+            // de una copia flotante, cuyo tamano no esta aun en storage).
+            float boardW = existingData?.boardWidth ?? 0f;
+            float boardH = existingData?.boardHeight ?? 0f;
+            if (boardW <= 0f || boardH <= 0f)
+            {
+                var col = artworkTransform.GetComponent<BoxCollider>();
+                boardW = col != null && col.size.x > 0f ? col.size.x : 0.5f;
+                boardH = col != null && col.size.y > 0f ? col.size.y : 0.5f;
+            }
+
             DoEraseAndRecreate(artworkId, newPosition, newRotation,
                 existingData?.frameTier ?? FrameTier.Bronce,
                 artworkTransform,
-                existingData?.boardWidth ?? 0.5f,
-                existingData?.boardHeight ?? 0.5f,
+                boardW,
+                boardH,
                 existingData?.anchorId);
         }
 
         /// <summary>
         /// Removes one anchor entry from storage without destroying any GameObjects.
         /// Use when the caller already handles destroying the physical object.
+        /// Pasa el anchorId de la copia quitada para borrar SOLO su entrada; sin anchorId
+        /// (legacy) cae a la primera entrada de ese artworkId.
         /// </summary>
-        public void EraseArtworkStorageEntry(string artworkId)
+        public void EraseArtworkStorageEntry(string artworkId, string anchorId = null)
         {
             var artworks = saveDataService?.GetAnchoredArtworks();
-            var data = artworks?.Find(a => a.artworkId == artworkId);
-            if (data != null && Guid.TryParse(data.anchorId, out Guid guid))
+            var data = !string.IsNullOrEmpty(anchorId)
+                ? artworks?.Find(a => a.anchorId == anchorId)
+                : artworks?.Find(a => a.artworkId == artworkId);
+            if (data == null) return;
+
+            if (Guid.TryParse(data.anchorId, out Guid guid))
                 DoEraseAnchor(new SerializableGuid(guid));
 
-            saveDataService?.RemoveAnchoredArtwork(artworkId);
+            saveDataService?.RemoveAnchoredArtworkByAnchorId(data.anchorId);
 
             if (spawnedArtworks.TryGetValue(artworkId, out GameObject stored) && stored == null)
                 spawnedArtworks.Remove(artworkId);

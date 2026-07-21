@@ -263,12 +263,17 @@ namespace ArtUnbound.MR
             else
             {
                 // Released away from any wall — destroy the SPECIFIC grabbed object directly.
+                // Capturar el anchorId ANTES de destruir: identifica la entrada de ESTA copia.
+                var idComp = sourceFrame != null ? sourceFrame.GetComponent<PlacedArtworkIdentifier>() : null;
+                string ownAnchorId = idComp != null ? idComp.anchorId : null;
+
                 Destroy(clonedFrame?.gameObject);
                 Destroy(sourceFrame?.gameObject);
 
-                // Clean up one storage entry (anchor erasure) without touching other instances.
-                if (anchorManager != null && !string.IsNullOrEmpty(artworkId))
-                    anchorManager.EraseArtworkStorageEntry(artworkId);
+                // Borrar SOLO la entrada de esta copia. Sin anchorId es una copia flotante
+                // nunca anclada (boton Hang del detalle): no hay nada persistido que borrar.
+                if (anchorManager != null && !string.IsNullOrEmpty(ownAnchorId))
+                    anchorManager.EraseArtworkStorageEntry(artworkId, ownAnchorId);
 
                 Debug.Log($"[ArtworkHanging] Wall artwork {artworkId} removed from wall");
             }
@@ -350,13 +355,23 @@ namespace ArtUnbound.MR
             }
             else
             {
+                // Capturar el anchorId ANTES de destruir: identifica la entrada de ESTA copia.
+                var idComp = artworkGO.GetComponent<PlacedArtworkIdentifier>();
+                string ownAnchorId = idComp != null ? idComp.anchorId : null;
+
                 Destroy(artworkGO);
 
-                if (anchorManager != null && !string.IsNullOrEmpty(artworkId))
-                    anchorManager.EraseArtworkStorageEntry(artworkId);
+                // Borrar SOLO la entrada de esta copia. Sin anchorId es una copia flotante
+                // nunca anclada (boton Hang del detalle): no hay nada persistido que borrar.
+                if (anchorManager != null && !string.IsNullOrEmpty(ownAnchorId))
+                    anchorManager.EraseArtworkStorageEntry(artworkId, ownAnchorId);
 
                 Debug.Log($"[ArtworkHanging] Controller: wall artwork {artworkId} removed");
             }
+
+            // Soltado resuelto (colgada o retirada): notificar para flujos como PlaqueView y el
+            // Hang del detalle (igual que TryRepositionWallArtwork y que el equivalente en VR).
+            OnWallArtworkResolved?.Invoke(artworkId);
         }
 
         /// <summary>Returns the GrabbableFrame component on the completed frame, or null.</summary>

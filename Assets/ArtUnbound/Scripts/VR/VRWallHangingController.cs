@@ -219,8 +219,19 @@ namespace ArtUnbound.VR
                     // Primer colgado (sin entrada previa): crear. Las placas vienen de Collection.
                     string instanceId = EnsureInstanceId(go);
                     bool isPlaque = !string.IsNullOrEmpty(artworkId) && artworkId.StartsWith("plaque_");
-                    if (isPlaque) SavePlaque(instanceId, artworkId, offsetPos, wallRot);
-                    else          SavePainting(instanceId, artworkId, offsetPos, wallRot);
+                    if (isPlaque)
+                    {
+                        SavePlaque(instanceId, artworkId, offsetPos, wallRot);
+                    }
+                    else
+                    {
+                        // Dimensiones reales de la copia (PlacedArtworkFactory pone el collider a
+                        // (w, h, 0.05)); sin esto una obra no cuadrada recargaria como 0.5x0.5.
+                        var box = go.GetComponent<BoxCollider>();
+                        float w = box != null && box.size.x > 0f ? box.size.x : 0.5f;
+                        float h = box != null && box.size.y > 0f ? box.size.y : 0.5f;
+                        SavePainting(instanceId, artworkId, offsetPos, wallRot, w, h);
+                    }
                     Debug.Log($"[VRWallHanging] Hung {artworkId} on VR wall at {offsetPos:F2} (instance {instanceId})");
                 }
 
