@@ -15,6 +15,8 @@ namespace ArtUnbound.Input
     {
         [SerializeField] private ArtUnbound.UI.PieceTray3DController trayController;
         [SerializeField] private HandTrackingInputController handInput;
+        [Tooltip("Instancia IZQUIERDA de HandTrackingInputController. Si se deja vacia, se resuelve sola en Awake buscando la instancia con controllerNode = LeftHand.")]
+        [SerializeField] private HandTrackingInputController handInputLeft;
         [SerializeField] private PuzzleConfig puzzleConfig;
 
         [Header("Thumbstick dead zone (0-1)")]
@@ -34,11 +36,36 @@ namespace ArtUnbound.Input
         private InputDevice _rightController;
         private float _retryTimer;
 
-        // Hand scroll state
-        private bool  _fingerInTrayVolume;  // index tip currently within the tray bounds (any posture)
-        private float _scrollAtEntry;       // _targetScroll snapshot when the finger entered the volume
-        private float _lastIndexWorldY;
-        private bool  _wasPinching;
+        // Hand scroll state — una por mano (ambas pueden operar el tray, como el agarre de piezas)
+        private class HandScrollState
+        {
+            public bool  fingerInTrayVolume;  // index tip currently within the tray bounds (any posture)
+            public float scrollAtEntry;       // _targetScroll snapshot when the finger entered the volume
+            public float lastIndexWorldY;
+            public bool  wasPinching;
+        }
+        private readonly HandScrollState _rightHandState = new HandScrollState();
+        private readonly HandScrollState _leftHandState  = new HandScrollState();
+
+        private void Awake()
+        {
+            // Resolver las instancias por mano si faltan (la escena tiene una por lado).
+            if (handInput == null || handInputLeft == null)
+            {
+                foreach (var c in FindObjectsByType<HandTrackingInputController>(
+                             FindObjectsInactive.Include, FindObjectsSortMode.None))
+                {
+                    if (c.IsLeftHand)
+                    {
+                        if (handInputLeft == null) handInputLeft = c;
+                    }
+                    else if (handInput == null)
+                    {
+                        handInput = c;
+                    }
+                }
+            }
+        }
 
         // ── Properties ───────────────────────────────────────────────────────────
 
@@ -51,7 +78,8 @@ namespace ArtUnbound.Input
         private void Update()
         {
             HandleControllerScroll();
-            HandleHandScroll();
+            HandleHandScroll(handInput,     _rightHandState);
+            HandleHandScroll(handInputLeft, _leftHandState);
         }
 
         // ── Controller thumbstick ────────────────────────────────────────────────
@@ -82,18 +110,18 @@ namespace ArtUnbound.Input
 
         // ── Hand / index-tip scroll ──────────────────────────────────────────────
 
-        private void HandleHandScroll()
+        private void HandleHandScroll(HandTrackingInputController input, HandScrollState s)
         {
-            if (handInput == null || trayController == null) return;
+            if (input == null || trayController == null) return;
 
-            bool pinching = handInput.IsPinching;
+            bool pinching = input.IsPinching;
             // Fingers closing toward a grab? Disengage scroll BEFORE the pinch completes so the
             // reach-to-grab approach never scrolls the tray.
-            bool closing  = handInput.TryGetPinchDistance(out float pinchDist)
+            bool closing  = input.TryGetPinchDistance(out float pinchDist)
                             && pinchDist < grabIntentDistanceM;
 
             // Geometric test: is the index tip inside the tray volume (independent of finger posture)?
-            bool hasTip = handInput.TryGetIndexTipPosition(out Vector3 indexWorldPos);
+            bool hasTip = input.TryGetIndexTipPosition(out Vector3 indexWorldPos);
             bool inside = false;
             if (hasTip)
             {
@@ -105,38 +133,38 @@ namespace ArtUnbound.Input
 
             // Track entry/exit of the tray volume; snapshot scroll on entry so a grab can undo any
             // scroll that crept in during the approach.
-            if (inside && !_fingerInTrayVolume)
+            if (inside && !s.fingerInTrayVolume)
             {
-                _fingerInTrayVolume = true;
-                _scrollAtEntry      = trayController.CurrentTargetScroll;
-                _lastIndexWorldY    = indexWorldPos.y;
-                if (debugLogs) Debug.Log($"[TrayScroll] finger ENTERED tray (scrollAtEntry={_scrollAtEntry:F3})");
+                s.fingerInTrayVolume = true;
+                s.scrollAtEntry      = trayController.CurrentTargetScroll;
+                s.lastIndexWorldY    = indexWorldPos.y;
+                if (debugLogs) Debug.Log($"[TrayScroll] finger ENTERED tray ({(input.IsLeftHand ? "L" : "R")}, scrollAtEntry={s.scrollAtEntry:F3})");
             }
             else if (!inside)
             {
-                _fingerInTrayVolume = false;
+                s.fingerInTrayVolume = false;
             }
 
             // Rising edge of grab while the finger is inside the tray → revert any creep-in scroll,
             // so the row being grabbed stays exactly where it was (fixes "first row disappears on grab").
-            if (pinching && !_wasPinching && _fingerInTrayVolume)
+            if (pinching && !s.wasPinching && s.fingerInTrayVolume)
             {
-                trayController.RevertScrollTo(_scrollAtEntry);
-                if (debugLogs) Debug.Log($"[TrayScroll] GRAB inside tray — reverted scroll to {_scrollAtEntry:F3}");
+                trayController.RevertScrollTo(s.scrollAtEntry);
+                if (debugLogs) Debug.Log($"[TrayScroll] GRAB inside tray — reverted scroll to {s.scrollAtEntry:F3}");
             }
-            _wasPinching = pinching;
+            s.wasPinching = pinching;
 
             // Apply scroll ONLY when inside, hand open (not forming a grab), and not pinching.
-            if (_fingerInTrayVolume && hasTip && !pinching && !closing)
+            if (s.fingerInTrayVolume && hasTip && !pinching && !closing)
             {
-                float deltaY     = indexWorldPos.y - _lastIndexWorldY;
-                _lastIndexWorldY = indexWorldPos.y;
+                float deltaY       = indexWorldPos.y - s.lastIndexWorldY;
+                s.lastIndexWorldY  = indexWorldPos.y;
                 trayController.ScrollBy(deltaY);
             }
             else if (hasTip)
             {
                 // Keep the baseline current while scroll is suppressed so re-engaging doesn't jump.
-                _lastIndexWorldY = indexWorldPos.y;
+                s.lastIndexWorldY = indexWorldPos.y;
             }
         }
     }

@@ -61,6 +61,9 @@ namespace ArtUnbound.Input
         /// <summary>True while a pinch (hand) or trigger press (controller) is active.</summary>
         public bool IsPinching => useControllers ? wasTriggerPressed : isPinchingRight;
 
+        /// <summary>True si esta instancia rastrea la mano/control IZQUIERDO (controllerNode).</summary>
+        public bool IsLeftHand => controllerNode == XRNode.LeftHand;
+
         /// <summary>True if a physical right controller device is currently connected and valid,
         /// regardless of whether hand tracking is also active.</summary>
         public bool HasValidController { get; private set; }
@@ -97,26 +100,36 @@ namespace ArtUnbound.Input
                     return;
                 }
 
-                var rightHand = m_HandSubsystem.rightHand;
-                if (rightHand.isTracked)
+                // Respetar la mano configurada en controllerNode (hay una instancia por mano en la
+                // escena, cada una con su InteractionManager). Antes se leia rightHand fijo, lo que
+                // dejaba muerta la mano izquierda en hand tracking.
+                var trackedHand = (controllerNode == XRNode.LeftHand)
+                    ? m_HandSubsystem.leftHand
+                    : m_HandSubsystem.rightHand;
+                if (trackedHand.isTracked)
                 {
-                    ProcessHand(rightHand, true);
+                    ProcessHand(trackedHand, controllerNode != XRNode.LeftHand);
                 }
             }
         }
 
         private void AutoDetectInputMode()
         {
-            // Check for a valid right controller
+            // Check for a valid controller on THIS instance's side (controllerNode)
             var devices = new System.Collections.Generic.List<InputDevice>();
+            InputDeviceCharacteristics side = (controllerNode == XRNode.LeftHand)
+                ? InputDeviceCharacteristics.Left
+                : InputDeviceCharacteristics.Right;
             InputDevices.GetDevicesWithCharacteristics(
-                InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, devices);
+                InputDeviceCharacteristics.Controller | side, devices);
             bool hasController = devices.Count > 0 && devices[0].isValid;
 
-            // Check for active hand tracking
+            // Check for active hand tracking on this instance's side
             bool hasHands = m_HandSubsystem != null
                          && m_HandSubsystem.running
-                         && m_HandSubsystem.rightHand.isTracked;
+                         && ((controllerNode == XRNode.LeftHand)
+                              ? m_HandSubsystem.leftHand.isTracked
+                              : m_HandSubsystem.rightHand.isTracked);
 
             HasValidController = hasController;
 
@@ -182,7 +195,7 @@ namespace ArtUnbound.Input
         {
             if (m_HandSubsystem != null && m_HandSubsystem.running)
             {
-                var hand = m_HandSubsystem.rightHand;
+                var hand = (controllerNode == XRNode.LeftHand) ? m_HandSubsystem.leftHand : m_HandSubsystem.rightHand;
                 if (hand.isTracked)
                 {
                     var joint = hand.GetJoint(XRHandJointID.IndexTip);
@@ -207,7 +220,7 @@ namespace ArtUnbound.Input
         {
             if (!useControllers && m_HandSubsystem != null && m_HandSubsystem.running)
             {
-                var hand = m_HandSubsystem.rightHand;
+                var hand = (controllerNode == XRNode.LeftHand) ? m_HandSubsystem.leftHand : m_HandSubsystem.rightHand;
                 if (hand.isTracked)
                 {
                     var thumb = hand.GetJoint(XRHandJointID.ThumbTip);
