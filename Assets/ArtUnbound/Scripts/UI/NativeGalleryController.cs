@@ -66,6 +66,12 @@ namespace ArtUnbound.UI
         public event Action<string> OnHangArtworkRequested;
         /// <summary>Detail: el panel de detalle se cerró (boton close, cambio de tab o Hide). GameBootstrap destruye la obra flotante si no se colgó.</summary>
         public event Action OnDetailClosed;
+        /// <summary>La galería quedó posicionada y con su contenido visible (fin de RevealContent). Lo usa el tutorial.</summary>
+        public event Action OnGalleryRevealed;
+        /// <summary>El panel de detalle se abrió/refrescó (fin de ShowDetail). Lo usa el tutorial.</summary>
+        public event Action OnDetailShown;
+        /// <summary>Settings: el usuario cambió el toggle "Show tutorial on next launch".</summary>
+        public event Action<bool> OnTutorialToggleChanged;
         /// <summary>Collection: el usuario seleccionó una placa obtenida para colgarla (plaqueId).</summary>
         public event Action<string> OnHangPlaqueRequested;
         /// <summary>PlaqueView: el usuario cerró la vista sin colgar (cancelar) -> destruir la placa flotante.</summary>
@@ -146,6 +152,10 @@ namespace ArtUnbound.UI
         [SerializeField] private Toggle   marcoToggle;
         [Tooltip("Toggle de la Lámpara (luz museo sobre cada cuadro). Solo surte efecto una vez desbloqueada (50 obras).")]
         [SerializeField] private Toggle   lamparaToggle;
+
+        [Header("Configuración — Tutorial")]
+        [Tooltip("Toggle 'Show tutorial on next launch': si el usuario lo activa, el tutorial de la mano fantasma se repite en el siguiente arranque (GameSettings.showOnboarding).")]
+        [SerializeField] private Toggle   tutorialToggle;
 
         // ── Panel de Detalle ─────────────────────────────────────────────────
         [Header("Panel de Detalle")]
@@ -272,6 +282,7 @@ namespace ArtUnbound.UI
             cedulaToggle?.onValueChanged.RemoveAllListeners();
             marcoToggle?.onValueChanged.RemoveAllListeners();
             lamparaToggle?.onValueChanged.RemoveAllListeners();
+            tutorialToggle?.onValueChanged.RemoveAllListeners();
             searchInputField?.onValueChanged.RemoveAllListeners();
             btnVR?.onClick.RemoveAllListeners();
             btnMR?.onClick.RemoveAllListeners();
@@ -513,6 +524,8 @@ namespace ArtUnbound.UI
 
             // Clear EventSystem selection so no button shows the golden "selected" highlight on reveal
             UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
+
+            OnGalleryRevealed?.Invoke();
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -768,6 +781,37 @@ namespace ArtUnbound.UI
                 marcoToggle.SetIsOnWithoutNotify(saveData.settings.showMarco);
             if (lamparaToggle != null)
                 lamparaToggle.SetIsOnWithoutNotify(saveData.settings.showLampara);
+
+            // Cada mejora de presentacion solo aparece en Settings cuando ya esta desbloqueada
+            // por progreso. Se oculta la FILA completa (contenedor padre = label + toggle),
+            // no solo el toggle, para no dejar labels huerfanos.
+            int completedCount = saveData.GetCompletedCount();
+            SetToggleRowVisible(cedulaToggle,  ProgressionRules.CedulaUnlocked(completedCount));
+            SetToggleRowVisible(marcoToggle,   ProgressionRules.MarcoUnlocked(completedCount));
+            SetToggleRowVisible(lamparaToggle, ProgressionRules.LamparaUnlocked(completedCount));
+
+            if (tutorialToggle != null)
+                tutorialToggle.SetIsOnWithoutNotify(saveData.settings.showOnboarding);
+        }
+
+        /// <summary>
+        /// Muestra/oculta la fila de un toggle de Settings. La fila es el PADRE del toggle
+        /// (contenedor con Label + Toggle); si el toggle cuelga directo del panel se oculta
+        /// solo el toggle como fallback (envuelve cada fila en su propio contenedor).
+        /// </summary>
+        private static void SetToggleRowVisible(Toggle toggle, bool visible)
+        {
+            if (toggle == null) return;
+
+            // Guarda: si el padre contiene MAS toggles, no es una fila sino un contenedor
+            // compartido (p.ej. el propio SettingsView) — ocultar solo el toggle para no
+            // tumbar el panel entero.
+            Transform row = toggle.transform.parent;
+            bool parentIsRow = row != null && row.GetComponentsInChildren<Toggle>(true).Length == 1;
+
+            GameObject target = parentIsRow ? row.gameObject : toggle.gameObject;
+            if (target.activeSelf != visible)
+                target.SetActive(visible);
         }
 
         // ── Helpers de grid ───────────────────────────────────────────────────
@@ -812,6 +856,21 @@ namespace ArtUnbound.UI
 
         /// <summary>Transform del DetailPanel (o null). GameBootstrap lo usa para spawnear la obra 3D junto al panel.</summary>
         public Transform DetailPanelTransform => detailPanel != null ? detailPanel.transform : null;
+
+        /// <summary>Primera card visible del catálogo (ancla del tutorial), o null.</summary>
+        public Transform FirstCatalogCardTransform
+        {
+            get
+            {
+                foreach (var (_, go) in _catalogCards)
+                    if (go != null && go.activeSelf) return go.transform;
+                return null;
+            }
+        }
+
+        /// <summary>Botón de dificultad fácil si está visible (obra desbloqueada), o null. Ancla del tutorial.</summary>
+        public Transform EasyButtonTransform =>
+            btnEasy != null && btnEasy.gameObject.activeInHierarchy ? btnEasy.transform : null;
 
         // ════════════════════════════════════════════════════════════════════════
         //  DETAIL PANEL
@@ -926,6 +985,8 @@ namespace ArtUnbound.UI
             }
 
             detailPanel.SetActive(true);
+
+            OnDetailShown?.Invoke();
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -999,6 +1060,9 @@ namespace ArtUnbound.UI
             cedulaToggle?.onValueChanged.AddListener(_ => SavePresentationToggles());
             marcoToggle?.onValueChanged.AddListener(_ => SavePresentationToggles());
             lamparaToggle?.onValueChanged.AddListener(_ => SavePresentationToggles());
+
+            // Tutorial: GameBootstrap persiste showOnboarding (se evalua en el siguiente arranque).
+            tutorialToggle?.onValueChanged.AddListener(v => OnTutorialToggleChanged?.Invoke(v));
         }
 
         private void SavePresentationToggles()

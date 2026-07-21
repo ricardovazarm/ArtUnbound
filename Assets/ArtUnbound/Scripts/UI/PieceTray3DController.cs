@@ -95,6 +95,15 @@ namespace ArtUnbound.UI
 
         // ── Piece management ─────────────────────────────────────────────────────
 
+        /// <summary>First tray piece currently visible in the viewport (tutorial anchor), or null.</summary>
+        public PuzzlePiece GetFirstVisiblePiece()
+        {
+            foreach (var p in _pieces)
+                if (p != null && p.gameObject.activeSelf && p.CurrentState == PieceState.InPool)
+                    return p;
+            return null;
+        }
+
         /// <summary>
         /// Removes a piece from the tray list and compacts remaining pieces to fill the gap.
         /// Call this when a piece is successfully placed on the board.

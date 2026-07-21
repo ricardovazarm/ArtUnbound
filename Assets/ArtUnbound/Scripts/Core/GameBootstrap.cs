@@ -49,6 +49,10 @@ namespace ArtUnbound.Core
         [SerializeField] private PostGameController postGameController;
         [SerializeField] private OnboardingController onboardingController;
 
+        [Header("Tutorial (mano fantasma)")]
+        [Tooltip("Tutorial guiado de primera vez (reemplaza al carrusel de onboarding, que ya no se invoca).")]
+        [SerializeField] private ArtUnbound.Tutorial.TutorialFlowController tutorialFlow;
+
         [Header("Gameplay Controllers")]
         [SerializeField] private PuzzleBoard puzzleBoard;
         [SerializeField] private ScoringController scoringController;
@@ -132,6 +136,9 @@ namespace ArtUnbound.Core
             HideAllPanels(); // Ensure clean state immediately
             LoadData();
             SetupEventListeners();
+
+            // El tutorial decide si se arma esta sesion (primera vez o toggle de Settings).
+            tutorialFlow?.Initialize(saveDataService, SaveData);
         }
 
         private void Start()
@@ -158,10 +165,10 @@ namespace ArtUnbound.Core
                 if (mainUICanvas != null)
                     mainUICanvas.gameObject.SetActive(false);
 
-                if (!SaveData.onboardingCompleted && onboardingController != null)
-                    ShowOnboarding();
-                else
-                    TransitionToMainMenu();
+                // El carrusel de onboarding (OnboardingController) queda fuera del arranque a
+                // proposito: el tutorial de mano fantasma (TutorialFlowController) ensena por
+                // demostracion sobre la UI real, sin bloquear.
+                TransitionToMainMenu();
             }
 
             // Update VR buttons on NativeGallery
@@ -354,6 +361,8 @@ namespace ArtUnbound.Core
                 nativeGallery.OnDetailClosed         += OnDetailClosed;
                 nativeGallery.OnHangPlaqueRequested  += OnHangPlaqueFromCollection;
                 nativeGallery.OnPlaqueViewCancelled  += OnPlaqueViewCancelled;
+                // Toggle "Show tutorial on next launch": persistir; se evalua al arrancar.
+                nativeGallery.OnTutorialToggleChanged += OnTutorialToggleChanged;
             }
 
             // PlaqueView: el panel lo posee NativeGalleryController (overlay sobre el menu, como el
@@ -575,6 +584,14 @@ namespace ArtUnbound.Core
 
             _activeHangArtworkGO = go;
             _activeHangArtworkId = artworkId;
+        }
+
+        /// <summary>Persiste la preferencia del toggle "Show tutorial on next launch" (GameSettings.showOnboarding).</summary>
+        private void OnTutorialToggleChanged(bool show)
+        {
+            if (SaveData?.settings == null) return;
+            SaveData.settings.showOnboarding = show;
+            saveDataService?.MarkDirty();
         }
 
         /// <summary>Detail cerrado (close, cambio de tab o Hide del menu): destruye la obra flotante no colgada.</summary>

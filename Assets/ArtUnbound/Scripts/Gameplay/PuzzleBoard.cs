@@ -31,6 +31,9 @@ namespace ArtUnbound.Gameplay
         [Tooltip("New 3D tray controller. When assigned, replaces PieceScrollController and PieceTrayGridController.")]
         [SerializeField] private ArtUnbound.UI.PieceTray3DController pieceTray3DController;
 
+        /// <summary>3D tray controller (el tutorial necesita la primera pieza visible), puede ser null.</summary>
+        public ArtUnbound.UI.PieceTray3DController PieceTray => pieceTray3DController;
+
         [SerializeField] private ArtUnbound.Input.HandTrackingInputController inputController;
         [SerializeField] private PuzzleConfig puzzleConfig;
         [SerializeField] private bool helpModeEnabled = true;
@@ -437,6 +440,20 @@ namespace ArtUnbound.Gameplay
         {
             if (slotIndex < 0 || slotIndex >= slots.Count) return Vector3.zero;
             return slots[slotIndex].position;
+        }
+
+        /// <summary>
+        /// Slot index whose expected piece is <paramref name="pieceId"/>, or -1. Esta es la misma
+        /// verdad que usa el snap (slots[i].pieceId == piece.PieceId). NO usar
+        /// PuzzlePiece.CorrectSlotIndex para esto: se asigna via GetSlotIndex durante la
+        /// generacion, cuando la lista de slots va a medio llenar (y asume grid cuadrado),
+        /// asi que queda invalido para la mayoria de las piezas.
+        /// </summary>
+        public int GetCorrectSlotIndexForPiece(int pieceId)
+        {
+            for (int i = 0; i < slots.Count; i++)
+                if (slots[i].pieceId == pieceId) return i;
+            return -1;
         }
 
         /// <summary>
@@ -1539,7 +1556,9 @@ namespace ArtUnbound.Gameplay
             {
                 if (piece == null) continue;
 
-                int slotIndex = piece.CorrectSlotIndex;
+                // Buscar el slot por pieceId (misma verdad que el snap); CorrectSlotIndex
+                // queda invalido tras la generacion (ver GetCorrectSlotIndexForPiece).
+                int slotIndex = GetCorrectSlotIndexForPiece(piece.PieceId);
                 if (slotIndex < 0 || slotIndex >= slots.Count) continue;
                 if (placedBySlot.TryGetValue(slotIndex, out var occupant) && occupant == piece)
                     continue; // already correctly placed
