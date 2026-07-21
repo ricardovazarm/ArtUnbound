@@ -15,6 +15,7 @@ namespace ArtUnbound.UI
     {
         public event Action OnExitRequested;
         public event Action OnHighlightWrongRequested;
+        public event Action OnDevCompleteRequested;
 
         [Header("Panel")]
         [SerializeField] private GameObject hudPanel;
@@ -61,6 +62,8 @@ namespace ArtUnbound.UI
         [SerializeField] private Color progressColor = new Color(0.2f, 0.6f, 1f);
 
         public bool IsHelpModeEnabled => true;
+
+        private Button devCompleteButton; // DEV cheat, created at runtime by EnableDevCompleteButton
 
         private int totalPieces = 0;
         private int placedPieces = 0;
@@ -242,6 +245,45 @@ namespace ArtUnbound.UI
         public void PulseProgress()
         {
             // Could animate the progress bar or show a visual feedback
+        }
+
+        /// <summary>
+        /// DEV CHEAT: clones the quit button into a green "DEV" button that fires
+        /// OnDevCompleteRequested (auto-completes the current puzzle). Runtime-only so the
+        /// scene needs no extra wiring; GameBootstrap calls this only when enableDevCheats is on.
+        /// </summary>
+        public void EnableDevCompleteButton()
+        {
+            if (devCompleteButton != null || quitButton == null) return;
+
+            devCompleteButton = Instantiate(quitButton, quitButton.transform.parent);
+            devCompleteButton.name = "DevCompleteButton";
+
+            var rect = devCompleteButton.transform as RectTransform;
+            var quitRect = quitButton.transform as RectTransform;
+            if (rect != null && quitRect != null)
+                rect.anchoredPosition = quitRect.anchoredPosition + new Vector2(0f, -(quitRect.rect.height + 8f));
+
+            // Green tint so it can't be mistaken for the quit button
+            var devColor = new Color(0.2f, 0.7f, 0.3f);
+            foreach (var image in devCompleteButton.GetComponentsInChildren<Image>(true))
+                image.color = devColor;
+
+            var label = devCompleteButton.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (label != null)
+            {
+                label.text = "DEV";
+                label.color = Color.white;
+            }
+
+            // The clone may carry persistent (Inspector) listeners from the quit button
+            var onClick = devCompleteButton.onClick;
+            onClick.RemoveAllListeners();
+            for (int i = 0; i < onClick.GetPersistentEventCount(); i++)
+                onClick.SetPersistentListenerState(i, UnityEngine.Events.UnityEventCallState.Off);
+            onClick.AddListener(() => OnDevCompleteRequested?.Invoke());
+
+            devCompleteButton.gameObject.SetActive(true);
         }
 
         /// <summary>

@@ -1510,6 +1510,75 @@ namespace ArtUnbound.Gameplay
                 || (a == PieceEdgeState.Negative && b == PieceEdgeState.Positive);
         }
 
+        /// <summary>
+        /// DEV CHEAT: instantly places every remaining piece in its correct slot and fires the
+        /// normal completion flow (OnCompleted/OnPuzzleComplete), so the completed frame can be
+        /// hung on a wall without solving by hand. Only reachable when GameBootstrap has
+        /// enableDevCheats on. Wrongly placed pieces are re-seated in their correct slot.
+        /// </summary>
+        public void DebugCompleteRemaining()
+        {
+            if (slots.Count == 0)
+            {
+                Debug.LogWarning("[PuzzleBoard] DebugCompleteRemaining: no active puzzle");
+                return;
+            }
+
+            // Free pieces sitting in wrong slots so they can be re-seated correctly
+            var wronglyPlaced = new List<PuzzlePiece>();
+            foreach (var kvp in placedBySlot)
+            {
+                if (kvp.Value != null && slots[kvp.Key].pieceId != kvp.Value.PieceId)
+                    wronglyPlaced.Add(kvp.Value);
+            }
+            foreach (var piece in wronglyPlaced)
+                RemovePieceFromSlot(piece);
+
+            int placedNow = 0;
+            foreach (var piece in activePieces)
+            {
+                if (piece == null) continue;
+
+                int slotIndex = piece.CorrectSlotIndex;
+                if (slotIndex < 0 || slotIndex >= slots.Count) continue;
+                if (placedBySlot.TryGetValue(slotIndex, out var occupant) && occupant == piece)
+                    continue; // already correctly placed
+
+                if (IsDefaultMorphology(piece.Morphology))
+                    piece.ApplyMorphology(GetMorphologyForPieceId(piece.PieceId));
+
+                piece.gameObject.SetActive(true);
+                piece.SetSnapped(slots[slotIndex].position, slots[slotIndex].rotation);
+                if (slotRoot != null) piece.transform.SetParent(slotRoot, true);
+                piece.SetSlotIndex(slotIndex);
+                placedBySlot[slotIndex] = piece;
+                snappedCount++;
+                placedNow++;
+
+                pieceTrayController?.RemoveThumbnail(piece.PieceId);
+                if (pieceTray3DController != null)
+                    pieceTray3DController.RemovePieceFromTray(piece);
+                else
+                    scrollController?.RemovePieceFromTray(piece);
+            }
+
+            // Mark all milestones as celebrated so nothing fires piece-by-piece afterwards
+            RefreshCompletedMilestones();
+            OnPieceSnapped?.Invoke(snappedCount, totalPieces);
+            NotifyBoardStateChanged();
+
+            Debug.Log($"[PuzzleBoard] DebugCompleteRemaining: auto-placed {placedNow} pieces ({snappedCount}/{slots.Count} correct)");
+
+            if (snappedCount >= slots.Count)
+            {
+                if (ArtUnbound.Feedback.AudioManager.Instance != null)
+                    ArtUnbound.Feedback.AudioManager.Instance.PlayPuzzleComplete();
+
+                OnCompleted?.Invoke();
+                OnPuzzleComplete?.Invoke();
+            }
+        }
+
         #region Save/Load State
 
         /// <summary>
