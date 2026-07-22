@@ -29,6 +29,7 @@ namespace ArtUnbound.Tutorial
 
         private SaveDataService _saveDataService;
         private bool _armed;
+        private bool _subscribed;
         private bool _step1Done, _step2Done, _step3Done;
         private int _highlightedSlot = -1;
 
@@ -40,29 +41,62 @@ namespace ArtUnbound.Tutorial
             bool showAgain = saveData?.settings != null && saveData.settings.showOnboarding;
             _armed = saveData != null && (!saveData.onboardingCompleted || showAgain);
             Debug.Log($"[Tutorial] Initialize: armed={_armed} (onboardingCompleted={saveData?.onboardingCompleted}, showOnboarding={showAgain})");
-            if (!_armed) return;
+            if (_armed) Subscribe();
+        }
+
+        /// <summary>
+        /// Reacciona al toggle "Show tutorial on next launch" EN CALIENTE: encenderlo re-arma el
+        /// tutorial desde el paso 1 (arranca al volver al tab Catálogo, sin reiniciar); apagarlo
+        /// lo desarma y corta cualquier demo en curso. La persistencia la maneja GameBootstrap.
+        /// </summary>
+        public void SetArmedFromToggle(bool on)
+        {
+            if (on)
+            {
+                _step1Done = _step2Done = _step3Done = false;
+                _armed = true;
+                Subscribe();
+                Debug.Log("[Tutorial] Re-armado desde Settings (arranca al volver al catalogo)");
+            }
+            else if (_armed)
+            {
+                _armed = false;
+                tutorialHand?.StopDemo();
+                ClearHighlightIfAny();
+                Debug.Log("[Tutorial] Desarmado desde Settings");
+            }
+        }
+
+        private void Subscribe()
+        {
+            if (_subscribed) return;
+            _subscribed = true;
 
             if (GameBootstrap.Instance != null)
                 GameBootstrap.Instance.OnGameStateChanged += HandleStateChanged;
 
             if (nativeGallery != null)
             {
-                nativeGallery.OnGalleryRevealed += HandleGalleryRevealed;
-                nativeGallery.OnDetailShown     += HandleDetailShown;
-                nativeGallery.OnDetailClosed    += HandleDetailClosed;
+                nativeGallery.OnGalleryRevealed  += HandleCatalogVisible;
+                nativeGallery.OnCatalogTabShown  += HandleCatalogVisible;
+                nativeGallery.OnDetailShown      += HandleDetailShown;
+                nativeGallery.OnDetailClosed     += HandleDetailClosed;
             }
         }
 
         private void OnDestroy()
         {
+            if (!_subscribed) return;
+
             if (GameBootstrap.Instance != null)
                 GameBootstrap.Instance.OnGameStateChanged -= HandleStateChanged;
 
             if (nativeGallery != null)
             {
-                nativeGallery.OnGalleryRevealed -= HandleGalleryRevealed;
-                nativeGallery.OnDetailShown     -= HandleDetailShown;
-                nativeGallery.OnDetailClosed    -= HandleDetailClosed;
+                nativeGallery.OnGalleryRevealed  -= HandleCatalogVisible;
+                nativeGallery.OnCatalogTabShown  -= HandleCatalogVisible;
+                nativeGallery.OnDetailShown      -= HandleDetailShown;
+                nativeGallery.OnDetailClosed     -= HandleDetailClosed;
             }
         }
 
@@ -70,7 +104,8 @@ namespace ArtUnbound.Tutorial
         //  PASO 1 — tap sobre la primera card del catalogo
         // ─────────────────────────────────────────────────────────────────────
 
-        private void HandleGalleryRevealed()
+        /// <summary>El catálogo quedó visible (reveal del menú o cambio de tab): intentar el paso 1.</summary>
+        private void HandleCatalogVisible()
         {
             if (!CanPlay() || _step1Done) return;
             if (GameBootstrap.Instance != null &&
@@ -88,7 +123,10 @@ namespace ArtUnbound.Tutorial
             var card = nativeGallery != null ? nativeGallery.FirstCatalogCardTransform : null;
             if (card == null)
             {
-                Debug.Log("[Tutorial] Paso 1 omitido: no hay card visible");
+                // El catalogo se oculto durante la espera (cambio de tab): liberar el paso
+                // para reintentarlo la proxima vez que el catalogo sea visible.
+                _step1Done = false;
+                Debug.Log("[Tutorial] Paso 1 pospuesto: no hay card visible");
                 yield break;
             }
 

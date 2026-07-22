@@ -68,6 +68,8 @@ namespace ArtUnbound.UI
         public event Action OnDetailClosed;
         /// <summary>La galería quedó posicionada y con su contenido visible (fin de RevealContent). Lo usa el tutorial.</summary>
         public event Action OnGalleryRevealed;
+        /// <summary>El tab Catálogo quedó visible (por reveal o cambio de tab). Lo usa el tutorial (paso 1).</summary>
+        public event Action OnCatalogTabShown;
         /// <summary>El panel de detalle se abrió/refrescó (fin de ShowDetail). Lo usa el tutorial.</summary>
         public event Action OnDetailShown;
         /// <summary>Settings: el usuario cambió el toggle "Show tutorial on next launch".</summary>
@@ -154,7 +156,7 @@ namespace ArtUnbound.UI
         [SerializeField] private Toggle   lamparaToggle;
 
         [Header("Configuración — Tutorial")]
-        [Tooltip("Toggle 'Show tutorial on next launch': si el usuario lo activa, el tutorial de la mano fantasma se repite en el siguiente arranque (GameSettings.showOnboarding).")]
+        [Tooltip("Toggle 'Show tutorial': al activarlo, el tutorial de la mano fantasma se re-arma EN CALIENTE y arranca al volver al tab Catálogo (y persiste en GameSettings.showOnboarding por si reinicia antes).")]
         [SerializeField] private Toggle   tutorialToggle;
 
         // ── Panel de Detalle ─────────────────────────────────────────────────
@@ -608,6 +610,9 @@ namespace ArtUnbound.UI
                 case Tab.Catalog:    PopulateCatalog();    break;
                 case Tab.Collection: PopulateCollection(); break;
             }
+
+            if (tab == Tab.Catalog)
+                OnCatalogTabShown?.Invoke();
         }
 
         /// <summary>Muestra/oculta la barra de busqueda (solo aplica en el tab Catalogo).</summary>
@@ -857,13 +862,13 @@ namespace ArtUnbound.UI
         /// <summary>Transform del DetailPanel (o null). GameBootstrap lo usa para spawnear la obra 3D junto al panel.</summary>
         public Transform DetailPanelTransform => detailPanel != null ? detailPanel.transform : null;
 
-        /// <summary>Primera card visible del catálogo (ancla del tutorial), o null.</summary>
+        /// <summary>Primera card del catálogo visible EN PANTALLA (ancla del tutorial), o null (p.ej. si el tab activo no es el Catálogo).</summary>
         public Transform FirstCatalogCardTransform
         {
             get
             {
                 foreach (var (_, go) in _catalogCards)
-                    if (go != null && go.activeSelf) return go.transform;
+                    if (go != null && go.activeInHierarchy) return go.transform;
                 return null;
             }
         }

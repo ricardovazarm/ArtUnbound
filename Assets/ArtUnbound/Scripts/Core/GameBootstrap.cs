@@ -586,12 +586,20 @@ namespace ArtUnbound.Core
             _activeHangArtworkId = artworkId;
         }
 
-        /// <summary>Persiste la preferencia del toggle "Show tutorial on next launch" (GameSettings.showOnboarding).</summary>
+        /// <summary>
+        /// Toggle "Show tutorial" de Settings: persiste la preferencia (GameSettings.showOnboarding)
+        /// y re-arma/desarma el tutorial EN CALIENTE (encenderlo lo arranca al volver al catalogo,
+        /// sin reiniciar el juego).
+        /// </summary>
         private void OnTutorialToggleChanged(bool show)
         {
-            if (SaveData?.settings == null) return;
-            SaveData.settings.showOnboarding = show;
-            saveDataService?.MarkDirty();
+            if (SaveData?.settings != null)
+            {
+                SaveData.settings.showOnboarding = show;
+                saveDataService?.MarkDirty();
+            }
+
+            tutorialFlow?.SetArmedFromToggle(show);
         }
 
         /// <summary>Detail cerrado (close, cambio de tab o Hide del menu): destruye la obra flotante no colgada.</summary>
