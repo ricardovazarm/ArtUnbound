@@ -20,6 +20,7 @@ namespace ArtUnbound.VR
             if (puzzlePieceLayer >= 0) root.layer = puzzlePieceLayer;
             var identifier = root.AddComponent<PlacedArtworkIdentifier>();
             identifier.artworkId = artworkId;
+            identifier.SetDimensions(w, h);
 
             var quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
             quad.name = "FullImageReveal";

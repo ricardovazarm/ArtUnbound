@@ -89,6 +89,8 @@ namespace ArtUnbound.MR
             if (identifier == null)
                 identifier = existingFrame.gameObject.AddComponent<PlacedArtworkIdentifier>();
             identifier.artworkId = artworkId;
+            if (!identifier.HasDimensions && boardWidth > 0f && boardHeight > 0f)
+                identifier.SetDimensions(boardWidth, boardHeight);
             spawnedArtworks[artworkId] = existingFrame.gameObject;
 
             // Create anchor asynchronously (fire-and-forget from caller's perspective)
@@ -333,8 +335,15 @@ namespace ArtUnbound.MR
                 return null;
             }
 
+            // Resolve texture — same fallback chain as PuzzleBoard
+            Texture texture = artworkDef.puzzleTexture != null
+                ? (Texture)artworkDef.puzzleTexture
+                : artworkDef.fullImage?.texture;
+
             float w = artworkData.boardWidth > 0f ? artworkData.boardWidth : 0.5f;
             float h = artworkData.boardHeight > 0f ? artworkData.boardHeight : 0.5f;
+            if (HealStoredDimensions(artworkData, texture, ref w, ref h))
+                saveDataService?.MarkDirty();
 
             // Root container (mirrors the SlotRoot clone structure)
             var root = new GameObject($"PlacedArtwork_{artworkData.artworkId}");
@@ -345,6 +354,7 @@ namespace ArtUnbound.MR
             var identifier = root.AddComponent<PlacedArtworkIdentifier>();
             identifier.artworkId = artworkData.artworkId;
             identifier.anchorId  = artworkData.anchorId;
+            identifier.SetDimensions(w, h);
             root.transform.SetParent(anchorTransform, worldPositionStays: false);
             root.transform.localPosition = artworkData.localPosition.ToVector3();
             root.transform.localRotation = artworkData.localRotation.ToQuaternion();
@@ -357,11 +367,6 @@ namespace ArtUnbound.MR
             quad.transform.localPosition = new Vector3(0f, 0f, 0.0155f);
             quad.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
             quad.transform.localScale = new Vector3(w, h, 1f);
-
-            // Resolve texture — same fallback chain as PuzzleBoard
-            Texture texture = artworkDef.puzzleTexture != null
-                ? (Texture)artworkDef.puzzleTexture
-                : artworkDef.fullImage?.texture;
 
             if (texture != null)
             {
@@ -408,6 +413,36 @@ namespace ArtUnbound.MR
             spawnedArtworks[artworkData.artworkId] = root;
             Debug.Log($"[WallAnchor] Spawned artwork {artworkData.artworkId} ({w:F3}×{h:F3}m) at anchor (hidden until tracking)");
             return root;
+        }
+
+        /// <summary>
+        /// Auto-sanado de entradas con dimensiones corruptas (guardadas desde el BoxCollider que
+        /// GrabbableFrame re-ajusto a la caja envolvente en ejes del mundo: salian "portrait y
+        /// delgadas"). Si la relacion de aspecto guardada no coincide con la de la textura (tolerancia
+        /// 5%), se recalcula con lado mayor = HealedLongSideM — el tamano del flujo del Hang del
+        /// detalle, que es por donde entraban las entradas malas — y se reescribe la entrada para que
+        /// quede corregida en storage. Devuelve true si cambio algo.
+        /// </summary>
+        private const float HealedLongSideM = 0.5f;
+
+        private static bool HealStoredDimensions(AnchoredArtwork data, Texture texture, ref float w, ref float h)
+        {
+            if (texture == null || texture.width <= 0 || texture.height <= 0) return false;
+            if (w <= 0f || h <= 0f) return false;
+
+            float texAspect    = (float)texture.width / texture.height;
+            float storedAspect = w / h;
+            if (Mathf.Abs(storedAspect - texAspect) <= texAspect * 0.05f) return false;
+
+            float oldW = w, oldH = h;
+            if (texAspect >= 1f) { w = HealedLongSideM; h = HealedLongSideM / texAspect; }
+            else                 { h = HealedLongSideM; w = HealedLongSideM * texAspect; }
+
+            data.boardWidth  = w;
+            data.boardHeight = h;
+            Debug.LogWarning($"[WallAnchor] Healed stored dimensions for {data.artworkId} (anchor {data.anchorId}): " +
+                             $"{oldW:F3}x{oldH:F3} (aspect {storedAspect:F2}) -> {w:F3}x{h:F3} (texture aspect {texAspect:F2})");
+            return true;
         }
 
         /// <summary>
@@ -543,6 +578,30 @@ namespace ArtUnbound.MR
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>
+        /// Ancho/alto reales de una obra viva: identifier sellado > quad "FullImageReveal" (su
+        /// localScale es exactamente w x h) > 0.5 x 0.5. Nunca el BoxCollider (ver arriba).
+        /// </summary>
+        private static void ResolveArtworkDimensions(Transform artwork, PlacedArtworkIdentifier id,
+            out float w, out float h)
+        {
+            if (id != null && id.HasDimensions)
+            {
+                w = id.boardWidth; h = id.boardHeight;
+                return;
+            }
+
+            var quad = artwork != null ? artwork.Find("FullImageReveal") : null;
+            if (quad != null && quad.localScale.x > 0.01f && quad.localScale.y > 0.01f)
+            {
+                w = quad.localScale.x; h = quad.localScale.y;
+                return;
+            }
+
+            Debug.LogWarning($"[WallAnchor] No real dimensions for '{artwork?.name}'; falling back to 0.5x0.5");
+            w = 0.5f; h = 0.5f;
+        }
+
+        /// <summary>
         /// Moves a SPECIFIC artwork transform to a new wall position and re-anchors it.
         /// Unlike UpdateAnchorPosition, this operates on the provided transform rather than
         /// whatever is currently stored in spawnedArtworks[artworkId].
@@ -568,16 +627,15 @@ namespace ArtUnbound.MR
             // Point the dictionary at this specific object going forward
             spawnedArtworks[artworkId] = artworkTransform.gameObject;
 
-            // Dimensiones: de la entrada existente, o del collider del objeto (primer colgado
-            // de una copia flotante, cuyo tamano no esta aun en storage).
+            // Dimensiones: de la entrada existente, si no del identifier (sellado por quien
+            // construyo la obra), si no del quad de la imagen. NUNCA del BoxCollider: GrabbableFrame
+            // lo re-ajusta a la caja envolvente en ejes del mundo y, con la obra girada, mezcla ancho
+            // con profundidad — asi se persistian cuadros "portrait y delgados".
             float boardW = existingData?.boardWidth ?? 0f;
             float boardH = existingData?.boardHeight ?? 0f;
             if (boardW <= 0f || boardH <= 0f)
-            {
-                var col = artworkTransform.GetComponent<BoxCollider>();
-                boardW = col != null && col.size.x > 0f ? col.size.x : 0.5f;
-                boardH = col != null && col.size.y > 0f ? col.size.y : 0.5f;
-            }
+                ResolveArtworkDimensions(artworkTransform, idComp, out boardW, out boardH);
+            if (idComp != null && !idComp.HasDimensions) idComp.SetDimensions(boardW, boardH);
 
             DoEraseAndRecreate(artworkId, newPosition, newRotation,
                 existingData?.frameTier ?? FrameTier.Bronce,

@@ -61,6 +61,7 @@ sysinfo.txt
 # Unity Android "Build And Run" output left in the project root
 /.utmp/
 *_BackUpThisFolder_ButDontShipItWithYourGame/
+*_BurstDebugInformation_DoNotShip/
 
 # Crashlytics generated file
 crashlytics-build.properties

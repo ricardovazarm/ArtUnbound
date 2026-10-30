@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Art Unbound** is a Mixed Reality puzzle game for Meta Quest 3 / Meta Quest Pro. Players assemble 3D jigsaw puzzles (with triangular tab morphology) on a floating canvas in their physical space, then hang completed artworks on real walls using spatial anchors.
 
-- **Engine**: Unity 6 LTS (6000.3.1f1)
+- **Engine**: Unity 6 LTS (6000.3.10f1)
 - **Target**: Meta Quest 3 / Meta Quest Pro (Android, MR passthrough)
 - **Key packages**: XR Hands (`com.unity.xr.hands`), Meta XR All-in-One SDK v85.0.0, OpenXR, AR Foundation, XR Interaction Toolkit
 

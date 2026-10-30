@@ -41,10 +41,20 @@ namespace ArtUnbound.MR
         private void Awake()
         {
             frameCollider = GetComponent<BoxCollider>();
+            // Un root con PlacedArtworkIdentifier dimensionado (PlacedArtworkFactory,
+            // SpawnArtworkAtAnchor) ya trae un collider = geometria real de la obra: no pisarlo.
+            // En cualquier otro caso (marco del puzzle, placas) se ajusta a los renderers. No basta
+            // con "ya habia collider": el del SlotRoot sobrevive entre partidas y heredaria el
+            // tamano de la obra anterior.
+            var identifier = GetComponent<PlacedArtworkIdentifier>();
+            bool trustExistingCollider = frameCollider != null
+                && identifier != null && identifier.HasDimensions
+                && frameCollider.size.x > 0.01f && frameCollider.size.y > 0.01f;
             if (frameCollider == null)
                 frameCollider = gameObject.AddComponent<BoxCollider>();
 
-            FitColliderToRenderers();
+            if (!trustExistingCollider)
+                FitColliderToRenderers();
 
             frameCollider.enabled = false;
 
@@ -66,24 +76,58 @@ namespace ArtUnbound.MR
                 return;
             }
 
-            Bounds world = renderers[0].bounds;
-            for (int i = 1; i < renderers.Length; i++)
-                world.Encapsulate(renderers[i].bounds);
+            // Caja envolvente en ESPACIO LOCAL del root: se llevan las 8 esquinas de cada renderer
+            // a coordenadas locales y se encapsulan. La version anterior tomaba la AABB en ejes del
+            // mundo y la dividia por la escala: con la obra girada respecto a X/Z del mundo, el
+            // ancho se mezclaba con la profundidad y el collider salia "portrait y delgado".
+            // Se excluyen cedula y lampara (decoracion fuera del lienzo).
+            bool any = false;
+            Bounds local = new Bounds();
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                if (IsDecoration(renderers[i].transform)) continue;
+                Bounds b = renderers[i].bounds;
+                Vector3 min = b.min, max = b.max;
+                for (int c = 0; c < 8; c++)
+                {
+                    var corner = new Vector3(
+                        (c & 1) == 0 ? min.x : max.x,
+                        (c & 2) == 0 ? min.y : max.y,
+                        (c & 4) == 0 ? min.z : max.z);
+                    Vector3 p = transform.InverseTransformPoint(corner);
+                    if (!any) { local = new Bounds(p, Vector3.zero); any = true; }
+                    else local.Encapsulate(p);
+                }
+            }
 
-            // Convert world-space AABB to local space.
+            if (!any)
+            {
+                frameCollider.center = Vector3.zero;
+                frameCollider.size = new Vector3(0.5f, 0.5f, 0.05f);
+                Debug.LogWarning("[GrabbableFrame] Only decoration renderers found; using fallback collider size");
+                return;
+            }
+
             // Cap Z depth to 0.05m world-space: child renderers (puzzle pieces in tray)
             // inflate the bounding box in Z, causing the collider to engulf the controller
             // position and making Physics.RaycastAll return 0 hits (ray starts inside collider).
-            frameCollider.center = transform.InverseTransformPoint(world.center);
             Vector3 s = transform.lossyScale;
             const float maxWorldDepth = 0.05f;
             float localZ = Mathf.Abs(s.z) > 0.001f ? maxWorldDepth / Mathf.Abs(s.z) : maxWorldDepth;
-            frameCollider.size = new Vector3(
-                world.size.x / s.x,
-                world.size.y / s.y,
-                localZ);
+            frameCollider.center = new Vector3(local.center.x, local.center.y, local.center.z);
+            frameCollider.size = new Vector3(local.size.x, local.size.y, localZ);
 
             Debug.Log($"[GrabbableFrame] Collider fit to renderers: center={frameCollider.center} size={frameCollider.size}");
+        }
+
+        /// <summary>True si el transform cuelga de la cedula o la lampara (PresentationDecorator).</summary>
+        private bool IsDecoration(Transform t)
+        {
+            for (var p = t; p != null && p != transform; p = p.parent)
+            {
+                if (p.name == "Cedula" || p.name == "Lampara") return true;
+            }
+            return false;
         }
 
         public void StartDrag(Vector3 pinchPosition)

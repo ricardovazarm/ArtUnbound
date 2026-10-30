@@ -100,7 +100,7 @@ namespace ArtUnbound.UI
             if (hangInstructionText == null || inputController == null) return;
             if (!hangInstructionText.gameObject.activeInHierarchy) return;
 
-            bool isController = inputController.HasValidController;
+            bool isController = inputController.IsControllerMode;
             if (_hangingTextInitialized && isController == _lastControllerMode) return;
             _hangingTextInitialized = true;
             _lastControllerMode = isController;
@@ -114,7 +114,7 @@ namespace ArtUnbound.UI
             if (inputController == null)
                 inputController = FindFirstObjectByType<HandTrackingInputController>();
 
-            bool isController = inputController != null && inputController.HasValidController;
+            bool isController = inputController != null && inputController.IsControllerMode;
             _lastControllerMode = isController;
             _hangingTextInitialized = true;
             hangInstructionText.text = isController ? controllerHangingInstruction : handsHangingInstruction;

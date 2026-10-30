@@ -64,18 +64,31 @@ namespace ArtUnbound.Input
         /// <summary>True si esta instancia rastrea la mano/control IZQUIERDO (controllerNode).</summary>
         public bool IsLeftHand => controllerNode == XRNode.LeftHand;
 
-        /// <summary>True if a physical right controller device is currently connected and valid,
-        /// regardless of whether hand tracking is also active.</summary>
+        /// <summary>True if a physical controller device for this side is currently connected and
+        /// valid, regardless of whether hand tracking is also active. NO indica que el usuario lo
+        /// este usando: un control emparejado sigue valido cuando lo sueltas en la mesa. Para
+        /// decidir manos vs control usa <see cref="IsControllerMode"/>.</summary>
         public bool HasValidController { get; private set; }
+
+        /// <summary>Modo de input vigente (la misma fuente de verdad que usa InteractionManager).</summary>
+        public bool IsControllerMode => useControllers;
 
         private float _autoDetectTimer = 0f;
         private const float AutoDetectInterval = 1f;
+
+        // Histeresis del autodetect: cambiar a CONTROLLER exige evidencia positiva sostenida
+        // (control RASTREADO, no solo emparejado) durante N polls seguidos sin manos; cambiar a
+        // HANDS es inmediato en cuanto hay una mano rastreada. Nunca se cambia a media pinch.
+        // Sin esto, con los controles sueltos pero emparejados, cualquier parpadeo del hand
+        // tracking regresaba el modo a CONTROLLER y el cuadro que traias en la mano dejaba de seguirte.
+        private const int ControllerModePollsRequired = 2;
+        private int _controllerModeStreak = 0;
         private Transform _xrOriginRoot;
 
         private void Start()
         {
             GetHandSubsystem();
-            AutoDetectInputMode();
+            AutoDetectInputMode(immediate: true);
         }
 
         private void Update()
@@ -113,7 +126,7 @@ namespace ArtUnbound.Input
             }
         }
 
-        private void AutoDetectInputMode()
+        private void AutoDetectInputMode(bool immediate = false)
         {
             // Check for a valid controller on THIS instance's side (controllerNode)
             var devices = new System.Collections.Generic.List<InputDevice>();
@@ -124,6 +137,15 @@ namespace ArtUnbound.Input
                 InputDeviceCharacteristics.Controller | side, devices);
             bool hasController = devices.Count > 0 && devices[0].isValid;
 
+            // Lo que indica uso real del control es que el runtime lo este RASTREANDO (isTracked),
+            // no que este emparejado (isValid): los Touch siguen validos sueltos en la mesa.
+            bool controllerTracked = hasController
+                && devices[0].TryGetFeatureValue(CommonUsages.isTracked, out bool tracked)
+                && tracked;
+
+            // El subsystem de manos se necesita en AMBOS modos para poder detectar el cambio.
+            if (m_HandSubsystem == null) GetHandSubsystem();
+
             // Check for active hand tracking on this instance's side
             bool hasHands = m_HandSubsystem != null
                          && m_HandSubsystem.running
@@ -133,12 +155,26 @@ namespace ArtUnbound.Input
 
             HasValidController = hasController;
 
-            bool newMode = hasController && !hasHands;
-            if (newMode != useControllers)
-            {
-                useControllers = newMode;
-                Debug.Log($"[HandTracking] Input mode → {(useControllers ? "CONTROLLER" : "HAND TRACKING")}");
-            }
+            // Decidir solo con evidencia positiva; sin mano ni control rastreados, conservar el modo.
+            bool wantController;
+            if (hasHands)               wantController = false;
+            else if (controllerTracked) wantController = true;
+            else { _controllerModeStreak = 0; return; }
+
+            if (wantController == useControllers) { _controllerModeStreak = 0; return; }
+
+            // Nunca cambiar de modo a media interaccion: un parpadeo del tracking soltaria lo que traes.
+            // En manos, solo cuenta si la mano sigue rastreada: si se perdio a media pinch, el flag
+            // isPinchingRight queda pegado (ProcessHand ya no corre) y bloquearia el cambio para siempre.
+            bool midInteraction = useControllers ? wasTriggerPressed : (isPinchingRight && hasHands);
+            if (midInteraction) return;
+
+            if (wantController && !immediate && ++_controllerModeStreak < ControllerModePollsRequired)
+                return;
+
+            _controllerModeStreak = 0;
+            useControllers = wantController;
+            Debug.Log($"[HandTracking] Input mode → {(useControllers ? "CONTROLLER" : "HAND TRACKING")}");
         }
 
         private void ProcessControllerInput()
@@ -363,8 +399,8 @@ namespace ArtUnbound.Input
 
         private void GetHandSubsystem()
         {
-            if (useControllers) return; // Don't start hands if using controllers
-
+            // Se obtiene tambien en modo CONTROLLER: sin el, AutoDetectInputMode nunca ve manos
+            // rastreadas y el modo se queda pegado en controles al soltarlos.
             var subsystems = new List<XRHandSubsystem>();
             SubsystemManager.GetSubsystems(subsystems);
 

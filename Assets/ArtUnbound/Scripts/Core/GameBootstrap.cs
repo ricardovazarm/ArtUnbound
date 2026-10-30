@@ -180,6 +180,9 @@ namespace ArtUnbound.Core
                 if (mainUICanvas != null)
                     StartCoroutine(PositionCanvasWithDelay(mainUICanvas));
 
+                // Recenter (boton Meta sostenido): reacomodar el menu frente al usuario (MR only)
+                StartCoroutine(SubscribeTrackingOriginWhenReady());
+
                 // Load saved spatial anchors (MR only)
                 if (wallAnchorManager != null)
                     StartCoroutine(LoadAnchorsWithDelay());
@@ -414,11 +417,100 @@ namespace ArtUnbound.Core
 
             if (nativeGallery != null)
             {
+                // Recenter ocurrido a media partida: el menu se reacomoda ahora, al volver.
+                if (_recenterPending)
+                {
+                    _recenterPending = false;
+                    _boardPositioned = false;
+                    nativeGallery.ResetPosition();
+                }
                 nativeGallery.Show();
             }
             else
             {
                 Debug.LogError("[GameBootstrap] NativeGallery no está asignado en el Inspector.");
+            }
+        }
+
+        // ─── Recenter (boton Meta sostenido) ─────────────────────────────────
+        //
+        // Al recentrar, OpenXR mueve el origen de tracking a la pose actual del usuario. Todo lo que
+        // se coloco en coordenadas del origen viejo (menu, canvas, board) se queda donde estaba, que
+        // ahora coincide con la posicion del usuario y mira a otro lado. El runtime avisa via
+        // XRInputSubsystem.trackingOriginUpdated (mismo evento que usa el sample "Controller" del
+        // plugin OpenXR para detectar el recenter).
+
+        private readonly System.Collections.Generic.List<XRInputSubsystem> _xrInputSubsystems =
+            new System.Collections.Generic.List<XRInputSubsystem>();
+        private bool _recenterPending;
+
+        private IEnumerator SubscribeTrackingOriginWhenReady()
+        {
+            // XR Management puede levantar el subsystem unos frames despues de Start.
+            float waited = 0f;
+            while (waited < 10f)
+            {
+                SubsystemManager.GetSubsystems(_xrInputSubsystems);
+                if (_xrInputSubsystems.Count > 0) break;
+                yield return new WaitForSeconds(0.5f);
+                waited += 0.5f;
+            }
+
+            if (_xrInputSubsystems.Count == 0)
+            {
+                Debug.LogWarning("[GameBootstrap] Sin XRInputSubsystem: el recenter no reacomodara el menu.");
+                yield break;
+            }
+
+            foreach (var s in _xrInputSubsystems)
+                s.trackingOriginUpdated += OnTrackingOriginUpdated;
+            Debug.Log($"[GameBootstrap] Recenter listener activo en {_xrInputSubsystems.Count} XRInputSubsystem(s)");
+        }
+
+        private void UnsubscribeTrackingOrigin()
+        {
+            foreach (var s in _xrInputSubsystems)
+                if (s != null) s.trackingOriginUpdated -= OnTrackingOriginUpdated;
+            _xrInputSubsystems.Clear();
+        }
+
+        private void OnTrackingOriginUpdated(XRInputSubsystem _)
+        {
+            Debug.Log($"[GameBootstrap] Tracking origin updated (recenter) en estado {CurrentState}");
+
+            // La galeria VR tiene su propio panel de navegacion; no tocar nada en VR.
+            if (IsVRMode) return;
+
+            switch (CurrentState)
+            {
+                case GameState.Playing:
+                case GameState.Paused:
+                case GameState.PostGame:
+                case GameState.ComfortPositioning:
+                    // A media partida NO se mueve el board: el usuario esta fisicamente orientado a el
+                    // y moverlo con piezas puestas seria peor que dejarlo. Se difiere al volver al menu.
+                    _recenterPending = true;
+                    return;
+            }
+
+            RepositionMenuAfterRecenter();
+        }
+
+        private void RepositionMenuAfterRecenter()
+        {
+            _recenterPending = false;
+            // El proximo armado se ancla a la pose nueva de la galeria (ver TransitionToPlaying).
+            _boardPositioned = false;
+
+            if (nativeGallery == null) return;
+            nativeGallery.ResetPosition();
+
+            // Si el menu esta a la vista, Hide+Show re-corre PositionAndReveal con la pose actual
+            // (espera head pose confirmado antes de colocar). Si no, lo hara el proximo Show().
+            if (CurrentState == GameState.MainMenu || CurrentState == GameState.ArtworkSelection)
+            {
+                nativeGallery.Hide();
+                nativeGallery.Show();
             }
         }
 
@@ -572,10 +664,13 @@ namespace ArtUnbound.Core
             if (panelT != null)
             {
                 // A la derecha del panel y un poco hacia el usuario, para no tapar el detalle.
-                // La cara visible de la obra mira hacia -Z del root (quad con flip interno de 180°),
-                // asi que igualar la orientacion del menu (+Z alejandose del usuario) la deja de frente.
+                // La cara visible de la obra es +Z del root (el quad trae flip interno de 180°; en la
+                // pared se cuelga con LookRotation(normal), +Z hacia la habitacion). El usuario lee el
+                // menu desde su lado -Z, asi que el root debe mirar hacia -panelT.forward — misma
+                // convencion que la placa en OnHangPlaqueFromCollection. Con +forward nacia de espaldas
+                // y solo se enderezaba al tomarla (UpdateFrameRotationToNearestWall).
                 go.transform.position = panelT.position + panelT.right * 0.45f - panelT.forward * 0.15f;
-                go.transform.rotation = Quaternion.LookRotation(panelT.forward, Vector3.up);
+                go.transform.rotation = Quaternion.LookRotation(-panelT.forward, Vector3.up);
             }
             else
             {
@@ -832,9 +927,31 @@ namespace ArtUnbound.Core
             // Position board only once — never move it again after first placement
             if (!_boardPositioned && puzzleBoard != null && mainUICanvas != null)
             {
-                puzzleBoard.transform.position = mainUICanvas.position;
-                Quaternion boardRotation = mainUICanvas.rotation * Quaternion.Euler(0f, 180f, 0f);
-                puzzleBoard.transform.rotation = boardRotation;
+                // Ancla única de sesión: menú y armado comparten posición (ambos son de
+                // interacción directa con la mano). La pose buena es la de la galería, que
+                // se calculó con head pose confirmado al revelarse — no la de mainUICanvas,
+                // que se capturó al arrancar la app y queda rancia si el usuario se movió.
+                Vector3 anchorPos;
+                Quaternion anchorRot;
+                if (nativeGallery != null)
+                {
+                    anchorPos = nativeGallery.transform.position;
+                    anchorRot = nativeGallery.transform.rotation;
+                }
+                else
+                {
+                    anchorPos = mainUICanvas.position;
+                    anchorRot = mainUICanvas.rotation;
+                }
+
+                // Alinear el canvas mueve también a la galería (es su hija): re-pinearla
+                // al ancla para que HUD, paneles y menú queden todos en el mismo punto.
+                mainUICanvas.SetPositionAndRotation(anchorPos, anchorRot);
+                if (nativeGallery != null)
+                    nativeGallery.transform.SetPositionAndRotation(anchorPos, anchorRot);
+
+                puzzleBoard.transform.SetPositionAndRotation(
+                    anchorPos, anchorRot * Quaternion.Euler(0f, 180f, 0f));
                 _boardPositioned = true;
             }
 
@@ -1469,6 +1586,8 @@ namespace ArtUnbound.Core
 
         private void OnDestroy()
         {
+            UnsubscribeTrackingOrigin();
+
             // Clean up event listeners
             if (puzzleBoard != null)
             {
@@ -1477,36 +1596,9 @@ namespace ArtUnbound.Core
             }
         }
 
-        private void PositionCanvasErgonomically(Transform canvasTransform)
-        {
-            if (canvasTransform == null) return;
-
-            Transform headTransform = Camera.main != null ? Camera.main.transform : null;
-            if (headTransform == null) return;
-
-            // Constants matching ComfortModeController (Meta MR guideline: 45cm for direct hand interaction)
-            float distanceFromHead = 0.45f;
-            float heightOffset = -0.15f;
-            float tiltAngle = 15f;
-
-            // Get forward direction, keeping it horizontal
-            Vector3 forward = headTransform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            // Calculate position
-            Vector3 targetPosition = headTransform.position + forward * distanceFromHead;
-            targetPosition.y += heightOffset;
-
-            // Calculate rotation (facing the user with tilt)
-            Quaternion targetRotation = Quaternion.LookRotation(-forward) * Quaternion.Euler(tiltAngle, 0f, 0f);
-
-            canvasTransform.position = targetPosition;
-            canvasTransform.rotation = targetRotation;
-
-        }
-
-        private const float DefaultPlacementDistance = 0.55f; // 55cm from user (10cm further than original 45cm)
+        // Ancla única de UI: misma distancia/altura que NativeGalleryController
+        // (galleryDistance/heightOffset) — menú y armado comparten posición.
+        private const float DefaultPlacementDistance = 0.75f;
 
         private System.Collections.IEnumerator PositionCanvasWithDelay(Transform canvasTransform)
         {
@@ -1554,7 +1646,10 @@ namespace ArtUnbound.Core
             forward.y = 0f;
             forward.Normalize();
 
-            float heightOffset = -0.15f;
+            // Espejo de NativeGalleryController tal como está serializado en Main.unity
+            // (galleryDistance 0.75, heightOffset -0.25): el ancla definitiva la fija la
+            // galería al revelarse; esto solo evita un salto visible antes de eso.
+            float heightOffset = -0.25f;
             float distance = DefaultPlacementDistance;
 
             // Calculate final target position with actual head height
