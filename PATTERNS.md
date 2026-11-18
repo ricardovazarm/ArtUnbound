@@ -32,4 +32,55 @@ Una línea por patrón. Solo lo que costó trabajo aprender y el `/clear` borrar
   `PuzzlePiece.CorrectSlotIndex`. (sesiones previas)
 - **P-009** · Multi-copia — la misma obra puede colgarse varias veces: en MR opera por
   `PlacedArtworkIdentifier.anchorId`, en VR por `instanceId`; nunca por `artworkId`.
-  (sesiones previas)
+  (sesiones previas) **Mordio el 2026-11-16:** `WallAnchorManager.spawnedArtworks` va por
+  `artworkId` y con dos copias solo conoce una (la otra quedo visible en VR); para recorrer
+  TODAS las instancias MR usa `_mrArtworkObjects`. `activeAnchorsByArtworkId` tiene el mismo
+  defecto y sigue sin corregir.
+- **P-010** · Compilar con el editor ABIERTO — batchmode no corre (lock), pero
+  `dotnet build Assembly-CSharp.csproj -nologo -v q -clp:"ErrorsOnly;Summary"` SI compila los
+  csproj que Unity genera (~6 s, dotnet 10). Dos trampas: (1) `EnableDefaultItems=false`, un
+  `.cs` NUEVO no esta en el csproj hasta que Unity lo regenere; (2) 0 errores no prueba que el
+  binario traiga lo nuevo: `grep -c -a "<Simbolo>" Temp/bin/Debug/Assembly-CSharp.dll`. Solo
+  verifica compilacion; el editor no recarga hasta recuperar foco o un Refresh. (2026-11-16,
+  receta traida de TochitoClashUnity P-129)
+- **P-011** · Unity MCP (editor abierto) — `.mcp.json` en la raiz lanza
+  `~/.unity/relay/relay_win.exe --mcp` (paquete `com.unity.ai.assistant`; la conexion se aprueba
+  en *Project Settings > AI* y Claude Code se reinicia para cargarlo). Tools: `Unity_RunCommand`
+  (parametro `code`; clase `internal CommandScript` sin clases anidadas, sin `using
+  System.Reflection`, tipos `Unity.*` con `global::`), `Unity_ManageMenuItem`,
+  `Unity_ReadConsole`. Ningun mensaje de exito es evidencia: compilo si
+  `Library/ScriptAssemblies/Assembly-CSharp.dll` es mas nueva que el `.cs` editado, y los
+  errores se leen de `grep "error CS" "$LOCALAPPDATA/Unity/Editor/Editor.log"` (la consola del
+  MCP puede salir vacia con el ensamblado roto). Con el editor SIN foco el auto-refresh no
+  dispara. Si el cliente MCP sale "failed to connect", el relay suele seguir vivo
+  (`netstat -ano | grep :900`): se le habla por stdio con JSON-RPC (`initialize` +
+  `notifications/initialized` + `tools/call`). Verificado aqui con la 2.10 del paquete: el
+  relay por stdio lista 33 tools (`Unity_RunCommand`, `Unity_ManageEditor`, `Unity_ReadConsole`,
+  `Unity_ManageMenuItem`...) y en esta version el parametro de `Unity_RunCommand` es **`Code`**
+  (mayuscula), no `code`. No mandar comandos al editor mientras corre un Build. **Receta para
+  compilar en el editor (probada):** `Unity_RunCommand` con `AssetDatabase.Refresh();
+  global::UnityEditor.Compilation.CompilationPipeline.RequestScriptCompilation();` — funciona con
+  el editor sin foco. Dos falsos negativos: un `touch` sin cambio de contenido NO dispara
+  recompilacion (Unity compara contenido), y si el resultado es identico la DLL de
+  `ScriptAssemblies` NO cambia de fecha; en ese caso la evidencia es una linea nueva
+  `Domain Reload Profiling` en `Editor.log` y 0 `error CS`. **Regla del
+  usuario: tras editar C# se compila SIEMPRE en el editor antes de entregar** (`dotnet build`
+  solo no cuenta). (2026-11-16, de TochitoClash P-024/P-025/P-058/P-068)
+- **P-012** · Log del Quest — el buffer de logcat es de 256 KB y pierde las lineas de Unity en
+  minutos: para diagnosticar se deja grabando ANTES de reproducir, con el adb del editor:
+  `"C:/Program Files/Unity/Hub/Editor/6000.3.10f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/platform-tools/adb.exe" logcat -v time -T 1 -s Unity > archivo.txt`
+  en background. (2026-11-16)
+- **P-013** · Unity MCP con VARIOS editores abiertos — el cliente se engancha a uno cualquiera,
+  no al del proyecto de la sesion (el 2026-11-18 quedo en TochitoClashUnity y un comando corrio
+  alla). Antes de cualquier `Unity_RunCommand` que modifique algo, corre uno que solo haga
+  `result.Log(Application.dataPath)` y confirma el proyecto. Si no es el correcto, no hay forma
+  de elegirlo desde aqui: pedir al usuario que cierre los otros editores. Hablarle al relay por
+  stdio tampoco sirve si el editor no publico su pipe (`\.\pipe\unity-mcp-*`): el relay se
+  cuelga reintentando un pipe viejo de `~/.unity/mcp/connections/`. (2026-11-18)
+- **P-014** · Icono y splash en Quest — (1) instalar el APK ENCIMA no refresca el icono de la
+  biblioteca aunque el APK lo traiga (`aapt2 dump badging` lo confirma): hubo que reiniciar el
+  visor (o desinstalar, que borra `save.json`). (2) `ProjectSettings.asset` editado en disco con
+  el editor abierto SI lo recarga Unity al recuperar foco (visto 3 veces), pero Project Settings
+  cambiados en el editor no llegan a disco hasta *File > Save Project*. (3) El Quest respeta
+  `m_SplashScreenBackgroundColor`; el Virtual Reality Splash Image no tiene color propio, asi que
+  va con PNG transparente (uno con fondo se ve como recuadro). (2026-11-18)

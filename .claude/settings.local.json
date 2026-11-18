@@ -110,5 +110,9 @@
       "WebFetch(domain:collectionapi.metmuseum.org)",
       "WebFetch(domain:philamuseum.org)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "unity"
+  ],
+  "enableAllProjectMcpServers": true
 }

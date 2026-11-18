@@ -174,9 +174,19 @@ namespace ArtUnbound.Data
 
         // Mejoras de presentacion "efectivas" = desbloqueadas por progreso Y con el toggle on.
         // El Frente 3 las consulta para decidir si aplicar cedula/marco/lampara a las obras colgadas.
-        public bool IsCedulaActive()  => ProgressionRules.CedulaUnlocked(GetCompletedCount())  && (settings == null || settings.showCedula);
+        public bool IsCedulaActive()  => IsCedulaUnlocked()  && (settings == null || settings.showCedula);
         public bool IsMarcoActive()   => ProgressionRules.MarcoUnlocked(GetCompletedCount())   && (settings == null || settings.showMarco);
-        public bool IsLamparaActive() => ProgressionRules.LamparaUnlocked(GetCompletedCount()) && (settings == null || settings.showLampara);
+        public bool IsLamparaActive() => IsLamparaUnlocked() && (settings == null || settings.showLampara);
+
+        /// <summary>
+        /// SOLO PRUEBAS: con true, cedula y lampara cuentan como desbloqueadas sin importar el
+        /// progreso. Lo enciende GameBootstrap cuando enableDevCheats esta activo. Es static: no
+        /// se serializa en save.json ni altera el progreso real.
+        /// </summary>
+        public static bool DevUnlockPresentation;
+
+        public bool IsCedulaUnlocked()  => DevUnlockPresentation || ProgressionRules.CedulaUnlocked(GetCompletedCount());
+        public bool IsLamparaUnlocked() => DevUnlockPresentation || ProgressionRules.LamparaUnlocked(GetCompletedCount());
 
         // ── Placas con nombre (GDD 8.3) ──────────────────────────────────────────
 

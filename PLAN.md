@@ -1,16 +1,18 @@
-# PLAN.md — Estado del proyecto (actualizado 2026-10-29)
+# PLAN.md — Estado del proyecto (actualizado 2026-11-18)
 
 ## Handoff
 
-- **Bloqueos:** ninguno. Árbol: solo `Main.unity` queda modificado sin commitear a propósito
-  (`enableDevCheats: 1`, toggle de pruebas del usuario); todo lo demás está pusheado.
+- **Bloqueos:** ninguno. Árbol: `Main.unity` queda con `enableDevCheats: 1` sin commitear a
+  propósito (toggle de pruebas; además desbloquea cédula y lámpara en TODAS las obras).
 - **Decisiones que dependen del usuario:**
-  - `AGENTS.md`, `.agents/` y `.codex/` (config de Codex) siguen sin trackear: commitear o ignorar.
-  - Regresar `enableDevCheats` a 0 en `Main.unity` antes de cualquier build de release.
-  - Las Fases A/B/C son 100% manuales (Editor / Quest / Meta Dashboard).
-- **Pendientes chicos:** verificar en Quest los 4 fixes + el ancla de UI de la sección
-  "Fixes 2026-10-29" (hay logcat para cada uno); en el playthrough de Fase B cubrir también
-  tutorial, mano izquierda y multi-copia MR.
+  - Sin trackear, commitear o ignorar: `AGENTS.md`, `.agents/`, `.codex/`, `.mcp.json`,
+    `scripts/Export-StoreImage.ps1` y `GeneratedAssets/` (86 MB de arte de tienda y respaldos).
+  - `enableDevCheats` a 0 antes de cualquier build de release.
+  - ¿El baño de luz de la lámpara se quita también en VR? Hoy se quitó en los dos modos.
+  - Bug del gatillo que deja de responder: ¿resuelto? Si sí, retirar los logs `DIAG`.
+- **Pendientes chicos:** ver en Quest la lámpara sin baño de luz y todo lo de "Trabajo
+  2026-11-16"; 5 capturas reales 2560×1440 y tráiler para la tienda; `activeAnchorsByArtworkId`
+  sigue por `artworkId` (P-009); el MCP de Unity se engancha a otro editor si hay varios (P-013).
 
 > Fuente de verdad del avance. Al iniciar cada sesión, leer este archivo y retomar desde
 > la primera fase no completada.
@@ -109,6 +111,67 @@ información posible y aceptada.
 - **DS.4** Cambio a CONTROLLER exige 2 polls positivos; a HANDS es inmediato. Descartado
   simétrico: el falso positivo caro es quedarse en modo control sin controles.
 
+## Trabajo 2026-11-16 (sesión que NO se cerró; commiteada el 2026-11-18)
+
+Reconstruido desde el diff: esa sesión no pasó por `/cierra-sesion` y no dejó notas. No cierra
+ninguna fase. Compila en el editor; **solo la lámpara nueva fue vista en el visor** (el usuario
+la vio en MR el 2026-11-18), lo demás está pendiente de verificar.
+
+1. **Lámpara rediseñada** (`PresentationDecorator.BuildLampara`): placa de fijación a la pared,
+   brazo, pantalla inclinada y boca encendida (`LampGlow`, shader `Sprites/Default`). Antes era
+   una barra suelta a 18 cm de la pared.
+2. **Cédula + lámpara en el marco recién armado** (`WallAnchorManager.DecorateExistingFrame`):
+   antes solo las recibían los cuadros reconstruidos. *Mirar:* completar un puzzle y colgarlo.
+3. **Halo amarillo de selección en placas** (`InteractionManager.SetSelectionHalo`): 4 barras
+   unlit sobre el contorno del collider, porque el brillo por emisión no se notaba en el visor.
+4. **Obra flotante del botón Hang tomable con control a cualquier distancia**: el tope de 40 cm
+   queda solo para cuadros ya anclados (los que tienen `anchorId`).
+5. **MR↔VR con multi-copia** (`WallAnchorManager._mrArtworkObjects`): al entrar a VR se ocultan
+   todas las copias MR, no solo una por `artworkId`. *Mirar:* dos copias de la misma obra → VR.
+6. **Galería VR alineada al menú** (`VRGalleryController.AlignToMenu`, objeto `MenuAnchor` en
+   `GalleryRoot.prefab`): ni el menú ni el jugador se mueven al entrar a VR, se acomoda la
+   galería. Las poses de cuadros VR se persisten relativas a la galería (saves viejos siguen
+   válidos sin migración). `GameBootstrap.AlignGalleryWhenMenuPositioned` cubre el arranque
+   directo en VR.
+7. **Teleport VR solo sobre piso** (`VRTeleportActivator`): antes aceptaba paredes.
+8. **Dev cheat de presentación** (`SaveData.DevUnlockPresentation`, static, no se serializa):
+   con `enableDevCheats` activo, cédula y lámpara salen sin llegar al umbral.
+9. **`wallRaycastDistance` 2 → 6** en `Main.unity`.
+10. **Logs `DIAG` del bug del gatillo que deja de responder** (`[HandTracking] hb`,
+    `[HandTracking] trigger`, `[CTRL-Down]`, `[CTRL-RayDiag]`). Son diagnóstico: no consta si
+    el bug se resolvió. Retirarlos cuando el usuario lo confirme.
+
+## Trabajo 2026-11-18 (arte de tienda, ícono, splash y lámpara)
+
+Sesión de arreglos sueltos; no cierra ninguna fase. Trabajaron en paralelo Claude y Codex.
+
+- **Ícono del app:** `Assets/ArtUnbound/Branding/AppIcon.png` (512×512) asignado como Default
+  Icon. Verificado: el APK lo trae en las 6 densidades y **el usuario lo vio en el visor**. El
+  visor siguió mostrando el ícono viejo tras instalar encima (ver P-014).
+- **Splash:** fondo blanco (`m_SplashScreenBackgroundColor`) y logo
+  `LogoAjoloteStudiosLargeTransparente.png` en la lista de Logos y en Virtual Reality Splash
+  Image. Ese PNG fue reemplazado por Codex con la variante limpia de texto rosa (detalle en
+  "Arte de publicación"). **Visto bien en el visor por el usuario.** El logo de Unity quedó
+  fuera del splash (cambio del usuario en el editor).
+- **Lámpara sin baño de luz:** se eliminó el quad `LamparaLuz` y su textura `LampWash` de
+  `PresentationDecorator`; queda la lámpara física con su boca encendida. Compilado en el
+  editor (DLL de `ScriptAssemblies` posterior al `.cs`, sin el símbolo `LampWash`, 0
+  `error CS`) y entró al APK de las 13:15. **Pendiente que el usuario lo confirme en el visor.**
+- **Arte subido al Developer Dashboard por el usuario** (Distribución > Solicitudes de apps >
+  v1 > Metadatos de la app). No consta desde aquí que todas las casillas quedaran en verde.
+
+**Qué NO se hizo y por qué:** no se tocó `enableDevCheats`; no se commitearon `GeneratedAssets/`
+ni la config de Codex (decisión del usuario pendiente); el logo transparente de "Art Unbound"
+para la tienda sigue con alfa sucio y tipografía distinta al ícono (es un asset opcional).
+
+### Decisiones
+- **DS.5** El baño de luz se quitó en MR y VR a la vez: `PresentationDecorator` es compartido y
+  separar por modo exigía pasar el modo desde tres llamadas. Reversible si el usuario lo quiere
+  solo en VR.
+- **DS.6** Splash de VR con el logo transparente y no con el de fondo blanco: el Quest sí
+  respeta el color de fondo del splash, y la imagen con fondo propio (blanco no puro) se veía
+  como un recuadro.
+
 ---
 
 ## FASE A — Últimos pendientes del Editor
@@ -168,9 +231,65 @@ compra y ver el catálogo desbloqueado sin re-comprar.
 
 ## Siguiente paso concreto
 
-Build & Run al Quest y recorrer los 4 puntos "Mirar" de "Fixes 2026-10-29" con `adb logcat`
-filtrando `[HandTracking]`, `[GameBootstrap]` y `[WallAnchor]`. Si algo falla, abrir sesión
-con el log. Si todo pasa, seguir con la Fase A (iconos en el Editor).
+Con el build ya instalado (APK del 2026-11-18 13:15): confirmar en el visor que las lámparas
+ya no pintan luz sobre la pintura, y recorrer los puntos de "Trabajo 2026-11-16" y los 4
+"Mirar" de "Fixes 2026-10-29" con logcat grabando desde antes (P-012). Si algo falla, abrir
+sesión con el log. Si todo pasa, seguir con la Fase A (iconos en el Editor). En paralelo, para
+la tienda: tomar las 5 capturas reales de 2560×1440 y el tráiler.
+
+## Arte de publicación — Meta Horizon Store
+
+Flujo de arte separado de las fases de verificación del juego. Las capturas de Quest
+proporcionadas son referencia visual únicamente; las capturas oficiales las hará el
+usuario más adelante. (Desde el 2026-11-18 el arte ya está subido al Dashboard y el ícono
+asignado en Unity; ver "Trabajo 2026-11-18".)
+
+- **Fase Arte 1 — Concepto (completada).** Generar portada e ícono de Art Unbound.
+  **Salida verificable:** abrir los dos bocetos y aprobar identidad, título y
+  legibilidad del ícono a tamaño pequeño.
+  **Avance:** portada `GeneratedAssets/StoreConcepts/art-unbound-cover-v1.png`
+  y el ícono tipográfico `GeneratedAssets/StoreConcepts/art-unbound-icon-v2.png`
+  aprobados por el usuario. El ícono ilustrado v1 se descartó.
+- **Fase Arte 2 — Exportación (en curso).** Adaptar el concepto aprobado a Hero
+  3000×900, Landscape 2560×1440, Square 1440×1440, Portrait 1008×1440,
+  Mini Landscape 1080×360 e ícono 512×512. Evaluar logo transparente e ícono
+  espacial. **Salida verificable:** verificar dimensiones y canales de los PNG
+  y revisar recortes y zonas seguras en el Dashboard.
+  **Avance:** 10 PNG en `GeneratedAssets/MetaHorizonStore/` y paquete
+  `GeneratedAssets/art-unbound-meta-store-art.zip` (10 entradas verificadas):
+  cinco portadas, ícono de tienda, miniatura de tráiler, logo transparente
+  y dos capas de ícono espacial. Se verificaron dimensiones/canales de los
+  10 PNG; el primer plano se probó compuesto y respeta el margen de 18 px.
+  No se cambió la portada maestra ni se usaron capturas como arte.
+  **Corrección 2026-11-18:** el Dashboard del usuario exige capas espaciales
+  de 512×512, no 180×180. Exportadas desde los másteres a
+  `GeneratedAssets/art-unbound-meta-store-art/art-unbound-spatial-foreground-512.png`
+  (RGBA) y `art-unbound-spatial-background-512.png` (RGB); medidas y cabeceras
+  verificadas. Usar estas dos en lugar de las versiones de 180 del ZIP viejo.
+  **Logo pendiente:** el logo con contorno tiene alfa sucio; los intentos de
+  regeneración también dejaron residuos. No se sobrescribió el anterior.
+  **Ajolote Studios (variantes creadas, pendiente aprobación):** revisar/limpiar el logo de
+  `Assets/ArtUnbound/UI/Branding/`. La variante Transparente tiene borde
+  blanco y texto negro; actualmente es la usada en el splash. Crear una
+  variantes nuevas `LogoAjoloteStudiosTransparentClean.png` (texto negro) y
+  `LogoAjoloteStudiosTransparentDarkClean.png` (texto rosa), generadas con
+  ImageGen desde el original. Composición revisada sobre blanco, gris y negro;
+  sin borde blanco visible a tamaño de uso. Persiste alfa residual casi
+  invisible en el generado: no se afirma limpieza matemática del canal alfa.
+  El usuario aprobó el texto rosa y pidió reemplazar el transparente:
+  `LogoAjoloteStudiosLargeTransparente.png` ahora coincide con la variante rosa
+  (hash verificado); su .meta quedó intacto para preservar referencias del splash.
+  Respaldo en `GeneratedAssets/BrandingBackup/LogoAjoloteStudiosLargeTransparente-before-pink.png`.
+  Splash probado en Quest el 2026-11-18: el usuario lo vio bien (fondo blanco).
+  **Estado 2026-11-18:** el usuario subió el arte al Developer Dashboard. Falta
+  que confirme que cada casilla quedó validada y revise zonas seguras y la
+  máscara del ícono espacial ahí mismo. Después, Fase Arte 3.
+- **Fase Arte 3 — Integración y capturas (en curso).** Asignar el ícono del
+  build en Unity y preparar cinco tomas reales cuando el usuario las aporte.
+  **Salida verificable:** comprobar el ícono en una build de Quest y que las
+  cinco capturas distintas de 2560×1440 pasen la validación del Dashboard.
+  **Avance:** ícono asignado y visto en el visor (2026-11-18). Faltan las cinco
+  capturas y el tráiler (MP4, 30 s a 2 min).
 
 ## Pulido opcional (todo funciona con fallback — hacer solo si sobra tiempo)
 

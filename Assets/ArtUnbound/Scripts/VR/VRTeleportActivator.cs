@@ -36,6 +36,12 @@ namespace ArtUnbound.VR
         // asi que usamos datos del frame anterior que son validos.
         private Vector3 _cachedHitPos;
         private bool _hasValidHit;
+        private string _cachedHitName = "?";
+        private string _lastRejectReason = "sin datos";
+
+        // Un destino valido es piso: normal casi vertical y a la altura del suelo del rig.
+        private const float MinFloorNormalY = 0.7f;
+        private const float MaxFloorHeightDelta = 0.15f;
 
         private void Awake()
         {
@@ -116,7 +122,7 @@ namespace ArtUnbound.VR
         {
             if (!_hasValidHit)
             {
-                Debug.LogWarning("[VRTeleport] Sin hit valido al soltar thumbstick");
+                Debug.LogWarning($"[VRTeleport] Sin hit valido al soltar thumbstick ({_lastRejectReason})");
                 return;
             }
 
@@ -143,7 +149,7 @@ namespace ArtUnbound.VR
             Transform originT = xrOrigin.transform;
             Camera cam = xrOrigin.Camera;
 
-            Debug.Log($"[VRTeleport] Moviendo rig='{originT.name}' cam={cam?.name ?? "NULL"} | rigPos={originT.position} | hitPos={_cachedHitPos}");
+            Debug.Log($"[VRTeleport] Moviendo rig='{originT.name}' cam={cam?.name ?? "NULL"} | rigPos={originT.position} | hitPos={_cachedHitPos} | hitObj='{_cachedHitName}'");
 
             if (cam != null)
             {
@@ -185,8 +191,42 @@ namespace ArtUnbound.VR
             if (_rayInteractor == null) return;
             if (teleportInteractor == null || !teleportInteractor.activeSelf) return;
 
-            _hasValidHit = _rayInteractor.TryGetHitInfo(
-                out _cachedHitPos, out Vector3 _, out int _, out bool _);
+            bool hit = _rayInteractor.TryGetHitInfo(
+                out Vector3 hitPos, out Vector3 hitNormal, out int _, out bool _);
+
+            if (!hit)
+            {
+                _hasValidHit = false;
+                _lastRejectReason = "el rayo no toca nada";
+                return;
+            }
+
+            // Solo se acepta PISO: superficie que mira hacia arriba y a la altura del suelo del rig.
+            // Antes se aceptaba cualquier collider (paredes incluidas) y la camara quedaba sobre el
+            // plano del muro o del otro lado, fuera de la galeria.
+            float floorY = (xrOrigin != null && xrOrigin.gameObject.activeInHierarchy)
+                ? xrOrigin.transform.position.y
+                : hitPos.y;
+            string hitName = _rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit rh) && rh.collider != null
+                ? rh.collider.gameObject.name
+                : "?";
+
+            if (hitNormal.y < MinFloorNormalY)
+            {
+                _hasValidHit = false;
+                _lastRejectReason = $"no es piso: '{hitName}' normalY={hitNormal.y:F2} pos={hitPos:F2}";
+                return;
+            }
+            if (Mathf.Abs(hitPos.y - floorY) > MaxFloorHeightDelta)
+            {
+                _hasValidHit = false;
+                _lastRejectReason = $"fuera de la altura del piso: '{hitName}' y={hitPos.y:F2} piso={floorY:F2}";
+                return;
+            }
+
+            _cachedHitPos = hitPos;
+            _cachedHitName = hitName;
+            _hasValidHit = true;
         }
 
         private void UpdateRayOriginRotation()

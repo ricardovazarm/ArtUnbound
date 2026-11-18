@@ -150,32 +150,96 @@ namespace ArtUnbound.MR
             const string kName = "Lampara";
             if (parent.Find(kName) != null) return; // idempotente
 
+            // Raiz sin offset: cada pieza se coloca en el espacio de la obra (+Z = hacia la sala,
+            // la pared queda en z~0, el borde superior de la obra en y = h/2).
             var lamp = new GameObject(kName);
             lamp.transform.SetParent(parent, false);
-            lamp.transform.localPosition = new Vector3(0f, h / 2f + 0.12f, 0.18f);
-            lamp.transform.localRotation = Quaternion.Euler(55f, 0f, 0f); // apunta abajo-atras al cuadro
 
-            var fixture = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            fixture.name = "LamparaFixture";
-            Object.Destroy(fixture.GetComponent<Collider>());
-            fixture.transform.SetParent(lamp.transform, false);
-            fixture.transform.localScale = new Vector3(Mathf.Min(0.18f, w * 0.5f), 0.03f, 0.04f);
-            var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
-            if (shader != null)
+            Material metal = null;
+            var litShader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+            if (litShader != null)
             {
-                var mat = new Material(shader);
+                metal = new Material(litShader);
                 Color c = FrameBarColor(tier);
-                if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", c); else mat.color = c;
-                fixture.GetComponent<Renderer>().sharedMaterial = mat;
+                if (metal.HasProperty("_BaseColor")) metal.SetColor("_BaseColor", c); else metal.color = c;
             }
 
-            var light = lamp.AddComponent<Light>();
-            light.type = LightType.Spot;
-            light.spotAngle = 45f;
-            light.range = 1.2f;
-            light.intensity = 1.4f;
-            light.color = new Color(1f, 0.96f, 0.88f); // calido museo
-            light.shadows = LightShadows.None;          // barato para Quest
+            float top = h / 2f;
+            float shadeWidth = Mathf.Min(0.18f, w * 0.5f);
+
+            // 1) Placa de fijacion pegada a la pared, arriba del cuadro: de aqui "cuelga" todo
+            //    (antes la lampara era una barra suelta a 18 cm de la pared y parecia flotar).
+            Vector3 plateCenter = new Vector3(0f, top + 0.07f, 0.006f);
+            CreateLampPart(PrimitiveType.Cube, "LamparaPlaca", lamp.transform, plateCenter,
+                           Quaternion.identity, new Vector3(0.07f, 0.05f, 0.012f), metal);
+
+            // 2) Pantalla: barra inclinada cuya boca mira abajo-atras, hacia la pintura.
+            Vector3 shadeCenter = new Vector3(0f, top + 0.12f, 0.16f);
+            Quaternion shadeRot = Quaternion.Euler(55f, 0f, 0f);
+            var shade = CreateLampPart(PrimitiveType.Cube, "LamparaFixture", lamp.transform, shadeCenter,
+                                       shadeRot, new Vector3(shadeWidth, 0.03f, 0.045f), metal);
+
+            // 3) Brazo: tubo de la placa a la pantalla.
+            Vector3 armStart = new Vector3(0f, top + 0.07f, 0.012f);
+            Vector3 armDir = shadeCenter - armStart;
+            float armLen = armDir.magnitude;
+            if (armLen > 0.001f)
+            {
+                // El cilindro de Unity mide 2 de alto sobre su eje Y y 1 de diametro.
+                CreateLampPart(PrimitiveType.Cylinder, "LamparaBrazo", lamp.transform,
+                               (armStart + shadeCenter) * 0.5f,
+                               Quaternion.FromToRotation(Vector3.up, armDir / armLen),
+                               new Vector3(0.012f, armLen * 0.5f, 0.012f), metal);
+            }
+
+            // 4) Boca encendida: tira clara bajo la pantalla (su -Y local mira a la pintura).
+            Material glow = LampGlowMaterial();
+            if (glow != null && shade != null)
+            {
+                var strip = CreateLampPart(PrimitiveType.Cube, "LamparaBoca", shade.transform,
+                                           Vector3.zero, Quaternion.identity, Vector3.one, glow);
+                // Hijo de la pantalla (escalada): valores en fracciones de la pantalla.
+                strip.transform.localPosition = new Vector3(0f, -0.52f, 0f);
+                strip.transform.localScale = new Vector3(0.9f, 0.06f, 0.7f);
+            }
+
+            // Sin bano de luz sobre la pintura: se probo un quad con degradado calido encima de la
+            // obra y el usuario lo retiro (2026-11-18). La lampara solo lleva su boca encendida.
+        }
+
+        private static GameObject CreateLampPart(PrimitiveType type, string name, Transform parent,
+                                                 Vector3 localPos, Quaternion localRot, Vector3 localScale,
+                                                 Material material)
+        {
+            var go = GameObject.CreatePrimitive(type);
+            go.name = name;
+            // Sin collider: la lampara no debe estorbar a los rayos de seleccion ni de pared.
+            var col = go.GetComponent<Collider>();
+            if (col != null) Object.Destroy(col);
+            go.transform.SetParent(parent, false);
+            go.transform.localPosition = localPos;
+            go.transform.localRotation = localRot;
+            go.transform.localScale = localScale;
+            if (material != null) go.GetComponent<Renderer>().sharedMaterial = material;
+            return go;
+        }
+
+        // Material compartido de la boca encendida. Usa Sprites/Default (o UI/Default): estan en
+        // "Always Included Shaders", no dependen de keywords de URP (cuyas variantes pueden no
+        // entrar al build) y no tienen culling.
+        private static Material _lampGlowMaterial;
+
+        private static Shader LampOverlayShader() =>
+            Shader.Find("Sprites/Default") ?? Shader.Find("UI/Default");
+
+        private static Material LampGlowMaterial()
+        {
+            if (_lampGlowMaterial != null) return _lampGlowMaterial;
+            var shader = LampOverlayShader();
+            if (shader == null) return null;
+            _lampGlowMaterial = new Material(shader) { name = "LampGlow" };
+            _lampGlowMaterial.color = new Color(1f, 0.97f, 0.86f, 1f);
+            return _lampGlowMaterial;
         }
     }
 }

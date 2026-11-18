@@ -101,6 +101,108 @@ namespace ArtUnbound.VR
 
             LoadGallery(newGalleryId);
             RepositionNavigationPanel();
+            // La galeria nueva nace en el origen: se vuelve a acomodar alrededor del menu.
+            if (_lastMenu != null) AlignToMenu(_lastMenu);
+        }
+
+        // ─── Alineacion galeria <-> menu ───────────────────────────────────────────────
+        //
+        // Regla de diseno: ni el menu ni el jugador se mueven al entrar a VR. Lo que se acomoda es
+        // la GALERIA, de modo que su punto "MenuAnchor" quede justo donde esta el menu y mirando
+        // hacia donde mira el menu. Asi el menu aparece siempre en el mismo lugar del museo y el
+        // jugador conserva, respecto al menu, la posicion que tenia en MR.
+        //
+        // Antes la galeria nacia siempre en el origen del tracking y el menu frente al usuario:
+        // si el usuario no estaba parado en ese origen, el menu caia junto a (o detras de) una
+        // pared central.
+
+        /// <summary>Nombre del objeto vacio del prefab de galeria que marca donde va el menu
+        /// (su +Z = hacia donde mira el jugador al leer el menu).</summary>
+        public const string MenuAnchorName = "MenuAnchor";
+
+        private Transform _lastMenu;
+
+        /// <summary>
+        /// Mueve y gira (solo en horizontal) la galeria activa para que su MenuAnchor coincida con
+        /// <paramref name="menu"/>. Los cuadros ya colgados se mueven con ella. Si el prefab no
+        /// trae MenuAnchor se usa el origen de la galeria. Devuelve false si no hay galeria o menu.
+        /// </summary>
+        public bool AlignToMenu(Transform menu)
+        {
+            if (menu == null || _activeGalleryInstance == null) return false;
+            _lastMenu = menu;
+
+            Transform gallery = _activeGalleryInstance.transform;
+
+            Transform anchor = null;
+            foreach (var t in _activeGalleryInstance.GetComponentsInChildren<Transform>(true))
+            {
+                if (t.name == MenuAnchorName) { anchor = t; break; }
+            }
+            if (anchor == null)
+                Debug.LogWarning($"[VRGallery] El prefab de la galeria no tiene '{MenuAnchorName}': se usa su origen como punto del menu.");
+
+            Vector3 oldPos = gallery.position;
+            Quaternion oldRot = gallery.rotation;
+
+            // Pose del ancla relativa a la raiz de la galeria (sin escala: la raiz va a escala 1).
+            Vector3 anchorWorldPos = anchor != null ? anchor.position : oldPos;
+            Vector3 anchorWorldFwd = anchor != null ? anchor.forward : gallery.forward;
+            Vector3 anchorLocalPos = Quaternion.Inverse(oldRot) * (anchorWorldPos - oldPos);
+            Vector3 anchorLocalFwd = Flatten(Quaternion.Inverse(oldRot) * anchorWorldFwd, Vector3.forward);
+
+            Vector3 menuFwd = Flatten(menu.forward, Vector3.forward);
+
+            // Solo yaw: el piso de la galeria debe seguir horizontal.
+            Quaternion newRot = Quaternion.LookRotation(menuFwd, Vector3.up)
+                              * Quaternion.Inverse(Quaternion.LookRotation(anchorLocalFwd, Vector3.up));
+            Vector3 newPos = menu.position - newRot * anchorLocalPos;
+            newPos.y = oldPos.y; // la altura del piso no cambia; el menu conserva la suya
+
+            // Los cuadros colgados viven en mundo (no son hijos de la galeria): se llevan con ella.
+            foreach (var p in _spawnedPaintings)
+            {
+                if (p == null) continue;
+                Vector3 lp = Quaternion.Inverse(oldRot) * (p.transform.position - oldPos);
+                Quaternion lr = Quaternion.Inverse(oldRot) * p.transform.rotation;
+                p.transform.SetPositionAndRotation(newPos + newRot * lp, newRot * lr);
+            }
+
+            gallery.SetPositionAndRotation(newPos, newRot);
+            Physics.SyncTransforms();
+
+            Debug.Log($"[VRGallery] Galeria alineada al menu: menuPos={menu.position:F2} menuYaw={menu.eulerAngles.y:F0} " +
+                      $"galleryPos={newPos:F2} galleryYaw={newRot.eulerAngles.y:F0} anchor={(anchor != null ? "ok" : "FALTA")} " +
+                      $"anchorLocal={anchorLocalPos:F2} cuadros={_spawnedPaintings.Count}");
+            return true;
+        }
+
+        private static Vector3 Flatten(Vector3 v, Vector3 fallback)
+        {
+            v.y = 0f;
+            return v.sqrMagnitude < 0.0001f ? fallback : v.normalized;
+        }
+
+        /// <summary>Pose de mundo -> pose relativa a la galeria activa (lo que se PERSISTE). Sin
+        /// galeria activa devuelve la misma pose.</summary>
+        public void WorldToGallery(Vector3 worldPos, Quaternion worldRot, out Vector3 localPos, out Quaternion localRot)
+        {
+            if (_activeGalleryInstance == null) { localPos = worldPos; localRot = worldRot; return; }
+            Transform g = _activeGalleryInstance.transform;
+            Quaternion inv = Quaternion.Inverse(g.rotation);
+            localPos = inv * (worldPos - g.position);
+            localRot = inv * worldRot;
+        }
+
+        /// <summary>Pose relativa a la galeria (la guardada) -> pose de mundo. Los saves anteriores
+        /// a la alineacion estaban en mundo con la galeria en el origen, o sea que ya eran
+        /// relativos a la galeria: siguen siendo validos sin migracion.</summary>
+        public void GalleryToWorld(Vector3 localPos, Quaternion localRot, out Vector3 worldPos, out Quaternion worldRot)
+        {
+            if (_activeGalleryInstance == null) { worldPos = localPos; worldRot = localRot; return; }
+            Transform g = _activeGalleryInstance.transform;
+            worldPos = g.position + g.rotation * localPos;
+            worldRot = g.rotation * localRot;
         }
 
         /// <summary>
@@ -252,7 +354,9 @@ namespace ArtUnbound.VR
                     go = PlacedArtworkFactory.Build(data.artworkId, data.frameTier, w, h, EffectiveArtworkCatalog());
                 }
 
-                go.transform.SetPositionAndRotation(data.Position, data.Rotation);
+                // La pose guardada es relativa a la galeria (que ya no esta siempre en el origen).
+                GalleryToWorld(data.Position, data.Rotation, out Vector3 worldPos, out Quaternion worldRot);
+                go.transform.SetPositionAndRotation(worldPos, worldRot);
 
                 // Reponer el instanceId (clave de persistencia) para que reposicionar/quitar afecte esta
                 // copia exacta. Equivale a re-vincular la pieza con su anchor en MR.
@@ -260,7 +364,7 @@ namespace ArtUnbound.VR
                 inst.instanceId = data.instanceId;
 
                 _spawnedPaintings.Add(go);
-                Debug.Log($"[VRGallery] Spawned saved '{data.artworkId}' at {data.Position:F2}");
+                Debug.Log($"[VRGallery] Spawned saved '{data.artworkId}' at local {data.Position:F2}");
             }
         }
 

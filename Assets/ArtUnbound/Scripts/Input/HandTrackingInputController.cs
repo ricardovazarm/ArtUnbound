@@ -155,6 +155,21 @@ namespace ArtUnbound.Input
 
             HasValidController = hasController;
 
+            // DIAG: latido cada 5 polls con todo lo que decide el modo y si el gatillo se esta leyendo.
+            _diagLastDeviceCount = devices.Count;
+            if (++_diagHeartbeat >= 5)
+            {
+                _diagHeartbeat = 0;
+                string dev0 = devices.Count > 0 ? devices[0].name : "none";
+                bool trigOk = targetDevice.isValid
+                    && targetDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool trigNow);
+                Debug.Log($"[HandTracking][{SideTag}] hb mode={(useControllers ? "CTRL" : "HANDS")} hasHands={hasHands} " +
+                          $"ctrlTracked={controllerTracked} devices={devices.Count} dev0='{dev0}' " +
+                          $"targetValid={targetDevice.isValid} target='{(targetDevice.isValid ? targetDevice.name : "none")}' " +
+                          $"trigReadable={trigOk} wasTrig={wasTriggerPressed} pinching={isPinchingRight} " +
+                          $"startListeners={OnPinchStart?.GetInvocationList().Length ?? 0} pointerSrc={LastPointerSource}");
+            }
+
             // Decidir solo con evidencia positiva; sin mano ni control rastreados, conservar el modo.
             bool wantController;
             if (hasHands)               wantController = false;
@@ -174,7 +189,28 @@ namespace ArtUnbound.Input
 
             _controllerModeStreak = 0;
             useControllers = wantController;
-            Debug.Log($"[HandTracking] Input mode → {(useControllers ? "CONTROLLER" : "HAND TRACKING")}");
+            Debug.Log($"[HandTracking][{SideTag}] Input mode → {(useControllers ? "CONTROLLER" : "HAND TRACKING")} " +
+                      $"(hasHands={hasHands} ctrlTracked={controllerTracked} devices={devices.Count})");
+        }
+
+        // ── DIAG (bug del gatillo que deja de responder) ─────────────────────────────
+        private string SideTag => controllerNode == XRNode.LeftHand ? "L" : "R";
+        private int _diagHeartbeat;
+        private int _diagLastDeviceCount;
+        private float _diagNextWarnTime;
+
+        /// <summary>De donde salio la ultima pose del puntero en modo control:
+        /// "pointer" (PointerPosition/Rotation) o "grip+40" (respaldo). DIAG.</summary>
+        public string LastPointerSource { get; private set; } = "none";
+
+        /// <summary>"L" o "R" segun controllerNode. DIAG.</summary>
+        public string DiagSide => SideTag;
+
+        private void DiagWarnThrottled(string msg)
+        {
+            if (Time.unscaledTime < _diagNextWarnTime) return;
+            _diagNextWarnTime = Time.unscaledTime + 2f;
+            Debug.LogWarning($"[HandTracking][{SideTag}] {msg}");
         }
 
         private void ProcessControllerInput()
@@ -185,14 +221,30 @@ namespace ArtUnbound.Input
                 InitializeController();
             }
 
-            if (!targetDevice.isValid) return;
+            if (!targetDevice.isValid)
+            {
+                DiagWarnThrottled($"modo CTRL sin dispositivo valido (devices={_diagLastDeviceCount}) — el gatillo no se lee");
+                return;
+            }
 
             // 2. Get Data from cached device
             bool hasPos = targetDevice.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 devicePos);
             bool hasRot = targetDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion deviceRot);
             bool hasTrigger = targetDevice.TryGetFeatureValue(CommonUsages.triggerButton, out bool isTriggerPressed);
 
-            if (!hasPos || !hasRot) return;
+            if (!hasPos || !hasRot)
+            {
+                DiagWarnThrottled($"modo CTRL sin pose (hasPos={hasPos} hasRot={hasRot} hasTrigger={hasTrigger} trig={isTriggerPressed}) " +
+                                  $"dev='{targetDevice.name}' — el gatillo se descarta");
+                return;
+            }
+
+            // DIAG: flanco del gatillo en la FUENTE. Si esto sale y no hay [CTRL-Down]/[CTRL-Up],
+            // el evento se pierde entre aqui e InteractionManager; si esto no sale, no se lee el gatillo.
+            if (isTriggerPressed != wasTriggerPressed)
+                Debug.Log($"[HandTracking][{SideTag}] trigger {(isTriggerPressed ? "DOWN" : "UP")} hasTrigger={hasTrigger} " +
+                          $"dev='{targetDevice.name}' listeners(start/end)=" +
+                          $"{OnPinchStart?.GetInvocationList().Length ?? 0}/{OnPinchEnd?.GetInvocationList().Length ?? 0}");
 
             // FIX: Update the visual transform of this controller so it doesn't stay at 0,0,0
             if (trackedObject != null)
@@ -292,6 +344,7 @@ namespace ArtUnbound.Input
                     bool hasPointerPos = targetDevice.TryGetFeatureValue(pointerPosUsage, out position);
                     bool hasPointerRot = targetDevice.TryGetFeatureValue(pointerRotUsage, out rotation);
 
+                    LastPointerSource = (hasPointerPos && hasPointerRot) ? "pointer" : "grip+40";
                     if (!hasPointerPos || !hasPointerRot)
                     {
                         // Fallback to Grip pose

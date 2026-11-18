@@ -25121,7 +25121,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   wallProximityRadius: 0.35
-  wallRaycastDistance: 2
+  wallRaycastDistance: 6
   placementAnimationDuration: 0.5
   ghostPreviewPrefab: {fileID: 3312508470636891295, guid: 75b5e64860c98174f86df653b3aef799, type: 3}
 --- !u!1 &2131530497

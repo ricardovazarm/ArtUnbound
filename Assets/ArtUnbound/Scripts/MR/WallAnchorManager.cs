@@ -30,6 +30,8 @@ namespace ArtUnbound.MR
         private Dictionary<string, ARAnchor> activeAnchorsByArtworkId = new Dictionary<string, ARAnchor>();
         // artworkId → the frame GameObject parented to the anchor
         private Dictionary<string, GameObject> spawnedArtworks = new Dictionary<string, GameObject>();
+        // Todas las instancias MR vivas (una por copia colgada), para mostrar/ocultar en MR <-> VR.
+        private readonly HashSet<GameObject> _mrArtworkObjects = new HashSet<GameObject>();
 
         private bool _mrArtworksVisible = true;
 
@@ -91,7 +93,13 @@ namespace ArtUnbound.MR
             identifier.artworkId = artworkId;
             if (!identifier.HasDimensions && boardWidth > 0f && boardHeight > 0f)
                 identifier.SetDimensions(boardWidth, boardHeight);
-            spawnedArtworks[artworkId] = existingFrame.gameObject;
+            RegisterSpawned(artworkId, existingFrame.gameObject);
+
+            // Cedula + lampara tambien en el marco recien armado: antes solo las recibian los
+            // cuadros reconstruidos (al reabrir la app o con el boton Hang).
+            DecorateExistingFrame(existingFrame, artworkId,
+                identifier.HasDimensions ? identifier.boardWidth : boardWidth,
+                identifier.HasDimensions ? identifier.boardHeight : boardHeight);
 
             // Create anchor asynchronously (fire-and-forget from caller's perspective)
             DoCreateAndSaveAnchor(artworkId, worldPosition, worldRotation, frameTier,
@@ -303,12 +311,64 @@ namespace ArtUnbound.MR
         public void SetMRVisible(bool visible)
         {
             _mrArtworksVisible = visible;
-            foreach (var kvp in spawnedArtworks)
+            // Se recorre el registro por-instancia, no spawnedArtworks: ese diccionario va por
+            // artworkId y con dos copias de la misma obra solo conoce una, asi que la otra se
+            // quedaba visible al entrar a VR.
+            _mrArtworkObjects.RemoveWhere(go => go == null);
+            foreach (var go in _mrArtworkObjects)
+                go.SetActive(visible);
+            Debug.Log($"[WallAnchor] MR artworks {(visible ? "shown" : "hidden")} ({_mrArtworkObjects.Count} objects, {spawnedArtworks.Count} artworkIds)");
+        }
+
+        /// <summary>
+        /// Aplica cedula y lampara a un marco que ya existe (el puzzle recien armado que se cuelga
+        /// tal cual). Ese marco viene escalado (su collider local mide ~2 unidades para ~0.6 m),
+        /// y PresentationDecorator trabaja en metros: se decora un hijo "Presentation" que cancela
+        /// la escala, centrado en el marco y con su misma orientacion (+Z = cara visible).
+        /// No hace nada si el marco ya trae Cedula o Lampara (obras hechas por PlacedArtworkFactory).
+        /// </summary>
+        private void DecorateExistingFrame(Transform frame, string artworkId, float w, float h)
+        {
+            if (frame == null || w <= 0f || h <= 0f) return;
+
+            foreach (var t in frame.GetComponentsInChildren<Transform>(true))
             {
-                if (kvp.Value != null)
-                    kvp.Value.SetActive(visible);
+                if (t.name == "Cedula" || t.name == "Lampara") return;
             }
-            Debug.Log($"[WallAnchor] MR artworks {(visible ? "shown" : "hidden")} ({spawnedArtworks.Count} objects)");
+
+            ArtworkDefinition def = artworkCatalog != null && artworkCatalog.artworks != null
+                ? artworkCatalog.artworks.Find(a => a != null && a.artworkId == artworkId)
+                : null;
+
+            var holder = new GameObject("Presentation");
+            holder.transform.SetParent(frame, false);
+            Vector3 s = frame.lossyScale;
+            holder.transform.localScale = new Vector3(
+                Mathf.Abs(s.x) > 0.0001f ? 1f / s.x : 1f,
+                Mathf.Abs(s.y) > 0.0001f ? 1f / s.y : 1f,
+                Mathf.Abs(s.z) > 0.0001f ? 1f / s.z : 1f);
+
+            PresentationDecorator.Decorate(holder,
+                def != null ? def.title : artworkId,
+                def != null ? def.author : string.Empty,
+                w, h,
+                def != null ? def.year : 0,
+                def != null ? def.artMovement : null,
+                def != null ? def.museum : null);
+
+            int added = holder.transform.childCount;
+            if (added == 0) Destroy(holder); // nada desbloqueado/activo: no dejar un hijo vacio
+            Debug.Log($"[WallAnchor] Decorado marco existente de {artworkId}: {added} elemento(s) ({w:F2}x{h:F2} m, escala marco={s.x:F2})");
+        }
+
+        /// <summary>
+        /// Registra un cuadro MR: en spawnedArtworks (por artworkId, ultima copia gana) y en el
+        /// registro por-instancia que usa SetMRVisible para no perder copias repetidas.
+        /// </summary>
+        private void RegisterSpawned(string artworkId, GameObject go)
+        {
+            spawnedArtworks[artworkId] = go;
+            if (go != null) _mrArtworkObjects.Add(go);
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -410,7 +470,7 @@ namespace ArtUnbound.MR
             PresentationDecorator.Decorate(root, artworkDef.title, artworkDef.author, w, h,
                 artworkDef.year, artworkDef.artMovement, artworkDef.museum);
 
-            spawnedArtworks[artworkData.artworkId] = root;
+            RegisterSpawned(artworkData.artworkId, root);
             Debug.Log($"[WallAnchor] Spawned artwork {artworkData.artworkId} ({w:F3}×{h:F3}m) at anchor (hidden until tracking)");
             return root;
         }
@@ -476,7 +536,7 @@ namespace ArtUnbound.MR
             go.transform.localPosition = data.localPosition.ToVector3();
             go.transform.localRotation = data.localRotation.ToQuaternion();
 
-            spawnedArtworks[data.artworkId] = go;
+            RegisterSpawned(data.artworkId, go);
             Debug.Log($"[WallAnchor] Spawned plaque {data.artworkId} at anchor (hidden until tracking)");
             return go;
         }
@@ -625,7 +685,7 @@ namespace ArtUnbound.MR
             artworkTransform.SetPositionAndRotation(newPosition, newRotation);
 
             // Point the dictionary at this specific object going forward
-            spawnedArtworks[artworkId] = artworkTransform.gameObject;
+            RegisterSpawned(artworkId, artworkTransform.gameObject);
 
             // Dimensiones: de la entrada existente, si no del identifier (sellado por quien
             // construyo la obra), si no del quad de la imagen. NUNCA del BoxCollider: GrabbableFrame

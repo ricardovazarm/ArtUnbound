@@ -112,18 +112,97 @@ namespace ArtUnbound.Input
         private void SetFrameHighlight(ArtUnbound.MR.GrabbableFrame frame, bool selected)
         {
             if (frame == null) return;
+
+            // Las placas (laton metalico, ya amarillo) no muestran el brillo tenue de los marcos:
+            // llevan brillo mas fuerte y, sobre todo, un borde amarillo que no depende del shader.
+            bool isPlaque = IsPlaque(frame);
+            Color emission = isPlaque ? new Color(1f, 0.85f, 0.25f) * 1.2f : Color.yellow * 0.3f;
+
             foreach (var rend in frame.GetComponentsInChildren<Renderer>())
             {
+                if (rend.transform.parent != null && rend.transform.parent.name == SelectionHaloName) continue;
                 if (selected)
                 {
                     rend.material.EnableKeyword("_EMISSION");
-                    rend.material.SetColor("_EmissionColor", Color.yellow * 0.3f);
+                    rend.material.SetColor("_EmissionColor", emission);
                 }
                 else
                 {
                     rend.material.DisableKeyword("_EMISSION");
                 }
             }
+
+            if (isPlaque) SetSelectionHalo(frame.transform, selected);
+        }
+
+        private const string SelectionHaloName = "SelectionHalo";
+        private static Material _selectionHaloMaterial;
+
+        private static bool IsPlaque(ArtUnbound.MR.GrabbableFrame frame)
+        {
+            var id = frame.GetComponentInParent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+            if (id != null && !string.IsNullOrEmpty(id.artworkId) && id.artworkId.StartsWith("plaque_")) return true;
+            return frame.name.StartsWith("Collectible_");
+        }
+
+        /// <summary>
+        /// Borde amarillo alrededor de una placa seleccionada (4 barras unlit sobre el contorno de su
+        /// BoxCollider). Existe porque el brillo por emision no se nota en el visor: el material de
+        /// laton usa keywords (_DETAIL_SCALED, _METALLICSPECGLOSSMAP) cuya variante con _EMISSION
+        /// no la usa ningun material del proyecto y probablemente no entra al build (sin verificar).
+        /// </summary>
+        private static void SetSelectionHalo(Transform root, bool on)
+        {
+            Transform existing = root.Find(SelectionHaloName);
+            if (!on)
+            {
+                if (existing != null) Destroy(existing.gameObject);
+                return;
+            }
+            if (existing != null) return;
+
+            var box = root.GetComponent<BoxCollider>();
+            if (box == null) return;
+
+            if (_selectionHaloMaterial == null)
+            {
+                Shader shader = Shader.Find("Universal Render Pipeline/Unlit")
+                             ?? Shader.Find("Unlit/Color")
+                             ?? Shader.Find("Sprites/Default");
+                if (shader == null) return;
+                _selectionHaloMaterial = new Material(shader);
+                var c = new Color(1f, 0.85f, 0.1f);
+                _selectionHaloMaterial.color = c;
+                if (_selectionHaloMaterial.HasProperty("_BaseColor")) _selectionHaloMaterial.SetColor("_BaseColor", c);
+            }
+
+            var halo = new GameObject(SelectionHaloName);
+            halo.transform.SetParent(root, false);
+            halo.transform.localPosition = box.center;
+
+            const float t = 0.008f;      // grosor del borde
+            const float margin = 0.003f; // separacion de la placa
+            float w = box.size.x + margin * 2f;
+            float h = box.size.y + margin * 2f;
+            float d = box.size.z + 0.006f;
+
+            CreateHaloBar(halo.transform, new Vector3(0f,  (h + t) * 0.5f, 0f), new Vector3(w + t * 2f, t, d));
+            CreateHaloBar(halo.transform, new Vector3(0f, -(h + t) * 0.5f, 0f), new Vector3(w + t * 2f, t, d));
+            CreateHaloBar(halo.transform, new Vector3( (w + t) * 0.5f, 0f, 0f), new Vector3(t, h, d));
+            CreateHaloBar(halo.transform, new Vector3(-(w + t) * 0.5f, 0f, 0f), new Vector3(t, h, d));
+        }
+
+        private static void CreateHaloBar(Transform parent, Vector3 localPos, Vector3 localScale)
+        {
+            var bar = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            bar.name = "HaloBar";
+            // Sin collider: el borde no debe estorbar a los rayos de seleccion ni de pared.
+            var col = bar.GetComponent<Collider>();
+            if (col != null) Destroy(col);
+            bar.transform.SetParent(parent, false);
+            bar.transform.localPosition = localPos;
+            bar.transform.localScale = localScale;
+            bar.GetComponent<Renderer>().sharedMaterial = _selectionHaloMaterial;
         }
 
         private void OnEnable()
@@ -672,10 +751,16 @@ namespace ArtUnbound.Input
             _ctrlTriggerDownTime  = Time.time;
             _ctrlRayHitTrayOnDown = false;
 
-            if (_ctrlSelectedPiece != null) return; // piece selected — wait for TriggerUp to place
-            if (_ctrlSelectedFrame != null) return;  // frame selected — wait for TriggerUp to hang
+            // DIAG: estas tres salidas eran silenciosas; ahora dejan rastro para saber por que un
+            // gatillazo no hizo nada.
+            if (_ctrlSelectedPiece != null) { Debug.Log($"[CTRL-Down][{inputController.DiagSide}] ignorado: ya hay pieza seleccionada ({_ctrlSelectedPiece.PieceId})"); return; } // wait for TriggerUp to place
+            if (_ctrlSelectedFrame != null) { Debug.Log($"[CTRL-Down][{inputController.DiagSide}] ignorado: ya hay cuadro seleccionado ('{_ctrlSelectedFrame.name}')"); return; }  // wait for TriggerUp to hang
 
-            if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot)) return;
+            if (!inputController.GetPointerPose(out Vector3 origin, out Quaternion rot))
+            {
+                Debug.LogWarning($"[CTRL-Down][{inputController.DiagSide}] ignorado: GetPointerPose devolvio false");
+                return;
+            }
             Ray ray = new Ray(origin, rot * Vector3.forward);
 
             var tray = GetTray3D();
@@ -919,6 +1004,7 @@ namespace ArtUnbound.Input
 
                 RaycastHit[] allHits = Physics.RaycastAll(ray, rayLength);
                 Debug.Log($"[CTRL-FrameSelect] RaycastAll hits={allHits.Length}  rayLen={rayLength}");
+                LogFrameSelectDiagnostics(ray, allHits.Length);
                 // En MR se apunta a obras cercanas (passthrough): 40cm evita seleccionar cuadros de una
                 // pared lejana mientras se arma el puzzle. En VR (galeria) se apunta de lejos para
                 // reposicionar, asi que se permite todo el alcance del rayo.
@@ -927,10 +1013,23 @@ namespace ArtUnbound.Input
                 foreach (var h in allHits)
                 {
                     // Placed wall artwork takes priority over the puzzle-complete frame.
-                    if (h.collider.CompareTag("PlacedArtwork") && h.distance <= maxPlacedArtworkDist)
+                    if (h.collider.CompareTag("PlacedArtwork"))
                     {
-                        string artId = null;
                         var placedId = h.collider.GetComponent<ArtUnbound.MR.PlacedArtworkIdentifier>();
+
+                        // El tope de 40cm es solo para cuadros YA anclados en pared (no agarrar los de
+                        // una pared lejana mientras se arma el puzzle). La obra flotante del boton Hang
+                        // del detalle no tiene anchorId: nace a 45cm del panel, que esta a 0.75m de la
+                        // cabeza, asi que desde la mano casi siempre queda fuera del tope y con control
+                        // no habia forma de tomarla. Se selecciona a cualquier distancia del rayo.
+                        bool neverAnchored = placedId != null && string.IsNullOrEmpty(placedId.anchorId);
+                        if (!neverAnchored && h.distance > maxPlacedArtworkDist)
+                        {
+                            Debug.Log($"[CTRL-FrameSelect] PlacedArtwork '{h.collider.gameObject.name}' descartado: dist={h.distance:F2} > {maxPlacedArtworkDist:F2}");
+                            continue;
+                        }
+
+                        string artId = null;
                         if (placedId != null && !string.IsNullOrEmpty(placedId.artworkId))
                             artId = placedId.artworkId;
                         else
@@ -972,6 +1071,49 @@ namespace ArtUnbound.Input
                         break;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// DIAG: compara el rayo con el que el juego selecciona cuadros contra los rayos de XRI
+        /// (el visible / el que pulsa la UI), y dice que hay delante y donde esta cada obra colgable.
+        /// Sirve para saber por que un clic "sobre la pintura" pulsa el boton Hang y no la toma.
+        /// </summary>
+        private void LogFrameSelectDiagnostics(Ray ray, int hitCount)
+        {
+            string side = inputController != null ? inputController.DiagSide : "?";
+            string src  = inputController != null ? inputController.LastPointerSource : "?";
+            Debug.Log($"[CTRL-RayDiag][{side}] rayo de seleccion origin={ray.origin:F2} dir={ray.direction:F2} fuente={src} hits={hitCount}");
+
+            // Que toca el mismo rayo sin limite de 2 m (si toca algo lejos, el rayo apunta a otro lado).
+            if (Physics.Raycast(ray, out RaycastHit farHit, 20f))
+                Debug.Log($"[CTRL-RayDiag][{side}] primer collider a 20m: '{farHit.collider.gameObject.name}' " +
+                          $"layer={LayerMask.LayerToName(farHit.collider.gameObject.layer)} tag={farHit.collider.tag} dist={farHit.distance:F2}");
+            else
+                Debug.Log($"[CTRL-RayDiag][{side}] el rayo de seleccion no toca ningun collider en 20m");
+
+            // Rayos de XRI activos: origen/direccion y angulo contra el rayo de seleccion.
+            var xriRays = FindObjectsByType<UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor>(FindObjectsSortMode.None);
+            foreach (var xr in xriRays)
+            {
+                if (xr == null || !xr.isActiveAndEnabled) continue;
+                Transform o = xr.rayOriginTransform != null ? xr.rayOriginTransform : xr.transform;
+                float angle = Vector3.Angle(ray.direction, o.forward);
+                float originDelta = Vector3.Distance(ray.origin, o.position);
+                Debug.Log($"[CTRL-RayDiag][{side}] XRI '{xr.name}' (padre '{(xr.transform.parent != null ? xr.transform.parent.name : "-")}') " +
+                          $"origin={o.position:F2} dir={o.forward:F2} anguloVsSeleccion={angle:F1}deg distOrigen={originDelta:F2}m");
+            }
+
+            // Donde esta cada obra colgable respecto al rayo de seleccion.
+            foreach (var go in GameObject.FindGameObjectsWithTag("PlacedArtwork"))
+            {
+                Vector3 toArt = go.transform.position - ray.origin;
+                float along = Vector3.Dot(toArt, ray.direction);
+                float lateral = (toArt - ray.direction * along).magnitude;
+                var col = go.GetComponent<Collider>();
+                Debug.Log($"[CTRL-RayDiag][{side}] obra '{go.name}' pos={go.transform.position:F2} alFrente={along:F2}m " +
+                          $"desvioLateral={lateral:F2}m collider={(col != null ? (col.enabled ? "on" : "OFF") : "NINGUNO")} " +
+                          $"layer={LayerMask.LayerToName(go.layer)}");
             }
         }
 

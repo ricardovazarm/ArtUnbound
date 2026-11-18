@@ -209,8 +209,14 @@ namespace ArtUnbound.VR
                 var inst = go.GetComponent<GalleryPaintingInstance>();
                 bool alreadyHung = inst != null && !string.IsNullOrEmpty(inst.instanceId);
 
+                // La pose se persiste relativa a la galeria (ver VRGalleryController.AlignToMenu).
+                Vector3 savePos = offsetPos;
+                Quaternion saveRot = wallRot;
+                if (galleryController != null)
+                    galleryController.WorldToGallery(offsetPos, wallRot, out savePos, out saveRot);
+
                 if (alreadyHung && _persistenceService != null && galleryId != null
-                    && _persistenceService.UpdatePaintingPose(galleryId, inst.instanceId, offsetPos, wallRot))
+                    && _persistenceService.UpdatePaintingPose(galleryId, inst.instanceId, savePos, saveRot))
                 {
                     Debug.Log($"[VRWallHanging] Repositioned {artworkId} (instance {inst.instanceId}) at {offsetPos:F2}");
                 }
@@ -273,8 +279,10 @@ namespace ArtUnbound.VR
                 boardHeight     = 0f,
                 frameTier       = PresentationDecorator.CurrentFrameTier()
             };
-            data.Position = position;
-            data.Rotation = rotation;
+            // Se persiste relativo a la galeria: su pose de mundo cambia en cada entrada a VR.
+            galleryController.WorldToGallery(position, rotation, out Vector3 localPos, out Quaternion localRot);
+            data.Position = localPos;
+            data.Rotation = localRot;
 
             _persistenceService.SavePainting(galleryController.ActiveGalleryId, data);
         }
@@ -402,8 +410,10 @@ namespace ArtUnbound.VR
                 boardHeight     = boardH,
                 frameTier       = _currentFrameTier
             };
-            data.Position = position;
-            data.Rotation = rotation;
+            // Se persiste relativo a la galeria: su pose de mundo cambia en cada entrada a VR.
+            galleryController.WorldToGallery(position, rotation, out Vector3 localPos, out Quaternion localRot);
+            data.Position = localPos;
+            data.Rotation = localRot;
 
             _persistenceService.SavePainting(galleryController.ActiveGalleryId, data);
         }

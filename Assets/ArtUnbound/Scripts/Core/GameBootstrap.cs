@@ -132,6 +132,12 @@ namespace ArtUnbound.Core
                 return;
             }
 
+            // DEV: con los cheats encendidos, cedulas y lamparas se muestran sin llegar al umbral
+            // de obras (para ver como quedan). Con enableDevCheats en 0 (release) queda apagado.
+            ArtUnbound.Data.SaveData.DevUnlockPresentation = enableDevCheats;
+            if (enableDevCheats)
+                Debug.LogWarning("[GameBootstrap] DEV CHEATS: cedula y lampara desbloqueadas para pruebas.");
+
             InitializeServices();
             HideAllPanels(); // Ensure clean state immediately
             LoadData();
@@ -558,9 +564,35 @@ namespace ArtUnbound.Core
                 if (vrModeController != null)
                     nativeGallery.SetPositioningCamera(vrModeController.MainCamera);
                 nativeGallery.Show();
+
+                // El menu y el jugador no se mueven: la galeria recien cargada (nace en el origen)
+                // se acomoda para que su MenuAnchor quede donde esta el menu.
+                if (reloadGallery && vrGalleryController != null)
+                {
+                    if (nativeGallery.HasBeenPositioned)
+                        vrGalleryController.AlignToMenu(nativeGallery.transform);
+                    else
+                        StartCoroutine(AlignGalleryWhenMenuPositioned());
+                }
             }
 
             Debug.Log("[GameBootstrap] Transitioned to VRGallery");
+        }
+
+        /// <summary>Arranque directo en VR (dispositivos sin passthrough): el menu aun no tiene pose
+        /// cuando se carga la galeria, asi que se espera a que se coloque y entonces se alinea.</summary>
+        private IEnumerator AlignGalleryWhenMenuPositioned()
+        {
+            float deadline = Time.unscaledTime + 8f;
+            while (nativeGallery != null && !nativeGallery.HasBeenPositioned && Time.unscaledTime < deadline)
+                yield return null;
+
+            if (nativeGallery == null || vrGalleryController == null || CurrentState != GameState.VRGallery)
+                yield break;
+
+            if (!nativeGallery.HasBeenPositioned)
+                Debug.LogWarning("[GameBootstrap] El menu no se coloco a tiempo; la galeria se alinea con su pose actual.");
+            vrGalleryController.AlignToMenu(nativeGallery.transform);
         }
 
         /// <summary>Switches the active VR gallery. Called from NativeGalleryController.</summary>

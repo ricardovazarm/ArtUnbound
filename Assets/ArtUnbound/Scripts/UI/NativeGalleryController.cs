@@ -406,6 +406,10 @@ namespace ArtUnbound.UI
             _hasBeenPositioned = false;
         }
 
+        /// <summary>True cuando el panel ya fue colocado frente al usuario (su pose de mundo es la
+        /// definitiva). La galeria VR se alinea contra esta pose.</summary>
+        public bool HasBeenPositioned => _hasBeenPositioned;
+
         /// <summary>
         /// Provides a direct camera reference to use for positioning when Camera.main is unavailable (e.g. VR mode).
         /// Call this before Show() when switching to VR.
@@ -791,9 +795,10 @@ namespace ArtUnbound.UI
             // por progreso. Se oculta la FILA completa (contenedor padre = label + toggle),
             // no solo el toggle, para no dejar labels huerfanos.
             int completedCount = saveData.GetCompletedCount();
-            SetToggleRowVisible(cedulaToggle,  ProgressionRules.CedulaUnlocked(completedCount));
+            // Cedula y lampara pasan por SaveData para respetar el desbloqueo de pruebas (dev cheats).
+            SetToggleRowVisible(cedulaToggle,  saveData.IsCedulaUnlocked());
             SetToggleRowVisible(marcoToggle,   ProgressionRules.MarcoUnlocked(completedCount));
-            SetToggleRowVisible(lamparaToggle, ProgressionRules.LamparaUnlocked(completedCount));
+            SetToggleRowVisible(lamparaToggle, saveData.IsLamparaUnlocked());
 
             if (tutorialToggle != null)
                 tutorialToggle.SetIsOnWithoutNotify(saveData.settings.showOnboarding);
