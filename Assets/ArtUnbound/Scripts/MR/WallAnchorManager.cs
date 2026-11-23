@@ -26,8 +26,10 @@ namespace ArtUnbound.MR
 
         private SaveDataService saveDataService;
 
-        // artworkId → the live ARAnchor (only for artworks placed this session)
-        private Dictionary<string, ARAnchor> activeAnchorsByArtworkId = new Dictionary<string, ARAnchor>();
+        // Instancia colgada (una por copia) → su ARAnchor vivo. Va por instancia y no por
+        // artworkId: con dos copias de la misma obra, por artworkId la segunda pisaba a la primera.
+        private readonly Dictionary<GameObject, ARAnchor> _liveAnchorByArtwork = new Dictionary<GameObject, ARAnchor>();
+        private readonly List<GameObject> _deadArtworkKeys = new List<GameObject>();
         // artworkId → the frame GameObject parented to the anchor
         private Dictionary<string, GameObject> spawnedArtworks = new Dictionary<string, GameObject>();
         // Todas las instancias MR vivas (una por copia colgada), para mostrar/ocultar en MR <-> VR.
@@ -141,7 +143,7 @@ namespace ArtUnbound.MR
             }
 
             ARAnchor anchor = addResult.value;
-            activeAnchorsByArtworkId[artworkId] = anchor;
+            TrackLiveAnchor(existingFrame != null ? existingFrame.gameObject : null, anchor);
 
             // Re-parent to the real AR anchor (world position stays correct)
             existingFrame.SetParent(anchor.transform, worldPositionStays: true);
@@ -252,7 +254,6 @@ namespace ArtUnbound.MR
             }
 
             ARAnchor anchor = loadResult.value;
-            activeAnchorsByArtworkId[artworkData.artworkId] = anchor;
 
             Debug.Log($"[WallAnchor] Anchor loaded for {artworkData.artworkId}, trackingState: {anchor.trackingState}");
 
@@ -263,6 +264,8 @@ namespace ArtUnbound.MR
 
             if (artworkRoot != null)
             {
+                TrackLiveAnchor(artworkRoot, anchor);
+
                 if (anchor.trackingState == TrackingState.Tracking)
                 {
                     // Already localized — show immediately
@@ -369,6 +372,23 @@ namespace ArtUnbound.MR
         {
             spawnedArtworks[artworkId] = go;
             if (go != null) _mrArtworkObjects.Add(go);
+        }
+
+        /// <summary>
+        /// Asocia una instancia colgada con su ARAnchor vivo. De paso limpia las entradas de
+        /// cuadros ya destruidos (los que el usuario retiro de la pared).
+        /// </summary>
+        private void TrackLiveAnchor(GameObject artwork, ARAnchor anchor)
+        {
+            _deadArtworkKeys.Clear();
+            foreach (var key in _liveAnchorByArtwork.Keys)
+                if (key == null) _deadArtworkKeys.Add(key);
+            foreach (var key in _deadArtworkKeys)
+                _liveAnchorByArtwork.Remove(key);
+            _deadArtworkKeys.Clear();
+
+            if (artwork == null || anchor == null) return;
+            _liveAnchorByArtwork[artwork] = anchor;
         }
 
         // ─────────────────────────────────────────────────────────────────────
@@ -622,11 +642,16 @@ namespace ArtUnbound.MR
                 saveDataService?.RemoveAnchoredArtworkByAnchorId(oldAnchorId);
             }
 
-            if (activeAnchorsByArtworkId.TryGetValue(artworkId, out ARAnchor oldAnchor) && oldAnchor != null)
+            // Soltar el ancla vieja de ESTA copia (no la de otra copia de la misma obra).
+            // OJO: aqui solo se desvincula; el ARAnchor viejo sigue vivo en la escena. Borrar el
+            // ancla persistida (TryEraseAnchorAsync) no lo quita: para eso hay que destruirlo o
+            // llamar ARAnchorManager.TryRemoveAnchor.
+            GameObject frameGO = existingFrame != null ? existingFrame.gameObject : null;
+            if (frameGO != null && _liveAnchorByArtwork.TryGetValue(frameGO, out ARAnchor oldAnchor))
             {
-                existingFrame.SetParent(null, worldPositionStays: true);
-                // ARAnchorManager will clean up oldAnchor automatically
-                activeAnchorsByArtworkId.Remove(artworkId);
+                if (oldAnchor != null)
+                    existingFrame.SetParent(null, worldPositionStays: true);
+                _liveAnchorByArtwork.Remove(frameGO);
             }
 
             DoCreateAndSaveAnchor(artworkId, newPosition, newRotation, frameTier,

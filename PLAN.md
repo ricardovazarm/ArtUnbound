@@ -3,19 +3,21 @@
 ## Handoff
 
 - **Bloqueos:** ninguno. Árbol: `Main.unity` queda con `enableDevCheats: 1` sin commitear a
-  propósito (desbloquea cédula y lámpara en TODAS las obras). El botón "DEV" ya no sale con
-  ese flag: necesita además `showDevButton` (apagado). El MCP de Unity ahora es el del Unity
-  CLI (`unity-editor-mcp`, global); el relay viejo y `.mcp.json` ya no existen (P-011).
+  propósito (cédula y lámpara desbloqueadas; el botón "DEV" no sale porque `showDevButton`
+  está apagado). El Quest trae el APK del 2026-11-22 19:42 con ese estado.
 - **Decisiones que dependen del usuario:**
+  - ¿Liberar el `ARAnchor` viejo al reposicionar/quitar un cuadro? Hoy se queda vivo en la
+    escena (fuga por sesión; ver "Trabajo 2026-11-22, segunda tanda"). Recomendado hacerlo
+    después de las capturas.
   - Sin trackear, commitear o ignorar: `AGENTS.md`, `.agents/`, `.codex/`,
-    `scripts/Export-StoreImage.ps1` y `GeneratedAssets/` (86 MB de arte de tienda y respaldos).
+    `scripts/Export-StoreImage.ps1` y `GeneratedAssets/` (86 MB).
   - `enableDevCheats` a 0 antes de cualquier build de release.
   - ¿El baño de luz de la lámpara se quita también en VR? Hoy se quitó en los dos modos.
   - Bug del gatillo que deja de responder: ¿resuelto? Si sí, retirar los logs `DIAG`.
-- **Pendientes chicos:** Build & Run y confirmar en Quest que el botón "DEV" ya no aparece; ver
-  la lámpara sin baño de luz y todo lo de "Trabajo 2026-11-16"; 5 capturas reales 2560×1440 y
-  tráiler; `activeAnchorsByArtworkId` sigue por `artworkId` (P-009); correr
-  `unity pipeline install` en los otros proyectos de Unity para que usen el MCP nuevo.
+- **Pendientes chicos:** ver en el visor la lámpara sin baño de luz, reposicionar una de dos
+  copias de la misma obra, y lo de "Trabajo 2026-11-16"; 5 capturas 2560×1440 y tráiler; ¿las
+  placas Museum Label / Frame / Picture Light se distinguen en la miniatura? (mismo prefab);
+  `unity pipeline install` en los otros proyectos de Unity.
 
 > Fuente de verdad del avance. Al iniciar cada sesión, leer este archivo y retomar desde
 > la primera fase no completada.
@@ -185,8 +187,8 @@ Sesión de arreglos sueltos; no cierra ninguna fase ni afecta a las Fases A, B o
   **y** `showDevButton`. Con `enableDevCheats: 1` y `showDevButton` apagado, cédula y lámpara
   siguen desbloqueadas pero el HUD queda limpio. No se tocó la escena. Compilado en el editor
   (0 `error CS`, `compilationFailed: false`, campo presente por reflexión en el ensamblado
-  cargado). **Pendiente de verificar en Quest:** hacer Build & Run, entrar a un puzzle y
-  confirmar que el botón ya no aparece debajo del de salir. El APK del 18-nov aún lo trae.
+  cargado). **Verificado en Quest el 2026-11-22** con el APK de las 19:42: el usuario entró
+  a un puzzle y el botón ya no aparece.
 - **MCP de Unity migrado al Unity CLI.** El MCP del paquete `com.unity.ai.assistant` (relay)
   dejó de aceptar conexiones: "Connection revoked" / "Up to 0 direct connections allowed". No
   era la aprobación sino el límite del entitlement de la cuenta (detalle en P-011). Se
@@ -210,18 +212,59 @@ se tocó `enableDevCheats`; no se instaló el paquete Pipeline en otros proyecto
   MCP del paquete está obsoleto. No se usó el simulador de tier del paquete para forzar el
   límite (sería saltarse el control de licencia).
 
+## Trabajo 2026-11-22, segunda tanda (anclas por instancia, build al Quest, Fase A retirada)
+
+Sesión de arreglos sueltos; no cierra ninguna fase.
+
+- **Registro de anclas vivas por instancia.** En `WallAnchorManager`,
+  `activeAnchorsByArtworkId` (por `artworkId`) se reemplazó por `_liveAnchorByArtwork`
+  (cuadro colgado → su `ARAnchor`), con limpieza de entradas de cuadros destruidos. Era un
+  defecto latente: el diccionario solo se usaba para un desvincular que ya ocurría por otro
+  lado, así que **no hay cambio visible esperado**. Compilado en el editor (0 `error CS`, la
+  DLL trae `_liveAnchorByArtwork` y ya no el nombre viejo) y dentro del APK de las 19:42.
+  **Pendiente de verificar en Quest:** colgar dos copias de la misma obra, reposicionar una y
+  reabrir; debe portarse igual que antes.
+- **Hallazgo sin arreglar: fuga de `ARAnchor`.** Al reposicionar o quitar un cuadro se borra
+  el ancla persistida (`TryEraseAnchorAsync`) pero el `ARAnchor` vivo se queda en la escena;
+  el comentario viejo decía que `ARAnchorManager` lo limpiaba solo y es falso (doc del
+  paquete AR Foundation, "Remove an anchor": hay que destruir el componente o llamar
+  `TryRemoveAnchor`). Solo se acumula durante la sesión. El punto donde iría el arreglo es
+  `WallAnchorManager.DoEraseAndRecreate` (ya tiene el ancla correcta de esa copia) y el
+  retiro en `EraseArtworkStorageEntry`.
+- **Build y deploy al Quest.** APK construido desde el editor (`Build Finished, Result:
+  Success`, `ArtUnbound_v1.apk` 591 MB, 19:42) e instalado con `adb install -r` (conserva
+  `save.json`); el visor reporta `lastUpdateTime` 19:42:47, versión 2.2.1. Receta en P-015.
+- **Fase A retirada.** Pedía asignar el `icon` de `upgrade_cedula/frame/lamp`, pero esos
+  assets son `hangable: 1` con prefab de placa: Collection los muestra con la miniatura 3D y
+  nunca lee `icon`. Revisado en código que sus placas sí se otorgan:
+  `CollectibleService.EvaluateOnCompletion` las da cuando las obras completadas llegan a
+  10/25/50 (tipos Cedula/Frame/Lamp, mismos umbrales que `ProgressionRules`), al terminar un
+  puzzle y al cargar el save. **No probado en el visor** (requiere un save con 10+ obras). El
+  cheat `enableDevCheats` desbloquea cédula y lámpara en los cuadros pero NO otorga estas
+  placas: con él salen con candado en Collection, y es lo esperado. Se corrigieron los
+  tooltips de `hangable` e `icon` en `CollectibleDefinition`, que decían lo contrario.
+
+**Qué NO se hizo y por qué:** no se arregló la fuga de `ARAnchor` (cambia el comportamiento
+de anclas en el dispositivo y este build es el de las capturas; decisión del usuario
+pendiente); no se revisó el reporte detallado del build (3.4 MB), solo el resultado del log y
+la instalación; no se tocó `enableDevCheats`.
+
+### Decisiones
+- **DS.9** Las mejoras Cédula/Marco/Lámpara se quedan como placas colgables en Collection
+  (miniatura 3D). Descartado volverlas no colgables con icono Sprite: era lo que asumía la
+  Fase A, pero el catálogo se generó con `hangable = true` y el usuario lo prefiere así.
+- **DS.10** El registro de anclas vivas se mantuvo (ahora por instancia) en vez de borrarlo
+  aunque hoy no tenga efecto visible: es lo que hace falta para liberar el ancla correcta
+  cuando se arregle la fuga.
+
 ---
 
-## FASE A — Últimos pendientes del Editor
+## FASE A — Últimos pendientes del Editor (RETIRADA 2026-11-22, no aplica)
 
-**Trabajo:**
-1. Asignar el campo `icon` (Sprite) de `upgrade_cedula.asset`, `upgrade_frame.asset` y
-   `upgrade_lamp.asset` (hoy `{fileID: 0}`) — sin esto, las tarjetas de mejoras en
-   Collection salen sin icono.
+Pedía asignar el campo `icon` de las tres mejoras. No aplica: son placas colgables y
+Collection no usa ese campo (ver DS.9). No se hizo ningún trabajo; no cuenta como completada.
 
-**Salida verificable (Play Mode):** abrir Collection → las 3 mejoras muestran su icono.
-
-**Estado:** ☐ Pendiente
+**Estado:** ✖ Retirada
 
 ---
 
@@ -269,12 +312,13 @@ compra y ver el catálogo desbloqueado sin re-comprar.
 
 ## Siguiente paso concreto
 
-Hacer Build & Run (el APK del 2026-11-18 aún trae el botón "DEV") y, con ese build: confirmar
-que el botón "DEV" ya no aparece al armar un cuadro, tomar las 5 capturas de 2560×1440,
-confirmar en el visor que las lámparas ya no pintan luz sobre la pintura, y recorrer los
-puntos de "Trabajo 2026-11-16" y los 4 "Mirar" de "Fixes 2026-10-29" con logcat grabando
-desde antes (P-012). Si algo falla, abrir sesión con el log. Si todo pasa, seguir con la
-Fase A (iconos en el Editor). En paralelo, para la tienda: el tráiler.
+Con el APK del 2026-11-22 19:42 que ya está en el Quest (botón "DEV" ya verificado fuera):
+tomar las 5 capturas de 2560×1440, confirmar que las lámparas ya no pintan luz sobre la
+pintura, reposicionar una de dos copias de la misma obra, y recorrer los puntos de "Trabajo
+2026-11-16" y los 4 "Mirar" de "Fixes 2026-10-29" con logcat grabando desde antes (P-012).
+Eso es la Fase B. Si algo falla, abrir sesión con el log. Después de las capturas: decidir el
+arreglo de la fuga de `ARAnchor` y la Fase C (dashboard). En paralelo, para la tienda: el
+tráiler.
 
 ## Arte de publicación — Meta Horizon Store
 

@@ -34,8 +34,8 @@ Una línea por patrón. Solo lo que costó trabajo aprender y el `/clear` borrar
   `PlacedArtworkIdentifier.anchorId`, en VR por `instanceId`; nunca por `artworkId`.
   (sesiones previas) **Mordio el 2026-11-16:** `WallAnchorManager.spawnedArtworks` va por
   `artworkId` y con dos copias solo conoce una (la otra quedo visible en VR); para recorrer
-  TODAS las instancias MR usa `_mrArtworkObjects`. `activeAnchorsByArtworkId` tiene el mismo
-  defecto y sigue sin corregir.
+  TODAS las instancias MR usa `_mrArtworkObjects`. El ancla viva de una copia se busca en
+  `_liveAnchorByArtwork` (por GameObject; corregido 2026-11-22).
 - **P-010** · Compilar con el editor ABIERTO — batchmode no corre (lock), pero
   `dotnet build Assembly-CSharp.csproj -nologo -v q -clp:"ErrorsOnly;Summary"` SI compila los
   csproj que Unity genera (~6 s, dotnet 10). Dos trampas: (1) `EnableDefaultItems=false`, un
@@ -60,8 +60,8 @@ Una línea por patrón. Solo lo que costó trabajo aprender y el `/clear` borrar
   `Library/ScriptAssemblies/Assembly-CSharp.dll` es mas nueva que el `.cs` editado y hay 0
   `error CS` en `$LOCALAPPDATA/Unity/Editor/Editor.log` (si el resultado es identico la DLL no
   cambia de fecha). Con el editor SIN foco el auto-refresh no dispara; la receta
-  `AssetDatabase.Refresh(); CompilationPipeline.RequestScriptCompilation();` funcionaba con el
-  MCP viejo y NO se ha probado con `script_eval`. No mandar comandos al editor mientras corre un
+  `UnityEditor.AssetDatabase.Refresh(); UnityEditor.Compilation.CompilationPipeline.RequestScriptCompilation();`
+  SI funciona con `script_eval` (probado 2 veces el 2026-11-22; la DLL sale ~15-25 s despues). No mandar comandos al editor mientras corre un
   Build. **Regla del usuario: tras editar C# se compila SIEMPRE en el editor antes de entregar**
   (`dotnet build` solo no cuenta). (2026-11-16; reescrito 2026-11-22 por la migracion al CLI)
 - **P-012** · Log del Quest — el buffer de logcat es de 256 KB y pierde las lineas de Unity en
@@ -80,3 +80,11 @@ Una línea por patrón. Solo lo que costó trabajo aprender y el `/clear` borrar
   cambiados en el editor no llegan a disco hasta *File > Save Project*. (3) El Quest respeta
   `m_SplashScreenBackgroundColor`; el Virtual Reality Splash Image no tiene color propio, asi que
   va con PNG transparente (uno con fondo se ve como recuadro). (2026-11-18)
+- **P-015** · Build y deploy al Quest desde el MCP — `build run` con `target: Android`,
+  `output-path: ArtUnbound_v1.apk`, `confirm: true` devuelve `queued` al instante (~7 min de
+  build). NO pedir `build status` al terminar: devuelve el BuildReport completo (3.4 MB) y
+  revienta el limite de la herramienta. Se confirma con el cambio de fecha del APK mas la linea
+  `Build Finished, Result: Success` en `$LOCALAPPDATA/Unity/Editor/Editor.log`. Instalar con el
+  adb del editor (ruta en P-012): `adb install -r ArtUnbound_v1.apk` (conserva `save.json`) y
+  comprobar `adb shell dumpsys package com.ajolotestudios.artunbound | grep lastUpdateTime`.
+  (2026-11-22)

@@ -29,11 +29,11 @@ namespace ArtUnbound.Data
         public int threshold;
 
         [Header("Behaviour")]
-        [Tooltip("Si es colgable (placas). Las mejoras Cedula/Frame/Lamp van en false: se auto-aplican.")]
+        [Tooltip("Si es colgable. Todas las placas van en true, incluidas las de las mejoras Cedula/Frame/Lamp (la mejora se auto-aplica aparte; esta es su placa coleccionable).")]
         public bool hangable = true;
 
         [Header("Visual")]
-        [Tooltip("Icono mostrado en la tarjeta de Collection.")]
+        [Tooltip("Icono de la tarjeta de Collection. Solo se usa si hangable es false; las colgables muestran la miniatura 3D del prefab.")]
         public Sprite icon;
         [Tooltip("Prefab 3D colgable de este coleccionable. Si esta vacio se usa el molde procedural.")]
         public GameObject visualPrefab;
