@@ -82,6 +82,8 @@ namespace ArtUnbound.Core
         [Header("Dev Cheats")]
         [Tooltip("DEV ONLY: muestra un boton verde 'DEV' en el HUD que auto-completa el puzzle actual. Usado para preparar cuadros colgados para capturas de marketing. APAGAR antes de builds de release.")]
         [SerializeField] private bool enableDevCheats = false;
+        [Tooltip("DEV ONLY: con enableDevCheats activo, muestra el boton verde 'DEV' en el HUD. Apagado, los cheats siguen activos (cedula y lampara desbloqueadas) pero el HUD queda limpio para capturas.")]
+        [SerializeField] private bool showDevButton = false;
 
         [Header("Feedback Controllers")]
         [SerializeField] private AudioManager audioManager;
@@ -331,7 +333,7 @@ namespace ArtUnbound.Core
                 puzzleHUD.OnExitRequested += OnBackFromPostGame;
                 puzzleHUD.OnHighlightWrongRequested += HighlightWrongPieces;
 
-                if (enableDevCheats)
+                if (enableDevCheats && showDevButton)
                 {
                     puzzleHUD.EnableDevCompleteButton();
                     puzzleHUD.OnDevCompleteRequested += OnDevCompletePuzzle;

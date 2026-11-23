@@ -1,18 +1,21 @@
-# PLAN.md — Estado del proyecto (actualizado 2026-11-18)
+# PLAN.md — Estado del proyecto (actualizado 2026-11-22)
 
 ## Handoff
 
 - **Bloqueos:** ninguno. Árbol: `Main.unity` queda con `enableDevCheats: 1` sin commitear a
-  propósito (toggle de pruebas; además desbloquea cédula y lámpara en TODAS las obras).
+  propósito (desbloquea cédula y lámpara en TODAS las obras). El botón "DEV" ya no sale con
+  ese flag: necesita además `showDevButton` (apagado). El MCP de Unity ahora es el del Unity
+  CLI (`unity-editor-mcp`, global); el relay viejo y `.mcp.json` ya no existen (P-011).
 - **Decisiones que dependen del usuario:**
-  - Sin trackear, commitear o ignorar: `AGENTS.md`, `.agents/`, `.codex/`, `.mcp.json`,
+  - Sin trackear, commitear o ignorar: `AGENTS.md`, `.agents/`, `.codex/`,
     `scripts/Export-StoreImage.ps1` y `GeneratedAssets/` (86 MB de arte de tienda y respaldos).
   - `enableDevCheats` a 0 antes de cualquier build de release.
   - ¿El baño de luz de la lámpara se quita también en VR? Hoy se quitó en los dos modos.
   - Bug del gatillo que deja de responder: ¿resuelto? Si sí, retirar los logs `DIAG`.
-- **Pendientes chicos:** ver en Quest la lámpara sin baño de luz y todo lo de "Trabajo
-  2026-11-16"; 5 capturas reales 2560×1440 y tráiler para la tienda; `activeAnchorsByArtworkId`
-  sigue por `artworkId` (P-009); el MCP de Unity se engancha a otro editor si hay varios (P-013).
+- **Pendientes chicos:** Build & Run y confirmar en Quest que el botón "DEV" ya no aparece; ver
+  la lámpara sin baño de luz y todo lo de "Trabajo 2026-11-16"; 5 capturas reales 2560×1440 y
+  tráiler; `activeAnchorsByArtworkId` sigue por `artworkId` (P-009); correr
+  `unity pipeline install` en los otros proyectos de Unity para que usen el MCP nuevo.
 
 > Fuente de verdad del avance. Al iniciar cada sesión, leer este archivo y retomar desde
 > la primera fase no completada.
@@ -172,6 +175,41 @@ para la tienda sigue con alfa sucio y tipografía distinta al ícono (es un asse
   respeta el color de fondo del splash, y la imagen con fondo propio (blanco no puro) se veía
   como un recuadro.
 
+## Trabajo 2026-11-22 (botón DEV fuera de las capturas y migración del MCP de Unity)
+
+Sesión de arreglos sueltos; no cierra ninguna fase ni afecta a las Fases A, B o C.
+
+- **Botón "DEV" oculto para capturas.** El usuario no pudo tomar los screenshots de la tienda
+  porque el botón verde "DEV" (cheat de autocompletar) salía en el HUD. Nuevo campo
+  `GameBootstrap.showDevButton` (default `false`): el botón solo se crea con `enableDevCheats`
+  **y** `showDevButton`. Con `enableDevCheats: 1` y `showDevButton` apagado, cédula y lámpara
+  siguen desbloqueadas pero el HUD queda limpio. No se tocó la escena. Compilado en el editor
+  (0 `error CS`, `compilationFailed: false`, campo presente por reflexión en el ensamblado
+  cargado). **Pendiente de verificar en Quest:** hacer Build & Run, entrar a un puzzle y
+  confirmar que el botón ya no aparece debajo del de salir. El APK del 18-nov aún lo trae.
+- **MCP de Unity migrado al Unity CLI.** El MCP del paquete `com.unity.ai.assistant` (relay)
+  dejó de aceptar conexiones: "Connection revoked" / "Up to 0 direct connections allowed". No
+  era la aprobación sino el límite del entitlement de la cuenta (detalle en P-011). Se
+  actualizó el Unity CLI a 1.0.1, se registró `unity-editor-mcp` (`unity mcp --tool-groups`)
+  a nivel usuario en Claude Code, se instaló `com.unity.pipeline` 1.0.1 en el proyecto
+  (`Packages/manifest.json` y `packages-lock.json`) y se borró `.mcp.json` (no estaba
+  trackeado). Verificado: `script_eval` corrió C# en el editor de ArtUnbound y devolvió su
+  `dataPath`.
+
+**Qué NO se hizo y por qué:** no se actualizó `com.unity.ai.assistant` (sigue en 2.10.0-pre.1;
+la guía de Unity dice que <2.13 puede chocar con el CLI, pero aquí no dio conflicto y el
+paquete ya no se usa para el MCP); no se quitó ese paquete del proyecto (decisión aparte); no
+se tocó `enableDevCheats`; no se instaló el paquete Pipeline en otros proyectos.
+
+### Decisiones
+- **DS.7** Ocultar solo el botón con un flag aparte en vez de poner `enableDevCheats` en 0:
+  las capturas necesitan cédula y lámpara desbloqueadas, que dependen del mismo flag. Se
+  pierde el autocompletar mientras `showDevButton` esté apagado.
+- **DS.8** Migrar al MCP del Unity CLI en vez de bajar `com.unity.ai.assistant` a 2.6.0-pre.1
+  o activar el trial de Unity AI: es el camino que Unity soporta y anuncia como gratuito; el
+  MCP del paquete está obsoleto. No se usó el simulador de tier del paquete para forzar el
+  límite (sería saltarse el control de licencia).
+
 ---
 
 ## FASE A — Últimos pendientes del Editor
@@ -231,11 +269,12 @@ compra y ver el catálogo desbloqueado sin re-comprar.
 
 ## Siguiente paso concreto
 
-Con el build ya instalado (APK del 2026-11-18 13:15): confirmar en el visor que las lámparas
-ya no pintan luz sobre la pintura, y recorrer los puntos de "Trabajo 2026-11-16" y los 4
-"Mirar" de "Fixes 2026-10-29" con logcat grabando desde antes (P-012). Si algo falla, abrir
-sesión con el log. Si todo pasa, seguir con la Fase A (iconos en el Editor). En paralelo, para
-la tienda: tomar las 5 capturas reales de 2560×1440 y el tráiler.
+Hacer Build & Run (el APK del 2026-11-18 aún trae el botón "DEV") y, con ese build: confirmar
+que el botón "DEV" ya no aparece al armar un cuadro, tomar las 5 capturas de 2560×1440,
+confirmar en el visor que las lámparas ya no pintan luz sobre la pintura, y recorrer los
+puntos de "Trabajo 2026-11-16" y los 4 "Mirar" de "Fixes 2026-10-29" con logcat grabando
+desde antes (P-012). Si algo falla, abrir sesión con el log. Si todo pasa, seguir con la
+Fase A (iconos en el Editor). En paralelo, para la tienda: el tráiler.
 
 ## Arte de publicación — Meta Horizon Store
 
