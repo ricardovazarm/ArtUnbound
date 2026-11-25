@@ -1,10 +1,12 @@
-# PLAN.md — Estado del proyecto (actualizado 2026-11-22)
+# PLAN.md — Estado del proyecto (actualizado 2026-11-25)
 
 ## Handoff
 
 - **Bloqueos:** ninguno. Árbol: `Main.unity` queda con `enableDevCheats: 1` sin commitear a
   propósito (cédula y lámpara desbloqueadas; el botón "DEV" no sale porque `showDevButton`
-  está apagado). El Quest trae el APK del 2026-11-22 19:42 con ese estado.
+  está apagado). El **Quest 3** y el **Quest 2** traen el mismo APK del 2026-11-22 19:42
+  (2.2.1) con ese estado; en el Quest 2 es instalación limpia del 2026-11-25 y **nunca se ha
+  abierto ahí** (ver "Trabajo 2026-11-25").
 - **Decisiones que dependen del usuario:**
   - ¿Liberar el `ARAnchor` viejo al reposicionar/quitar un cuadro? Hoy se queda vivo en la
     escena (fuga por sesión; ver "Trabajo 2026-11-22, segunda tanda"). Recomendado hacerlo
@@ -14,7 +16,8 @@
   - `enableDevCheats` a 0 antes de cualquier build de release.
   - ¿El baño de luz de la lámpara se quita también en VR? Hoy se quitó en los dos modos.
   - Bug del gatillo que deja de responder: ¿resuelto? Si sí, retirar los logs `DIAG`.
-- **Pendientes chicos:** ver en el visor la lámpara sin baño de luz, reposicionar una de dos
+- **Pendientes chicos:** primer arranque en el Quest 2 (VR en frío, con controles y logcat
+  grabando); ver en el visor la lámpara sin baño de luz, reposicionar una de dos
   copias de la misma obra, y lo de "Trabajo 2026-11-16"; 5 capturas 2560×1440 y tráiler; ¿las
   placas Museum Label / Frame / Picture Light se distinguen en la miniatura? (mismo prefab);
   `unity pipeline install` en los otros proyectos de Unity.
@@ -257,6 +260,36 @@ la instalación; no se tocó `enableDevCheats`.
   aunque hoy no tenga efecto visible: es lo que hace falta para liberar el ancla correcta
   cuando se arregle la fuga.
 
+## Trabajo 2026-11-25 (APK instalado en el Quest 2 para las capturas)
+
+Sesión de preparación; no cierra ninguna fase y **no se tocó código, escena ni assets**.
+
+- **APK instalado en el Quest 2.** El usuario hará las capturas en los dos visores. El Quest 2
+  (serie `1WMHH843T01084`) no tenía Art Unbound; se instaló `ArtUnbound_v1.apk` del 2026-11-22
+  19:42 con `adb install -r` (`Success`). El visor reporta 2.2.1, `firstInstallTime` y
+  `lastUpdateTime` 2026-11-25 00:25:53. El Quest 3 (serie `2G0YC5ZF9K0BJ0`) sigue con el mismo
+  APK (`lastUpdateTime` 2026-11-22 19:42:47).
+- **Revisado en el APK y en código, sin ejecutar:** el manifest declara
+  `com.oculus.supportedDevices = quest2|questpro|quest3|quest3s`; `minSdk` 32 y el Quest 2
+  está en SDK 34. `GameBootstrap.DetectDevice()` solo trata como MR a Quest 3, 3S y Pro: el
+  Quest 2 arranca con `shouldStartInVR = true` y entra por `TransitionToVRGallery()` sin
+  pasar por passthrough.
+
+**Pendiente de verificar en el Quest 2 (nunca se ha abierto la app ahí):**
+- Arranque en frío directo a VR: logcat debe decir `[GameBootstrap] Device: Quest3/Pro=False`
+  y la galería debe quedar alineada al menú. Si sale el warning `El menu no se coloco a
+  tiempo`, ese es el camino que falló (en el Quest 3 siempre se llega a VR desde MR, con el
+  menú ya colocado).
+- Rendimiento de la galería VR (no hay ninguna medición en ese visor).
+- Si el botón MR queda oculto: no se revisó qué hace `SetVRButtonsMode(true, false)`.
+- Qué pasa si se arranca en manos: el aviso que exige controles para VR solo está en el botón
+  VR de `NativeGalleryController`, y en el Quest 2 se entra a VR sin pasar por ese botón.
+- Empieza sin `save.json`: sale el tutorial y no hay obras completadas ni colgadas; para las
+  capturas hay que poblarlo con el autocompletar del cheat.
+
+**Qué NO se hizo y por qué:** no se abrió la app en el Quest 2 ni se grabó logcat (el usuario
+cerró la sesión antes de probar); no se compiló nada porque no cambió código.
+
 ---
 
 ## FASE A — Últimos pendientes del Editor (RETIRADA 2026-11-22, no aplica)
@@ -312,8 +345,12 @@ compra y ver el catálogo desbloqueado sin re-comprar.
 
 ## Siguiente paso concreto
 
-Con el APK del 2026-11-22 19:42 que ya está en el Quest (botón "DEV" ya verificado fuera):
-tomar las 5 capturas de 2560×1440, confirmar que las lámparas ya no pintan luz sobre la
+Primero, abrir la app en el **Quest 2** con controles y logcat grabando (P-012, con
+`-s 1WMHH843T01084`) y revisar los puntos de "Trabajo 2026-11-25": es instalación limpia y
+ahí arranca directo en VR, camino que nunca se ha probado.
+
+Después, con el APK del 2026-11-22 19:42 que ya está en los dos visores (botón "DEV" ya
+verificado fuera en el Quest 3): tomar las 5 capturas de 2560×1440, confirmar que las lámparas ya no pintan luz sobre la
 pintura, reposicionar una de dos copias de la misma obra, y recorrer los puntos de "Trabajo
 2026-11-16" y los 4 "Mirar" de "Fixes 2026-10-29" con logcat grabando desde antes (P-012).
 Eso es la Fase B. Si algo falla, abrir sesión con el log. Después de las capturas: decidir el
