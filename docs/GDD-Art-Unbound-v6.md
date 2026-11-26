@@ -1,7 +1,19 @@
 # Documento de Diseño de Juego (GDD): Art Unbound
-- Versión: 6.0
-- Fecha: Junio 2026
-- Plataforma: Meta Quest (Quest 2, Quest 3, Quest Pro)
+- Versión: 6.1
+- Fecha: Noviembre 2026
+- Plataforma: Meta Quest (Quest 2, Quest 3, Quest 3S, Quest Pro)
+
+**Cambios respecto a 6.0 (junio 2026).** Esta revisión alinea el documento con lo que está implementado en el juego:
+- Tutorial de mano fantasma en el primer arranque (4.9).
+- Hand tracking con cualquiera de las dos manos (4.5).
+- Post-juego sin botones de colgado: el cuadro queda listo para tomarse; único botón "Play Again" (4.8).
+- Botón "Hang on Wall" en el detalle de las obras completadas, y la misma obra puede colgarse varias veces (4.2, 5.1).
+- Collection lista placas y mejoras; las obras completadas se cuelgan desde su detalle (8.5).
+- Las mejoras Cédula/Marco/Lámpara también otorgan una placa colgable; la lámpara ya no proyecta luz sobre la pintura (8.2).
+- Menú y tablero a 0.75 m (antes 0.4 m); recentrado y cambio automático manos/controles (11.8).
+- Galería VR alineada al menú y teleport solo sobre piso (6).
+- Catálogo de 251 obras; Apéndice A regenerado desde el catálogo real.
+- Chips de filtro de la búsqueda: diferidos, no implementados (11.7).
 
 ---
 
@@ -9,7 +21,7 @@
 
 Art Unbound es un juego de puzzles para Meta Quest. Los jugadores reconstruyen obras maestras clásicas ensamblando piezas en un lienzo flotante frente a ellos, y al terminar pueden colgar el cuadro completado en su entorno, donde persiste entre sesiones.
 
-En **Modo Mixto (MR)** — disponible en Quest 3 y Quest Pro — el cuadro se cuelga en una pared real del espacio físico del usuario mediante anclajes espaciales persistentes. En **Modo Virtual (VR)** — disponible en todos los dispositivos Quest — el cuadro se cuelga en las paredes de una galería de arte 3D inmersiva.
+En **Modo Mixto (MR)** — disponible en Quest 3, Quest 3S y Quest Pro — el cuadro se cuelga en una pared real del espacio físico del usuario mediante anclajes espaciales persistentes. En **Modo Virtual (VR)** — disponible en todos los dispositivos Quest — el cuadro se cuelga en las paredes de una galería de arte 3D inmersiva.
 
 El espacio del usuario se transforma con el tiempo en su propio museo personal: las obras que completa, las placas que gana y los elementos de galería que desbloquea conviven en sus paredes como un registro visible de su recorrido.
 
@@ -33,7 +45,7 @@ El espacio del usuario se transforma con el tiempo en su propio museo personal: 
 
 - **Inmersión tangible**: Las piezas tienen volumen de 0.5 cm y se ensamblan en un lienzo flotante ergonómico.
 - **Magia cotidiana**: Las obras completadas decoran permanentemente el espacio del usuario — físico en MR, virtual en VR.
-- **Flexibilidad ergonómica**: El armado ocurre siempre en un lienzo flotante a distancia fija (0.4 m del usuario), permitiendo jugar sentado o de pie en cualquier lugar. La integración con la pared es una recompensa post-juego.
+- **Flexibilidad ergonómica**: El armado ocurre siempre en un lienzo flotante a distancia fija (0.75 m del usuario, unos 25 cm por debajo de la altura de los ojos; la misma posición que el menú), permitiendo jugar sentado o de pie en cualquier lugar. La integración con la pared es una recompensa post-juego.
 - **Bienestar sin presión**: No hay penalizaciones, puntuaciones ni relojes que castiguen. El tamaño del rompecabezas es una elección de comodidad, no de dificultad competitiva.
 
 ---
@@ -42,29 +54,34 @@ El espacio del usuario se transforma con el tiempo en su propio museo personal: 
 
 ### 4.1. Menú Principal
 
-El menú principal es un panel flotante en espacio MR/VR con tres zonas:
+El menú principal es un panel flotante en espacio MR/VR, colocado a 0.75 m del usuario. Tiene un cuerpo central que cambia según la pestaña y una barra de navegación:
 
-**Barra superior**
-- Título de la app ("Art Unbound") a la izquierda.
-- A la derecha: un **toggle de modo** (VR/MR) que alterna entre realidad mixta y galería virtual, y un acceso a **Configuración** (engrane) con: volumen de música, volumen de efectos, y los toggles para mostrar/ocultar **cédulas**, **marcos** y **lámparas** (una vez desbloqueados; ver 8.2).
+**Configuración (pestaña Settings)**
+- Volumen de música y volumen de efectos.
+- Toggle de **hápticos**.
+- Toggles para mostrar/ocultar **cédulas**, **marcos** y **lámparas** (ver 8.2). Cada fila aparece solo cuando esa mejora ya está desbloqueada.
+- Toggle **"Show tutorial"**: vuelve a activar el tutorial de mano fantasma sin reiniciar (ver 4.9).
 
 **Cuerpo central — Catálogo de obras**
 - Cuadrícula paginada de miniaturas, cada una con su título. Por defecto muestra primero las 12 obras gratuitas y, al hacer scroll, el resto del catálogo.
 - Las obras completadas muestran un **badge de completada**: una palomita dentro de un círculo (`icon_completed`), colocada en una esquina de la miniatura sobre un pequeño disco oscuro para que sea legible sobre cualquier obra. Indica que la obra fue armada; no varía según el tamaño elegido. **No se usa una medalla para esto** (la medalla se reserva para hitos; ver sección 8).
 - Las obras **bloqueadas** se muestran **a imagen completa, sin candado encima**: la miniatura nunca se tapa. El único indicador de bloqueo es un **pequeño candado** (`icon_lock`) en una esquina (distinta a la del badge de completada), también sobre disco oscuro. El deseo de compra nace de ver la obra, no de esconderla.
-- **Búsqueda y filtros integrados en el propio catálogo** (no hay pantalla de búsqueda separada): una barra superior con un campo de búsqueda y **chips de filtro tocables** (por movimiento, por artista, por estado libre/bloqueada). Con el campo vacío y sin filtros, se ve el catálogo completo; al escribir o tocar un chip, el mismo grid se filtra in-situ. En VR se priorizan los chips tocables sobre teclear (el teclado virtual es incómodo). Ver sección 11.7.
+- **Búsqueda integrada en el propio catálogo** (no hay pantalla de búsqueda separada): un campo de búsqueda sobre el grid. Con el campo vacío se ve el catálogo completo; al escribir, el mismo grid se filtra in-situ. Los **chips de filtro tocables** (por movimiento, artista y estado) están diferidos y no existen todavía. Ver sección 11.7.
 - Seleccionar una obra abre su **detalle como ventana modal** (ver 4.2).
 
 **Barra inferior — Navegación**
-- **Home**: catálogo principal (con búsqueda y filtros integrados).
-- **Collection**: inventario de exhibición del jugador (ver 8.5) — obras completadas y recompensas obtenidas, desde donde se cuelgan.
+- **Home**: catálogo principal (con búsqueda integrada).
+- **Collection**: placas y mejoras del jugador, obtenidas y por obtener (ver 8.5). Las placas obtenidas se cuelgan desde aquí.
+- **Settings**: configuración (arriba).
+- **Botón de modo**: "VR" cuando se está en MR y "MR" cuando se está en VR. Solo aparece en visores con passthrough (Quest 3, 3S y Pro); el Quest 2 arranca y permanece en VR. Entrar a VR exige controles: si se toca "VR" con las manos, un aviso lo indica durante 3 segundos.
 
 ### 4.2. Detalle de Obra y Tamaños de Rompecabezas
 
 Al seleccionar una obra del catálogo se abre su **detalle como ventana modal**, que muestra la pintura, su título, artista, museo de origen, movimiento artístico y año. El detalle se comporta distinto según si la obra está desbloqueada:
 
 - **Obra desbloqueada:** muestra "Solve a puzzle" con **tres botones de tamaño** (A Coffee / A Break / A Movie) para iniciar el puzzle. Los botones muestran solo su etiqueta de tamaño (sin récord de tiempo).
-- **Obra bloqueada** (no incluida en el tier gratuito, con el catálogo aún no comprado): en lugar de los botones de tamaño, el detalle muestra un **botón de compra** que dispara el desbloqueo único de todo el catálogo (ver sección 12). Este es el único punto de venta del juego: no existe una sección de tienda separada. La obra bloqueada **se muestra completa y nítida** (nunca tapada por un candado); el estado de bloqueo se comunica por la ausencia de los botones de tamaño y la presencia del botón de compra, más un pequeño candado de esquina en la miniatura del catálogo (ver 4.1).
+- **Obra ya completada:** además de los botones de tamaño aparece el botón **"Hang on Wall"**. Al tocarlo, la obra enmarcada aparece flotando junto al panel, lista para tomarla y colgarla (ver 5.1). Puede usarse las veces que se quiera: cada vez genera una copia nueva.
+- **Obra bloqueada** (no incluida en el tier gratuito, con el catálogo aún no comprado): en lugar de los botones de tamaño, el detalle muestra un **botón de compra** que dispara el desbloqueo único de todo el catálogo (ver sección 12). Este es el único punto de venta del juego: no existe una sección de tienda separada. La obra bloqueada **se muestra completa y nítida** (nunca tapada por un candado); el estado de bloqueo se comunica por la ausencia de los botones de tamaño y la presencia del botón de compra, más un pequeño candado de esquina en la miniatura del catálogo (ver 4.1). El botón de compra muestra el **precio localizado que devuelve Meta**, nunca un precio escrito a mano.
 
 **Disposición del modal (la pintura como protagonista).** La imagen ocupa el lado izquierdo grande, sobre una "pared de galería" oscura, centrada y **contenida sin recortar** (una obra apaisada deja aire arriba/abajo; una vertical llena de alto). Los datos (título, artista, museo, movimiento, año) van a la derecha, con la acción —los botones de tamaño o el botón de compra— anclada abajo. El panel del modal es **100% opaco** (no translúcido), ya que ocupa casi todo el campo de visión y la transparencia dejaría ver el entorno detrás.
 
@@ -96,7 +113,7 @@ El **marco es un asset cosmético que se desbloquea por progreso** (a las 25 obr
 Al iniciar el puzzle, el espacio se divide en tres zonas:
 
 **Centro — Tablero del Puzzle**
-- El lienzo flotante a 0.4 m del usuario donde se arman las piezas.
+- El lienzo flotante a 0.75 m del usuario donde se arman las piezas. Aparece en la misma posición en la que estaba el menú.
 - Ocupa el espacio visual principal.
 
 **Izquierda — Panel de Información**
@@ -116,7 +133,7 @@ Al iniciar el puzzle, el espacio se divide en tres zonas:
 
 El armado admite **dos modos de entrada**:
 
-- **Con las manos (hand tracking, MR):** el usuario toma una pieza con pinch (pulgar-índice); la pieza sigue su mano y, al soltarla cerca del tablero, hace snap al **slot disponible más cercano** — no al punto exacto donde se suelta.
+- **Con las manos (hand tracking, MR):** el usuario toma una pieza con pinch (pulgar-índice); la pieza sigue su mano y, al soltarla cerca del tablero, hace snap al **slot disponible más cercano** — no al punto exacto donde se suelta. Funciona con **cualquiera de las dos manos**, igual que el scroll de la bandeja.
 - **Con los controles (MR y VR):** el usuario apunta y presiona el gatillo para **seleccionar una pieza**, luego apunta y presiona el gatillo en la **celda de destino** del tablero, y la pieza se coloca exactamente ahí. En MR con controles el comportamiento es idéntico al de VR.
 
 En ambos casos: si la pieza queda en su slot correcto, aumenta el contador de correctas y hay confirmación visual y sonora; si no, aumenta el de incorrectas. Una pieza colocada puede tomarse de nuevo y reubicarse. El puzzle se completa cuando todas las piezas están en su slot correcto, lo que activa la animación de revelación.
@@ -147,14 +164,25 @@ Cada hito dispara un mensaje contextual en pantalla y efectos de partículas.
 ### 4.8. Finalización y Post-Juego
 
 1. Al colocar todas las piezas correctamente se activa la animación de revelación: el cuadro aparece completo con su marco.
-2. Se muestra el panel de post-juego con la obra enmarcada (a la izquierda, con su título y artista) y, a la derecha, un mensaje **genérico de finalización, sin lenguaje de "premio"**:
+2. Se muestra el panel de post-juego con un mensaje **genérico de finalización, sin lenguaje de "premio"**:
    - Título: **"Artwork Complete"** (Cormorant Garamond).
    - Línea de acción (tenue): **"Ready to hang in your gallery"** (Hanken).
-   - Botones: **"Hang it now"** (primario, latón — lleva directo al modo de colgado) y **"Back to collection"** (secundario).
-   - **No aparece ninguna medalla ni texto de "ganaste una medalla".** Completar una obra la marca como completada (badge de palomita en el catálogo) y habilita colgarla; la recompensa real es el cuadro en la pared, no un icono. Las medallas/placas se reservan para hitos (ver sección 8).
-   - **Línea de hito condicional:** solo si completar esta obra **cruza el umbral de una placa** (p. ej. la obra 5 de un pintor, o la 25 de un movimiento), se añade una segunda línea celebrando ese hito concreto — p. ej. *"Milestone unlocked: Van Gogh — Master"*. Si no se cruzó ningún umbral, esta línea no aparece.
+   - **Colgar no requiere botón.** Cuando hay paredes disponibles, el cuadro terminado queda listo para tomarse y sobre él aparece la instrucción, que cambia según el modo de entrada activo: con manos, *"Pinch to grab the frame and release it against a wall to hang your masterpiece."*; con controles, *"Point and click to select the frame, then click on a wall to hang it."*
+   - Único botón: **"Play Again"**, que vuelve a armar la misma obra desde cero con el mismo tamaño (por ejemplo, para que lo intente otra persona). Para salir se usa el botón **Exit** del panel izquierdo.
+   - **No aparece ninguna medalla ni texto de "ganaste una medalla".** Completar una obra la marca como completada (badge de palomita en el catálogo) y habilita colgarla; la recompensa real es el cuadro en la pared, no un icono. Las placas se reservan para hitos (ver sección 8).
+   - **Hito condicional:** solo si completar esta obra **cruza el umbral de una placa** (p. ej. la última obra de un pintor, o la 25 de un movimiento), el panel muestra la placa recién obtenida bajo el encabezado **"Milestone unlocked!"**. Si no se cruzó ningún umbral, no aparece.
 3. El jugador puede colgar el cuadro en una pared real (MR) o en la galería virtual (VR) — ver secciones 5 y 6.
-4. Para colgar una obra ya completada más adelante, el jugador vuelve a entrar a verla y la cuelga desde ahí (o desde la sección Collection; ver 8.5).
+4. Para colgar una obra ya completada más adelante, el jugador abre su detalle en el catálogo y usa el botón **"Hang on Wall"** (ver 4.2).
+
+### 4.9. Tutorial de Primer Arranque
+
+La primera vez que se abre el juego, una **mano fantasma** enseña por demostración sobre la interfaz real, en tres momentos:
+
+1. Con el catálogo visible: toca la primera obra.
+2. Con el detalle abierto: toca el botón del tamaño más pequeño.
+3. Ya en el puzzle: hace pinch sobre una pieza de la bandeja y la lleva a su slot correcto.
+
+Cada demostración se reproduce una vez y se desvanece. **Nunca bloquea la entrada ni espera confirmación**: el jugador puede adelantarse en cualquier momento. Al terminar la tercera, el tutorial queda marcado como visto. El toggle "Show tutorial" de Settings lo vuelve a activar en caliente y arranca al regresar al catálogo. El tutorial solo corre en la ruta de MR; sustituye al carrusel de onboarding anterior, que ya no se usa.
 
 ---
 
@@ -162,7 +190,15 @@ Cada hito dispara un mensaje contextual en pantalla y efectos de partículas.
 
 ### 5.1. Flujo de Colocación
 
-El colgado puede iniciarse al terminar una obra (post-juego), al volver a entrar a ver una obra completada, o desde la sección Collection (ver 8.5). El flujo admite dos modos de entrada:
+El colgado tiene tres puntos de entrada:
+
+- **Post-juego:** al terminar una obra, el cuadro recién armado queda listo para tomarse (ver 4.8).
+- **Detalle de una obra completada:** el botón "Hang on Wall" hace aparecer la obra enmarcada flotando junto al panel, con el lado mayor de 0.5 m (ver 4.2). Si se cierra el detalle sin colgarla, desaparece.
+- **Collection:** para las placas obtenidas (ver 8.5), con la misma mecánica.
+
+**La misma obra puede colgarse varias veces.** Cada copia es independiente: tiene su propio anclaje, se reposiciona y se retira por separado, y persiste por separado.
+
+El flujo admite dos modos de entrada:
 
 - **Con las manos:** el usuario toma el cuadro, acerca la mano (con el cuadro) a una pared real y lo suelta; al quedar **a 20 cm o menos de la pared**, el cuadro se fija y se crea un anclaje espacial persistente.
 - **Con los controles:** el usuario hace clic en el cuadro para **seleccionarlo** y luego clic en el punto de la pared donde quiere colgarlo.
@@ -177,8 +213,8 @@ Si se suelta o apunta lejos de una pared, el cuadro no se cuelga y sigue disponi
 
 ### 5.3. Persistencia
 
-- Los cuadros y placas colgados persisten entre sesiones mediante Meta Spatial Anchors (AR Foundation).
-- Al iniciar la app, todos los objetos colgados anteriormente se reconstituyen en sus posiciones reales.
+- Los cuadros y placas colgados persisten entre sesiones mediante anclas espaciales (AR Foundation sobre el runtime de Meta).
+- Al iniciar la app, todos los objetos colgados anteriormente se reconstituyen en sus posiciones reales, incluidas todas las copias de una misma obra.
 - La detección de paredes usa ARPlaneManager (planos verticales AR) con fallback por raycast.
 
 ### 5.4. Curaduría del Espacio
@@ -195,7 +231,9 @@ En modo VR el usuario se encuentra dentro de una galería de arte 3D inmersiva, 
 
 La galería arranca como un **entorno base deliberadamente sobrio**, que el jugador va poblando y mejorando con los **assets que desbloquea** mediante logros (ver sección 8). El estado inicial es austero a propósito — es el "antes" de una progresión—, pero debe ser digno y acogedor para el jugador nuevo que aún no ha desbloqueado nada.
 
-**Construcción de la galería base (decisión de producción).** La sala se **construye internamente como geometría paramétrica** (caja: piso, techo y paredes como volúmenes simples) en vez de comprarse como entorno completo del Asset Store, por tres razones de peso para Quest: (1) geometría mínima = presupuesto sano de polígonos y draw calls para mantener 72–90 FPS en estéreo; (2) la iluminación se **hornea** (baked lightmaps), no en tiempo real — en URP las luces de spot/point en tiempo real son caras y tienen restricciones de sombra; los spots del riel son sobre todo decorativos + lightmap; (3) el color de pared y los materiales son **variables propias**, de modo que la misma caja se **re-tinta** para generar las galerías temáticas de Fase 2 (vinotinto, verde inglés, gris cálido) sin comprar ni optimizar salas nuevas. Del Asset Store se aprovechan solo **materiales** (parquet/pared/zócalo) y props (bancas, pedestales, riel de luz), no la sala. El generador expone parámetros (dimensiones, número de anclajes de obra, separación, altura de cuadro) y coloca anclajes (`ArtAnchor`) a altura de museo (~1.5 m al centro) sobre cada pared. Dimensiones base de referencia: 12 × 8 × 4 m; navegación por teleport.
+**Entrada a VR.** En Quest 3, 3S y Pro el juego arranca siempre en MR y el jugador pasa a VR con el botón de modo; se requieren controles. Al entrar, **la galería se acomoda alrededor del menú**: ni el menú ni el jugador se mueven. En Quest 2, que no tiene MR, el juego arranca directamente en la galería. Los cuadros colgados en MR se ocultan mientras se está en VR, y viceversa.
+
+**Construcción de la galería base (decisión de producción).** La sala se **construye internamente como geometría paramétrica** (caja: piso, techo y paredes como volúmenes simples) en vez de comprarse como entorno completo del Asset Store, por tres razones de peso para Quest: (1) geometría mínima = presupuesto sano de polígonos y draw calls para mantener 72–90 FPS en estéreo; (2) la iluminación se **hornea** (baked lightmaps), no en tiempo real — en URP las luces de spot/point en tiempo real son caras y tienen restricciones de sombra; los spots del riel son sobre todo decorativos + lightmap; (3) el color de pared y los materiales son **variables propias**, de modo que la misma caja se **re-tinta** para generar las galerías temáticas de Fase 2 (vinotinto, verde inglés, gris cálido) sin comprar ni optimizar salas nuevas. Del Asset Store se aprovechan solo **materiales** (parquet/pared/zócalo) y props (bancas, pedestales, riel de luz), no la sala. El generador expone parámetros (dimensiones, número de anclajes de obra, separación, altura de cuadro) y coloca anclajes (`ArtAnchor`) a altura de museo (~1.5 m al centro) sobre cada pared. Dimensiones base de referencia: 12 × 8 × 4 m; navegación por teleport. *Estado: el horneado de luces para Quest sigue pendiente.*
 
 ### 6.2. Mecánica de Colocación de Piezas en VR
 
@@ -203,7 +241,7 @@ La colocación con controles es la descrita en 4.5: apuntar + gatillo para selec
 
 ### 6.3. Flujo de Colgado en VR
 
-El colgado puede iniciarse desde el post-juego, al re-entrar a una obra completada, o desde Collection. El flujo con controles:
+Los puntos de entrada son los mismos que en MR (ver 5.1): post-juego, botón "Hang on Wall" del detalle, y Collection para las placas. También aquí la misma obra puede colgarse varias veces. El flujo con controles:
 
 1. El usuario apunta al cuadro completado y presiona el gatillo para **seleccionarlo**.
 2. Se desplaza (teleportación) hacia la pared de la galería donde quiere colocarlo.
@@ -222,13 +260,14 @@ El colgado puede iniciarse desde el post-juego, al re-entrar a una obra completa
 | Colocación de piezas | Manos: al slot más cercano · Controles: a la celda elegida | Controles: a la celda elegida |
 | Colgado de cuadros | Manos: acercar a la pared y soltar · Controles: clic en cuadro + clic en la pared | Controles: clic + teleportación + clic en la pared |
 | Detección de paredes | ARPlaneManager (planos AR reales) | Raycasting contra layer VRWall |
-| Persistencia | Meta Spatial Anchors | JSON local (GalleryPersistenceService) |
+| Persistencia | Anclas espaciales (una por copia) | JSON local (GalleryPersistenceService), poses relativas a la galería |
 | Espacio de exhibición | Limitado por la pared física real | Ilimitado (múltiples paredes virtuales) |
-| Disponibilidad | Quest 3 y Quest Pro únicamente | Todos los dispositivos Quest |
+| Disponibilidad | Quest 3, Quest 3S y Quest Pro | Todos los dispositivos Quest |
+| Tutorial de primer arranque | Sí | No |
 
 ### 6.6. Locomoción en VR
 
-- **Teleportación**: apuntar al suelo con el controlador y presionar el gatillo para desplazarse.
+- **Teleportación**: apuntar al suelo con el controlador y presionar el gatillo para desplazarse. Solo se acepta el **piso** como destino; las paredes y otras superficies se rechazan.
 - **Snap Turn**: rotación en incrementos fijos (izquierda/derecha con el joystick).
 - No se usa locomoción continua para reducir mareo.
 
@@ -272,7 +311,9 @@ El juego incluye una capa de progresión basada en **logros**, cuya divisa son o
 
 ### 8.2. Mejoras de Presentación (desbloqueos automáticos por progreso)
 
-Lo único que el jugador **cuelga manualmente** son **cuadros y placas**. Las mejoras de presentación no son objetos colgables: se **desbloquean automáticamente** al alcanzar umbrales de obras completadas (ver 8.4) y se **aplican solas** a todas las obras ya colgadas, elevando el aspecto de galería de toda la pared de golpe. Cada una tiene un **toggle individual en Configuración** por si el jugador prefiere una pared más limpia.
+Lo único que el jugador **cuelga manualmente** son **cuadros y placas**. Las mejoras de presentación se **desbloquean automáticamente** al alcanzar umbrales de obras completadas (ver 8.4) y se **aplican solas** a las obras colgadas, elevando el aspecto de galería de toda la pared. Cada una tiene un **toggle individual en Configuración**, que aparece al desbloquearse, por si el jugador prefiere una pared más limpia. Un cambio de toggle se refleja en cada obra la siguiente vez que se instancia (al colgarla o al cargar la galería), no en vivo sobre las ya colgadas.
+
+Además, al alcanzar cada umbral el jugador recibe una **placa conmemorativa colgable** de esa mejora (**Museum Label**, **Frame**, **Picture Light**), que aparece en Collection y se cuelga como cualquier otra placa (ver 8.5).
 
 - **La Cédula** (desbloqueo a las 10 obras). Placa-cédula estilo museo que aparece debajo de cada cuadro colgado, con el mismo lenguaje metálico que las placas de logro (mismo material del tier vigente, texto grabado oscuro). Campos y tipografía:
   - **Título de la obra** → Cormorant Garamond SemiBold, color `#241B12`.
@@ -280,9 +321,9 @@ Lo único que el jugador **cuelga manualmente** son **cuadros y placas**. Las me
   - **Año · Movimiento · Museo** → Hanken Grotesk Regular, pequeño y tenue, color `#4A3A28`, en una sola línea separada por " · " (p. ej. "1665 · Dutch Golden Age · Mauritshuis").
   - Nota VR: la cédula carga bastante texto en poco espacio y cuelga lejos; validar legibilidad a escala/distancia reales. Título y autor son indispensables; año/movimiento/museo son "bonito de saber" y pueden recortarse si no se leen.
 - **El Marco** (desbloqueo a las 25 obras). Marco liso/uniforme sobre la base de madera de cada cuadro (ver 4.3). Escalable a cualquier aspect ratio.
-- **La Lámpara** (desbloqueo a las 50 obras). Luz tipo museo que aparece sobre cada cuadro colgado.
+- **La Lámpara** (desbloqueo a las 50 obras). Luminaria tipo museo montada sobre cada cuadro colgado: placa de fijación a la pared, brazo y pantalla inclinada hacia la pintura, con la boca encendida. **No proyecta un baño de luz sobre la pintura**: se probó y se retiró porque alteraba la obra.
 
-Las tres aplican igual en MR y VR. No tienen variantes propias: su acabado lo determina el tier de material de la placa de estatus (ver 8.4).
+Las tres aplican igual en MR y VR. No tienen variantes propias: su acabado lo determina el tier de material de la placa de estatus (ver 8.4). *Estado: el marco aún no tiene material Platino propio y usa el de Oro.*
 
 ### 8.3. Placas (Maestro y Gran Maestro)
 
@@ -339,7 +380,7 @@ Objeto colgable único que muestra el avance global del jugador en el mundo, en 
 | Primera obra | **Visitor** | **Cobre** | Placa de estatus desbloqueada |
 | 10 | **Collector** | **Plata** | **Cédula** (datos bajo cada cuadro) |
 | 25 | **Connoisseur** | **Oro** | **Marco** (sobre la base de madera) |
-| 50 | **Curator** | **Platino** | **Lámpara** (luz sobre cada cuadro) |
+| 50 | **Curator** | **Platino** | **Lámpara** (luminaria sobre cada cuadro) |
 | 100 | **Patron** | Platino (sin cambio) | Hito reconocido; **sin asset nuevo por ahora** |
 
 El **rango** es el texto principal (hero) de la placa de estatus y evoluciona con el avance: Visitor → Collector → Connoisseur → Curator → Patron, contando la historia de "visito arte" a "soy mecenas de mi propio museo". El peldaño de 100 (Patron) no da material nuevo (ya estás en Platino) pero **sí otorga el rango máximo**, por lo que no queda vacío.
@@ -351,20 +392,21 @@ El **rango** es el texto principal (hero) de la placa de estatus y evoluciona co
 
 Como las placas de Maestro y comportamiento ya se cuelgan por separado en la pared, y la sección Collection ya lista lo obtenido y lo pendiente, la placa de estatus **no repite el inventario de logros**. Muestra únicamente el resumen global del jugador — "your museum at a glance":
 - **Rango (hero):** el rango vigente (Visitor → Patron) en Cormorant Garamond SemiBold, grande. Es el texto que se lee de un vistazo y comunica el nivel de avance.
-- **Agregados:** una línea de datos en Hanken pequeño con un par de totales — obras completadas (p. ej. "47 / 252") y placas obtenidas (p. ej. "8 plaques"). Números resumen, no la lista.
+- **Agregados:** una línea de datos en Hanken pequeño con un par de totales — obras completadas (p. ej. "47 / 251") y placas obtenidas (p. ej. "8 plaques"). Números resumen, no la lista.
 - **Material:** el acabado de la placa es el del tier vigente (Cobre/Plata/Oro/Platino), que sube con el rango.
 
 No incluye la lista cronológica de logros (eso vive en las placas colgadas y en Collection), lo que además la hace más simple y mucho más legible en VR a distancia.
 
 ### 8.5. Collection (Menú)
 
-Sección del menú que unifica en un solo lugar todo lo que el jugador puede exhibir y todo lo que puede llegar a obtener:
+Sección del menú que reúne las recompensas del jugador: lo que ya obtuvo y lo que puede llegar a obtener.
 
-- **Obras completadas**, listas para colgar. Al seleccionar una, el jugador entra directo al modo de colocación (sin panel de detalle intermedio), reutilizando el mecanismo de colgado de las secciones 5 (MR) y 6 (VR). Lo único que se cuelga manualmente son **cuadros y placas**.
-- **Placas** (Maestro, comportamiento) **y placa de estatus** obtenidas, también colgables desde aquí.
-- **Objetos aún no obtenidos** (placas, y las mejoras de presentación cédula/marco/lámpara): se muestran como bloqueados, y al seleccionarlos una ventana indica el logro o condición necesaria para desbloquearlos. Es el lugar donde el jugador descubre qué puede obtener y cómo.
+- **Placas obtenidas** (Maestro, Gran Maestro, comportamiento, estatus y las tres de mejora). Cada tarjeta muestra una miniatura 3D de la placa. Al seleccionar una se abre una ventana con la instrucción de colgado mientras la placa flota al frente, lista para tomarla y colgarla con el mismo mecanismo de las secciones 5 (MR) y 6 (VR). El botón Close cancela y regresa a Collection.
+- **Placas aún no obtenidas:** se muestran bloqueadas, con la condición necesaria en la propia tarjeta (p. ej. "Completed all 15 works", "Complete 25 artworks"). Es el lugar donde el jugador descubre qué puede obtener y cómo.
 
-La cédula, el marco y la lámpara, una vez desbloqueados, **no se cuelgan individualmente**: son mejoras de presentación que se aplican automáticamente a las obras colgadas y se activan/desactivan desde Configuración (ver 8.2). En Collection aparecen como desbloqueables con su condición.
+**Las obras completadas no se listan en Collection.** Se cuelgan desde su detalle en el catálogo, con el botón "Hang on Wall" (ver 4.2).
+
+La cédula, el marco y la lámpara se aplican automáticamente a las obras colgadas y se activan/desactivan desde Configuración (ver 8.2). Lo que aparece en Collection es su placa conmemorativa, que sí es colgable.
 
 ### 8.6. Set de Placas de Lanzamiento
 
@@ -377,7 +419,7 @@ Conteos tomados del catálogo real (campo `artMovement` / autor). Todas las cond
 | Vincent van Gogh | 34 | a las **15** (excepción de escala) |
 | Claude Monet | 15 | completar las 15 |
 | Pierre-Auguste Renoir | 11 | completar las 11 |
-| Johannes Vermeer | 11 | completar las 11 |
+| Johannes Vermeer | 10 | completar las 10 |
 | Rembrandt van Rijn | 10 | completar las 10 |
 | Edouard Manet | 8 | completar las 8 |
 | Paul Cezanne | 7 | completar las 7 |
@@ -397,12 +439,14 @@ Conteos tomados del catálogo real (campo `artMovement` / autor). Todas las cond
 | Post-Impressionism | 51 | a las 25 | completar las 51 |
 | Impressionism | 40 | a las 25 | completar las 40 |
 | Renaissance | 36 | a las 25 | completar las 36 |
-| Dutch Golden Age | 36 | a las 25 | completar las 36 |
+| Dutch Golden Age | 35 | a las 25 | completar las 35 |
 | Realism | 23 | completar las 23 | — |
 | Baroque | 21 | completar las 21 | — |
-| Romanticism | 21 | completar las 21 | — |
+| Romanticism | 20 | completar las 20 | — |
 
 *(Manierismo, Rococó, Neoclasicismo, Simbolismo y Pre-Rafaelita tienen ≤10 obras y no llevan placa de movimiento en lanzamiento.)*
+
+> **Pendiente de implementación:** al retirar del catálogo el Vermeer duplicado, dos placas quedaron con el umbral anterior en sus assets (`Assets/ArtUnbound/Data/Collectibles/`): *Vermeer — Master* pide 11 obras y *Dutch Golden Age — Grand Master* pide 36. Con el catálogo actual (10 y 35) **no pueden obtenerse** hasta que se corrijan.
 
 **Placas de comportamiento (premian *exhibir*, no *armar* — eje distinto al de la placa de estatus). 2 placas:**
 
@@ -415,7 +459,7 @@ Conteos tomados del catálogo real (campo `artMovement` / autor). Todas las cond
 
 **Placa de estatus (progreso global; ver 8.4):** muestra solo el estado global (rango + agregados), no la lista de logros. Rangos por umbral: primera obra **Visitor** (Cobre) · 10 **Collector** (Plata) · 25 **Connoisseur** (Oro) · 50 **Curator** (Platino) · 100 **Patron**. El material del tier aplica a todas las placas. Desbloqueos de presentación en el camino: Cédula (10), Marco (25), Lámpara (50).
 
-**Total de lanzamiento:** 9 (Maestro autor) + 1 (Gran Maestro Van Gogh) + 7 (Maestro movimiento) + 4 (Gran Maestro movimiento) + 2 (comportamiento) = **23 placas con nombre**, más la placa de estatus con sus 5 tiers.
+**Total de lanzamiento:** 9 (Maestro autor) + 1 (Gran Maestro Van Gogh) + 7 (Maestro movimiento) + 4 (Gran Maestro movimiento) + 2 (comportamiento) = **23 placas con nombre**, más la placa de estatus (*Museum Status*) con sus 5 rangos y las tres placas de mejora (*Museum Label* a las 10, *Frame* a las 25, *Picture Light* a las 50; ver 8.2). En total, 27 coleccionables en Collection.
 
 El catálogo de placas se amplía con actualizaciones (Gran Maestro de más autores, más movimientos al crecer el catálogo, y más placas de comportamiento de Fase 2; ver sección 15).
 
@@ -456,9 +500,9 @@ La música del juego es **música clásica** de compositores reconocidos como Vi
 ### 11.1. Menú Principal
 
 Panel flotante en espacio MR/VR (ver sección 4.1):
-- **Barra superior**: título, toggle de modo (VR/MR) y acceso a Configuración (engrane): volúmenes de música y efectos, y toggles de cédulas / marcos / lámparas.
-- **Cuerpo central**: catálogo en cuadrícula paginada de miniaturas; las completadas muestran el **badge de palomita** (no medalla); las bloqueadas se ven completas con un candado de esquina (no tapadas); incluye búsqueda y filtros integrados (ver 11.7); seleccionar abre el detalle modal.
-- **Barra inferior**: Home, Collection. (No hay destino "Search" separado; la búsqueda vive integrada en Home.)
+- **Cuerpo central**: catálogo en cuadrícula paginada de miniaturas; las completadas muestran el **badge de palomita** (no medalla); las bloqueadas se ven completas con un candado de esquina (no tapadas); incluye búsqueda integrada (ver 11.7); seleccionar abre el detalle modal.
+- **Barra inferior**: Home, Collection, Settings y el botón de modo VR/MR (este último solo en visores con passthrough). No hay destino "Search" separado; la búsqueda vive integrada en Home.
+- **Settings**: volúmenes de música y efectos, hápticos, toggles de cédulas / marcos / lámparas (visibles al desbloquearse) y toggle del tutorial.
 
 ### 11.2. Pantalla de Puzzle
 
@@ -473,7 +517,7 @@ Mensajes contextuales al completar filas, columnas, bordes y el marco exterior c
 
 ### 11.4. Panel Post-Juego
 
-Obra enmarcada + mensaje "Artwork Complete" + "Ready to hang in your gallery" + botones "Hang it now" / "Back to collection"; línea de hito condicional si se cruzó el umbral de una placa (ver 4.8). Sin medalla.
+Mensaje "Artwork Complete" + "Ready to hang in your gallery" + instrucción de colgado sobre el cuadro (texto de manos o de controles según el modo activo) + botón "Play Again"; placa recién obtenida con el encabezado "Milestone unlocked!" si se cruzó un umbral (ver 4.8). Sin medalla y sin botones de colgado.
 
 ### 11.5. Temática Visual de Botones
 
@@ -495,10 +539,16 @@ Base de panel `#1C1916`; panel del modal de detalle (100% opaco) `#18130F` — u
 
 ### 11.7. Catálogo, Búsqueda y Filtros
 
-- **Sin pantalla de búsqueda separada.** El catálogo (Home) es siempre el estado por defecto y muestra todas las obras; la búsqueda es un filtro sobre ese mismo grid, no un destino aparte. Esto evita la pantalla en blanco y que la "búsqueda" duplique al catálogo. (El catálogo es finito —252 obras—, navegable; no requiere el patrón de búsqueda de catálogos gigantes tipo streaming.)
-- **Filtros tocables (chips)** por movimiento, artista y estado (libre/bloqueada). En VR se priorizan sobre el campo de texto, porque teclear con el teclado virtual es incómodo.
-- **Campo de texto** secundario: placeholder en Hanken tenue `#8A8276` (p. ej. "Search artworks…"); el texto escrito en Hanken `#EFE9DF`.
-- **Estado sin resultados:** título **"No artworks found"** (Cormorant, `#EFE9DF`) + subtexto **"Try another name, artist, or movement"** (Hanken, `#8A8276`), y un botón **"Browse all"** que limpia la búsqueda y regresa al catálogo completo. Mantener los chips de filtro visibles incluso en el estado vacío. Tono sobrio, sin humor ni emojis.
+- **Sin pantalla de búsqueda separada.** El catálogo (Home) es siempre el estado por defecto y muestra todas las obras; la búsqueda es un filtro sobre ese mismo grid, no un destino aparte. Esto evita la pantalla en blanco y que la "búsqueda" duplique al catálogo. (El catálogo es finito —251 obras—, navegable; no requiere el patrón de búsqueda de catálogos gigantes tipo streaming.)
+- **Campo de texto**: placeholder en Hanken tenue `#8A8276` ("Search artworks..."); el texto escrito en Hanken `#EFE9DF`. Hoy es el único filtro.
+- **Estado sin resultados:** título **"No artworks found"** (Cormorant, `#EFE9DF`) + subtexto **"Try another name, artist, or movement"** (Hanken, `#8A8276`). Tono sobrio, sin humor ni emojis.
+- **Diferido, no implementado:** los **filtros tocables (chips)** por movimiento, artista y estado (libre/bloqueada), y el botón **"Browse all"** del estado vacío. La intención de diseño se mantiene: en VR los chips deben priorizarse sobre el campo de texto, porque teclear con el teclado virtual es incómodo.
+
+### 11.8. Posición del Menú, Recentrado y Modo de Entrada
+
+- **Ancla única.** El menú y el tablero comparten posición: 0.75 m frente al usuario y unos 25 cm por debajo de la altura de los ojos, calculada al arrancar tras estabilizarse el tracking.
+- **Recentrado.** Al recentrar con el botón Meta sostenido, el menú se recoloca frente al usuario. Si el recentrado ocurre a media partida, **el tablero no se mueve** (se perdería la posición que el jugador acomodó) y el menú se recoloca al volver a él. En VR no aplica.
+- **Manos y controles.** El juego detecta solo si se usan manos o controles y adapta la interfaz (por ejemplo, las instrucciones de colgado). Pasar a manos es inmediato; pasar a controles exige una confirmación breve para evitar falsos positivos, y nunca cambia a media interacción.
 
 ---
 
@@ -510,7 +560,7 @@ Art Unbound se distribuye como una **aplicación gratuita** en la Meta Quest Sto
 
 ### 12.2. Desbloqueo del Catálogo Completo
 
-El catálogo completo se desbloquea con una **compra única de $9.99 USD**, que otorga acceso permanente a las **240+ obras restantes**. Es una compra única, no una suscripción.
+El catálogo completo se desbloquea con una **compra única de $9.99 USD**, que otorga acceso permanente a las **239 obras restantes** (251 en total). Es una compra única, no una suscripción, implementada como un add-on de Meta IAP (`catalog_complete`); el precio que ve cada jugador es el localizado por Meta para su región.
 
 - **No existe una sección de tienda.** El desbloqueo se ofrece de forma contextual: al abrir el detalle de cualquier obra bloqueada, en lugar de los botones de tamaño aparece un **botón de compra**. Tocarlo dispara el desbloqueo único de **todo** el catálogo (no es compra por obra).
 - No existen packs temáticos ni bundles.
@@ -649,9 +699,10 @@ La retención de MR no copia las features de VR (no se puede tematizar un cuarto
 
 ## 16. Arquitectura Técnica (Resumen)
 
-- **Motor**: Unity 6 LTS (6000.3.1f1)
+- **Motor**: Unity 6 LTS (6000.3.10f1)
 - **SDK**: Meta XR All-in-One SDK v85.0.0
-- **Tracking**: XR Hands (seguimiento de manos nativo) en MR; controladores en VR
+- **Dispositivos**: Quest 3, 3S y Pro arrancan en MR; Quest 2 arranca directo en VR
+- **Tracking**: XR Hands (seguimiento de manos nativo, ambas manos) o controladores en MR; controladores en VR
 - **Anclas espaciales (MR)**: AR Foundation + OpenXR (persistencia cross-session)
 - **Persistencia VR**: JSON local via `GalleryPersistenceService`
 - **Detección de paredes MR**: ARPlaneManager (planos verticales AR) con fallback por raycast
@@ -663,261 +714,260 @@ La retención de MR no copia las features de VR (no se puede tematizar un cuarto
 
 ## Apendice A: Catalogo Completo de Obras
 
-El catalogo contiene **252 obras** de dominio publico. La aplicacion gratuita incluye un conjunto inicial de obras iconicas; el resto se desbloquea con la compra unica del catalogo completo (ver seccion 12). El catalogo se amplia con actualizaciones de la aplicacion.
+El catalogo contiene **251 obras** de dominio publico. La aplicacion gratuita incluye un conjunto inicial de obras iconicas; el resto se desbloquea con la compra unica del catalogo completo (ver seccion 12). El catalogo se amplia con actualizaciones de la aplicacion.
 
 Las obras se listan a continuacion en orden alfabetico por titulo.
 
 | # | Titulo | Artista | Ano | Movimiento | Museo |
 |---|--------|---------|-----|------------|-------|
-| 1 | A Bar at the Folies-Bergere | Edouard Manet | 1882 | Impressionism | The Courtauld Gallery, London |
+| 1 | A Bar at the Folies-Bergere | Edouard Manet | 1882 | Impressionism | Courtauld Gallery, London |
 | 2 | A Burial at Ornans | Gustave Courbet | 1850 | Realism | Musee d'Orsay, Paris |
-| 3 | A Dutch Courtyard | Pieter de Hooch | 1658 | Dutch Golden Age | National Gallery of Art, Washington DC |
-| 4 | A Lady Writing | Johannes Vermeer | 1665 | Dutch Golden Age | National Gallery of Art, Washington DC |
+| 3 | A Dutch Courtyard | Pieter de Hooch | 1658 | Dutch Golden Age | National Gallery of Art |
+| 4 | A Lady Writing | Johannes Vermeer | 1665 | Dutch Golden Age | National Gallery of Art |
 | 5 | A Sunday on La Grande Jatte | Georges Seurat | 1886 | Post-Impressionism | Art Institute of Chicago |
-| 6 | A Young Girl Reading | Jean-Honore Fragonard | 1770 | Rococo | National Gallery of Art, Washington DC |
+| 6 | A Young Girl Reading | Jean-Honore Fragonard | 1770 | Rococo | National Gallery of Art |
 | 7 | Adeline Ravoux | Vincent van Gogh | 1890 | Post-Impressionism | Cleveland Museum of Art |
-| 8 | Adoration of the Magi | Sandro Botticelli | 1475 | Renaissance | Uffizi Gallery, Florence |
+| 8 | Adoration of the Magi | Sandro Botticelli | 1475 | Renaissance | Uffizi Gallery |
 | 9 | Allegory with Venus and Cupid | Agnolo Bronzino | 1545 | Mannerism | National Gallery, London |
-| 10 | Almond Blossom | Vincent van Gogh | 1890 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 11 | Among the Sierra Nevada | Albert Bierstadt | 1868 | Romanticism | Smithsonian American Art Museum, Washington DC |
-| 12 | Aristotle with a Bust of Homer | Rembrandt van Rijn | 1653 | Dutch Golden Age | The Metropolitan Museum of Art, New York |
+| 10 | Almond Blossom | Vincent van Gogh | 1890 | Post-Impressionism | Van Gogh Museum |
+| 11 | Among the Sierra Nevada | Albert Bierstadt | 1868 | Romanticism | Smithsonian |
+| 12 | Aristotle with a Bust of Homer | Rembrandt van Rijn | 1653 | Dutch Golden Age | The Met |
 | 13 | At the Moulin Rouge | Toulouse-Lautrec | 1892 | Post-Impressionism | Art Institute of Chicago |
-| 14 | Bacchus and Ariadne | Tiziano | 1523 | Renaissance | Uffizi Gallery, Florence |
-| 15 | Basket of Peaches | Jean-Baptiste Chardin | 1768 | Rococo | Louvre Museum, Paris |
-| 16 | Bathers at Asnieres (Study) | Georges Seurat | 1884 | Post-Impressionism | Art Institute of Chicago |
-| 17 | Beata Beatrix | Dante Gabriel Rossetti | 1870 | Pre-Raphaelite | Tate Britain |
-| 18 | Before the Ballet | Edgar Degas | 1890 | Impressionism | National Gallery of Art, Washington DC |
-| 19 | Bouquet of Sunflowers | Claude Monet | 1881 | Impressionism | The Metropolitan Museum of Art, New York |
-| 20 | Breezing Up (A Fair Wind) | Winslow Homer | 1876 | Realism | National Gallery of Art, Washington DC |
-| 21 | Bridge over a Pond of Water Lilies | Claude Monet | 1899 | Impressionism | The Metropolitan Museum of Art, New York |
-| 22 | Cafe Terrace at Night | Vincent van Gogh | 1888 | Post-Impressionism | Kroller-Muller Museum, Otterlo |
-| 23 | Card Players | Paul Cezanne | 1895 | Post-Impressionism | Musee d'Orsay, Paris |
-| 24 | Christ in the Storm (Copy) | Rembrandt van Rijn | 1633 | Dutch Golden Age | Isabella Stewart Gardner Museum, Boston |
-| 25 | Dance at Bougival | Pierre-Auguste Renoir | 1883 | Impressionism | Museum of Fine Arts, Boston |
-| 26 | Dance at the Moulin de la Galette | Pierre-Auguste Renoir | 1876 | Impressionism | Musee d'Orsay, Paris |
-| 27 | Dancers Practicing at the Barre | Edgar Degas | 1877 | Impressionism | The Metropolitan Museum of Art, New York |
+| 14 | Bacchus and Ariadne | Tiziano | 1523 | Renaissance | National Gallery, London |
+| 15 | Bal du moulin de la Galette | Pierre-Auguste Renoir | 1876 | Impressionism | Musee d'Orsay |
+| 16 | Basket of Peaches | Jean-Baptiste Chardin | 1768 | Rococo | Musee du Louvre |
+| 17 | Bathers at Asnieres (Study) | Georges Seurat | 1884 | Post-Impressionism | Art Institute of Chicago |
+| 18 | Beata Beatrix | Dante Gabriel Rossetti | 1870 | Pre-Raphaelite | Tate Britain |
+| 19 | Before the Ballet | Edgar Degas | 1890 | Impressionism | National Gallery of Art |
+| 20 | Bouquet of Sunflowers | Claude Monet | 1881 | Impressionism | The Met |
+| 21 | Breezing Up (A Fair Wind) | Winslow Homer | 1876 | Realism | National Gallery of Art |
+| 22 | Bridge over a Pond of Water Lilies | Claude Monet | 1899 | Impressionism | The Met |
+| 23 | Cafe Terrace at Night | Vincent van Gogh | 1888 | Post-Impressionism | Kroller-Muller Museum |
+| 24 | Card Players | Paul Cezanne | 1895 | Post-Impressionism | Musee d'Orsay |
+| 25 | Christ in the Storm (Copy) | Rembrandt van Rijn | 1633 | Dutch Golden Age | Stewart Gardner |
+| 26 | Dance at Bougival | Pierre-Auguste Renoir | 1883 | Impressionism | MFA Boston |
+| 27 | Dancers Practicing at the Barre | Edgar Degas | 1877 | Impressionism | The Met |
 | 28 | David with the Head of Goliath | Caravaggio | 1610 | Baroque | Borghese Gallery, Rome |
-| 29 | Day of the God | Paul Gauguin | 1894 | Post-Impressionism | Art Institute of Chicago |
-| 30 | Declaration of Independence | John Trumbull | 1819 | Neoclassicism | Yale University Art Gallery |
-| 31 | Descent from the Cross | Rembrandt van Rijn | 1634 | Dutch Golden Age | Alte Pinakothek, Munich |
-| 32 | Equestrian Portrait of Charles I | Anthony van Dyck | 1635 | Baroque | National Gallery, London |
+| 29 | Day of the God (Mahana No Atua) | Paul Gauguin | 1894 | Post-Impressionism | Art Institute of Chicago |
+| 30 | Declaration of Independence | John Trumbull | 1819 | Neoclassicism | Yale Art Gallery |
+| 31 | Descent from the Cross | Rembrandt van Rijn | 1634 | Dutch Golden Age | Alte Pinakothek / Rijks |
+| 32 | Equestrian Portrait of Charles I | Anthony van Dyck | 1635 | Baroque | National Gallery (London) |
 | 33 | Et in Arcadia Ego | Nicolas Poussin | 1638 | Baroque | Louvre Museum, Paris |
-| 34 | Field with Irises near Arles | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 35 | First Steps (After Millet) | Vincent van Gogh | 1890 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 36 | Flaming June | Frederic Leighton | 1895 | Realism | Ponce Museum of Art, Puerto Rico |
+| 34 | Field with Irises near Arles | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 35 | First Steps (After Millet) | Vincent van Gogh | 1890 | Post-Impressionism | The Met |
+| 36 | Flaming June | Frederic Leighton | 1895 | Realism | Museo de Arte de Ponce, Puerto Rico |
 | 37 | Flower Beds at Vetheuil | Claude Monet | 1881 | Impressionism | Museum of Fine Arts, Boston |
-| 38 | Flowering Plum Orchard | Vincent van Gogh | 1887 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 39 | Flowers in a Terracotta Vase | Jan van Huysum | 1736 | Baroque | National Gallery, London |
-| 40 | Fur Traders on the Missouri | George Caleb Bingham | 1845 | Realism | The Metropolitan Museum of Art, New York |
-| 41 | Gauguin's Chair | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 42 | Ginevra de' Benci | Leonardo da Vinci | 1474 | Renaissance | National Gallery of Art, Washington DC |
+| 38 | Flowering Plum Orchard | Vincent van Gogh | 1887 | Post-Impressionism | Van Gogh Museum |
+| 39 | Flowers in a Terracotta Vase | Jan van Huysum | 1736 | Baroque | The National Gallery, London |
+| 40 | Fur Traders on the Missouri | George Caleb Bingham | 1845 | Realism | The Met |
+| 41 | Gauguin's Chair | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 42 | Ginevra de' Benci | Leonardo da Vinci | 1474 | Renaissance | National Gallery of Art |
 | 43 | Girl Reading a Letter at an Open Window | Johannes Vermeer | 1657 | Dutch Golden Age | Gemaldegalerie Alte Meister, Dresden |
-| 44 | Girl with a Hoop | Pierre-Auguste Renoir | 1885 | Impressionism | National Gallery of Art, Washington DC |
-| 45 | Girl with a Pearl Earring | Johannes Vermeer | 1665 | Dutch Golden Age | Mauritshuis, The Hague |
-| 46 | Girl with a Watering Can | Pierre-Auguste Renoir | 1876 | Impressionism | National Gallery of Art, Washington DC |
-| 47 | Glass of Lemonade | Gerard ter Borch | 1664 | Dutch Golden Age | Hermitage Museum, Saint Petersburg |
+| 44 | Girl with a Hoop | Pierre-Auguste Renoir | 1885 | Impressionism | National Gallery of Art |
+| 45 | Girl with a Pearl Earring | Johannes Vermeer | 1665 | Dutch Golden Age | Mauritshuis |
+| 46 | Girl with a Watering Can | Pierre-Auguste Renoir | 1876 | Impressionism | National Gallery of Art |
+| 47 | Glass of Lemonade | Gerard ter Borch | 1664 | Dutch Golden Age | State Hermitage Museum |
 | 48 | Hunters in the Snow | Pieter Bruegel the Elder | 1565 | Renaissance | Kunsthistorisches Museum, Vienna |
 | 49 | Immaculate Conception of the Venerables | Bartolome Esteban Murillo | 1665 | Baroque | Museo del Prado, Madrid |
-| 50 | Impression, Sunrise | Claude Monet | 1872 | Impressionism | Musee Marmottan Monet, Paris |
-| 51 | In the Meadow | Pierre-Auguste Renoir | 1888 | Impressionism | The Metropolitan Museum of Art, New York |
-| 52 | Irises | Vincent van Gogh | 1889 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 53 | Isaac and Rebecca, Known as 'The Jewish Bride' | Rembrandt van Rijn | 1665 | Dutch Golden Age | Rijksmuseum, Amsterdam |
+| 50 | Impression, Sunrise | Claude Monet | 1872 | Impressionism | Musee Marmottan Monet |
+| 51 | In the Meadow | Pierre-Auguste Renoir | 1888 | Impressionism | The Met |
+| 52 | Irises | Vincent van Gogh | 1890 | Post-Impressionism | The Met |
+| 53 | Isaac and Rebecca, Known as 'The Jewish Bride' | Rembrandt van Rijn | 1665 | Dutch Golden Age | Rijksmuseum |
 | 54 | Judith Beheading Holofernes (Caravaggio) | Caravaggio | 1599 | Baroque | Galleria Nazionale d'Arte Antica, Rome |
-| 55 | Judith Slaying Holofernes | Artemisia Gentileschi | 1612 | Baroque | Uffizi Gallery, Florence |
-| 56 | Kindred Spirits | Asher B. Durand | 1849 | Romanticism | Crystal Bridges Museum of American Art, Bentonville |
-| 57 | Lady Agnew of Lochnaw | John Singer Sargent | 1892 | Realism | Scottish National Gallery, Edinburgh |
-| 58 | Lady with an Ermine | Leonardo da Vinci | 1490 | Renaissance | Czartoryski Museum, Krakow |
-| 59 | Lake Albano and Castel Gandolfo | Jean-Baptiste-Camille Corot | 1826 | Romanticism | The Metropolitan Museum of Art, New York |
-| 60 | Lamentation of Christ | Giotto | 1305 | Renaissance | Scrovegni Chapel, Padua |
-| 61 | Lamentation over the Dead Christ | Andrea Mantegna | 1480 | Renaissance | Pinacoteca di Brera, Milan |
-| 62 | Landscape from Saint-Remy | Vincent van Gogh | 1889 | Post-Impressionism | Ny Carlsberg Glyptotek, Copenhagen |
-| 63 | Las Meninas | Diego Velazquez | 1656 | Baroque | Museo del Prado, Madrid |
-| 64 | Liberty Leading the People | Eugene Delacroix | 1830 | Romanticism | Louvre Museum, Paris |
-| 65 | Luncheon of the Boating Party | Pierre-Auguste Renoir | 1881 | Impressionism | The Phillips Collection, Washington DC |
-| 66 | Luncheon on the Grass | Edouard Manet | 1863 | Realism | Musee d'Orsay, Paris |
-| 67 | Mada Primavesi | Gustav Klimt | 1912 | Symbolism | The Metropolitan Museum of Art, New York |
-| 68 | Madame Georges Charpentier | Pierre-Auguste Renoir | 1878 | Impressionism | The Metropolitan Museum of Art, New York |
-| 69 | Madame X | John Singer Sargent | 1884 | Realism | The Metropolitan Museum of Art, New York |
-| 70 | Madonna of the Goldfinch (Copy) | Raphael | 1506 | Renaissance | Uffizi Gallery, Florence |
-| 71 | Madonna with the Long Neck | Parmigianino | 1535 | Mannerism | Uffizi Gallery, Florence |
-| 72 | Max Schmitt in a Single Scull | Thomas Eakins | 1871 | Realism | The Metropolitan Museum of Art, New York |
-| 73 | Mona Lisa | Leonardo da Vinci | 1503 | Renaissance | Louvre Museum, Paris |
-| 74 | Mont Sainte-Victoire | Paul Cezanne | 1904 | Post-Impressionism | Hermitage Museum, Saint Petersburg |
-| 75 | Mount Corcoran | Albert Bierstadt | 1877 | Romanticism | National Gallery of Art, Washington DC |
-| 76 | Napoleon Crossing the Alps | Jacques-Louis David | 1801 | Neoclassicism | Chateau de Malmaison |
-| 77 | Niagara Falls | Frederic Edwin Church | 1857 | Romanticism | National Gallery of Art, Washington DC |
-| 78 | Oath of the Horatii | Jacques-Louis David | 1784 | Neoclassicism | Louvre Museum, Paris |
-| 79 | Olympia | Edouard Manet | 1863 | Realism | Musee d'Orsay, Paris |
-| 80 | Ophelia | John Everett Millais | 1851 | Pre-Raphaelite | Tate Britain |
-| 81 | Orpheus | Odilon Redon | 1903 | Symbolism | Cleveland Museum of Art |
-| 82 | Pentecost | Giotto | 1305 | Renaissance | National Gallery, London |
-| 83 | Piazza San Marco, Venice | Pierre-Auguste Renoir | 1881 | Impressionism | Minneapolis Institute of Art |
-| 84 | Poplars (Three Pink Autumn Trees) | Claude Monet | 1891 | Impressionism | The Metropolitan Museum of Art, New York |
-| 85 | Portrait of a Girl in Blue | Johannes C. Verspronck | 1641 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 86 | Portrait of Dr. Gachet (Etching) | Vincent van Gogh | 1890 | Post-Impressionism | Musee d'Orsay, Paris |
-| 87 | Portrait of Henry VIII | Hans Holbein the Younger | 1537 | Renaissance | Thyssen-Bornemisza Museum, Madrid |
-| 88 | Portrait of Juan de Pareja | Diego Velazquez | 1650 | Baroque | The Metropolitan Museum of Art, New York |
-| 89 | Portrait of Madame Brunet | Edouard Manet | 1861 | Realism | J. Paul Getty Museum, Los Angeles |
-| 90 | Portrait of the Infante Luis de Borbon | Francisco de Goya | 1783 | Rococo | Cleveland Museum of Art |
-| 91 | Primavera | Sandro Botticelli | 1480 | Renaissance | Uffizi Gallery, Florence |
-| 92 | Rain, Steam and Speed | Joseph Mallord William Turner | 1844 | Romanticism | National Gallery, London |
-| 93 | Reading | Berthe Morisot | 1873 | Impressionism | Cleveland Museum of Art |
-| 94 | Reclining Young Woman in Spanish Costume | Edouard Manet | 1862 | Realism | Yale University Art Gallery |
-| 95 | Roses | Vincent van Gogh | 1890 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 96 | Rounded Flower Bed | Claude Monet | 1876 | Impressionism | Detroit Institute of Arts |
-| 97 | Saint Francis in Ecstasy | Giovanni Bellini | 1480 | Renaissance | The Frick Collection, New York |
-| 98 | Saint Francis in Meditation | Francisco de Zurbaran | 1635 | Baroque | National Gallery, London |
-| 99 | Saint George and the Dragon | Raphael | 1506 | Renaissance | National Gallery of Art, Washington DC |
-| 100 | Saint Jerome as Scholar | El Greco | 1610 | Mannerism | The Metropolitan Museum of Art, New York |
-| 101 | Saturn Devouring His Son | Francisco de Goya | 1823 | Romanticism | Museo del Prado, Madrid |
-| 102 | Self-Portrait (1500) | Albrecht Durer | 1500 | Renaissance | Alte Pinakothek, Munich |
-| 103 | Self-Portrait (1659) | Rembrandt van Rijn | 1659 | Dutch Golden Age | National Gallery of Art, Washington DC |
-| 104 | Self-Portrait (1887) | Vincent van Gogh | 1887 | Post-Impressionism | Art Institute of Chicago |
-| 105 | Self-Portrait (1889) | Vincent van Gogh | 1889 | Post-Impressionism | National Gallery of Art, Washington DC |
-| 106 | Self-Portrait (Degas) | Edgar Degas | 1855 | Impressionism | The Metropolitan Museum of Art, New York |
-| 107 | Self-Portrait as a Painter | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 108 | Self-Portrait with a Straw Hat | Vincent van Gogh | 1887 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 109 | Self-Portrait with Bandaged Ear | Vincent van Gogh | 1889 | Post-Impressionism | The Courtauld Gallery, London |
-| 110 | Self-Portrait with Grey Felt Hat | Vincent van Gogh | 1887 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 111 | Self-Portrait with Two Circles | Rembrandt van Rijn | 1665 | Dutch Golden Age | Kenwood House, London |
-| 112 | Serenade | Judith Leyster | 1629 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 113 | Shoes | Vincent van Gogh | 1886 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 114 | Sistine Madonna | Raphael | 1512 | Renaissance | Gemaldegalerie Alte Meister, Dresden |
-| 115 | Small Cowper Madonna | Raphael | 1505 | Renaissance | National Gallery of Art, Washington DC |
-| 116 | Snap the Whip | Winslow Homer | 1872 | Realism | The Metropolitan Museum of Art, New York |
-| 117 | Snow at Argenteuil | Claude Monet | 1875 | Impressionism | The Metropolitan Museum of Art, New York |
-| 118 | Stag at Sharkey's | George Bellows | 1909 | Realism | Cleveland Museum of Art |
-| 119 | Starry Night Over the Rhone | Vincent van Gogh | 1888 | Post-Impressionism | Musee d'Orsay, Paris |
-| 120 | Still Life with a Glass and Oysters | Jan Davidsz de Heem | 1640 | Dutch Golden Age | The Metropolitan Museum of Art, New York |
-| 121 | Still Life with a Silver Jug and a Porcelain Bowl | Willem Kalf | 1660 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 122 | Still Life with Apples and a Pot of Primroses | Paul Cezanne | 1890 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 123 | Still Life with Apples and Pears | Paul Cezanne | 1891 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 124 | Still Life with Flowers on a Marble Tabletop | Rachel Ruysch | 1716 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 125 | Still Life with Gilt Cup | Willem Claesz Heda | 1635 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 126 | Still Life with Ham | Willem Claesz Heda | 1650 | Dutch Golden Age | National Gallery of Art, Washington DC |
-| 127 | Still Life with Musical Instruments, Books and Sculpture | Evaristo Baschenis | 1650 | Baroque | Museum Boijmans Van Beuningen, Rotterdam |
-| 128 | Still Life with Oysters, a Silver Tazza, and Glassware | Willem Claesz Heda | 1635 | Dutch Golden Age | The Metropolitan Museum of Art, New York |
-| 129 | Still Life with Quinces | Vincent van Gogh | 1887 | Post-Impressionism | The Courtauld Gallery, London |
-| 130 | Sunflowers (1887) | Vincent van Gogh | 1887 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 131 | Sunflowers (Blue background) | Vincent van Gogh | 1888 | Post-Impressionism | Neue Pinakothek, Munich |
-| 132 | Supper at Emmaus | Caravaggio | 1601 | Baroque | National Gallery, London |
-| 133 | Susanna and the Elders | Jacopo Tintoretto | 1555 | Renaissance | Kunsthistorisches Museum, Vienna |
-| 134 | The Absinthe Drinker | Edgar Degas | 1876 | Impressionism | Musee d'Orsay, Paris |
-| 135 | The Ambassadors | Hans Holbein the Younger | 1533 | Renaissance | National Gallery, London |
-| 136 | The Anatomy Lesson of Dr. Nicolaes Tulp | Rembrandt van Rijn | 1632 | Baroque | Mauritshuis, The Hague |
-| 137 | The Angelus | Jean-Francois Millet | 1859 | Realism | Musee d'Orsay, Paris |
-| 138 | The Annunciation (Copy) | Fra Angelico | 1434 | Renaissance | Museo del Prado, Madrid |
-| 139 | The Argenteuil Bridge | Claude Monet | 1874 | Impressionism | National Gallery of Art, Washington DC |
-| 140 | The Arnolfini Portrait | Jan van Eyck | 1434 | Renaissance | National Gallery, London |
-| 141 | The Artist's Garden at Vetheuil | Claude Monet | 1880 | Impressionism | National Gallery of Art, Washington DC |
-| 142 | The Banks of the Oise | Alfred Sisley | 1877 | Impressionism | National Gallery of Art, Washington DC |
-| 143 | The Banquet of the Guard | Bartholomeus v. d. Helst | 1648 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 144 | The Baptism of Christ | Piero della Francesca | 1450 | Renaissance | National Gallery, London |
-| 145 | The Basket of Apples | Paul Cezanne | 1893 | Post-Impressionism | Art Institute of Chicago |
-| 146 | The Beach at Sainte-Adresse | Claude Monet | 1867 | Impressionism | The Metropolitan Museum of Art, New York |
-| 147 | The Bedroom | Vincent van Gogh | 1888 | Post-Impressionism | Art Institute of Chicago |
-| 148 | The Birth of Venus | Sandro Botticelli | 1485 | Renaissance | Uffizi Gallery, Florence |
-| 149 | The Birth of Venus (Bouguereau) | William-Adolphe Bouguereau | 1879 | Realism | Musee d'Orsay, Paris |
-| 150 | The Blue Boy | Thomas Gainsborough | 1770 | Rococo | Huntington Library, San Marino |
-| 151 | The Brook | Paul Cezanne | 1900 | Post-Impressionism | Cleveland Museum of Art |
-| 152 | The Burial of the Count of Orgaz | El Greco | 1586 | Mannerism | Church of Santo Tome, Toledo |
-| 153 | The Burning of the Houses of Lords and Commons | Joseph Mallord William Turner | 1835 | Romanticism | Cleveland Museum of Art |
-| 154 | The Calling of Saint Matthew | Caravaggio | 1600 | Baroque | San Luigi dei Francesi, Rome |
-| 155 | The Child's Bath | Mary Cassatt | 1893 | Impressionism | Art Institute of Chicago |
-| 156 | The Clothed Maja | Francisco de Goya | 1808 | Romanticism | Museo del Prado, Madrid |
-| 157 | The Creation of Adam | Michelangelo | 1512 | Renaissance | Sistine Chapel, Vatican Museums |
-| 158 | The Crucifixion of Saint Andrew | Caravaggio | 1607 | Baroque | Cleveland Museum of Art |
-| 159 | The Dance Class | Edgar Degas | 1874 | Impressionism | The Metropolitan Museum of Art, New York |
-| 160 | The Death of Marat | Jacques-Louis David | 1793 | Neoclassicism | Royal Museums of Fine Arts of Belgium |
-| 161 | The Death of Socrates | Jacques-Louis David | 1787 | Neoclassicism | The Metropolitan Museum of Art, New York |
-| 162 | The Descent from the Cross (Rubens) | Peter Paul Rubens | 1614 | Baroque | Cathedral of Our Lady, Antwerp |
-| 163 | The Descent from the Cross (van der Weyden) | Rogier van der Weyden | 1435 | Renaissance | Museo del Prado, Madrid |
-| 164 | The Dream | Henri Rousseau | 1910 | Post-Impressionism | Museum of Modern Art, New York |
-| 165 | The Fifer | Edouard Manet | 1866 | Realism | Musee d'Orsay, Paris |
-| 166 | The Fighting Temeraire | Joseph Mallord William Turner | 1839 | Romanticism | National Gallery, London |
-| 167 | The Garden of Earthly Delights | Hieronymus Bosch | 1503 | Renaissance | Museo del Prado, Madrid |
-| 168 | The Garden of Love | Peter Paul Rubens | 1633 | Baroque | Museo del Prado, Madrid |
-| 169 | The Garden of the Asylum at Saint-Remy | Vincent van Gogh | 1889 | Post-Impressionism | Kroller-Muller Museum, Otterlo |
-| 170 | The Gleaners | Jean-Francois Millet | 1857 | Realism | Musee d'Orsay, Paris |
-| 171 | The Goldfinch | Carel Fabritius | 1654 | Dutch Golden Age | Mauritshuis, The Hague |
-| 172 | The Grand Canal, Venice | Edouard Manet | 1874 | Impressionism | Shelburne Museum, Vermont |
-| 173 | The Grand Canal, Venice (Canaleto) | Canaletto | 1730 | Baroque | The Metropolitan Museum of Art, New York |
-| 174 | The Grand Odalisque | Jean-Auguste-Dominique Ingres | 1814 | Neoclassicism | Louvre Museum, Paris |
-| 175 | The Gross Clinic | Thomas Eakins | 1875 | Realism | Philadelphia Museum of Art |
-| 176 | The Harvest | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 177 | The Hay Wain | John Constable | 1821 | Romanticism | National Gallery, London |
-| 178 | The Horse Fair | Rosa Bonheur | 1853 | Realism | The Metropolitan Museum of Art, New York |
-| 179 | The Houses of Parliament, Sunset | Claude Monet | 1903 | Impressionism | National Gallery of Art, Washington DC |
-| 180 | The Icebergs | Frederic Edwin Church | 1861 | Romanticism | Dallas Museum of Art |
-| 181 | The Japanese Footbridge | Claude Monet | 1899 | Impressionism | National Gallery of Art, Washington DC |
-| 182 | The Kiss | Francesco Hayez | 1859 | Romanticism | Pinacoteca di Brera, Milan |
-| 183 | The Kiss (Gustav Klimt) | Gustav Klimt | 1907 | Symbolism | Belvedere Museum, Vienna |
-| 184 | The Lacemaker | Johannes Vermeer | 1669 | Dutch Golden Age | Louvre Museum, Paris |
-| 185 | The Lady of Shalott | John William Waterhouse | 1888 | Pre-Raphaelite | Tate Britain |
-| 186 | The Langlois Bridge at Arles | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 187 | The Large Bathers | Paul Cezanne | 1906 | Post-Impressionism | Philadelphia Museum of Art |
-| 188 | The Last Supper (Copy) | Giampietrino and Giovanni Antonio Boltraffio | 1520 | Renaissance | Louvre Museum, Paris |
-| 189 | The Little Street | Johannes Vermeer | 1658 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 190 | The Merry Family | Jan Steen | 1668 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 191 | The Milkmaid | Johannes Vermeer | 1658 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 192 | The Monet Family in Their Garden | Edouard Manet | 1874 | Impressionism | The Metropolitan Museum of Art, New York |
-| 193 | The Mousme | Vincent van Gogh | 1888 | Post-Impressionism | National Gallery of Art, Washington DC |
-| 194 | The Night Cafe | Vincent van Gogh | 1888 | Post-Impressionism | Yale University Art Gallery |
-| 195 | The Night Watch | Rembrandt van Rijn | 1642 | Dutch Golden Age | Rijksmuseum, Amsterdam |
+| 55 | Judith Slaying Holofernes | Artemisia Gentileschi | 1620 | Baroque | Uffizi Gallery |
+| 56 | Kindred Spirits | Asher B. Durand | 1849 | Romanticism | Crystal Bridges |
+| 57 | La Mousme | Vincent van Gogh | 1888 | Post-Impressionism | National Gallery of Art |
+| 58 | Lady Agnew of Lochnaw | John Singer Sargent | 1892 | Realism | Scottish National Gallery |
+| 59 | Lady with an Ermine | Leonardo da Vinci | 1490 | Renaissance | Czartoryski Museum, Krakow |
+| 60 | Lake Albano and Castel Gandolfo | Jean-Baptiste-Camille Corot | 1826 | Romanticism | The Met |
+| 61 | Lamentation of Christ | Giotto | 1305 | Renaissance | Scrovegni Chapel, Padua |
+| 62 | Lamentation over the Dead Christ | Andrea Mantegna | 1480 | Renaissance | Pinacoteca di Brera, Milan |
+| 63 | Landscape from Saint-Remy | Vincent van Gogh | 1889 | Post-Impressionism | Ny Carlsberg Glyptotek, Copenhagen |
+| 64 | Las Meninas | Diego Velazquez | 1656 | Baroque | Museo del Prado |
+| 65 | Liberty Leading the People | Eugene Delacroix | 1830 | Romanticism | Louvre Museum, Paris |
+| 66 | Luncheon of the Boating Party | Pierre-Auguste Renoir | 1881 | Impressionism | Phillips Collection |
+| 67 | Luncheon on the Grass | Edouard Manet | 1863 | Realism | Musee d'Orsay, Paris |
+| 68 | Mada Primavesi | Gustav Klimt | 1912 | Symbolism | The Met |
+| 69 | Madame Georges Charpentier | Pierre-Auguste Renoir | 1878 | Impressionism | The Met |
+| 70 | Madame X | John Singer Sargent | 1884 | Realism | The Met |
+| 71 | Madonna of the Goldfinch (Copy) | Raphael | 1506 | Renaissance | Uffizi Gallery |
+| 72 | Madonna with the Long Neck | Parmigianino | 1535 | Mannerism | Uffizi Gallery, Florence |
+| 73 | Max Schmitt in a Single Scull | Thomas Eakins | 1871 | Realism | The Met |
+| 74 | Mona Lisa | Leonardo da Vinci | 1503 | Renaissance | Musee du Louvre |
+| 75 | Mont Sainte-Victoire | Paul Cezanne | 1904 | Post-Impressionism | Princeton University Art Museum |
+| 76 | Mount Corcoran | Albert Bierstadt | 1877 | Romanticism | National Gallery of Art |
+| 77 | Napoleon Crossing the Alps | Jacques-Louis David | 1802 | Neoclassicism | Palace of Versailles |
+| 78 | Niagara Falls | Frederic Edwin Church | 1857 | Romanticism | National Gallery of Art |
+| 79 | Oath of the Horatii | Jacques-Louis David | 1784 | Neoclassicism | Louvre Museum, Paris |
+| 80 | Olympia | Edouard Manet | 1863 | Realism | Musee d'Orsay, Paris |
+| 81 | Ophelia | John Everett Millais | 1851 | Pre-Raphaelite | Tate Britain |
+| 82 | Orpheus | Odilon Redon | 1903 | Symbolism | Cleveland Museum of Art |
+| 83 | Pentecost | Giotto | 1305 | Renaissance | National Gallery (London) |
+| 84 | Piazza San Marco, Venice | Pierre-Auguste Renoir | 1881 | Impressionism | Minneapolis Institute of Art |
+| 85 | Poplars (Three Pink Autumn Trees) | Claude Monet | 1891 | Impressionism | The Met |
+| 86 | Portrait of a Girl in Blue | Johannes C. Verspronck | 1641 | Dutch Golden Age | Rijksmuseum |
+| 87 | Portrait of Dr. Gachet | Vincent van Gogh | 1890 | Post-Impressionism | Musee d'Orsay |
+| 88 | Portrait of Henry VIII | Hans Holbein the Younger | 1537 | Renaissance | Walker Art Gallery, Liverpool |
+| 89 | Portrait of Juan de Pareja | Diego Velazquez | 1650 | Baroque | The Met |
+| 90 | Portrait of Madame Brunet | Edouard Manet | 1861 | Realism | The J. Paul Getty Museum |
+| 91 | Portrait of the Infante Luis de Borbon | Francisco de Goya | 1783 | Rococo | Cleveland Museum of Art |
+| 92 | Primavera | Sandro Botticelli | 1480 | Renaissance | Uffizi Gallery |
+| 93 | Rain, Steam and Speed | Joseph Mallord William Turner | 1844 | Romanticism | National Gallery, London |
+| 94 | Reading (La Lecture) | Berthe Morisot | 1873 | Impressionism | Cleveland Museum of Art |
+| 95 | Reclining Young Woman in Spanish Costume | Edouard Manet | 1862 | Realism | Yale Art Gallery |
+| 96 | Roses | Vincent van Gogh | 1890 | Post-Impressionism | The Met |
+| 97 | Rounded Flower Bed (Corbeille de fleurs) | Claude Monet | 1876 | Impressionism | Detroit Institute of Arts |
+| 98 | Saint Francis in Ecstasy | Giovanni Bellini | 1480 | Renaissance | Frick Collection |
+| 99 | Saint Francis in Meditation | Francisco de Zurbaran | 1635 | Baroque | National Gallery, London |
+| 100 | Saint George and the Dragon | Raphael | 1506 | Renaissance | National Gallery of Art |
+| 101 | Saint Jerome as Scholar | El Greco | 1610 | Mannerism | The Met |
+| 102 | Saturn Devouring His Son | Francisco de Goya | 1823 | Romanticism | Museo del Prado |
+| 103 | Self-Portrait (1500) | Albrecht Durer | 1500 | Renaissance | Alte Pinakothek, Munich |
+| 104 | Self-Portrait (1659) | Rembrandt van Rijn | 1659 | Dutch Golden Age | National Gallery of Art |
+| 105 | Self-Portrait (1887) | Vincent van Gogh | 1887 | Post-Impressionism | Art Institute of Chicago |
+| 106 | Self-Portrait (1889) | Vincent van Gogh | 1889 | Post-Impressionism | National Gallery of Art |
+| 107 | Self-Portrait (Degas) | Edgar Degas | 1855 | Impressionism | The Met |
+| 108 | Self-Portrait as a Painter | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 109 | Self-Portrait with a Straw Hat | Vincent van Gogh | 1887 | Post-Impressionism | The Met |
+| 110 | Self-Portrait with Bandaged Ear | Vincent van Gogh | 1889 | Post-Impressionism | The Courtauld Gallery, London |
+| 111 | Self-Portrait with Grey Felt Hat | Vincent van Gogh | 1887 | Post-Impressionism | Van Gogh Museum |
+| 112 | Self-Portrait with Two Circles | Rembrandt van Rijn | 1665 | Dutch Golden Age | Kenwood House, London |
+| 113 | Serenade | Judith Leyster | 1629 | Dutch Golden Age | Rijksmuseum |
+| 114 | Shoes | Vincent van Gogh | 1886 | Post-Impressionism | Van Gogh Museum |
+| 115 | Sistine Madonna | Raphael | 1512 | Renaissance | Gemaldegalerie Alte Meister, Dresden |
+| 116 | Small Cowper Madonna | Raphael | 1505 | Renaissance | National Gallery of Art |
+| 117 | Snap the Whip | Winslow Homer | 1872 | Realism | The Met |
+| 118 | Snow at Argenteuil | Claude Monet | 1875 | Impressionism | Museum of Fine Arts, Boston |
+| 119 | Stag at Sharkey's | George Bellows | 1909 | Realism | Cleveland Museum of Art |
+| 120 | Starry Night Over the Rhone | Vincent van Gogh | 1888 | Post-Impressionism | Musee d'Orsay |
+| 121 | Still Life with a Glass and Oysters | Jan Davidsz de Heem | 1640 | Dutch Golden Age | The Met |
+| 122 | Still Life with a Silver Jug and a Porcelain Bowl | Willem Kalf | 1660 | Dutch Golden Age | Rijksmuseum |
+| 123 | Still Life with Apples and a Pot of Primroses | Paul Cezanne | 1890 | Post-Impressionism | The Met |
+| 124 | Still Life with Apples and Pears | Paul Cezanne | 1891 | Post-Impressionism | The Met |
+| 125 | Still Life with Flowers on a Marble Tabletop | Rachel Ruysch | 1716 | Dutch Golden Age | Rijksmuseum |
+| 126 | Still Life with Gilt Cup | Willem Claesz Heda | 1635 | Dutch Golden Age | Rijksmuseum |
+| 127 | Still Life with Ham | Gerret Willemsz Heda | 1650 | Dutch Golden Age | National Gallery of Art |
+| 128 | Still Life with Musical Instruments, Books and Sculpture | Evaristo Baschenis | 1650 | Baroque | Museum Boijmans Van Beuningen |
+| 129 | Still Life with Oysters, a Silver Tazza, and Glassware | Willem Claesz Heda | 1635 | Dutch Golden Age | The Met |
+| 130 | Still Life with Quinces | Vincent van Gogh | 1887 | Post-Impressionism | Galerie Neue Meister, Dresden |
+| 131 | Sunflowers (1887) | Vincent van Gogh | 1887 | Post-Impressionism | The Met |
+| 132 | Sunflowers (Blue background) | Vincent van Gogh | 1888 | Post-Impressionism | Neue Pinakothek, Munich |
+| 133 | Supper at Emmaus | Caravaggio | 1601 | Baroque | National Gallery, London |
+| 134 | Susanna and the Elders | Jacopo Tintoretto | 1555 | Renaissance | Museo del Prado |
+| 135 | The Absinthe Drinker | Edgar Degas | 1876 | Impressionism | Musee d'Orsay, Paris |
+| 136 | The Ambassadors | Hans Holbein the Younger | 1533 | Renaissance | National Gallery, London |
+| 137 | The Anatomy Lesson of Dr. Nicolaes Tulp | Rembrandt van Rijn | 1632 | Baroque | Mauritshuis |
+| 138 | The Angelus | Jean-Francois Millet | 1859 | Realism | Musee d'Orsay |
+| 139 | The Annunciation (Copy) | Fra Angelico | 1425 | Renaissance | Prado / San Marco |
+| 140 | The Argenteuil Bridge | Claude Monet | 1874 | Impressionism | National Gallery of Art |
+| 141 | The Arnolfini Portrait | Jan van Eyck | 1434 | Renaissance | The National Gallery, London |
+| 142 | The Artist's Garden at Vetheuil | Claude Monet | 1880 | Impressionism | National Gallery of Art |
+| 143 | The Banks of the Oise | Alfred Sisley | 1877 | Impressionism | National Gallery of Art |
+| 144 | The Banquet of the Guard | Bartholomeus v. d. Helst | 1648 | Dutch Golden Age | Rijksmuseum |
+| 145 | The Baptism of Christ | Piero della Francesca | 1450 | Renaissance | National Gallery (London) |
+| 146 | The Basket of Apples | Paul Cezanne | 1893 | Post-Impressionism | Art Institute of Chicago |
+| 147 | The Beach at Sainte-Adresse | Claude Monet | 1867 | Impressionism | Art Institute of Chicago |
+| 148 | The Bedroom | Vincent van Gogh | 1889 | Post-Impressionism | Art Institute of Chicago |
+| 149 | The Birth of Venus | Sandro Botticelli | 1485 | Renaissance | Uffizi Gallery |
+| 150 | The Birth of Venus (Bouguereau) | William-Adolphe Bouguereau | 1879 | Realism | Musee d'Orsay, Paris |
+| 151 | The Blue Boy | Thomas Gainsborough | 1770 | Rococo | Huntington Library, San Marino |
+| 152 | The Brook | Paul Cezanne | 1900 | Post-Impressionism | Cleveland Museum of Art |
+| 153 | The Burial of the Count of Orgaz | El Greco | 1586 | Mannerism | Church of Santo Tome, Toledo |
+| 154 | The Burning of the Houses of Lords and Commons | Joseph Mallord William Turner | 1835 | Romanticism | Cleveland Museum of Art |
+| 155 | The Calling of Saint Matthew | Caravaggio | 1600 | Baroque | San Luigi dei Francesi, Rome |
+| 156 | The Child's Bath | Mary Cassatt | 1893 | Impressionism | Art Institute of Chicago |
+| 157 | The Clothed Maja | Francisco de Goya | 1808 | Romanticism | Museo del Prado, Madrid |
+| 158 | The Creation of Adam | Michelangelo | 1512 | Renaissance | Sistine Chapel (Vatican Museums) |
+| 159 | The Crucifixion of Saint Andrew | Caravaggio | 1607 | Baroque | Cleveland Museum of Art |
+| 160 | The Dance Class | Edgar Degas | 1874 | Impressionism | The Met |
+| 161 | The Death of Marat | Jacques-Louis David | 1793 | Neoclassicism | Royal Museums of Fine Arts of Belgium |
+| 162 | The Death of Socrates | Jacques-Louis David | 1787 | Neoclassicism | The Met |
+| 163 | The Descent from the Cross (Rubens) | Peter Paul Rubens | 1602 | Baroque | Siegerlandmuseum, Siegen |
+| 164 | The Descent from the Cross (van der Weyden) | Rogier van der Weyden | 1435 | Renaissance | Museo del Prado, Madrid |
+| 165 | The Dream | Henri Rousseau | 1910 | Post-Impressionism | Museum of Modern Art, New York |
+| 166 | The Fifer | Edouard Manet | 1866 | Realism | Musee d'Orsay |
+| 167 | The Fighting Temeraire | Joseph Mallord William Turner | 1839 | Romanticism | National Gallery, London |
+| 168 | The Garden of Earthly Delights | Hieronymus Bosch | 1503 | Renaissance | Museo del Prado |
+| 169 | The Garden of Love | Peter Paul Rubens | 1633 | Baroque | Museo del Prado |
+| 170 | The Garden of the Asylum at Saint-Remy | Vincent van Gogh | 1889 | Post-Impressionism | Kroller-Muller Museum |
+| 171 | The Gleaners | Jean-Francois Millet | 1857 | Realism | Musee d'Orsay |
+| 172 | The Goldfinch | Carel Fabritius | 1654 | Dutch Golden Age | Mauritshuis |
+| 173 | The Grand Canal, Venice | Edouard Manet | 1874 | Impressionism | Shelburne Museum |
+| 174 | The Grand Canal, Venice (Canaleto) | Canaletto | 1730 | Baroque | The Met |
+| 175 | The Grand Odalisque | Jean-Auguste-Dominique Ingres | 1814 | Neoclassicism | Louvre Museum, Paris |
+| 176 | The Gross Clinic | Thomas Eakins | 1875 | Realism | Philadelphia Museum |
+| 177 | The Harvest | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 178 | The Hay Wain | John Constable | 1821 | Romanticism | National Gallery (London) |
+| 179 | The Horse Fair | Rosa Bonheur | 1853 | Realism | The Met |
+| 180 | The Houses of Parliament, Sunset | Claude Monet | 1903 | Impressionism | National Gallery of Art |
+| 181 | The Icebergs | Frederic Edwin Church | 1861 | Romanticism | Dallas Museum of Art |
+| 182 | The Japanese Footbridge | Claude Monet | 1899 | Impressionism | National Gallery of Art |
+| 183 | The Kiss | Francesco Hayez | 1859 | Symbolism | Pinacoteca di Brera, Milan |
+| 184 | The Kiss (Gustav Klimt) | Gustav Klimt | 1907 | Symbolism | Belvedere Museum |
+| 185 | The Lacemaker | Johannes Vermeer | 1669 | Dutch Golden Age | Louvre Museum, Paris |
+| 186 | The Lady of Shalott | John William Waterhouse | 1888 | Pre-Raphaelite | Tate Britain |
+| 187 | The Langlois Bridge at Arles | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 188 | The Large Bathers | Paul Cezanne | 1906 | Post-Impressionism | Philadelphia Museum |
+| 189 | The Last Supper (Copy) | Giampietrino and Giovanni Antonio Boltraffio | 1520 | Renaissance | Royal Academy of Arts, London |
+| 190 | The Little Street | Johannes Vermeer | 1658 | Dutch Golden Age | Rijksmuseum |
+| 191 | The Merry Family | Jan Steen | 1668 | Dutch Golden Age | Rijksmuseum |
+| 192 | The Milkmaid | Johannes Vermeer | 1658 | Dutch Golden Age | Rijksmuseum |
+| 193 | The Monet Family in Their Garden | Edouard Manet | 1874 | Impressionism | The Met |
+| 194 | The Night Cafe | Vincent van Gogh | 1888 | Post-Impressionism | Yale Art Gallery |
+| 195 | The Night Watch | Rembrandt van Rijn | 1642 | Dutch Golden Age | Rijksmuseum |
 | 196 | The Nude Maja | Francisco de Goya | 1800 | Romanticism | Museo del Prado, Madrid |
-| 197 | The Oxbow | Thomas Cole | 1836 | Romanticism | The Metropolitan Museum of Art, New York |
+| 197 | The Oxbow | Thomas Cole | 1836 | Romanticism | The Met |
 | 198 | The Penitent Magdalene | Georges de La Tour | 1640 | Baroque | The Metropolitan Museum of Art, New York |
-| 199 | The Potato Eaters | Vincent van Gogh | 1885 | Post-Impressionism | Van Gogh Museum, Amsterdam |
+| 199 | The Potato Eaters | Vincent van Gogh | 1885 | Post-Impressionism | Van Gogh Museum |
 | 200 | The Raft of the Medusa | Theodore Gericault | 1819 | Romanticism | Louvre Museum, Paris |
 | 201 | The Return of the Prodigal Son | Rembrandt van Rijn | 1668 | Dutch Golden Age | Hermitage Museum, Saint Petersburg |
 | 202 | The Rokeby Venus | Diego Velazquez | 1651 | Baroque | National Gallery, London |
-| 203 | The School of Athens | Raphael | 1511 | Renaissance | Apostolic Palace, Vatican Museums |
-| 204 | The Seine at La Grande Jatte | Georges Seurat | 1888 | Post-Impressionism | Royal Museums of Fine Arts of Belgium, Brussels |
-| 205 | The Silver Tureen | Jean-Baptiste Chardin | 1728 | Rococo | The Metropolitan Museum of Art, New York |
-| 206 | The Skiff | Pierre-Auguste Renoir | 1875 | Impressionism | National Gallery, London |
+| 203 | The School of Athens | Raphael | 1511 | Renaissance | Apostolic Palace (Vatican Museums) |
+| 204 | The Seine at La Grande Jatte | Georges Seurat | 1888 | Post-Impressionism | RMFAB, Bruselas |
+| 205 | The Silver Tureen | Jean-Baptiste Chardin | 1728 | Rococo | The Met |
+| 206 | The Skiff (La Yole) | Pierre-Auguste Renoir | 1875 | Impressionism | National Gallery (London) |
 | 207 | The Sleeping Gypsy | Henri Rousseau | 1897 | Post-Impressionism | Museum of Modern Art, New York |
-| 208 | The Sower | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 209 | The Starry Night | Vincent van Gogh | 1889 | Post-Impressionism | Museum of Modern Art, New York |
-| 210 | The Swing | Jean-Honore Fragonard | 1767 | Rococo | The Wallace Collection, London |
-| 211 | The Third of May 1808 | Francisco de Goya | 1814 | Romanticism | Museo del Prado, Madrid |
-| 212 | The Third-Class Carriage | Honore Daumier | 1864 | Realism | The Metropolitan Museum of Art, New York |
-| 213 | The Threatened Swan | Jan Asselijn | 1650 | Dutch Golden Age | Rijksmuseum, Amsterdam |
+| 208 | The Sower | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 209 | The Starry Night | Vincent van Gogh | 1889 | Post-Impressionism | Museum of Modern Art (MoMA) |
+| 210 | The Swing | Jean-Honore Fragonard | 1767 | Rococo | Wallace Collection |
+| 211 | The Third of May 1808 | Francisco de Goya | 1814 | Romanticism | Museo del Prado |
+| 212 | The Third-Class Carriage | Honore Daumier | 1864 | Realism | The Met |
+| 213 | The Threatened Swan | Jan Asselijn | 1650 | Dutch Golden Age | Rijksmuseum |
 | 214 | The Three Graces | Peter Paul Rubens | 1635 | Baroque | Museo del Prado, Madrid |
-| 215 | The Transfiguration | Raphael | 1520 | Renaissance | Vatican Museums, Rome |
-| 216 | The Triumph of Death | Pieter Bruegel the Elder | 1562 | Renaissance | Museo del Prado, Madrid |
-| 217 | The Valley of the Seine, from the Hills of Giverny | Theodore Robinson | 1892 | Impressionism | National Gallery of Art, Washington DC |
-| 218 | The Veteran in a New Field | Winslow Homer | 1865 | Realism | The Metropolitan Museum of Art, New York |
-| 219 | The Virgin of the Rocks | Leonardo da Vinci | 1486 | Renaissance | Louvre Museum, Paris |
+| 215 | The Transfiguration | Raphael | 1520 | Renaissance | Vatican Museums |
+| 216 | The Triumph of Death | Pieter Bruegel the Elder | 1562 | Renaissance | Museo del Prado |
+| 217 | The Valley of the Seine, from the Hills of Giverny | Theodore Robinson | 1892 | Impressionism | National Gallery of Art |
+| 218 | The Veteran in a New Field | Winslow Homer | 1865 | Realism | The Met |
+| 219 | The Virgin of the Rocks | Leonardo da Vinci | 1508 | Renaissance | National Gallery, London |
 | 220 | The Wedding at Cana | Paolo Veronese | 1563 | Renaissance | Louvre Museum, Paris |
-| 221 | The Windmill | Rembrandt van Rijn | 1645 | Dutch Golden Age | National Gallery of Art, Washington DC |
-| 222 | The Windmill at Wijk bij Duurstede | Jacob van Ruisdael | 1670 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 223 | The Woman with a Fan | Pierre-Auguste Renoir | 1880 | Impressionism | Hermitage Museum, Saint Petersburg |
-| 224 | The Yellow House | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 225 | Tower of Babel | Pieter Bruegel the Elder | 1563 | Renaissance | Kunsthistorisches Museum, Vienna |
+| 221 | The Windmill | Rembrandt van Rijn | 1645 | Dutch Golden Age | National Gallery of Art |
+| 222 | The Windmill at Wijk bij Duurstede | Jacob van Ruisdael | 1670 | Dutch Golden Age | Rijksmuseum |
+| 223 | The Woman with a Fan | Pierre-Auguste Renoir | 1880 | Impressionism | The Hermitage |
+| 224 | The Yellow House | Vincent van Gogh | 1888 | Post-Impressionism | Van Gogh Museum |
+| 225 | Tower of Babel | Pieter Bruegel the Elder | 1563 | Renaissance | Kunsthistorisches Museum |
 | 226 | Two Sisters (On the Terrace) | Pierre-Auguste Renoir | 1881 | Impressionism | Art Institute of Chicago |
-| 227 | Vase of Flowers (Pink Background) | Odilon Redon | 1906 | Symbolism | The Metropolitan Museum of Art, New York |
+| 227 | Vase of Flowers (Pink Background) | Odilon Redon | 1906 | Symbolism | The Met |
 | 228 | Venus of Urbino | Titian | 1538 | Renaissance | Uffizi Gallery, Florence |
 | 229 | View of Delft | Johannes Vermeer | 1660 | Dutch Golden Age | Mauritshuis, The Hague |
-| 230 | View of Houses in Delft | Johannes Vermeer | 1658 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 231 | View of Toledo | El Greco | 1599 | Mannerism | The Metropolitan Museum of Art, New York |
-| 232 | View of Vetheuil | Claude Monet | 1880 | Impressionism | The Metropolitan Museum of Art, New York |
-| 233 | Village of Eragny | Camille Pissarro | 1895 | Impressionism | Birmingham Museum of Art |
-| 234 | Virgin and Child with St. Anne | Leonardo da Vinci | 1503 | Renaissance | Louvre Museum, Paris |
-| 235 | Vision After the Sermon | Paul Gauguin | 1888 | Post-Impressionism | Scottish National Gallery, Edinburgh |
-| 236 | Walk on the Seashore | Joaquin Sorolla | 1909 | Realism | Sorolla Museum, Madrid |
-| 237 | Wanderer above the Sea of Fog | Caspar David Friedrich | 1818 | Romanticism | Kunsthalle Hamburg |
-| 238 | Washington Crossing the Delaware | Emanuel Leutze | 1851 | Romanticism | The Metropolitan Museum of Art, New York |
-| 239 | Water Lilies (Agapanthus) | Claude Monet | 1920 | Impressionism | Cleveland Museum of Art |
-| 240 | Watson and the Shark | John Singleton Copley | 1778 | Romanticism | National Gallery of Art, Washington DC |
-| 241 | Wheatfield with Crows | Vincent van Gogh | 1890 | Post-Impressionism | Van Gogh Museum, Amsterdam |
-| 242 | Wheatfield with Cypresses | Vincent van Gogh | 1889 | Post-Impressionism | The Metropolitan Museum of Art, New York |
-| 243 | Where Do We Come From? What Are We? Where Are We Going? | Paul Gauguin | 1898 | Post-Impressionism | Museum of Fine Arts, Boston |
-| 244 | Whistler's Mother | James McNeill Whistler | 1871 | Realism | Musee d'Orsay, Paris |
-| 245 | Winter Landscape with Skaters | Hendrick Avercamp | 1608 | Dutch Golden Age | Rijksmuseum, Amsterdam |
-| 246 | Woman Holding a Balance | Johannes Vermeer | 1664 | Dutch Golden Age | National Gallery of Art, Washington DC |
-| 247 | Woman with a Parasol | Claude Monet | 1875 | Impressionism | National Gallery of Art, Washington DC |
-| 248 | Woman with a Pearl Necklace | Johannes Vermeer | 1664 | Dutch Golden Age | Gemaldegalerie, Berlin |
-| 249 | Women of Tahiti | Paul Gauguin | 1891 | Post-Impressionism | Musee d'Orsay, Paris |
-| 250 | Young Hare | Albrecht Durer | 1502 | Renaissance | Albertina, Vienna |
-| 251 | Young Woman with a Water Pitcher | Johannes Vermeer | 1662 | Dutch Golden Age | The Metropolitan Museum of Art, New York |
-| 252 | Young Woman with Peonies | Frederic Bazille | 1870 | Impressionism | National Gallery of Art, Washington DC |
+| 230 | View of Toledo | El Greco | 1599 | Mannerism | The Met |
+| 231 | View of Vetheuil | Claude Monet | 1880 | Impressionism | The Met |
+| 232 | Village of Eragny | Camille Pissarro | 1885 | Impressionism | Birmingham Museum of Art |
+| 233 | Virgin and Child with St. Anne | Leonardo da Vinci | 1503 | Renaissance | Louvre Museum, Paris |
+| 234 | Vision After the Sermon | Paul Gauguin | 1888 | Post-Impressionism | Scottish National Gallery |
+| 235 | Walk on the Seashore | Joaquin Sorolla | 1909 | Realism | Museo Sorolla, Madrid |
+| 236 | Wanderer above the Sea of Fog | Caspar David Friedrich | 1818 | Romanticism | Kunsthalle Hamburg |
+| 237 | Washington Crossing the Delaware | Emanuel Leutze | 1851 | Romanticism | The Met |
+| 238 | Water Lilies (Agapanthus) | Claude Monet | 1920 | Impressionism | Cleveland Museum of Art |
+| 239 | Watson and the Shark | John Singleton Copley | 1778 | Romanticism | National Gallery of Art |
+| 240 | Wheatfield with Crows | Vincent van Gogh | 1890 | Post-Impressionism | Van Gogh Museum |
+| 241 | Wheatfield with Cypresses | Vincent van Gogh | 1889 | Post-Impressionism | The Met |
+| 242 | Where Do We Come From? What Are We? Where Are We Going? | Paul Gauguin | 1898 | Post-Impressionism | Museum of Fine Arts, Boston |
+| 243 | Whistler's Mother | James McNeill Whistler | 1871 | Realism | Musee d'Orsay |
+| 244 | Winter Landscape with Skaters | Hendrick Avercamp | 1608 | Dutch Golden Age | Rijksmuseum |
+| 245 | Woman Holding a Balance | Johannes Vermeer | 1664 | Dutch Golden Age | National Gallery of Art |
+| 246 | Woman with a Parasol | Claude Monet | 1875 | Impressionism | National Gallery of Art |
+| 247 | Woman with a Pearl Necklace | Johannes Vermeer | 1664 | Dutch Golden Age | Gemaldegalerie |
+| 248 | Women of Tahiti | Paul Gauguin | 1891 | Post-Impressionism | Musee d'Orsay |
+| 249 | Young Hare | Albrecht Durer | 1502 | Renaissance | Albertina, Vienna |
+| 250 | Young Woman with a Water Pitcher | Johannes Vermeer | 1662 | Dutch Golden Age | The Met |
+| 251 | Young Woman with Peonies | Frederic Bazille | 1870 | Impressionism | National Gallery of Art |

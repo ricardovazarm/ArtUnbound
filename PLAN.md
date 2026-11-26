@@ -16,11 +16,15 @@
   - `enableDevCheats` a 0 antes de cualquier build de release.
   - ¿El baño de luz de la lámpara se quita también en VR? Hoy se quitó en los dos modos.
   - Bug del gatillo que deja de responder: ¿resuelto? Si sí, retirar los logs `DIAG`.
+  - **Dos placas inalcanzables:** ¿bajar los umbrales de `master_author_johannes_vermeer`
+    (11→10) y `grandmaster_movement_dutch_golden_age` (36→35)? Ver "segunda tanda 2026-11-25".
 - **Pendientes chicos:** primer arranque en el Quest 2 (VR en frío, con controles y logcat
   grabando); ver en el visor la lámpara sin baño de luz, reposicionar una de dos
   copias de la misma obra, y lo de "Trabajo 2026-11-16"; 5 capturas 2560×1440 y tráiler; ¿las
   placas Museum Label / Frame / Picture Light se distinguen en la miniatura? (mismo prefab);
-  `unity pipeline install` en los otros proyectos de Unity.
+  `unity pipeline install` en los otros proyectos de Unity; el `CLAUDE.md` del proyecto está
+  rancio (marcos por dificultad, 0.4 m, Quest 3/Pro) y el GDD v6.1 ya no; al asset de "The
+  Jewish Bride" le falta la comilla de cierre en `title`.
 
 > Fuente de verdad del avance. Al iniciar cada sesión, leer este archivo y retomar desde
 > la primera fase no completada.
@@ -290,6 +294,38 @@ Sesión de preparación; no cierra ninguna fase y **no se tocó código, escena 
 **Qué NO se hizo y por qué:** no se abrió la app en el Quest 2 ni se grabó logcat (el usuario
 cerró la sesión antes de probar); no se compiló nada porque no cambió código.
 
+## Trabajo 2026-11-25, segunda tanda (GDD actualizado a v6.1)
+
+Sesión de documentación. No cierra ninguna fase y no tocó código, escena ni assets.
+
+**Qué se hizo:** `docs/GDD-Art-Unbound-v6.md` pasó a **v6.1 (noviembre 2026)** para reflejar
+lo implementado, cotejado contra código, escena y assets (no contra este plan). Trae un bloque
+"Cambios respecto a 6.0" al inicio. Lo principal: MR en Quest 3/3S/Pro y Quest 2 directo a VR;
+lienzo y menú en un ancla única a 0.75 m; post-juego sin "Hang it now"/"Back to collection"
+(solo "Play Again", el cuadro queda listo para tomarse); Collection lista solo placas y mejoras
+(las obras se cuelgan con "Hang on Wall" desde su detalle); Settings con hápticos y toggle del
+tutorial; tutorial de mano fantasma (§4.9); multi-copia; recentrado y cambio manos/controles
+(§11.8); lámpara sin baño de luz; chips de filtro y "Browse all" marcados como no
+implementados; catálogo de 251 obras y Apéndice A regenerado desde `ArtworkCatalog.asset`
+(antes difería en 170 filas).
+
+**Qué quedó probado:** compilación en batchmode con Unity 6000.3.10f1, exit 0 y 0 `error CS`
+(no hay tests). El apéndice se cotejó por script contra los assets: 251 filas, 0 diferencias.
+No hay nada que verificar en el visor: es solo documentación.
+
+**Hallazgo, NO corregido (decisión del usuario):** dos placas no se pueden obtener.
+`master_author_johannes_vermeer` tiene `threshold: 11` y el catálogo tiene 10 Vermeer;
+`grandmaster_movement_dutch_golden_age` tiene `threshold: 36` y hay 35 obras. Quedaron así al
+sacar el Vermeer duplicado (`21fc52f`); `CollectibleService.IsThresholdMet` compara con `>=`.
+Los assets viven en `Assets/ArtUnbound/Data/Collectibles/`. El GDD lleva los conteos reales y
+una nota de "pendiente de implementación". No se corrigió porque es dato de juego, no doc.
+
+**Qué NO se hizo y por qué:** quedaron sin verificar en el GDD, tal cual estaban, el precio de
+$9.99 USD (vive en el dashboard de Meta), las dimensiones 12×8×4 m de la galería y que las 12
+gratuitas salgan primero. No se actualizó el `CLAUDE.md` del proyecto (rancio) ni los
+comentarios de `CollectibleKind.cs`/`PopulateCollection` que dicen que las mejoras no son
+colgables: fuera del alcance pedido.
+
 ---
 
 ## FASE A — Últimos pendientes del Editor (RETIRADA 2026-11-22, no aplica)
@@ -309,11 +345,13 @@ para esto; ver la sección "Verificacion end-to-end" del doc de alineación).
 **Salida verificable (Play Mode / Quest):**
 - 0 errores en consola al abrir el proyecto.
 - Completar una obra → card con palomita (no medalla); post-juego "Artwork Complete"
-  sin medalla, con "Hang it now" / "Back to collection".
+  sin medalla, con "Play Again" como único botón y el cuadro listo para tomarse y colgarse
+  (corregido 2026-11-25: "Hang it now" / "Back to collection" ya no existen).
 - Colgar la obra (MR y VR) → persiste al reabrir; con 10/25/50 obras (o forzando
   `save.json`) aparecen cédula/marco/lámpara y los toggles de Config las controlan.
 - Cruzar umbral de autor/movimiento → se otorga la placa; se cuelga desde Collection.
-- Collection lista completadas + placas + bloqueados con su condición.
+- Collection lista placas y mejoras, obtenidas y bloqueadas con su condición (corregido
+  2026-11-25: las obras completadas ya no salen ahí, se cuelgan desde su detalle).
 - Compra ya verificada en device ✅ (re-verificar solo la restauración: reabrir la app
   tras comprar → `GetViewerPurchases` regresa 1 compra y el catálogo sigue desbloqueado).
 - **Tutorial (post-corte):** en primer arranque (o `save.json` limpio) aparece la mano
